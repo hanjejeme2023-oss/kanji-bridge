@@ -10,7 +10,7 @@ If this file and the spec disagree, the spec wins, except where DECISIONS.md D12
 - Booleans: CSV `true`/`false` (lowercase); JSON `true`/`false`.
 - IDs: `c00001` (chars), `w00001` (words), `p0001` (passages). Assigned once in `pipeline/id_map.csv` (columns `kind,key,id`); keys: chars = `trad`; words = `trad|pinyin` (or `trad|ja|vi` if no pinyin); passages = `lang|level|n` as defined by Codex. Rebuild reuses IDs; new rows get the next free number; IDs are never reused or renumbered.
 - Pinyin: tone marks, lowercase, syllables joined without spaces in `words.pinyin` (`xuéshēng`), as the prototype does. `chars.pinyin` is one syllable.
-- Vietnamese: NFC, lowercase, syllables separated by one space (`học sinh`). Korean: Hangul, no spaces inside a word.
+- Vietnamese: NFC, lowercase, modern tone placement (D25: `thủy`, `hòa`, not `thuỷ`, `hoà`), syllables separated by one space (`học sinh`). Korean: Hangul, no spaces inside a word.
 - Japanese kana: hiragana. (KANJIDIC2 katakana on'yomi are converted.)
 - `lang` codes: `ja`, `ko`, `zh`, `vi`. App labels: ja=日, ko=韓, zh=中, vi=越.
 
@@ -28,9 +28,9 @@ If this file and the spec disagree, the spec wins, except where DECISIONS.md D12
 | ko_final | str | one of `ㄱ ㄴ ㄹ ㅁ ㅂ ㅇ` or other final jamo; empty = no final |
 | vi_final | str | one of `c ch p t n m ng nh`; empty = open syllable |
 | in_hsk_chars | bool | in the HSK 3.0 character list |
-| level | int 1–9 | HSK 3.0 character-list level if the source gives one, else min `words.level` of words using it; empty if none (D14) |
+| level | int 1–7 | hsk30-chars `Level` (`7-9` is stored as **7**, D29); else min `words.level` of words using the character; empty if none (D14, D29) |
 | gloss_en | str | Unihan kDefinition, for reference only |
-| source_ko / source_vi / source_ja / source_pinyin | str | source tag of each primary reading |
+| source_ko / source_vi / source_ja / source_pinyin | str | source tag of each primary reading. `source_vi` ∈ `kaikki_aligned` / `unihan_hvsyl` / `unihan_unverified` (D24). `unihan_unverified` readings are excluded from word composition and sound-rule pairs |
 
 ### 1.2 `words` — one row per word
 | col | type | rule |
@@ -46,14 +46,14 @@ If this file and the spec disagree, the spec wins, except where DECISIONS.md D12
 | gloss_en | str | CC-CEDICT first gloss(es), reference only |
 | meaning_ja__ja / __ko / __zh / __vi | str | Japanese-language meaning as used in that language (Gemini, Stage 4); empty if language missing |
 | note_ja | str | optional one-line note in Japanese (e.g. "日本語・韓国語では普通カタカナで…"); mostly empty (D14) |
-| level | int 1–9 | HSK level, or frequency-band level for VI-only words |
+| level | int 1–7 | HSK level (`7-9` stored as 7, D29), or frequency-band level 3–7 for VI-only words (D27) |
 | freq_vi | int | Vietnamese frequency rank (1 = most frequent); empty if unknown |
 | origin | `hsk` / `vi_freq` / `both` / `ff_only` | |
 | card_eligible | bool | D11 |
 | false_friend | str | `;`-separated lang codes where meaning differs from the others, e.g. `zh` or `ko;zh`; empty = not a false friend |
 | syl_aligned | bool | true when `word_chars` gives a full Korean AND Vietnamese syllable alignment (D14) |
 | verified | bool | |
-| source_ja / source_ko / source_pinyin / source_vi / source_level | str | provenance tags |
+| source_ja / source_ko / source_pinyin / source_vi / source_level | str | provenance tags. `source_vi` ∈ `kaikki_han` / `composed_attested` (D24); `source_ja` ∈ `jmdict` / `built_from_chars` (D31); `source_ko` = `libhangul`; `source_level` ∈ `hsk30` / `vi_band` |
 
 ### 1.3 `word_chars`
 `word_id, position (int, 1-based), char_id, ko_syllable, vi_syllable`.
@@ -73,7 +73,7 @@ CSV stores `tokens` as a JSON string; JSON/`data.js` as an array. Token = exactl
 Not a pandas table to maintain: `config/rules.json` text + examples computed from aligned pairs (D7). Exported as the exact `RULES` shape (§3.2).
 
 ### 1.7 Reports (not read by the app)
-`rules_report.csv` (pivot ko_final × vi_final of pair counts, plus per-pair examples), `coverage_report.csv`, `alignment_mismatches.csv`.
+`rules_report.csv` (pivot ko_final × vi_final of pair counts, plus per-pair examples), `coverage_report.csv` (incl. `freq_vi_basis=syllable_min`, D26), `alignment_mismatches.csv`, `vi_ambiguous.csv` (words with ≥ 2 composed Vietnamese candidates, D24), `no_jp_form.csv` (characters without a Japanese form, D28), `ko_unresolved.csv` (D32).
 
 ## 2. `data.js` shape
 
