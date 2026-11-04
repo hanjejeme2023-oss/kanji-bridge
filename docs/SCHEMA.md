@@ -21,7 +21,7 @@ If this file and the spec disagree, the spec wins, except where DECISIONS.md D12
 |---|---|---|
 | char_id | str `cNNNNN` | |
 | trad | str, 1 char | Chinese traditional form, used to match HSK words. **Not unique**: hsk30 `着` and `著` are separate rows that both have `trad=著` (D37). Unique key = `char_id` |
-| key_char | str, 1 char | the character whose Unihan / KANJIDIC2 / libhangul / Kaikki entries supply this row's readings; unique; equals `trad` except for `着` (`key_char=着`). `id_map.csv` key for chars (D37) |
+| key_char | str, 1 char | the character whose Unihan / KANJIDIC2 / libhangul / Kaikki entries supply this row's readings; unique; **equals `trad` for every row except rows whose `trad` is shared with another row, where it is the source Hanzi (`着`; the row `著` keeps `著`)**. `id_map.csv` key for chars (D37) |
 | simp | str, 1 char | = `trad` if no simplification |
 | jp | str, 1 char | Japanese form (shinjitai), = `trad` if unchanged. Mapping method: DECISIONS (Stage 1 review) |
 | ja_on / ko / pinyin / vi | str | primary reading (D6). May be empty |
@@ -57,7 +57,7 @@ If this file and the spec disagree, the spec wins, except where DECISIONS.md D12
 | source_ja / source_ko / source_pinyin / source_vi / source_level | str | provenance tags. `source_vi` ∈ `kaikki_han` / `composed_attested` (D24); `source_ja` ∈ `jmdict` / `built_from_chars` (D31); `source_ko` = `libhangul`; `source_level` ∈ `hsk30` / `vi_band` |
 
 ### 1.3 `word_chars`
-`word_id, position (int, 1-based), char_id, ko_syllable, vi_syllable`. When several `chars` rows share the word's character at a position (`trad` collision, D37), `char_id` is chosen by the word's `simp` at that position, then by pinyin; undecidable cases leave `char_id` empty and go to `char_ambiguous.csv`.
+`word_id, position (int, 1-based), char_id, ko_syllable, vi_syllable`. A word's character at each position is matched to `chars` by the word's own `trad` string (D38): rows whose `trad` equals the character; if none, the row whose `key_char` equals it; if several (`trad` collision, D37), by the word's `simp` at that position, then by pinyin; undecidable cases leave `char_id` empty and go to `char_ambiguous.csv`. Position check: the linked row's `simp` equals the word's `simp` at that position, else the word goes to `char_simp_mismatch.csv`.
 Unique on `(word_id, position)`. A word with a syllable-count mismatch gets rows with empty syllables and `syl_aligned=false`, and is listed in `data/final/alignment_mismatches.csv` (no guessing).
 
 ### 1.4 `ff_meanings`
@@ -74,7 +74,7 @@ CSV stores `tokens` as a JSON string; JSON/`data.js` as an array. Token = exactl
 Not a pandas table to maintain: `config/rules.json` text + examples computed from aligned pairs (D7). Exported as the exact `RULES` shape (§3.2).
 
 ### 1.7 Reports (not read by the app)
-`rules_report.csv` (pivot ko_final × vi_final of pair counts, plus per-pair examples), `char_key_collisions.csv` and `char_ambiguous.csv` (D37), `coverage_report.csv` (incl. `freq_vi_basis=syllable_min`, D26), `alignment_mismatches.csv`, `vi_ambiguous.csv` (words with ≥ 2 composed Vietnamese candidates, D24), `no_jp_form.csv` (characters without a Japanese form, D28), `ko_unresolved.csv` (D32).
+`rules_report.csv` (pivot ko_final × vi_final of pair counts, plus per-pair examples), `char_key_collisions.csv`, `char_ambiguous.csv` (D37), `char_simp_mismatch.csv` (D38), `coverage_report.csv` (incl. `freq_vi_basis=syllable_min`, D26), `alignment_mismatches.csv`, `vi_ambiguous.csv` (words with ≥ 2 composed Vietnamese candidates, D24), `no_jp_form.csv` (characters without a Japanese form, D28), `ko_unresolved.csv` (D32).
 
 ## 2. `data.js` shape
 

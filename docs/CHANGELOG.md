@@ -41,3 +41,8 @@
 
 ## 2026-11-04 — D37 revised [Claude, at the user's request]
 - The earlier D37 merged 着/著 into one row keyed `著` and would have taken every reading from `著`, losing 着's Korean 착 and Japanese ちゃく. Replaced by: one row per source character (3,000 rows), `trad` non-unique, new unique column `key_char` (readings lookup + id_map key), word-to-character linking by simp then pinyin, Korean/Japanese word matching also on the `key_char` form (接著 -> 接着), glyph view uses `key_char`. Updated DECISIONS, SCHEMA, spec addenda, Stage 2 task.
+
+## 2026-11-04 — One-to-many collision check [Claude, at the user's request]
+- Measured the one simplified -> several traditional case: 83/3,000 HSK rows (89 variant characters, 88 without a row yet). D38: link words through their own `trad` string, extend `chars` in Stage 3 for every word character lacking a row, simp rule for added rows, position check against the word's `simp`.
+- Corrected D37: `key_char = trad` for all rows except shared-`trad` rows (using the simplified Hanzi everywhere would find Korean readings for only 145 of 1,088 differing rows instead of 1,036).
+- Added the standing C1 (many->one) and C2 (one->many) checks to `docs/GATES.md`, Stage 2 and Stage 3 tasks; reference script `docs/review_scripts/char_collision_reference.py`.
