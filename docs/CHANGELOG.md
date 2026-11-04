@@ -46,3 +46,11 @@
 - Measured the one simplified -> several traditional case: 83/3,000 HSK rows (89 variant characters, 88 without a row yet). D38: link words through their own `trad` string, extend `chars` in Stage 3 for every word character lacking a row, simp rule for added rows, position check against the word's `simp`.
 - Corrected D37: `key_char = trad` for all rows except shared-`trad` rows (using the simplified Hanzi everywhere would find Korean readings for only 145 of 1,088 differing rows instead of 1,036).
 - Added the standing C1 (many->one) and C2 (one->many) checks to `docs/GATES.md`, Stage 2 and Stage 3 tasks; reference script `docs/review_scripts/char_collision_reference.py`.
+
+## 2026-11-04 — Stage 2: character table completed [Codex]
+- Implemented revised D37 generically: 3,000 source-character rows; `key_char=trad` except in shared-`trad` groups, where source `Hanzi` supplies the unique reading/ID key. Unihan, KANJIDIC2/OpenCC, libhangul and Kaikki joins now use `key_char`; `simp` remains the HSK source `Hanzi`.
+- Exported `chars.csv`/JSON and the Stage 2 reports: coverage, merge counts, missing Japanese forms, sound-rule pivot/examples, build summary, and `char_key_collisions.csv`. The sole collision is `著 -> {着, 著}`, and both rows retain their source-backed Korean/Japanese readings.
+- Added `tests/test_char_collisions.py` for standing checks C1/C2 and expanded the character tests for `key_char`, 着/著, the six fixed characters in every language, NFC, source suffix removal, glyph mappings, coverage, and stable IDs.
+- Fixed Unihan `kHangul` source-tag removal at the loader root: tags include values such as `:0N`, not only hexadecimal-looking tags such as `:0E`. Generated Korean readings no longer contain provenance suffixes.
+- Validation: 16 tests pass; 3,000 rows; 45 missing `jp`, 49 missing `ja_on`, 0 missing `ko`, 0 missing `pinyin`, 709 missing `vi`; 1,835 verified Vietnamese primaries. Two consecutive rebuilds produced the same `chars.csv` SHA-256: `b6bffbc97b3d7eef0df4f77c389a8acd6091333473afeebe33e1076e99c08102`.
+- Intermediate source-normalized CSVs remain reproducible and are git-ignored; `ff_candidates.csv` stays explicitly trackable for the Stage 3→4 handoff. No new data decision was needed, so `DECISIONS.md` is unchanged.

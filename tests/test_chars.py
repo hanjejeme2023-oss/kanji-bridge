@@ -16,11 +16,12 @@ class CharacterTableTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
         cls.chars = pd.read_csv(CHARS_PATH, encoding="utf-8", keep_default_na=False, dtype=str)
-        cls.by_trad = cls.chars.set_index("trad")
+        cls.by_trad = cls.chars.drop_duplicates("trad").set_index("trad")
+        cls.by_key = cls.chars.set_index("key_char")
 
     def test_shape_keys_and_ids(self) -> None:
         self.assertEqual(len(self.chars), 3000)
-        self.assertEqual(self.chars["trad"].duplicated().sum(), 0)
+        self.assertEqual(self.chars["key_char"].duplicated().sum(), 0)
         self.assertEqual(self.chars["char_id"].duplicated().sum(), 0)
         self.assertTrue(self.chars["char_id"].map(lambda value: bool(re.fullmatch(r"c\d{5}", value))).all())
 
@@ -35,6 +36,20 @@ class CharacterTableTests(unittest.TestCase):
         for traditional, japanese in expected.items():
             with self.subTest(traditional=traditional):
                 self.assertEqual(self.by_trad.loc[traditional, "jp"], japanese)
+
+    def test_shared_trad_rows_keep_source_character_readings(self) -> None:
+        wearing = self.by_key.loc["着"]
+        author = self.by_key.loc["著"]
+        self.assertEqual(
+            [wearing.name, *wearing[["trad", "simp", "jp", "ko", "level"]].tolist()],
+            ["着", "著", "着", "着", "착", "1"],
+        )
+        self.assertIn("ちゃく", wearing["ja_on_all"].split(";"))
+        self.assertEqual(
+            [author.name, *author[["trad", "simp", "jp", "ko", "level"]].tolist()],
+            ["著", "著", "著", "著", "저", "4"],
+        )
+        self.assertIn("ちょ", author["ja_on_all"].split(";"))
 
     def test_prototype_glyph_pairs(self) -> None:
         expected = {
@@ -60,6 +75,26 @@ class CharacterTableTests(unittest.TestCase):
         self.assertTrue({"lạc", "nhạc"}.issubset(set(music["vi_all"].split(";"))))
         self.assertTrue({"락", "악"}.issubset(set(music["ko_all"].split(";"))))
         self.assertTrue({"lè", "yuè"}.issubset(set(music["pinyin_all"].split(";"))))
+
+    def test_fixed_characters_have_source_backed_primary_readings(self) -> None:
+        expected = {
+            "學": ["学", "がく", "학", "xué", "học"],
+            "國": ["国", "こく", "국", "guó", "quốc"],
+            "茶": ["茶", "ちゃ", "다", "chá", "trà"],
+            "行": ["行", "こう", "항", "xíng", "hành"],
+            "生": ["生", "せい", "생", "shēng", "sinh"],
+            "樂": ["楽", "がく", "낙", "lè", "nhạc"],
+        }
+        for key_char, values in expected.items():
+            with self.subTest(key_char=key_char):
+                self.assertEqual(
+                    self.by_key.loc[key_char, ["jp", "ja_on", "ko", "pinyin", "vi"]].tolist(),
+                    values,
+                )
+
+    def test_korean_readings_have_no_unihan_source_suffixes(self) -> None:
+        self.assertFalse(self.chars["ko"].str.contains(":", regex=False).any())
+        self.assertFalse(self.chars["ko_all"].str.contains(":", regex=False).any())
 
     def test_expected_stage2_sanity_ranges(self) -> None:
         jp_missing = int((self.chars["jp"] == "").sum())

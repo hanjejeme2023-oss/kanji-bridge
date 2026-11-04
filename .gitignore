@@ -1,4 +1,7 @@
 raw/
+data/staging/*
+!data/staging/.gitkeep
+!data/staging/ff_candidates.csv
 __pycache__/
 *.pyc
 .venv/

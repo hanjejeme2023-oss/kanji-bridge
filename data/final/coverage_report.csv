@@ -1,0 +1,15 @@
+scope,field,value,count,total,percent,note
+chars,jp,present,2955,3000,98.5,
+chars,jp,missing,45,3000,1.5,
+chars,ja_on,present,2951,3000,98.37,
+chars,ja_on,missing,49,3000,1.63,
+chars,ko,present,3000,3000,100.0,
+chars,ko,missing,0,3000,0.0,
+chars,pinyin,present,3000,3000,100.0,
+chars,pinyin,missing,0,3000,0.0,
+chars,vi,present,2291,3000,76.37,
+chars,vi,missing,709,3000,23.63,
+chars,source_vi,kaikki_aligned,1535,3000,51.17,unihan_unverified is excluded from composition and sound rules
+chars,source_vi,missing,709,3000,23.63,unihan_unverified is excluded from composition and sound rules
+chars,source_vi,unihan_unverified,456,3000,15.2,unihan_unverified is excluded from composition and sound rules
+chars,source_vi,unihan_hvsyl,300,3000,10.0,unihan_unverified is excluded from composition and sound rules

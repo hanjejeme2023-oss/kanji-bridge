@@ -21,7 +21,9 @@ FIELDS = [
     "kHanyuPinyin",
     "kXHC1983",
 ]
-HANGUL_SUFFIX_RE = re.compile(r":[0-9A-Fa-f]+$")
+# Unihan kHangul source tags include values such as :0E and :0N. They are
+# provenance markers, not part of the Hangul reading (global data rule 2).
+HANGUL_SUFFIX_RE = re.compile(r":[0-9A-Za-z]+$")
 
 
 def clean_hangul(value: str) -> str:

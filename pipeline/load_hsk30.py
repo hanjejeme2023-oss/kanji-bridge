@@ -37,9 +37,16 @@ def load_chars() -> pd.DataFrame:
             }
         )
     frame = pd.DataFrame(rows)
-    if len(frame) != 3000 or frame["trad"].duplicated().any():
-        duplicates = frame.loc[frame["trad"].duplicated(False), "trad"].tolist()
-        raise ValueError(f"HSK character key failure: rows={len(frame)}, duplicate trad={duplicates}")
+    if len(frame) != 3000 or (frame["trad"] == "").any():
+        raise ValueError(
+            f"HSK character row failure: rows={len(frame)}, empty trad={int((frame['trad'] == '').sum())}"
+        )
+    # `trad` is deliberately not a key: hsk30 maps both 着 and 著 to 著.
+    # build_chars derives the unique lookup key (`key_char`) generically from
+    # every duplicated traditional-form group (D37).
+    if frame["simp_hsk"].duplicated().any():
+        duplicates = frame.loc[frame["simp_hsk"].duplicated(False), "simp_hsk"].tolist()
+        raise ValueError(f"HSK source-character key failure: duplicate Hanzi={duplicates}")
     return frame
 
 

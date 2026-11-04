@@ -4,7 +4,6 @@ from __future__ import annotations
 
 import json
 import re
-from collections import Counter
 
 import pandas as pd
 
@@ -25,13 +24,12 @@ from common import (
 
 
 CHAR_COLUMNS = [
-    "char_id", "trad", "simp", "jp", "ja_on", "ko", "pinyin", "vi",
+    "char_id", "trad", "key_char", "simp", "jp", "ja_on", "ko", "pinyin", "vi",
     "ja_on_all", "ko_all", "pinyin_all", "vi_all", "ko_final", "vi_final",
     "in_hsk_chars", "level", "gloss_en", "source_ko", "source_vi", "source_ja",
     "source_pinyin",
 ]
 PINYIN_REF_RE = re.compile(r"(?:^|\s)[^\s:]+:([^\s]+)")
-VARIANT_RE = re.compile(r"U\+([0-9A-Fa-f]{4,6})")
 
 
 def read_stage(filename: str) -> pd.DataFrame:
@@ -73,10 +71,6 @@ def merge_left(
     return merged.drop(columns=[indicator, right_on] if right_on != left_on else [indicator])
 
 
-def unihan_variants(value: object) -> list[str]:
-    return unique_preserve(chr(int(code, 16)) for code in VARIANT_RE.findall(nfc(value)))
-
-
 def pinyin_values(value: object, referenced: bool = False) -> list[str]:
     text = nfc(value)
     if not text:
@@ -110,31 +104,39 @@ def build() -> tuple[pd.DataFrame, dict[str, int]]:
     merge_reports: list[dict[str, object]] = []
     chars = read_stage("hsk30.csv")
     chars["level"] = pd.to_numeric(chars["level"], errors="raise").astype(int)
+    shared_trad = chars["trad"].duplicated(keep=False)
+    chars["key_char"] = chars["trad"]
+    chars.loc[shared_trad, "key_char"] = chars.loc[shared_trad, "simp_hsk"]
+    if chars["key_char"].duplicated().any() or (chars["key_char"] == "").any():
+        duplicates = chars.loc[chars["key_char"].duplicated(False), "key_char"].tolist()
+        raise ValueError(f"Derived key_char is not unique/non-empty: duplicates={duplicates}")
 
     unihan = read_stage("unihan.csv")
     chars = merge_left(
-        chars, unihan, name="unihan", left_on="trad", right_on="char",
+        chars, unihan, name="unihan", left_on="key_char", right_on="char",
         validate="one_to_one", reports=merge_reports,
     )
 
     opencc = read_stage("opencc.csv")
-    opencc_agg = aggregate(opencc, "trad", "jp_candidate", "jp_candidates")
+    opencc_agg = aggregate(opencc, "trad", "jp_candidate", "jp_candidates").rename(
+        columns={"trad": "opencc_trad"}
+    )
     chars = merge_left(
-        chars, opencc_agg, name="opencc", left_on="trad", right_on="trad",
+        chars, opencc_agg, name="opencc", left_on="key_char", right_on="opencc_trad",
         validate="one_to_one", reports=merge_reports,
     )
 
     libhangul = read_stage("libhangul.csv")
     libhangul_agg = aggregate(libhangul, "char", "ko", "ko_libhangul")
     chars = merge_left(
-        chars, libhangul_agg, name="libhangul", left_on="trad", right_on="char",
+        chars, libhangul_agg, name="libhangul", left_on="key_char", right_on="char",
         validate="one_to_one", reports=merge_reports,
     )
 
     kaikki = read_stage("kaikki_char_readings.csv")
     kaikki_agg = aggregate(kaikki, "char", "vi", "vi_kaikki")
     chars = merge_left(
-        chars, kaikki_agg, name="kaikki", left_on="trad", right_on="char",
+        chars, kaikki_agg, name="kaikki", left_on="key_char", right_on="char",
         validate="one_to_one", reports=merge_reports,
     )
 
@@ -147,7 +149,8 @@ def build() -> tuple[pd.DataFrame, dict[str, int]]:
             "freq": int(row.freq) if nfc(row.freq).isdigit() else None,
         }
     chars["jp"] = [
-        choose_jp(nfc(row.trad), nfc(row.jp_candidates), kd) for row in chars.itertuples(index=False)
+        choose_jp(nfc(row.key_char), nfc(row.jp_candidates), kd)
+        for row in chars.itertuples(index=False)
     ]
     chars = merge_left(
         chars,
@@ -163,9 +166,8 @@ def build() -> tuple[pd.DataFrame, dict[str, int]]:
     output_rows: list[dict[str, object]] = []
     for row in chars.itertuples(index=False):
         trad = nfc(row.trad)
+        key_char = nfc(row.key_char)
         simp_hsk = nfc(row.simp_hsk)
-        simp_variants = unihan_variants(row.kSimplifiedVariant)
-        simp = simp_hsk if simp_hsk != trad else (simp_variants[0] if len(simp_variants) == 1 else trad)
 
         ja_readings = split_multi(row.ja_on_all_kd)
         unihan_ko = split_multi(row.kHangul)
@@ -204,7 +206,8 @@ def build() -> tuple[pd.DataFrame, dict[str, int]]:
         output_rows.append(
             {
                 "trad": trad,
-                "simp": simp,
+                "key_char": key_char,
+                "simp": simp_hsk,
                 "jp": nfc(row.jp),
                 "ja_on": ja_readings[0] if ja_readings else "",
                 "ko": ko,
@@ -228,15 +231,20 @@ def build() -> tuple[pd.DataFrame, dict[str, int]]:
         )
 
     output = pd.DataFrame(output_rows)
-    id_mapping = assign_ids("char", output["trad"], "c", 5)
-    output.insert(0, "char_id", output["trad"].map(id_mapping))
+    id_mapping = assign_ids("char", output["key_char"], "c", 5)
+    output.insert(0, "char_id", output["key_char"].map(id_mapping))
     output = output.sort_values("source_order", kind="stable").reset_index(drop=True)
     output = output[CHAR_COLUMNS]
     for column in output.select_dtypes(include=["object", "string"]).columns:
         output[column] = output[column].replace("", pd.NA)
     require_nfc(output)
-    if len(output) != 3000 or output["trad"].duplicated().any() or output["char_id"].duplicated().any():
-        raise ValueError("Final chars must contain 3,000 unique trad/char_id rows")
+    if (
+        len(output) != 3000
+        or output["key_char"].duplicated().any()
+        or output["char_id"].duplicated().any()
+        or output["trad"].isna().any()
+    ):
+        raise ValueError("Final chars must contain 3,000 rows with unique key_char/char_id and non-empty trad")
 
     merge_frame = pd.DataFrame(merge_reports, columns=["merge", "status", "count"])
     write_csv(merge_frame, FINAL / "merge_report.csv")
@@ -251,9 +259,19 @@ def build() -> tuple[pd.DataFrame, dict[str, int]]:
 
 
 def write_reports(chars: pd.DataFrame, summary: dict[str, int]) -> None:
-    no_jp = chars.loc[chars["jp"].isna(), ["char_id", "trad", "simp", "level"]].copy()
+    no_jp = chars.loc[
+        chars["jp"].isna(), ["char_id", "trad", "key_char", "simp", "level"]
+    ].copy()
     no_jp["reason"] = "no OpenCC/KANJIDIC2-valid Japanese form (D28)"
     write_csv(no_jp, FINAL / "no_jp_form.csv")
+
+    collisions = chars.loc[
+        chars["trad"].duplicated(keep=False), ["trad", "key_char", "level"]
+    ].copy()
+    collisions = collisions.rename(columns={"level": "source_level"}).sort_values(
+        ["trad", "key_char"], kind="stable"
+    )
+    write_csv(collisions, FINAL / "char_key_collisions.csv")
 
     coverage_rows = []
     for column in ["jp", "ja_on", "ko", "pinyin", "vi"]:

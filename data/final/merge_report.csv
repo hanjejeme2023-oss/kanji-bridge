@@ -1,0 +1,16 @@
+merge,status,count
+unihan,left_only,0
+unihan,right_only,0
+unihan,both,3000
+opencc,left_only,2696
+opencc,right_only,0
+opencc,both,304
+libhangul,left_only,0
+libhangul,right_only,0
+libhangul,both,3000
+kaikki,left_only,1465
+kaikki,right_only,0
+kaikki,both,1535
+kanjidic,left_only,45
+kanjidic,right_only,0
+kanjidic,both,2955
