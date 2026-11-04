@@ -4,9 +4,10 @@ Read `PROMPT.md` first, then this file. Do only the assignment for your role. Up
 
 ## Current status
 - Stage 0 (setup) — **DONE** by Claude, 2026-11-04.
-- Contract files: `docs/SCHEMA.md` (columns, IDs, `data.js` shape, view mappings), `config/rules.json`, `docs/DECISIONS.md` (D1–D19), `docs/final-data-spec.md` (+ Addenda).
+- Contract files: `docs/SCHEMA.md` (columns, IDs, `data.js` shape, view mappings), `config/rules.json`, `docs/DECISIONS.md` (D1–D20), `docs/final-data-spec.md` (+ Addenda).
 - Folder layout exists. `raw/` is git-ignored. Git identity is set in repo-local config.
 - Prototype: `prototype/index.html` (frozen). `prototype/PUT_INDEX_HTML_HERE.txt` is a leftover placeholder; ignore it.
+- Git identity changed 2026-11-04 to `Hanje Unesaki <311183901+hanjejeme2023-oss@users.noreply.github.com>` (D19); Stage 0 commit rewritten. Check `git config user.email` before committing.
 - Environment: Python 3.12.10, Git 2.56 available on Windows. pandas etc. not checked; Codex installs what it needs (ask the user to approve installs).
 
 ## NEXT ASSIGNMENT
@@ -28,6 +29,9 @@ Things to flag for Claude's review (write them in a "Review questions" list at t
 
 Then hand off to **Claude: Stage 1 review** (license confirmation, 200-char kVietnamese cross-check, shinjitai mapping method, source priority per column).
 
+## Notes for later stages
+- **Stage 5 (Codex), user-approved addition — DECISIONS D20:** daily limit of 20 new (never-seen) cards in カード; reviews unlimited; no visible UI change except smaller counters. State in localStorage `kb_newtoday`. Add a test. List it in the Stage 5 side-by-side difference list.
+
 ## Rules to keep in mind (from PROMPT)
 - No agent fills a missing reading/fact from its own knowledge. Missing stays empty and is reported.
 - Do not edit `prototype/index.html`. Do not edit `SCHEMA.md`/spec/DECISIONS decisions; raise questions here in HANDOFF instead.
@@ -37,4 +41,5 @@ Then hand off to **Claude: Stage 1 review** (license confirmation, 200-char kVie
 - None yet.
 
 ## Log
+- 2026-11-04 Claude — applied user decisions: new-card limit approved (D20); git email changed, Stage 0 commit author rewritten (D19). Next assignment unchanged.
 - 2026-11-04 Claude — Stage 0 done (see CHANGELOG).
