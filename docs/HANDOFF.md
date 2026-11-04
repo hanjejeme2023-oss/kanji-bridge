@@ -21,10 +21,12 @@ Read `PROMPT.md` first, then this file. Do only the assignment for your role. Up
 ## NEXT ASSIGNMENT
 **Agent: Codex — Stage 3: word table** (PROMPT Stage 3). Stage 2 gate: **PASS** (attempt 1, 2026-11-04; evidence in `docs/GATES.md`).
 
-Stage 3 must apply D24, D26-D32, D37 items 5-6 and D38. Additional points from the Stage 2 gate:
+Stage 3 must apply D24, D26-D32, D37 items 5-6, D38 and **D39 (new, user decision: primary character readings from word evidence)**. Additional points from the Stage 2 gate:
 - Align `word_chars` with the word-level Korean reading (libhangul) and `chars.ko_all`; do not use `chars.ko` (first Unihan value, e.g. 行 = 항, 茶 = 다, 樂 = 낙; valid but not the common reading).
+- **D39 (after `word_chars`):** set each `chars` primary (`ko`, `vi`, `ja_on`, `pinyin`, hence `ko_final`/`vi_final`) to the reading most used across aligned words; ties keep current order; `*_all` unchanged. Write `data/final/char_primary_changes.csv` and `data/final/char_primary_no_evidence.csv` (characters with no word evidence keep the current value). Add a test: 行→행, 茶→차 (or 다 if the words say so), 樂→락 or 악 as the words say. Then rebuild `rules_report.csv`. This replaces the earlier instruction to avoid `chars.ko`: align `word_chars` first with the word reading and `ko_all`, then update the primaries.
 - Rebuild `rules_report.csv` from verified readings only (`kaikki_aligned`, `unihan_hvsyl`; never `unihan_unverified`), as in Stage 2. Gate-verified: 0 unverified readings in the Stage 2 report.
 - Create the 88 missing C2 traditional-variant rows in `chars`; at the end, 0 unlinked word characters. Hand-off note must show C1/C2 evidence (row counts before/after growth, `char_simp_mismatch.csv`, `char_ambiguous.csv`).
+- **Added to the Stage 3 Done-when (D39):** every `chars` primary reading equals the most frequent reading in aligned words (ties: previous order); `char_primary_changes.csv` and `char_primary_no_evidence.csv` exist with row counts reported; the test passes (行→행, 茶→차 or 다 per words, 樂→락 or 악 per words); `*_all` columns unchanged; `rules_report.csv` rebuilt after the change and still uses verified Vietnamese readings only; rebuild twice is identical.
 - At the end, hand off to **Claude (Stage 3 gate, then Vietnamese source search, D36)**, not to Gemini.
 
 ## Planned sequence after Stage 2 (user-approved change, DECISIONS D36)
@@ -58,6 +60,7 @@ Stage 3 must apply D24, D26-D32, D37 items 5-6 and D38. Additional points from t
 - hsk30 provenance risk: **accepted by the user** (D35, personal non-commercial project; revisit if ever published commercially).
 
 ## Log
+- 2026-11-04 Claude — user decision D39 recorded (primary readings from word evidence); added to the Stage 3 task. Next: Codex Stage 3.
 - 2026-11-04 Claude — Stage 2 gate PASS: all Done-when criteria re-verified (16 tests rerun OK); `rules_report.csv` uses only verified readings (0 unihan_unverified, 主 = chủ); 7 off-pattern characters reviewed (5 real exceptions, 2 flagged). Next: Codex Stage 3.
 - 2026-11-04 Codex — Stage 2 completed: 3,000-character table, D37 `key_char` collision handling, C1/C2 tests, reports, and reproducible outputs; 16 tests pass and consecutive hashes match. Next: Claude Stage 2 gate.
 - 2026-11-04 Claude — user asked for the one→many check. Measured: 83 HSK rows / 89 variants / 88 need new rows; solved by linking words through their own `trad` (D38). Found and fixed an error in D37/HANDOFF: `key_char` must be `trad` (not source Hanzi) except for 着/著. Added standing checks C1/C2 to GATES.md. Next: Codex finish Stage 2.
