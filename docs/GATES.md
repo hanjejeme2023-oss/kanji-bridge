@@ -14,6 +14,7 @@ Reference measurement: `docs/review_scripts/char_collision_reference.py`. Tests:
 | Stage | Gate date | Result | Attempt | Gate by |
 |---|---|---|---|---|
 | 1 | 2026-11-04 | PASS | 1 | Claude |
+| 2 | 2026-11-04 | PASS | 1 | Claude |
 
 ## Stage 1 — sources and licences — PASS (attempt 1), 2026-11-04
 
@@ -31,3 +32,35 @@ Gate run after Rule 11 was added (the Stage 1 review had been done earlier under
 Claude-review items (Stage 1 "Claude review (gate)"): licences confirmed (D23, D35), 200-sample Unihan `kVietnamese` cross-check done (`docs/STAGE1_REVIEW.md` section 2.2), shinjitai method chosen (D28), source priority set (D33). Non-blocking problem passed on: Vietnamese coverage ceiling (about 35% of HSK words), handled by the D36 search.
 
 Fixes requested: none.
+
+## Stage 2 — character table — PASS (attempt 1), 2026-11-04
+
+| Done-when criterion | Evidence (rechecked on disk, not taken from the report) | Result |
+|---|---|---|
+| `chars` covers all 3,000 HSK characters; missing reported, not guessed | 3,000 rows; missing: jp 45, ja_on 49, vi 709 (ko 0, pinyin 0); `coverage_report.csv`, `no_jp_form.csv` present | OK |
+| No duplicate `char_id` / `trad` key; collisions resolved by a decision | `char_id` and `key_char` unique; empty `trad` 0; `char_key_collisions.csv` = only 著 → 着 (L1), 著 (L4) (D37, C1) | OK |
+| C2 one→many | counts reproduced by `tests/test_char_collisions.py` (83 / 89 / 88; 1,088 rows with simp≠trad all have `ko`) | OK |
+| All text NFC | vi, ko, jp, pinyin checked NFC | OK |
+| Test characters correct in every language | 學 学/学/がく/학/xué/học; 國 quốc; 茶 trà; 行 hành; 生 sinh; 樂 nhạc: all match their sources (see note 1) | OK |
+| `rules_report.csv` exists | 7 rows; cells total 1,561 = rows of `rules_examples.csv` | OK |
+| Tests pass; rebuild identical | `unittest discover` rerun: 16 tests OK (56 s), includes two rebuilds | OK |
+
+**User-requested check: verified readings only.** All 1,561 rows behind `rules_report.csv` have `source_vi` in {`kaikki_aligned` 1,292, `unihan_hvsyl` 269}; `unihan_unverified` = 0 (456 such readings are excluded). 主 = chủ (`kaikki_aligned`); the Nôm reading chúa is in neither `vi` nor `vi_all`.
+
+**`rules_report.csv` vs `config/rules.json`:** 1,554 of 1,561 (99.6%) follow the rules (ㄱ→c/ch 152/153; ㄴ→n 259/260; ㄹ→t 70/70; ㅁ→m 69/70; ㅂ→p 32/33; ㅇ→ng/nh 288/289; no patchim→open 684/686). The 7 off-pattern characters, each checked:
+
+| char | ko / vi | Verdict |
+|---|---|---|
+| 伯 | 백 / bá (ㄱ→open) | real exception (explicit Kaikki alignment) |
+| 幻 | 환 / ảo (ㄴ→open) | reading is in Kaikki; the usual Hán-Việt is huyễn. Keep, flag for loop 1 (accuracy) |
+| 逼 | 핍 / bức (ㅂ→c) | real exception (Kaikki) |
+| 承 | 승 / thừa (ㅇ→open) | real exception (Kaikki) |
+| 刷 | 쇄 / loát (open→t) | real: the two languages follow different Middle Chinese readings |
+| 揭 | 게 / yết (open→t) | real polyphone (Korean 게/걸) |
+| 怎 | 즘 / chẩn (ㅁ→n) | **suspect**: `unihan_hvsyl`; expected chẩm. Passes only the weak syllable-attested test. Flag for loop 1 (accuracy) |
+
+**Notes (non-blocking → HANDOFF Open problems):**
+1. `chars.ko` primary = first Unihan `kHangul` (D32), and Unihan lists values alphabetically: 行 = 항 (`ko_all` 항;행), 茶 = 다 (다;차), 樂 = 낙. All are valid readings present in `ko_all`; `ko_final` is unaffected. Learner-visible Korean comes from libhangul word readings in Stage 3, so cards are unaffected. Stage 3 must align `word_chars` using the word-level reading and `ko_all`, not `chars.ko`.
+2. `unihan_hvsyl` (300 characters) is a weaker check than `kaikki_aligned`: the Unihan syllable is an attested Hán-Việt syllable, not an explicit alignment. 怎 is the only suspect found in the rules table.
+
+Fixes requested: none. Next: Codex, Stage 3.

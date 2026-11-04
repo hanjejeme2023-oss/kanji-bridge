@@ -10,7 +10,7 @@ Read `PROMPT.md` first, then this file. Do only the assignment for your role. Up
 - Git identity: `Hanje Unesaki <311183901+hanjejeme2023-oss@users.noreply.github.com>` (D19). Check `git config user.email` before committing.
 - Environment: Python 3.12.10 + pandas 3.1.1 (`pipeline/requirements.txt`). On this machine the Python with pandas is `<user folder>\AppData\Local\Programs\Python\Python312\python.exe`; the `python` on the bash PATH may be a Store stub without pandas.
 - Prototype: `prototype/index.html` (frozen).
-- Stage 2 (character table) — **DONE** by Codex, 2026-11-04. Revised D37 is implemented as two rows with unique `key_char`; 3,000 rows and all Stage 2 reports are committed. Awaiting Claude's Stage 2 gate.
+- Stage 2 (character table) — **DONE** by Codex, 2026-11-04. Revised D37 is implemented as two rows with unique `key_char`; 3,000 rows and all Stage 2 reports are committed. Stage 2 gate: PASS (Claude, 2026-11-04).
 - **PROMPT Rule 11 (stage gates) is in force.** Gate results are logged in `docs/GATES.md`. Stage 1 gate: PASS (2026-11-04). Stage 2 gate comes after Codex finishes; it checks the Stage 2 Done-when criteria, then the `rules_report.csv` review.
 
 ## Stage 1 review: outcome in brief (details in STAGE1_REVIEW.md)
@@ -19,19 +19,13 @@ Read `PROMPT.md` first, then this file. Do only the assignment for your role. Up
 - **Shinjitai:** inverted OpenCC `JPShinjitaiCharacters` (16/16 on the prototype's glyph pairs), KANJIDIC2 tie-break.
 
 ## NEXT ASSIGNMENT
-**Agent: Claude — Stage 2 gate** (PROMPT Rule 11: check every Done-when criterion, then review `rules_report.csv` against `config/rules.json`; log the result in `docs/GATES.md`)
+**Agent: Codex — Stage 3: word table** (PROMPT Stage 3). Stage 2 gate: **PASS** (attempt 1, 2026-11-04; evidence in `docs/GATES.md`).
 
-### Stage 2 evidence for the gate
-- **Build row counts:** Unihan 50,934; KANJIDIC2 13,033; hsk30 3,000 characters and 11,110 expanded word variants (word output is ancillary until Stage 3); OpenCC 414 character / 235 phrase pairs; libhangul 28,460 distinct single-character readings; Kaikki 3,373 explicit pairs / 1,743 aligned characters / 1,227 Hán-Việt syllables / 41,444 Vietnamese headwords; FrequencyWords 50,000 input rows → 47,362 normalized tokens; final `chars` 3,000.
-- **Keys/collisions:** `char_id` and `key_char` duplicates = 0; empty `trad` = 0. `char_key_collisions.csv` contains exactly `著 → 着 (level 1), 著 (level 4)`. The two rows have the D37-mandated forms/readings (`着`: `simp/jp=着`, `ko=착`, `ja_on_all` includes ちゃく; `著`: `simp/jp=著`, `ko=저`, `ja_on_all` includes ちょ). `pipeline/id_map.csv` has 3,000 character IDs keyed by `key_char`.
-- **C2:** 83 HSK-list rows have multiple traditional variants (78 with 2; 5 with ≥3); 89 distinct non-first variants; 1 already exists as `trad` (`覆`), leaving 88 to add in Stage 3. Rows where `simp != trad`: 1,088; all 1,088 have non-empty `ko` (threshold ≥1,000). These counts are regression-tested in `tests/test_char_collisions.py`.
-- **Coverage/missing:** `jp` 2,955 present / 45 missing; `ja_on` 2,951 / 49; `ko` 3,000 / 0; `pinyin` 3,000 / 0; `vi` 2,291 / 709. Vietnamese primary provenance: 1,535 `kaikki_aligned`, 300 `unihan_hvsyl` (**1,835 verified total**), 456 `unihan_unverified`, 709 missing. Missing values remain empty and are reported, never guessed.
-- **Merge counts (`left_only / both`):** Unihan 0 / 3,000; OpenCC 2,696 / 304; libhangul 0 / 3,000; Kaikki 1,465 / 1,535; KANJIDIC2 45 / 2,955. Every merge uses `how="left"` and explicit `validate=`; `merge_report.csv` records these plus zero `right_only` indicator rows.
-- **Quality/tests:** all exported text passes NFC and missing-sentinel checks. Source suffixes such as Unihan `:0N` are removed in the loader. Tests cover the six fixed characters 學 國 茶 行 生 樂 in all five character fields, 6 shinjitai tie-breaks, 16 prototype glyph pairs, phonology/normalizers, C1/C2, and IDs. `rules_report.csv` and `rules_examples.csv` exist.
-- **Test command/result:** `<user folder>\AppData\Local\Programs\Python\Python312\python.exe -X utf8 -m unittest discover -s tests -p 'test_*.py'` → **16 tests, OK** (65.728 s), including two rebuilds.
-- **Determinism:** consecutive pre/post rebuild SHA-256 for `data/final/chars.csv` = `b6bffbc97b3d7eef0df4f77c389a8acd6091333473afeebe33e1076e99c08102` and `b6bffbc97b3d7eef0df4f77c389a8acd6091333473afeebe33e1076e99c08102`. The test compares every file in `data/final/` plus `pipeline/id_map.csv` across two rebuilds.
-
-If the gate passes, assign **Codex — Stage 3: word table**. Stage 3 must apply D24, D26–D32, D37 items 5–6, and D38, then return to Claude for the Stage 3 gate and D36 Vietnamese source search.
+Stage 3 must apply D24, D26-D32, D37 items 5-6 and D38. Additional points from the Stage 2 gate:
+- Align `word_chars` with the word-level Korean reading (libhangul) and `chars.ko_all`; do not use `chars.ko` (first Unihan value, e.g. 行 = 항, 茶 = 다, 樂 = 낙; valid but not the common reading).
+- Rebuild `rules_report.csv` from verified readings only (`kaikki_aligned`, `unihan_hvsyl`; never `unihan_unverified`), as in Stage 2. Gate-verified: 0 unverified readings in the Stage 2 report.
+- Create the 88 missing C2 traditional-variant rows in `chars`; at the end, 0 unlinked word characters. Hand-off note must show C1/C2 evidence (row counts before/after growth, `char_simp_mismatch.csv`, `char_ambiguous.csv`).
+- At the end, hand off to **Claude (Stage 3 gate, then Vietnamese source search, D36)**, not to Gemini.
 
 ## Planned sequence after Stage 2 (user-approved change, DECISIONS D36)
 1. Claude: Stage 2 gate → Codex: Stage 3 (words; word rules D24, D26, D27, D30-D32; VI-only additions top 1,200, bands in D27; report counts).
@@ -56,6 +50,7 @@ If the gate passes, assign **Codex — Stage 3: word table**. Stage 3 must apply
 - If a source has no license or non-commercial-only terms: do not use it; stop and ask the user.
 
 ## Open problems / notes
+- Stage 2 gate notes (non-blocking): (1) `chars.ko` primary is the first Unihan value (行 항, 茶 다, 樂 낙); use word-level readings and `ko_all` in Stage 3. (2) Suspect Vietnamese readings for loop 1 accuracy: 怎 chẩn (expected chẩm; `unihan_hvsyl`), 幻 ảo (usual Hán-Việt huyễn). (3) `unihan_hvsyl` (300 chars) is a weaker check than `kaikki_aligned`.
 - Resolved: hsk30 `着`/`著` collision → separate rows with `key_char` (D37, revised).
 - Vietnamese coverage ceiling (about 35% of HSK words) with the current licensed sources; the search for further licensed sources runs after Stage 3, before Stage 4 (D36).
 - Source #7 stays excluded (D21).
@@ -63,6 +58,7 @@ If the gate passes, assign **Codex — Stage 3: word table**. Stage 3 must apply
 - hsk30 provenance risk: **accepted by the user** (D35, personal non-commercial project; revisit if ever published commercially).
 
 ## Log
+- 2026-11-04 Claude — Stage 2 gate PASS: all Done-when criteria re-verified (16 tests rerun OK); `rules_report.csv` uses only verified readings (0 unihan_unverified, 主 = chủ); 7 off-pattern characters reviewed (5 real exceptions, 2 flagged). Next: Codex Stage 3.
 - 2026-11-04 Codex — Stage 2 completed: 3,000-character table, D37 `key_char` collision handling, C1/C2 tests, reports, and reproducible outputs; 16 tests pass and consecutive hashes match. Next: Claude Stage 2 gate.
 - 2026-11-04 Claude — user asked for the one→many check. Measured: 83 HSK rows / 89 variants / 88 need new rows; solved by linking words through their own `trad` (D38). Found and fixed an error in D37/HANDOFF: `key_char` must be `trad` (not source Hanzi) except for 着/著. Added standing checks C1/C2 to GATES.md. Next: Codex finish Stage 2.
 - 2026-11-04 Claude — user challenged D37: 着/著 are distinct Korean/Japanese characters (着 is HSK 1). Verified in Unihan (착 vs 저), KANJIDIC2, libhangul (接着→접착). D37 rewritten: two rows, `key_char`, link words by simp then pinyin. Next: Codex finish Stage 2.

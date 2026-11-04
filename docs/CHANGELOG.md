@@ -54,3 +54,6 @@
 - Fixed Unihan `kHangul` source-tag removal at the loader root: tags include values such as `:0N`, not only hexadecimal-looking tags such as `:0E`. Generated Korean readings no longer contain provenance suffixes.
 - Validation: 16 tests pass; 3,000 rows; 45 missing `jp`, 49 missing `ja_on`, 0 missing `ko`, 0 missing `pinyin`, 709 missing `vi`; 1,835 verified Vietnamese primaries. Two consecutive rebuilds produced the same `chars.csv` SHA-256: `b6bffbc97b3d7eef0df4f77c389a8acd6091333473afeebe33e1076e99c08102`.
 - Intermediate source-normalized CSVs remain reproducible and are git-ignored; `ff_candidates.csv` stays explicitly trackable for the Stage 3→4 handoff. No new data decision was needed, so `DECISIONS.md` is unchanged.
+
+## 2026-11-04 Claude — Stage 2 gate
+- PASS on attempt 1; evidence and the rules_report review are in `docs/GATES.md`. No data changes; no new decisions (non-blocking notes recorded in HANDOFF Open problems).
