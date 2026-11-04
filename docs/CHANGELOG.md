@@ -37,4 +37,7 @@
 
 ## 2026-11-04 — Stage gates and Stage 2 key collision [Claude]
 - PROMPT updated by the user (Rule 11: stage gates, Done-when criteria); committed together with this change. Created `docs/GATES.md`; logged the Stage 1 gate (PASS, evidence: 23/23 checksums, download rerun, licences, profiles).
-- D37: canonical-key collisions in `chars` are merged on `trad` (hsk30 `着`/`著` -> `trad=著`, `simp=着`, `level=1`); `chars` has 2,999 rows for 3,000 source characters, plus `char_key_collisions.csv`. SCHEMA updated. Why: words use the traditional form `著`; duplicate or exception keys would break IDs, merges and tests.
+- (SUPERSEDED by the entry below) D37: canonical-key collisions in `chars` are merged on `trad` (hsk30 `着`/`著` -> `trad=著`, `simp=着`, `level=1`); `chars` has 2,999 rows for 3,000 source characters, plus `char_key_collisions.csv`. SCHEMA updated. Why: words use the traditional form `著`; duplicate or exception keys would break IDs, merges and tests.
+
+## 2026-11-04 — D37 revised [Claude, at the user's request]
+- The earlier D37 merged 着/著 into one row keyed `著` and would have taken every reading from `著`, losing 着's Korean 착 and Japanese ちゃく. Replaced by: one row per source character (3,000 rows), `trad` non-unique, new unique column `key_char` (readings lookup + id_map key), word-to-character linking by simp then pinyin, Korean/Japanese word matching also on the `key_char` form (接著 -> 接着), glyph view uses `key_char`. Updated DECISIONS, SCHEMA, spec addenda, Stage 2 task.

@@ -10,7 +10,7 @@ Read `PROMPT.md` first, then this file. Do only the assignment for your role. Up
 - Git identity: `Hanje Unesaki <311183901+hanjejeme2023-oss@users.noreply.github.com>` (D19). Check `git config user.email` before committing.
 - Environment: Python 3.12.10 + pandas 3.1.1 (`pipeline/requirements.txt`). On this machine the Python with pandas is `<user folder>\AppData\Local\Programs\Python\Python312\python.exe`; the `python` on the bash PATH may be a Store stub without pandas.
 - Prototype: `prototype/index.html` (frozen).
-- Stage 2 (character table): Codex built loaders and tests; the build stopped at the `着`/`著` key collision. **Resolved by Claude: D37 (merge on `trad`; 2,999 rows).** Codex resumes and finishes Stage 2.
+- Stage 2 (character table): Codex built loaders and tests; the build stopped at the `着`/`著` key collision. **Resolved: D37 (two rows, `key_char`, 3,000 rows)**; the first version of D37 (merge on `trad`) was wrong for the Korean/Japanese side and was revised at the user's request. Codex resumes and finishes Stage 2.
 - **PROMPT Rule 11 (stage gates) is in force.** Gate results are logged in `docs/GATES.md`. Stage 1 gate: PASS (2026-11-04). Stage 2 gate comes after Codex finishes; it checks the Stage 2 Done-when criteria, then the `rules_report.csv` review.
 
 ## Stage 1 review: outcome in brief (details in STAGE1_REVIEW.md)
@@ -21,13 +21,15 @@ Read `PROMPT.md` first, then this file. Do only the assignment for your role. Up
 ## NEXT ASSIGNMENT
 **Agent: Codex — finish Stage 2: character table** (resume from commit `8ac5d66`; PROMPT "STAGE 2" and its **Done when** criteria)
 
-Decision (DECISIONS D37, SCHEMA §1.1): characters that share one canonical `trad` are merged into one `chars` row. For the only known case, `着` and `著` in `hsk30-chars.csv`, the result is `trad=著`, `simp=着`, `level=1`, `in_hsk_chars=true`, readings from the normal sources keyed by `著`. **Expected `chars` size: 2,999 rows for the 3,000 HSK source characters.** Implement it generically (merge on `trad` with the D37 rules, not a special case for 著) and write `data/final/char_key_collisions.csv` (`trad, source_hanzi, source_level, source_row`). Do not touch anything else in the decisions; if another rule is unworkable, write it under Open problems and stop.
+**Decision (DECISIONS D37, revised by the user's request; read it fully):** `着` and `著` stay **two rows** (3,000 rows, not 2,999). `trad` is not unique in `chars` (both are `著`); the unique key is `char_id`, and the new column `key_char` (source `Hanzi`; `着` for the first row, `著` for the second) is what readings are looked up by and what `id_map.csv` uses as the chars key. Everything in the previous Stage 2 assignment still applies except these changes:
 
-Finish everything in the previous Stage 2 assignment (loaders are done; remaining: `chars`, derived columns, reports, tests, `run_all.py` skeleton, validation). Replace the "3,000 rows" expectation with **2,999 rows + collision report** in the tests. Add a test that `著` has `simp=着`, `level=1`, and that the key `着` does not exist as a `trad` value.
+1. **Row key and lookups.** `id_map` key for chars = `key_char`. Look up Unihan, KANJIDIC2, libhangul single-character and Kaikki readings by `key_char`, not `trad`. `simp` = source `Hanzi`. `jp` = `key_char` if it is a KANJIDIC2 literal with no D28 inverse-map target, else D28 from `key_char` (for all other rows `key_char = trad`, so D28/D33 behave as before). Implement it generically (rule: `key_char` = source `Hanzi`; no special case for 着).
+2. **Tests (replace the earlier collision tests):** `chars` has 3,000 rows; `char_id` and `key_char` are unique; `trad` duplicates exist only in `char_key_collisions.csv` (expect exactly the pair 着/著); row `着`: `trad=著, key_char=着, simp=着, jp=着, ko=착, level=1`, `ja_on_all` contains ちゃく; row `著`: `trad=著, key_char=著, simp=著, jp=著, ko=저, level=4`, `ja_on_all` contains ちょ. Keep the other tests (normalizer, Hangul finals, 6 shinjitai tie-breaks, 16 glyph pairs, fixed test characters 學 國 茶 行 生 樂, NFC, rebuild-twice identical).
+3. **Reports:** `char_key_collisions.csv` (`trad, key_char, source_level`), plus everything from the previous assignment (`rules_report.csv`, `no_jp_form.csv`, coverage, `_merge` counts).
+4. Expected sanity numbers: 3,000 rows; `jp` empty about 45; verified Vietnamese primary about 1,835 (may differ by a few because `着` is now looked up separately; report the exact value).
+5. Stage 2 **Done when** (the gate checks each with evidence; put the evidence in your hand-off note): `chars` covers all 3,000 HSK characters (missing values reported, not guessed); no duplicate `char_id`/`key_char` and every `trad` collision resolved by D37; all text NFC; the test characters among the 20 test words correct in every language; `rules_report.csv` exists; tests in `tests/` pass; rebuilding twice gives identical output (give the two hashes). Include: row counts per stage, `_merge` counts, isna counts per language column, test run output.
 
-Stage 2 **Done when** (the gate will check each with evidence, so produce the evidence in your hand-off note): `chars` covers all 3,000 HSK characters (each source character maps to one row; missing values reported, not guessed); no duplicate `char_id` or `trad`; all text NFC; the test characters among the 20 test words (學 國 茶 行 生 樂) correct in every language; `rules_report.csv` exists; tests in `tests/` pass; rebuilding twice gives identical output (give the two hashes).
-
-Hand-off note must include: row counts per stage, `_merge` counts, coverage numbers per language column (isna counts), `jp` empty count (about 45 expected), number of characters with verified Vietnamese primary (about 1,835 expected), the 6 shinjitai tie-break outcomes, and the test run output.
+Stage 3 note (not now): D37 items (5) and (6) define how `word_chars` picks between 着 and 著 and how Korean/Japanese matching uses the `key_char` form (接著 → 接着). Build them in Stage 3.
 
 When done: hand off to **Claude: Stage 2 gate** (Done-when check + `rules_report.csv` against `config/rules.json`: ㄱ→c/ch, ㅂ→p, ㄹ→t, ㄴ→n, ㅁ→m, ㅇ→ng/nh).
 
@@ -54,13 +56,14 @@ When done: hand off to **Claude: Stage 2 gate** (Done-when check + `rules_report
 - If a source has no license or non-commercial-only terms: do not use it; stop and ask the user.
 
 ## Open problems / notes
-- Resolved: hsk30 `着`/`著` collision → merge on `trad` (D37).
+- Resolved: hsk30 `着`/`著` collision → separate rows with `key_char` (D37, revised).
 - Vietnamese coverage ceiling (about 35% of HSK words) with the current licensed sources; the search for further licensed sources runs after Stage 3, before Stage 4 (D36).
 - Source #7 stays excluded (D21).
 - EDRDG data impose an update-procedure requirement; `download.py --refresh` exists; release documentation must explain updates.
 - hsk30 provenance risk: **accepted by the user** (D35, personal non-commercial project; revisit if ever published commercially).
 
 ## Log
+- 2026-11-04 Claude — user challenged D37: 着/著 are distinct Korean/Japanese characters (着 is HSK 1). Verified in Unihan (착 vs 저), KANJIDIC2, libhangul (接着→접착). D37 rewritten: two rows, `key_char`, link words by simp then pinyin. Next: Codex finish Stage 2.
 - 2026-11-04 Claude — PROMPT Rule 11 (gates) adopted and committed with this session; `docs/GATES.md` created; Stage 1 gate PASS logged; `着`/`著` collision resolved (D37). Next: Codex finish Stage 2.
 - 2026-11-04 Codex — Stage 2 implementation written but build stopped at the `着`/`著` canonical-key conflict. No improvised data rule; next: Claude decision, then Codex resumes Stage 2.
 - 2026-11-04 Claude — applied user decisions: hsk30 accepted (D35); Vietnamese source search moved to after Stage 3 / before Stage 4 (D36). Next assignment unchanged: Codex Stage 2.

@@ -142,3 +142,4 @@ Gap-fillers decided while mapping the prototype to tables; details and reasons i
 - `data.js` = reduced normalized tables + precomputed `rules` in the prototype's `RULES` shape; missing values are omitted keys (D12).
 - App keys SRS / custom deck / false-friend tiles by `word_id` (D13).
 - Rule examples: single characters, non-exception, ≤ 8 per rule, ≥ 4 required (D17).
+- `chars.trad` is not unique: source characters sharing a traditional form (hsk30 `着`/`著`) stay separate rows; unique key `char_id`, new column `key_char`; words link to rows by simp, then pinyin (D37).
