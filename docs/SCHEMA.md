@@ -20,7 +20,7 @@ If this file and the spec disagree, the spec wins, except where DECISIONS.md D12
 | col | type | rule |
 |---|---|---|
 | char_id | str `cNNNNN` | |
-| trad | str, 1 char | canonical key, unique |
+| trad | str, 1 char | canonical key, unique. Several source characters may share one `trad` (e.g. hsk30 `着` and `著` both have `trad=著`): they are merged into one row (D37) and listed in `char_key_collisions.csv` |
 | simp | str, 1 char | = `trad` if no simplification |
 | jp | str, 1 char | Japanese form (shinjitai), = `trad` if unchanged. Mapping method: DECISIONS (Stage 1 review) |
 | ja_on / ko / pinyin / vi | str | primary reading (D6). May be empty |
@@ -73,7 +73,7 @@ CSV stores `tokens` as a JSON string; JSON/`data.js` as an array. Token = exactl
 Not a pandas table to maintain: `config/rules.json` text + examples computed from aligned pairs (D7). Exported as the exact `RULES` shape (§3.2).
 
 ### 1.7 Reports (not read by the app)
-`rules_report.csv` (pivot ko_final × vi_final of pair counts, plus per-pair examples), `coverage_report.csv` (incl. `freq_vi_basis=syllable_min`, D26), `alignment_mismatches.csv`, `vi_ambiguous.csv` (words with ≥ 2 composed Vietnamese candidates, D24), `no_jp_form.csv` (characters without a Japanese form, D28), `ko_unresolved.csv` (D32).
+`rules_report.csv` (pivot ko_final × vi_final of pair counts, plus per-pair examples), `char_key_collisions.csv` (D37), `coverage_report.csv` (incl. `freq_vi_basis=syllable_min`, D26), `alignment_mismatches.csv`, `vi_ambiguous.csv` (words with ≥ 2 composed Vietnamese candidates, D24), `no_jp_form.csv` (characters without a Japanese form, D28), `ko_unresolved.csv` (D32).
 
 ## 2. `data.js` shape
 

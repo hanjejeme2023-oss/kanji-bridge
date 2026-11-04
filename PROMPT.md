@@ -57,6 +57,7 @@ The agents never talk to each other directly. They communicate only through file
    - `docs/DECISIONS.md`: every key decision, who made it, and why
    - `docs/CHANGELOG.md`: what changed in each stage or loop, and why
    - `docs/SOURCES.md` section 2: which source feeds which table and column
+   - `docs/GATES.md`: every stage gate result (Rule 11)
 
 7. **Version control:** Git in the project folder. Commit at the end of every session with a message like `[Codex] Stage 2: chars table`. Do not commit `raw/` (it is recreated by `download.py`; add it to `.gitignore`), but copy every source's license file into `licenses/` and commit that.
 
@@ -70,6 +71,14 @@ The agents never talk to each other directly. They communicate only through file
     - fixing bugs, where the app does not behave the way the prototype already intends
 
     Any other UI/UX idea, from any agent or from the user's loop feedback, goes to `docs/UX_BACKLOG.md` for after this run, unless the user explicitly approves it in that loop.
+
+11. **Stage gates:** Every stage from 1 to 5 ends with a **gate review by Claude** before the next stage may start. Each stage lists its **Done when** criteria; the gate checks them with evidence (counts, file checks, the 20 test words, a small random sample), not by trusting the report.
+    - **Pass:** Claude records the result and assigns the next stage.
+    - **Fail:** Claude writes the exact failures and required fixes in `HANDOFF.md` and assigns them back to the agent that did the stage. That agent fixes only those items and hands back to Claude for a re-check.
+    - If a stage fails the same gate twice, Claude stops and asks the user how to proceed.
+    - Every gate result (stage, pass/fail, evidence, fixes requested) is logged in `docs/GATES.md`.
+    - A gate is a short check (aim for 10–15 minutes), not an improvement loop. Problems that are real but not blocking go to the Stage 6 loops via `HANDOFF.md` "Open problems".
+    - Where a stage already includes a Claude review (Stages 1, 2, 4), that review **is** the gate and must also check the Done-when criteria.
 
 ---
 
@@ -106,7 +115,9 @@ The agents never talk to each other directly. They communicate only through file
 3. Write `docs/SOURCE_PROFILES.md`: per source, format, encoding, row count, key columns, 10 sample rows, quality problems.
 4. Hand off to Claude.
 
-**Claude review:** confirm licenses (ask the user on any doubt), cross-check a sample of 200 Unihan `kVietnamese` readings against the Sino-Vietnamese data, choose the shinjitai ↔ traditional mapping method, and set source priority per column. Record all in `DECISIONS.md`. Hand off to Codex, Stage 2.
+**Done when:** every source is downloaded or explicitly excluded with a reason; `SOURCES.md` section 1 has no blank cells (要確認 only where Claude must decide); every used source has its license file in `licenses/`; `download.py` reruns without re-downloading unchanged files; `SOURCE_PROFILES.md` covers every source.
+
+**Claude review (gate):** confirm licenses (ask the user on any doubt), cross-check a sample of 200 Unihan `kVietnamese` readings against the Sino-Vietnamese data, choose the shinjitai ↔ traditional mapping method, and set source priority per column. Record all in `DECISIONS.md`, log the gate in `GATES.md`. Hand off to Codex, Stage 2.
 
 ---
 
@@ -117,11 +128,13 @@ The agents never talk to each other directly. They communicate only through file
 3. Derive `ko_final` and `vi_final` from the primary readings.
 4. Validate. Export `chars` and a preliminary `rules_report.csv` from characters with exactly one Korean and one Vietnamese reading.
 
-**Claude review:** check `rules_report.csv` against `config/rules.json` (ㄱ→c/ch, ㅂ→p, ㄹ→t, ㄴ→n, ㅁ→m, ㅇ→ng/nh). Investigate every large off-pattern cell: data error or real exception? Record the outcome. Hand off to Codex, Stage 3.
+**Done when:** `chars` covers all 3,000 HSK characters (missing values reported, not guessed); no duplicate `char_id` or `trad` key (or every collision resolved by a recorded decision); all text is NFC; the test characters in the 20 test words are correct in every language; `rules_report.csv` exists; tests in `tests/` pass; rebuilding twice gives identical output.
+
+**Claude review (gate):** check the Done-when criteria, then `rules_report.csv` against `config/rules.json` (ㄱ→c/ch, ㅂ→p, ㄹ→t, ㄴ→n, ㅁ→m, ㅇ→ng/nh). Investigate every large off-pattern cell: data error or real exception? Record the outcome, log the gate. Hand off to Codex, Stage 3.
 
 ---
 
-# STAGE 3: WORD TABLE (Codex)
+# STAGE 3: WORD TABLE (Codex, then Claude gate)
 
 1. Backbone: HSK 3.0 on the left. Attach CC-CEDICT (gloss, pinyin), JMdict (Japanese form + reading), hanja.txt (Korean), Sino-Vietnamese data (Vietnamese, frequency).
 2. Add high-frequency Sino-Vietnamese words missing from HSK; set `origin` from the merge indicator; assign their `level` by the frequency-band rule (Claude decides the bands in `DECISIONS.md` if not yet decided; ask Claude via `HANDOFF.md`).
@@ -129,7 +142,11 @@ The agents never talk to each other directly. They communicate only through file
 4. Rebuild `rules_report.csv` from all aligned pairs (spec D7).
 5. **False-friend candidates (code, spec D10):** words already in `words` are covered by Gemini's per-language meanings (Stage 4, task 1). In addition, list forms **outside** `words` that are common Japanese or Korean words (JMdict entries marked common, frequent hanja.txt words) and also exist as a CC-CEDICT or Vietnamese entry (e.g. 手紙, 大丈夫). Write `data/staging/ff_candidates.csv` with each language's reading and dictionary gloss, and report its row count (expected: hundreds to a few thousand, not tens of thousands; if larger, tighten the filter and record it in `DECISIONS.md`).
 6. Set `card_eligible` (spec D11). Validate and write `coverage_report.csv` (per level: words with all 4 languages, per language coverage).
-7. Hand off to Gemini, Stage 4.
+7. Hand off to Claude (gate).
+
+**Done when:** every HSK word is present exactly once per (form, reading); no duplicate `word_id`; every merge has logged `_merge` counts and a `validate=` check; `word_chars` mismatches are reported with counts; `coverage_report.csv` and `ff_candidates.csv` exist with row counts reported; the 20 test words are correct in every language they exist in; tests pass; rebuild is identical.
+
+**Claude review (gate):** check the Done-when criteria plus a random sample of 30 words across levels against the sources. Log the gate. Then do any additional Vietnamese source work recorded in `DECISIONS.md` (D36) before Stage 4. Hand off to Gemini, Stage 4 only when the word list is final.
 
 ---
 
@@ -143,18 +160,24 @@ Inputs (read only): `data/final/words.csv`, `data/final/chars.csv`, `data/stagin
 4. Mark uncertain items `"confidence": "low"`.
 5. There are many batches. If they do not all fit in one session, record which batches are done in `HANDOFF.md` and hand off to Gemini again; Claude may review finished tasks while others continue. When all are done, hand off to Claude.
 
-**Claude review:** check at least 50 random items per task plus every low-confidence item. Accept or reject per batch (reject if error rate > 5%), record reasons in `DECISIONS.md`. Rejected batches go back to Gemini with the reasons. Accepted batches are moved to `content/accepted/`. Then hand off to Codex to merge accepted content into `words` (`meaning_ja__*`, `false_friend`, `verified`), `ff_meanings` and `passages`, adding `ff_only` words to `words` with dictionary data. After merging and validating, Codex hands off to Codex, Stage 5.
+**Done when:** every eligible word has a task-1 result; every word with differing meanings and every `ff_candidates.csv` row has a task-2 result; passages meet the per-level target and every token resolves; no reading in `content/` differs from the input tables.
+
+**Claude review (gate):** check the Done-when criteria, then at least 50 random items per task plus every low-confidence item. Accept or reject per batch (reject if error rate > 5%), record reasons in `DECISIONS.md`. Rejected batches go back to Gemini with the reasons. Accepted batches are moved to `content/accepted/`. Then hand off to Codex to merge accepted content into `words` (`meaning_ja__*`, `false_friend`, `verified`), `ff_meanings` and `passages`, adding `ff_only` words to `words` with dictionary data. After merging and validating, Codex hands off to Codex, Stage 5.
 
 ---
 
-# STAGE 5: APP INTEGRATION (Codex)
+# STAGE 5: APP INTEGRATION (Codex, then Claude gate)
 
 1. Have `run_all.py` export `data/final/data.js`. Copy the prototype to `app/index.html` and replace the five hardcoded arrays with adapters that read `window.KB_DATA` and produce the same shapes the existing view code expects (per `SCHEMA.md`).
 2. Sound rules: rule text from `config/rules.json`; examples from the aligned pairs, up to 8 per rule, preferring low-level, high-frequency characters; the rule's existing quiz uses these examples. False friends: from `false_friend` + `ff_meanings`. Glyphs: characters whose 3 forms are not all identical, readings shown from the `*_all` columns joined with " / " (as the prototype does).
 3. SRS key = `word_id`. Cards: only `card_eligible` words, ordered by `level`, then `freq_vi`. The existing target switch decides which words are due: ベトナム語 → words with `vi`; 中国語 → words with `pinyin`; 両方 → words with both.
 4. Missing languages: keep the prototype's layout; show nothing (or the prototype's existing empty state) for a missing value, never "undefined" or "NaN".
 5. Follow Global Rule 10. Compare every view side by side with `prototype/index.html`; list any visible difference in `HANDOFF.md` with the reason the data forced it.
-6. Hand off to Codex: loop setup and loop 1, Step 1.
+6. Hand off to Claude (gate).
+
+**Done when:** `app/index.html` opens from disk with no console errors; all 5 views work with the full dataset; no "undefined"/"NaN" is shown; SRS uses `word_id`; the daily new-card limit (D20) works and has a test; the side-by-side difference list is complete and every difference has a data reason.
+
+**Claude review (gate):** open the app, check every view and the Done-when criteria, compare with the prototype for any UI/UX drift (Global Rule 10). Log the gate. Hand off to Codex: loop setup and loop 1, Step 1.
 
 ---
 
@@ -229,7 +252,7 @@ After loop 5 (including its learner review):
 1. Address or record every open item from the last learner review.
 2. Deliver `app/index.html`, `data/final/`, `pipeline/` (with `run_all.py`, `download.py`, `pipeline/README.md`), `config/`, `content/accepted/`, `licenses/`.
 3. `README.md` with how to run, a **Data sources** section, and `LICENSE` files generated from `SOURCES.md` (app code license separate from the data license if share-alike applies).
-4. `docs/`: SCHEMA, DECISIONS, CHANGELOG, HANDOFF, SOURCES, SOURCE_PROFILES, METRICS (all loops), LEARNER_FEEDBACK, UX_BACKLOG, final audit.
+4. `docs/`: SCHEMA, DECISIONS, CHANGELOG, HANDOFF, GATES, SOURCES, SOURCE_PROFILES, METRICS (all loops), LEARNER_FEEDBACK, UX_BACKLOG, final audit.
 5. A short summary for the user: what was built, coverage numbers, known gaps, next steps.
 
 ---
