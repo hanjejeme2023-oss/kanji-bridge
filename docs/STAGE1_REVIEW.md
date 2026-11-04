@@ -10,7 +10,7 @@ Evidence behind DECISIONS D23–D33. Numbers come from the reference scripts in 
 | KANJIDIC2, JMdict | EDRDG: "Creative Commons Attribution-ShareAlike Licence (V4.0)" (checked in the saved licence page) | Use. Share-alike. |
 | CC-CEDICT | "CC BY-SA 4.0" (checked) | Use. Share-alike. |
 | libhangul `hanja.txt` | The data file's own comment header is BSD 3-Clause (Choe Hwanjin, 2005/2006), identical text to the extracted licence copy. The LGPL-2.1 applies to the library code, not this file. BSD-3 is permissive; a CC BY-SA 4.0 dataset may include BSD-licensed data if the notice and disclaimer are kept. | **Accepted.** Reproduce the BSD notice in README/data licence file. |
-| ivankra/hsk30 | MIT (copyright Krasilnikov / Shawky / Pleco). README itself says the data is derived from MIT-labelled repos that copy a PRC Ministry of Education list, and that its copyright status is "somewhat questionable… might be public domain". The content used is a list of words + pinyin + levels (facts and a standard word list). It is the only HSK 3.0 machine-readable source and is the backbone (D2). | **Accepted with recorded risk** (D23). The user may veto. |
+| ivankra/hsk30 | MIT (copyright Krasilnikov / Shawky / Pleco). README itself says the data is derived from MIT-labelled repos that copy a PRC Ministry of Education list, and that its copyright status is "somewhat questionable… might be public domain". The content used is a list of words + pinyin + levels (facts and a standard word list). It is the only HSK 3.0 machine-readable source and is the backbone (D2). | **Accepted with recorded risk** (D23); confirmed by the user (D35). |
 | Kaikki / Vietnamese Wiktionary | Saved page says "both CC-BY-SA and GFDL", version not stated. Wikimedia projects use CC BY-SA 4.0 for text since 2023; the extract is from a 2026-10 dump. | **Accepted**, used under CC BY-SA 4.0 (the same licence as the dataset). |
 | FrequencyWords | README: "MIT License for code. CC-by-sa-4.0 for content." | Accepted for frequency counts, CC BY-SA 4.0. |
 | OpenCC | Apache 2.0 | Accepted as mapping data; keep the licence and mark the derived mapping. |
@@ -65,7 +65,7 @@ Rule (D24): (A) explicit Kaikki Han-form pair; else (B) the single combination o
 | Spot check, 30 random B-only words | all plausible Hán-Việt compounds (e.g. 管理 quản lý, 例外 lệ ngoại, 情報 tình báo, 會診 hội chẩn); B is a Hán-Việt *form* match, meaning is checked in Stage 4/loop audits |
 | Known weakness | Compounds that Vietnamese does not use as Hán-Việt but happen to exist as an unrelated headword. Gemini's per-language meanings and loop audits catch these; `source_vi` marks the rule used |
 
-**Ceiling:** with the licensed sources available, about 35% of HSK words get a Vietnamese reading. HSK words with all 4 languages will be below that. This is a measured source ceiling (METRICS "report the ceiling"), not a pipeline defect. A further licensed Vietnamese source can be searched in loop 2 (Coverage); it is not a Stage 2/3 blocker.
+**Ceiling:** with the licensed sources available, about 35% of HSK words get a Vietnamese reading. HSK words with all 4 languages will be below that. This is a measured source ceiling (METRICS "report the ceiling"), not a pipeline defect. A further licensed Vietnamese source will be searched after Stage 3 and before Stage 4 (D36, user decision); it is not a Stage 2/3 blocker.
 
 ### 2.5 FrequencyWords
 50,000 tokens, 2,589 duplicate tokens (case/orthography variants; sum after normalization). Compounds have no rank. Proxy rule in D26.
