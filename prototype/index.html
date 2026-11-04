@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>漢字ブリッジ（試作版）</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;600&family=Noto+Sans+KR:wght@400;500&family=Noto+Sans+SC:wght@400;500&family=Noto+Serif+JP:wght@500;700&family=Noto+Serif+KR:wght@500&family=Noto+Serif+SC:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#ffffff; --mist:#f5f6f8; --ink:#16181d; --sub:#7b808a; --line:#e8e9ec;
+  --indigo:#2f3e9e; --indigo-soft:#eef0fb; --right:#1d7f53; --right-soft:#e8f5ee; --wrong:#b8432e; --wrong-soft:#fbeeea;
+  --sans:"Noto Sans","Noto Sans JP",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--indigo);outline-offset:2px}
+.ko{font-family:"Noto Sans KR",var(--sans)}
+.zh{font-family:"Noto Sans SC",var(--sans)}
+.han{font-family:"Noto Serif JP",serif;font-weight:700}
+.han.ko{font-family:"Noto Serif KR",serif;font-weight:500}
+.han.zh{font-family:"Noto Serif SC",serif;font-weight:500}
+.hidden{display:none !important}
+.sub{color:var(--sub)}
+.small{font-size:13px}
+
+/* top bar */
+header{position:sticky;top:0;background:rgba(255,255,255,.92);backdrop-filter:saturate(1.4) blur(10px);z-index:5;border-bottom:1px solid var(--line)}
+.bar{max-width:980px;margin:0 auto;padding:0 24px;height:60px;display:flex;align-items:center;gap:24px}
+.logo{font-weight:600;font-size:17px;letter-spacing:.02em;white-space:nowrap}
+.logo .han{font-weight:700;margin-right:2px}
+nav{display:flex;gap:2px;margin:0 auto;overflow-x:auto}
+nav button{border:none;background:none;padding:7px 14px;border-radius:999px;font-size:14px;color:var(--sub);cursor:pointer;white-space:nowrap}
+nav button:hover{color:var(--ink)}
+nav button.on{background:var(--ink);color:#fff}
+.today{font-size:13px;color:var(--sub);white-space:nowrap}
+@media(max-width:760px){.today{display:none}.bar{gap:12px;padding:0 14px}}
+
+main{max-width:760px;margin:0 auto;padding:40px 24px 80px}
+@media(max-width:600px){main{padding:24px 16px 60px}}
+
+/* controls */
+.seg{display:inline-flex;background:var(--mist);border-radius:999px;padding:3px}
+.seg button{border:none;background:none;padding:6px 14px;border-radius:999px;font-size:13px;color:var(--sub);cursor:pointer}
+.seg button.on{background:var(--paper);color:var(--ink);box-shadow:0 1px 2px rgba(22,24,29,.12)}
+.toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:36px}
+.pill{border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:10px 20px;font-size:15px;cursor:pointer;transition:background .15s,border-color .15s}
+.pill:hover{border-color:#c9ccd2}
+.pill.dark{background:var(--ink);border-color:var(--ink);color:#fff}
+.pill.dark:hover{background:#2c2f36}
+.pill.right{border-color:var(--right);background:var(--right-soft);color:var(--right)}
+.pill.wrong{border-color:var(--wrong);background:var(--wrong-soft);color:var(--wrong)}
+.key{display:inline-block;min-width:18px;font-size:11px;line-height:16px;padding:0 4px;border-radius:4px;background:var(--mist);color:var(--sub);margin-right:8px;text-align:center;vertical-align:1px;font-family:"Noto Sans",sans-serif}
+.pill.dark .key{background:rgba(255,255,255,.18);color:#fff;margin:0 0 0 8px}
+.tag{display:inline-block;font-size:13px;padding:4px 12px;border-radius:999px;background:var(--indigo-soft);color:var(--indigo);margin:4px 6px 0 0}
+.tag.off{background:var(--mist);color:var(--sub)}
+
+/* card view */
+.progress{height:3px;background:var(--line);border-radius:3px;overflow:hidden;margin-bottom:56px}
+.progress i{display:block;height:100%;background:var(--indigo);transition:width .3s}
+.stage{text-align:center}
+.giant{font-size:clamp(88px,18vw,148px);line-height:1.05;letter-spacing:.04em}
+.readings{font-size:20px;margin-top:18px;display:flex;gap:28px;justify-content:center}
+.alt{font-size:13px;color:var(--sub);margin-top:6px}
+.answer-in{max-width:360px;margin:48px auto 0;display:grid;gap:22px}
+.field{text-align:left}
+.field span{display:block;font-size:12px;color:var(--sub);margin-bottom:2px}
+.field input{width:100%;border:none;border-bottom:2px solid var(--line);padding:8px 2px;font:inherit;font-size:22px;text-align:center;background:transparent}
+.field input:focus{outline:none;border-bottom-color:var(--indigo)}
+.reveal{margin-top:44px;animation:rise .28s ease-out}
+@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.reveal{animation:none}.progress i{transition:none}}
+.ans{display:flex;gap:48px;justify-content:center;flex-wrap:wrap}
+.ans .lang{font-size:12px;color:var(--sub)}
+.ans .val{font-size:34px;font-weight:500;line-height:1.3}
+.ans .you{font-size:13px;margin-top:2px}
+.ok{color:var(--right)} .close{color:#9a6a0a} .ng{color:var(--wrong)}
+.meta{margin-top:28px}
+.rate{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:40px}
+.rate .pill{min-width:128px}
+.rate small{display:block;font-size:11px;color:var(--sub);margin-top:1px}
+.done{text-align:center;padding:80px 0}
+.done h2{font-size:28px;font-weight:600;margin:0 0 8px}
+
+/* rules */
+.rulebar{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:48px}
+.rulebar button{border:1px solid var(--line);background:var(--paper);border-radius:14px;padding:10px 16px;cursor:pointer;text-align:center;min-width:92px}
+.rulebar button.on{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.rulebar .r{font-size:17px}
+.rulebar .p{font-size:11px;color:var(--sub)}
+.rulehead{text-align:center;margin-bottom:8px}
+.rulehead h2{font-size:30px;font-weight:600;margin:0}
+.rulehead p{margin:6px 0 0;color:var(--sub);font-size:14px}
+.qcard{text-align:center;margin:48px 0 0}
+.qcard .giant{font-size:96px}
+.opts{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:32px}
+.opts .pill{font-size:22px;min-width:120px;padding:12px 22px}
+.after{margin-top:24px;text-align:center}
+details{margin-top:64px;border-top:1px solid var(--line);padding-top:20px}
+summary{cursor:pointer;color:var(--sub);font-size:14px;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::before{content:"+ "}
+details[open] summary::before{content:"− "}
+table{width:100%;border-collapse:collapse;margin-top:16px;font-size:16px}
+th{font-size:12px;color:var(--sub);font-weight:400;text-align:left;padding:6px 8px}
+td{padding:10px 8px;border-top:1px solid var(--line)}
+
+/* false friends */
+.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px}
+.tile{border:1px solid var(--line);border-radius:18px;padding:22px 20px;min-height:190px;cursor:pointer;background:var(--paper);text-align:left;display:flex;flex-direction:column;transition:border-color .15s}
+.tile:hover{border-color:#c9ccd2}
+.tile .w{font-size:40px;line-height:1.2;margin-bottom:12px}
+.tile .l{font-size:14px;color:var(--sub);line-height:1.7}
+.tile .l b{color:var(--ink);font-weight:500;margin-right:6px}
+.tile .hint{margin-top:auto;padding-top:14px;font-size:13px;color:var(--indigo)}
+.tile.open{background:var(--wrong-soft);border-color:transparent}
+.tile.open .trap{font-size:15px;color:var(--wrong);margin-top:auto;padding-top:12px}
+.tile.open .trap b{font-weight:600;margin-right:6px}
+
+/* reading */
+.passage{font-size:26px;line-height:1.5;text-align:center;padding:24px 0 8px;display:flex;flex-wrap:wrap;justify-content:center;gap:6px 10px}
+.tok{display:inline-flex;flex-direction:column;align-items:center}
+.tok .s{padding:2px 6px;border-radius:8px}
+.tok.sino .s{cursor:pointer;box-shadow:inset 0 -2px 0 var(--indigo-soft)}
+.tok.sino .s:hover{background:var(--indigo-soft)}
+.tok.sel .s,.tok.sel .s:hover{background:var(--indigo);color:#fff;box-shadow:none}
+.tok .w{white-space:nowrap}.tok .pt{margin-left:1px}
+.tok .a{font-size:13px;color:var(--sub);line-height:1.4;min-height:18px}
+.tok.func .s{color:var(--sub)}
+.trans{text-align:center;color:var(--sub);font-size:14px;margin-top:12px}
+.sheet{margin-top:48px;background:var(--mist);border-radius:20px;padding:28px}
+.sheet .top{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.sheet .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:20px}
+@media(max-width:600px){.sheet .grid{grid-template-columns:repeat(2,1fr)}}
+.sheet .cell span{display:block;font-size:12px;color:var(--sub)}
+.sheet .cell div{font-size:18px}
+.empty{text-align:center;color:var(--sub);font-size:14px;margin-top:40px}
+
+/* glyph */
+.grow{display:grid;grid-template-columns:1fr 1fr 1fr 1.2fr;align-items:center;padding:18px 0;border-top:1px solid var(--line);text-align:center}
+.grow:first-of-type{border-top:none}
+.grow .g{font-size:52px;line-height:1.1}
+.grow .lbl{font-size:12px;color:var(--sub)}
+.grow .zhcol .g{color:var(--indigo)}
+.grow .rd{font-size:14px;color:var(--sub);line-height:1.8}
+.ghead{display:grid;grid-template-columns:1fr 1fr 1fr 1.2fr;text-align:center;font-size:12px;color:var(--sub);padding-bottom:6px}
+
+.spk{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;border:1px solid var(--line);background:var(--paper);cursor:pointer;vertical-align:middle;margin-left:8px;color:var(--sub);padding:0;flex:none}
+.spk:hover{color:var(--indigo);border-color:var(--indigo)}
+.spk.on{color:#fff;background:var(--indigo);border-color:var(--indigo)}
+.spk svg{width:15px;height:15px}
+.toggle{border:none;background:none;font-size:13px;color:var(--sub);cursor:pointer;display:inline-flex;align-items:center;gap:6px;padding:4px 0}
+.toggle i{width:28px;height:16px;border-radius:8px;background:var(--line);position:relative;transition:background .15s}
+.toggle i::after{content:"";position:absolute;top:2px;left:2px;width:12px;height:12px;border-radius:50%;background:#fff;transition:left .15s}
+.toggle.on i{background:var(--indigo)}
+.toggle.on i::after{left:14px}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:12px 18px;border-radius:14px;font-size:13px;max-width:min(560px,90vw);z-index:20;line-height:1.6}
+footer{max-width:760px;margin:0 auto;padding:0 24px 40px;color:var(--sub);font-size:12px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+footer button{border:none;background:none;color:var(--sub);text-decoration:underline;cursor:pointer;font-size:12px;padding:0}
+</style>
+</head>
+<body>
+<header>
+  <div class="bar">
+    <div class="logo"><span class="han">漢</span> ブリッジ</div>
+    <nav id="nav">
+      <button data-v="cards" class="on">カード</button>
+      <button data-v="rules">音のルール</button>
+      <button data-v="ff">偽の友達</button>
+      <button data-v="read">読解</button>
+      <button data-v="glyph">字体</button>
+    </nav>
+    <div class="today" id="topstat"></div>
+  </div>
+</header>
+
+<main>
+<section id="v-cards">
+  <div class="toolbar">
+    <div class="seg" id="target">
+      <button data-t="vi" class="on">ベトナム語</button>
+      <button data-t="zh">中国語</button>
+      <button data-t="both">両方</button>
+    </div>
+    <div style="display:flex;gap:16px;align-items:center"><button class="toggle" id="autoplay" type="button"><i></i>答えを自動で再生</button><span class="sub small" id="queueinfo"></span></div>
+  </div>
+  <div class="progress"><i id="prog"></i></div>
+  <div id="cardbox"></div>
+</section>
+
+<section id="v-rules" class="hidden">
+  <div class="rulebar" id="rulebar"></div>
+  <div id="ruledetail"></div>
+</section>
+
+<section id="v-ff" class="hidden">
+  <div class="toolbar">
+    <div class="seg" id="fffilter">
+      <button data-f="all" class="on">すべて</button>
+      <button data-f="zh">中国語</button>
+      <button data-f="vi">ベトナム語</button>
+    </div>
+    <div class="sub small">タップすると本当の意味</div>
+  </div>
+  <div class="tiles" id="fflist"></div>
+</section>
+
+<section id="v-read" class="hidden">
+  <div class="toolbar">
+    <div class="seg" id="psel"></div>
+    <label class="sub small"><input type="checkbox" id="showann" checked> 読みを表示</label>
+  </div>
+  <div class="passage" id="passage"></div>
+  <div class="trans" id="ptrans"></div>
+  <div id="tokdetail"></div>
+</section>
+
+<section id="v-glyph" class="hidden">
+  <div class="toolbar">
+    <div class="seg" id="gmode">
+      <button data-g="list" class="on">一覧</button>
+      <button data-g="quiz">クイズ</button>
+    </div>
+    <div class="seg" id="gfilter">
+      <button data-p="all" class="on">すべて</button>
+      <button data-p="diff">3つとも違う</button>
+      <button data-p="jz">日本＝中国</button>
+      <button data-p="jk">日本＝韓国</button>
+    </div>
+  </div>
+  <div id="glyphbox"></div>
+</section>
+</main>
+
+<footer>
+  <span>試作版。学習記録はこのブラウザにだけ保存されます。</span>
+  <button id="reset">記録をリセット</button>
+</footer>
+
+<script>
+const S={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+
+/* ---------- data: words ---------- */
+// h: 韓国の漢字(繁体), j: 日本の字体, z: 簡体字, p: ピンイン, jr: 日本語の読み, k: 韓国語, v: ベトナム語
+const WORDS=[
+{h:'經濟',j:'経済',z:'经济',p:'jīngjì',jr:'けいざい',k:'경제',v:'kinh tế'},
+{h:'大學',j:'大学',z:'大学',p:'dàxué',jr:'だいがく',k:'대학',v:'đại học'},
+{h:'學生',j:'学生',z:'学生',p:'xuéshēng',jr:'がくせい',k:'학생',v:'học sinh'},
+{h:'注意',j:'注意',z:'注意',p:'zhùyì',jr:'ちゅうい',k:'주의',v:'chú ý'},
+{h:'政府',j:'政府',z:'政府',p:'zhèngfǔ',jr:'せいふ',k:'정부',v:'chính phủ'},
+{h:'發展',j:'発展',z:'发展',p:'fāzhǎn',jr:'はってん',k:'발전',v:'phát triển'},
+{h:'計劃',j:'計画',z:'计划',p:'jìhuà',jr:'けいかく',k:'계획',v:'kế hoạch'},
+{h:'國家',j:'国家',z:'国家',p:'guójiā',jr:'こっか',k:'국가',v:'quốc gia'},
+{h:'問題',j:'問題',z:'问题',p:'wèntí',jr:'もんだい',k:'문제',v:'vấn đề'},
+{h:'文化',j:'文化',z:'文化',p:'wénhuà',jr:'ぶんか',k:'문화',v:'văn hóa'},
+{h:'歷史',j:'歴史',z:'历史',p:'lìshǐ',jr:'れきし',k:'역사',v:'lịch sử'},
+{h:'社會',j:'社会',z:'社会',p:'shèhuì',jr:'しゃかい',k:'사회',v:'xã hội'},
+{h:'教育',j:'教育',z:'教育',p:'jiàoyù',jr:'きょういく',k:'교육',v:'giáo dục'},
+{h:'自由',j:'自由',z:'自由',p:'zìyóu',jr:'じゆう',k:'자유',v:'tự do'},
+{h:'電話',j:'電話',z:'电话',p:'diànhuà',jr:'でんわ',k:'전화',v:'điện thoại'},
+{h:'銀行',j:'銀行',z:'银行',p:'yínháng',jr:'ぎんこう',k:'은행',v:'ngân hàng'},
+{h:'世界',j:'世界',z:'世界',p:'shìjiè',jr:'せかい',k:'세계',v:'thế giới'},
+{h:'法律',j:'法律',z:'法律',p:'fǎlǜ',jr:'ほうりつ',k:'법률',v:'pháp luật'},
+{h:'結婚',j:'結婚',z:'结婚',p:'jiéhūn',jr:'けっこん',k:'결혼',v:'kết hôn'},
+{h:'安全',j:'安全',z:'安全',p:'ānquán',jr:'あんぜん',k:'안전',v:'an toàn'},
+{h:'時間',j:'時間',z:'时间',p:'shíjiān',jr:'じかん',k:'시간',v:'thời gian'},
+{h:'經驗',j:'経験',z:'经验',p:'jīngyàn',jr:'けいけん',k:'경험',v:'kinh nghiệm'},
+{h:'研究',j:'研究',z:'研究',p:'yánjiū',jr:'けんきゅう',k:'연구',v:'nghiên cứu'},
+{h:'準備',j:'準備',z:'准备',p:'zhǔnbèi',jr:'じゅんび',k:'준비',v:'chuẩn bị'},
+{h:'意見',j:'意見',z:'意见',p:'yìjiàn',jr:'いけん',k:'의견',v:'ý kiến'},
+{h:'成功',j:'成功',z:'成功',p:'chénggōng',jr:'せいこう',k:'성공',v:'thành công'},
+{h:'獨立',j:'独立',z:'独立',p:'dúlì',jr:'どくりつ',k:'독립',v:'độc lập'},
+{h:'幸福',j:'幸福',z:'幸福',p:'xìngfú',jr:'こうふく',k:'행복',v:'hạnh phúc'},
+{h:'學習',j:'学習',z:'学习',p:'xuéxí',jr:'がくしゅう',k:'학습',v:'học tập'},
+{h:'國際',j:'国際',z:'国际',p:'guójì',jr:'こくさい',k:'국제',v:'quốc tế'},
+{h:'運動',j:'運動',z:'运动',p:'yùndòng',jr:'うんどう',k:'운동',v:'vận động'},
+{h:'民主',j:'民主',z:'民主',p:'mínzhǔ',jr:'みんしゅ',k:'민주',v:'dân chủ'},
+{h:'交通',j:'交通',z:'交通',p:'jiāotōng',jr:'こうつう',k:'교통',v:'giao thông'},
+{h:'音樂',j:'音楽',z:'音乐',p:'yīnyuè',jr:'おんがく',k:'음악',v:'âm nhạc'},
+{h:'會議',j:'会議',z:'会议',p:'huìyì',jr:'かいぎ',k:'회의',v:'hội nghị'},
+{h:'生活',j:'生活',z:'生活',p:'shēnghuó',jr:'せいかつ',k:'생활',v:'sinh hoạt'},
+{h:'家庭',j:'家庭',z:'家庭',p:'jiātíng',jr:'かてい',k:'가정',v:'gia đình'},
+{h:'主義',j:'主義',z:'主义',p:'zhǔyì',jr:'しゅぎ',k:'주의',v:'chủ nghĩa'},
+{h:'理由',j:'理由',z:'理由',p:'lǐyóu',jr:'りゆう',k:'이유',v:'lý do'},
+{h:'心理',j:'心理',z:'心理',p:'xīnlǐ',jr:'しんり',k:'심리',v:'tâm lý'}
+];
+
+/* ---------- data: sound rules ---------- */
+const RULES=[
+{id:'k',jong:1,kr:'ㄱ',vi:['c','ch'],label:'ㄱ → -c / -ch',jp:'く・き で終わる（がく・こく・れき）',zh:'語末の子音は消えた（xué・guó）',
+ ex:[['學','학','がく','học','xué'],['國','국','こく','quốc','guó'],['六','육','ろく','lục','liù'],['木','목','もく','mộc','mù'],['讀','독','どく','độc','dú'],['白','백','はく','bạch','bái'],['歷','력','れき','lịch','lì']]},
+{id:'p',jong:17,kr:'ㅂ',vi:['p'],label:'ㅂ → -p',jp:'う で終わることが多い（ほう・じゅう）。昔は「ふ」',zh:'語末の子音は消えた（fǎ・shí）',
+ ex:[['法','법','ほう','pháp','fǎ'],['十','십','じゅう','thập','shí'],['合','합','ごう','hợp','hé'],['入','입','にゅう','nhập','rù'],['業','업','ぎょう','nghiệp','yè'],['習','습','しゅう','tập','xí']]},
+{id:'t',jong:8,kr:'ㄹ',vi:['t'],label:'ㄹ → -t',jp:'つ・ち で終わる（はつ・いち）',zh:'語末の子音は消えた（fā・yī）',
+ ex:[['一','일','いち','nhất','yī'],['發','발','はつ','phát','fā'],['結','결','けつ','kết','jié'],['律','률','りつ','luật','lǜ'],['月','월','げつ','nguyệt','yuè'],['日','일','にち','nhật','rì'],['達','달','たつ','đạt','dá'],['說','설','せつ','thuyết','shuō']]},
+{id:'n',jong:4,kr:'ㄴ',vi:['n'],label:'ㄴ → -n',jp:'ん で終わる（あん・ぶん）',zh:'-n のまま（ān・wén）',
+ ex:[['安','안','あん','an','ān'],['文','문','ぶん','văn','wén'],['民','민','みん','dân','mín'],['間','간','かん','gian','jiān'],['銀','은','ぎん','ngân','yín'],['見','견','けん','kiến','jiàn']]},
+{id:'m',jong:16,kr:'ㅁ',vi:['m'],label:'ㅁ → -m',jp:'ん で終わる（ㄴ と区別できない）',zh:'-n に変わった（xīn・sān）。中国語だけ ㄴ と ㅁ が合流',
+ ex:[['心','심','しん','tâm','xīn'],['音','음','おん','âm','yīn'],['三','삼','さん','tam','sān'],['南','남','なん','nam','nán'],['金','금','きん','kim','jīn'],['感','감','かん','cảm','gǎn']]},
+{id:'ng',jong:21,kr:'ㅇ',vi:['ng','nh'],label:'ㅇ → -ng / -nh',jp:'う・い で終わる（とう・せい）',zh:'-ng のまま（dōng・zhèng）',
+ ex:[['江','강','こう','giang','jiāng'],['東','동','とう','đông','dōng'],['中','중','ちゅう','trung','zhōng'],['公','공','こう','công','gōng'],['政','정','せい','chính','zhèng'],['生','생','せい','sinh','shēng'],['成','성','せい','thành','chéng']]},
+];
+const NONE_RULE={jong:0,vi:[''],label:'パッチムなし → 子音で終わらない'};
+
+/* ---------- data: false friends ---------- */
+// trap: どの言語でワナになるか
+const FF=[
+{w:'勉強',safe:[['日','べんきょう','勉強する'],['韓','（普通は 공부 と言う）','']],trap:[['中','勉强 miǎnqiǎng','無理に・しぶしぶ']],t:'zh'},
+{w:'工夫',safe:[['日','くふう','工夫・アイデア']],trap:[['韓','공부','勉強'],['中','gōngfu','（かかる）時間・手間']],t:'zh'},
+{w:'手紙',safe:[['日','てがみ','手紙']],trap:[['中','手纸 shǒuzhǐ','トイレットペーパー']],t:'zh'},
+{w:'汽車',safe:[['日','きしゃ','（蒸気機関車の）列車'],['韓','기차','列車']],trap:[['中','汽车 qìchē','自動車']],t:'zh'},
+{w:'愛人',safe:[['日','あいじん','不倫相手'],['韓','애인','恋人']],trap:[['中','爱人 àiren','配偶者（中国大陸）']],t:'zh'},
+{w:'大丈夫',safe:[['日','だいじょうぶ','問題ない']],trap:[['中','dàzhàngfu','立派な男']],t:'zh'},
+{w:'小心',safe:[['日','しょうしん','気が小さい'],['韓','소심','気が小さい']],trap:[['中','xiǎoxīn','気をつけて']],t:'zh'},
+{w:'東西',safe:[['日','とうざい','東と西'],['韓','동서','東と西']],trap:[['中','东西 dōngxi','もの']],t:'zh'},
+{w:'娘',safe:[['日','むすめ','娘']],trap:[['中','niáng','母']],t:'zh'},
+{w:'新聞',safe:[['日','しんぶん','新聞'],['韓','신문','新聞']],trap:[['中','新闻 xīnwén','ニュース（新聞は 报纸）']],t:'zh'},
+{w:'先生',safe:[['日','せんせい','先生'],['韓','선생','先生']],trap:[['中','xiānsheng','〜さん（男性への敬称）・夫']],t:'zh'},
+{w:'博士',safe:[['日','はかせ','博士号'],['韓','박사','博士号'],['中','bóshì','博士号']],trap:[['越','bác sĩ','医者']],t:'vi'}
+];
+
+/* ---------- data: reading passages ---------- */
+const W=h=>WORDS.find(x=>x.h===h);
+const X={
+ congbo:{h:'公布',j:'公布',z:'公布',p:'gōngbù',jr:'こうふ',k:'공포',v:'công bố'},
+ vietnam:{h:'越南',j:'越南',z:'越南',p:'Yuènán',jr:'えつなん',k:'월남',v:'Việt Nam',note:'日本語・韓国語では普通カタカナ・外来語で「ベトナム」「베트남」と言う'},
+ tan:{h:'新',j:'新',z:'新',p:'xīn',jr:'しん',k:'신',v:'tân'}
+};
+const PASSAGES=[
+{id:'v1',lang:'vi',name:'越 1',tr:'政府は新しい経済発展計画を公布した。',toks:[
+ {t:'Chính phủ',w:W('政府')},{t:'công bố',w:X.congbo},{t:'kế hoạch',w:W('計劃')},{t:'phát triển',w:W('發展')},{t:'kinh tế',w:W('經濟')},{t:'mới',g:'新しい'},{t:'.',x:1}]},
+{id:'v2',lang:'vi',name:'越 2',tr:'ベトナムには長い歴史と文化がある。',toks:[
+ {t:'Việt Nam',w:X.vietnam},{t:'có',g:'ある'},{t:'lịch sử',w:W('歷史')},{t:'và',g:'と'},{t:'văn hóa',w:W('文化')},{t:'lâu đời',g:'長年の'},{t:'.',x:1}]},
+{id:'v3',lang:'vi',name:'越 3',tr:'学生は教育問題について意見を持っている。',toks:[
+ {t:'Học sinh',w:W('學生')},{t:'có',g:'持つ'},{t:'ý kiến',w:W('意見')},{t:'về',g:'〜について'},{t:'vấn đề',w:W('問題')},{t:'giáo dục',w:W('教育')},{t:'.',x:1}]},
+{id:'z1',lang:'zh',name:'中 1',tr:'政府は新しい経済発展計画を公布した。',toks:[
+ {t:'政府',w:W('政府')},{t:'公布',w:X.congbo},{t:'了',g:'〜した（完了）'},{t:'新',w:X.tan},{t:'的',g:'〜の'},{t:'经济',w:W('經濟')},{t:'发展',w:W('發展')},{t:'计划',w:W('計劃')},{t:'。',x:1}]},
+{id:'z2',lang:'zh',name:'中 2',tr:'私たちは大学で歴史と文化を研究している。',toks:[
+ {t:'我们',g:'私たち'},{t:'在',g:'〜で'},{t:'大学',w:W('大學')},{t:'研究',w:W('研究')},{t:'历史',w:W('歷史')},{t:'和',g:'と'},{t:'文化',w:W('文化')},{t:'。',x:1}]}
+];
+
+/* ---------- data: glyphs ---------- */
+// [日本, 韓国(繁体), 簡体, ピンイン, 日本語, 韓国語, ベトナム語]
+const GLYPHS=[
+['経','經','经','jīng','けい','경','kinh'],['発','發','发','fā','はつ','발','phát'],['気','氣','气','qì','き','기','khí'],
+['楽','樂','乐','lè / yuè','らく / がく','락 / 악','lạc / nhạc'],['歴','歷','历','lì','れき','력','lịch'],['実','實','实','shí','じつ','실','thực'],
+['売','賣','卖','mài','ばい','매','mại'],['読','讀','读','dú','どく','독','độc'],['広','廣','广','guǎng','こう','광','quảng'],['対','對','对','duì','たい','대','đối'],
+['学','學','学','xué','がく','학','học'],['国','國','国','guó','こく','국','quốc'],['会','會','会','huì','かい','회','hội'],
+['電','電','电','diàn','でん','전','điện'],['話','話','话','huà','わ','화','thoại'],['語','語','语','yǔ','ご','어','ngữ']
+];
+
+
+
+const $=s=>document.querySelector(s);
+const $$=s=>document.querySelectorAll(s);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const strip=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/đ/g,'d').replace(/Đ/g,'D').toLowerCase().replace(/\s+/g,' ').trim();
+const norm=s=>s.normalize('NFC').toLowerCase().replace(/\s+/g,' ').trim();
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+function judge(input,ans,py){
+  if(!input||!input.trim())return null;
+  let a=norm(ans),b=norm(input),sa=strip(a),sb=strip(b);
+  if(py){a=a.replace(/ /g,'');b=b.replace(/ /g,'');sa=sa.replace(/ /g,'');sb=sb.replace(/ /g,'')}
+  return a===b?'ok':sa===sb?'close':'ng';
+}
+const viFinal=s=>{const m=strip(s).match(/(ng|nh|ch|c|p|t|n|m)$/);return m?m[1]:''};
+function ruleTags(w){
+  const ks=[...w.k],vs=w.v.split(' ');
+  if(ks.length!==vs.length)return'';
+  return ks.map((ch,i)=>{
+    const code=ch.charCodeAt(0)-0xAC00;if(code<0||code>11171)return'';
+    const jong=code%28;const r=jong===0?NONE_RULE:RULES.find(x=>x.jong===jong);if(!r)return'';
+    const ok=r.vi.includes(viFinal(vs[i]));
+    return `<span class="tag ${ok?'':'off'}"><span class="ko">${ch}</span> → ${esc(vs[i])}　${ok?esc(r.label):'例外'}</span>`;
+  }).join('');
+}
+
+/* speech (Web Speech API) */
+const SPK_SVG='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>';
+const TTS={ok:typeof window.speechSynthesis!=='undefined',voices:[],warned:new Set()};
+const LNAME={zh:'中国語',vi:'ベトナム語'};
+function loadVoices(){if(!TTS.ok)return;try{TTS.voices=speechSynthesis.getVoices()||[]}catch(e){}}
+if(TTS.ok){loadVoices();try{speechSynthesis.addEventListener('voiceschanged',loadVoices)}catch(e){}}
+function pickVoice(lang){
+  const vs=TTS.voices.filter(v=>{const l=(v.lang||'').toLowerCase().replace('_','-');
+    return lang==='zh'?(l.startsWith('zh-cn')||l==='zh'||l.startsWith('cmn')||(l.startsWith('zh')&&!/hk|tw|yue/.test(l))):l.startsWith('vi')});
+  const score=v=>(/natural/i.test(v.name)?4:0)+(/online|google/i.test(v.name)?2:0)+((v.lang||'').toLowerCase().replace('_','-')===(lang==='zh'?'zh-cn':'vi-vn')?1:0);
+  return vs.sort((a,b)=>score(b)-score(a))[0]||null;
+}
+let toastT;
+function toast(msg){let el=$('#toast');if(!el){el=document.createElement('div');el.id='toast';el.className='toast';el.setAttribute('role','status');document.body.appendChild(el)}
+  el.textContent=msg;el.classList.remove('hidden');clearTimeout(toastT);toastT=setTimeout(()=>el.classList.add('hidden'),7000)}
+function speak(text,lang,btn,quiet){
+  if(!TTS.ok){if(!quiet)toast('このブラウザは読み上げに対応していない。EdgeかChromeで開いてみて。');return}
+  loadVoices();
+  const v=pickVoice(lang);
+  if(!v){if(!quiet||!TTS.warned.has(lang)){TTS.warned.add(lang);toast(`このPCに${LNAME[lang]}の音声が見つからない。Windowsの「設定 → 時刻と言語 → 言語と地域」で${LNAME[lang]}を追加して音声をインストールするか、Microsoft Edgeで開いてみて。`)}return}
+  try{
+    const u=new SpeechSynthesisUtterance(text);u.voice=v;u.lang=v.lang;u.rate=0.85;
+    if(btn){btn.classList.add('on');u.onend=u.onerror=()=>btn.classList.remove('on')}
+    speechSynthesis.speak(u);
+  }catch(e){if(!quiet)toast('読み上げに失敗した。もう一度押してみて。')}
+}
+function stopSpeech(){try{TTS.ok&&speechSynthesis.cancel()}catch(e){}}
+const spk=(text,lang)=>`<button class="spk" type="button" data-say="${esc(text)}" data-lang="${lang}" aria-label="${LNAME[lang]}で再生" title="${LNAME[lang]}で再生">${SPK_SVG}</button>`;
+document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('.spk');if(!b)return;e.stopPropagation();e.preventDefault();stopSpeech();speak(b.dataset.say,b.dataset.lang,b)},true);
+let autoplay=S.get('kb_auto',true);
+function syncAuto(){$('#autoplay').classList.toggle('on',autoplay);$('#autoplay').setAttribute('aria-pressed',autoplay)}
+$('#autoplay').onclick=()=>{autoplay=!autoplay;S.set('kb_auto',autoplay);syncAuto()};
+syncAuto();
+
+/* nav */
+let view='cards';
+$$('#nav button').forEach(b=>b.onclick=()=>{
+  view=b.dataset.v;stopSpeech();
+  $$('#nav button').forEach(x=>x.classList.toggle('on',x===b));
+  $$('main>section').forEach(s=>s.classList.toggle('hidden',s.id!=='v-'+view));
+  render();
+});
+function render(){({cards:renderCards,rules:renderRules,ff:renderFF,read:renderRead,glyph:renderGlyph})[view]();topStat()}
+
+/* 1. cards */
+const DAY=86400000, IV=[0,1,3,7,14,30];
+let srs=S.get('kb_srs',{}), custom=S.get('kb_custom',[]), target=S.get('kb_target','vi');
+let cur=null, flipped=false, guess={vi:'',zh:''}, doneToday=0;
+const deck=()=>WORDS.concat(custom);
+const due=()=>{const now=Date.now();return deck().filter(w=>!srs[w.h]||srs[w.h].due<=now).sort((a,b)=>((srs[a.h]||{}).due||0)-((srs[b.h]||{}).due||0))};
+function topStat(){const d=deck();const learned=d.filter(w=>srs[w.h]&&srs[w.h].box>=3).length;$('#topstat').textContent=`今日 ${due().length} 枚　習得 ${learned}/${d.length}`}
+$$('#target button').forEach(b=>{b.classList.toggle('on',b.dataset.t===target);b.onclick=()=>{target=b.dataset.t;S.set('kb_target',target);$$('#target button').forEach(x=>x.classList.toggle('on',x===b));flipped=false;renderCards()}});
+function renderCards(){
+  const q=due();
+  $('#queueinfo').textContent=q.length?`残り ${q.length} 枚`:'';
+  const total=q.length+doneToday;$('#prog').style.width=(total?doneToday/total*100:100)+'%';
+  if(!cur||!q.find(w=>w.h===cur.h)&&!flipped){cur=q[0]||null;flipped=false;guess={vi:'',zh:''}}
+  if(!cur){$('#cardbox').innerHTML=`<div class="done"><h2>今日はここまで</h2><p class="sub">読解で新しい単語を見つけて、カードに追加できる。</p></div>`;return}
+  const w=cur, showVi=target!=='zh', showZh=target!=='vi';
+  const front=`<div class="giant han">${esc(w.j)}</div>
+    ${w.h!==w.j?`<div class="alt">韓国の漢字 ${esc(w.h)}</div>`:''}
+    <div class="readings"><span>${esc(w.jr)}</span><span class="ko">${esc(w.k)}</span></div>`;
+  if(!flipped){
+    $('#cardbox').innerHTML=`<div class="stage">${front}
+      <div class="answer-in">
+        ${showVi?`<label class="field"><span>ベトナム語</span><input id="gvi" autocomplete="off" spellcheck="false" placeholder="読みを予想"></label>`:''}
+        ${showZh?`<label class="field"><span>中国語（ピンイン）</span><input id="gzh" autocomplete="off" spellcheck="false" placeholder="読みを予想"></label>`:''}
+        <div><button class="pill dark" id="flip">答えを見る<span class="key">Enter</span></button></div>
+        <div class="sub small">声調記号なしで入力してもOK</div>
+      </div></div>`;
+    const f=$('#gvi')||$('#gzh');if(f)f.focus();
+    $$('#cardbox input').forEach(i=>i.onkeydown=e=>{if(e.key==='Enter'){e.preventDefault();doFlip()}});
+    $('#flip').onclick=doFlip;return;
+  }
+  const vt=r=>r===null?'<div class="you sub">入力なし</div>':r==='ok'?'<div class="you ok">正解</div>':r==='close'?'<div class="you close">声調・記号だけ違う</div>':'<div class="you ng">違う</div>';
+  const yours=s=>s?`<div class="you sub">あなた：${esc(s)}</div>`:'';
+  const metaRule=showVi?ruleTags(w):'';
+  const metaGlyph=w.z!==w.j?`<span class="tag off">字体　${esc(w.j)}　<span class="ko">${esc(w.h)}</span>　<span class="zh">${esc(w.z)}</span></span>`:'';
+  $('#cardbox').innerHTML=`<div class="stage">${front}
+    <div class="reveal">
+      <div class="ans">
+        ${showVi?`<div><div class="lang">ベトナム語</div><div class="val">${esc(w.v)}${spk(w.v,'vi')}</div>${yours(guess.vi)}${vt(judge(guess.vi,w.v,false))}</div>`:''}
+        ${showZh?`<div><div class="lang">中国語</div><div class="val"><span class="zh">${esc(w.z)}</span> ${esc(w.p)}${spk(w.z,'zh')}</div>${yours(guess.zh)}${vt(judge(guess.zh,w.p,true))}</div>`:''}
+      </div>
+      <div class="meta">${metaRule}${metaGlyph}</div>
+      <div class="rate">
+        <button class="pill" data-r="0"><span class="key">1</span>もう一回<small>すぐ</small></button>
+        <button class="pill" data-r="1"><span class="key">2</span>難しい<small>${ivLabel(1)}</small></button>
+        <button class="pill" data-r="2"><span class="key">3</span>OK<small>${ivLabel(2)}</small></button>
+        <button class="pill" data-r="3"><span class="key">4</span>簡単<small>${ivLabel(3)}</small></button>
+      </div>
+      <div class="sub small" style="margin-top:14px">${[showVi?'<span class="key">V</span>ベトナム語を再生':'',showZh?'<span class="key">C</span>中国語を再生':''].filter(Boolean).join('　')}</div>
+    </div></div>`;
+  $$('.rate button').forEach(b=>b.onclick=()=>rate(+b.dataset.r));
+}
+function nextBox(r){const b=(srs[cur.h]||{box:0}).box;return r===0?0:r===1?Math.max(b,1):r===2?Math.min(b+1,5):Math.min(b+2,5)}
+function ivLabel(r){const d=IV[nextBox(r)];return d===0?'すぐ':d+'日後'}
+function doFlip(){guess.vi=($('#gvi')||{}).value||'';guess.zh=($('#gzh')||{}).value||'';flipped=true;renderCards();
+  if(autoplay&&cur){stopSpeech();if(target!=='zh')speak(cur.v,'vi',null,true);if(target!=='vi')speak(cur.z,'zh',null,true)}}
+function rate(r){
+  stopSpeech();
+  const box=nextBox(r);
+  srs[cur.h]={box,due:r===0?Date.now()+60000:Date.now()+IV[box]*DAY-3600000};
+  if(r!==0)doneToday++;
+  S.set('kb_srs',srs);
+  const q=due().filter(w=>w.h!==cur.h);
+  if(r===0&&q.length===0)srs[cur.h].due=0;
+  cur=q[0]||(r===0?cur:null);flipped=false;guess={vi:'',zh:''};
+  renderCards();topStat();
+}
+
+/* 2. rules */
+let ruleSel='k', rprog=S.get('kb_rules',{}), quiz=null;
+function renderRules(){
+  $('#rulebar').innerHTML=RULES.map(r=>{const d=(rprog[r.id]||[]).length;
+    return `<button class="${r.id===ruleSel?'on':''}" data-id="${r.id}"><div class="r"><span class="ko">${r.kr}</span> → ${r.vi.map(v=>'-'+v).join('/')}</div><div class="p">${d}/${r.ex.length}</div></button>`}).join('');
+  $$('#rulebar button').forEach(b=>b.onclick=()=>{ruleSel=b.dataset.id;quiz=null;renderRules()});
+  const r=RULES.find(x=>x.id===ruleSel);
+  if(!quiz)newQuiz(r);
+  const e=quiz.e;
+  $('#ruledetail').innerHTML=`
+    <div class="rulehead"><h2>パッチム <span class="ko">${r.kr}</span> は ${r.vi.map(v=>'-'+v).join(' / ')} になる</h2>
+      <p>日本語では${esc(r.jp)}。中国語では${esc(r.zh)}。</p></div>
+    <div class="qcard">
+      <div class="giant han">${e[0]}</div>
+      <div class="readings"><span class="ko">${e[1]}</span><span class="sub">${e[2]}</span></div>
+      <div class="opts">${quiz.opts.map((o,i)=>`<button class="pill ${quiz.ans?(o===e[3]?'right':(o===quiz.ans?'wrong':'')):''}" data-o="${esc(o)}"><span class="key">${i+1}</span>${esc(o)}</button>`).join('')}</div>
+      <div class="after">${quiz.ans?`<div style="margin-bottom:16px" class="small sub">ベトナム語 ${esc(e[3])}${spk(e[3],'vi')}　　中国語 ${esc(e[4])}${spk(e[0],'zh')}</div><button class="pill dark" id="qnext">次へ<span class="key">Enter</span></button>`:'<span class="sub small">ベトナム語の読みはどれ？</span>'}</div>
+    </div>
+    <details ${S.get('kb_ex_open',false)?'open':''}><summary>このルールの例をすべて見る</summary>
+      <table><tr><th>漢字</th><th>韓国語</th><th>日本語</th><th>ベトナム語</th><th>中国語</th></tr>
+      ${r.ex.map(x=>`<tr><td class="han" style="font-size:22px">${x[0]}</td><td class="ko">${x[1]}</td><td>${x[2]}</td><td><b style="font-weight:600">${esc(x[3])}</b>${spk(x[3],'vi')}</td><td class="sub">${esc(x[4])}${spk(x[0],'zh')}</td></tr>`).join('')}</table></details>`;
+  $$('#ruledetail .opts button').forEach(b=>b.onclick=()=>pickRule(b.dataset.o));
+  $('#ruledetail details').ontoggle=ev=>S.set('kb_ex_open',ev.target.open);
+  const n=$('#qnext');if(n){n.onclick=()=>{quiz=null;renderRules()};n.focus({preventScroll:true})}
+}
+function pickRule(o){
+  if(quiz.ans)return;quiz.ans=o;
+  if(autoplay){stopSpeech();speak(quiz.e[3],'vi',null,true)}
+  if(o===quiz.e[3]){const a=rprog[ruleSel]||[];if(!a.includes(quiz.e[0]))a.push(quiz.e[0]);rprog[ruleSel]=a;S.set('kb_rules',rprog)}
+  renderRules();
+}
+function newQuiz(r){
+  const done=rprog[r.id]||[];const pool=r.ex.filter(e=>!done.includes(e[0]));const src=pool.length?pool:r.ex;
+  const e=src[Math.floor(Math.random()*src.length)];
+  const stem=e[3].replace(/(ng|nh|ch|c|p|t|n|m)$/,'');
+  const alts=shuffle(['c','p','t','n','m','ng'].filter(f=>!r.vi.includes(f))).slice(0,2).map(f=>stem+f);
+  quiz={e,opts:shuffle([e[3],...alts]),ans:null};
+}
+
+/* 3. false friends */
+let fff='all', ffopen=new Set();
+$$('#fffilter button').forEach(b=>b.onclick=()=>{fff=b.dataset.f;$$('#fffilter button').forEach(x=>x.classList.toggle('on',x===b));renderFF()});
+function renderFF(){
+  const list=FF.filter(f=>fff==='all'||f.t===fff);
+  $('#fflist').innerHTML=list.map(f=>{const o=ffopen.has(f.w);return `<div class="tile ${o?'open':''}" data-w="${esc(f.w)}" role="button" tabindex="0" aria-expanded="${o}">
+    <div class="w han">${esc(f.w)}</div>
+    <div class="l">${f.safe.map(s=>`<div><b>${s[0]}</b>${esc(s[2]||s[1])}</div>`).join('')}</div>
+    ${o?`<div class="trap">${f.trap.map(t=>{const lg=t[0]==='越'?'vi':t[0]==='中'?'zh':null;const first=t[1].split(' ')[0];const say=lg==='vi'?t[1]:(/[\u4e00-\u9fff]/.test(first)?first:f.w);
+      return `<div><b>${t[0]}</b>${esc(t[2])}<div class="small" style="display:flex;align-items:center">${esc(t[1])}${lg?spk(say,lg):''}</div></div>`}).join('')}</div>`:'<div class="hint">実は…</div>'}
+  </div>`}).join('');
+  $$('#fflist .tile').forEach(b=>{const tg=()=>{const w=b.dataset.w;ffopen.has(w)?ffopen.delete(w):ffopen.add(w);renderFF();const nb=$(`#fflist .tile[data-w="${w}"]`);if(nb)nb.focus()};b.onclick=tg;b.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();tg()}}});
+}
+
+/* 4. reading */
+let pid='v1', selTok=null;
+$('#showann').onchange=renderRead;
+function renderRead(){
+  $('#psel').innerHTML=PASSAGES.map(p=>`<button data-p="${p.id}" class="${p.id===pid?'on':''}">${p.name}</button>`).join('');
+  $$('#psel button').forEach(b=>b.onclick=()=>{pid=b.dataset.p;selTok=null;renderRead()});
+  const p=PASSAGES.find(x=>x.id===pid), ann=$('#showann').checked;
+  $('#passage').className='passage '+(p.lang==='zh'?'zh':'');
+  $('#passage').innerHTML=p.toks.map((t,i)=>{
+    if(t.x)return '';
+    const nx=p.toks[i+1], tail=nx&&nx.x?`<span class="pt">${esc(nx.t)}</span>`:'';
+    if(t.g)return `<span class="tok func"><span class="w"><span class="s">${esc(t.t)}</span>${tail}</span><span class="a">${ann?esc(t.g):''}</span></span>`;
+    const a=p.lang==='vi'?t.w.h:`${t.w.jr}　${t.w.k}`;
+    return `<span class="tok sino ${selTok===i?'sel':''}" data-i="${i}"><span class="w"><span class="s" tabindex="0" role="button">${esc(t.t)}</span>${tail}</span><span class="a ${p.lang==='vi'?'han zh':''}">${ann?esc(a):''}</span></span>`;
+  }).join('');
+  const sent=p.lang==='vi'?p.toks.map(t=>t.t).join(' ').replace(/ ([.,])/g,'$1'):p.toks.map(t=>t.t).join('');
+  $('#ptrans').innerHTML=`${esc(p.tr)}${spk(sent,p.lang)}`;
+  $$('.tok.sino .s').forEach(el=>{const pick=()=>{selTok=+el.closest('.tok').dataset.i;renderRead()};el.onclick=pick;el.onkeydown=e=>{if(e.key==='Enter'){e.preventDefault();pick()}}});
+  const d=$('#tokdetail');
+  if(selTok===null){d.innerHTML='<div class="empty">下線の単語をタップすると、4つの言語の対応が出る</div>';return}
+  const w=p.toks[selTok].w, inDeck=deck().some(x=>x.h===w.h);
+  d.innerHTML=`<div class="sheet">
+    <div class="top"><div class="han" style="font-size:44px;line-height:1.1">${esc(w.h)}</div>
+      <button class="pill ${inDeck?'':'dark'}" id="addcard" ${inDeck?'disabled':''}>${inDeck?'カードに追加済み':'カードに追加'}</button></div>
+    <div class="grid">
+      <div class="cell"><span>日本語</span><div>${esc(w.jr)}</div></div>
+      <div class="cell"><span>韓国語</span><div class="ko">${esc(w.k)}</div></div>
+      <div class="cell"><span>中国語</span><div><span class="zh">${esc(w.z)}</span> ${esc(w.p)}${spk(w.z,'zh')}</div></div>
+      <div class="cell"><span>ベトナム語</span><div>${esc(w.v)}${spk(w.v,'vi')}</div></div>
+    </div>
+    ${w.note?`<p class="sub small" style="margin:16px 0 0">${esc(w.note)}</p>`:''}
+    <div style="margin-top:14px">${ruleTags(w)}</div></div>`;
+  if(!inDeck)$('#addcard').onclick=()=>{custom.push(w);S.set('kb_custom',custom);renderRead();topStat()};
+}
+
+/* 5. glyph */
+let gmode='list', gfil='all', gq=null, gscore=S.get('kb_glyph',{ok:0,n:0});
+const pat=g=>g[0]===g[2]&&g[0]!==g[1]?'jz':g[0]===g[1]&&g[0]!==g[2]?'jk':g[0]!==g[1]&&g[1]!==g[2]&&g[0]!==g[2]?'diff':'same';
+$$('#gmode button').forEach(b=>b.onclick=()=>{gmode=b.dataset.g;$$('#gmode button').forEach(x=>x.classList.toggle('on',x===b));$('#gfilter').classList.toggle('hidden',gmode!=='list');renderGlyph()});
+$$('#gfilter button').forEach(b=>b.onclick=()=>{gfil=b.dataset.p;$$('#gfilter button').forEach(x=>x.classList.toggle('on',x===b));renderGlyph()});
+function renderGlyph(){
+  if(gmode==='list'){
+    const list=GLYPHS.filter(g=>gfil==='all'||pat(g)===gfil);
+    $('#glyphbox').innerHTML=list.length?`<div class="ghead"><span>日本</span><span>韓国・繁体</span><span>中国・簡体</span><span>読み</span></div>`+list.map(g=>`<div class="grow">
+      <div><div class="g han">${g[0]}</div><div class="lbl">${g[4]}</div></div>
+      <div><div class="g han ko">${g[1]}</div><div class="lbl ko">${g[5]}</div></div>
+      <div class="zhcol"><div class="g han zh">${g[2]}</div><div class="lbl">${g[3]}${spk(g[2],'zh')}</div></div>
+      <div class="rd">${esc(g[6])}${spk(g[6].replace(/ \/ /g,', '),'vi')}</div></div>`).join(''):'<div class="empty">該当する字はない</div>';
+    return;
+  }
+  if(!gq){const pool=GLYPHS.filter(g=>g[0]!==g[2]);const g=pool[Math.floor(Math.random()*pool.length)];
+    const others=shuffle(GLYPHS.filter(x=>x[2]!==g[2]).map(x=>x[2])).slice(0,3);gq={g,opts:shuffle([g[2],...others]),ans:null}}
+  const g=gq.g;
+  $('#glyphbox').innerHTML=`<div class="qcard" style="margin-top:8px">
+    <div class="sub small">中国の簡体字はどれ？　${gscore.ok} / ${gscore.n} 正解</div>
+    <div class="giant han" style="margin-top:16px">${g[0]}</div>
+    <div class="readings"><span class="sub">韓国 <span class="han ko">${g[1]}</span></span><span class="sub">${g[4]}</span></div>
+    <div class="opts">${gq.opts.map((o,i)=>`<button class="pill ${gq.ans?(o===g[2]?'right':(o===gq.ans?'wrong':'')):''}" data-o="${o}" style="font-size:30px"><span class="key">${i+1}</span><span class="han zh">${o}</span></button>`).join('')}</div>
+    <div class="after">${gq.ans?`<div class="small ${gq.ans===g[2]?'ok':'ng'}" style="margin-bottom:14px">${gq.ans===g[2]?'正解':'正解は '+g[2]}　${g[3]}${spk(g[2],'zh')}</div><button class="pill dark" id="gnext">次へ<span class="key">Enter</span></button>`:''}</div>
+  </div>`;
+  $$('#glyphbox .opts button').forEach(b=>b.onclick=()=>pickGlyph(b.dataset.o));
+  const n=$('#gnext');if(n){n.onclick=()=>{gq=null;renderGlyph()};n.focus({preventScroll:true})}
+}
+function pickGlyph(o){if(gq.ans)return;gq.ans=o;if(autoplay){stopSpeech();speak(gq.g[2],'zh',null,true)}gscore.n++;if(o===gq.g[2])gscore.ok++;S.set('kb_glyph',gscore);renderGlyph()}
+
+/* keyboard */
+document.addEventListener('keydown',e=>{
+  if(e.target.tagName==='INPUT'&&e.target.type!=='checkbox')return;
+  if(e.ctrlKey||e.metaKey||e.altKey)return;
+  const n=['1','2','3','4'].indexOf(e.key);
+  if(view==='cards'&&flipped&&n>=0){e.preventDefault();rate(n);return}
+  if(view==='cards'&&flipped&&cur){const k=e.key.toLowerCase();
+    if(k==='v'&&target!=='zh'){e.preventDefault();stopSpeech();speak(cur.v,'vi');return}
+    if(k==='c'&&target!=='vi'){e.preventDefault();stopSpeech();speak(cur.z,'zh');return}}
+  if(view==='rules'&&quiz){
+    if(!quiz.ans&&n>=0&&n<quiz.opts.length){e.preventDefault();pickRule(quiz.opts[n]);return}
+    if(quiz.ans&&e.key==='Enter'){e.preventDefault();quiz=null;renderRules();return}
+  }
+  if(view==='glyph'&&gmode==='quiz'&&gq){
+    if(!gq.ans&&n>=0&&n<gq.opts.length){e.preventDefault();pickGlyph(gq.opts[n]);return}
+    if(gq.ans&&e.key==='Enter'){e.preventDefault();gq=null;renderGlyph();return}
+  }
+});
+
+/* reset */
+let armed=false;
+$('#reset').onclick=()=>{
+  if(!armed){armed=true;$('#reset').textContent='もう一度押すとリセット';setTimeout(()=>{armed=false;$('#reset').textContent='記録をリセット'},3000);return}
+  srs={};custom=[];rprog={};gscore={ok:0,n:0};doneToday=0;
+  S.set('kb_srs',{});S.set('kb_custom',[]);S.set('kb_rules',{});S.set('kb_glyph',gscore);
+  cur=null;flipped=false;armed=false;$('#reset').textContent='記録をリセット';render();
+};
+
+render();
+</script>
+</body>
+</html>

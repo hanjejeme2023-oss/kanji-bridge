@@ -1,0 +1,14 @@
+{
+  "_comment": "Static sound-rule text for the 音のルール view (spec D8). Taken verbatim from the prototype RULES array. 'jong' = Hangul final-consonant index ((ord(syllable)-0xAC00)%28). Examples are NOT stored here; they are generated at build time from aligned syllable pairs (spec D7) and exported to data.js as 'rules'.",
+  "rules": [
+    {"id": "k",  "jong": 1,  "kr": "ㄱ", "vi": ["c", "ch"],  "label": "ㄱ → -c / -ch",  "jp": "く・き で終わる（がく・こく・れき）",                  "zh": "語末の子音は消えた（xué・guó）"},
+    {"id": "p",  "jong": 17, "kr": "ㅂ", "vi": ["p"],        "label": "ㅂ → -p",        "jp": "う で終わることが多い（ほう・じゅう）。昔は「ふ」",   "zh": "語末の子音は消えた（fǎ・shí）"},
+    {"id": "t",  "jong": 8,  "kr": "ㄹ", "vi": ["t"],        "label": "ㄹ → -t",        "jp": "つ・ち で終わる（はつ・いち）",                       "zh": "語末の子音は消えた（fā・yī）"},
+    {"id": "n",  "jong": 4,  "kr": "ㄴ", "vi": ["n"],        "label": "ㄴ → -n",        "jp": "ん で終わる（あん・ぶん）",                           "zh": "-n のまま（ān・wén）"},
+    {"id": "m",  "jong": 16, "kr": "ㅁ", "vi": ["m"],        "label": "ㅁ → -m",        "jp": "ん で終わる（ㄴ と区別できない）",                    "zh": "-n に変わった（xīn・sān）。中国語だけ ㄴ と ㅁ が合流"},
+    {"id": "ng", "jong": 21, "kr": "ㅇ", "vi": ["ng", "nh"], "label": "ㅇ → -ng / -nh", "jp": "う・い で終わる（とう・せい）",                       "zh": "-ng のまま（dōng・zhèng）"}
+  ],
+  "none_rule": {"jong": 0, "vi": [""], "label": "パッチムなし → 子音で終わらない"},
+  "ko_final_by_jong": {"1": "ㄱ", "4": "ㄴ", "8": "ㄹ", "16": "ㅁ", "17": "ㅂ", "21": "ㅇ"},
+  "vi_final_regex": "(ng|nh|ch|c|p|t|n|m)$"
+}

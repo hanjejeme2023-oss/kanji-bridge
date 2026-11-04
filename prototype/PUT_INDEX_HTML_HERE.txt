@@ -1,0 +1,2 @@
+Put the prototype HTML here as index.html
+(試作版のHTMLを index.html という名前でここに入れてください)
