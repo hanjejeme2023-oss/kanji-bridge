@@ -19,6 +19,11 @@
 - Added reproducible `pipeline/profile_sources.py`, `pipeline/requirements.txt`, and generated `docs/SOURCE_PROFILES.md` with formats, encodings, counts, keys, ten-row samples, quality risks, mapping candidates, and review questions.
 - Completed `docs/SOURCES.md` licence and planned-usage logs. Ambiguous hsk30 provenance and libhangul per-file licence remain marked `要確認` for Claude; all share-alike effects are called out.
 
+## 2026-11-04 — Stage 2: implementation started, blocked on canonical key [Codex]
+- Implemented the Stage 2 pipeline structure: shared NFC/Vietnamese/pinyin/phonology/ID helpers; per-source loaders for Unihan, KANJIDIC2, hsk30, OpenCC, libhangul, Kaikki, and FrequencyWords; the character builder/reports; `run_all.py`; and Stage 2 unit/rebuild tests.
+- First build correctly detected a contract conflict in the raw HSK character list: source rows `着 → 著` (level 1) and `著 → 著` (level 4) both produce canonical `trad=著` under D33. This conflicts with the simultaneous requirements for 3,000 rows and a unique `trad` key. No row was dropped, renamed, or overridden because HANDOFF explicitly forbids improvising a rule.
+- Pipeline stopped at the hsk30 loader validation. Claude must decide whether to merge to 2,999 canonical rows, introduce a documented `着` exception to keep 3,000 unique rows, or revise another contract requirement. No Stage 2 final tables are claimed complete.
+
 ## 2026-11-04 — Stage 1 review [Claude]
 - Confirmed licences (D23): all sources usable; dataset will be CC BY-SA 4.0; hsk30 provenance risk accepted and recorded.
 - Selected Vietnamese inputs (D24-D27): Kaikki for readings/Han forms, FrequencyWords for a frequency proxy; Unihan `kVietnamese` gated by verification flags after the 200-character cross-check (`docs/STAGE1_REVIEW.md`).

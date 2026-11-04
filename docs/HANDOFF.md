@@ -10,6 +10,7 @@ Read `PROMPT.md` first, then this file. Do only the assignment for your role. Up
 - Git identity: `Hanje Unesaki <311183901+hanjejeme2023-oss@users.noreply.github.com>` (D19). Check `git config user.email` before committing.
 - Environment: Python 3.12.10 + pandas 3.1.1 (`pipeline/requirements.txt`). On this machine the Python with pandas is `<user folder>\AppData\Local\Programs\Python\Python312\python.exe`; the `python` on the bash PATH may be a Store stub without pandas.
 - Prototype: `prototype/index.html` (frozen).
+- Stage 2 implementation is **BLOCKED pending one Claude decision**: the HSK character rows `着 → 著` and `著 → 著` collide under canonical `trad=著`. See Open problems and the next assignment below. Codex did not invent an exception.
 
 ## Stage 1 review: outcome in brief (details in STAGE1_REVIEW.md)
 - **Licences:** all accepted. hsk30 accepted with a recorded provenance risk (confirmed by the user, D35). Dataset will be **CC BY-SA 4.0**.
@@ -17,18 +18,22 @@ Read `PROMPT.md` first, then this file. Do only the assignment for your role. Up
 - **Shinjitai:** inverted OpenCC `JPShinjitaiCharacters` (16/16 on the prototype's glyph pairs), KANJIDIC2 tie-break.
 
 ## NEXT ASSIGNMENT
-**Agent: Codex — Stage 2: character table** (PROMPT "STAGE 2", steps 1–4)
+**Agent: Claude — resolve the Stage 2 `着` / `著` canonical-key conflict**
 
-Implement the rules exactly as written in DECISIONS; do not change them. If a rule is unworkable, write the problem under "Open problems" here and stop; do not improvise.
+Evidence from checksum-locked `raw/hsk30/hsk30-chars.csv`:
 
-1. **Loaders** (one script per source, `pipeline/load_<source>.py`, output `data/staging/<source>.csv`): Unihan (pivot long→wide; fields kDefinition, kMandarin, kHangul, kVietnamese, kSimplifiedVariant, kTraditionalVariant, plus kHanyuPinyin / kXHC1983 if present in the zip; strip `:0E`-style suffixes), KANJIDIC2 (literal, ja_on in hiragana, grade, freq, meanings), hsk30 (chars + words per D30), OpenCC characters (skip the `#` line), libhangul single-character records, Kaikki (parse per D24: word pairs rule A, aligned character readings, attested Hán-Việt syllable set), FrequencyWords (per D25/D26 normalization). Common helpers in `pipeline/common.py`: NFC/strip, **Vietnamese normalizer (D25) with unit tests**, katakana→hiragana, Hangul final consonant, Vietnamese final regex, pinyin numbered→marked (for later).
-2. **Build `chars`** per SCHEMA §1.1 and DECISIONS D24, D28, D29, D32, D33 (scope for this stage: the 3,000-character HSK list, trad keys from hsk30-chars; extended in Stage 3). IDs via `pipeline/id_map.csv` (key = `trad`). Use `merge(how="left"/"outer", indicator=True, validate=...)` everywhere; log `_merge` counts.
-3. **Derive** `ko_final`, `vi_final` (formulas in `config/rules.json`), `in_hsk_chars`, `level`.
-4. **Reports** in `data/final/`: `rules_report.csv` (pivot `ko_final` × `vi_final` using only characters with exactly one Korean reading and exactly one **verified** Vietnamese reading, i.e. `source_vi` ≠ `unihan_unverified`; plus a per-pair examples file for review), `no_jp_form.csv`, coverage per language column (isna counts), `_merge` counts per merge.
-5. **Tests** in `tests/` (pytest or plain asserts; they must pass): Vietnamese normalizer (`thuỷ` equals `thủy`, `hoà` becomes `hòa`, `khoẻ` becomes `khỏe`; `loạn`, `toán`, `quý` unchanged); Hangul final (`학`→ㄱ, `국`→ㄱ, `법`→ㅂ, `일`→ㄹ, `안`→ㄴ, `심`→ㅁ, `강`→ㅇ, `가`→none); the 6 multi-target shinjitai cases (畫→画, 鬥→闘, 鹽→塩, 鋪→舗, 莊→荘, 驅→駆) and the 16 prototype glyph pairs (`docs/STAGE1_REVIEW.md` §3); fixed test characters 學 國 茶 行 生 樂 present with ko/vi/pinyin as in the prototype where the sources allow (學 학 học xué; 國 국 quốc guó; 茶 trà; 樂 with lạc/nhạc, 락/악, lè/yuè in the `_all` columns); duplicate-key check on `trad`/`char_id`; NFC check; **rebuild twice → identical output and identical IDs**.
-6. **Validation checklist** (`data-pipeline-notes.md` §7) with the 20 fixed test words where they are characters; row counts per stage; log in CHANGELOG. Expected sanity numbers (flag any big deviation instead of hiding it): 3,000 rows; `jp` empty for about 45; verified Vietnamese primary for about 1,835; the 6 jp tie-break cases resolved as above.
-7. Create a `pipeline/run_all.py` skeleton that runs download (verify only) → loaders → chars → reports (later stages append). Commit as `[Codex] Stage 2: chars table`.
-8. Hand off to **Claude: Stage 2 review** (check `rules_report.csv` against `config/rules.json`: ㄱ→c/ch, ㅂ→p, ㄹ→t, ㄴ→n, ㅁ→m, ㅇ→ng/nh; investigate every large off-pattern cell).
+- `着,1,1,著,36,...`
+- `著,4,3,著,5,...`
+
+D33 says `chars.trad = hsk30-chars Traditional (first value)`, so both become `trad=著`. SCHEMA §1.1 and the required tests say `trad` is unique; HANDOFF also expects exactly 3,000 character rows. These requirements cannot all hold simultaneously:
+
+1. **Merge the two source rows at canonical `著`** → correct traditional-key normalization, but 2,999 rows and two HSK levels/source simplified forms need an explicit resolution rule.
+2. **Keep `着` as canonical `trad=着` for its source row** → 3,000 unique rows and preserves both simplified-source characters, but creates a documented exception to D33/global traditional-key policy.
+3. **Allow duplicate `trad=著`** → preserves 3,000 rows but breaks the schema, stable ID key, merge validation, and duplicate-key tests; not recommended.
+
+Claude must choose and record the exact rule in `DECISIONS.md`/`SCHEMA.md`, update the expected Stage 2 row count if needed, then hand back to **Codex — finish Stage 2 character table**. The partial implementation is committed and ready to resume; do not perform the Stage 2 sound-rule review yet because final tables do not exist.
+
+Validation completed before stopping: all Python files compile; the Vietnamese normalizer, Hangul-final, and numbered-pinyin tests pass; every non-HSK loader ran successfully (Unihan 50,934 NFC keys; KANJIDIC2 13,033 NFC keys after compatibility-form aggregation; OpenCC 414 non-identity character pairs; libhangul 28,460 single-character readings; Kaikki 3,373 explicit pairs / 1,743 aligned characters; FrequencyWords 47,362 normalized tokens). The full build intentionally fails at the HSK duplicate-key assertion.
 
 ## Planned sequence after Stage 2 (user-approved change, DECISIONS D36)
 1. Claude: Stage 2 review → Codex: Stage 3 (words; word rules D24, D26, D27, D30-D32; VI-only additions top 1,200, bands in D27; report counts).
@@ -53,12 +58,14 @@ Implement the rules exactly as written in DECISIONS; do not change them. If a ru
 - If a source has no license or non-commercial-only terms: do not use it; stop and ask the user.
 
 ## Open problems / notes
+- **BLOCKING:** hsk30 character canonical collision: `着 → 著` and `著 → 著`. D33 yields duplicate `trad=著`; merging yields 2,999 rows, while keeping 3,000 requires an explicit exception. Claude must decide; Codex stopped at loader validation as instructed.
 - Vietnamese coverage ceiling (about 35% of HSK words) with the current licensed sources; the search for further licensed sources runs after Stage 3, before Stage 4 (D36).
 - Source #7 stays excluded (D21).
 - EDRDG data impose an update-procedure requirement; `download.py --refresh` exists; release documentation must explain updates.
 - hsk30 provenance risk: **accepted by the user** (D35, personal non-commercial project; revisit if ever published commercially).
 
 ## Log
+- 2026-11-04 Codex — Stage 2 implementation written but build stopped at the `着`/`著` canonical-key conflict. No improvised data rule; next: Claude decision, then Codex resumes Stage 2.
 - 2026-11-04 Claude — applied user decisions: hsk30 accepted (D35); Vietnamese source search moved to after Stage 3 / before Stage 4 (D36). Next assignment unchanged: Codex Stage 2.
 - 2026-11-04 Claude — Stage 1 review done: licences accepted, Vietnamese sources selected with verification rules, shinjitai method chosen, priorities set (D23–D34). Next: Codex Stage 2.
 - 2026-11-04 Codex — Stage 1 done: downloader + checksums, all licensed-source profiles, licences copied, unlicensed Hán-Việt source excluded by user, two licensed Vietnamese replacements profiled, reproducibility verified. Next: Claude Stage 1 review.
