@@ -22,7 +22,7 @@ Read `PROMPT.md` first, then this file. Do only the assignment for your role. Up
 ## NEXT ASSIGNMENT
 **Agent: Codex — Stage 3: word table** (PROMPT Stage 3, as completed by DECISIONS D39-D50 and the spec addenda; **where PROMPT's wording differs, those win**). Stage 2 gate: **PASS** (attempt 1, 2026-11-04). A pre-Stage-3 readiness review (Claude, 2026-11-04, three passes) simulated the matching rules below on the raw files; expected counts are estimates, not yet from a real build. Do not improvise a data rule; if one is missing, stop and raise it here.
 
-**Before starting:** read D39-D50. **D50 lists four points awaiting the user.** Apply its defaults unless this file or D50 has been updated with an answer.
+**Before starting:** read D39-D50. **D50 records the user's answers to the four open points; apply them.**
 
 ### Task, in build order (D40)
 1. **HSK rows (D41):** 11,110 → 11,028 rows, one per `(trad, pinyin)`; minimum level; `pos`, `hsk_ids`; pinyin without spaces. Attach CC-CEDICT by `cedict_key`, then the D41 fallback; write `cedict_unmatched.csv`.
@@ -32,7 +32,7 @@ Read `PROMPT.md` first, then this file. Do only the assignment for your role. Up
 5. **Grow `chars` (D38, D48):** about 82 + 108 rows, `in_hsk_chars=false`. Rescope the Stage 2 checks that assume 3,000 rows (D40). Link word characters to `char_id` (D37 item 5, D38); write `char_ambiguous.csv`, `char_simp_mismatch.csv`.
 6. **Match tables:** JMdict (D42), libhangul (D43), Vietnamese (D44), one row per word key, merged left `1:1`. Create `pipeline/overrides.csv` (header only). Write `ja_multi_candidates.csv`, `ko_multi_candidates.csv`, `ko_unresolved.csv`, `vi_ambiguous.csv`.
 7. **`word_chars` (D45)** with `pinyin_syllable`, `ko_syllable`, `ko_base`, `vi_syllable`, `syl_aligned`; write `alignment_mismatches.csv`.
-8. **D39:** update primaries for `ko`, `vi`, `pinyin` (not `ja_on`), `ko_final`, `vi_final`, source tags, `ko_base_all`; write `char_primary_changes.csv`, `char_primary_no_evidence.csv`. Then apply `table=chars` overrides.
+8. **D39:** update primaries for `ko` and `vi` only (`ja_on` keeps KANJIDIC2 order, `pinyin` keeps `kMandarin` order), `ko_final`, `vi_final`, source tags, `ko_base_all`; write `char_primary_changes.csv`, `char_primary_no_evidence.csv`. Then apply `table=chars` overrides and recompute those same columns.
 9. **Rebuild `rules_report.csv`, `rules_examples.csv` (D45):** verified readings only.
 10. **`freq_vi` (D44), `origin`, `chars.level`, `card_eligible` (D48), `verified=false`, glosses (D48).**
 11. **`data/staging/ff_candidates.csv` (D47).**
@@ -42,7 +42,7 @@ Read `PROMPT.md` first, then this file. Do only the assignment for your role. Up
 PROMPT's criteria, measured by the checklist and the test-word table in `docs/GATES.md`, and specifically:
 - 11,028 HSK rows, `word_id` unique; every merge in SCHEMA §1.8 logged with `validate=`; every report above exists with its row count in your hand-off note.
 - Test words match the table in `GATES.md` (18 HSK words; 越南 as `vi_freq`; 手紙 in `ff_candidates.csv`, not in `words`).
-- D39: every `ko`, `vi`, `pinyin` primary equals the most frequent reading in evidence words after normalization (ties: previous order); `*_all` sets unchanged, primary first; every `ja_on` is the KANJIDIC2 first value; tests 樂 (락 or 악, never 낙), 歷 (력, never 역), 怒 (노), 行 (행), 茶 (차 or 다 per words).
+- D39: every `ko` and `vi` primary equals the most frequent reading in evidence words after normalization (ties: previous order), unless a `table=chars` override applies; `*_all` sets unchanged, primary first; every `ja_on` is the KANJIDIC2 first value; every `pinyin` is the first `kMandarin` value; tests 樂 (락 or 악, never 낙), 歷 (력, never 역), 怒 (노), 行 (행), 茶 (차 if `overrides.csv` has it, otherwise 차 or 다). 다 at your build is expected, not a failure: state it in your hand-off note. The user wants 차, and the gate handles it.
 - `rules_report.csv` rebuilt after D39, 0 unverified readings.
 - `ff_candidates.csv` has 2,500-3,300 rows.
 - Tests added: `tests/test_words.py` for D41-D46, `tests/test_char_collisions.py` rescoped; all pass; rebuilding twice is identical including `id_map.csv`.
@@ -52,7 +52,7 @@ PROMPT's criteria, measured by the checklist and the test-word table in `docs/GA
 
 ## Planned sequence after Stage 3 (user-approved, DECISIONS D36; order made explicit in D46)
 1. **Codex: Stage 3**, VI-only words included, with the current sources.
-2. **Claude: Stage 3 gate** (checklist in `GATES.md`, 30-word sample, review lists per D50 item 4; overrides written).
+2. **Claude: Stage 3 gate** (checklist in `GATES.md`, 30-word sample). Claude proposes picks for the review short list, including 茶 차 if needed, and **stops for the user to confirm** (D50 item 4); then writes the confirmed overrides, rebuilds and rechecks before recording the gate.
 3. **Claude: Vietnamese source search (D36).** Reads `coverage_report.csv` and `vi_ambiguous.csv`, then:
    - searches for additional **licensed** Vietnamese resources: a Hán-Việt character dictionary (to verify/replace Unihan's Nôm-contaminated readings), a Chinese-Vietnamese or Sino-Vietnamese word list, a Vietnamese frequency list of words (not syllables); candidates to check include Wikimedia/Wiktionary-derived data other than Kaikki, open Vietnamese dictionaries, and Chinese-Vietnamese resources on GitHub/Hugging Face/academic sites;
    - records each candidate's licence from its own licence file in `docs/SOURCES.md` before anything is used; anything unlicensed, non-commercial-only, or of unclear provenance is rejected (the user is asked only for a licence judgment call);
@@ -71,7 +71,7 @@ PROMPT's criteria, measured by the checklist and the test-word table in `docs/GA
 - If a source has no license or non-commercial-only terms: do not use it; stop and ask the user.
 
 ## Open problems / notes
-- **Awaiting the user: D50, four points** (pinyin in D39; single-character Japanese reading; single-character Korean form; who settles review lists). Defaults are written down, so Stage 3 can run; a different answer means a rule edit and a rebuild.
+- **Question to the user (not blocking; D50 item 2):** about 260 single-character words have no on'yomi in JMdict and show a kun reading (海 うみ, but also 電 いなずま). Should they fall back to the KANJIDIC2 on'yomi? Until answered, the written rule stands. A different answer means a rule edit and a rebuild.
 - Known limits to report, not fix, in Stage 3: `hanja.txt` has no frequency, so a Korean reading may be a rare entry; `freq_vi` is a syllable proxy, so VI-only levels are rough until D36 finds a word list.
 - Stage 2 gate notes (non-blocking): (1) resolved by D39 and D43. (2) Suspect Vietnamese readings for loop 1 accuracy: 怎 chẩn (expected chẩm; `unihan_hvsyl`), 幻 ảo (usual Hán-Việt huyễn). (3) `unihan_hvsyl` (300 chars) is a weaker check than `kaikki_aligned`.
 - Resolved: hsk30 `着`/`著` collision → separate rows with `key_char` (D37, revised).
@@ -81,6 +81,7 @@ PROMPT's criteria, measured by the checklist and the test-word table in `docs/GA
 - hsk30 provenance risk: **accepted by the user** (D35, personal non-commercial project; revisit if ever published commercially).
 
 ## Log
+- 2026-11-04 Claude — applied the user's D50 answers: pinyin out of D39; on'yomi first; Korean base form; user confirms the review short list; 茶 `chars.ko` to end as 차. 國 くに explained. Next: Codex Stage 3.
 - 2026-11-04 Claude — pre-Stage-3 readiness review, three passes; D39 refined by the user; D40-D50 added; SCHEMA, spec addenda, GATES checklist and this task updated; four user questions recorded in D50. Next: Codex Stage 3.
 - 2026-11-04 Claude — user decision D39 recorded (primary readings from word evidence); added to the Stage 3 task. Next: Codex Stage 3.
 - 2026-11-04 Claude — Stage 2 gate PASS: all Done-when criteria re-verified (16 tests rerun OK); `rules_report.csv` uses only verified readings (0 unihan_unverified, 主 = chủ); 7 off-pattern characters reviewed (5 real exceptions, 2 flagged). Next: Codex Stage 3.

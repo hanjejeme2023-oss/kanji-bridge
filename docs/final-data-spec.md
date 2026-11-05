@@ -151,5 +151,5 @@ Rules in `DECISIONS.md` D39-D50. **Where PROMPT Stage 3 and these disagree, thes
 - PROMPT step 5, "frequent hanja.txt words": not implementable, the file has no frequency data. Korean-only false-friend candidates are dropped; the filter is D47.
 - PROMPT Stage 3 Done-when, "20 test words": 18 are HSK words, 越南 is a seeded `vi_freq` word, 手紙 is checked in `ff_candidates.csv` (D49; table in `GATES.md`).
 - PROMPT Stage 5, glyph readings "from the `*_all` columns": Korean uses `ko_base_all` (SCHEMA §3.5).
-- `chars` primaries: `ko`, `vi`, `pinyin` from word evidence with 두음법칙 normalization; `ja_on` keeps KANJIDIC2 order (D39). `pinyin` scope awaits the user (D50).
+- `chars` primaries: `ko`, `vi` from word evidence, Korean with 두음법칙 normalization; `ja_on` keeps KANJIDIC2 order and `pinyin` keeps `kMandarin` order (D39, D50).
 - New columns: `chars.ko_base_all`; `words.ja_common`, `pos`, `hsk_ids`, `gloss_ja_en`, `gloss_ko`, `gloss_vi`; `word_chars.pinyin_syllable`, `ko_base` (SCHEMA).

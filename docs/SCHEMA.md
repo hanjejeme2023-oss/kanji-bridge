@@ -24,7 +24,7 @@ If this file and the spec disagree, the spec wins, except where DECISIONS.md D12
 | key_char | str, 1 char | the character whose Unihan / KANJIDIC2 / libhangul / Kaikki entries supply this row's readings; unique; **equals `trad` for every row except rows whose `trad` is shared with another row, where it is the source Hanzi (`着`; the row `著` keeps `著`)**. `id_map.csv` key for chars (D37) |
 | simp | str, 1 char | = `trad` if no simplification |
 | jp | str, 1 char | Japanese form (shinjitai), = `trad` if unchanged. Mapping method: DECISIONS (Stage 1 review) |
-| ja_on / ko / pinyin / vi | str | primary reading (D6). May be empty. `ko`, `vi`, `pinyin` come from word evidence after Stage 3; `ja_on` stays KANJIDIC2 first (D39) |
+| ja_on / ko / pinyin / vi | str | primary reading (D6). May be empty. `ko`, `vi` come from word evidence after Stage 3; `ja_on` stays KANJIDIC2 first and `pinyin` stays `kMandarin` first (D39) |
 | ja_on_all / ko_all / pinyin_all / vi_all | str | `;`-separated, primary first, de-duplicated. D39 reorders, never adds or drops |
 | ko_base_all | str | `ko_all` without readings that are only 두음 forms of another `ko_all` reading: a reading is removed if it is a D39 form of another listed reading and has no later-position evidence (樂 `락;악;요`, 歷 `력`, 怒 keeps `노;로`). Primary first. For the glyph view (§3.5) |
 | ko_final | str | one of `ㄱ ㄴ ㄹ ㅁ ㅂ ㅇ` or other final jamo; empty = no final |

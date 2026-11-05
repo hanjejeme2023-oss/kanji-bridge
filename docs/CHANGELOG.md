@@ -107,3 +107,11 @@ Applied. Korean readings are normalized for 두음법칙 before counting; `ja_on
 
 ### Open: four questions in D50
 Asked on 2026-11-04 and not answered. Defaults are recorded, and the user's existing decision on pinyin is left as it was.
+
+## 2026-11-04 Claude — User's answers to D50 applied (docs only)
+- **D39:** pinyin removed from the evidence rule; `chars.pinyin` keeps `kMandarin` order. `word_chars.pinyin_syllable` stays, because D37, D43 and D44 use it.
+- **Japanese single-character words:** on'yomi first, confirmed. **Korean single-character words:** base form, confirmed.
+- **Review lists:** Claude proposes at the Stage 3 gate, the user confirms the short list, then overrides are written and the data rebuilt (`GATES.md` check 9).
+- **茶:** `chars.ko` must end as 차. Checked: the only one-candidate evidence word is 茶葉 다엽, so the first build gives 다, and even with 홍차 and 녹차 confirmed a 2-2 tie would keep 다. It therefore goes on the short list with an override, and Codex's test accepts 다 until then.
+- **國 in the test table:** the user asked to fix or explain. Explained, not changed: JMdict's only entry for 国 is くに, so くに follows the chosen rule; こく is KANJIDIC2's reading and is `chars.ja_on`. Checking this showed the same applies to about 260 of 970 single-character forms, some with bad kun readings (電 いなずま). Falling back to KANJIDIC2 would change all of them, so it was put to the user as a follow-up rather than decided here.
+- Also updated so nothing contradicts D39: D42, D43, D45, `SCHEMA.md` and the spec addendum (the spec wins on conflict, so its old line had to change).
