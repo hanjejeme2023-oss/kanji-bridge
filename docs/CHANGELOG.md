@@ -57,3 +57,53 @@
 
 ## 2026-11-04 Claude — Stage 2 gate
 - PASS on attempt 1; evidence and the rules_report review are in `docs/GATES.md`. No data changes; no new decisions (non-blocking notes recorded in HANDOFF Open problems).
+
+## 2026-11-04 Claude — Pre-Stage-3 readiness review (requested by the user; docs only, no pipeline or data change)
+Measured with throw-away scripts on the checksum-locked `raw/` files and `data/staging/`. The scripts are not in the repo; the rules and numbers are in DECISIONS D39-D50.
+
+### Step 0: user refinement of D39
+Applied. Korean readings are normalized for 두음법칙 before counting; `ja_on` is out of scope and keeps KANJIDIC2 order. **One addition found by testing:** normalization must depend on position. Mapping 노→로 everywhere (怒's `ko_all` is 노;로) would turn 怒 into 로, so a syllable is mapped back only at word start, plus 열→렬 and 율→률 after a vowel or ㄴ. Simulated: 樂 락, 歷 력, 怒 노, 行 행.
+
+### Pass 1: source joins against the raw data
+**Looked at:** hsk30 rows and keys, CC-CEDICT per form, JMdict on every HSK word, hanja.txt on every HSK word, Kaikki rules A and B, FrequencyWords, VI-only candidates, ff filter, the 20 test words.
+**Found:**
+- 80 repeated `(trad, pinyin)` pairs, so "once per form and reading" and `id_map` could not hold (D41).
+- PROMPT's step order cannot run: Korean matching needs readings of characters without rows (D40).
+- Korean: hsk30 uses Taiwan forms and hanja.txt Korean forms, so trad-only matching missed 教育, 研究, 真理. Taking the first reading in file order gave 력사, 련습, 녀자, 화거. (D43)
+- Japanese: D31's ranking gave 好 よしみ, 更 こもごも; `simp` matching gave 聽 ポンド; `sK`/`sk` were not handled. A blanket on'yomi preference was tried and rejected (今年 こんねん). (D42)
+- Vietnamese: rule A with several values was undefined; polyphones could not be told apart, so test words 行 and 樂 had no reading (D44).
+- `*_all` "unchanged" (D39) contradicted "primary first" (SCHEMA) and would have left 항 first in the glyph view (D39).
+- `word_chars` had no pinyin column, though D37 and D39 both need one (D45).
+- VI-only: about 1,212 candidates for 1,200 places, so the cap filters nothing, and syllable frequency put 自刎 at level 3 (D46). The `trad|ja|vi` ID key changes when a reading changes (D46).
+- PROMPT's "frequent hanja.txt words" is impossible: the file has no frequency. The filter is now measured at about 2,880 rows (D47).
+- Stage 3 and D36 order was unclear; the word list now freezes after the second round (D46).
+- 手紙 and 越南 are not HSK words, so the test-word criterion was not measurable (D49, table in GATES).
+- `words` had only an English gloss, though Stage 4 must compare meanings per language (D48).
+**Changed:** D39 rewritten; D40-D50 added; SCHEMA columns, ID keys, merge table §1.8; spec addenda; GATES checklist and test-word table; HANDOFF task and sequence.
+
+### Pass 2: re-read the new text against the data and the existing code
+**Looked at:** every number and example written in Pass 1, re-measured; `tests/` and `pipeline/run_all.py`; the D37/D38 linking; variant duplicates.
+**Found (several were errors in my own Pass 1 text):**
+- Korean counts mixed forms and rows (7,123 is rows, 6,847 is forms): corrected. The ㅅ exception named 횟수, but hanja.txt has only 차수 for 次數: the relevant words are 숫자 and 찻간. 허락 was a wrong example; the ㄴ↔ㄹ allowance covers exactly one word, 곤란.
+- CC-CEDICT fallback measured: 10,974 by key, 16 + 3 by fallback, 35 unmatched.
+- `build_chars.py`, `tests/test_chars.py:23` and `test_c2` assume 3,000 rows and 88 missing variants, and would fail once `chars` grows (D40).
+- Growth is 82 rows from HSK words, not D38's 88, because D30 keeps only the first form in 34 rows (D48, GATES C2).
+- 6 VI-only candidates were spelling variants of HSK words (行爲 / 行為); 2 HSK words gain a reading through a variant (D44, D46).
+- Link check: all 42 著/着 positions resolve by `simp`, 0 ambiguous; 2 `simp` mismatches (反覆, 答覆), which is the case D38 predicted.
+- D42 said single-character readings ran in KANJIDIC2 order, which gives 樂 がく; changed to JMdict order among on'yomi, which gives らく.
+- Missing rule: built `jp` when a character has no Japanese form (D42).
+**Changed:** the items above; overrides extended to `chars` primaries (丹 → 란 is the example).
+
+### Pass 3: consistency, from the reader's side (Codex, the gate, later stages)
+**Looked at:** D39-D50 read through in full; HANDOFF as Codex will read it; each Done-when item asking "what number proves this?"; Stages 4 and 5 for effects of the new rules.
+**Found:**
+- The D39 count could pick a reading outside `*_all`, contradicting "set unchanged": such readings are now not counted and are reported.
+- `ko_base` was undefined for the D43 exceptions (숫, 찻, 란): defined (D45).
+- `ja_multi_candidates` is about 170 rows, not 80 (41 multi-character + 129 single): gate scope set accordingly.
+- Glyph view would show 낙 / 락 / 악 / 요 and 력 / 역, unlike the prototype's 락 / 악 and 력: new `ko_base_all` (SCHEMA §3.5).
+- Stage 5 rule examples showed primaries beside a pair's finals, which can disagree: examples now need pair = primaries (D45).
+- Stale HANDOFF lines removed (Stage 2 "comes after Codex", the old D39 note, duplicated heads-up). A wrong "93%" in D46 corrected.
+**Why I think little is left:** every expected count in SCHEMA §1.8 and GATES comes from a simulation of the written rule, and the test-word table matches the simulated output for all 20 words. **Not verified:** nothing has been built, so counts are expectations within a margin; the Vietnamese D39 simulation gives 12 changes, and 液 → giá looks wrong, so it is on the gate's list; `ko_base_all` and the D45 rules report were specified but not simulated; `kSemanticVariant` matches include some false friends (坐下 via 座下), sampled at the gate.
+
+### Open: four questions in D50
+Asked on 2026-11-04 and not answered. Defaults are recorded, and the user's existing decision on pinyin is left as it was.

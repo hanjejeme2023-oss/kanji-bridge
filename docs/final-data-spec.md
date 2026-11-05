@@ -143,3 +143,13 @@ Gap-fillers decided while mapping the prototype to tables; details and reasons i
 - App keys SRS / custom deck / false-friend tiles by `word_id` (D13).
 - Rule examples: single characters, non-exception, ≤ 8 per rule, ≥ 4 required (D17).
 - `chars.trad` is not unique: source characters sharing a traditional form (hsk30 `着`/`著`) stay separate rows; unique key `char_id`, new column `key_char`; words link to rows by simp, then pinyin (D37).
+
+## Addenda (pre-Stage-3 review, Claude, 2026-11-04)
+Rules in `DECISIONS.md` D39-D50. **Where PROMPT Stage 3 and these disagree, these win.** PROMPT itself stays unchanged.
+- Build order: PROMPT's step order is replaced by D40. `chars` grows before matching; `word_chars` and D39 come after matching.
+- PROMPT step 2 and D36: VI-only words are added now with the current sources; if the D36 search accepts a source all of Stage 3 reruns; the word list freezes only after that (D46).
+- PROMPT step 5, "frequent hanja.txt words": not implementable, the file has no frequency data. Korean-only false-friend candidates are dropped; the filter is D47.
+- PROMPT Stage 3 Done-when, "20 test words": 18 are HSK words, 越南 is a seeded `vi_freq` word, 手紙 is checked in `ff_candidates.csv` (D49; table in `GATES.md`).
+- PROMPT Stage 5, glyph readings "from the `*_all` columns": Korean uses `ko_base_all` (SCHEMA §3.5).
+- `chars` primaries: `ko`, `vi`, `pinyin` from word evidence with 두음법칙 normalization; `ja_on` keeps KANJIDIC2 order (D39). `pinyin` scope awaits the user (D50).
+- New columns: `chars.ko_base_all`; `words.ja_common`, `pos`, `hsk_ids`, `gloss_ja_en`, `gloss_ko`, `gloss_vi`; `word_chars.pinyin_syllable`, `ko_base` (SCHEMA).

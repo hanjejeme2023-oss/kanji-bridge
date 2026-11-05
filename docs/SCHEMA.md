@@ -8,15 +8,15 @@ If this file and the spec disagree, the spec wins, except where DECISIONS.md D12
 - UTF-8, NFC. CSV: `to_csv(index=False, encoding="utf-8")`, header row, `;` separates multi-values inside a cell.
 - **Missing = empty cell in CSV, `null` in JSON, key omitted in `data.js`.** Never `"NaN"`, `"None"`, `"undefined"`, `"-"`.
 - Booleans: CSV `true`/`false` (lowercase); JSON `true`/`false`.
-- IDs: `c00001` (chars), `w00001` (words), `p0001` (passages). Assigned once in `pipeline/id_map.csv` (columns `kind,key,id`); keys: chars = `key_char` (D37); words = `trad|pinyin` (or `trad|ja|vi` if no pinyin); passages = `lang|level|n` as defined by Codex. Rebuild reuses IDs; new rows get the next free number; IDs are never reused or renumbered.
-- Pinyin: tone marks, lowercase, syllables joined without spaces in `words.pinyin` (`xuéshēng`), as the prototype does. `chars.pinyin` is one syllable.
+- IDs: `c00001` (chars), `w00001` (words), `p0001` (passages). Assigned once in `pipeline/id_map.csv` (columns `kind,key,id`); keys: chars = `key_char` (D37); words = `trad|pinyin` for HSK words, `x|trad` for every other word (`vi_freq`, `ff_only`; D46, because their readings can change when sources are added); passages = `lang|level|n` as defined by Codex. Rebuild reuses IDs; new rows get the next free number; IDs are never reused or renumbered.
+- Pinyin: tone marks, lowercase, syllables joined without spaces in `words.pinyin` (`xuéshēng`), apostrophes kept (`píng'ān`; D41). `chars.pinyin` is one syllable.
 - Vietnamese: NFC, lowercase, modern tone placement (D25: `thủy`, `hòa`, not `thuỷ`, `hoà`), syllables separated by one space (`học sinh`). Korean: Hangul, no spaces inside a word.
-- Japanese kana: hiragana. (KANJIDIC2 katakana on'yomi are converted.)
+- Japanese kana: `chars.ja_on*` hiragana (KANJIDIC2 katakana converted). `words.ja` keeps JMdict's script, so loanwords are katakana (D42).
 - `lang` codes: `ja`, `ko`, `zh`, `vi`. App labels: ja=日, ko=韓, zh=中, vi=越.
 
 ## 1. Tables (columns in order)
 
-### 1.1 `chars` — one row per character (key `trad`)
+### 1.1 `chars` — one row per source character (unique keys `char_id`, `key_char`; D37)
 | col | type | rule |
 |---|---|---|
 | char_id | str `cNNNNN` | |
@@ -24,14 +24,15 @@ If this file and the spec disagree, the spec wins, except where DECISIONS.md D12
 | key_char | str, 1 char | the character whose Unihan / KANJIDIC2 / libhangul / Kaikki entries supply this row's readings; unique; **equals `trad` for every row except rows whose `trad` is shared with another row, where it is the source Hanzi (`着`; the row `著` keeps `著`)**. `id_map.csv` key for chars (D37) |
 | simp | str, 1 char | = `trad` if no simplification |
 | jp | str, 1 char | Japanese form (shinjitai), = `trad` if unchanged. Mapping method: DECISIONS (Stage 1 review) |
-| ja_on / ko / pinyin / vi | str | primary reading (D6). May be empty |
-| ja_on_all / ko_all / pinyin_all / vi_all | str | `;`-separated, primary first, de-duplicated |
+| ja_on / ko / pinyin / vi | str | primary reading (D6). May be empty. `ko`, `vi`, `pinyin` come from word evidence after Stage 3; `ja_on` stays KANJIDIC2 first (D39) |
+| ja_on_all / ko_all / pinyin_all / vi_all | str | `;`-separated, primary first, de-duplicated. D39 reorders, never adds or drops |
+| ko_base_all | str | `ko_all` without readings that are only 두음 forms of another `ko_all` reading: a reading is removed if it is a D39 form of another listed reading and has no later-position evidence (樂 `락;악;요`, 歷 `력`, 怒 keeps `노;로`). Primary first. For the glyph view (§3.5) |
 | ko_final | str | one of `ㄱ ㄴ ㄹ ㅁ ㅂ ㅇ` or other final jamo; empty = no final |
 | vi_final | str | one of `c ch p t n m ng nh`; empty = open syllable |
 | in_hsk_chars | bool | in the HSK 3.0 character list |
 | level | int 1–7 | hsk30-chars `Level` (`7-9` is stored as **7**, D29); else min `words.level` of words using the character; empty if none (D14, D29) |
 | gloss_en | str | Unihan kDefinition, for reference only |
-| source_ko / source_vi / source_ja / source_pinyin | str | source tag of each primary reading. `source_vi` ∈ `kaikki_aligned` / `unihan_hvsyl` / `unihan_unverified` (D24). `unihan_unverified` readings are excluded from word composition and sound-rule pairs |
+| source_ko / source_vi / source_ja / source_pinyin | str | source tag of each primary reading, recomputed when D39 changes it. `source_vi` ∈ `kaikki_aligned` / `unihan_hvsyl` / `unihan_unverified` (D24). `unihan_unverified` readings are excluded from word composition and sound-rule pairs |
 
 ### 1.2 `words` — one row per word
 | col | type | rule |
@@ -39,26 +40,29 @@ If this file and the spec disagree, the spec wins, except where DECISIONS.md D12
 | word_id | str `wNNNNN` | SRS key |
 | trad / simp | str | from hsk30 (or the source that added the word) |
 | jp | str | Japanese written form from matched JMdict entry; else built per character from `chars.jp`; empty if not a Japanese word |
-| ja | str | Japanese reading (hiragana); empty if no match |
+| ja | str | Japanese reading as JMdict gives it (hiragana, or katakana for loanwords; D42); empty if no match |
+| ja_common | bool | the chosen JMdict pair has a priority tag (D42); false if `ja` is empty |
 | ko | str | Hangul |
 | pinyin | str | |
 | vi | str | |
 | ja_alt / ko_alt / vi_alt | str | `;`-separated other readings; empty if none (D14) |
+| pos / hsk_ids | str | HSK part of speech (union) and source IDs, `;`-separated (D41); empty for non-HSK words |
 | gloss_en | str | CC-CEDICT first gloss(es), reference only |
+| gloss_ja_en / gloss_ko / gloss_vi | str | first JMdict sense (English), hanja.txt comment, first Kaikki gloss; input for Stage 4, not in `data.js` (D48) |
 | meaning_ja__ja / __ko / __zh / __vi | str | Japanese-language meaning as used in that language (Gemini, Stage 4); empty if language missing |
 | note_ja | str | optional one-line note in Japanese (e.g. "日本語・韓国語では普通カタカナで…"); mostly empty (D14) |
-| level | int 1–7 | HSK level (`7-9` stored as 7, D29), or frequency-band level 3–7 for VI-only words (D27) |
-| freq_vi | int | Vietnamese frequency rank (1 = most frequent); empty if unknown |
+| level | int 1–7 | HSK level (`7-9` stored as 7, minimum if the word repeats, D29, D41), or frequency-band level 3–7 for VI-only words (D27, D46); empty for `ff_only` |
+| freq_vi | int | Vietnamese frequency rank (dense, 1 = most frequent, D44); empty if the word has no `vi` or a syllable is not in the list |
 | origin | `hsk` / `vi_freq` / `both` / `ff_only` | |
 | card_eligible | bool | D11 |
 | false_friend | str | `;`-separated lang codes where meaning differs from the others, e.g. `zh` or `ko;zh`; empty = not a false friend |
 | syl_aligned | bool | true when `word_chars` gives a full Korean AND Vietnamese syllable alignment (D14) |
 | verified | bool | |
-| source_ja / source_ko / source_pinyin / source_vi / source_level | str | provenance tags. `source_vi` ∈ `kaikki_han` / `composed_attested` (D24); `source_ja` ∈ `jmdict` / `built_from_chars` (D31); `source_ko` = `libhangul`; `source_level` ∈ `hsk30` / `vi_band` |
+| source_ja / source_ko / source_pinyin / source_vi / source_level | str | provenance tags. `source_vi` ∈ `kaikki_han` / `composed_attested` (D24); `source_ja` ∈ `jmdict` / `built_from_chars` (D31); `source_ko` ∈ `libhangul` / `libhangul_variant` (D43); `source_level` ∈ `hsk30` / `vi_band`. A value set by `overrides.csv` keeps its source tag; the override file records the reason |
 
 ### 1.3 `word_chars`
-`word_id, position (int, 1-based), char_id, ko_syllable, vi_syllable`. A word's character at each position is matched to `chars` by the word's own `trad` string (D38): rows whose `trad` equals the character; if none, the row whose `key_char` equals it; if several (`trad` collision, D37), by the word's `simp` at that position, then by pinyin; undecidable cases leave `char_id` empty and go to `char_ambiguous.csv`. Position check: the linked row's `simp` equals the word's `simp` at that position, else the word goes to `char_simp_mismatch.csv`.
-Unique on `(word_id, position)`. A word with a syllable-count mismatch gets rows with empty syllables and `syl_aligned=false`, and is listed in `data/final/alignment_mismatches.csv` (no guessing).
+`word_id, position (int, 1-based), char_id, pinyin_syllable, ko_syllable, ko_base, vi_syllable`. `ko_syllable` is as written in the word (역), `ko_base` is the D39 form (력); a language the word lacks leaves the syllable empty, which is not a mismatch (D45). A word's character at each position is matched to `chars` by the word's own `trad` string (D38): rows whose `trad` equals the character; if none, the row whose `key_char` equals it; if several (`trad` collision, D37), by the word's `simp` at that position, then by pinyin; undecidable cases leave `char_id` empty and go to `char_ambiguous.csv`. Position check: the linked row's `simp` equals the word's `simp` at that position, else the word goes to `char_simp_mismatch.csv`.
+Unique on `(word_id, position)`. A word with a syllable-count mismatch gets rows with empty syllables for that language and `syl_aligned=false`, and is listed in `data/final/alignment_mismatches.csv` with a reason (D45; no guessing).
 
 ### 1.4 `ff_meanings`
 `word_id, lang, reading, meaning_ja, is_trap`. Unique on `(word_id, lang)`. `reading` is copied from the dictionary column of the same language (`words.ja` / `ko` / `pinyin` / `vi`), never generated. At most one row per language per word.
@@ -74,14 +78,26 @@ CSV stores `tokens` as a JSON string; JSON/`data.js` as an array. Token = exactl
 Not a pandas table to maintain: `config/rules.json` text + examples computed from aligned pairs (D7). Exported as the exact `RULES` shape (§3.2).
 
 ### 1.7 Reports (not read by the app)
-`rules_report.csv` (pivot ko_final × vi_final of pair counts, plus per-pair examples), `char_key_collisions.csv`, `char_ambiguous.csv` (D37), `char_simp_mismatch.csv` (D38), `coverage_report.csv` (incl. `freq_vi_basis=syllable_min`, D26), `alignment_mismatches.csv`, `vi_ambiguous.csv` (words with ≥ 2 composed Vietnamese candidates, D24), `no_jp_form.csv` (characters without a Japanese form, D28), `ko_unresolved.csv` (D32).
+`rules_report.csv` (pivot ko_final × vi_final of distinct pairs, D45), `rules_examples.csv`, `char_key_collisions.csv`, `char_ambiguous.csv` (D37), `char_simp_mismatch.csv` (D38), `char_primary_changes.csv`, `char_primary_no_evidence.csv` (D39), `coverage_report.csv` (incl. `freq_vi_basis=syllable_min`, D26), `merge_report.csv`, `alignment_mismatches.csv` (D45), `cedict_unmatched.csv` (D41), `ja_multi_candidates.csv` (D42), `ko_multi_candidates.csv`, `ko_unresolved.csv` (D43), `vi_ambiguous.csv` (words with no single Vietnamese value after D44), `vi_only_report.csv` (candidates, rank, level, D46), `no_jp_form.csv` (characters without a Japanese form, D28). `data/staging/ff_candidates.csv` has the columns in D47.
+
+### 1.8 Stage 3 merges (D40; `merge_report.csv` logs every line)
+| Left | Right | Key | `validate` | Expected |
+|---|---|---|---|---|
+| expanded hsk30 (11,110) | none: group by `(trad, pinyin)` | | unique after | 11,028 rows |
+| words | CC-CEDICT | `cedict_key` | `m:1` | 10,974 `both`; 54 go to the D41 fallback, 35 stay unmatched |
+| words | Kaikki rule-A Han forms (deduped, 3,366) | `trad` | `m:1`, `how="outer"`, `indicator` | `right_only` feeds D46 candidates (about 1,670 pairs, about 1,212 pass) |
+| words (`trad`, `pinyin`) | `ja_match` | word key | `1:1` | about 5,600 |
+| words | `ko_match` | word key | `1:1` | about 7,100 |
+| words | `vi_match` | word key | `1:1` | about 3,870 |
+| characters of words | `chars` | D37/D38 linking, not a plain merge | row count = sum of word lengths | 0 unlinked; about 190 new rows |
+Each `*_match` table holds one row per word key, so a form with several dictionary entries can never multiply rows.
 
 ## 2. `data.js` shape
 
 ```js
 window.KB_DATA = {
   meta:   { built: "YYYY-MM-DD", counts: {chars: n, words: n, ...} },
-  chars:  [ { char_id, trad, simp, jp, ja_on_all, ko_all, pinyin_all, vi_all, in_hsk_chars, level }, ... ],  // only columns the glyph view needs, see §3.5
+  chars:  [ { char_id, trad, key_char, simp, jp, ja_on_all, ko_base_all, pinyin_all, vi_all, in_hsk_chars, level }, ... ],  // only columns the glyph view needs, see §3.5
   words:  [ {all words columns the app needs, see §3.1} ],
   word_chars: [ {word_id, position, ko_syllable, vi_syllable} ],  // only rows of words with syl_aligned
   ff_meanings: [ {word_id, lang, reading, meaning_ja, is_trap} ],
@@ -119,7 +135,7 @@ Front of card: `w.j` is always shown; `w.jr` and `w.k` shown only if non-empty. 
 
 ### 3.2 `RULES` (音のルール) ← `kb.rules`
 Exactly the prototype shape: `{id, jong, kr, vi:[...], label, jp, zh, ex:[[char, ko, ja, vi, zh], ...]}`.
-- `ex[i]` = `[chars.trad, chars.ko, chars.ja_on, chars.vi, chars.pinyin]` for rule-pairs (D7) — `ex[0]` is the progress-tracking key (`kb_rules`), so it must be unique within a rule.
+- `ex[i]` = `[chars.key_char, chars.ko, chars.ja_on, chars.vi, chars.pinyin]` for rule-pairs (D7); only pairs where `ko_base` = `chars.ko` and `vi_syllable` = `chars.vi`, so the shown readings are the pair's (D45) — `ex[0]` is the progress-tracking key (`kb_rules`), so it must be unique within a rule.
 - Max 8 examples per rule; prefer low `level`, then (for word-derived pairs) high frequency; deterministic order; **one char per example** (the quiz's `ex[0]` is a single character, shown in 96px).
 - Examples chosen only from pairs where the Vietnamese final is in the rule's `vi` list (no exceptions in the quiz). Exceptions are in `rules_report.csv` and are not shown in this run.
 - The rule needs at least 4 examples to quiz (the quiz uses 3 options and the "done" pool). If a rule has fewer, build fails.
@@ -156,7 +172,7 @@ With dozens of passages the `#psel` segmented control must wrap onto several lin
 
 ### 3.5 `GLYPHS` (字体) ← `chars` where not (`jp == key_char == simp`)
 Row = `[jp, key_char, simp, pinyin_display, ja_display, ko_display, vi_display]` (the second field is `key_char`, which equals `trad` except for `着`; D37) where
-- `pinyin_display` = `pinyin_all` joined with `" / "`; `ja_display` = `ja_on_all`; `ko_display` = `ko_all`; `vi_display` = `vi_all`, each joined with `" / "` (as `'lè / yuè'`, `'らく / がく'`).
+- `pinyin_display` = `pinyin_all` joined with `" / "`; `ja_display` = `ja_on_all`; `ko_display` = `ko_base_all` (so 歷 shows `력` and 樂 starts `락 / 악`, as in the prototype; PROMPT Stage 5 says `*_all`, this is the D39 refinement); `vi_display` = `vi_all`, each joined with `" / "` (as `'lè / yuè'`, `'らく / がく'`).
 - Empty reading → `''` (render empty, never "undefined").
 - Order: `level` ascending (empty last), then `char_id`.
 - `pat()` and the quiz logic use indexes 0,1,2 exactly as the prototype. Quiz pool = rows with `jp != simp`; wrong options are `simp` of other rows.
@@ -166,4 +182,4 @@ Row = `[jp, key_char, simp, pinyin_display, ja_display, ko_display, vi_display]`
 Because the key type changes, the app reads old-format values defensively (ignore entries that are not known `word_id`s).
 
 ## 4. Hard failure conditions (build must stop, not warn)
-- Duplicate key in any table; `tokens.word_id` not in `words`; a `ff_meanings.word_id` not in `words`; a rule with < 4 examples; a token or field that would render `undefined`/`NaN` in the app; non-NFC text in any final table.
+- Duplicate key in any table; an `overrides.csv` value that is not a dictionary candidate for that word or character (D43); `tokens.word_id` not in `words`; a `ff_meanings.word_id` not in `words`; a rule with < 4 examples; a token or field that would render `undefined`/`NaN` in the app; non-NFC text in any final table.
