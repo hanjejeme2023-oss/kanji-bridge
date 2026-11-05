@@ -130,3 +130,11 @@ Asked on 2026-11-04 and not answered. Defaults are recorded, and the user's exis
 - Consequences written down: katakana-only words (吃, 噸) now get an on'yomi instead of an empty `ja`; expected `ja` rows rise from about 5,600 to about 5,650; 〇 keeps れい because KANJIDIC2 has no on'yomi for it.
 - Boundary set by Claude: the fallback needs a JMdict entry for the form. About 580 single-character rows with no entry (很, 就) keep `ja` empty.
 - GATES test table and check 10, HANDOFF task and Done-when, and SCHEMA (`ja`, `ja_common`, `source_ja`) updated. The D50 follow-up is closed.
+
+## 2026-11-04 Claude — Stage 3 gate: FAIL, attempt 1
+- **Checked:** the `GATES.md` Stage 3 checklist, on disk, with independent scripts; 22 tests and the double rebuild rerun (OK, `git status` clean afterwards).
+- **Passed:** row and ID integrity, coverage, `card_eligible`, `word_chars` structure, all 20 test words, 30 of 30 sampled words traced to their sources.
+- **Failed:** (1) `korean_base` returns the surface syllable and `apply_d39` counts non-evidence words: at least 49 wrong Korean primaries (流 유, 旅 여, 老 노), and the flag column was hard-coded. (2) The Korean variant graph was used for JMdict: 31 single-character rows with wrong forms (弄 瘧, 滾 菌); on'yomi looked up by `trad` gave 歲 とし. (3) No real `validate=` on the word merges; `merge_report.csv` carried literal text. (4) Smaller: `vi_only_report.csv` flags and columns, 10 empty `simp`, 41 unresolved pinyin rows.
+- **Found beyond the checklist:** rule B accepts homophones (食物 thực vật, 不行 bất hạnh); 42% of `vi` words had no `gloss_vi`.
+- **Decided:** D51. **Docs:** GATES (result, 手紙 `vi` table entry corrected), SCHEMA §1.7, spec addendum, HANDOFF (F1-F13, expected values). **Added:** `docs/review_scripts/stage3_ko_base_reference.py`.
+- **Deferred:** short-list picks (about 205 rows) to attempt 2, because the fixes change the lists and the user should confirm once. `pipeline/overrides.csv` stays header-only. D36 search not started.

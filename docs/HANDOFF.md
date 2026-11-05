@@ -13,7 +13,7 @@ Read `PROMPT.md` first, then this file. Do only the assignment for your role. Up
 - Stage 2 (character table) — **DONE** by Codex, 2026-11-04. Revised D37 is implemented as two rows with unique `key_char`; 3,000 rows and all Stage 2 reports are committed. Stage 2 gate: PASS (Claude, 2026-11-04).
 - **PROMPT Rule 11 (stage gates) is in force.** Gate results are logged in `docs/GATES.md`. Stage 1 gate: PASS. Stage 2 gate: PASS (both 2026-11-04).
 - Pre-Stage-3 readiness review: **DONE** by Claude, 2026-11-04 (three passes, CHANGELOG; decisions D39-D50).
-- Stage 3 (word table) — **DONE** by Codex, 2026-11-04; awaiting the Claude gate. Full pipeline and outputs are committed; 22 tests pass, including two-build byte-for-byte determinism.
+- Stage 3 (word table) — built by Codex, 2026-11-04. **Stage 3 gate: FAIL, attempt 1 (Claude, 2026-11-04).** Evidence in `docs/GATES.md`; fixes below. Counts, keys, coverage and reproducibility are sound; the failures are in rule implementation.
 
 ## Stage 1 review: outcome in brief (details in STAGE1_REVIEW.md)
 - **Licences:** all accepted. hsk30 accepted with a recorded provenance risk (confirmed by the user, D35). Dataset will be **CC BY-SA 4.0**.
@@ -21,7 +21,54 @@ Read `PROMPT.md` first, then this file. Do only the assignment for your role. Up
 - **Shinjitai:** inverted OpenCC `JPShinjitaiCharacters` (16/16 on the prototype's glyph pairs), KANJIDIC2 tie-break.
 
 ## NEXT ASSIGNMENT
-**Agent: Claude — Stage 3 gate.** Run the checklist in `docs/GATES.md`, including the 30-word source sample and the review short list. Per D50, propose picks (including 茶→차 because the evidence build leaves `chars.ko=다`) and stop for user confirmation before writing `pipeline/overrides.csv`. Do not start the D36 Vietnamese source search until the gate flow is complete.
+**Agent: Codex — Stage 3 gate fixes (attempt 1 failed).** Fix only F1-F13 below (PROMPT Rule 11), rebuild, then hand back to Claude for the re-check. Read D51 and the Stage 3 section of `docs/GATES.md` first. Do not write `pipeline/overrides.csv`: the picks come after the re-check. Do not improvise a rule; if one of these does not work as written, stop and raise it here.
+
+### Fixes
+**Korean primaries (D39)**
+- **F1. `ko_base` normalization.** `korean_base` (`stage3_match.py:128-152`) returns the surface syllable whenever it is in `ko_all`, so D39's mapping never happens for characters listing both forms. Split it: keep the current acceptance logic for the D43 alignment filter and law-pair comparisons, and add a normalization function implementing D39 exactly. Position 1: ㅇ+iotized vowel → ㄹ form, else ㄴ form; ㄴ+other vowel → ㄹ form; each only if that form is in `ko_all`; otherwise the syllable itself. Later positions: only 열→렬 and 율→률 after a vowel or ㄴ-final, only if in `ko_all`; otherwise the syllable itself. The D45 exceptions stay (숫→수, 찻→차, 곤란's 란→난). Use it for `ko_base` and for the D43 evidence counts.
+- **F2. Evidence words.** `apply_d39` (`build_words.py:1055-1063`) counts every word. Count only D39's evidence words, for `ko` and `vi`: multi-character words with one candidate left or settled by an override, and single-character words with one candidate left. Readings outside `*_all` stay uncounted. The no-evidence report follows the same definition.
+- **F3. `ko_law_form_suspect`.** Hard-coded `False` (line 1076). Compute it as D39 says.
+
+**Merges**
+- **F4. Real merges.** Build the D40 `ja_match`, `ko_match`, `vi_match` frames (one row per word key, only for words with a value) and attach them with `pd.merge(how="left", validate="1:1", indicator=True)`; CC-CEDICT exact key with `validate="m:1"` and `indicator=True`; Kaikki rule-A with `how="outer"`, `validate="m:1"`, `indicator=True`. `merge_report.csv` takes counts from `_merge` and `validate` from the argument actually passed. Fill the empty `validate` cells of the Stage 2 rows.
+
+**Japanese (D51 items 1-2)**
+- **F5.** `word_forms` (`build_words.py:219`): D43 variant forms only for 2+ characters, after the D42 forms. A single character with no D42 form in JMdict has no entry: `ja` empty, per D42.
+- **F6.** `match_japanese_row` (line 276): take the on'yomi set from the linked `chars` row's `ja_on_all`.
+
+**Vietnamese (D51 items 3-5)**
+- **F7.** Rule-B conflict filter for 2+ characters, on HSK words, VI-only and `ff_candidates.csv`. Dropped values go to `vi_ambiguous.csv` with `reason=rule_b_conflict`, not to `vi_alt`. An override may use a value listed there.
+- **F8.** One-character words use rule A on `trad` only. Any rule-A pair outside `vi_all` that reaches `rules_examples.csv` is tagged `kaikki_han`, not blank (鑑 giám).
+- **F9.** `gloss_vi` for rule-B words: extend `load_kaikki.py` to keep each headword's first gloss; fill `words.gloss_vi` and `ff_candidates.gloss_vi`.
+
+**Reports and columns**
+- **F10.** `simp` of grown `chars` rows per D51 item 6. HSK-list rows unchanged.
+- **F11.** `vi_only_report.csv` per SCHEMA §1.7: add `trad, word_id, rank, level`; `selected=true` on exactly the final VI-only rows, the seed included.
+- **F12.** `pinyin_syllable`: a single-character word gets the whole pinyin; a word without a usable key is segmented by the set of CC-CEDICT syllables (D45). Only real failures stay in `alignment_mismatches.csv`.
+
+**Tests**
+- **F13.** Add to `tests/`, each failing on the current build: the primaries below; `ko_base` of 流行 = 류, 旅行 = 려, 分裂 = 렬; `ja_on` = first KANJIDIC2 value and `pinyin` = first `kMandarin` value for every row, and `*_all` sets equal to before D39 (D39 requires these, and they are missing); no single-character `jp` outside the D42 forms; the Japanese, Vietnamese and `simp` values below; `validate` values in `merge_report.csv` match a real call (a code-level test or a shared helper); `vi_only_report.csv` `selected=true` count = VI-only row count. Rerun everything, rebuild twice.
+
+### Expected results at the re-check
+These were computed independently where stated; any difference must be explained in your note, not forced.
+| Item | Expected |
+|---|---|
+| `chars.ko` (recomputed: `docs/review_scripts/stage3_ko_base_reference.py`) | 老 로, 流 류, 旅 려, 連 련, 聯 련, 領 령, 律 률, 列 렬, 陸 륙, 輪 륜, 兩 량, 零 령, 冷 랭, 綠 록, 勞 로; 輯 집 (no evidence once 편즙 is excluded). Unchanged: 歷 력, 年 년, 女 녀, 怒 노, 行 행, 樂 락 or 악. 茶 stays 다 until the short list |
+| `ko_law_form_suspect` | at least 爐, 廊, 虜, 魯, 碌 true |
+| Japanese | 弄, 滾, 捉, 它, 她, 聽, 拆, 蛋, 掉: `jp` never 瘧, 菌, 杓, 佗, 他, 听, 責, 蜑, 棹; `ja` empty where the form has no JMdict entry. 歲 さい, 腳 きゃく, 內 ない, 值 ち, 戶 こ, 鄉 きょう, 號 ごう. 國 こく, 電 でん, 海 かい, 手 しゅ unchanged. 模仿 模倣, 身份 身分 unchanged. HSK `ja` about 5,700 |
+| Vietnamese | 食物, 實物, 不行, 只是, 父女, 路面, 定為 `vi` empty and in `vi_ambiguous.csv`. 麵 empty, 穩 ổn. At most 21 rule-B words drop. Rule-B words with `gloss_vi`: nearly all of about 2,140 |
+| `chars.simp` | 0 empty unless D51 6(d) applies; 餵 喂, 託 托, 譁 哗, 鵰 雕, 陀 陀, 簿 簿. `char_simp_mismatch.csv` about 3 rows (反覆, 答覆, 彷彿) |
+| `alignment_mismatches.csv` | `pinyin` rows close to 0; 麵 and 穩 gone from `not_in_all` |
+| `merge_report.csv` | same counts as before except the effects above |
+
+In your note give the row counts of every report, `char_primary_changes.csv` with its count, and what changed in `card_eligible`. **At the end, hand back to Claude (Stage 3 gate, attempt 2).**
+
+### What Claude does at attempt 2
+Reruns the failed checks, scans `char_primary_changes.csv` (including top-count-1 changes and 寧, which D39's literal mapping may send to 령), then proposes picks for the short list (D50 item 4, including 茶 → 차, about 205 rows plus any `rule_b_conflict` rows) and stops for the user. Overrides, a rebuild and the D36 search come after that.
+
+## Stage 3 gate attempt 1: outcome in brief
+- **Passed:** row and ID integrity, coverage, `card_eligible`, `word_chars` structure, the 20 test words, the 30-word source sample (30 of 30), tests, rebuild identical.
+- **Failed:** Korean base forms and evidence (at least 49 wrong primaries), wrong Japanese forms on single-character cards (31 rows), no real `validate=` merges, plus smaller report and rule items. Details: `docs/GATES.md`.
 
 ## Stage 3 Codex completion evidence (2026-11-04)
 - Final tables: 11,028 HSK rows + 1,201 `vi_freq` rows (including 越南) = 12,229 words; 24,458 `word_chars` rows; 3,178 characters. HSK coverage: Japanese 5,732 (51.98%), Korean 7,110 (64.47%), Vietnamese 3,882 (35.20%), all four 3,114 (28.24%); 7,354 HSK cards eligible.
@@ -85,6 +132,8 @@ PROMPT's criteria, measured by the checklist and the test-word table in `docs/GA
 - If a source has no license or non-commercial-only terms: do not use it; stop and ask the user.
 
 ## Open problems / notes
+- Stage 3 gate notes for loop 1 (non-blocking): (1) rule-B false compositions with no Kaikki etymology cannot be caught by D51 (人為 nhân vị, 手紙 thủ chỉ; 1 of 40 sampled multi-character rule-B words). (2) VI-only 凶悪 repeats HSK 兇惡: Kaikki's Han form uses the shinjitai 悪, which the D46 variant check does not link. (3) A few 2+ character JMdict variant matches are weak (蘋果 苹果 ひょうか, 眼裡 眼裏 まなうら).
+- **Stage 4 input note:** `gloss_vi` on a rule-B word can be unrelated to the Han word (D51). Stage 4's prompt must tell Gemini to mark such a Vietnamese value `confidence: low` and not write a Vietnamese meaning for it. Claude adds this when writing the Stage 4 assignment.
 - Known limits to report, not fix, in Stage 3: `hanja.txt` has no frequency, so a Korean reading may be a rare entry; `freq_vi` is a syllable proxy, so VI-only levels are rough until D36 finds a word list.
 - Stage 2 gate notes (non-blocking): (1) resolved by D39 and D43. (2) Suspect Vietnamese readings for loop 1 accuracy: 怎 chẩn (expected chẩm; `unihan_hvsyl`), 幻 ảo (usual Hán-Việt huyễn). (3) `unihan_hvsyl` (300 chars) is a weaker check than `kaikki_aligned`.
 - Resolved: hsk30 `着`/`著` collision → separate rows with `key_char` (D37, revised).
@@ -94,6 +143,7 @@ PROMPT's criteria, measured by the checklist and the test-word table in `docs/GA
 - hsk30 provenance risk: **accepted by the user** (D35, personal non-commercial project; revisit if ever published commercially).
 
 ## Log
+- 2026-11-04 Claude — Stage 3 gate FAIL (attempt 1): at least 49 wrong Korean primaries (`ko_base` not normalized, non-evidence words counted), wrong Japanese forms on 31 single-character rows (variant graph used for JMdict), no real `validate=` merges, rule-B homophones, smaller report items. D51 recorded; F1-F13 assigned; short-list picks deferred to attempt 2. Next: Codex fixes.
 - 2026-11-04 Codex — Stage 3 complete: 11,028 HSK + 1,201 VI-only words, 3,178 chars, all reports, fixed-word tests, and deterministic rebuild verified. Next: Claude Stage 3 gate.
 - 2026-11-04 Claude — user chose the KANJIDIC2 fallback for single-character words with no on'yomi in JMdict (D42, D50); 國 is now こく in the test table. No open user questions. Next: Codex Stage 3.
 - 2026-11-04 Claude — applied the user's D50 answers: pinyin out of D39; on'yomi first; Korean base form; user confirms the review short list; 茶 `chars.ko` to end as 차. 國 くに explained. Next: Codex Stage 3.

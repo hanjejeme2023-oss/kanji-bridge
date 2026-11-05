@@ -47,7 +47,7 @@ Empty means no value is expected from the current sources; the value must then b
 | 經濟 | HSK | 经济 | 経済 | けいざい | 경제 | jīngjì | kinh tế |
 | 大學 | HSK | 大学 | 大学 | だいがく | 대학 | dàxué | đại học |
 | 勉強 | HSK | 勉强 | 勉強 | べんきょう | 면강 | miǎnqiǎng | miễn cưỡng |
-| 手紙 | **`ff_candidates.csv` only** (`words` in Stage 4) | | 手紙 (`form`) | てがみ | | shǒuzhǐ | |
+| 手紙 | **`ff_candidates.csv` only** (`words` in Stage 4) | | 手紙 (`form`) | てがみ | | shǒuzhǐ | (`thủ chỉ` accepted: rule B gives it, Kaikki's gloss is unrelated, Stage 4 judges it; table corrected at the gate, D51) |
 | 銀行 | HSK | 银行 | 銀行 | ぎんこう | 은행 | yínháng | ngân hàng |
 | 發展 | HSK | 发展 | 発展 | はってん | 발전 | fāzhǎn | phát triển |
 | 歷史 | HSK | 历史 | 歴史 | れきし | 역사 | lìshǐ | lịch sử |
@@ -65,6 +65,7 @@ Characters: 樂 `ko`=락 or 악, `ko_all` still contains 낙; 歷 `ko`=력; 行 
 |---|---|---|---|---|
 | 1 | 2026-11-04 | PASS | 1 | Claude |
 | 2 | 2026-11-04 | PASS | 1 | Claude |
+| 3 | 2026-11-04 | **FAIL** | 1 | Claude |
 
 ## Stage 1 — sources and licences — PASS (attempt 1), 2026-11-04
 
@@ -114,3 +115,40 @@ Fixes requested: none.
 2. `unihan_hvsyl` (300 characters) is a weaker check than `kaikki_aligned`: the Unihan syllable is an attested Hán-Việt syllable, not an explicit alignment. 怎 is the only suspect found in the rules table.
 
 Fixes requested: none. Next: Codex, Stage 3.
+
+## Stage 3 — word table — FAIL (attempt 1), 2026-11-04
+
+Counts and keys are sound; the failures are in rule implementation. All numbers were measured on disk with independent scripts. The Korean recomputation is kept as `docs/review_scripts/stage3_ko_base_reference.py`.
+
+| # | Check | Evidence | Result |
+|---|---|---|---|
+| 1 | One row per `(trad, pinyin)`; IDs | 11,028 HSK rows, 0 duplicates; `word_id` unique and equal to `id_map.csv` in all 12,229 rows; no non-NFC or sentinel text (the 3 `nan` hits are the real syllables nan / nan) | OK |
+| 2 | Merges logged; `validate=` in the code | Counts within 2% of SCHEMA §1.8 (10,974 / 19 / 35; 1,669 `right_only`; HSK `ja` 5,732, `ko` 7,110, `vi` 3,882). **But `build_words.py` has one real merge with `validate=` (line 1171). The word merges are loops, and `merge_report.csv`'s `validate` column is literal text (lines 135-138, 607-608, 916-917); `both` is counted from non-empty values, not from `_merge`** | **FAIL** |
+| 3 | Coverage | `ko` 64.47%, `ja` 51.98%, `vi` 35.20%, all four 3,114 | OK |
+| 4 | `card_eligible` | Recomputed: 0 differences; 7,354 HSK, 8,555 total; no rows eligible on a built `jp` alone | OK |
+| 5 | VI-only | 1,201 rows; bands 151 / 250 / 300 / 300 / 200 match D27 plus the seed; 0 single characters, 0 in HSK; 221 without pinyin. **`vi_only_report.csv`: 1,195 `selected=true` against 1,201 words (6 were converted to their traditional form: 佈告, 遊牧, 義母, 色慾, 昇平, 得誌); no `rank` or `level` columns (SCHEMA §1.7)** | **FAIL** (report only) |
+| 6 | `word_chars` | Unique; 24,458 rows = sum of lengths; 0 unlinked; syllables rejoin to the word; `syl_aligned` recomputed with 0 differences. **41 `pinyin` / `count` rows are not count mismatches: "CC-CEDICT template did not resolve", including 4 single characters (誰, 熟, 血, 殼); D45's fallback was not implemented** | **FAIL** (small) |
+| C1 / C2 | Collisions | `char_id`, `key_char` unique; only 著 → 着, 著; 0 ambiguous; 3,178 rows (+82 HSK, +96 VI-only). **10 grown rows have empty `simp` (陀, 簿, 赦...); 10 mismatches on grown rows, several from rare Unihan forms (餵 𫗭, 譁 𲂊, 鵰 𫛲, 託 讬)** | **FAIL** (D51 item 6) |
+| 7 | D39 | `*_all` sets, `ja_on`, `pinyin` unchanged against Stage 2 (0 differences); finals consistent; test characters pass. **`ko_base` is not normalized and non-evidence words are counted; details below** | **FAIL** |
+| 8 | `rules_report.csv` | 2,080 pairs, 0 unverified; large cells follow the rules; off-pattern cells small. 2 rows with a blank `source_vi` (麵, 鑑). Must be rebuilt after the check 7 fix | OK for now; recheck |
+| 9 | Review lists | 136 / 154 / 12 rows (expected 124 / 170 / 13). Short list now 205 rows (ja 39 + 78, ko 46 + 30, vi 12). **Picks deferred to attempt 2:** the D43 counts use the faulty `ko_base`, so the lists will change, and the user should confirm once, on the final list | Deferred |
+| 10 | Variant sample; single-character `ja` | 20 of 20 `libhangul_variant` words correct (seed 20261104); 坐下 좌하 is a known false match, so the rate is under 5%. **All 326 level 1-2 single-character `ja` values read: wrong forms and readings; details below** | **FAIL** |
+| 11 | `ff_candidates.csv` | 2,944 rows, none in `words`, 手紙 and 大丈夫 present. `gloss_vi` on 1 of 626 `vi` rows (D51 item 5) | OK apart from the gloss |
+| 12 | 30-word sample (seed 20261104, stratified by level, plus 3 VI-only) | Every value traced to its source: 30 of 30. One preferred reading is poor (相對 あいたい; on the review list). **Extra sample of 40 multi-character rule-B words: 39 plausible, 1 false (人為 nhân vị)** | OK |
+| 13 | Tests; rebuild | 22 tests OK (652 s); two rebuilds identical; `git status` clean afterwards, so committed outputs reproduce | OK |
+| | Test words | All 20 match the table (茶 다 pending the short list; 手紙 `vi` table entry corrected) | OK |
+
+**Check 7, root causes.**
+1. `korean_base` (`stage3_match.py:128-152`) tries the surface syllable first and returns it if it is in `ko_all`, so at position 1 유 stays 유 although D39 maps it to 류. D39's normalization never happens for characters that list both forms. Against an independent recomputation, 322 `word_chars` rows on 101 characters have the wrong `ko_base`.
+2. `apply_d39` (`build_words.py:1055-1063`) counts all words, not D39's evidence words. So 편즙 (itself chosen by evidence) makes 輯 = 즙.
+3. `ko_law_form_suspect` is hard-coded `False` (line 1076); 5 or more rows should be true (爐 노, 廊 낭, 虜 노, 魯 노, 碌 녹).
+
+Effect: at least **49 wrong Korean primaries, 12 of them at levels 1-3**: 老 노 (로 15), 流 유 (류 29), 旅 여 (려 8), 連 연 (련 12), 領 영 (령 17), 律 율 (률 10), 列 열, 陸 육, 兩 양, 零 영, 冷 냉, 綠 녹, 勞 노. The learner sees these in the glyph and rule views. The Stage 3 tests missed them because they cover only 樂, 歷, 怒, 行, 茶, whose top counts did not change.
+
+**Check 10, root causes.**
+1. `word_forms` (`build_words.py:219`) passes the Korean variant graph to JMdict, for all word lengths. D42 has no variant forms. 31 single-character rows are affected, including the form shown on the card: 弄 瘧 (`gloss_ja_en` "ague"), 滾 菌 ("fungus"), 捉 杓 ("ladle"), 它 佗, 她 他, 聽 听 (ポンド in `ja_alt`), 穩 文, 拆 責, 蛋 蜑, 掉 棹.
+2. `match_japanese_row` (line 276) looks up on'yomi by `key_form` or `trad`, not the linked row: 歲 とし, 腳 あし, 內 うち, 值 あたい, 戶 と, 鄉 さと (should be さい, きゃく, ない, ち, こ, きょう); 號 こう (`chars.ja_on` = ごう).
+
+**Also found (Vietnamese, D51 items 3-4).** Rule B accepts homophones: 食物 thực vật and 實物 thực vật (植物), 不行 bất hạnh (不幸), 只是 chỉ thị (指示), 父女 phụ nữ (婦女), 路面 lộ diện (露面), 定為 định vị (定位), 視角 thị giác (視覺). 21 multi-character rule-B words have a `vi` that Kaikki attaches to another Han form, about half of them true errors; 食物 and 不行 are level 2. Rule A through `simp` or a variant on a single character: 麵 diện, 穩 văn.
+
+**Fixes requested:** F1-F13 in `HANDOFF.md`. Attempt 2 reruns checks 2, 5, 6, 7, 8, 9, 10, 11, C1, C2 and 13, then the short list. A second failure stops and asks the user (Rule 11).
