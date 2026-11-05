@@ -48,7 +48,8 @@ class CharacterCollisionTests(unittest.TestCase):
         variants = self.hsk["trad_variants"].map(lambda value: [x for x in value.split(";") if x])
         multi = variants.map(len) > 1
         non_first = [variant for values in variants[multi] for variant in values[1:]]
-        existing_trad = set(self.chars["trad"])
+        base = self.chars.loc[self.chars["in_hsk_chars"] == "true"]
+        existing_trad = set(base["trad"])
         self.assertEqual(int(multi.sum()), 83)
         self.assertEqual(int((variants[multi].map(len) == 2).sum()), 78)
         self.assertEqual(int((variants[multi].map(len) >= 3).sum()), 5)
@@ -57,9 +58,18 @@ class CharacterCollisionTests(unittest.TestCase):
         self.assertEqual(len(set(non_first) - existing_trad), 88)
         self.assertFalse((self.chars["trad"] == "").any())
 
+        words = pd.read_csv(
+            ROOT / "data" / "final" / "words.csv", encoding="utf-8",
+            keep_default_na=False, dtype=str,
+        )
+        used = {char for value in words["trad"] for char in value}
+        available = set(self.chars["trad"]) | set(self.chars["key_char"])
+        self.assertFalse(used - available)
+
     def test_traditional_key_preserves_korean_coverage(self) -> None:
+        base = self.chars["in_hsk_chars"] == "true"
         changed = self.chars["simp"] != self.chars["trad"]
-        self.assertGreaterEqual(int((changed & (self.chars["ko"] != "")).sum()), 1000)
+        self.assertGreaterEqual(int((base & changed & (self.chars["ko"] != "")).sum()), 1000)
 
 
 if __name__ == "__main__":

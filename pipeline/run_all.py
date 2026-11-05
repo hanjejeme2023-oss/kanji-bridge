@@ -1,7 +1,7 @@
 """Rebuild Kanji Bridge data in dependency order.
 
-Stage 2 currently builds the complete character table. Later stages append word,
-content, and app-export steps to SCRIPTS without changing the entry point.
+Stage 3 builds the character and word tables plus every review report. Later
+stages append accepted content and app-export steps without changing this entry point.
 """
 
 from __future__ import annotations
@@ -25,6 +25,8 @@ LOADERS = [
     "load_libhangul.py",
     "load_kaikki.py",
     "load_frequencywords.py",
+    "load_cedict.py",
+    "load_jmdict.py",
 ]
 
 
@@ -59,7 +61,8 @@ def main() -> None:
     for loader in LOADERS:
         run(loader)
     run("build_chars.py")
-    print("Stage 2 rebuild complete")
+    run("build_words.py")
+    print("Stage 3 rebuild complete")
 
 
 if __name__ == "__main__":

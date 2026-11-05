@@ -18,7 +18,7 @@ PAREN_RE = re.compile(r"\(.*?\)")
 
 
 def main() -> None:
-    explicit: dict[tuple[str, str], int] = {}
+    explicit: dict[tuple[str, str], tuple[int, str]] = {}
     aligned: dict[str, Counter[str]] = defaultdict(Counter)
     aligned_first_seen: dict[tuple[str, str], int] = {}
     hv_syllables: set[str] = set()
@@ -36,6 +36,12 @@ def main() -> None:
             if not word:
                 continue
             headwords.add(word)
+            gloss = ""
+            for sense in record.get("senses") or []:
+                glosses = sense.get("glosses") or []
+                if glosses:
+                    gloss = nfc(glosses[0])
+                    break
             for etymology in record.get("etymology_texts") or []:
                 first_line = nfc(etymology).split("\n", 1)[0]
                 match = ETYMOLOGY_RE.match(first_line)
@@ -48,7 +54,7 @@ def main() -> None:
                 evidence_order += 1
                 if len(runs) == 1 and not COMPONENT_RE.search(body):
                     han = runs[0]
-                    explicit.setdefault((han, word), evidence_order)
+                    explicit.setdefault((han, word), (evidence_order, gloss))
                     if len(han) == len(syllables):
                         for char, syllable in zip(han, syllables):
                             aligned[char][syllable] += 1
@@ -69,8 +75,9 @@ def main() -> None:
             "vi": vi,
             "syllable_count": len(vi.split()),
             "source_order": source_order,
+            "gloss_vi": gloss,
         }
-        for (han, vi), source_order in explicit.items()
+        for (han, vi), (source_order, gloss) in explicit.items()
     ]
     char_rows = []
     for char in sorted(aligned, key=ord):
@@ -88,7 +95,7 @@ def main() -> None:
 
     explicit_frame = pd.DataFrame(
         sorted(explicit_rows, key=lambda row: (row["source_order"], row["han"], row["vi"])),
-        columns=["han", "vi", "syllable_count", "source_order"],
+        columns=["han", "vi", "syllable_count", "source_order", "gloss_vi"],
     )
     char_frame = pd.DataFrame(char_rows, columns=["char", "vi", "count", "source_order"])
     syllable_frame = pd.DataFrame({"vi": sorted(hv_syllables)})

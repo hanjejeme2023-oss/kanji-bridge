@@ -26,16 +26,16 @@ Last updated: 2026-11-04 (Stage 1 review by Claude; evidence in `docs/STAGE1_REV
 
 | Source # | Used in table | Columns | Notes |
 |---|---|---|---|
-| 1 | `chars` (planned) | `trad`, `simp`, `ko`, `ko_all`, `pinyin`, `pinyin_all`, `vi`, `vi_all`, `gloss_en`; variant evidence | Character-level source; primary-reading priority and Vietnamese cross-check remain for Claude. |
-| 2 | `chars` (planned) | `jp`, `ja_on`, `ja_on_all`; variant evidence | Japanese on-reading source required by D9. |
+| 1 | `chars`, `words` matching | `trad`, `simp`, `ko`, `ko_all`, `pinyin`, `pinyin_all`, `vi`, `vi_all`, `gloss_en`; compatibility/semantic variant evidence | Stage 3 loads all D43 variant fields. Character primaries follow D39; unverified Vietnamese readings are excluded from words/rules. |
+| 2 | `chars`, `words` matching | `jp`, `ja_on`, `ja_on_all`; single-character Japanese fallback | KANJIDIC2 first on-reading is preserved; JMdict supplies word readings. |
 | 3 | `words`, `chars` | HSK backbone; `trad`, `simp`, `pinyin`, `level`; `chars.level`, `in_hsk_chars` | Accepted (D23). Loading rules D30. |
-| 4 | `words` (planned) | Chinese dictionary pinyin and `gloss_en` | Word key includes reading; source priority pending. |
-| 5 | `words`, false-friend candidate generation (planned) | `jp`, `ja`, `ja_alt`, Japanese gloss/commonness | Written-form mapping method pending. |
-| 6 | `words`, `chars`, false-friend candidate generation | `ko`, `ko_alt`, `chars.ko_all` (single-character fallback), Korean word inventory | Accepted (D23). Filter and match rules D32. |
+| 4 | `words`, false-friend candidates | `simp`, dictionary pinyin boundaries, `gloss_en` | D41 exact key plus same-form/readings fallback; HSK pinyin remains authoritative. |
+| 5 | `words`, false-friend candidates | `jp`, `ja`, `ja_alt`, `ja_common`, `gloss_ja_en` | D42 restrictions/ranking; entity tag names retained by the loader. |
+| 6 | `words`, `chars`, false-friend candidates | `ko`, `ko_alt`, `gloss_ko`, `chars.ko_all`, Korean word inventory | Full aligned records and comments loaded; D43 variants/alignment/두음법칙 rules applied. |
 | 7 | None | None | Excluded: no licence and incomplete input provenance. |
 | 7A | `words`, `chars` | `words.vi` (rule A/B), `chars.vi`/`vi_all` (aligned readings), Hán-Việt syllable set, VI-only additions | Selected (D24, D27). Parsing rule in D24. |
 | 7B | `words` | `freq_vi` (proxy `syllable_min`) | Selected (D26). |
-| 8 | `chars` (`jp`), `words` (JMdict match) | shinjitai ↔ traditional mapping | OpenCC chosen (D28); KANJIDIC2 validates/tie-breaks; Unihan variants only for `simp`. |
+| 8 | `chars` (`jp`), `words` (JMdict match) | shinjitai ↔ traditional character and phrase mappings | OpenCC chosen (D28); KANJIDIC2 validates/tie-breaks; phrase mappings are match candidates only. |
 
 ## 3. Implications to track
 

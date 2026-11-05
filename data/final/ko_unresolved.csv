@@ -1,0 +1,54 @@
+word_key,word_id,trad,pinyin,forms,candidates,reason
+吃飯|chīfàn,w00048,吃飯,chīfàn,吃飯;吃饭;喫飯,,forms exist but alignment rejected
+喝|hē,w00147,喝,hē,喝,갈;애,multiple without evidence
+句|jù,w00808,句,jù,句,구;귀,multiple without evidence
+身份證|shēnfènzhèng,w01881,身份證,shēnfènzhèng,身份證;身份証;身份证;身分證;身分証,,forms exist but alignment rejected
+台|tái,w01950,台,tái,台;臺,대;태,multiple without evidence
+只有|zhǐyǒu,w02168,只有,zhǐyǒu,只有;子有;祇有,,forms exist but alignment rejected
+吃驚|chījīng,w02317,吃驚,chījīng,吃驚;吃惊;喫驚,,forms exist but alignment rejected
+奮鬥|fèndòu,w02465,奮鬥,fèndòu,奮鬥;奮闘;奋斗;奮鬭;奮鬬;奮鬦;奮鬪,,forms exist but alignment rejected
+夥|huǒ,w02559,夥,huǒ,夥;伙,과;화,multiple without evidence
+身份|shēnfèn,w02846,身份,shēnfèn,身份;身分,,forms exist but alignment rejected
+帥|shuài,w02891,帥,shuài,帥;帅,솔;수,multiple without evidence
+臺階|táijiē,w02911,臺階,táijiē,臺階;台階;台阶;臺堦;台堦,,forms exist but alignment rejected
+戰鬥|zhàndòu,w03144,戰鬥,zhàndòu,戰鬥;戦闘;战斗;戰鬭;戰鬬;戰鬦;戰鬪;戰闘;戦鬥;戦鬭;戦鬬;戦鬦;戦鬪,,forms exist but alignment rejected
+棒|bàng,w03224,棒,bàng,棒,방;봉,multiple without evidence
+闖|chuǎng,w03351,闖,chuǎng,闖;闯,츰;틈,multiple without evidence
+呆|dāi,w03384,呆,dāi,呆;獃,매;태,multiple without evidence
+噸|dūn,w03431,噸,dūn,噸;吨,돈;톤,multiple without evidence
+鍋|guō,w03518,鍋,guō,鍋;锅,과;와,multiple without evidence
+秒|miǎo,w03715,秒,miǎo,秒,묘;초,multiple without evidence
+嚇|xià,w04021,嚇,xià,嚇;吓,하;혁,multiple without evidence
+咬|yǎo,w04087,咬,yǎo,咬;齩,교;요,multiple without evidence
+串|chuàn,w04436,串,chuàn,串,곶;관;천,multiple without evidence
+醋|cù,w04449,醋,cù,醋,작;초,multiple without evidence
+吊|diào,w04498,吊,diào,吊;弔,적;조,multiple without evidence
+鬥爭|dòuzhēng,w04505,鬥爭,dòuzhēng,鬥爭;闘争;斗争;鬥争;鬭爭;鬭争;鬬爭;鬬争;鬦爭;鬦争;鬪爭;鬪争;闘爭,,forms exist but alignment rejected
+桿|gǎn,w04572,桿,gǎn,桿;杆,간;한,multiple without evidence
+撲|pū,w04904,撲,pū,撲;扑,박;복,multiple without evidence
+寺|sì,w05040,寺,sì,寺,사;시,multiple without evidence
+扒|bā,w05445,扒,bā,扒,배;팔,multiple without evidence
+搏鬥|bódòu,w05655,搏鬥,bódòu,搏鬥;搏闘;搏斗;搏鬭;搏鬬;搏鬦;搏鬪,,forms exist but alignment rejected
+不予|bùyǔ,w05705,不予,bùyǔ,不予;不余;不豫,,forms exist but alignment rejected
+摻|chān,w05779,摻,chān,摻;掺,삼;섬;참,multiple without evidence
+吃苦|chīkǔ,w05878,吃苦,chīkǔ,吃苦;喫苦,,forms exist but alignment rejected
+吃虧|chīkuī,w05879,吃虧,chīkuī,吃虧;吃亏;喫虧,,forms exist but alignment rejected
+痴獃|chīdāi,w05880,痴獃,chīdāi,痴獃;痴呆;癡獃;癡呆,,forms exist but alignment rejected
+揣|chuāi,w05980,揣,chuāi,揣,췌;취,multiple without evidence
+兜|dōu,w06331,兜,dōu,兜,도;두,multiple without evidence
+鬥志|dòuzhì,w06337,鬥志,dòuzhì,鬥志;闘志;斗志;鬥𢖽;鬭志;鬭𢖽;鬬志;鬬𢖽;鬦志;鬦𢖽;鬪志;鬪𢖽;闘𢖽,,forms exist but alignment rejected
+飛速|fēisù,w06494,飛速,fēisù,飛速;飞速;飛跡;飛蹟;飛迹,,forms exist but alignment rejected
+份額|fèn'é,w06539,份額,fèn'é,份額;份额;份頟;分額;分頟,,forms exist but alignment rejected
+關照|guānzhào,w06854,關照,guānzhào,關照;関照;关照;關炤;寡照;寡炤;関炤;闗照;闗炤,,forms exist but alignment rejected
+龜|guī,w06900,龜,guī,龜;亀;龟,구;귀;균,multiple without evidence
+揭露|jiēlù,w07503,揭露,jiēlù,揭露;掲露;結露,,forms exist but alignment rejected
+掄|lūn,w08143,掄,lūn,掄;抡,론;륜,multiple without evidence
+畝|mǔ,w08330,畝,mǔ,畝;亩;畆;𤱈,묘;무,multiple without evidence
+嫩|nèn,w08386,嫩,nèn,嫩;媆;𡞾;嫰,논;눈,multiple without evidence
+撕|sī,w09312,撕,sī,撕,사;서;시,multiple without evidence
+酥|sū,w09334,酥,sū,酥,소;수,multiple without evidence
+下臺|xiàtái,w09860,下臺,xiàtái,下臺;下台,,forms exist but alignment rejected
+掀|xiān,w09876,掀,xiān,掀,헌;흔,multiple without evidence
+閘|zhá,w10618,閘,zhá,閘;闸,갑;잡,multiple without evidence
+拽|zhuài,w10869,拽,zhuài,拽;曳,열;예,multiple without evidence
+x|鬥士,w11072,鬥士,dòushì,鬥士;闘士;斗士;鬭士;鬬士;鬦士;鬪士,,forms exist but alignment rejected

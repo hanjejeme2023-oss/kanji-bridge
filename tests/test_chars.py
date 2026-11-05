@@ -20,7 +20,8 @@ class CharacterTableTests(unittest.TestCase):
         cls.by_key = cls.chars.set_index("key_char")
 
     def test_shape_keys_and_ids(self) -> None:
-        self.assertEqual(len(self.chars), 3000)
+        self.assertEqual((self.chars["in_hsk_chars"] == "true").sum(), 3000)
+        self.assertGreater(len(self.chars), 3000)
         self.assertEqual(self.chars["key_char"].duplicated().sum(), 0)
         self.assertEqual(self.chars["char_id"].duplicated().sum(), 0)
         self.assertTrue(self.chars["char_id"].map(lambda value: bool(re.fullmatch(r"c\d{5}", value))).all())
@@ -81,9 +82,9 @@ class CharacterTableTests(unittest.TestCase):
             "學": ["学", "がく", "학", "xué", "học"],
             "國": ["国", "こく", "국", "guó", "quốc"],
             "茶": ["茶", "ちゃ", "다", "chá", "trà"],
-            "行": ["行", "こう", "항", "xíng", "hành"],
+            "行": ["行", "こう", "행", "xíng", "hành"],
             "生": ["生", "せい", "생", "shēng", "sinh"],
-            "樂": ["楽", "がく", "낙", "lè", "nhạc"],
+            "樂": ["楽", "がく", "락", "lè", "lạc"],
         }
         for key_char, values in expected.items():
             with self.subTest(key_char=key_char):
@@ -97,8 +98,9 @@ class CharacterTableTests(unittest.TestCase):
         self.assertFalse(self.chars["ko_all"].str.contains(":", regex=False).any())
 
     def test_expected_stage2_sanity_ranges(self) -> None:
-        jp_missing = int((self.chars["jp"] == "").sum())
-        verified_vi = int(self.chars["source_vi"].isin(["kaikki_aligned", "unihan_hvsyl"]).sum())
+        base = self.chars.loc[self.chars["in_hsk_chars"] == "true"]
+        jp_missing = int((base["jp"] == "").sum())
+        verified_vi = int(base["source_vi"].isin(["kaikki_aligned", "unihan_hvsyl"]).sum())
         self.assertGreaterEqual(jp_missing, 35)
         self.assertLessEqual(jp_missing, 55)
         self.assertGreaterEqual(verified_vi, 1800)

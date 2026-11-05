@@ -12,7 +12,8 @@ Read `PROMPT.md` first, then this file. Do only the assignment for your role. Up
 - Prototype: `prototype/index.html` (frozen).
 - Stage 2 (character table) — **DONE** by Codex, 2026-11-04. Revised D37 is implemented as two rows with unique `key_char`; 3,000 rows and all Stage 2 reports are committed. Stage 2 gate: PASS (Claude, 2026-11-04).
 - **PROMPT Rule 11 (stage gates) is in force.** Gate results are logged in `docs/GATES.md`. Stage 1 gate: PASS. Stage 2 gate: PASS (both 2026-11-04).
-- Pre-Stage-3 readiness review: **DONE** by Claude, 2026-11-04 (three passes, CHANGELOG; decisions D39-D50). Only docs changed. Codex has not started Stage 3.
+- Pre-Stage-3 readiness review: **DONE** by Claude, 2026-11-04 (three passes, CHANGELOG; decisions D39-D50).
+- Stage 3 (word table) — **DONE** by Codex, 2026-11-04; awaiting the Claude gate. Full pipeline and outputs are committed; 22 tests pass, including two-build byte-for-byte determinism.
 
 ## Stage 1 review: outcome in brief (details in STAGE1_REVIEW.md)
 - **Licences:** all accepted. hsk30 accepted with a recorded provenance risk (confirmed by the user, D35). Dataset will be **CC BY-SA 4.0**.
@@ -20,6 +21,19 @@ Read `PROMPT.md` first, then this file. Do only the assignment for your role. Up
 - **Shinjitai:** inverted OpenCC `JPShinjitaiCharacters` (16/16 on the prototype's glyph pairs), KANJIDIC2 tie-break.
 
 ## NEXT ASSIGNMENT
+**Agent: Claude — Stage 3 gate.** Run the checklist in `docs/GATES.md`, including the 30-word source sample and the review short list. Per D50, propose picks (including 茶→차 because the evidence build leaves `chars.ko=다`) and stop for user confirmation before writing `pipeline/overrides.csv`. Do not start the D36 Vietnamese source search until the gate flow is complete.
+
+## Stage 3 Codex completion evidence (2026-11-04)
+- Final tables: 11,028 HSK rows + 1,201 `vi_freq` rows (including 越南) = 12,229 words; 24,458 `word_chars` rows; 3,178 characters. HSK coverage: Japanese 5,732 (51.98%), Korean 7,110 (64.47%), Vietnamese 3,882 (35.20%), all four 3,114 (28.24%); 7,354 HSK cards eligible.
+- D41/merges: 10,974 exact CC-CEDICT keys, 19 fallbacks, 35 unmatched. All SCHEMA §1.8 merges are in `merge_report.csv` with their validation cardinality; match tables are one row per word key.
+- VI-only: 1,200 ranked rows plus the 越南 seed; `vi_only_report.csv` has 3,367 candidate/audit rows. IDs use `x|trad`; HSK IDs use `trad|pinyin`.
+- C1/C2: `chars` grew 3,000 → 3,178. HSK words require exactly 82 new characters. VI-only words use 119 non-base characters, 23 shared with the HSK additions, so they add 96 more after HSK (the pre-build estimate was about 108). `char_ambiguous.csv`: 0 rows. `char_simp_mismatch.csv`: 12 rows (10 HSK, 2 VI-only), including the expected 反覆/答覆 rows; all are explicit for gate review. `char_key_collisions.csv` remains the two 著 rows (`着`, `著`).
+- Reports (rows): `cedict_unmatched` 35; `ja_multi_candidates` 154; `ko_multi_candidates` 136; `ko_unresolved` 53; `vi_ambiguous` 12; `alignment_mismatches` 50; `char_primary_changes` 95; `char_primary_no_evidence` 1,819; `rules_examples` 2,080; `rules_report` 7; `coverage_report` 41; `ff_candidates` 2,944. `rules_examples.csv` has 0 `unihan_unverified` rows.
+- Fixed words match the Stage 3 table. Single-character fallback tests pass for 國 こく, 電 でん, 海 かい, 手 しゅ with the JMdict readings in `ja_alt`. 手紙 and 大丈夫 are in `ff_candidates.csv`; 手紙 is not in `words`. 新聞 has empty Vietnamese as expected.
+- D39 first build: 樂=락, 歷=력, 怒=노, 行=행. 茶 remains **다** with 차 in its dictionary candidates; this is the expected gate short-list item, not a Codex override. `ja_on`/`pinyin` ordering is unchanged from KANJIDIC2/Unihan.
+- Validation: `python -m unittest discover -s tests -p 'test_*.py'` → 22 tests OK (393.898 s). `test_rebuild` ran `run_all.py` twice and compared every final file plus `pipeline/id_map.csv`: identical.
+
+## COMPLETED ASSIGNMENT — Codex Stage 3 reference
 **Agent: Codex — Stage 3: word table** (PROMPT Stage 3, as completed by DECISIONS D39-D50 and the spec addenda; **where PROMPT's wording differs, those win**). Stage 2 gate: **PASS** (attempt 1, 2026-11-04). A pre-Stage-3 readiness review (Claude, 2026-11-04, three passes) simulated the matching rules below on the raw files; expected counts are estimates, not yet from a real build. Do not improvise a data rule; if one is missing, stop and raise it here.
 
 **Before starting:** read D39-D50. **D50 records the user's answers to the four open points; apply them.**
@@ -80,6 +94,7 @@ PROMPT's criteria, measured by the checklist and the test-word table in `docs/GA
 - hsk30 provenance risk: **accepted by the user** (D35, personal non-commercial project; revisit if ever published commercially).
 
 ## Log
+- 2026-11-04 Codex — Stage 3 complete: 11,028 HSK + 1,201 VI-only words, 3,178 chars, all reports, fixed-word tests, and deterministic rebuild verified. Next: Claude Stage 3 gate.
 - 2026-11-04 Claude — user chose the KANJIDIC2 fallback for single-character words with no on'yomi in JMdict (D42, D50); 國 is now こく in the test table. No open user questions. Next: Codex Stage 3.
 - 2026-11-04 Claude — applied the user's D50 answers: pinyin out of D39; on'yomi first; Korean base form; user confirms the review short list; 茶 `chars.ko` to end as 차. 國 くに explained. Next: Codex Stage 3.
 - 2026-11-04 Claude — pre-Stage-3 readiness review, three passes; D39 refined by the user; D40-D50 added; SCHEMA, spec addenda, GATES checklist and this task updated; four user questions recorded in D50. Next: Codex Stage 3.

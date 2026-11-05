@@ -1,7 +1,11 @@
 {
-  "jp_missing": 45,
-  "rows": 3000,
-  "vi_missing": 709,
-  "vi_unverified": 456,
-  "vi_verified": 1835
+  "alignment_mismatches": 50,
+  "char_ambiguous": 0,
+  "char_simp_mismatch": 12,
+  "chars_after_growth": 3178,
+  "chars_before_growth": 3000,
+  "ff_candidates": 2944,
+  "hsk_words": 11028,
+  "vi_only_words": 1201,
+  "word_chars": 24458
 }

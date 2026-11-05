@@ -28,6 +28,8 @@ class RebuildDeterminismTests(unittest.TestCase):
         second = digest_outputs()
         self.assertEqual(first, second)
         self.assertIn("data/final/chars.csv", second)
+        self.assertIn("data/final/words.csv", second)
+        self.assertIn("data/final/word_chars.csv", second)
         self.assertIn("pipeline/id_map.csv", second)
 
 

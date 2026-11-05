@@ -20,6 +20,10 @@ FIELDS = [
     "kTraditionalVariant",
     "kHanyuPinyin",
     "kXHC1983",
+    "kCompatibilityVariant",
+    "kZVariant",
+    "kSemanticVariant",
+    "kSpecializedSemanticVariant",
 ]
 # Unihan kHangul source tags include values such as :0E and :0N. They are
 # provenance markers, not part of the Hangul reading (global data rule 2).

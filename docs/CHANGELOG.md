@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## 2026-11-04 — Stage 3: word table [Codex]
+- Added normalized CC-CEDICT and JMdict loaders; JMdict retains entity tag names for D42 ranking. Expanded Unihan variants, full libhangul aligned records/comments, and Kaikki first glosses.
+- Implemented D40-D50 in `pipeline/build_words.py` and `stage3_match.py`: 11,028-row HSK dedupe; exact/fallback CC-CEDICT attachment; Japanese/Korean/Vietnamese dictionary matching; deterministic VI-only selection; character growth/linking; `word_chars`; D39 primary recomputation; rules, coverage, merge, ambiguity and mismatch reports; and D47 false-friend candidates.
+- Final build: 12,229 words (11,028 HSK + 1,201 VI-only), 3,178 characters, 24,458 word-character rows, 2,944 false-friend candidates. HSK coverage is 5,732 Japanese, 7,110 Korean, 3,882 Vietnamese and 3,114 with all four languages; 7,354 HSK cards are eligible.
+- C1/C2 evidence: 3,000→3,178 characters; 82 additions required by HSK words and 96 further exclusive additions required by VI-only words; zero ambiguous links; 12 simplified-form mismatches explicitly reported.
+- Added `pipeline/overrides.csv` with its header only for gate-confirmed choices. No value was invented or hand-entered; 茶 remains 다 pending the D50 gate short list.
+- Rescoped character/collision tests and added `tests/test_words.py`. Validation: 22 tests pass; the rebuild test ran the complete pipeline twice and all final outputs plus `id_map.csv` were identical.
+- Updated `docs/SOURCES.md` usage log from planned to actual Stage 3 table/column use. No new decision was needed, so `DECISIONS.md` is unchanged.
+
 ## 2026-11-04 — Stage 0: setup [Claude]
 - Created folder layout (`raw/ pipeline/ config/ content/accepted/ data/staging/ data/final/ app/ tests/ licenses/`), `.gitignore`, `git init`.
 - `docs/SCHEMA.md`: exact columns, ID rules, `data.js` shape, and field-by-field mapping from `WORDS`/`RULES`/`FF`/`PASSAGES`/`GLYPHS` to tables.
