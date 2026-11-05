@@ -11,7 +11,7 @@ If this file and the spec disagree, the spec wins, except where DECISIONS.md D12
 - IDs: `c00001` (chars), `w00001` (words), `p0001` (passages). Assigned once in `pipeline/id_map.csv` (columns `kind,key,id`); keys: chars = `key_char` (D37); words = `trad|pinyin` for HSK words, `x|trad` for every other word (`vi_freq`, `ff_only`; D46, because their readings can change when sources are added); passages = `lang|level|n` as defined by Codex. Rebuild reuses IDs; new rows get the next free number; IDs are never reused or renumbered.
 - Pinyin: tone marks, lowercase, syllables joined without spaces in `words.pinyin` (`xuéshēng`), apostrophes kept (`píng'ān`; D41). `chars.pinyin` is one syllable.
 - Vietnamese: NFC, lowercase, modern tone placement (D25: `thủy`, `hòa`, not `thuỷ`, `hoà`), syllables separated by one space (`học sinh`). Korean: Hangul, no spaces inside a word.
-- Japanese kana: `chars.ja_on*` hiragana (KANJIDIC2 katakana converted). `words.ja` keeps JMdict's script, so loanwords are katakana (D42).
+- Japanese kana: `chars.ja_on*` hiragana (KANJIDIC2 katakana converted). `words.ja` keeps JMdict's script, so loanwords are katakana; the single-character fallback is hiragana (D42).
 - `lang` codes: `ja`, `ko`, `zh`, `vi`. App labels: ja=日, ko=韓, zh=中, vi=越.
 
 ## 1. Tables (columns in order)
@@ -40,8 +40,8 @@ If this file and the spec disagree, the spec wins, except where DECISIONS.md D12
 | word_id | str `wNNNNN` | SRS key |
 | trad / simp | str | from hsk30 (or the source that added the word) |
 | jp | str | Japanese written form from matched JMdict entry; else built per character from `chars.jp`; empty if not a Japanese word |
-| ja | str | Japanese reading as JMdict gives it (hiragana, or katakana for loanwords; D42); empty if no match |
-| ja_common | bool | the chosen JMdict pair has a priority tag (D42); false if `ja` is empty |
+| ja | str | Japanese reading as JMdict gives it (hiragana, or katakana for loanwords); for a single-character word with no on'yomi in JMdict, `chars.ja_on` (D42); empty if the form has no JMdict entry |
+| ja_common | bool | the top-ranked JMdict pair for the form has a priority tag (D42); false if the form has no entry |
 | ko | str | Hangul |
 | pinyin | str | |
 | vi | str | |
@@ -58,7 +58,7 @@ If this file and the spec disagree, the spec wins, except where DECISIONS.md D12
 | false_friend | str | `;`-separated lang codes where meaning differs from the others, e.g. `zh` or `ko;zh`; empty = not a false friend |
 | syl_aligned | bool | true when `word_chars` gives a full Korean AND Vietnamese syllable alignment (D14) |
 | verified | bool | |
-| source_ja / source_ko / source_pinyin / source_vi / source_level | str | provenance tags. `source_vi` ∈ `kaikki_han` / `composed_attested` (D24); `source_ja` ∈ `jmdict` / `built_from_chars` (D31); `source_ko` ∈ `libhangul` / `libhangul_variant` (D43); `source_level` ∈ `hsk30` / `vi_band`. A value set by `overrides.csv` keeps its source tag; the override file records the reason |
+| source_ja / source_ko / source_pinyin / source_vi / source_level | str | provenance tags. `source_vi` ∈ `kaikki_han` / `composed_attested` (D24); `source_ja` ∈ `jmdict` / `kanjidic2_on` (D42); a word with only a built `jp` (D31) has `ja` empty, and `built_from_chars` tags that form; `source_ko` ∈ `libhangul` / `libhangul_variant` (D43); `source_level` ∈ `hsk30` / `vi_band`. A value set by `overrides.csv` keeps its source tag; the override file records the reason |
 
 ### 1.3 `word_chars`
 `word_id, position (int, 1-based), char_id, pinyin_syllable, ko_syllable, ko_base, vi_syllable`. `ko_syllable` is as written in the word (역), `ko_base` is the D39 form (력); a language the word lacks leaves the syllable empty, which is not a mismatch (D45). A word's character at each position is matched to `chars` by the word's own `trad` string (D38): rows whose `trad` equals the character; if none, the row whose `key_char` equals it; if several (`trad` collision, D37), by the word's `simp` at that position, then by pinyin; undecidable cases leave `char_id` empty and go to `char_ambiguous.csv`. Position check: the linked row's `simp` equals the word's `simp` at that position, else the word goes to `char_simp_mismatch.csv`.
@@ -86,7 +86,7 @@ Not a pandas table to maintain: `config/rules.json` text + examples computed fro
 | expanded hsk30 (11,110) | none: group by `(trad, pinyin)` | | unique after | 11,028 rows |
 | words | CC-CEDICT | `cedict_key` | `m:1` | 10,974 `both`; 54 go to the D41 fallback, 35 stay unmatched |
 | words | Kaikki rule-A Han forms (deduped, 3,366) | `trad` | `m:1`, `how="outer"`, `indicator` | `right_only` feeds D46 candidates (about 1,670 pairs, about 1,212 pass) |
-| words (`trad`, `pinyin`) | `ja_match` | word key | `1:1` | about 5,600 |
+| words (`trad`, `pinyin`) | `ja_match` | word key | `1:1` | about 5,650 |
 | words | `ko_match` | word key | `1:1` | about 7,100 |
 | words | `vi_match` | word key | `1:1` | about 3,870 |
 | characters of words | `chars` | D37/D38 linking, not a plain merge | row count = sum of word lengths | 0 unlinked; about 190 new rows |

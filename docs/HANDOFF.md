@@ -30,7 +30,7 @@ Read `PROMPT.md` first, then this file. Do only the assignment for your role. Up
 3. **Reading lookup** for any character, without adding rows.
 4. **VI-only words (D46)** with the current sources, plus the seed 越南; write `vi_only_report.csv`. IDs: `trad|pinyin` for HSK, `x|trad` otherwise.
 5. **Grow `chars` (D38, D48):** about 82 + 108 rows, `in_hsk_chars=false`. Rescope the Stage 2 checks that assume 3,000 rows (D40). Link word characters to `char_id` (D37 item 5, D38); write `char_ambiguous.csv`, `char_simp_mismatch.csv`.
-6. **Match tables:** JMdict (D42), libhangul (D43), Vietnamese (D44), one row per word key, merged left `1:1`. Create `pipeline/overrides.csv` (header only). Write `ja_multi_candidates.csv`, `ko_multi_candidates.csv`, `ko_unresolved.csv`, `vi_ambiguous.csv`.
+6. **Match tables:** JMdict (D42, including the single-character KANJIDIC2 fallback, `source_ja=kanjidic2_on`), libhangul (D43), Vietnamese (D44), one row per word key, merged left `1:1`. Create `pipeline/overrides.csv` (header only). Write `ja_multi_candidates.csv`, `ko_multi_candidates.csv`, `ko_unresolved.csv`, `vi_ambiguous.csv`.
 7. **`word_chars` (D45)** with `pinyin_syllable`, `ko_syllable`, `ko_base`, `vi_syllable`, `syl_aligned`; write `alignment_mismatches.csv`.
 8. **D39:** update primaries for `ko` and `vi` only (`ja_on` keeps KANJIDIC2 order, `pinyin` keeps `kMandarin` order), `ko_final`, `vi_final`, source tags, `ko_base_all`; write `char_primary_changes.csv`, `char_primary_no_evidence.csv`. Then apply `table=chars` overrides and recompute those same columns.
 9. **Rebuild `rules_report.csv`, `rules_examples.csv` (D45):** verified readings only.
@@ -41,7 +41,7 @@ Read `PROMPT.md` first, then this file. Do only the assignment for your role. Up
 ### Done when
 PROMPT's criteria, measured by the checklist and the test-word table in `docs/GATES.md`, and specifically:
 - 11,028 HSK rows, `word_id` unique; every merge in SCHEMA §1.8 logged with `validate=`; every report above exists with its row count in your hand-off note.
-- Test words match the table in `GATES.md` (18 HSK words; 越南 as `vi_freq`; 手紙 in `ff_candidates.csv`, not in `words`).
+- Test words match the table in `GATES.md` (18 HSK words; 越南 as `vi_freq`; 手紙 in `ff_candidates.csv`, not in `words`). Single-character fallback tests: 國 こく, 電 でん, 海 かい, 手 しゅ, with the JMdict reading in `ja_alt`.
 - D39: every `ko` and `vi` primary equals the most frequent reading in evidence words after normalization (ties: previous order), unless a `table=chars` override applies; `*_all` sets unchanged, primary first; every `ja_on` is the KANJIDIC2 first value; every `pinyin` is the first `kMandarin` value; tests 樂 (락 or 악, never 낙), 歷 (력, never 역), 怒 (노), 行 (행), 茶 (차 if `overrides.csv` has it, otherwise 차 or 다). 다 at your build is expected, not a failure: state it in your hand-off note. The user wants 차, and the gate handles it.
 - `rules_report.csv` rebuilt after D39, 0 unverified readings.
 - `ff_candidates.csv` has 2,500-3,300 rows.
@@ -71,7 +71,6 @@ PROMPT's criteria, measured by the checklist and the test-word table in `docs/GA
 - If a source has no license or non-commercial-only terms: do not use it; stop and ask the user.
 
 ## Open problems / notes
-- **Question to the user (not blocking; D50 item 2):** about 260 single-character words have no on'yomi in JMdict and show a kun reading (海 うみ, but also 電 いなずま). Should they fall back to the KANJIDIC2 on'yomi? Until answered, the written rule stands. A different answer means a rule edit and a rebuild.
 - Known limits to report, not fix, in Stage 3: `hanja.txt` has no frequency, so a Korean reading may be a rare entry; `freq_vi` is a syllable proxy, so VI-only levels are rough until D36 finds a word list.
 - Stage 2 gate notes (non-blocking): (1) resolved by D39 and D43. (2) Suspect Vietnamese readings for loop 1 accuracy: 怎 chẩn (expected chẩm; `unihan_hvsyl`), 幻 ảo (usual Hán-Việt huyễn). (3) `unihan_hvsyl` (300 chars) is a weaker check than `kaikki_aligned`.
 - Resolved: hsk30 `着`/`著` collision → separate rows with `key_char` (D37, revised).
@@ -81,6 +80,7 @@ PROMPT's criteria, measured by the checklist and the test-word table in `docs/GA
 - hsk30 provenance risk: **accepted by the user** (D35, personal non-commercial project; revisit if ever published commercially).
 
 ## Log
+- 2026-11-04 Claude — user chose the KANJIDIC2 fallback for single-character words with no on'yomi in JMdict (D42, D50); 國 is now こく in the test table. No open user questions. Next: Codex Stage 3.
 - 2026-11-04 Claude — applied the user's D50 answers: pinyin out of D39; on'yomi first; Korean base form; user confirms the review short list; 茶 `chars.ko` to end as 차. 國 くに explained. Next: Codex Stage 3.
 - 2026-11-04 Claude — pre-Stage-3 readiness review, three passes; D39 refined by the user; D40-D50 added; SCHEMA, spec addenda, GATES checklist and this task updated; four user questions recorded in D50. Next: Codex Stage 3.
 - 2026-11-04 Claude — user decision D39 recorded (primary readings from word evidence); added to the Stage 3 task. Next: Codex Stage 3.

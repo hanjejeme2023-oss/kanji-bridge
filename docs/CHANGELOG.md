@@ -115,3 +115,9 @@ Asked on 2026-11-04 and not answered. Defaults are recorded, and the user's exis
 - **茶:** `chars.ko` must end as 차. Checked: the only one-candidate evidence word is 茶葉 다엽, so the first build gives 다, and even with 홍차 and 녹차 confirmed a 2-2 tie would keep 다. It therefore goes on the short list with an override, and Codex's test accepts 다 until then.
 - **國 in the test table:** the user asked to fix or explain. Explained, not changed: JMdict's only entry for 国 is くに, so くに follows the chosen rule; こく is KANJIDIC2's reading and is `chars.ja_on`. Checking this showed the same applies to about 260 of 970 single-character forms, some with bad kun readings (電 いなずま). Falling back to KANJIDIC2 would change all of them, so it was put to the user as a follow-up rather than decided here.
 - Also updated so nothing contradicts D39: D42, D43, D45, `SCHEMA.md` and the spec addendum (the spec wins on conflict, so its old line had to change).
+
+## 2026-11-04 Claude — Single-character Japanese fallback (user decision; docs only)
+- D42, D50: if JMdict has no on'yomi for a single-character word, `ja` = `chars.ja_on`, the JMdict readings go to `ja_alt`, and `source_ja=kanjidic2_on`. Simulated: 國 こく, 電 でん, 海 かい, 手 しゅ; 269 of 1,006 rows use it.
+- Consequences written down: katakana-only words (吃, 噸) now get an on'yomi instead of an empty `ja`; expected `ja` rows rise from about 5,600 to about 5,650; 〇 keeps れい because KANJIDIC2 has no on'yomi for it.
+- Boundary set by Claude: the fallback needs a JMdict entry for the form. About 580 single-character rows with no entry (很, 就) keep `ja` empty.
+- GATES test table and check 10, HANDOFF task and Done-when, and SCHEMA (`ja`, `ja_common`, `source_ja`) updated. The D50 follow-up is closed.

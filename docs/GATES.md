@@ -26,7 +26,7 @@ The gate also reruns C1 and C2 above. The Stage 3 gate is repeated after any D36
 | 7 | D39: recompute each `ko` and `vi` primary from `word_chars`; `*_all` sets unchanged; `ja_on` = KANJIDIC2 first; `pinyin` = first `kMandarin` value; both reports exist | 樂 락 or 악, 歷 력, 怒 노, 行 행; 茶 per check 9; scan changes with a top count of 1 (about 33 for Korean; 丹 → 란, 液 → giá are bad) and write overrides |
 | 8 | `rules_report.csv` rebuilt from verified pairs after D39 | 0 `unihan_unverified`; large cells follow `config/rules.json`; investigate new large off-pattern cells |
 | 9 | Review lists: `ko_multi_candidates.csv`, `ja_multi_candidates.csv`, `vi_ambiguous.csv` | about 124, 170, 13 rows. **Claude proposes a pick for each row on the short list, then stops and asks the user to confirm (D50 item 4).** Short list: all multi-character rows, all `vi_ambiguous` rows, single-character rows at levels 1-3, and **茶 if `chars.ko` = 다** (proposed override `chars,茶,ko,차`; also propose 茶 차, 紅茶 홍차, 綠茶 녹차). Picks must be dictionary candidates. After confirmation, Claude writes the rows to `overrides.csv` and reruns `run_all.py` and the tests; the gate cannot pass before that. Other rows go to loop 1 |
-| 10 | Sample 20 `libhangul_variant` words and all single-character `ja` values at levels 1-2 | variant false matches (坐下 via 座下) are listed; a rate above 5% means narrowing the variant fields. Kun readings where JMdict has no on'yomi (about 260 forms in all; 電 いなずま, 錯 こすり are bad) are reported to the user unless D50 item 2's follow-up has been answered |
+| 10 | Sample 20 `libhangul_variant` words and all single-character `ja` values at levels 1-2 | variant false matches (坐下 via 座下) are listed; a rate above 5% means narrowing the variant fields. Fallback rows (`source_ja=kanjidic2_on`, about 269): `ja` = `chars.ja_on`, JMdict readings in `ja_alt`; 國 こく, 電 でん, 海 かい, 手 しゅ. A form with no JMdict entry has `ja` empty (about 580 rows) |
 | 11 | `ff_candidates.csv` | 2,500-3,300 rows; 手紙 and 大丈夫 present; none in `words` |
 | 12 | Random sample of 30 words across levels against the sources (record the seed) | PROMPT gate |
 | 13 | Tests pass; rebuild twice identical including `id_map.csv` | |
@@ -34,12 +34,12 @@ The gate also reruns C1 and C2 above. The Stage 3 gate is repeated after any D36
 ### Test words at Stage 3 (D49)
 Empty means no value is expected from the current sources; the value must then be empty, not filled in. Values in brackets are also accepted because they are review-list items. Single-character `ja` and `ko` follow the user's decisions in D50.
 
-**Why 國 is くに and not こく:** the rule is "the first JMdict reading that is an on'yomi; if none, the first JMdict reading". JMdict's only entry for 国 is くに, so the word's `ja` is くに, and the rule is followed, not broken. こく is a KANJIDIC2 reading: `chars.ja_on` for 國 is こく, and the glyph and rule views show it. A fallback that gives the word こく is the open follow-up in D50 item 2; if the user accepts it, this row changes to こく.
+**國 is こく through the fallback (D42, D50 item 2):** JMdict's only entry for 国 is くに, which is not an on'yomi, so `ja` = `chars.ja_on` = こく, `source_ja=kanjidic2_on`, and くに is in `ja_alt`.
 
 | Word | Row | `simp` | `jp` | `ja` | `ko` | `pinyin` | `vi` |
 |---|---|---|---|---|---|---|---|
 | 學 | HSK | 学 | 学 | がく | 학 | xué | học |
-| 國 | HSK | 国 | 国 | くに | 국 | guó | quốc |
+| 國 | HSK | 国 | 国 | こく | 국 | guó | quốc |
 | 茶 | HSK | 茶 | 茶 | ちゃ | 차 (다 until the short list is confirmed) | chá | trà |
 | 行 | HSK, 2 rows | 行 | 行 | ぎょう (こう) | 행 | xíng; háng | hành; hàng (or empty and in `vi_ambiguous`) |
 | 生 | HSK | 生 | 生 | せい | 생 | shēng | sinh |
@@ -59,7 +59,7 @@ Empty means no value is expected from the current sources; the value must then b
 | 心理 | HSK | 心理 | 心理 | しんり | 심리 | xīnlǐ | tâm lý |
 | 越南 | `vi_freq`, seeded (D46) | 越南 | 越南 | えつなん | 월남 | yuènán | việt nam |
 
-Characters: 樂 `ko`=락 or 악, `ko_all` still contains 낙; 歷 `ko`=력; 行 `ko`=행; **茶 `ko`=차 when the gate passes** (다 is possible at Codex's first build, check 9); `ja_on` of all of them = KANJIDIC2 first (國 こく); `pinyin` = first `kMandarin` value.
+Characters: 樂 `ko`=락 or 악, `ko_all` still contains 낙; 歷 `ko`=력; 行 `ko`=행; **茶 `ko`=차 when the gate passes** (다 is possible at Codex's first build, check 9); `ja_on` of all of them = KANJIDIC2 first (so 國 `chars.ja_on` = こく = its word's `ja`); `pinyin` = first `kMandarin` value.
 
 | Stage | Gate date | Result | Attempt | Gate by |
 |---|---|---|---|---|
