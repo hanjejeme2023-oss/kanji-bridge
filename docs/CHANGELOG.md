@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 2026-11-06 — Repeat Stage 3 gate after D53, attempt 2: PASS; D55 short list [Claude]
+- Rechecked G1-G3, R2, R4, R5, R6, checks 6, 8, 11, 13 on `4919d5b` against `0d581fa` and `7827546` (`docs/review_scripts/stage3_repeat_gate_attempt2_reference.py`). All 1,122 A2 values equal an independent implementation of D56 item 2 applied to 7C; 0 invented consonant + y spellings in `words`, `ff_candidates`, `rules_examples`; `ff_candidates` 2,504 rows with 0 overlap with `words`; VI-only 6 added / 6 dropped, no ID reused; 0 character primary or `*_all` changes, no tie created or broken; all 81 overrides apply; 38 tests OK; rebuild byte-identical. Gate logged in `GATES.md`.
+- D55: wrote `docs/VI_SHORTLIST.md` for the user: 17 rule A/B vs A2 disagreements (replace 8), 42 rule-B values that are other Vietnamese words or variant spellings (clear 24, keep 18), 8 `obsolete_only` words (keep empty), 7C character readings (one switched-on build measured and discarded: 80/81 readings correct, HSK `vi` +32, 5 wrong new word values to clear), 調 / 馴, and a 50-word seeded sample (48/50; both errors are rule-B false matches, sized at about 7% of multi-character rule-B words by a second sample of 60). Three questions (Q1-Q3) for the user.
+- No data, pipeline, config or override change. New evidence script `docs/review_scripts/d55_vi_shortlist_reference.py`.
+
 ## 2026-11-06 — Repeat Stage 3 gate fixes G1-G3 [Codex]
 - Implemented D56's narrow A2 spelling convention in one shared function: only `hi/ki/li/mi/ti` syllables use `y`; 104 A2 words (32 HSK) lose invented spellings while rule A/B remains untouched. Rebuilt HSK coverage is unchanged; Vietnamese alignment mismatches fall from 298 to 200 and `rules_examples` from 2,232 to 2,190.
 - Removed the pre-D53 legacy VI-only selection from false-friend filtering. `ff_candidates.csv` is 2,504 rows (440 removed, none added), with zero `form`/`trad`/`simp` overlap against any current word; 手紙 and 大丈夫 remain.
