@@ -11,7 +11,10 @@ from typing import Iterable
 
 import pandas as pd
 
-from common import TONE_MARKS, nfc, split_multi, unique_preserve
+try:
+    from .common import TONE_MARKS, nfc, split_multi, unique_preserve
+except ImportError:  # Direct script-style imports used by the Stage 3 pipeline.
+    from common import TONE_MARKS, nfc, split_multi, unique_preserve
 
 
 STRICT_PRI_RE = re.compile(r"^(?:ichi1|news1|spec1|gai1|nf(?:0[1-9]|1\d|2[0-4]))$")

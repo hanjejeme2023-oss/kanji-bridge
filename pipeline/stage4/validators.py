@@ -91,8 +91,10 @@ def validate_task1(output: Any, inputs: list[dict[str, Any]]) -> None:
                 _fail(f"{word_id}.meaning_ja__{lang} presence does not match {reading_field}")
         if value["vi_check"] in {"different_word", "unsure"} and not value["vi_check_reason"]:
             _fail(f"{word_id}.vi_check_reason is required for {value['vi_check']}")
-        if value["vi_check"] == "different_word" and value["confidence"] != "low":
-            _fail(f"{word_id}: different_word requires confidence=low")
+        if value["vi_check"] == "different_word" and len(str(source.get("trad", ""))) == 1:
+            _fail(f"{word_id}: a single-character word cannot be different_word")
+        if value["vi_check"] in {"different_word", "unsure"} and value["confidence"] != "low":
+            _fail(f"{word_id}: {value['vi_check']} requires confidence=low")
         if value["confidence"] == "low" and not value["low_reason"]:
             _fail(f"{word_id}.low_reason required when confidence=low")
         if not _is_nfc(value):
@@ -117,6 +119,9 @@ def validate_task2(output: Any, inputs: list[dict[str, Any]]) -> None:
         traps = value["false_friend"]
         if len(traps) != len(set(traps)) or not set(traps).issubset(present):
             _fail(f"{key}.false_friend contains duplicate or absent language")
+        baseline = next((lang for lang in ("ja", "ko", "zh") if lang in present), None)
+        if baseline in traps:
+            _fail(f"{key}.false_friend cannot contain baseline language {baseline}")
         meanings = value["meanings"]
         if not isinstance(meanings, list) or not all(isinstance(x, dict) for x in meanings):
             _fail(f"{key}.meanings must be an object array")
@@ -226,34 +231,46 @@ STRING = {"type": "string"}
 BOOL = {"type": "boolean"}
 
 
-def _object(properties: dict[str, Any]) -> dict[str, Any]:
-    return {"type": "object", "properties": properties, "required": list(properties), "additionalProperties": False}
+def _object(
+    properties: dict[str, Any], property_ordering: list[str] | None = None,
+) -> dict[str, Any]:
+    schema = {
+        "type": "object", "properties": properties,
+        "required": list(properties), "additionalProperties": False,
+    }
+    if property_ordering is not None:
+        schema["propertyOrdering"] = property_ordering
+    return schema
 
 
 TASK1_ITEM_SCHEMA = _object({
     "word_id": STRING,
+    # Decide vi_check before writing the Vietnamese meaning. The explicit
+    # ordering is a Vertex schema extension and is also asserted in tests.
+    "vi_check": STRING,
+    "vi_check_reason": STRING,
     "meaning_ja__ja": STRING,
     "meaning_ja__ko": STRING,
     "meaning_ja__zh": STRING,
     "meaning_ja__vi": STRING,
     "meanings_differ": BOOL,
-    # Vertex response schemas reject an empty string in enum; local validation
-    # above enforces the exact four allowed values, including empty when vi is absent.
-    "vi_check": STRING,
-    "vi_check_reason": STRING,
     "confidence": {"type": "string", "enum": ["high", "low"]},
     "low_reason": STRING,
-})
+}, [
+    "word_id", "vi_check", "vi_check_reason", "meaning_ja__ja",
+    "meaning_ja__ko", "meaning_ja__zh", "meaning_ja__vi",
+    "meanings_differ", "confidence", "low_reason",
+])
 MEANING_SCHEMA = _object({
     "lang": {"type": "string", "enum": list(LANGS)}, "meaning_ja": STRING, "is_trap": BOOL,
-})
+}, ["lang", "meaning_ja", "is_trap"])
 TASK2_ITEM_SCHEMA = _object({
     "key": STRING,
-    "false_friend": {"type": "array", "items": {"type": "string", "enum": list(LANGS)}},
     "meanings": {"type": "array", "items": MEANING_SCHEMA},
+    "false_friend": {"type": "array", "items": {"type": "string", "enum": list(LANGS)}},
     "confidence": {"type": "string", "enum": ["high", "low"]},
     "low_reason": STRING,
-})
+}, ["key", "meanings", "false_friend", "confidence", "low_reason"])
 TOKEN_SCHEMA = {
     "type": "object",
     "properties": {"t": STRING, "word_id": STRING, "gloss_ja": STRING, "punct": BOOL},

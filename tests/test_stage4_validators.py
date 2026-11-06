@@ -11,6 +11,7 @@ from pipeline.stage4.validators import (
     validate_task3,
     validate_task4,
 )
+from pipeline.stage4.runner import generation_config
 
 
 class Stage4ValidatorTests(unittest.TestCase):
@@ -27,8 +28,28 @@ class Stage4ValidatorTests(unittest.TestCase):
 
         walk(RESPONSE_SCHEMAS)
 
+    def test_generated_configs_carry_property_ordering(self) -> None:
+        task1 = generation_config(1).response_schema["items"]
+        self.assertEqual(task1["propertyOrdering"], [
+            "word_id", "vi_check", "vi_check_reason", "meaning_ja__ja",
+            "meaning_ja__ko", "meaning_ja__zh", "meaning_ja__vi",
+            "meanings_differ", "confidence", "low_reason",
+        ])
+        task2 = generation_config(2).response_schema["items"]
+        self.assertEqual(
+            task2["propertyOrdering"],
+            ["key", "meanings", "false_friend", "confidence", "low_reason"],
+        )
+        self.assertEqual(
+            task2["properties"]["meanings"]["items"]["propertyOrdering"],
+            ["lang", "meaning_ja", "is_trap"],
+        )
+
     def setUp(self) -> None:
-        self.task1_input = [{"word_id": "w1", "ja": "じ", "ko": "", "pinyin": "zì", "vi": "tự"}]
+        self.task1_input = [{
+            "word_id": "w1", "trad": "字", "ja": "じ", "ko": "",
+            "pinyin": "zì", "vi": "tự",
+        }]
         self.task1_output = [{
             "word_id": "w1", "meaning_ja__ja": "字", "meaning_ja__ko": "",
             "meaning_ja__zh": "文字", "meaning_ja__vi": "語", "meanings_differ": True,
@@ -56,12 +77,40 @@ class Stage4ValidatorTests(unittest.TestCase):
         with self.assertRaises(ValidationError):
             validate_task1(bad, self.task1_input)
 
+    def test_task1_rejects_single_character_different_word(self) -> None:
+        bad = copy.deepcopy(self.task1_output)
+        bad[0].update({
+            "meaning_ja__vi": "", "vi_check": "different_word",
+            "vi_check_reason": "別字", "confidence": "low", "low_reason": "別字",
+        })
+        with self.assertRaises(ValidationError):
+            validate_task1(bad, self.task1_input)
+
+    def test_task1_rejects_high_confidence_unsure(self) -> None:
+        bad = copy.deepcopy(self.task1_output)
+        bad[0].update({"vi_check": "unsure", "vi_check_reason": "根拠不足"})
+        with self.assertRaises(ValidationError):
+            validate_task1(bad, self.task1_input)
+
     def test_task2_rejects_absent_false_friend_language(self) -> None:
         inputs = [{"key": "x", "ja": "じ", "ko": "", "pinyin": "zì", "vi": ""}]
         output = [{
             "key": "x", "false_friend": ["ko"],
             "meanings": [
                 {"lang": "ja", "meaning_ja": "字", "is_trap": False},
+                {"lang": "zh", "meaning_ja": "文字", "is_trap": False},
+            ],
+            "confidence": "high", "low_reason": "",
+        }]
+        with self.assertRaises(ValidationError):
+            validate_task2(output, inputs)
+
+    def test_task2_rejects_baseline_language_as_false_friend(self) -> None:
+        inputs = [{"key": "x", "ja": "じ", "ko": "", "pinyin": "zì", "vi": ""}]
+        output = [{
+            "key": "x", "false_friend": ["ja"],
+            "meanings": [
+                {"lang": "ja", "meaning_ja": "字", "is_trap": True},
                 {"lang": "zh", "meaning_ja": "文字", "is_trap": False},
             ],
             "confidence": "high", "low_reason": "",

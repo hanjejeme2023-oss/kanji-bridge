@@ -12,6 +12,8 @@ from typing import Any, Iterable
 
 import pandas as pd
 
+from pipeline.stage3_match import collapse_iy
+
 
 ROOT = Path(__file__).resolve().parents[2]
 WORDS_PATH = ROOT / "data" / "final" / "words.csv"
@@ -286,6 +288,7 @@ def build_task4_items(
     words: pd.DataFrame | None = None,
     chars: pd.DataFrame | None = None,
     word_chars: pd.DataFrame | None = None,
+    task1_outputs: Iterable[dict[str, Any]] | None = None,
 ) -> list[dict[str, Any]]:
     if words is None or chars is None or word_chars is None:
         loaded_words, loaded_chars, loaded_word_chars, _ = load_tables()
@@ -293,7 +296,7 @@ def build_task4_items(
         chars = loaded_chars if chars is None else chars
         word_chars = loaded_word_chars if word_chars is None else word_chars
     word_cols = words[["word_id", "trad", "ko", "vi", "card_eligible", "level"]]
-    char_cols = chars[["char_id", "key_char", "ko", "vi"]].rename(
+    char_cols = chars[["char_id", "key_char", "ko", "vi", "source_vi"]].rename(
         columns={"key_char": "char", "ko": "ko_primary", "vi": "vi_primary"}
     )
     merged = word_chars.merge(char_cols, on="char_id", how="left", validate="many_to_one")
@@ -316,6 +319,7 @@ def build_task4_items(
         ((merged["ko_base"] != "") & (merged["ko_primary"] != "") & (merged["ko_base"] != merged["ko_primary"]))
         | ((merged["vi_syllable"] != "") & (merged["vi_primary"] != "") & (merged["vi_syllable"] != merged["vi_primary"]))
     ]
+    task1_map = _task1_map(task1_outputs) if task1_outputs is not None else None
     items: list[dict[str, Any]] = []
     for word_id, group in diffs.groupby("word_id", sort=True):
         word = group.iloc[0]
@@ -327,6 +331,13 @@ def build_task4_items(
                 here, primary = row[here_col], row[primary_col]
                 if not here or not primary or here == primary:
                     continue
+                if lang == "vi":
+                    if row["source_vi"] == "unihan_unverified":
+                        continue
+                    if len(collapse_iy([here, primary])) == 1:
+                        continue
+                    if task1_map is not None and task1_map.get(word_id, {}).get("vi_check") != "same_word":
+                        continue
                 primary_examples = [
                     {"trad": ex["trad"], "reading": ex["reading"]}
                     for ex in example_index.get((row["char_id"], lang, primary), [])
@@ -343,6 +354,8 @@ def build_task4_items(
                     "examples_primary": primary_examples,
                     "examples_here": here_examples,
                 })
+        if not positions:
+            continue
         items.append(_clean({
             "word_id": word_id, "trad": word["trad"], "ko": word["ko"], "vi": word["vi"],
             "differences": positions,
@@ -350,8 +363,10 @@ def build_task4_items(
     return items
 
 
-def build_task4_batches() -> list[list[dict[str, Any]]]:
-    return chunked(build_task4_items(), 50)
+def build_task4_batches(
+    task1_outputs: Iterable[dict[str, Any]] | None = None,
+) -> list[list[dict[str, Any]]]:
+    return chunked(build_task4_items(task1_outputs=task1_outputs), 50)
 
 
 def build_pilot_task4() -> list[dict[str, Any]]:
@@ -393,5 +408,5 @@ def task_batches(task: int, task1_outputs: Iterable[dict[str, Any]] | None = Non
             raise ValueError("Task 3 requires accepted/generated task-1 output")
         return build_task3_batches(task1_outputs)
     if task == 4:
-        return build_task4_batches()
+        return build_task4_batches(task1_outputs)
     raise ValueError(f"Unknown task: {task}")

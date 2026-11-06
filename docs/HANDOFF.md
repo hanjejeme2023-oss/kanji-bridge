@@ -13,18 +13,15 @@ Older status lines, completed assignments, Codex evidence blocks and old log ent
 - Prototype: `prototype/index.html` (frozen, Global Rule 10).
 - **Stage 4a DONE (Codex, 2026-11-06):** generation script, safety controls, tests, Vertex check and pilot complete. Evidence: `docs/STAGE4A_REPORT.md`.
 - **Stage 4b pilot review DONE (Claude, 2026-11-06):** `docs/STAGE4B_REVIEW.md`, **D60**. Model = **Gemini 4 Argon** for all tasks; prompts v2 for tasks 1-3; schema `propertyOrdering`; two validator rules; task-4 input filter. Full run must finish by **2026-11-30**. Frozen data verified unchanged against `03b3bf9` (121 overrides; `id_map.csv` differs in line endings only). No full run started.
+- **Stage 4b-fix DONE (Codex, 2026-11-06):** D60 applied and Argon re-pilot passed 5/5 requests on the first attempt; report: `docs/STAGE4B_FIX_REPORT.md`. Task 4 = 243 items. Re-pilot = 28,350 input, 18,750 output, 0 thinking, 47,100 total, 0 unreported tokens, $0.244200. No full run started.
 
 ## NEXT ASSIGNMENT
-**Codex: Stage 4b-fix — apply D60 and re-pilot on Argon.** Do not start the full run.
-1. **Model:** pin `gemini-4-argon` (location `global`) as the one model for every task (`MODEL_ID`); temperature 0.3, thinking default, max output 65,536 unchanged. Flash stays only as a price entry. Every log keeps the model ID.
-2. **Prompts:** use `content/prompts/task1_v2.md`, `task2_v2.md`, `task3_v2.md` (written by Claude; do not edit their wording; if one cannot work, report it here) and `task4_v1.md`. Keep v1 files for traceability.
-3. **Schema order:** add `propertyOrdering` (SDK `property_ordering`) to the task-1 and task-2 response schemas in the D60 item 3 order, and to the task-2 meaning items. Test: the generated config carries that order.
-4. **Validators (D60 item 4):** task 1 rejects `different_word` for a single-character `trad` and requires `confidence=low` for `unsure`; task 2 rejects the baseline language (`ja`; `ko` when `ja` is empty) in `false_friend`. One crafted bad item per rule in `tests/`.
-5. **Task-4 builder (D60 item 5):** drop a Vietnamese difference that is equal after the i/y collapse (reuse `pipeline/stage3_match.py` `collapse_iy`, do not write a new one) or whose character has `chars.source_vi=unihan_unverified`; drop items left without differences. Report the new item count (expected about 243) and update the 302 count test. Keep D59 item 5 for the full run (only `vi_check=same_word` `vi` values in tasks 3 and 4).
-6. **Deadline guard:** the runner refuses to start an Argon request dated 2026-12-01 or later unless a flag the user passes explicitly allows it (D60 item 1).
-7. **Re-pilot (Argon, prompts v2)** into `content/generated/pilot_v2/`: task 1 on the **same 100 inputs** as the first pilot (same input SHA), task 2 on the **same 50**, task 3 zh level 1 and vi level 3, task 4 on 50 items from the filtered list (incl. 牡丹, 貿易, 音樂). Record attempts per request; the goal is task 1 without a presence retry.
-8. Tests pass (no network); one canonical rebuild still identical; no frozen output changed.
-**Hand-off note:** what changed, re-pilot tokens/cost/attempts, the task-4 count, and a check list for Claude: 國, 茶 = `same_word`; 樂, 試, 塗 = `unsure` (not `different_word`); 勉強, 大丈夫, 手紙, 新聞 have no `ja` in `false_friend`. **Hand off to Claude: Stage 4b re-check** (short; if it passes, Claude assigns Codex Stage 4c, the full run).
+**Claude: Stage 4b re-check.** Review `docs/STAGE4B_FIX_REPORT.md` and `content/generated/pilot_v2/`; if it passes, assign Codex Stage 4c (the full Argon run).
+
+User additions implemented and recorded for the re-check:
+9. **Token accounting:** every response logs `total_token_count`; any positive difference above input + output + thinking is `unreported_tokens`, billed at the output rate in `cost_log.csv` and the $100 ceiling. Re-pilot totals: 28,350 input, 18,750 output, 0 thinking, 47,100 total, 0 unreported, $0.244200.
+10. **Resume:** `--task N` skips only batches whose current output and log revalidate against the model/prompt/input; missing or failed batches run. Test included. Explicit `--batch N` forces a rerun.
+11. **Timeout/duration:** 600 seconds per request, counted as a runner retry; UTC deadline guard; measured request times and per-task full-run duration projection are in `STAGE4B_FIX_REPORT.md` (about 4 h 3 m at one attempt/request; task 3 is a lower bound).
 
 ### Stage 4 task specification (from the Stage 4a assignment; still binding for 4b-fix and 4c, as amended by D60)
 **1. Script and safety (D58).**

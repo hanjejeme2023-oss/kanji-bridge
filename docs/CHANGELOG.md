@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 2026-11-06 — Stage 4b-fix: D60 and Argon re-pilot [Codex]
+
+- Pinned Argon and v2 prompts; added response property ordering, D60 validators, the 243-item task-4 filter, the UTC deadline guard, and a 600-second per-request timeout.
+- Added resumable `--task N` batch validation/skip behavior and a test; explicit `--batch N` remains a forced rerun.
+- Added `total_token_count` and conservative unreported-token billing at the output rate to the ledger, measured averages and $100 ceiling calculation.
+- Argon check and all five `pilot_v2` requests passed on the first attempt. Re-pilot: 28,350 input, 18,750 output, 0 thinking, 47,100 total, 0 unreported tokens, $0.244200; request wall times and full-run projections are in `docs/STAGE4B_FIX_REPORT.md`.
+- 63 non-rebuild tests pass; canonical rebuild completed with no frozen-data diff. No full run started. Next: Claude Stage 4b re-check.
+
 ## 2026-11-06 — Stage 4b pilot review [Claude]
 - Verified the frozen build after Codex's override-backup restore: `pipeline/overrides.csv` byte-identical to `03b3bf9` (121 rows); no file under `data/` differs; `pipeline/id_map.csv` differs in line endings only.
 - Reviewed both models' task-1/task-2 pilot outputs on identical inputs, all Flash task-3/task-4 outputs, all low-confidence and non-`same_word` items, retry causes and costs: `docs/STAGE4B_REVIEW.md` (10 side-by-side examples), script `docs/review_scripts/stage4b_compare.py`.

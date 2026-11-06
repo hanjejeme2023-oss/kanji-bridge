@@ -1,0 +1,46 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "duration_seconds": 23.454870200017467,
+      "timestamp": "2026-11-06T17:57:08Z",
+      "usage": {
+        "input_tokens": 1742,
+        "output_tokens": 1816,
+        "thinking_tokens": 0,
+        "total_token_count": 3558,
+        "unreported_tokens": 0
+      },
+      "usd": 0.021644,
+      "validation_ok": true
+    }
+  ],
+  "batch": "pilot-v2-task3-vi-l3",
+  "counted_input_tokens": 1391,
+  "input_sha256": "3189ba76c2e229d2894658cff08e4e2c60a1563ca373671ab4cbeb9d19928210",
+  "item_count": 1,
+  "location": "global",
+  "model": "gemini-4-argon",
+  "prompt_sha256": "c77d980952a873658e283786dc0032663c6684458fd2a1c07282b324932a60bd",
+  "settings": {
+    "max_output_tokens": 65536,
+    "request_timeout_seconds": 600,
+    "temperature": 0.3,
+    "thinking": "model_default"
+  },
+  "task": 3,
+  "timestamp": "2026-11-06T17:57:08Z",
+  "usage": {
+    "input_tokens": 1742,
+    "output_tokens": 1816,
+    "thinking_tokens": 0,
+    "total_token_count": 3558,
+    "unreported_tokens": 0
+  },
+  "usd": 0.021644,
+  "validation": {
+    "error": "",
+    "ok": true
+  },
+  "wall_clock_seconds": 23.613854600000195
+}
