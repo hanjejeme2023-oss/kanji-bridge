@@ -13,15 +13,25 @@ Read `PROMPT.md` first, then this file. Do only the assignment for your role. Up
 - Stage 2 (character table) — **DONE** by Codex, 2026-11-04. Revised D37 is implemented as two rows with unique `key_char`; 3,000 rows and all Stage 2 reports are committed. Stage 2 gate: PASS (Claude, 2026-11-04).
 - **PROMPT Rule 11 (stage gates) is in force.** Gate results are logged in `docs/GATES.md`. Stage 1 gate: PASS. Stage 2 gate: PASS (both 2026-11-04).
 - Pre-Stage-3 readiness review: **DONE** by Claude, 2026-11-04 (three passes, CHANGELOG; decisions D39-D50).
-- Stage 3 (word table) — built by Codex, 2026-11-04. **Stage 3 gate attempt 1 failed; F1-F13 fixed by Codex, 2026-11-05, and the rebuild is ready for attempt 2.** Evidence for the original failure is in `docs/GATES.md`; completion evidence is below.
+- Stage 3 (word table) — built by Codex, 2026-11-04. Gate attempt 1 failed; F1-F13 fixed by Codex, 2026-11-05. **Gate attempt 2 (Claude, 2026-11-05): every rerun check passes; the gate waits for the user to confirm the review short list (check 9, D50 item 4).** Evidence: `docs/GATES.md`; proposals: `docs/STAGE3_SHORTLIST.md`.
+
+## NEXT ASSIGNMENT
+**Agent: User — confirm the Stage 3 short list.** Read `docs/STAGE3_SHORTLIST.md` and answer "all as proposed", or name the rows to drop or change (K1-K23 Korean words, J1-J14 Japanese words, V1-V19 Vietnamese words, C1-C2 characters), and say yes or no to group C3 (13 law-form characters). Then start Claude with the answer.
+
+**Then: Claude — finish the Stage 3 gate.** Write exactly the confirmed rows to `pipeline/overrides.csv`; run `run_all.py` and the full test suite; change the 茶 assertion in `tests/test_stage3_gate_fixes.py` from 다 to 차 (user decision D50); recheck the changed rows (茶 `chars.ko` = 차, 寧 = 녕, each word override in place, `*_all` sets unchanged, rebuild identical); record PASS in `GATES.md`. Then the D36 Vietnamese source search (see "Planned sequence" below).
+
+## Stage 3 gate attempt 2: outcome in brief
+- **Pass:** checks 2, 5, 6, 7, 8, 10, 11, 13, C1, C2 and the 20 test words. Real validated merges; VI-only report complete (1,201 selected); pinyin alignment 0 failures; Korean primaries match an independent recomputation exactly (0 differences); single-character Japanese fixed; grown `simp` complete; 29 tests OK and the rebuild reproduces commit `e18e7e0` byte for byte.
+- **`char_primary_changes.csv` (84 rows) scanned:** one bad change, 寧 → 령 (should be 녕); override proposed.
+- **Pending:** check 9, the short list (56 word overrides, 2 character overrides, optional 13 more).
+- Non-blocking findings for loop 1 are in "Open problems" below.
 
 ## Stage 1 review: outcome in brief (details in STAGE1_REVIEW.md)
 - **Licences:** all accepted. hsk30 accepted with a recorded provenance risk (confirmed by the user, D35). Dataset will be **CC BY-SA 4.0**.
 - **Vietnamese:** Kaikki (reading + Han form) and FrequencyWords (frequency proxy) selected. Unihan `kVietnamese` mixes Nôm readings (200-sample check: 31 covered, 29 agree; whole overlap 88%), so it is used only with verification flags. **Measured ceiling: about 35% of HSK words (3,832 / 11,092) and 61% of HSK characters (1,835 / 3,000) get a Vietnamese reading with evidence.** Cards in the Chinese target are unaffected (pinyin always exists); Vietnamese-target decks will be smaller than the HSK list. This is a source limit, not a bug; report it in `coverage_report.csv`.
 - **Shinjitai:** inverted OpenCC `JPShinjitaiCharacters` (16/16 on the prototype's glyph pairs), KANJIDIC2 tie-break.
 
-## NEXT ASSIGNMENT
-**Agent: Claude — Stage 3 gate, attempt 2.** Rerun checks 2, 5, 6, 7, 8, 9, 10, 11, C1, C2 and 13 from `docs/GATES.md`. Scan `char_primary_changes.csv`, including top-count-1 changes and 寧. Then propose the D50 short-list picks, including 茶 → 차 and every `rule_b_conflict` row, and stop for the user to confirm. Do not write overrides before that confirmation.
+## COMPLETED ASSIGNMENT — Claude Stage 3 gate, attempt 2 (checks done; short list proposed, not yet applied)
 
 ## COMPLETED ASSIGNMENT — Codex Stage 3 gate fixes (F1-F13)
 Implemented only the corrections assigned after attempt 1. `pipeline/overrides.csv` remains header-only.
@@ -145,6 +155,7 @@ PROMPT's criteria, measured by the checklist and the test-word table in `docs/GA
 - If a source has no license or non-commercial-only terms: do not use it; stop and ask the user.
 
 ## Open problems / notes
+- Stage 3 gate attempt 2 notes for loop 1 (non-blocking, details in `GATES.md`): (1) D43 filter accepts 저 for 朝著 조저 / 著落 저락 although they link to the 着 row (`ko_all` 착); the check seems to use `trad`, not the linked `key_char`. (2) Data errors D51 cannot catch: 液體 giá thể, 奔 hợp (Kaikki char reading); both in `rules_examples.csv`, not reachable by the Stage 5 rule view. (3) D39's position-1 mapping gives 異常 the base 리 (primary stays 이), same cause as 寧. (4) `overrides.csv` has no `table=ff_candidates`; three correct rule-B values (難民, 淡泊, 政治犯) stay empty unless that is added. (5) After V18 (兇惡 hung ác), VI-only 凶悪 also repeats the same Vietnamese word (attempt-1 note 2).
 - Stage 3 gate notes for loop 1 (non-blocking): (1) rule-B false compositions with no Kaikki etymology cannot be caught by D51 (人為 nhân vị, 手紙 thủ chỉ; 1 of 40 sampled multi-character rule-B words). (2) VI-only 凶悪 repeats HSK 兇惡: Kaikki's Han form uses the shinjitai 悪, which the D46 variant check does not link. (3) A few 2+ character JMdict variant matches are weak (蘋果 苹果 ひょうか, 眼裡 眼裏 まなうら).
 - **Stage 4 input note:** `gloss_vi` on a rule-B word can be unrelated to the Han word (D51). Stage 4's prompt must tell Gemini to mark such a Vietnamese value `confidence: low` and not write a Vietnamese meaning for it. Claude adds this when writing the Stage 4 assignment.
 - Known limits to report, not fix, in Stage 3: `hanja.txt` has no frequency, so a Korean reading may be a rare entry; `freq_vi` is a syllable proxy, so VI-only levels are rough until D36 finds a word list.
@@ -156,6 +167,7 @@ PROMPT's criteria, measured by the checklist and the test-word table in `docs/GA
 - hsk30 provenance risk: **accepted by the user** (D35, personal non-commercial project; revisit if ever published commercially).
 
 ## Log
+- 2026-11-05 Claude — Stage 3 gate attempt 2: F1-F13 verified; all rerun checks pass (29 tests OK, rebuild identical to `e18e7e0`); 84 primary changes scanned (寧 bad); short list proposed in `STAGE3_SHORTLIST.md`, no overrides written. Next: User confirms the short list, then Claude finishes the gate.
 - 2026-11-05 Codex — Stage 3 gate fixes F1-F13 complete: corrected D39 normalization/evidence, real validated merges, D51 Japanese/Vietnamese behavior, reports and pinyin alignment; 29 tests pass and two rebuilds are identical. Next: Claude Stage 3 gate attempt 2.
 - 2026-11-04 Claude — Stage 3 gate FAIL (attempt 1): at least 49 wrong Korean primaries (`ko_base` not normalized, non-evidence words counted), wrong Japanese forms on 31 single-character rows (variant graph used for JMdict), no real `validate=` merges, rule-B homophones, smaller report items. D51 recorded; F1-F13 assigned; short-list picks deferred to attempt 2. Next: Codex fixes.
 - 2026-11-04 Codex — Stage 3 complete: 11,028 HSK + 1,201 VI-only words, 3,178 chars, all reports, fixed-word tests, and deterministic rebuild verified. Next: Claude Stage 3 gate.

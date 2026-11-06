@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 2026-11-05 — Stage 3 gate, attempt 2 [Claude]
+- Reran checks 2, 5, 6, 7, 8, 9, 10, 11, C1, C2 and 13 against commit `e18e7e0` with independent scripts; all pass except check 9, which waits for the user. F1-F13 verified. 29 tests OK; the rebuild reproduces every committed output byte for byte.
+- Scanned all 84 `char_primary_changes.csv` rows: one bad change (寧 → 령), override proposed.
+- Wrote `docs/STAGE3_SHORTLIST.md`: proposed picks for the D50 short list (23 Korean, 14 Japanese, 19 Vietnamese word overrides; 茶 차 and 寧 녕 character overrides; optional group of 13 law-form characters). No override written, no data or code changed.
+- Why: PROMPT Rule 11 and GATES check 9; the user confirms picks before they enter `overrides.csv` (D50 item 4).
+
 ## 2026-11-05 — Stage 3 gate fixes F1-F13 [Codex]
 - Separated D43 Korean alignment acceptance from exact D39 normalization, restricted D39 counts to one-candidate/override evidence, preserved reading sets, and implemented `ko_law_form_suspect`.
 - Replaced simulated word join counts with validated indicator merges for CC-CEDICT, Kaikki, JMdict, libhangul and Vietnamese matches; Stage 2 rows now record their actual validation arguments.
