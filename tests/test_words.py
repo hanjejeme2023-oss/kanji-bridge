@@ -87,7 +87,7 @@ class WordTableTests(unittest.TestCase):
         self.assertEqual(by_key.loc["歷", "ko"], "력")
         self.assertEqual(by_key.loc["怒", "ko"], "노")
         self.assertEqual(by_key.loc["行", "ko"], "행")
-        self.assertIn(by_key.loc["茶", "ko"], {"다", "차"})
+        self.assertEqual(by_key.loc["茶", "ko"], "차")
 
     def test_card_eligibility_formula(self) -> None:
         recomputed = (

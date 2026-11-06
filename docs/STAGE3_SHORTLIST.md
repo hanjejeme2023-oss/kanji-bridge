@@ -1,5 +1,7 @@
 # Stage 3 gate, attempt 2: review short list (D50 item 4)
 
+**Status: confirmed by the user on 2026-11-05 ("all as proposed", group C3 yes, plus 家 か and 月 げつ; four tie fixes 貝 패, 滑 활, 省 성, 更 경 added after the rebuild). Applied in `pipeline/overrides.csv`; see DECISIONS D52.**
+
 Claude proposes these picks. **Nothing is written to `pipeline/overrides.csv` until the user confirms.** Every value is already a dictionary candidate for that word (from `ko_multi_candidates.csv`, `ja_multi_candidates.csv` or `vi_ambiguous.csv`), or is in that character's `*_all` list. The build rejects any other value (D43 item 7). Built from the commit `e18e7e0` outputs.
 
 **How to answer:** "all as proposed", or list the row numbers to drop or change (e.g. "drop K12, J7; group C no").

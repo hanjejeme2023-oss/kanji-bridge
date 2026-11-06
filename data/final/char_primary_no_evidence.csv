@@ -10,7 +10,6 @@ c00058,飯,飯,vi,false
 c00067,乾,乾,vi,false
 c00074,跟,跟,vi,false
 c00083,孩,孩,vi,false
-c00087,喝,喝,ko,false
 c00087,喝,喝,vi,false
 c00089,很,很,vi,false
 c00100,雞,雞,vi,false
@@ -88,7 +87,6 @@ c00397,餃,餃,vi,false
 c00400,街,街,vi,false
 c00404,斤,斤,vi,false
 c00407,睛,睛,vi,false
-c00412,句,句,ko,false
 c00413,卡,卡,vi,false
 c00415,靠,靠,vi,false
 c00421,哭,哭,vi,false
@@ -240,7 +238,6 @@ c01080,森,森,vi,false
 c01081,曬,曬,vi,false
 c01082,閃,閃,vi,false
 c01086,申,申,vi,false
-c01090,濕,濕,vi,false
 c01096,售,售,ko,false
 c01097,叔,叔,vi,false
 c01099,暑,暑,vi,false
@@ -327,7 +324,6 @@ c01288,胡,胡,vi,false
 c01291,滑,滑,vi,false
 c01293,灰,灰,vi,false
 c01298,肌,肌,vi,false
-c01299,輯,輯,ko,false
 c01301,擠,擠,vi,false
 c01305,肩,肩,vi,false
 c01308,鍵,鍵,vi,false
@@ -344,7 +340,6 @@ c01332,璃,璃,ko,false
 c01332,璃,璃,vi,false
 c01333,厲,厲,ko,false
 c01333,厲,厲,vi,false
-c01334,勵,勵,vi,false
 c01335,憐,憐,vi,false
 c01336,簾,簾,vi,false
 c01339,鈴,鈴,vi,false
@@ -728,7 +723,6 @@ c01939,醇,醇,vi,false
 c01940,蠢,蠢,vi,false
 c01941,戳,戳,vi,false
 c01942,綽,綽,vi,false
-c01943,瓷,瓷,vi,false
 c01946,賜,賜,vi,false
 c01947,匆,匆,vi,false
 c01948,囪,囪,ko,false
@@ -967,7 +961,6 @@ c02166,飢,飢,vi,false
 c02167,緝,緝,ko,false
 c02167,緝,緝,vi,false
 c02168,畸,畸,vi,false
-c02169,稽,稽,ko,false
 c02169,稽,稽,vi,false
 c02170,棘,棘,vi,false
 c02171,嫉,嫉,vi,false
@@ -1109,7 +1102,6 @@ c02314,粒,粒,vi,false
 c02317,斂,斂,vi,false
 c02318,鏈,鏈,ko,false
 c02318,鏈,鏈,vi,false
-c02321,寥,寥,ko,true
 c02322,潦,潦,ko,false
 c02322,潦,潦,vi,false
 c02323,咧,咧,ko,false
@@ -1771,7 +1763,6 @@ c03006,髮,髮,vi,false
 c03009,划,划,vi,false
 c03010,闆,闆,ko,false
 c03010,闆,闆,vi,false
-c03013,台,台,ko,false
 c03016,隻,隻,vi,false
 c03020,匯,匯,vi,false
 c03021,伙,伙,ko,false

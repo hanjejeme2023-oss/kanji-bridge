@@ -66,7 +66,7 @@ Characters: 樂 `ko`=락 or 악, `ko_all` still contains 낙; 歷 `ko`=력; 行 
 | 1 | 2026-11-04 | PASS | 1 | Claude |
 | 2 | 2026-11-04 | PASS | 1 | Claude |
 | 3 | 2026-11-04 | **FAIL** | 1 | Claude |
-| 3 | 2026-11-05 | **Checks pass; PENDING user short-list confirmation** (check 9) | 2 | Claude |
+| 3 | 2026-11-05 | **PASS** (short list confirmed and applied, D52) | 2 | Claude |
 
 ## Stage 1 — sources and licences — PASS (attempt 1), 2026-11-04
 
@@ -179,3 +179,18 @@ Reran checks 2, 5, 6, 7, 8, 9, 10, 11, C1, C2 and 13 on commit `e18e7e0`. All nu
 4. `pipeline/overrides.csv` supports only `table=words` and `table=chars`; D51 item 4 also allows confirming `ff_candidates` rule-B values. Three such values are correct (難民, 淡泊, 政治犯); proposal: leave them empty for Stage 4.
 
 **Result so far:** every rerun check passes; F1-F13 are fixed. The gate is not recorded as PASS yet: check 9 requires the user to confirm the short list, after which Claude writes `overrides.csv`, rebuilds, reruns the tests and rechecks the changed rows.
+
+### Stage 3 attempt 2 — completion after the user's confirmation (2026-11-05): **PASS**
+
+| Item | Evidence | Result |
+|---|---|---|
+| Overrides | User confirmed the short list as proposed, group C3, plus 家 か and 月 げつ (D52). `pipeline/overrides.csv`: 59 `words` + 18 `chars` = 77 rows. All 77 applied (independent check: every value equals the built value). Previous value kept in `*_alt` for every word override | OK |
+| Tie check (new) | The first rebuild flipped 4 primaries through D39 ties created by word overrides: 貝 배, 滑 골, 省 생, 更 갱. User confirmed `chars` overrides 貝 패, 滑 활, 省 성, 更 경; after the rebuild all four equal their pre-override values | OK |
+| Characters | 20 rows changed against the attempt-2 build, all intended: 茶 차, 寧 녕, 13 C3 base forms, 台 대 (evidence from 台 대), 份 phần, 濕 thấp (`vi_final` m → p), 瓷 từ, 論 `ko_base_all` + 논 (from 의논). `*_all` sets: 0 changes in all four columns. `char_primary_changes.csv` 103 rows (18 `override`) | OK |
+| Words | Only the 57 override words changed in content; the other changes are `freq_vi` dense ranks shifting because 19 more words have `vi` (D44). HSK `vi` 3,861 → 3,880; all four languages 3,094 → 3,111; `card_eligible` unchanged (7,354 HSK / 8,555 total). `rules_examples` 2,031 → 2,044 | OK |
+| Test words | 茶 `ko` 차 (word and character); 行 háng `vi` hàng; all others unchanged | OK |
+| Tests; rebuild | Full suite: the rebuild test passed (two runs identical); one assertion failed because two tests pinned 茶 = 다, the expected value before D50 (`tests/test_chars.py:84`, `tests/test_words.py:90`). Both are now 차, as D39 states for after the gate; 28 non-rebuild tests rerun OK, outputs byte-identical to the rebuilt files | OK |
+
+Open items for loop 1 are in HANDOFF "Open problems". `char_primary_no_evidence.csv` still flags 12 law-form suspects because it reports the state before `chars` overrides; all 12 are overridden (listed in `char_primary_changes.csv` as `override`).
+
+Stage 3 gate: **PASS**. Next: Claude, D36 Vietnamese source search.

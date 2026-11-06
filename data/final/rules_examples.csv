@@ -4,9 +4,11 @@ c00004,吧,파,và,(open),(open),は,ba,1,kaikki_aligned
 c00010,包,포,bao,(open),(open),ほう,bāo,1,kaikki_aligned
 c00013,備,비,bị,(open),(open),び,bèi,1,kaikki_aligned
 c00015,比,비,tỷ,(open),(open),ひ,bǐ,1,kaikki_aligned
+c00021,茶,차,trà,(open),(open),ちゃ,chá,1,kaikki_aligned
 c00021,茶,다,trà,(open),(open),ちゃ,chá,1,kaikki_aligned
 c00022,差,차,sai,(open),(open),さ,chà,1,kaikki_aligned
 c00026,車,차,xa,(open),(open),しゃ,chē,1,kaikki_aligned
+c00026,車,거,xa,(open),(open),しゃ,chē,1,kaikki_aligned
 c00031,次,차,thứ,(open),(open),じ,cì,1,kaikki_aligned
 c00035,打,타,đả,(open),(open),だ,dǎ,1,kaikki_aligned
 c00036,大,대,đại,(open),(open),だい,dà,1,kaikki_aligned
@@ -365,6 +367,7 @@ c00896,追,추,truy,(open),(open),つい,zhuī,3,kaikki_aligned
 c00897,資,자,tư,(open),(open),し,zī,3,kaikki_aligned
 c03008,佈,포,bố,(open),(open),ほ,bù,3,kaikki_aligned
 c03011,繫,계,hệ,(open),(open),けい,xì,3,kaikki_aligned
+c03013,台,대,thai,(open),(open),だい,tái,3,unihan_hvsyl
 c03014,系,계,hệ,(open),(open),けい,xì,3,kaikki_aligned
 c03015,游,유,du,(open),(open),ゆう,yóu,3,kaikki_aligned
 c03017,志,지,chí,(open),(open),し,zhì,3,kaikki_aligned
@@ -375,7 +378,7 @@ c00905,巴,파,ba,(open),(open),は,bā,4,kaikki_aligned
 c00907,敗,패,bại,(open),(open),はい,bài,4,kaikki_aligned
 c00910,寶,보,bảo,(open),(open),ほう,bǎo,4,kaikki_aligned
 c00911,抱,포,bão,(open),(open),ほう,bào,4,kaikki_aligned
-c00912,貝,패,bối,(open),(open),ばい,bèi,4,kaikki_aligned
+c00912,貝,배,bối,(open),(open),ばい,bèi,4,kaikki_aligned
 c00913,倍,배,bội,(open),(open),ばい,bèi,4,unihan_hvsyl
 c00916,閉,폐,bế,(open),(open),へい,bì,4,kaikki_aligned
 c00923,財,재,tài,(open),(open),ざい,cái,4,kaikki_aligned
@@ -594,6 +597,7 @@ c01598,慧,혜,tuệ,(open),(open),けい,huì,6,kaikki_aligned
 c01603,佳,가,giai,(open),(open),か,jiā,6,kaikki_aligned
 c01614,驕,교,kiêu,(open),(open),きょう,jiāo,6,kaikki_aligned
 c01635,牢,뢰,lao,(open),(open),ろう,láo,6,unihan_hvsyl
+c01640,爐,로,lô,(open),(open),ろ,lú,6,unihan_hvsyl
 c01641,露,로,lộ,(open),(open),ろ,lù,6,kaikki_aligned
 c01644,埋,매,mai,(open),(open),まい,mái,6,kaikki_aligned
 c01648,梅,매,mai,(open),(open),ばい,méi,6,unihan_hvsyl
@@ -667,6 +671,7 @@ c01924,酬,수,thù,(open),(open),しゅう,chóu,7,kaikki_aligned
 c01925,稠,조,trù,(open),(open),ちゅう,chóu,7,kaikki_aligned
 c01934,炊,취,xúy,(open),(open),すい,chuī,7,unihan_hvsyl
 c01935,垂,수,thùy,(open),(open),すい,chuí,7,kaikki_aligned
+c01943,瓷,자,từ,(open),(open),し,cí,7,unihan_hvsyl
 c01944,慈,자,từ,(open),(open),じ,cí,7,kaikki_aligned
 c01945,磁,자,từ,(open),(open),じ,cí,7,kaikki_aligned
 c01954,催,최,thôi,(open),(open),さい,cuī,7,kaikki_aligned
@@ -727,10 +732,11 @@ c02313,隸,예,lệ,(open),(open),れい,lì,7,kaikki_aligned
 c02313,隸,례,lệ,(open),(open),れい,lì,7,kaikki_aligned
 c02319,遼,료,liêu,(open),(open),りょう,liáo,7,kaikki_aligned
 c02320,僚,료,liêu,(open),(open),りょう,liáo,7,unihan_hvsyl
-c02321,寥,료,liêu,(open),(open),りょう,liáo,7,kaikki_aligned
+c02321,寥,요,liêu,(open),(open),りょう,liáo,7,kaikki_aligned
 c02336,柳,류,liễu,(open),(open),りゅう,liǔ,7,unihan_hvsyl
 c02347,陋,루,lậu,(open),(open),ろう,lòu,7,kaikki_aligned
 c02348,蘆,로,lô,(open),(open),ろ,lú,7,kaikki_aligned
+c02351,魯,로,lỗ,(open),(open),ろ,lǔ,7,kaikki_aligned
 c02352,賂,뢰,lộ,(open),(open),ろ,lù,7,kaikki_aligned
 c02360,履,리,lý,(open),(open),り,lǚ,7,kaikki_aligned
 c02367,羅,라,la,(open),(open),ら,luó,7,kaikki_aligned
@@ -869,6 +875,7 @@ c03083,礮,포,bác,(open),c,,pào,3,kaikki_aligned
 c03019,復,부,phục,(open),c,ふく,fù,4,kaikki_aligned
 c00939,刺,자,thích,(open),ch,し,cì,4,kaikki_aligned
 c00019,不,부,bất,(open),t,ふ,bù,1,kaikki_aligned
+c00772,切,체,thiết,(open),t,せつ,qiè,3,kaikki_aligned
 c01101,刷,쇄,loát,(open),t,さつ,shuā,4,kaikki_aligned
 c01616,揭,게,yết,(open),t,けい,jiē,6,unihan_hvsyl
 c01507,暴,폭,bạo,ㄱ,(open),ぼう,bào,6,kaikki_aligned
@@ -1139,6 +1146,7 @@ c00334,單,단,đơn,ㄴ,n,たん,dān,2,kaikki_aligned
 c00340,典,전,điển,ㄴ,n,てん,diǎn,2,kaikki_aligned
 c00346,短,단,đoản,ㄴ,n,たん,duǎn,2,kaikki_aligned
 c00347,段,단,đoạn,ㄴ,n,だん,duàn,2,kaikki_aligned
+c00352,份,빈,phần,ㄴ,n,ひん,fèn,2,kaikki_aligned
 c00366,觀,관,quan,ㄴ,n,かん,guān,2,kaikki_aligned
 c00367,慣,관,quán,ㄴ,n,かん,guàn,2,kaikki_aligned
 c00380,換,환,hoán,ㄴ,n,かん,huàn,2,kaikki_aligned
@@ -1147,6 +1155,7 @@ c00393,健,건,kiện,ㄴ,n,けん,jiàn,2,kaikki_aligned
 c00405,近,근,cận,ㄴ,n,きん,jìn,2,kaikki_aligned
 c00434,練,련,luyện,ㄴ,n,れん,liàn,2,kaikki_aligned
 c00443,論,론,luận,ㄴ,n,ろん,lùn,2,kaikki_aligned
+c00443,論,논,luận,ㄴ,n,ろん,lùn,2,kaikki_aligned
 c00445,滿,만,mãn,ㄴ,n,まん,mǎn,2,kaikki_aligned
 c00457,片,편,phiến,ㄴ,n,へん,piàn,2,kaikki_aligned
 c00464,千,천,thiên,ㄴ,n,せん,qiān,2,kaikki_aligned
@@ -1619,9 +1628,10 @@ c00726,立,립,lập,ㅂ,p,りつ,lì,3,kaikki_aligned
 c00850,壓,압,áp,ㅂ,p,あつ,yā,3,kaikki_aligned
 c00867,雜,잡,tạp,ㅂ,p,ざつ,zá,3,kaikki_aligned
 c00878,汁,즙,chấp,ㅂ,p,じゅう,zhī,3,unihan_hvsyl
+c01090,濕,습,thấp,ㅂ,p,しつ,shī,4,unihan_hvsyl
 c01130,吸,흡,hấp,ㅂ,p,きゅう,xī,4,kaikki_aligned
 c01221,插,삽,sáp,ㅂ,p,そう,chā,5,kaikki_aligned
-c01299,輯,즙,tập,ㅂ,p,しゅう,jí,5,kaikki_aligned
+c01299,輯,집,tập,ㅂ,p,しゅう,jí,5,kaikki_aligned
 c01302,夾,협,giáp,ㅂ,p,きょう,jiā,5,unihan_hvsyl
 c01303,甲,갑,giáp,ㅂ,p,こう,jiǎ,5,kaikki_aligned
 c01402,攝,섭,nhiếp,ㅂ,p,せつ,shè,5,kaikki_aligned
@@ -1669,6 +1679,7 @@ c00229,忘,망,vong,ㅇ,ng,ぼう,wàng,1,unihan_hvsyl
 c00244,想,상,tưởng,ㅇ,ng,そう,xiǎng,1,kaikki_aligned
 c00253,行,행,hàng,ㅇ,ng,こう,xíng,1,kaikki_aligned
 c00253,行,행,hạng,ㅇ,ng,こう,xíng,1,kaikki_aligned
+c00253,行,항,hàng,ㅇ,ng,こう,xíng,1,kaikki_aligned
 c00254,興,흥,hứng,ㅇ,ng,こう,xìng,1,kaikki_aligned
 c00254,興,흥,hưng,ㅇ,ng,こう,xìng,1,kaikki_aligned
 c00257,樣,양,dạng,ㅇ,ng,よう,yàng,1,kaikki_aligned
@@ -1870,6 +1881,7 @@ c02151,恍,황,hoảng,ㅇ,ng,こう,huǎng,7,unihan_hvsyl
 c02195,疆,강,cương,ㅇ,ng,きょう,jiāng,7,kaikki_aligned
 c02279,曠,광,khoáng,ㅇ,ng,こう,kuàng,7,kaikki_aligned
 c02299,狼,랑,lang,ㅇ,ng,ろう,láng,7,kaikki_aligned
+c02300,廊,랑,lang,ㅇ,ng,ろう,láng,7,unihan_hvsyl
 c02329,凌,릉,lăng,ㅇ,ng,りょう,líng,7,kaikki_aligned
 c02330,陵,릉,lăng,ㅇ,ng,りょう,líng,7,unihan_hvsyl
 c02342,隆,륭,long,ㅇ,ng,りゅう,lóng,7,kaikki_aligned
@@ -1936,8 +1948,9 @@ c00265,影,영,ảnh,ㅇ,nh,えい,yǐng,1,kaikki_aligned
 c00285,正,정,chính,ㅇ,nh,せい,zhèng,1,kaikki_aligned
 c00326,成,성,thành,ㅇ,nh,せい,chéng,2,kaikki_aligned
 c00342,定,정,định,ㅇ,nh,てい,dìng,2,kaikki_aligned
-c00359,更,경,canh,ㅇ,nh,こう,gèng,2,kaikki_aligned
 c00359,更,갱,cánh,ㅇ,nh,こう,gèng,2,kaikki_aligned
+c00359,更,갱,canh,ㅇ,nh,こう,gèng,2,kaikki_aligned
+c00359,更,경,canh,ㅇ,nh,こう,gèng,2,kaikki_aligned
 c00381,黃,황,huỳnh,ㅇ,nh,こう,huáng,2,kaikki_aligned
 c00406,經,경,kinh,ㅇ,nh,けい,jīng,2,kaikki_aligned
 c00408,靜,정,tĩnh,ㅇ,nh,せい,jìng,2,kaikki_aligned

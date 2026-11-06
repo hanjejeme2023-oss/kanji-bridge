@@ -40,7 +40,7 @@ class Stage3GateFixTests(unittest.TestCase):
             with self.subTest(char=char):
                 self.assertEqual(self.by_key.loc[char, "ko"], reading)
         self.assertIn(self.by_key.loc["樂", "ko"], {"락", "악"})
-        self.assertEqual(self.by_key.loc["茶", "ko"], "다")
+        self.assertEqual(self.by_key.loc["茶", "ko"], "차")
 
         expected_bases = {"流行": "류", "旅行": "려", "分裂": "렬"}
         for trad, expected_base in expected_bases.items():

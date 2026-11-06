@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 2026-11-05 — Stage 3 gate PASS: confirmed overrides applied [Claude]
+- `pipeline/overrides.csv`: 77 user-confirmed rows (D52): 59 `words` (23 ko, 16 ja incl. the user's 家 か and 月 げつ, 19 vi) and 18 `chars` (茶 차, 寧 녕, 13 law-form base forms; 貝 패, 滑 활, 省 성, 更 경 to undo D39 tie flips the word overrides caused, confirmed by the user after the first rebuild).
+- Rebuilt: HSK `vi` 3,861 → 3,880, all four languages 3,094 → 3,111, `rules_examples` 2,031 → 2,044, `char_primary_changes` 84 → 103; `card_eligible` unchanged; `*_all` sets unchanged.
+- Tests: `tests/test_chars.py` and `tests/test_words.py` pinned 茶 = 다 (pre-D50 expectation) and now expect 차, like `tests/test_stage3_gate_fixes.py`. 29 tests OK; two rebuilds identical.
+- Why: GATES check 9 / D50 item 4; Stage 3 gate recorded as PASS (attempt 2).
+
 ## 2026-11-05 — Stage 3 gate, attempt 2 [Claude]
 - Reran checks 2, 5, 6, 7, 8, 9, 10, 11, C1, C2 and 13 against commit `e18e7e0` with independent scripts; all pass except check 9, which waits for the user. F1-F13 verified. 29 tests OK; the rebuild reproduces every committed output byte for byte.
 - Scanned all 84 `char_primary_changes.csv` rows: one bad change (寧 → 령), override proposed.
