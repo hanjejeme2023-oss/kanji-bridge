@@ -285,3 +285,14 @@ User answer: all of `docs/VI_SHORTLIST.md` as proposed, Q1 a, Q2 yes, Q3 a, plus
 | Tests; rebuild | Full suite: the three-build rebuild test passed (identical with, without and with overrides) and every file in `data/final/`, `ff_candidates.csv` and `id_map.csv` hashed identical before and after; one stale assertion failed (`tests/test_chars.py` counted only the Stage 2 verified tags, 1,783 < 1,800) and now counts `kaikki_en_char` (D55 b) with the range 1,880-1,950. `tests/test_stage3_d53.py`: 121 overrides, 岳父/岳母 filled, switch on, new test for the 29 clears. All 38 non-rebuild tests rerun OK | OK |
 
 **The word list is frozen** (D46, D55, D57).
+
+## Note: `chars` 3,138 → 3,140 (user question, 2026-11-06)
+
+The two rows were added at commit `4919d5b` (Codex, D56 fixes G1-G3), not by D57: `chars.csv` has 3,138 rows at `97780a0` and `0d581fa`, 3,140 at `4919d5b`, `95fa8fd` and `8f7926b` (D57 changed no `char_id`). Checked with `git show <commit>:data/final/chars.csv`.
+
+| char_id | Character | Readings | Word that needs it |
+|---|---|---|---|
+| `c03206` | 祇 | ko 기 (`ko_all` 기;지), pinyin qí, ja ぎ, `vi` empty | 神祇 `w12992` thần kỳ (VI-only, level 7) |
+| `c03207` | 畿 | ko 기, pinyin jī, ja き, `vi` empty | 京畿 `w12993` kinh kỳ (VI-only, level 7) |
+
+**Why:** D56 item 2 (G1) made Codex apply the A2 spelling function **before** `freq_score` is computed. 7C writes these words with `kì` (thần kì, kinh kì); scored in that spelling they had no `freq_score` at `0d581fa` (empty in that commit's `vi_only_report.csv`), so they could not be selected (D46 requires a score). After G1 they are spelled `kỳ` (h/k/l/m/t + i rule), get a score (9,550 and 9,177) and rank inside the 1,200 cap (1,145 and 1,166), replacing lower-ranked words. Six words entered this way (病理學, 奇功, 神祇, 京畿, 經期, 奇才) and six left (行法, 解法, 無才, 拳法, 槍法, 法家; IDs kept unused). Only 神祇 and 京畿 use a character no other word uses, so `chars` grows by exactly these two rows (D38 / D40 step 5: a row for every character used in `words`); no row was removed because every character of the dropped words is still used elsewhere. Already recorded at the attempt-2 gate (R4, R5 above). Both rows have empty `vi`: `kỳ` is not in their (empty) `vi_all`, so both words are listed `not_in_all` in `alignment_mismatches.csv` (D45), as expected.

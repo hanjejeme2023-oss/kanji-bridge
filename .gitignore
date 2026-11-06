@@ -9,3 +9,10 @@ __pycache__/
 *.tmp
 .DS_Store
 Thumbs.db
+
+# Stage 4 credentials must never be committed (D54, D58)
+.env
+.env.*
+*credentials*.json
+*-key.json
+service-account*.json

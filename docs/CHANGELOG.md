@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## 2026-11-06 — Documentation consolidation; Stage 4 on Vertex AI; Stage 4 assignment [Claude]
+- `docs/HANDOFF.md` cut to status, next assignment, planned sequence, notes, open problems and recent log; completed assignments, Codex evidence blocks, resolved notes and the full log moved **verbatim** to the new `docs/HANDOFF_ARCHIVE.md`.
+- `docs/DECISIONS.md`: superseded decisions or parts marked in italics at the start of D23, D24, D26, D27, D31, D32, D36, D38, D39, D44, D46, D47, D53, D54, D55 and open item E; nothing deleted.
+- User question: `chars` 3,138 → 3,140 = 祇 `c03206` and 畿 `c03207`, added at `4919d5b` (D56 G1) by the VI-only words 神祇 and 京畿; recorded in `GATES.md`.
+- **D58 (amends D54, user instruction):** Stage 4 uses Gemini on Vertex AI (`aiplatform.googleapis.com`), login by `gcloud auth application-default login`, no API key; GA Gemini 3.8 Flash; hard ceiling $100; finish by 2026-12-20; estimate about $20-45 from the frozen build. No paid upgrade planned (Google's Free Trial page excludes only AI Studio and partner models). User guide: new `docs/VERTEX_SETUP.md` (budget alert included).
+- **D59:** Stage 4 design: task-1 `vi_check` (D57 Q1) and `meanings_differ`; 自己 always in task 2; no reading fields in content; task 4 other-reading notes in `words.note_ja` (302 words); pilot before the full run. SCHEMA §5 (content files) added; UX_BACKLOG #3.
+- `.gitignore`: `.env`, `.env.*` and credential-file patterns (D54 required `.env`; it was missing).
+- No data or pipeline change. Next: User — Vertex AI setup; then Codex — Stage 4a.
+
 ## 2026-11-06 — D55 Vietnamese finalization applied; word list frozen [Claude]
 - User confirmed `docs/VI_SHORTLIST.md` (all as proposed; Q1 a, Q2 yes, Q3 a; plus 岳父 nhạc phụ, 岳母 nhạc mẫu). DECISIONS D57.
 - `pipeline/overrides.csv` 81 → 121 rows: 11 Vietnamese replacements (一 nhất, 詞 từ, 累 lụy, 圈 khuyên, 祝福 chúc phúc, 服從 phục tùng, 拖 tha, 拄 trụ, 馴 thuần, 岳父, 岳母) and 29 clears (rule-B values that are a different Vietnamese word). `config/vi_sources.json`: 7C character readings on (80/81 correct).

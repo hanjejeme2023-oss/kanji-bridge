@@ -184,3 +184,24 @@ Because the key type changes, the app reads old-format values defensively (ignor
 
 ## 4. Hard failure conditions (build must stop, not warn)
 - Duplicate key in any table; an `overrides.csv` value that is not a dictionary candidate for that word or character (D43); `tokens.word_id` not in `words`; a `ff_meanings.word_id` not in `words`; a rule with < 4 examples; a token or field that would render `undefined`/`NaN` in the app; non-NFC text in any final table.
+
+## 5. Stage 4 content files (D54, D58, D59)
+Written only by the Stage 4 script (Codex's code, Gemini's content); read by the Stage 4 merge (Codex). `run_all.py` never calls the API; `content/` is a pipeline input (Global Rule 4). All files UTF-8, NFC, committed. **No folder may be named `raw`** (`.gitignore`).
+
+| Path | Content |
+|---|---|
+| `content/prompts/task<N>_v<k>.md` | prompt text; a changed prompt gets a new version file |
+| `content/inputs/task<N>/b<NNN>.jsonl` | the exact items sent, built deterministically from the frozen tables |
+| `content/generated/task<N>/b<NNN>.jsonl` | model output, one JSON object per item |
+| `content/generated/task<N>/b<NNN>.log.json` | `model`, `location`, settings, `prompt_sha256`, `input_sha256`, usage (input / output / thinking tokens), `usd`, attempts, validation result, timestamp |
+| `content/generated/pilot/` | pilot run (Stage 4a); never merged |
+| `content/accepted/task<N>/` | batches accepted at the Stage 4 gate (Claude moves them); the merge reads only this |
+| `content/cost_log.csv` | one row per request: `timestamp, task, batch, attempt, model, input_tokens, output_tokens, thinking_tokens, usd` |
+
+**Output objects** (enforced by the API schema and re-validated locally; no object has a reading field, readings are copied from the tables at merge):
+- Task 1 (one per `card_eligible` word): `word_id, meaning_ja__ja, meaning_ja__ko, meaning_ja__zh, meaning_ja__vi, meanings_differ (bool), vi_check (same_word | different_word | unsure | ""), vi_check_reason, confidence (high | low), low_reason`. A meaning is non-empty exactly when that language's reading (`ja`, `ko`, `pinyin`, `vi`) is non-empty, except `vi_check=different_word` → `meaning_ja__vi` empty. → `words.meaning_ja__*`.
+- Task 2: `key` (`word_id`, or `form` for an `ff_candidates.csv` row), `false_friend` (list of lang codes), `meanings` (`[{lang, meaning_ja, is_trap}]`, one per language present), `confidence`, `low_reason`. → `words.false_friend` (`;`-joined), `ff_meanings` (§1.4; `reading` copied from the table), `ff_only` words (IDs `x|trad`).
+- Task 3: `passages` = `[{translation_ja, tokens}]`, tokens as §1.5. → `passages` (IDs `lang|level|n`).
+- Task 4: `word_id, note_ja` (one line, ≤ 80 characters). → `words.note_ja`; `config/word_notes.csv` (`word_id, note_ja`, static text, e.g. 越南 from the prototype, D14) comes first when a word has both.
+
+Review-only fields (`meanings_differ`, `vi_check`, `vi_check_reason`, `confidence`, `low_reason`) stay in `content/` and are not added to `words`; `verified` = true for words whose task-1 batch was accepted at the Stage 4 gate.
