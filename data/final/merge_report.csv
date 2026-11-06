@@ -28,7 +28,7 @@ words_cedict_fallback,both,19,1:1
 words_kaikki_outer,left_only,9314,m:1
 words_kaikki_outer,right_only,1669,m:1
 words_kaikki_outer,both,1714,m:1
-word_char_link,both,24496,one char row per word position
+word_char_link,both,24497,one char row per word position
 word_char_link,left_only,0,one char row per word position
 words_kaikki_en,left_only,7851,1:1
 words_kaikki_en,right_only,0,1:1
@@ -36,9 +36,9 @@ words_kaikki_en,both,4378,1:1
 words_jmdict,left_only,5416,1:1
 words_jmdict,right_only,0,1:1
 words_jmdict,both,6813,1:1
-words_libhangul,left_only,3953,1:1
+words_libhangul,left_only,3954,1:1
 words_libhangul,right_only,0,1:1
-words_libhangul,both,8276,1:1
+words_libhangul,both,8275,1:1
 words_vi,left_only,6804,1:1
 words_vi,right_only,0,1:1
 words_vi,both,5425,1:1

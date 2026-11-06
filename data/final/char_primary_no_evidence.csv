@@ -141,7 +141,6 @@ c00732,另,另,vi,false
 c00752,暖,暖,vi,false
 c00753,拍,拍,vi,false
 c00757,胖,胖,vi,false
-c00760,皮,皮,vi,false
 c00761,啤,啤,ko,false
 c00761,啤,啤,vi,false
 c00764,蘋,蘋,ko,false
@@ -174,7 +173,6 @@ c00956,肚,肚,vi,false
 c00957,鍛,鍛,vi,false
 c00958,噁,噁,ko,false
 c00958,噁,噁,vi,false
-c00959,耳,耳,vi,false
 c00962,紛,紛,vi,false
 c00969,蓋,蓋,vi,false
 c00973,購,購,vi,false
@@ -361,7 +359,6 @@ c01427,萄,萄,vi,false
 c01428,廳,廳,vi,false
 c01429,偷,偷,vi,false
 c01431,兔,兔,vi,false
-c01433,違,違,vi,false
 c01436,胃,胃,vi,false
 c01438,臥,臥,vi,false
 c01442,悉,悉,vi,false
@@ -1327,11 +1324,9 @@ c02585,繩,繩,vi,false
 c02588,蝕,蝕,vi,false
 c02589,矢,矢,ko,false
 c02589,矢,矢,vi,false
-c02590,氏,氏,vi,false
 c02591,侍,侍,ko,false
 c02591,侍,侍,vi,false
 c02592,逝,逝,vi,false
-c02593,嗜,嗜,vi,false
 c02594,誓,誓,vi,false
 c02595,匙,匙,ko,false
 c02595,匙,匙,vi,false
@@ -1675,7 +1670,6 @@ c02947,拯,拯,vi,false
 c02949,芝,芝,vi,false
 c02950,肢,肢,vi,false
 c02951,脂,脂,vi,false
-c02952,旨,旨,vi,false
 c02953,幟,幟,vi,false
 c02954,峙,峙,vi,false
 c02955,摯,摯,vi,false
@@ -1780,7 +1774,6 @@ c03067,捲,捲,ko,false
 c03067,捲,捲,vi,false
 c03068,杆,杆,vi,false
 c03069,煉,煉,ko,false
-c03070,癡,癡,vi,false
 c03071,燬,燬,ko,false
 c03071,燬,燬,vi,false
 c03072,欲,欲,ko,false
@@ -1795,9 +1788,8 @@ c03080,愈,愈,vi,false
 c03081,卜,卜,vi,false
 c03082,癥,癥,ko,false
 c03082,癥,癥,vi,false
-c03181,羣,羣,vi,false
-c03182,妃,妃,vi,false
 c03183,裏,裏,vi,false
+c03181,羣,羣,vi,false
 c03184,薔,薔,vi,false
 c03185,薇,薇,vi,false
 c03186,尉,尉,vi,false
@@ -1806,13 +1798,15 @@ c03189,嚀,嚀,ko,false
 c03189,嚀,嚀,vi,false
 c03191,骼,骼,ko,false
 c03191,骼,骼,vi,false
+c03196,躇,躇,vi,false
 c03194,疵,疵,ko,false
 c03194,疵,疵,vi,false
-c03196,躇,躇,vi,false
 c03197,劾,劾,vi,false
 c03198,蒔,蒔,vi,false
 c03200,枳,枳,ko,false
 c03200,枳,枳,vi,false
+c03206,祇,祇,ko,false
+c03206,祇,祇,vi,false
 c03204,眞,眞,vi,false
+c03207,畿,畿,vi,false
 c03205,芥,芥,vi,false
-c03111,仕,仕,vi,false

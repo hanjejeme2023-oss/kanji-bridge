@@ -19,7 +19,7 @@ from common import (
     write_csv, write_json,
 )
 from stage3_match import (
-    ReadingLookup, canonicalize_iy, collapse_iy, find_jmdict, generate_variant_forms, initial_of,
+    ReadingLookup, canonicalize_a2_spelling, collapse_iy, find_jmdict, generate_variant_forms, initial_of,
     korean_base, korean_normalized_base, law_penalty, make_jmdict_index,
     strict_priority, tags, toneless, variant_char, vowel_of,
 )
@@ -500,7 +500,7 @@ def kaikki_en_candidates(
         if group is None:
             continue
         for record in group.itertuples(index=False):
-            vi = canonicalize_iy(normalize_vietnamese(record.vi))
+            vi = canonicalize_a2_spelling(normalize_vietnamese(record.vi))
             if len(vi.split()) == len(trad):
                 values.append({
                     "vi": vi,
@@ -613,7 +613,7 @@ def select_vi_only(
     headwords: dict[str, dict[str, object]],
     frequency: dict[str, int],
     merge_rows: list[dict[str, object]],
-) -> tuple[pd.DataFrame, pd.DataFrame, set[str]]:
+) -> tuple[pd.DataFrame, pd.DataFrame]:
     opencc = read_stage("opencc.csv")
     cedict = read_stage("cedict.csv")
     cedict_trad: dict[str, list[dict[str, object]]] = defaultdict(list)
@@ -651,7 +651,12 @@ def select_vi_only(
 
     for han, (group, source_vi) in candidate_groups.items():
         vis = collapse_iy(
-            normalize_vietnamese(row.vi) for row in group.itertuples(index=False)
+            (
+                canonicalize_a2_spelling(normalize_vietnamese(row.vi))
+                if source_vi == "kaikki_en_han"
+                else normalize_vietnamese(row.vi)
+            )
+            for row in group.itertuples(index=False)
             if len(normalize_vietnamese(row.vi).split()) == len(han)
             and not bool(getattr(row, "obsolete_only", False))
         )
@@ -747,20 +752,6 @@ def select_vi_only(
         })
 
     candidates = pd.DataFrame(rows)
-    legacy_normal = candidates.loc[
-        (candidates["trad"] != "越南") & (candidates["source_vi"] != "kaikki_en_han")
-    ].sort_values(
-        ["pre_ja_common", "freq_score", "trad"],
-        ascending=[False, False, True], kind="stable",
-    ).head(1200)
-    legacy_selected = pd.concat(
-        [legacy_normal, candidates.loc[candidates["trad"] == "越南"]], ignore_index=True
-    )
-    legacy_used = set()
-    for item in legacy_selected.itertuples(index=False):
-        legacy_used.update(
-            value for value in [nfc(item.han), nfc(item.trad), nfc(item.simp), nfc(item.pre_jp)] if value
-        )
     candidates["source_rank"] = candidates["source_vi"].map(
         {"kaikki_han": 0, "kaikki_en_han": 1, "composed_attested": 2}
     ).fillna(9)
@@ -773,29 +764,7 @@ def select_vi_only(
         ranked_normal.loc[ranked_normal["word_key"].duplicated(keep="first"), "han"]
     )
     unique_ranked = ranked_normal.drop_duplicates("word_key", keep="first")
-    override_path = ROOT / "pipeline" / "overrides.csv"
-    pinned_keys: set[str] = set()
-    if override_path.exists():
-        override_frame = pd.read_csv(
-            override_path, encoding="utf-8", keep_default_na=False, dtype=str
-        )
-        pinned_keys = set(
-            override_frame.loc[
-                (override_frame["table"] == "words")
-                & override_frame["key"].str.startswith("x|"),
-                "key",
-            ]
-        )
-    pinned = unique_ranked.loc[unique_ranked["word_key"].isin(pinned_keys)]
-    if set(pinned["word_key"]) != pinned_keys:
-        missing = sorted(pinned_keys - set(pinned["word_key"]))
-        raise ValueError(f"Overridden VI-only words are no longer source candidates: {missing}")
-    remaining = unique_ranked.loc[~unique_ranked["word_key"].isin(pinned_keys)]
-    normal = pd.concat([pinned, remaining.head(1200 - len(pinned))], ignore_index=True)
-    normal = normal.sort_values(
-        ["pre_ja_common", "freq_score", "source_rank", "trad", "han"],
-        ascending=[False, False, True, True, True], kind="stable",
-    )
+    normal = unique_ranked.head(1200).copy()
     for item in report:
         if item["han"] in duplicate_keys and item.get("reason") == "candidate":
             item["reason"] = "duplicate_word_key"
@@ -822,7 +791,7 @@ def select_vi_only(
         "han", "trad", "word_key", "vi_values", "source_vi", "selected", "reason",
         "freq_score", "rank", "level",
     ]]
-    return selected, report_frame, legacy_used
+    return selected, report_frame
 
 
 def split_pinyin_by_template(word: str, spaced: str, expected: int) -> list[str]:
@@ -1685,10 +1654,8 @@ def build_ff_candidates(
     graph: dict[str, list[str]],
     lookup: ReadingLookup,
     headwords: dict[str, dict[str, object]],
-    legacy_vi_used: set[str],
 ) -> tuple[pd.DataFrame, pd.DataFrame]:
-    hsk_words = words.loc[words["source_level"] == "hsk30"]
-    used = set(legacy_vi_used) | set(hsk_words["trad"]) | set(hsk_words["simp"]) | set(hsk_words["jp"])
+    used = set(words["trad"]) | set(words["simp"]) | set(words["jp"])
     opencc = read_stage("opencc.csv")
     inverse: dict[str, list[str]] = defaultdict(list)
     for row in opencc.itertuples(index=False):
@@ -1727,6 +1694,8 @@ def build_ff_candidates(
         top = ranked.iloc[0]
         cc_first = valid_cc.iloc[0] if not valid_cc.empty else None
         simp = nfc(cc_first["simp"]) if cc_first is not None else form
+        if {form, trad, simp} & used:
+            continue
         pseudo = type("Word", (), {
             "trad": trad, "simp": simp,
             "pinyin": nfc(cc_first["pinyin"]) if cc_first is not None else "",
@@ -1786,7 +1755,7 @@ def main() -> None:
     phrases = phrase_inverse()
 
     print("stage3: selecting VI-only words", flush=True)
-    vi_only, vi_only_report, legacy_vi_used = select_vi_only(
+    vi_only, vi_only_report = select_vi_only(
         hsk, lookup, kd, graph, jmdict_index, korean_index, phrases,
         explicit, explicit_en, headwords, frequency, merge_rows,
     )
@@ -1858,7 +1827,6 @@ def main() -> None:
     ff, ff_vi_conflicts = build_ff_candidates(
         words, jmdict, jmdict_index, read_stage("cedict.csv"), explicit, explicit_en,
         korean_index, graph, lookup, headwords,
-        legacy_vi_used,
     )
     if not ff_vi_conflicts.empty:
         vi_report = pd.read_csv(

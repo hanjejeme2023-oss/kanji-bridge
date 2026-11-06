@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 2026-11-06 — Repeat Stage 3 gate fixes G1-G3 [Codex]
+- Implemented D56's narrow A2 spelling convention in one shared function: only `hi/ki/li/mi/ti` syllables use `y`; 104 A2 words (32 HSK) lose invented spellings while rule A/B remains untouched. Rebuilt HSK coverage is unchanged; Vietnamese alignment mismatches fall from 298 to 200 and `rules_examples` from 2,232 to 2,190.
+- Removed the pre-D53 legacy VI-only selection from false-friend filtering. `ff_candidates.csv` is 2,504 rows (440 removed, none added), with zero `form`/`trad`/`simp` overlap against any current word; 手紙 and 大丈夫 remain.
+- Removed override-based VI-only pinning. Selection is now rank-and-cap only; a real rebuild without `overrides.csv` produced the same 1,201 VI-only IDs. Corrected frequency scores cause six additions and six drops; no existing ID changed or was reused.
+- Current scope: 12,229 words, 3,140 chars, 24,497 `word_chars`; HSK coverage `ja` 5,703 / `ko` 7,114 / `pinyin` 11,028 / `vi` 4,239 / all four 3,362; cards 7,354 HSK / 8,555 total. No existing Korean or Vietnamese character primary changed; no override was added.
+- Added D56 regression coverage for the named A2 examples, exact false-friend exclusion and override-independent VI-only selection. All 38 tests pass; two canonical rebuilds are byte-identical including `id_map.csv`.
+- Why: repeat Stage 3 gate attempt 1 failures G1-G3. Next: Claude repeat gate attempt 2, then D55 Vietnamese finalization if it passes.
+
 ## 2026-11-05 — Repeat Stage 3 gate after D53, attempt 1: FAIL [Claude]
 - Checked R1-R9, checks 1-13, C1, C2 on `97780a0` against `7827546` (`docs/review_scripts/stage3_repeat_gate_reference.py`). Passed: rows/IDs (no dropped ID reused), merges, coverage (HSK `vi` 4,239, all four 3,362), `card_eligible`, `vi_ambiguous`, VI-only bands, all 77 overrides, test words, Japanese, collisions, 36 tests and identical rebuild.
 - **Failed:** (1) rule A2 respells every consonant + i as y (`canonicalize_iy`): 143 A2 words differ from 7C, 104 (32 HSK) with spellings no source has (皮膚 bỳ phu, 移 dy, 王妃 vương phy); about 50 such pairs reached `rules_examples.csv`. (2) `ff_candidates.csv` keeps its pre-D53 membership through a legacy VI-only selection, so 440 rows are now also VI-only words (D47).

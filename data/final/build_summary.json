@@ -1,11 +1,11 @@
 {
-  "alignment_mismatches": 301,
+  "alignment_mismatches": 203,
   "char_ambiguous": 0,
   "char_simp_mismatch": 2,
-  "chars_after_growth": 3138,
+  "chars_after_growth": 3140,
   "chars_before_growth": 3000,
-  "ff_candidates": 2944,
+  "ff_candidates": 2504,
   "hsk_words": 11028,
   "vi_only_words": 1201,
-  "word_chars": 24496
+  "word_chars": 24497
 }

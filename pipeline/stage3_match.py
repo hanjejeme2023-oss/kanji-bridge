@@ -247,13 +247,13 @@ def collapse_iy(readings: Iterable[str]) -> list[str]:
     return unique_preserve(result)
 
 
-def canonicalize_iy(value: object) -> str:
-    """Use D44's preferred y spelling for eligible terminal Vietnamese i."""
+def canonicalize_a2_spelling(value: object) -> str:
+    """Apply D56's narrow i/y convention to a source-7C (rule A2) value."""
     output = []
     for syllable in nfc(value).split():
         decomposed = unicodedata.normalize("NFD", syllable)
         base = "".join(char for char in decomposed if char not in TONE_MARKS)
-        if re.fullmatch(r"[bcdđghklmnpqrstvx]+i", base) and base != "gi":
+        if re.fullmatch(r"[hklmt]i", base):
             index = max(i for i, char in enumerate(decomposed) if char == "i")
             decomposed = decomposed[:index] + "y" + decomposed[index + 1 :]
         output.append(unicodedata.normalize("NFC", decomposed))

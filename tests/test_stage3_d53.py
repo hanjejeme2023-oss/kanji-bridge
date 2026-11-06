@@ -12,6 +12,7 @@ sys.path.insert(0, str(ROOT / "pipeline"))
 
 from build_chars import kaikki_en_char_readings_enabled  # noqa: E402
 from build_words import apply_word_overrides, prefer_existing_vi  # noqa: E402
+from stage3_match import canonicalize_a2_spelling  # noqa: E402
 
 
 def read_csv(path: Path) -> pd.DataFrame:
@@ -41,12 +42,31 @@ class Stage3D53Tests(unittest.TestCase):
             "唱歌": "xướng ca",
             "絕大多數": "tuyệt đại đa số",
             "自己": "tự kỷ",
+            "皮膚": "bì phu",
+            "移": "di",
+            "胎兒": "thai nhi",
+            "議程": "nghị trình",
+            "分離": "phân ly",
+            "美金": "mỹ kim",
+            "禁忌": "cấm kỵ",
         }
         for trad, vi in expected.items():
             with self.subTest(trad=trad):
                 row = self.word(trad)
                 self.assertEqual(row["vi"], vi)
                 self.assertEqual(row["source_vi"], "kaikki_en_han")
+
+    def test_a2_spelling_function_is_narrow_and_shared(self) -> None:
+        self.assertEqual(
+            canonicalize_a2_spelling(
+                "bì chi di ghi khi li mi nghi nhi phi si thi tri vi hi kỉ lí mĩ tì"
+            ),
+            "bì chi di ghi khi ly my nghi nhi phi si thi tri vi hy kỷ lý mỹ tỳ",
+        )
+        self.assertEqual(
+            canonicalize_a2_spelling("vương phi chi cấp"),
+            "vương phi chi cấp",
+        )
 
     def test_obsolete_only_words_remain_empty_and_reported(self) -> None:
         expected = {"新聞", "戲劇", "伯父", "不宜", "岳父", "岳母"}
@@ -97,6 +117,13 @@ class Stage3D53Tests(unittest.TestCase):
         rows = report.loc[report["merge"] == "words_kaikki_en"]
         self.assertFalse(rows.empty)
         self.assertEqual(set(rows["validate"]), {"1:1"})
+
+    def test_false_friend_candidates_exclude_every_current_word_form(self) -> None:
+        ff = read_csv(ROOT / "data" / "staging" / "ff_candidates.csv")
+        used = set(self.words["trad"]) | set(self.words["simp"]) | set(self.words["jp"])
+        for column in ["form", "trad", "simp"]:
+            self.assertFalse(set(ff[column]) & used, column)
+        self.assertTrue({"手紙", "大丈夫"}.issubset(set(ff["form"])))
 
 
 if __name__ == "__main__":

@@ -3086,9 +3086,9 @@ c03179,絶,絶,绝,絶,ぜつ,절,jué,tuyệt,ぜつ,절,jué,tuyệt,절,ㄹ,t
 c03084,諮,諮,谘,諮,し,자,zī,tư,し,자,zī,tư,자,,,false,4,"consult, confer; communicate in",unihan,kaikki_aligned,kanjidic2,unihan
 c03180,讎,讎,雠,讎,しゅう,수,chóu,thù,しゅう,수,chóu,thù,수,,,false,4,"enemy, rival, opponent",unihan,unihan_hvsyl,kanjidic2,unihan
 c03085,衆,衆,众,衆,しゅう,중,zhòng,chúng,しゅう;しゅ,중,zhòng;zhōng,chúng,중,ㅇ,ng,false,4,"multitude, crowd; masses, public",unihan,kaikki_aligned,kanjidic2,unihan
+c03183,裏,裏,里,裏,り,리,lǐ,,り,리;이,lǐ;li,,리,,,false,5,"inside, interior, within",unihan,,kanjidic2,unihan
 c03181,羣,羣,羣,群,ぐん,군,qún,,ぐん,군,qún,,군,ㄴ,,false,5,"group, crowd, multitude, mob",unihan,,kanjidic2,unihan
 c03182,妃,妃,妃,妃,ひ,비,fēi,phi,ひ,비,fēi;pèi,phi,비,,,false,5,"wife, spouse; imperial concubine",unihan,unihan_hvsyl,kanjidic2,unihan
-c03183,裏,裏,里,裏,り,리,lǐ,,り,리;이,lǐ;li,,리,,,false,5,"inside, interior, within",unihan,,kanjidic2,unihan
 c03086,愕,愕,愕,愕,がく,악,è,ngạc,がく,악,è,ngạc,악,ㄱ,c,false,5,"startled, alarmed, astonished",unihan,kaikki_aligned,kanjidic2,unihan
 c03184,薔,薔,蔷,薔,ば,장,qiáng,,ば;しょう;しょく;そう,장;색,qiáng;sè,,장;색,ㅇ,,false,5,rose,unihan,,kanjidic2,unihan
 c03185,薇,薇,薇,薇,ら,미,wēi,,ら;び,미,wēi,,미,,,false,5,"Osmunda regalis, a species of fern",unihan,,kanjidic2,unihan
@@ -3122,10 +3122,10 @@ c03104,琥,琥,琥,琥,こ,호,hǔ,hổ,こ,호,hǔ,hổ,호,,,false,6,jewel in 
 c03105,珀,珀,珀,珀,はく,박,pò,phách,はく,박;백,pò,phách,박;백,ㄱ,ch,false,6,amber,unihan,kaikki_aligned,kanjidic2,unihan
 c03106,琵,琵,琵,琵,び,비,pí,tì,び;ひ,비,pí,tì,비,,,false,6,guitar-like instrument,unihan,kaikki_aligned,kanjidic2,unihan
 c03107,琶,琶,琶,琶,は,파,pá,bà,は;べ;わ,파,pá,bà,파,,,false,6,guitar-like instrument,unihan,kaikki_aligned,kanjidic2,unihan
-c03194,疵,疵,疵,疵,し,자,cī,,し,자,cī;zī;zhài;jì,,자,,,false,6,"flaw, fault, defect; disease",unihan,,kanjidic2,unihan
 c03195,躊,躊,踌,躊,ちゅう,주,chóu,trù,ちゅう;ちゅ;しゅう;じゅ,주,chóu,trù,주,,,false,6,"hesitate, falter; smug, self-satisfied",unihan,unihan_hvsyl,kanjidic2,unihan
 c03196,躇,躇,躇,躇,ちょ,저,chú,chứa,ちょ;ちゃく,저;착,chú;chuò,chứa,저;착,,,false,6,"hesitate, falter, be undecided",unihan,unihan_unverified,kanjidic2,unihan
 c03108,硫,硫,硫,硫,りゅう,류,liú,lưu,りゅう,류;유,liú;chù,lưu,류,,,false,6,"sulfur (element 16, S)",unihan,kaikki_aligned,kanjidic2,unihan
+c03194,疵,疵,疵,疵,し,자,cī,,し,자,cī;zī;zhài;jì,,자,,,false,6,"flaw, fault, defect; disease",unihan,,kanjidic2,unihan
 c03197,劾,劾,劾,劾,がい,핵,hé,hạch,がい,핵,hé;kài,hạch,핵,ㄱ,ch,false,6,"examine into, impeach, charge",unihan,unihan_hvsyl,kanjidic2,unihan
 c03198,蒔,蒔,莳,蒔,し,시,shí,,し;じ,시,shí;shì,,시,,,false,6,"transplant; plant; dill, Anethum graveolens",unihan,,kanjidic2,unihan
 c03109,刎,刎,刎,刎,ふん,문,wěn,vẫn,ふん,문,wěn,vẫn,문,ㄴ,n,false,6,"behead, cut throat",unihan,kaikki_aligned,kanjidic2,unihan
@@ -3134,6 +3134,8 @@ c03200,枳,枳,枳,枳,き,지,zhǐ,,き;し,지;기,zhǐ;zhī,,지;기,,,false,
 c03201,咒,咒,咒,呪,じゅ,주,zhòu,chú,じゅ;しゅ;しゅう;ず,주,zhòu,chú,주,,,false,6,"curse, damn, incantation",unihan,kaikki_aligned,kanjidic2,unihan
 c03202,瞳,瞳,瞳,瞳,どう,동,tóng,đồng,どう;とう,동,tóng,đồng,동,ㅇ,ng,false,7,pupil of eye,unihan,unihan_hvsyl,kanjidic2,unihan
 c03203,嗣,嗣,嗣,嗣,し,사,sì,tự,し,사,sì,tự,사,,,false,7,"to connect, inherit; descendants, heirs",unihan,kaikki_aligned,kanjidic2,unihan
+c03206,祇,祇,祇,祇,ぎ,기,qí,,ぎ;き;し,기;지,qí;chí;zhī;zhǐ,,기;지,,,false,7,"the spirit of the earth; (same as 只) only, merely, but",unihan,,kanjidic2,unihan
 c03204,眞,眞,眞,真,しん,진,zhēn,,しん,진,zhēn,,진,ㄴ,,false,7,"real, actual, true, genuine",unihan,,kanjidic2,unihan
+c03207,畿,畿,畿,畿,き,기,jī,,き,기,jī,,기,,,false,7,imperial domain; area near capital,unihan,,kanjidic2,unihan
 c03205,芥,芥,芥,芥,かい,개,jiè,,かい;け,개,jiè;gài,,개,,,false,7,mustard plant; mustard; tiny,unihan,,kanjidic2,unihan
 c03111,仕,仕,仕,仕,し,사,shì,sĩ,し;じ,사,shì,sĩ,사,,,false,7,official; serve government,unihan,kaikki_aligned,kanjidic2,unihan
