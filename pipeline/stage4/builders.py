@@ -12,7 +12,7 @@ from typing import Any, Iterable
 
 import pandas as pd
 
-from pipeline.stage3_match import collapse_iy
+from pipeline.stage3_match import collapse_iy, korean_base_candidates
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -323,6 +323,9 @@ def build_task4_items(
     items: list[dict[str, Any]] = []
     for word_id, group in diffs.groupby("word_id", sort=True):
         word = group.iloc[0]
+        trad = str(word["trad"])
+        ko = str(word["ko"])
+        ko_is_aligned = len(trad) == len(ko)
         positions: list[dict[str, Any]] = []
         for _, row in group.sort_values("position").iterrows():
             for lang, here_col, primary_col in (
@@ -331,7 +334,20 @@ def build_task4_items(
                 here, primary = row[here_col], row[primary_col]
                 if not here or not primary or here == primary:
                     continue
-                if lang == "vi":
+                if lang == "ko" and ko_is_aligned:
+                    index = int(row["position"]) - 1
+                    written_syllable = ko[index]
+                    if (
+                        written_syllable != here
+                        and primary in korean_base_candidates(written_syllable, index)
+                    ):
+                        continue
+                    if here != written_syllable:
+                        raise ValueError(
+                            f"Task 4 Korean reading mismatch for {word_id} {trad} at "
+                            f"position {index + 1}: ko={written_syllable}, ko_base={here}"
+                        )
+                elif lang == "vi":
                     if row["source_vi"] == "unihan_unverified":
                         continue
                     if len(collapse_iy([here, primary])) == 1:
@@ -357,7 +373,7 @@ def build_task4_items(
         if not positions:
             continue
         items.append(_clean({
-            "word_id": word_id, "trad": word["trad"], "ko": word["ko"], "vi": word["vi"],
+            "word_id": word_id, "trad": trad, "ko": ko, "vi": word["vi"],
             "differences": positions,
         }))
     return items

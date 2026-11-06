@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 2026-11-06 — Stage 4c-prep: safe user launcher and task-4 Korean filter [Codex]
+- Added `pipeline/stage4/run_stage4.ps1` for Windows PowerShell 5.1: repository-root discovery, safe User-scope Vertex setting copy, API-key refusal, fixed Python 3.12 selection, Windows keep-awake with `finally` reset, ordered comma-separated tasks, two delayed launcher retries, stop-before-next-task behavior and a final status summary.
+- Added offline, resume-aware `--status` with validated / failed / missing counts, the task-1 prerequisite for tasks 2-4, spend to date and room under the $100 ceiling. Added a PID lock for `--task`, `--pilot` and `--check`; live locks refuse a second run, stale locks are replaced and owned locks are removed on every exit. `--status` ignores the lock.
+- API/transport retries now wait 30 then 60 seconds; local-validation retries remain immediate and 429 handling is unchanged.
+- D62 task-4 filtering now compares Korean `ko_base` to the word's written syllable. Exactly the nine named mapped-base artefacts are removed (243 → 234 items); remaining aligned Korean `reading_here` values are asserted against the written syllable. 議論, 風餐露宿, 胡思亂想 and 喜怒哀樂 remain.
+- Added no-network tests for the 234-item filter, exact dropped/kept forms, written syllables, retry waits, live/stale locks and offline status. All 67 non-rebuild tests pass. The 86 deterministic task-1 batch hashes are unchanged (aggregate SHA-256 `b7cde3cb000b853d61f534545f4aceed50e346427006af81ee2050192600af48`). Launcher `-Status` passed. `-Check` proved the User-scope copy, then the restricted Codex sandbox failed DNS resolution for `oauth2.googleapis.com`; it was not retried or worked around, so the user must run `-Check` in a normal new PowerShell window. No request reached the model and no full-run task was started.
+
 ## 2026-11-06 — Stage 4b re-check; Stage 4c run plan [Claude]
 - Re-check of Codex's Stage 4b-fix (`f03010b`): **PASS** (`docs/GATES.md`). Frozen data unchanged (`id_map.csv` line endings only); 63 non-rebuild tests rerun OK; all pilot_v2 logs on Argon/`global` with the D60 settings; re-check list met. Notes for the Stage 4 gate: 財源 "= 資源" (impossible reading) and minor task-3 wording.
 - New finding: 9 task-4 Korean differences carry a D39-mapped base that is not the written syllable (「異性」では「리」); filter assigned (D62 item 6), 243 → 234 items.

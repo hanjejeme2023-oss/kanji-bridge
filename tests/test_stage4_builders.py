@@ -15,8 +15,27 @@ class Stage4BuilderTests(unittest.TestCase):
     def test_frozen_item_counts(self) -> None:
         self.assertEqual(len(self.task1), 8555)
         self.assertEqual(len(builders.chunked(self.task1, 100)), 86)
-        self.assertEqual(len(self.task4), 243)
+        self.assertEqual(len(self.task4), 234)
         self.assertEqual(len(builders.chunked(self.task4, 50)), 5)
+
+    def test_task4_korean_filter_uses_the_written_syllable(self) -> None:
+        by_trad = {item["trad"]: item for item in self.task4}
+        dropped = {
+            "異常", "異口同聲", "異性", "異議", "異物", "異端",
+            "諾言", "鬧鐘", "寧靜",
+        }
+        kept = {"議論", "風餐露宿", "胡思亂想", "喜怒哀樂"}
+        self.assertTrue(dropped.isdisjoint(by_trad))
+        self.assertTrue(kept.issubset(by_trad))
+        for item in self.task4:
+            if len(item["trad"]) != len(item["ko"]):
+                continue
+            for difference in item["differences"]:
+                if difference["lang"] == "ko":
+                    self.assertEqual(
+                        difference["reading_here"],
+                        item["ko"][difference["position"] - 1],
+                    )
 
     def test_pilot_sets(self) -> None:
         task1 = builders.build_pilot_task1()

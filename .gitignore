@@ -16,3 +16,4 @@ Thumbs.db
 *credentials*.json
 *-key.json
 service-account*.json
+content/.stage4.lock

@@ -2,8 +2,11 @@ from __future__ import annotations
 
 import re
 import json
+import io
+import os
 import tempfile
 import unittest
+from contextlib import redirect_stdout
 from datetime import datetime, timezone
 from pathlib import Path
 from types import SimpleNamespace
@@ -19,7 +22,11 @@ from pipeline.stage4.runner import (
     generation_config,
     guard_api_keys,
     response_text_or_error,
+    run_status,
     run_task,
+    generate_batch,
+    main,
+    stage4_lock,
     usage_from_response,
 )
 
@@ -116,6 +123,66 @@ class Stage4SafetyTests(unittest.TestCase):
                 log_path.write_text(json.dumps(log), encoding="utf-8")
                 self.assertEqual(run_task(Mock(), 1, None, False), 0)
                 generate.assert_called_once()
+
+    def test_api_errors_wait_30_then_60_seconds(self) -> None:
+        client = SimpleNamespace(
+            models=SimpleNamespace(generate_content=Mock(side_effect=RuntimeError("transport")))
+        )
+        item = {"word_id": "w1"}
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            with (
+                patch("pipeline.stage4.runner.vertex_settings", return_value=("project", "global")),
+                patch("pipeline.stage4.runner.prompt_text", return_value="prompt"),
+                patch("pipeline.stage4.runner.count_tokens", return_value=1),
+                patch("pipeline.stage4.runner.enforce_ceiling"),
+                patch("pipeline.stage4.runner.generation_config", return_value=object()),
+                patch("pipeline.stage4.runner.append_cost"),
+                patch("pipeline.stage4.runner.time.sleep") as sleep,
+            ):
+                result = generate_batch(
+                    client, 1, "b001", [item], root / "out.jsonl", root / "out.log.json"
+                )
+        self.assertIsNone(result)
+        self.assertEqual([call.args[0] for call in sleep.call_args_list], [30, 60])
+
+    def test_lock_refuses_live_process_and_replaces_dead_process(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            lock = Path(temp) / ".stage4.lock"
+            lock.write_text(f"{os.getpid()}\n", encoding="ascii")
+            with self.assertRaisesRegex(Stage4Error, "already running"):
+                with stage4_lock(lock):
+                    pass
+            lock.write_text("999999999\n", encoding="ascii")
+            with patch("pipeline.stage4.runner.process_is_running", return_value=False):
+                with stage4_lock(lock):
+                    self.assertEqual(lock.read_text(encoding="ascii").strip(), str(os.getpid()))
+            self.assertFalse(lock.exists())
+
+    def test_status_is_offline_and_reports_task1_wait(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            stream = io.StringIO()
+            with (
+                patch("pipeline.stage4.runner.GENERATED", Path(temp)),
+                patch("pipeline.stage4.runner.existing_cost", return_value=1.25),
+                patch("pipeline.stage4.runner.load_prices", return_value={"hard_ceiling": 100}),
+                redirect_stdout(stream),
+            ):
+                run_status()
+            output = stream.getvalue()
+            self.assertIn("task 1: 0/86 validated, 0 failed, 86 missing", output)
+            self.assertIn("task 2: waiting for task 1", output)
+            self.assertIn("spend to date: $1.25000000", output)
+
+        with (
+            patch("pipeline.stage4.runner.run_status") as status,
+            patch("pipeline.stage4.runner.create_client") as create_client,
+            patch("pipeline.stage4.runner.stage4_lock") as lock,
+        ):
+            self.assertEqual(main(["--status"]), 0)
+            status.assert_called_once_with()
+            create_client.assert_not_called()
+            lock.assert_not_called()
 
     def test_run_all_does_not_import_stage4(self) -> None:
         source = (ROOT / "pipeline" / "run_all.py").read_text(encoding="utf-8").lower()

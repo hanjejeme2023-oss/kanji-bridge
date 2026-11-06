@@ -9,6 +9,7 @@ import os
 import sys
 import time
 import unicodedata
+from contextlib import contextmanager
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -23,12 +24,14 @@ PROMPTS = CONTENT / "prompts"
 INPUTS = CONTENT / "inputs"
 GENERATED = CONTENT / "generated"
 COST_LOG = CONTENT / "cost_log.csv"
+LOCK_PATH = CONTENT / ".stage4.lock"
 PRICE_PATH = Path(__file__).with_name("prices.json")
 MODEL_ID = "gemini-4-argon"
 TEMPERATURE = 0.3
 THINKING = "model_default"
 MAX_OUTPUT_TOKENS = 65536
 MAX_RETRIES = 2
+API_ERROR_RETRY_WAITS = (30, 60)
 REQUEST_TIMEOUT_SECONDS = 600
 REQUEST_TIMEOUT_MS = REQUEST_TIMEOUT_SECONDS * 1000
 ARGON_DEADLINE_UTC = "2026-12-01"
@@ -145,6 +148,76 @@ def existing_cost() -> float:
         return 0.0
     with COST_LOG.open(encoding="utf-8", newline="") as source:
         return sum(float(row["usd"]) for row in csv.DictReader(source) if row.get("usd"))
+
+
+def process_is_running(pid: int) -> bool:
+    if pid <= 0:
+        return False
+    if pid == os.getpid():
+        return True
+    if os.name == "nt":
+        import ctypes
+        from ctypes import wintypes
+
+        process_query_limited_information = 0x1000
+        kernel32 = ctypes.WinDLL("kernel32", use_last_error=True)
+        kernel32.OpenProcess.argtypes = [wintypes.DWORD, wintypes.BOOL, wintypes.DWORD]
+        kernel32.OpenProcess.restype = wintypes.HANDLE
+        kernel32.CloseHandle.argtypes = [wintypes.HANDLE]
+        kernel32.CloseHandle.restype = wintypes.BOOL
+        handle = kernel32.OpenProcess(
+            process_query_limited_information, False, pid
+        )
+        if not handle:
+            return False
+        kernel32.CloseHandle(handle)
+        return True
+    try:
+        os.kill(pid, 0)
+    except ProcessLookupError:
+        return False
+    except PermissionError:
+        return True
+    return True
+
+
+@contextmanager
+def stage4_lock(path: Path = LOCK_PATH):
+    """Own the Stage 4 generator lock, replacing only a stale process lock."""
+    path.parent.mkdir(parents=True, exist_ok=True)
+    pid = os.getpid()
+    while True:
+        try:
+            descriptor = os.open(path, os.O_WRONLY | os.O_CREAT | os.O_EXCL)
+        except FileExistsError:
+            try:
+                owner = int(path.read_text(encoding="ascii").strip())
+            except (OSError, ValueError):
+                owner = -1
+            if process_is_running(owner):
+                raise Stage4Error(
+                    f"Stage 4 is already running with PID {owner}; lock: {path}"
+                )
+            try:
+                path.unlink()
+            except FileNotFoundError:
+                pass
+            continue
+        with os.fdopen(descriptor, "w", encoding="ascii", newline="\n") as target:
+            target.write(f"{pid}\n")
+        break
+    try:
+        yield
+    finally:
+        try:
+            owner = int(path.read_text(encoding="ascii").strip())
+        except (FileNotFoundError, OSError, ValueError):
+            owner = None
+        if owner == pid:
+            try:
+                path.unlink()
+            except FileNotFoundError:
+                pass
 
 
 def append_cost(row: dict[str, Any]) -> None:
@@ -429,6 +502,13 @@ def generate_batch(
             })
             retry += 1
             if retry <= MAX_RETRIES:
+                wait_seconds = API_ERROR_RETRY_WAITS[retry - 1]
+                print(
+                    f"task={task} batch={batch_name} API/transport error; "
+                    f"waiting {wait_seconds}s before retry {retry}",
+                    file=sys.stderr,
+                )
+                time.sleep(wait_seconds)
                 continue
             break
     error = attempts[-1]["error"] if attempts else "unknown failure"
@@ -631,6 +711,62 @@ def run_task(
     return failed
 
 
+def batch_state(
+    task: int,
+    batch_name: str,
+    items: list[dict[str, Any]],
+    output_path: Path,
+    log_path: Path,
+) -> str:
+    if validated_batch_exists(task, batch_name, items, output_path, log_path):
+        return "validated"
+    if output_path.exists() or log_path.exists():
+        return "failed"
+    return "missing"
+
+
+def task_states(task: int, batches: list[list[dict[str, Any]]]) -> dict[str, int]:
+    counts = {"validated": 0, "failed": 0, "missing": 0}
+    for number, items in enumerate(batches, 1):
+        name = f"b{number:03d}"
+        state = batch_state(
+            task,
+            name,
+            items,
+            GENERATED / f"task{task}" / f"{name}.jsonl",
+            GENERATED / f"task{task}" / f"{name}.log.json",
+        )
+        counts[state] += 1
+    return counts
+
+
+def print_task_status(task: int, counts: dict[str, int]) -> None:
+    total = sum(counts.values())
+    print(
+        f"task {task}: {counts['validated']}/{total} validated, "
+        f"{counts['failed']} failed, {counts['missing']} missing"
+    )
+
+
+def run_status() -> None:
+    """Print resume-aware status without constructing a Vertex client or making API calls."""
+    task1_batches = builders.build_task1_batches()
+    task1_counts = task_states(1, task1_batches)
+    print_task_status(1, task1_counts)
+    if task1_counts["validated"] != len(task1_batches):
+        for task in (2, 3, 4):
+            print(f"task {task}: waiting for task 1")
+    else:
+        task1_outputs = task1_outputs_from_generated()
+        for task in (2, 3, 4):
+            batches = builders.task_batches(task, task1_outputs)
+            print_task_status(task, task_states(task, batches))
+    spent = existing_cost()
+    ceiling = float(load_prices()["hard_ceiling"])
+    print(f"spend to date: ${spent:.8f}")
+    print(f"room under ${ceiling:.2f} ceiling: ${max(ceiling - spent, 0):.8f}")
+
+
 def run_pilot(client: Any, allow_after_deadline: bool = False) -> int:
     pilot_dir = GENERATED / "pilot_v2"
     pilot_inputs = INPUTS / "pilot_v2"
@@ -683,6 +819,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     mode.add_argument("--check", action="store_true", help="make one tiny Vertex request")
     mode.add_argument("--pilot", action="store_true", help="run the five Stage 4b Argon re-pilot requests")
     mode.add_argument("--task", type=int, choices=range(1, 5), help="run one full task")
+    mode.add_argument("--status", action="store_true", help="show offline resume status")
     parser.add_argument("--batch", type=int, help="run/rerun one 1-based batch")
     parser.add_argument("--dry-run", action="store_true", help="count inputs without generation")
     parser.add_argument(
@@ -700,15 +837,22 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
 def main(argv: list[str] | None = None) -> int:
     args = parse_args(argv)
     try:
-        client = create_client()
-        if args.check:
-            run_check(client, args.allow_after_deadline)
+        if args.status:
+            run_status()
             return 0
-        if args.pilot:
-            return 1 if run_pilot(client, args.allow_after_deadline) else 0
-        return 1 if run_task(
-            client, args.task, args.batch, args.dry_run, args.allow_after_deadline
-        ) else 0
+        with stage4_lock():
+            client = create_client()
+            if args.check:
+                run_check(client, args.allow_after_deadline)
+                return 0
+            if args.pilot:
+                return 1 if run_pilot(client, args.allow_after_deadline) else 0
+            return 1 if run_task(
+                client, args.task, args.batch, args.dry_run, args.allow_after_deadline
+            ) else 0
+    except KeyboardInterrupt:
+        print("Interrupted", file=sys.stderr)
+        return 130
     except Exception as exc:
         print(f"{type(exc).__name__}: {exc}", file=sys.stderr)
         return 1
