@@ -1,7 +1,7 @@
 {
-  "alignment_mismatches": 50,
+  "alignment_mismatches": 5,
   "char_ambiguous": 0,
-  "char_simp_mismatch": 12,
+  "char_simp_mismatch": 3,
   "chars_after_growth": 3178,
   "chars_before_growth": 3000,
   "ff_candidates": 2944,

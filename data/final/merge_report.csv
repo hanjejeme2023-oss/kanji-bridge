@@ -1,32 +1,38 @@
 merge,status,count,validate
-unihan,left_only,0,
-unihan,right_only,0,
-unihan,both,3000,
-opencc,left_only,2696,
-opencc,right_only,0,
-opencc,both,304,
-libhangul,left_only,0,
-libhangul,right_only,0,
-libhangul,both,3000,
-kaikki,left_only,1465,
-kaikki,right_only,0,
-kaikki,both,1535,
-kanjidic,left_only,45,
-kanjidic,right_only,0,
-kanjidic,both,2955,
+unihan,left_only,0,one_to_one
+unihan,right_only,0,one_to_one
+unihan,both,3000,one_to_one
+opencc,left_only,2696,one_to_one
+opencc,right_only,0,one_to_one
+opencc,both,304,one_to_one
+libhangul,left_only,0,one_to_one
+libhangul,right_only,0,one_to_one
+libhangul,both,3000,one_to_one
+kaikki,left_only,1465,one_to_one
+kaikki,right_only,0,one_to_one
+kaikki,both,1535,one_to_one
+kanjidic,left_only,45,many_to_one
+kanjidic,right_only,0,many_to_one
+kanjidic,both,2955,many_to_one
 hsk_dedupe,input,11110,unique after group
 hsk_dedupe,output,11028,unique after group
-words_cedict_exact,both,10974,many_to_one
-words_cedict_exact,left_only,54,many_to_one
-words_cedict_fallback,both,19,one selected per word
-words_cedict_fallback,left_only,35,one selected per word
-words_kaikki_outer,both,1697,many_to_one after pair aggregation
-words_kaikki_outer,right_only,1669,many_to_one after pair aggregation
+words_cedict_exact,left_only,54,m:1
+words_cedict_exact,right_only,0,m:1
+words_cedict_exact,both,10974,m:1
+words_cedict_fallback,left_only,35,1:1
+words_cedict_fallback,right_only,0,1:1
+words_cedict_fallback,both,19,1:1
+words_kaikki_outer,left_only,9314,m:1
+words_kaikki_outer,right_only,1669,m:1
+words_kaikki_outer,both,1714,m:1
 word_char_link,both,24458,one char row per word position
 word_char_link,left_only,0,one char row per word position
-words_jmdict,both,6651,one_to_one
-words_jmdict,left_only,5578,one_to_one
-words_libhangul,both,8267,one_to_one
-words_libhangul,left_only,3962,one_to_one
-words_vi,both,5083,one_to_one
-words_vi,left_only,7146,one_to_one
+words_jmdict,left_only,5607,1:1
+words_jmdict,right_only,0,1:1
+words_jmdict,both,6622,1:1
+words_libhangul,left_only,3962,1:1
+words_libhangul,right_only,0,1:1
+words_libhangul,both,8267,1:1
+words_vi,left_only,7167,1:1
+words_vi,right_only,0,1:1
+words_vi,both,5062,1:1

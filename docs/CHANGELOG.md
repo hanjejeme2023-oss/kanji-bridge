@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 2026-11-05 — Stage 3 gate fixes F1-F13 [Codex]
+- Separated D43 Korean alignment acceptance from exact D39 normalization, restricted D39 counts to one-candidate/override evidence, preserved reading sets, and implemented `ko_law_form_suspect`.
+- Replaced simulated word join counts with validated indicator merges for CC-CEDICT, Kaikki, JMdict, libhangul and Vietnamese matches; Stage 2 rows now record their actual validation arguments.
+- Corrected single-character Japanese form matching and linked-row on'yomi, Vietnamese rule-B conflicts and headword glosses, grown-character simplified forms, VI-only audit columns, and CC-CEDICT-inventory pinyin segmentation.
+- Rebuilt reports and tables: 12,229 words, 3,178 chars, 24,458 word-character rows; 5 pinyin/Korean/Vietnamese alignment exceptions (0 pinyin failures); 3 simplified-form mismatches; 84 primary changes. Card eligibility remains 7,354 HSK / 8,555 total.
+- Added `tests/test_stage3_gate_fixes.py`. Full suite: 29 tests passed; two complete rebuilds produced identical final outputs and `pipeline/id_map.csv`. No override or new data decision was added; `DECISIONS.md` is unchanged.
+
 ## 2026-11-04 — Stage 3: word table [Codex]
 - Added normalized CC-CEDICT and JMdict loaders; JMdict retains entity tag names for D42 ranking. Expanded Unihan variants, full libhangul aligned records/comments, and Kaikki first glosses.
 - Implemented D40-D50 in `pipeline/build_words.py` and `stage3_match.py`: 11,028-row HSK dedupe; exact/fallback CC-CEDICT attachment; Japanese/Korean/Vietnamese dictionary matching; deterministic VI-only selection; character growth/linking; `word_chars`; D39 primary recomputation; rules, coverage, merge, ambiguity and mismatch reports; and D47 false-friend candidates.

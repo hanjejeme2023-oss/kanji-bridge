@@ -157,6 +157,38 @@ def split_multi(value: object, separator: str = ";") -> list[str]:
     return unique_preserve(nfc(value).split(separator)) if nfc(value) else []
 
 
+def merge_with_report(
+    left: pd.DataFrame,
+    right: pd.DataFrame,
+    *,
+    name: str,
+    reports: list[dict[str, object]],
+    how: str,
+    validate: str,
+    **kwargs: object,
+) -> pd.DataFrame:
+    """Run a validated pandas merge and record its real indicator counts."""
+    indicator = f"_merge_{name}"
+    merged = left.merge(
+        right,
+        how=how,
+        validate=validate,
+        indicator=indicator,
+        **kwargs,
+    )
+    counts = merged[indicator].value_counts(dropna=False).to_dict()
+    reports.extend(
+        {
+            "merge": name,
+            "status": status,
+            "count": int(counts.get(status, 0)),
+            "validate": validate,
+        }
+        for status in ["left_only", "right_only", "both"]
+    )
+    return merged
+
+
 def is_cjk_char(value: object) -> bool:
     text = nfc(value)
     return len(text) == 1 and CJK_RE.fullmatch(text) is not None

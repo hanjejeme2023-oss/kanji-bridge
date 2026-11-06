@@ -144,12 +144,50 @@ def korean_base_candidates(syllable: str, position: int) -> list[str]:
     return unique_preserve(result)
 
 
-def korean_base(syllable: str, allowed: Iterable[str], position: int) -> str:
+def korean_alignment_base(syllable: str, allowed: Iterable[str], position: int) -> str:
+    """Return a D43-compatible source reading for dictionary alignment."""
     allowed_set = set(allowed)
     for candidate in korean_base_candidates(syllable, position):
         if candidate in allowed_set:
             return candidate
     return ""
+
+
+def korean_normalized_base(
+    syllable: str,
+    allowed: Iterable[str],
+    position: int,
+    previous_syllable: str = "",
+) -> str:
+    """Normalize a Korean word syllable exactly as D39 specifies."""
+    allowed_set = set(allowed)
+    if not syllable:
+        return ""
+    if position == 0:
+        initial = initial_of(syllable)
+        vowel = vowel_of(syllable)
+        if initial == "ㅇ" and vowel in IOTIZED:
+            for replacement in ["ㄹ", "ㄴ"]:
+                candidate = replace_initial(syllable, replacement)
+                if candidate in allowed_set:
+                    return candidate
+        elif initial == "ㄴ" and vowel not in IOTIZED:
+            candidate = replace_initial(syllable, "ㄹ")
+            if candidate in allowed_set:
+                return candidate
+    elif syllable in {"열", "율"} and previous_syllable:
+        previous = decompose_hangul(previous_syllable)
+        previous_final = previous[2] if previous else -1
+        if previous_final in {0, 4}:  # open syllable or ㄴ-final
+            candidate = "렬" if syllable == "열" else "률"
+            if candidate in allowed_set:
+                return candidate
+    return syllable if syllable in allowed_set else ""
+
+
+# Compatibility name for D43 matching call sites. D39 counting must use
+# korean_normalized_base instead.
+korean_base = korean_alignment_base
 
 
 def law_penalty(word: str) -> int:

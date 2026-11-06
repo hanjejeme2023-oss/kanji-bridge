@@ -12,6 +12,7 @@ from common import (
     STAGING,
     assign_ids,
     hangul_final,
+    merge_with_report,
     nfc,
     pinyin_numbered_to_marked,
     require_nfc,
@@ -54,19 +55,16 @@ def merge_left(
     reports: list[dict[str, object]],
 ) -> pd.DataFrame:
     indicator = f"_merge_{name}"
-    merged = left.merge(
+    merged = merge_with_report(
+        left,
         right,
+        name=name,
+        reports=reports,
         how="left",
         left_on=left_on,
         right_on=right_on,
         validate=validate,
-        indicator=indicator,
         suffixes=("", f"_{name}"),
-    )
-    counts = merged[indicator].value_counts(dropna=False).to_dict()
-    reports.extend(
-        {"merge": name, "status": status, "count": int(counts.get(status, 0))}
-        for status in ["left_only", "right_only", "both"]
     )
     return merged.drop(columns=[indicator, right_on] if right_on != left_on else [indicator])
 
@@ -246,7 +244,7 @@ def build() -> tuple[pd.DataFrame, dict[str, int]]:
     ):
         raise ValueError("Final chars must contain 3,000 rows with unique key_char/char_id and non-empty trad")
 
-    merge_frame = pd.DataFrame(merge_reports, columns=["merge", "status", "count"])
+    merge_frame = pd.DataFrame(merge_reports, columns=["merge", "status", "count", "validate"])
     write_csv(merge_frame, FINAL / "merge_report.csv")
     summary = {
         "rows": len(output),

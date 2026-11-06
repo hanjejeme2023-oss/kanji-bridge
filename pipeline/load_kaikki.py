@@ -23,6 +23,8 @@ def main() -> None:
     aligned_first_seen: dict[tuple[str, str], int] = {}
     hv_syllables: set[str] = set()
     headwords: set[str] = set()
+    headword_gloss: dict[str, str] = {}
+    headword_han: dict[str, list[str]] = defaultdict(list)
     evidence_order = 0
 
     with gzip.open(
@@ -42,6 +44,8 @@ def main() -> None:
                 if glosses:
                     gloss = nfc(glosses[0])
                     break
+            if gloss and word not in headword_gloss:
+                headword_gloss[word] = gloss
             for etymology in record.get("etymology_texts") or []:
                 first_line = nfc(etymology).split("\n", 1)[0]
                 match = ETYMOLOGY_RE.match(first_line)
@@ -55,6 +59,8 @@ def main() -> None:
                 if len(runs) == 1 and not COMPONENT_RE.search(body):
                     han = runs[0]
                     explicit.setdefault((han, word), (evidence_order, gloss))
+                    if han not in headword_han[word]:
+                        headword_han[word].append(han)
                     if len(han) == len(syllables):
                         for char, syllable in zip(han, syllables):
                             aligned[char][syllable] += 1
@@ -99,7 +105,14 @@ def main() -> None:
     )
     char_frame = pd.DataFrame(char_rows, columns=["char", "vi", "count", "source_order"])
     syllable_frame = pd.DataFrame({"vi": sorted(hv_syllables)})
-    headword_frame = pd.DataFrame({"vi": sorted(headwords)})
+    headword_frame = pd.DataFrame([
+        {
+            "vi": vi,
+            "gloss_vi": headword_gloss.get(vi, ""),
+            "han_forms": ";".join(headword_han.get(vi, [])),
+        }
+        for vi in sorted(headwords)
+    ], columns=["vi", "gloss_vi", "han_forms"])
     write_csv(explicit_frame, STAGING / "kaikki.csv")
     write_csv(char_frame, STAGING / "kaikki_char_readings.csv")
     write_csv(syllable_frame, STAGING / "kaikki_hv_syllables.csv")

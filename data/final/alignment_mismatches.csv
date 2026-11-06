@@ -1,51 +1,6 @@
 word_id,lang,reason,detail
-w00045,pinyin,count,CC-CEDICT template did not resolve
-w00333,pinyin,count,CC-CEDICT template did not resolve
-w00544,pinyin,count,CC-CEDICT template did not resolve
-w00554,pinyin,count,CC-CEDICT template did not resolve
-w00765,pinyin,count,CC-CEDICT template did not resolve
-w00876,vi,not_in_all,position 1: diện
-w00998,pinyin,count,CC-CEDICT template did not resolve
 w01000,ko,ko_exception,position 1: 숫->수
-w01005,pinyin,count,CC-CEDICT template did not resolve
 w01121,vi,not_in_all,position 2: vi
-w01217,pinyin,count,CC-CEDICT template did not resolve
-w01456,pinyin,count,CC-CEDICT template did not resolve
 w01690,ko,ko_exception,position 2: 란->난
-w01769,pinyin,count,CC-CEDICT template did not resolve
-w02053,pinyin,count,CC-CEDICT template did not resolve
-w02977,vi,not_in_all,position 1: văn
-w03025,pinyin,count,CC-CEDICT template did not resolve
-w03069,pinyin,count,CC-CEDICT template did not resolve
-w03112,pinyin,count,CC-CEDICT template did not resolve
-w03322,pinyin,count,CC-CEDICT template did not resolve
-w04652,pinyin,count,CC-CEDICT template did not resolve
 w04704,vi,not_in_all,position 1: giám
-w04850,pinyin,count,CC-CEDICT template did not resolve
-w05225,pinyin,count,CC-CEDICT template did not resolve
-w05346,pinyin,count,CC-CEDICT template did not resolve
-w05658,pinyin,count,CC-CEDICT template did not resolve
-w05688,pinyin,count,CC-CEDICT template did not resolve
-w05691,pinyin,count,CC-CEDICT template did not resolve
-w05695,pinyin,count,CC-CEDICT template did not resolve
-w05816,ko,not_in_all,position 2: 저
 w05822,ko,ko_exception,position 1: 찻->차
-w05848,pinyin,count,CC-CEDICT template did not resolve
-w05956,pinyin,count,CC-CEDICT template did not resolve
-w06300,pinyin,count,CC-CEDICT template did not resolve
-w06416,pinyin,count,CC-CEDICT template did not resolve
-w06495,pinyin,count,CC-CEDICT template did not resolve
-w06763,pinyin,count,CC-CEDICT template did not resolve
-w07011,pinyin,count,CC-CEDICT template did not resolve
-w07144,pinyin,count,CC-CEDICT template did not resolve
-w07779,pinyin,count,CC-CEDICT template did not resolve
-w08371,pinyin,count,CC-CEDICT template did not resolve
-w08550,pinyin,count,CC-CEDICT template did not resolve
-w09129,pinyin,count,CC-CEDICT template did not resolve
-w09289,pinyin,count,CC-CEDICT template did not resolve
-w09329,pinyin,count,CC-CEDICT template did not resolve
-w09903,pinyin,count,CC-CEDICT template did not resolve
-w09971,pinyin,count,CC-CEDICT template did not resolve
-w10592,pinyin,count,CC-CEDICT template did not resolve
-w10925,ko,not_in_all,position 1: 저
-w10930,pinyin,count,CC-CEDICT template did not resolve

@@ -13,7 +13,7 @@ Read `PROMPT.md` first, then this file. Do only the assignment for your role. Up
 - Stage 2 (character table) — **DONE** by Codex, 2026-11-04. Revised D37 is implemented as two rows with unique `key_char`; 3,000 rows and all Stage 2 reports are committed. Stage 2 gate: PASS (Claude, 2026-11-04).
 - **PROMPT Rule 11 (stage gates) is in force.** Gate results are logged in `docs/GATES.md`. Stage 1 gate: PASS. Stage 2 gate: PASS (both 2026-11-04).
 - Pre-Stage-3 readiness review: **DONE** by Claude, 2026-11-04 (three passes, CHANGELOG; decisions D39-D50).
-- Stage 3 (word table) — built by Codex, 2026-11-04. **Stage 3 gate: FAIL, attempt 1 (Claude, 2026-11-04).** Evidence in `docs/GATES.md`; fixes below. Counts, keys, coverage and reproducibility are sound; the failures are in rule implementation.
+- Stage 3 (word table) — built by Codex, 2026-11-04. **Stage 3 gate attempt 1 failed; F1-F13 fixed by Codex, 2026-11-05, and the rebuild is ready for attempt 2.** Evidence for the original failure is in `docs/GATES.md`; completion evidence is below.
 
 ## Stage 1 review: outcome in brief (details in STAGE1_REVIEW.md)
 - **Licences:** all accepted. hsk30 accepted with a recorded provenance risk (confirmed by the user, D35). Dataset will be **CC BY-SA 4.0**.
@@ -21,7 +21,10 @@ Read `PROMPT.md` first, then this file. Do only the assignment for your role. Up
 - **Shinjitai:** inverted OpenCC `JPShinjitaiCharacters` (16/16 on the prototype's glyph pairs), KANJIDIC2 tie-break.
 
 ## NEXT ASSIGNMENT
-**Agent: Codex — Stage 3 gate fixes (attempt 1 failed).** Fix only F1-F13 below (PROMPT Rule 11), rebuild, then hand back to Claude for the re-check. Read D51 and the Stage 3 section of `docs/GATES.md` first. Do not write `pipeline/overrides.csv`: the picks come after the re-check. Do not improvise a rule; if one of these does not work as written, stop and raise it here.
+**Agent: Claude — Stage 3 gate, attempt 2.** Rerun checks 2, 5, 6, 7, 8, 9, 10, 11, C1, C2 and 13 from `docs/GATES.md`. Scan `char_primary_changes.csv`, including top-count-1 changes and 寧. Then propose the D50 short-list picks, including 茶 → 차 and every `rule_b_conflict` row, and stop for the user to confirm. Do not write overrides before that confirmation.
+
+## COMPLETED ASSIGNMENT — Codex Stage 3 gate fixes (F1-F13)
+Implemented only the corrections assigned after attempt 1. `pipeline/overrides.csv` remains header-only.
 
 ### Fixes
 **Korean primaries (D39)**
@@ -62,6 +65,16 @@ These were computed independently where stated; any difference must be explained
 | `merge_report.csv` | same counts as before except the effects above |
 
 In your note give the row counts of every report, `char_primary_changes.csv` with its count, and what changed in `card_eligible`. **At the end, hand back to Claude (Stage 3 gate, attempt 2).**
+
+### Codex completion evidence (2026-11-05)
+- F1-F3: D39 alignment acceptance and primary normalization are separate. Expected primaries now match: 老 로, 流 류, 旅 려, 連/聯 련, 領 령, 律 률, 列 렬, 陸 륙, 輪 륜, 兩 량, 零 령, 冷 랭, 綠 록, 勞 로, 輯 집; 流行/旅行/分裂 bases are 류/려/렬. Thirteen no-evidence Korean rows are marked law-form suspects, including 爐, 廊, 虜, 魯, 碌. 茶 remains **다** pending the gate short list.
+- F4: CC-CEDICT exact and fallback, Kaikki outer, and all three match tables now use real pandas merges with `indicator=True` and the recorded `validate` argument. Stage 2 merge rows also have their actual validation cardinality. The Kaikki merge reports 1,714 HSK rows `both`; this is 1,697 distinct matched Han forms plus 17 repeated HSK `(trad, pinyin)` rows, whereas the attempt-1 count was a distinct-form simulation.
+- F5-F6: HSK Japanese coverage is 5,703. The nine bad one-character variant matches are gone and their `ja` is empty; 歲/腳/內/值/戶/鄉/號 and 國/電/海/手 have the expected on'yomi; 模仿→模倣 and 身份→身分 remain.
+- F7-F9: the seven named rule-B conflicts are empty and reported. There are 24 HSK conflict candidates but **21 previously selected HSK values drop**; the other three were already unresolved. Twelve additional false-friend conflicts are reported. Rule-B glosses cover 2,134 / 2,142 words and 614 / 616 false-friend rows with Vietnamese values. 鑑 giám is tagged `kaikki_han` in `rules_examples.csv`.
+- F10-F12: grown-character `simp` has 0 empty values; 餵/託/譁/鵰/陀/簿 match the expected forms. `char_simp_mismatch.csv` is exactly 反覆, 答覆, 彷彿. `vi_only_report.csv` has all required columns and exactly 1,201 selected rows. Pinyin alignment has 0 failures; `alignment_mismatches.csv` now contains only 5 real Korean/Vietnamese exceptions.
+- Tables: 12,229 words (11,028 HSK + 1,201 VI-only), 24,458 `word_chars`, 3,178 chars. HSK coverage: Japanese 5,703, Korean 7,110, pinyin 11,028, Vietnamese 3,861, all four 3,094. `card_eligible` is unchanged: 7,354 HSK / 8,555 total.
+- Report rows: `cedict_unmatched` 35; `ja_multi_candidates` 149; `ko_multi_candidates` 136; `ko_unresolved` 53; `vi_ambiguous` 47 (11 several-candidate + 36 rule-B conflict: 24 word rows + 12 ff rows); `alignment_mismatches` 5; `char_primary_changes` **84**; `char_primary_no_evidence` 1,841; `char_ambiguous` 0; `char_simp_mismatch` 3; `char_key_collisions` 2; `no_jp_form` 48; `rules_examples` 2,031; `rules_report` 7; `coverage_report` 41; `merge_report` 37; `vi_only_report` 3,367; `ff_candidates` 2,944.
+- F13: added seven focused regression tests. Full validation: **29 tests passed in 624.999 s**. The rebuild test ran the complete pipeline twice and compared every final file plus `pipeline/id_map.csv`: identical.
 
 ### What Claude does at attempt 2
 Reruns the failed checks, scans `char_primary_changes.csv` (including top-count-1 changes and 寧, which D39's literal mapping may send to 령), then proposes picks for the short list (D50 item 4, including 茶 → 차, about 205 rows plus any `rule_b_conflict` rows) and stops for the user. Overrides, a rebuild and the D36 search come after that.
@@ -143,6 +156,7 @@ PROMPT's criteria, measured by the checklist and the test-word table in `docs/GA
 - hsk30 provenance risk: **accepted by the user** (D35, personal non-commercial project; revisit if ever published commercially).
 
 ## Log
+- 2026-11-05 Codex — Stage 3 gate fixes F1-F13 complete: corrected D39 normalization/evidence, real validated merges, D51 Japanese/Vietnamese behavior, reports and pinyin alignment; 29 tests pass and two rebuilds are identical. Next: Claude Stage 3 gate attempt 2.
 - 2026-11-04 Claude — Stage 3 gate FAIL (attempt 1): at least 49 wrong Korean primaries (`ko_base` not normalized, non-evidence words counted), wrong Japanese forms on 31 single-character rows (variant graph used for JMdict), no real `validate=` merges, rule-B homophones, smaller report items. D51 recorded; F1-F13 assigned; short-list picks deferred to attempt 2. Next: Codex fixes.
 - 2026-11-04 Codex — Stage 3 complete: 11,028 HSK + 1,201 VI-only words, 3,178 chars, all reports, fixed-word tests, and deterministic rebuild verified. Next: Claude Stage 3 gate.
 - 2026-11-04 Claude — user chose the KANJIDIC2 fallback for single-character words with no on'yomi in JMdict (D42, D50); 國 is now こく in the test table. No open user questions. Next: Codex Stage 3.

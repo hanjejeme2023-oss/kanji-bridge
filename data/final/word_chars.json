@@ -597,7 +597,7 @@
     "word_id": "w00045",
     "position": 1,
     "char_id": "c00026",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "chē",
     "ko_syllable": "차",
     "ko_base": "차",
     "vi_syllable": null
@@ -606,7 +606,7 @@
     "word_id": "w00045",
     "position": 2,
     "char_id": "c00191",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "shang",
     "ko_syllable": "상",
     "ko_base": "상",
     "vi_syllable": null
@@ -2966,7 +2966,7 @@
     "char_id": "c00127",
     "pinyin_syllable": "lái",
     "ko_syllable": "내",
-    "ko_base": "내",
+    "ko_base": "래",
     "vi_syllable": null
   },
   {
@@ -2993,7 +2993,7 @@
     "char_id": "c00128",
     "pinyin_syllable": "lǎo",
     "ko_syllable": "노",
-    "ko_base": "노",
+    "ko_base": "로",
     "vi_syllable": null
   },
   {
@@ -3011,7 +3011,7 @@
     "char_id": "c00128",
     "pinyin_syllable": "lǎo",
     "ko_syllable": "노",
-    "ko_base": "노",
+    "ko_base": "로",
     "vi_syllable": null
   },
   {
@@ -3128,7 +3128,7 @@
     "char_id": "c00136",
     "pinyin_syllable": "lóu",
     "ko_syllable": "누",
-    "ko_base": "누",
+    "ko_base": "루",
     "vi_syllable": null
   },
   {
@@ -3146,7 +3146,7 @@
     "char_id": "c00136",
     "pinyin_syllable": "lóu",
     "ko_syllable": "누",
-    "ko_base": "누",
+    "ko_base": "루",
     "vi_syllable": null
   },
   {
@@ -3191,7 +3191,7 @@
     "char_id": "c00137",
     "pinyin_syllable": "lù",
     "ko_syllable": "노",
-    "ko_base": "노",
+    "ko_base": "로",
     "vi_syllable": null
   },
   {
@@ -4046,7 +4046,7 @@
     "char_id": "c00168",
     "pinyin_syllable": "nǚ",
     "ko_syllable": "여",
-    "ko_base": "여",
+    "ko_base": "녀",
     "vi_syllable": null
   },
   {
@@ -4118,7 +4118,7 @@
     "char_id": "c00168",
     "pinyin_syllable": "nǚ",
     "ko_syllable": "여",
-    "ko_base": "여",
+    "ko_base": "녀",
     "vi_syllable": null
   },
   {
@@ -4782,7 +4782,7 @@
     "word_id": "w00333",
     "position": 1,
     "char_id": "c00208",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "shuí",
     "ko_syllable": "수",
     "ko_base": "수",
     "vi_syllable": null
@@ -8067,7 +8067,7 @@
     "word_id": "w00544",
     "position": 1,
     "char_id": "c00019",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "bù",
     "ko_syllable": null,
     "ko_base": null,
     "vi_syllable": null
@@ -8076,7 +8076,7 @@
     "word_id": "w00544",
     "position": 2,
     "char_id": "c00218",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "tài",
     "ko_syllable": null,
     "ko_base": null,
     "vi_syllable": null
@@ -8232,7 +8232,7 @@
     "pinyin_syllable": "bù",
     "ko_syllable": null,
     "ko_base": null,
-    "vi_syllable": "bất"
+    "vi_syllable": null
   },
   {
     "word_id": "w00552",
@@ -8241,7 +8241,7 @@
     "pinyin_syllable": "xíng",
     "ko_syllable": null,
     "ko_base": null,
-    "vi_syllable": "hạnh"
+    "vi_syllable": null
   },
   {
     "word_id": "w00553",
@@ -8274,7 +8274,7 @@
     "word_id": "w00554",
     "position": 1,
     "char_id": "c00019",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "bù",
     "ko_syllable": null,
     "ko_base": null,
     "vi_syllable": null
@@ -8283,7 +8283,7 @@
     "word_id": "w00554",
     "position": 2,
     "char_id": "c00262",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "yī",
     "ko_syllable": null,
     "ko_base": null,
     "vi_syllable": null
@@ -8292,7 +8292,7 @@
     "word_id": "w00554",
     "position": 3,
     "char_id": "c00097",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "huì",
     "ko_syllable": null,
     "ko_base": null,
     "vi_syllable": null
@@ -8301,7 +8301,7 @@
     "word_id": "w00554",
     "position": 4,
     "char_id": "c00056",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "r",
     "ko_syllable": null,
     "ko_base": null,
     "vi_syllable": null
@@ -11721,7 +11721,7 @@
     "word_id": "w00765",
     "position": 1,
     "char_id": "c00106",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "jiàn",
     "ko_syllable": null,
     "ko_base": null,
     "vi_syllable": null
@@ -11730,7 +11730,7 @@
     "word_id": "w00765",
     "position": 2,
     "char_id": "c00081",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "guo",
     "ko_syllable": null,
     "ko_base": null,
     "vi_syllable": null
@@ -12866,7 +12866,7 @@
     "char_id": "c00424",
     "pinyin_syllable": "lán",
     "ko_syllable": "남",
-    "ko_base": "남",
+    "ko_base": "람",
     "vi_syllable": null
   },
   {
@@ -12902,7 +12902,7 @@
     "char_id": "c00128",
     "pinyin_syllable": "lǎo",
     "ko_syllable": "노",
-    "ko_base": "노",
+    "ko_base": "로",
     "vi_syllable": null
   },
   {
@@ -12992,7 +12992,7 @@
     "char_id": "c00428",
     "pinyin_syllable": "lǐ",
     "ko_syllable": "예",
-    "ko_base": "예",
+    "ko_base": "례",
     "vi_syllable": "lễ"
   },
   {
@@ -13028,7 +13028,7 @@
     "char_id": "c00429",
     "pinyin_syllable": "lǐ",
     "ko_syllable": "이",
-    "ko_base": "이",
+    "ko_base": "리",
     "vi_syllable": "lý"
   },
   {
@@ -13100,7 +13100,7 @@
     "char_id": "c00434",
     "pinyin_syllable": "liàn",
     "ko_syllable": "연",
-    "ko_base": "연",
+    "ko_base": "련",
     "vi_syllable": "luyện"
   },
   {
@@ -13163,7 +13163,7 @@
     "char_id": "c00134",
     "pinyin_syllable": "líng",
     "ko_syllable": "영",
-    "ko_base": "영",
+    "ko_base": "령",
     "vi_syllable": null
   },
   {
@@ -13208,7 +13208,7 @@
     "char_id": "c00439",
     "pinyin_syllable": "liú",
     "ko_syllable": "유",
-    "ko_base": "유",
+    "ko_base": "류",
     "vi_syllable": "lưu"
   },
   {
@@ -13262,7 +13262,7 @@
     "char_id": "c00440",
     "pinyin_syllable": "liú",
     "ko_syllable": "유",
-    "ko_base": "유",
+    "ko_base": "류",
     "vi_syllable": "lưu"
   },
   {
@@ -13280,7 +13280,7 @@
     "char_id": "c00137",
     "pinyin_syllable": "lù",
     "ko_syllable": "노",
-    "ko_base": "노",
+    "ko_base": "로",
     "vi_syllable": null
   },
   {
@@ -13298,7 +13298,7 @@
     "char_id": "c00441",
     "pinyin_syllable": "lǚ",
     "ko_syllable": "여",
-    "ko_base": "여",
+    "ko_base": "려",
     "vi_syllable": null
   },
   {
@@ -13316,7 +13316,7 @@
     "char_id": "c00441",
     "pinyin_syllable": "lǚ",
     "ko_syllable": "여",
-    "ko_base": "여",
+    "ko_base": "려",
     "vi_syllable": null
   },
   {
@@ -13334,7 +13334,7 @@
     "char_id": "c00441",
     "pinyin_syllable": "lǚ",
     "ko_syllable": "여",
-    "ko_base": "여",
+    "ko_base": "려",
     "vi_syllable": null
   },
   {
@@ -13361,7 +13361,7 @@
     "char_id": "c00442",
     "pinyin_syllable": "lǜ",
     "ko_syllable": "녹",
-    "ko_base": "녹",
+    "ko_base": "록",
     "vi_syllable": null
   },
   {
@@ -13443,7 +13443,7 @@
     "pinyin_syllable": "miàn",
     "ko_syllable": "면",
     "ko_base": "면",
-    "vi_syllable": "diện"
+    "vi_syllable": null
   },
   {
     "word_id": "w00877",
@@ -13820,7 +13820,7 @@
     "char_id": "c00165",
     "pinyin_syllable": "nián",
     "ko_syllable": "연",
-    "ko_base": "연",
+    "ko_base": "년",
     "vi_syllable": null
   },
   {
@@ -15252,7 +15252,7 @@
     "pinyin_syllable": "shí",
     "ko_syllable": "식",
     "ko_base": "식",
-    "vi_syllable": "thực"
+    "vi_syllable": null
   },
   {
     "word_id": "w00986",
@@ -15261,7 +15261,7 @@
     "pinyin_syllable": "wù",
     "ko_syllable": "물",
     "ko_base": "물",
-    "vi_syllable": "vật"
+    "vi_syllable": null
   },
   {
     "word_id": "w00987",
@@ -15438,7 +15438,7 @@
     "word_id": "w00998",
     "position": 1,
     "char_id": "c00494",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "shóu",
     "ko_syllable": "숙",
     "ko_base": "숙",
     "vi_syllable": "thục"
@@ -15546,7 +15546,7 @@
     "word_id": "w01005",
     "position": 1,
     "char_id": "c00213",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "sòng",
     "ko_syllable": null,
     "ko_base": null,
     "vi_syllable": null
@@ -15555,7 +15555,7 @@
     "word_id": "w01005",
     "position": 2,
     "char_id": "c00038",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "dào",
     "ko_syllable": null,
     "ko_base": null,
     "vi_syllable": null
@@ -19155,7 +19155,7 @@
     "word_id": "w01217",
     "position": 1,
     "char_id": "c00282",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "zhè",
     "ko_syllable": null,
     "ko_base": null,
     "vi_syllable": null
@@ -19164,7 +19164,7 @@
     "word_id": "w01217",
     "position": 2,
     "char_id": "c00199",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "shí",
     "ko_syllable": null,
     "ko_base": null,
     "vi_syllable": null
@@ -19173,7 +19173,7 @@
     "word_id": "w01217",
     "position": 3,
     "char_id": "c00091",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "hou",
     "ko_syllable": null,
     "ko_base": null,
     "vi_syllable": null
@@ -23214,7 +23214,7 @@
     "word_id": "w01456",
     "position": 1,
     "char_id": "c00061",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "fàng",
     "ko_syllable": null,
     "ko_base": null,
     "vi_syllable": null
@@ -23223,7 +23223,7 @@
     "word_id": "w01456",
     "position": 2,
     "char_id": "c00038",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "dào",
     "ko_syllable": null,
     "ko_base": null,
     "vi_syllable": null
@@ -27275,7 +27275,7 @@
     "char_id": "c00722",
     "pinyin_syllable": "làng",
     "ko_syllable": "낭",
-    "ko_base": "낭",
+    "ko_base": "랑",
     "vi_syllable": "lãng"
   },
   {
@@ -27401,7 +27401,7 @@
     "char_id": "c00426",
     "pinyin_syllable": "lè",
     "ko_syllable": "낙",
-    "ko_base": "낙",
+    "ko_base": "락",
     "vi_syllable": "lạc"
   },
   {
@@ -27428,7 +27428,7 @@
     "char_id": "c00723",
     "pinyin_syllable": "lèi",
     "ko_syllable": "유",
-    "ko_base": "유",
+    "ko_base": "류",
     "vi_syllable": null
   },
   {
@@ -27446,7 +27446,7 @@
     "char_id": "c00427",
     "pinyin_syllable": "lí",
     "ko_syllable": "이",
-    "ko_base": "이",
+    "ko_base": "리",
     "vi_syllable": null
   },
   {
@@ -27464,7 +27464,7 @@
     "char_id": "c00132",
     "pinyin_syllable": "lǐ",
     "ko_syllable": "이",
-    "ko_base": "이",
+    "ko_base": "리",
     "vi_syllable": null
   },
   {
@@ -27482,7 +27482,7 @@
     "char_id": "c00429",
     "pinyin_syllable": "lǐ",
     "ko_syllable": "이",
-    "ko_base": "이",
+    "ko_base": "리",
     "vi_syllable": null
   },
   {
@@ -27500,7 +27500,7 @@
     "char_id": "c00429",
     "pinyin_syllable": "lǐ",
     "ko_syllable": "이",
-    "ko_base": "이",
+    "ko_base": "리",
     "vi_syllable": "lý"
   },
   {
@@ -27518,7 +27518,7 @@
     "char_id": "c00429",
     "pinyin_syllable": "lǐ",
     "ko_syllable": "이",
-    "ko_base": "이",
+    "ko_base": "리",
     "vi_syllable": "lý"
   },
   {
@@ -27536,7 +27536,7 @@
     "char_id": "c00429",
     "pinyin_syllable": "lǐ",
     "ko_syllable": "이",
-    "ko_base": "이",
+    "ko_base": "리",
     "vi_syllable": "lý"
   },
   {
@@ -27563,7 +27563,7 @@
     "char_id": "c00430",
     "pinyin_syllable": "lì",
     "ko_syllable": "역",
-    "ko_base": "역",
+    "ko_base": "력",
     "vi_syllable": "lực"
   },
   {
@@ -27581,7 +27581,7 @@
     "char_id": "c00726",
     "pinyin_syllable": "lì",
     "ko_syllable": "입",
-    "ko_base": "입",
+    "ko_base": "립",
     "vi_syllable": null
   },
   {
@@ -27599,7 +27599,7 @@
     "char_id": "c00431",
     "pinyin_syllable": "lì",
     "ko_syllable": "이",
-    "ko_base": "이",
+    "ko_base": "리",
     "vi_syllable": "lợi"
   },
   {
@@ -27644,7 +27644,7 @@
     "char_id": "c00728",
     "pinyin_syllable": "lián",
     "ko_syllable": "연",
-    "ko_base": "연",
+    "ko_base": "련",
     "vi_syllable": "liên"
   },
   {
@@ -27662,7 +27662,7 @@
     "char_id": "c00728",
     "pinyin_syllable": "lián",
     "ko_syllable": "연",
-    "ko_base": "연",
+    "ko_base": "련",
     "vi_syllable": null
   },
   {
@@ -27689,7 +27689,7 @@
     "char_id": "c00729",
     "pinyin_syllable": "lián",
     "ko_syllable": "연",
-    "ko_base": "연",
+    "ko_base": "련",
     "vi_syllable": "liên"
   },
   {
@@ -27707,7 +27707,7 @@
     "char_id": "c00729",
     "pinyin_syllable": "lián",
     "ko_syllable": "연",
-    "ko_base": "연",
+    "ko_base": "련",
     "vi_syllable": "liên"
   },
   {
@@ -27734,7 +27734,7 @@
     "char_id": "c00729",
     "pinyin_syllable": "lián",
     "ko_syllable": "연",
-    "ko_base": "연",
+    "ko_base": "련",
     "vi_syllable": "liên"
   },
   {
@@ -27788,7 +27788,7 @@
     "char_id": "c00731",
     "pinyin_syllable": "lǐng",
     "ko_syllable": "영",
-    "ko_base": "영",
+    "ko_base": "령",
     "vi_syllable": "lãnh"
   },
   {
@@ -27878,7 +27878,7 @@
     "char_id": "c00439",
     "pinyin_syllable": "liú",
     "ko_syllable": "유",
-    "ko_base": "유",
+    "ko_base": "류",
     "vi_syllable": null
   },
   {
@@ -27914,7 +27914,7 @@
     "char_id": "c00734",
     "pinyin_syllable": "lù",
     "ko_syllable": "녹",
-    "ko_base": "녹",
+    "ko_base": "록",
     "vi_syllable": null
   },
   {
@@ -27932,7 +27932,7 @@
     "char_id": "c00137",
     "pinyin_syllable": "lù",
     "ko_syllable": "노",
-    "ko_base": "노",
+    "ko_base": "로",
     "vi_syllable": null
   },
   {
@@ -27950,7 +27950,7 @@
     "char_id": "c00441",
     "pinyin_syllable": "lǚ",
     "ko_syllable": "여",
-    "ko_base": "여",
+    "ko_base": "려",
     "vi_syllable": null
   },
   {
@@ -27968,7 +27968,7 @@
     "char_id": "c00441",
     "pinyin_syllable": "lǚ",
     "ko_syllable": "여",
-    "ko_base": "여",
+    "ko_base": "려",
     "vi_syllable": null
   },
   {
@@ -27995,7 +27995,7 @@
     "char_id": "c00442",
     "pinyin_syllable": "lǜ",
     "ko_syllable": "녹",
-    "ko_base": "녹",
+    "ko_base": "록",
     "vi_syllable": null
   },
   {
@@ -28022,7 +28022,7 @@
     "char_id": "c00736",
     "pinyin_syllable": "luò",
     "ko_syllable": "낙",
-    "ko_base": "낙",
+    "ko_base": "락",
     "vi_syllable": "lạc"
   },
   {
@@ -28614,7 +28614,7 @@
     "word_id": "w01769",
     "position": 1,
     "char_id": "c00163",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "néng",
     "ko_syllable": "능",
     "ko_base": "능",
     "vi_syllable": null
@@ -28623,7 +28623,7 @@
     "word_id": "w01769",
     "position": 2,
     "char_id": "c00019",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "bu",
     "ko_syllable": "불",
     "ko_base": "불",
     "vi_syllable": null
@@ -28632,7 +28632,7 @@
     "word_id": "w01769",
     "position": 3,
     "char_id": "c00163",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "néng",
     "ko_syllable": "능",
     "ko_base": "능",
     "vi_syllable": null
@@ -28661,7 +28661,7 @@
     "char_id": "c00165",
     "pinyin_syllable": "nián",
     "ko_syllable": "연",
-    "ko_base": "연",
+    "ko_base": "년",
     "vi_syllable": null
   },
   {
@@ -28679,7 +28679,7 @@
     "char_id": "c00165",
     "pinyin_syllable": "nián",
     "ko_syllable": "연",
-    "ko_base": "연",
+    "ko_base": "년",
     "vi_syllable": "niên"
   },
   {
@@ -28715,7 +28715,7 @@
     "char_id": "c00165",
     "pinyin_syllable": "nián",
     "ko_syllable": "연",
-    "ko_base": "연",
+    "ko_base": "년",
     "vi_syllable": "niên"
   },
   {
@@ -28805,7 +28805,7 @@
     "char_id": "c00168",
     "pinyin_syllable": "nǚ",
     "ko_syllable": "여",
-    "ko_base": "여",
+    "ko_base": "녀",
     "vi_syllable": "nữ"
   },
   {
@@ -33339,7 +33339,7 @@
     "word_id": "w02053",
     "position": 1,
     "char_id": "c00841",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "xiě",
     "ko_syllable": "혈",
     "ko_base": "혈",
     "vi_syllable": "huyết"
@@ -35187,7 +35187,7 @@
     "pinyin_syllable": "zhǐ",
     "ko_syllable": null,
     "ko_base": null,
-    "vi_syllable": "chỉ"
+    "vi_syllable": null
   },
   {
     "word_id": "w02167",
@@ -35196,7 +35196,7 @@
     "pinyin_syllable": "shì",
     "ko_syllable": null,
     "ko_base": null,
-    "vi_syllable": "thị"
+    "vi_syllable": null
   },
   {
     "word_id": "w02168",
@@ -41000,7 +41000,7 @@
     "char_id": "c01044",
     "pinyin_syllable": "lǜ",
     "ko_syllable": "율",
-    "ko_base": "율",
+    "ko_base": "률",
     "vi_syllable": "luật"
   },
   {
@@ -41874,7 +41874,7 @@
     "pinyin_syllable": "jī",
     "ko_syllable": "격",
     "ko_base": "격",
-    "vi_syllable": null
+    "vi_syllable": "khích"
   },
   {
     "word_id": "w02571",
@@ -41883,7 +41883,7 @@
     "pinyin_syllable": "dòng",
     "ko_syllable": "동",
     "ko_base": "동",
-    "vi_syllable": null
+    "vi_syllable": "động"
   },
   {
     "word_id": "w02572",
@@ -42035,7 +42035,7 @@
     "char_id": "c01044",
     "pinyin_syllable": "lǜ",
     "ko_syllable": "율",
-    "ko_base": "율",
+    "ko_base": "률",
     "vi_syllable": "luật"
   },
   {
@@ -43664,7 +43664,7 @@
     "char_id": "c00128",
     "pinyin_syllable": "lǎo",
     "ko_syllable": "노",
-    "ko_base": "노",
+    "ko_base": "로",
     "vi_syllable": null
   },
   {
@@ -43700,7 +43700,7 @@
     "char_id": "c00128",
     "pinyin_syllable": "lǎo",
     "ko_syllable": "노",
-    "ko_base": "노",
+    "ko_base": "로",
     "vi_syllable": null
   },
   {
@@ -43718,7 +43718,7 @@
     "char_id": "c00128",
     "pinyin_syllable": "lǎo",
     "ko_syllable": "노",
-    "ko_base": "노",
+    "ko_base": "로",
     "vi_syllable": "lão"
   },
   {
@@ -43763,7 +43763,7 @@
     "char_id": "c01031",
     "pinyin_syllable": "lèi",
     "ko_syllable": "누",
-    "ko_base": "누",
+    "ko_base": "루",
     "vi_syllable": null
   },
   {
@@ -43781,7 +43781,7 @@
     "char_id": "c00723",
     "pinyin_syllable": "lèi",
     "ko_syllable": "유",
-    "ko_base": "유",
+    "ko_base": "류",
     "vi_syllable": "loại"
   },
   {
@@ -43799,7 +43799,7 @@
     "char_id": "c00131",
     "pinyin_syllable": "lěng",
     "ko_syllable": "냉",
-    "ko_base": "냉",
+    "ko_base": "랭",
     "vi_syllable": null
   },
   {
@@ -43880,7 +43880,7 @@
     "char_id": "c00725",
     "pinyin_syllable": "lì",
     "ko_syllable": "역",
-    "ko_base": "역",
+    "ko_base": "력",
     "vi_syllable": "lịch"
   },
   {
@@ -43916,7 +43916,7 @@
     "char_id": "c00431",
     "pinyin_syllable": "lì",
     "ko_syllable": "이",
-    "ko_base": "이",
+    "ko_base": "리",
     "vi_syllable": "lợi"
   },
   {
@@ -43934,7 +43934,7 @@
     "char_id": "c00431",
     "pinyin_syllable": "lì",
     "ko_syllable": "이",
-    "ko_base": "이",
+    "ko_base": "리",
     "vi_syllable": "lợi"
   },
   {
@@ -43961,7 +43961,7 @@
     "char_id": "c01035",
     "pinyin_syllable": "liáng",
     "ko_syllable": "양",
-    "ko_base": "양",
+    "ko_base": "량",
     "vi_syllable": null
   },
   {
@@ -43988,7 +43988,7 @@
     "char_id": "c01036",
     "pinyin_syllable": "liáng",
     "ko_syllable": "양",
-    "ko_base": "양",
+    "ko_base": "량",
     "vi_syllable": "lương"
   },
   {
@@ -44006,7 +44006,7 @@
     "char_id": "c00133",
     "pinyin_syllable": "liǎng",
     "ko_syllable": "양",
-    "ko_base": "양",
+    "ko_base": "량",
     "vi_syllable": null
   },
   {
@@ -44024,7 +44024,7 @@
     "char_id": "c01037",
     "pinyin_syllable": "liáo",
     "ko_syllable": "요",
-    "ko_base": "요",
+    "ko_base": "료",
     "vi_syllable": null
   },
   {
@@ -44069,7 +44069,7 @@
     "char_id": "c00129",
     "pinyin_syllable": "liǎo",
     "ko_syllable": "요",
-    "ko_base": "요",
+    "ko_base": "료",
     "vi_syllable": null
   },
   {
@@ -44096,7 +44096,7 @@
     "char_id": "c01040",
     "pinyin_syllable": "liè",
     "ko_syllable": "열",
-    "ko_base": "열",
+    "ko_base": "렬",
     "vi_syllable": null
   },
   {
@@ -44150,7 +44150,7 @@
     "char_id": "c01042",
     "pinyin_syllable": "lín",
     "ko_syllable": "임",
-    "ko_base": "임",
+    "ko_base": "림",
     "vi_syllable": "lâm"
   },
   {
@@ -44186,7 +44186,7 @@
     "char_id": "c00440",
     "pinyin_syllable": "liú",
     "ko_syllable": "유",
-    "ko_base": "유",
+    "ko_base": "류",
     "vi_syllable": "lưu"
   },
   {
@@ -44222,7 +44222,7 @@
     "char_id": "c01043",
     "pinyin_syllable": "lù",
     "ko_syllable": "육",
-    "ko_base": "육",
+    "ko_base": "륙",
     "vi_syllable": "lục"
   },
   {
@@ -44240,7 +44240,7 @@
     "char_id": "c01043",
     "pinyin_syllable": "lù",
     "ko_syllable": "육",
-    "ko_base": "육",
+    "ko_base": "륙",
     "vi_syllable": "lục"
   },
   {
@@ -44276,7 +44276,7 @@
     "char_id": "c01044",
     "pinyin_syllable": "lǜ",
     "ko_syllable": "율",
-    "ko_base": "율",
+    "ko_base": "률",
     "vi_syllable": "luật"
   },
   {
@@ -44303,7 +44303,7 @@
     "char_id": "c01047",
     "pinyin_syllable": "lún",
     "ko_syllable": "윤",
-    "ko_base": "윤",
+    "ko_base": "륜",
     "vi_syllable": null
   },
   {
@@ -44357,7 +44357,7 @@
     "char_id": "c00443",
     "pinyin_syllable": "lùn",
     "ko_syllable": "논",
-    "ko_base": "논",
+    "ko_base": "론",
     "vi_syllable": "luận"
   },
   {
@@ -45086,7 +45086,7 @@
     "char_id": "c01060",
     "pinyin_syllable": "níng",
     "ko_syllable": "영",
-    "ko_base": "영",
+    "ko_base": "령",
     "vi_syllable": null
   },
   {
@@ -45113,7 +45113,7 @@
     "char_id": "c00168",
     "pinyin_syllable": "nǚ",
     "ko_syllable": "여",
-    "ko_base": "여",
+    "ko_base": "녀",
     "vi_syllable": "nữ"
   },
   {
@@ -45176,7 +45176,7 @@
     "char_id": "c01040",
     "pinyin_syllable": "liè",
     "ko_syllable": "열",
-    "ko_base": "열",
+    "ko_base": "렬",
     "vi_syllable": null
   },
   {
@@ -48750,7 +48750,7 @@
     "pinyin_syllable": "wěn",
     "ko_syllable": "온",
     "ko_base": "온",
-    "vi_syllable": "văn"
+    "vi_syllable": "ổn"
   },
   {
     "word_id": "w02978",
@@ -49100,7 +49100,7 @@
     "char_id": "c01040",
     "pinyin_syllable": "liè",
     "ko_syllable": "열",
-    "ko_base": "열",
+    "ko_base": "렬",
     "vi_syllable": null
   },
   {
@@ -49452,7 +49452,7 @@
     "pinyin_syllable": "xiǎng",
     "ko_syllable": null,
     "ko_base": null,
-    "vi_syllable": "tưởng"
+    "vi_syllable": null
   },
   {
     "word_id": "w03018",
@@ -49461,7 +49461,7 @@
     "pinyin_syllable": "xiàng",
     "ko_syllable": null,
     "ko_base": null,
-    "vi_syllable": "tượng"
+    "vi_syllable": null
   },
   {
     "word_id": "w03019",
@@ -49566,7 +49566,7 @@
     "word_id": "w03025",
     "position": 1,
     "char_id": "c00245",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "xiǎo",
     "ko_syllable": null,
     "ko_base": null,
     "vi_syllable": null
@@ -49575,7 +49575,7 @@
     "word_id": "w03025",
     "position": 2,
     "char_id": "c03021",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "huǒ",
     "ko_syllable": null,
     "ko_base": null,
     "vi_syllable": null
@@ -49584,7 +49584,7 @@
     "word_id": "w03025",
     "position": 3,
     "char_id": "c00292",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "zi",
     "ko_syllable": null,
     "ko_base": null,
     "vi_syllable": null
@@ -49622,7 +49622,7 @@
     "char_id": "c01046",
     "pinyin_syllable": "lǜ",
     "ko_syllable": "율",
-    "ko_base": "율",
+    "ko_base": "률",
     "vi_syllable": "suất"
   },
   {
@@ -50322,7 +50322,7 @@
     "word_id": "w03069",
     "position": 1,
     "char_id": "c00548",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "yǎn",
     "ko_syllable": "안",
     "ko_base": "안",
     "vi_syllable": null
@@ -50331,7 +50331,7 @@
     "word_id": "w03069",
     "position": 2,
     "char_id": "c00132",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "li",
     "ko_syllable": "리",
     "ko_base": "리",
     "vi_syllable": null
@@ -51069,7 +51069,7 @@
     "word_id": "w03112",
     "position": 1,
     "char_id": "c00268",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "yǒu",
     "ko_syllable": null,
     "ko_base": null,
     "vi_syllable": null
@@ -51078,7 +51078,7 @@
     "word_id": "w03112",
     "position": 2,
     "char_id": "c01009",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "jìn",
     "ko_syllable": null,
     "ko_base": null,
     "vi_syllable": null
@@ -51087,7 +51087,7 @@
     "word_id": "w03112",
     "position": 3,
     "char_id": "c00056",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "r",
     "ko_syllable": null,
     "ko_base": null,
     "vi_syllable": null
@@ -51621,7 +51621,7 @@
     "pinyin_syllable": "zàn",
     "ko_syllable": "찬",
     "ko_base": "찬",
-    "vi_syllable": "tán"
+    "vi_syllable": null
   },
   {
     "word_id": "w03142",
@@ -51630,7 +51630,7 @@
     "pinyin_syllable": "zhù",
     "ko_syllable": "조",
     "ko_base": "조",
-    "vi_syllable": "trợ"
+    "vi_syllable": null
   },
   {
     "word_id": "w03143",
@@ -54759,7 +54759,7 @@
     "word_id": "w03322",
     "position": 1,
     "char_id": "c00623",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "chéng",
     "ko_syllable": null,
     "ko_base": null,
     "vi_syllable": null
@@ -54768,7 +54768,7 @@
     "word_id": "w03322",
     "position": 2,
     "char_id": "c00132",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "lǐ",
     "ko_syllable": null,
     "ko_base": null,
     "vi_syllable": null
@@ -60584,7 +60584,7 @@
     "char_id": "c00127",
     "pinyin_syllable": "lái",
     "ko_syllable": "내",
-    "ko_base": "내",
+    "ko_base": "래",
     "vi_syllable": null
   },
   {
@@ -60611,7 +60611,7 @@
     "char_id": "c01329",
     "pinyin_syllable": "lǎng",
     "ko_syllable": "낭",
-    "ko_base": "낭",
+    "ko_base": "랑",
     "vi_syllable": null
   },
   {
@@ -60629,7 +60629,7 @@
     "char_id": "c00722",
     "pinyin_syllable": "làng",
     "ko_syllable": "낭",
-    "ko_base": "낭",
+    "ko_base": "랑",
     "vi_syllable": "lãng"
   },
   {
@@ -60647,7 +60647,7 @@
     "char_id": "c01330",
     "pinyin_syllable": "láo",
     "ko_syllable": "노",
-    "ko_base": "노",
+    "ko_base": "로",
     "vi_syllable": "lao"
   },
   {
@@ -60683,7 +60683,7 @@
     "char_id": "c00428",
     "pinyin_syllable": "lǐ",
     "ko_syllable": "예",
-    "ko_base": "예",
+    "ko_base": "례",
     "vi_syllable": "lễ"
   },
   {
@@ -60701,7 +60701,7 @@
     "char_id": "c00428",
     "pinyin_syllable": "lǐ",
     "ko_syllable": "예",
-    "ko_base": "예",
+    "ko_base": "례",
     "vi_syllable": null
   },
   {
@@ -60746,7 +60746,7 @@
     "char_id": "c00726",
     "pinyin_syllable": "lì",
     "ko_syllable": "입",
-    "ko_base": "입",
+    "ko_base": "립",
     "vi_syllable": "lập"
   },
   {
@@ -60764,7 +60764,7 @@
     "char_id": "c00431",
     "pinyin_syllable": "lì",
     "ko_syllable": "이",
-    "ko_base": "이",
+    "ko_base": "리",
     "vi_syllable": "lợi"
   },
   {
@@ -60782,7 +60782,7 @@
     "char_id": "c00432",
     "pinyin_syllable": "lì",
     "ko_syllable": "예",
-    "ko_base": "예",
+    "ko_base": "례",
     "vi_syllable": "lệ"
   },
   {
@@ -60800,7 +60800,7 @@
     "char_id": "c00728",
     "pinyin_syllable": "lián",
     "ko_syllable": "연",
-    "ko_base": "연",
+    "ko_base": "련",
     "vi_syllable": "liên"
   },
   {
@@ -60818,7 +60818,7 @@
     "char_id": "c00729",
     "pinyin_syllable": "lián",
     "ko_syllable": "연",
-    "ko_base": "연",
+    "ko_base": "련",
     "vi_syllable": "liên"
   },
   {
@@ -60836,7 +60836,7 @@
     "char_id": "c00729",
     "pinyin_syllable": "lián",
     "ko_syllable": "연",
-    "ko_base": "연",
+    "ko_base": "련",
     "vi_syllable": "liên"
   },
   {
@@ -60890,7 +60890,7 @@
     "char_id": "c01337",
     "pinyin_syllable": "liàn",
     "ko_syllable": "연",
-    "ko_base": "연",
+    "ko_base": "련",
     "vi_syllable": "luyến"
   },
   {
@@ -60908,7 +60908,7 @@
     "char_id": "c00133",
     "pinyin_syllable": "liǎng",
     "ko_syllable": "양",
-    "ko_base": "양",
+    "ko_base": "량",
     "vi_syllable": null
   },
   {
@@ -60953,7 +60953,7 @@
     "char_id": "c01339",
     "pinyin_syllable": "líng",
     "ko_syllable": "영",
-    "ko_base": "영",
+    "ko_base": "령",
     "vi_syllable": null
   },
   {
@@ -60971,7 +60971,7 @@
     "char_id": "c00731",
     "pinyin_syllable": "lǐng",
     "ko_syllable": "영",
-    "ko_base": "영",
+    "ko_base": "령",
     "vi_syllable": null
   },
   {
@@ -60998,7 +60998,7 @@
     "char_id": "c00440",
     "pinyin_syllable": "liú",
     "ko_syllable": "유",
-    "ko_base": "유",
+    "ko_base": "류",
     "vi_syllable": "lưu"
   },
   {
@@ -61016,7 +61016,7 @@
     "char_id": "c00440",
     "pinyin_syllable": "liú",
     "ko_syllable": "유",
-    "ko_base": "유",
+    "ko_base": "류",
     "vi_syllable": "lưu"
   },
   {
@@ -61476,7 +61476,7 @@
     "pinyin_syllable": "mó",
     "ko_syllable": "모",
     "ko_base": "모",
-    "vi_syllable": "mô"
+    "vi_syllable": null
   },
   {
     "word_id": "w03722",
@@ -61485,7 +61485,7 @@
     "pinyin_syllable": "hu",
     "ko_syllable": "호",
     "ko_base": "호",
-    "vi_syllable": "hồ"
+    "vi_syllable": null
   },
   {
     "word_id": "w03723",
@@ -61745,7 +61745,7 @@
     "char_id": "c00165",
     "pinyin_syllable": "nián",
     "ko_syllable": "연",
-    "ko_base": "연",
+    "ko_base": "년",
     "vi_syllable": "niên"
   },
   {
@@ -61763,7 +61763,7 @@
     "char_id": "c00165",
     "pinyin_syllable": "nián",
     "ko_syllable": "연",
-    "ko_base": "연",
+    "ko_base": "년",
     "vi_syllable": null
   },
   {
@@ -61781,7 +61781,7 @@
     "char_id": "c00165",
     "pinyin_syllable": "nián",
     "ko_syllable": "연",
-    "ko_base": "연",
+    "ko_base": "년",
     "vi_syllable": null
   },
   {
@@ -61853,7 +61853,7 @@
     "char_id": "c00168",
     "pinyin_syllable": "nǚ",
     "ko_syllable": "여",
-    "ko_base": "여",
+    "ko_base": "녀",
     "vi_syllable": "nữ"
   },
   {
@@ -67866,7 +67866,7 @@
     "pinyin_syllable": "yǐ",
     "ko_syllable": "이",
     "ko_base": "이",
-    "vi_syllable": "dĩ"
+    "vi_syllable": null
   },
   {
     "word_id": "w04105",
@@ -67875,7 +67875,7 @@
     "pinyin_syllable": "wǎng",
     "ko_syllable": "왕",
     "ko_base": "왕",
-    "vi_syllable": "vãng"
+    "vi_syllable": null
   },
   {
     "word_id": "w04106",
@@ -69459,7 +69459,7 @@
     "pinyin_syllable": "zhèn",
     "ko_syllable": "진",
     "ko_base": "진",
-    "vi_syllable": "chấn"
+    "vi_syllable": null
   },
   {
     "word_id": "w04195",
@@ -69468,7 +69468,7 @@
     "pinyin_syllable": "dòng",
     "ko_syllable": "동",
     "ko_base": "동",
-    "vi_syllable": "động"
+    "vi_syllable": null
   },
   {
     "word_id": "w04196",
@@ -73752,7 +73752,7 @@
     "pinyin_syllable": "chuàng",
     "ko_syllable": "창",
     "ko_base": "창",
-    "vi_syllable": "sáng"
+    "vi_syllable": null
   },
   {
     "word_id": "w04439",
@@ -73761,7 +73761,7 @@
     "pinyin_syllable": "jiàn",
     "ko_syllable": "건",
     "ko_base": "건",
-    "vi_syllable": "kiến"
+    "vi_syllable": null
   },
   {
     "word_id": "w04440",
@@ -75722,7 +75722,7 @@
     "char_id": "c01638",
     "pinyin_syllable": "liè",
     "ko_syllable": "열",
-    "ko_base": "열",
+    "ko_base": "렬",
     "vi_syllable": "liệt"
   },
   {
@@ -75849,7 +75849,7 @@
     "pinyin_syllable": "fù",
     "ko_syllable": "부",
     "ko_base": "부",
-    "vi_syllable": "phụ"
+    "vi_syllable": null
   },
   {
     "word_id": "w04561",
@@ -75858,7 +75858,7 @@
     "pinyin_syllable": "nǚ",
     "ko_syllable": "녀",
     "ko_base": "녀",
-    "vi_syllable": "nữ"
+    "vi_syllable": null
   },
   {
     "word_id": "w04562",
@@ -77361,7 +77361,7 @@
     "pinyin_syllable": "hé",
     "ko_syllable": null,
     "ko_base": null,
-    "vi_syllable": "hiệp"
+    "vi_syllable": null
   },
   {
     "word_id": "w04648",
@@ -77370,7 +77370,7 @@
     "pinyin_syllable": "yuē",
     "ko_syllable": null,
     "ko_base": null,
-    "vi_syllable": "ước"
+    "vi_syllable": null
   },
   {
     "word_id": "w04649",
@@ -77430,7 +77430,7 @@
     "word_id": "w04652",
     "position": 1,
     "char_id": "c00089",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "hěn",
     "ko_syllable": null,
     "ko_base": null,
     "vi_syllable": null
@@ -77439,7 +77439,7 @@
     "word_id": "w04652",
     "position": 2,
     "char_id": "c00160",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "nán",
     "ko_syllable": null,
     "ko_base": null,
     "vi_syllable": null
@@ -77448,7 +77448,7 @@
     "word_id": "w04652",
     "position": 3,
     "char_id": "c00211",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "shuō",
     "ko_syllable": null,
     "ko_base": null,
     "vi_syllable": null
@@ -79799,7 +79799,7 @@
     "char_id": "c00127",
     "pinyin_syllable": "lái",
     "ko_syllable": "내",
-    "ko_base": "내",
+    "ko_base": "래",
     "vi_syllable": "lai"
   },
   {
@@ -79916,7 +79916,7 @@
     "char_id": "c00131",
     "pinyin_syllable": "lěng",
     "ko_syllable": "냉",
-    "ko_base": "냉",
+    "ko_base": "랭",
     "vi_syllable": null
   },
   {
@@ -79934,7 +79934,7 @@
     "char_id": "c00131",
     "pinyin_syllable": "lěng",
     "ko_syllable": "냉",
-    "ko_base": "냉",
+    "ko_base": "랭",
     "vi_syllable": null
   },
   {
@@ -79952,7 +79952,7 @@
     "char_id": "c00428",
     "pinyin_syllable": "lǐ",
     "ko_syllable": "예",
-    "ko_base": "예",
+    "ko_base": "례",
     "vi_syllable": "lễ"
   },
   {
@@ -79979,7 +79979,7 @@
     "char_id": "c00429",
     "pinyin_syllable": "lǐ",
     "ko_syllable": "이",
-    "ko_base": "이",
+    "ko_base": "리",
     "vi_syllable": "lý"
   },
   {
@@ -79997,7 +79997,7 @@
     "char_id": "c00429",
     "pinyin_syllable": "lǐ",
     "ko_syllable": "이",
-    "ko_base": "이",
+    "ko_base": "리",
     "vi_syllable": "lý"
   },
   {
@@ -80024,7 +80024,7 @@
     "char_id": "c00729",
     "pinyin_syllable": "lián",
     "ko_syllable": "연",
-    "ko_base": "연",
+    "ko_base": "련",
     "vi_syllable": null
   },
   {
@@ -80096,7 +80096,7 @@
     "char_id": "c00133",
     "pinyin_syllable": "liǎng",
     "ko_syllable": "양",
-    "ko_base": "양",
+    "ko_base": "량",
     "vi_syllable": null
   },
   {
@@ -80114,7 +80114,7 @@
     "char_id": "c00133",
     "pinyin_syllable": "liǎng",
     "ko_syllable": "양",
-    "ko_base": "양",
+    "ko_base": "량",
     "vi_syllable": null
   },
   {
@@ -80186,7 +80186,7 @@
     "char_id": "c01639",
     "pinyin_syllable": "líng",
     "ko_syllable": "영",
-    "ko_base": "영",
+    "ko_base": "령",
     "vi_syllable": "linh"
   },
   {
@@ -80222,7 +80222,7 @@
     "char_id": "c00731",
     "pinyin_syllable": "lǐng",
     "ko_syllable": "영",
-    "ko_base": "영",
+    "ko_base": "령",
     "vi_syllable": "lãnh"
   },
   {
@@ -80330,7 +80330,7 @@
     "char_id": "c01043",
     "pinyin_syllable": "lù",
     "ko_syllable": "육",
-    "ko_base": "육",
+    "ko_base": "륙",
     "vi_syllable": "lục"
   },
   {
@@ -80348,7 +80348,7 @@
     "char_id": "c00734",
     "pinyin_syllable": "lù",
     "ko_syllable": "녹",
-    "ko_base": "녹",
+    "ko_base": "록",
     "vi_syllable": null
   },
   {
@@ -80420,7 +80420,7 @@
     "char_id": "c00441",
     "pinyin_syllable": "lǚ",
     "ko_syllable": "여",
-    "ko_base": "여",
+    "ko_base": "려",
     "vi_syllable": null
   },
   {
@@ -80438,7 +80438,7 @@
     "char_id": "c00442",
     "pinyin_syllable": "lǜ",
     "ko_syllable": "녹",
-    "ko_base": "녹",
+    "ko_base": "록",
     "vi_syllable": null
   },
   {
@@ -80661,7 +80661,7 @@
     "word_id": "w04850",
     "position": 1,
     "char_id": "c00151",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "miàn",
     "ko_syllable": null,
     "ko_base": null,
     "vi_syllable": null
@@ -80670,7 +80670,7 @@
     "word_id": "w04850",
     "position": 2,
     "char_id": "c03038",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "xiàng",
     "ko_syllable": null,
     "ko_base": null,
     "vi_syllable": null
@@ -87132,7 +87132,7 @@
     "word_id": "w05225",
     "position": 1,
     "char_id": "c00262",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "yī",
     "ko_syllable": null,
     "ko_base": null,
     "vi_syllable": null
@@ -87141,7 +87141,7 @@
     "word_id": "w05225",
     "position": 2,
     "char_id": "c01553",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "fān",
     "ko_syllable": null,
     "ko_base": null,
     "vi_syllable": null
@@ -87296,7 +87296,7 @@
     "char_id": "c01757",
     "pinyin_syllable": "yì",
     "ko_syllable": "이",
-    "ko_base": "이",
+    "ko_base": "리",
     "vi_syllable": "dị"
   },
   {
@@ -89247,7 +89247,7 @@
     "word_id": "w05346",
     "position": 1,
     "char_id": "c00882",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "zhǐ",
     "ko_syllable": null,
     "ko_base": null,
     "vi_syllable": null
@@ -89256,7 +89256,7 @@
     "word_id": "w05346",
     "position": 2,
     "char_id": "c00283",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "zhe",
     "ko_syllable": null,
     "ko_base": null,
     "vi_syllable": null
@@ -94980,7 +94980,7 @@
     "word_id": "w05658",
     "position": 1,
     "char_id": "c00019",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "bù",
     "ko_syllable": null,
     "ko_base": null,
     "vi_syllable": null
@@ -94989,7 +94989,7 @@
     "word_id": "w05658",
     "position": 2,
     "char_id": "c00431",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "lì",
     "ko_syllable": null,
     "ko_base": null,
     "vi_syllable": null
@@ -94998,7 +94998,7 @@
     "word_id": "w05658",
     "position": 3,
     "char_id": "c00573",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "yú",
     "ko_syllable": null,
     "ko_base": null,
     "vi_syllable": null
@@ -95754,7 +95754,7 @@
     "word_id": "w05688",
     "position": 1,
     "char_id": "c00019",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "bù",
     "ko_syllable": "불",
     "ko_base": "불",
     "vi_syllable": null
@@ -95763,7 +95763,7 @@
     "word_id": "w05688",
     "position": 2,
     "char_id": "c01321",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "kěn",
     "ko_syllable": "긍",
     "ko_base": "긍",
     "vi_syllable": null
@@ -95826,7 +95826,7 @@
     "word_id": "w05691",
     "position": 1,
     "char_id": "c00019",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "bù",
     "ko_syllable": null,
     "ko_base": null,
     "vi_syllable": null
@@ -95835,7 +95835,7 @@
     "word_id": "w05691",
     "position": 2,
     "char_id": "c00160",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "nán",
     "ko_syllable": null,
     "ko_base": null,
     "vi_syllable": null
@@ -95907,7 +95907,7 @@
     "word_id": "w05695",
     "position": 1,
     "char_id": "c00019",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "bù",
     "ko_syllable": null,
     "ko_base": null,
     "vi_syllable": null
@@ -95916,7 +95916,7 @@
     "word_id": "w05695",
     "position": 2,
     "char_id": "c00479",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "rú",
     "ko_syllable": null,
     "ko_base": null,
     "vi_syllable": null
@@ -95925,7 +95925,7 @@
     "word_id": "w05695",
     "position": 3,
     "char_id": "c00211",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "shuō",
     "ko_syllable": null,
     "ko_base": null,
     "vi_syllable": null
@@ -98186,7 +98186,7 @@
     "char_id": "c00283",
     "pinyin_syllable": "zhe",
     "ko_syllable": "저",
-    "ko_base": "저",
+    "ko_base": null,
     "vi_syllable": null
   },
   {
@@ -98645,7 +98645,7 @@
     "char_id": "c01040",
     "pinyin_syllable": "liè",
     "ko_syllable": "열",
-    "ko_base": "열",
+    "ko_base": "렬",
     "vi_syllable": "liệt"
   },
   {
@@ -98733,7 +98733,7 @@
     "word_id": "w05848",
     "position": 1,
     "char_id": "c01905",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "chèn",
     "ko_syllable": null,
     "ko_base": null,
     "vi_syllable": null
@@ -98742,7 +98742,7 @@
     "word_id": "w05848",
     "position": 2,
     "char_id": "c00283",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "zhe",
     "ko_syllable": null,
     "ko_base": null,
     "vi_syllable": null
@@ -100821,7 +100821,7 @@
     "word_id": "w05956",
     "position": 1,
     "char_id": "c00028",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "chū",
     "ko_syllable": "출",
     "ko_base": "출",
     "vi_syllable": "xuất"
@@ -100830,7 +100830,7 @@
     "word_id": "w05956",
     "position": 2,
     "char_id": "c00841",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "xiě",
     "ko_syllable": "혈",
     "ko_base": "혈",
     "vi_syllable": "huyết"
@@ -107472,19 +107472,19 @@
     "word_id": "w06300",
     "position": 1,
     "char_id": "c00342",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "dìng",
     "ko_syllable": null,
     "ko_base": null,
-    "vi_syllable": "định"
+    "vi_syllable": null
   },
   {
     "word_id": "w06300",
     "position": 2,
     "char_id": "c00525",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "wéi",
     "ko_syllable": null,
     "ko_base": null,
-    "vi_syllable": "vị"
+    "vi_syllable": null
   },
   {
     "word_id": "w06301",
@@ -108635,7 +108635,7 @@
     "char_id": "c01638",
     "pinyin_syllable": "liè",
     "ko_syllable": "열",
-    "ko_base": "열",
+    "ko_base": "렬",
     "vi_syllable": null
   },
   {
@@ -109731,7 +109731,7 @@
     "word_id": "w06416",
     "position": 1,
     "char_id": "c00350",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "fā",
     "ko_syllable": null,
     "ko_base": null,
     "vi_syllable": null
@@ -109740,7 +109740,7 @@
     "word_id": "w06416",
     "position": 2,
     "char_id": "c03008",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "bù",
     "ko_syllable": null,
     "ko_base": null,
     "vi_syllable": null
@@ -109749,7 +109749,7 @@
     "word_id": "w06416",
     "position": 3,
     "char_id": "c00097",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "huì",
     "ko_syllable": null,
     "ko_base": null,
     "vi_syllable": null
@@ -111315,7 +111315,7 @@
     "word_id": "w06495",
     "position": 1,
     "char_id": "c00062",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "fēi",
     "ko_syllable": null,
     "ko_base": null,
     "vi_syllable": null
@@ -111324,7 +111324,7 @@
     "word_id": "w06495",
     "position": 2,
     "char_id": "c00524",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "wǎng",
     "ko_syllable": null,
     "ko_base": null,
     "vi_syllable": null
@@ -114324,7 +114324,7 @@
     "pinyin_syllable": "gǎn",
     "ko_syllable": null,
     "ko_base": null,
-    "vi_syllable": "cảm"
+    "vi_syllable": null
   },
   {
     "word_id": "w06657",
@@ -114333,7 +114333,7 @@
     "pinyin_syllable": "qing",
     "ko_syllable": null,
     "ko_base": null,
-    "vi_syllable": "tình"
+    "vi_syllable": null
   },
   {
     "word_id": "w06658",
@@ -116373,7 +116373,7 @@
     "word_id": "w06763",
     "position": 1,
     "char_id": "c00360",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "gōng",
     "ko_syllable": "공",
     "ko_base": "공",
     "vi_syllable": null
@@ -116382,7 +116382,7 @@
     "word_id": "w06763",
     "position": 2,
     "char_id": "c01164",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "yì",
     "ko_syllable": "익",
     "ko_base": "익",
     "vi_syllable": null
@@ -116391,7 +116391,7 @@
     "word_id": "w06763",
     "position": 3,
     "char_id": "c00844",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "xìng",
     "ko_syllable": "성",
     "ko_base": "성",
     "vi_syllable": null
@@ -116403,7 +116403,7 @@
     "pinyin_syllable": "gōng",
     "ko_syllable": "공",
     "ko_base": "공",
-    "vi_syllable": "công"
+    "vi_syllable": null
   },
   {
     "word_id": "w06764",
@@ -116412,7 +116412,7 @@
     "pinyin_syllable": "yòng",
     "ko_syllable": "용",
     "ko_base": "용",
-    "vi_syllable": "dụng"
+    "vi_syllable": null
   },
   {
     "word_id": "w06765",
@@ -120990,7 +120990,7 @@
     "word_id": "w07011",
     "position": 1,
     "char_id": "c00371",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "hé",
     "ko_syllable": null,
     "ko_base": null,
     "vi_syllable": null
@@ -120999,7 +120999,7 @@
     "word_id": "w07011",
     "position": 2,
     "char_id": "c03021",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "huǒ",
     "ko_syllable": null,
     "ko_base": null,
     "vi_syllable": null
@@ -123591,7 +123591,7 @@
     "word_id": "w07144",
     "position": 1,
     "char_id": "c00989",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "huái",
     "ko_syllable": null,
     "ko_base": null,
     "vi_syllable": null
@@ -123600,7 +123600,7 @@
     "word_id": "w07144",
     "position": 2,
     "char_id": "c00283",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "zhe",
     "ko_syllable": null,
     "ko_base": null,
     "vi_syllable": null
@@ -125916,7 +125916,7 @@
     "pinyin_syllable": "jī",
     "ko_syllable": "격",
     "ko_base": "격",
-    "vi_syllable": "khích"
+    "vi_syllable": null
   },
   {
     "word_id": "w07271",
@@ -125925,7 +125925,7 @@
     "pinyin_syllable": "lì",
     "ko_syllable": "려",
     "ko_base": "려",
-    "vi_syllable": "lệ"
+    "vi_syllable": null
   },
   {
     "word_id": "w07272",
@@ -132504,7 +132504,7 @@
     "pinyin_syllable": "jǐng",
     "ko_syllable": "경",
     "ko_base": "경",
-    "vi_syllable": "cảnh"
+    "vi_syllable": null
   },
   {
     "word_id": "w07619",
@@ -132513,7 +132513,7 @@
     "pinyin_syllable": "guān",
     "ko_syllable": "관",
     "ko_base": "관",
-    "vi_syllable": "quan"
+    "vi_syllable": null
   },
   {
     "word_id": "w07620",
@@ -135507,7 +135507,7 @@
     "word_id": "w07779",
     "position": 1,
     "char_id": "c02265",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "ké",
     "ko_syllable": "각",
     "ko_base": "각",
     "vi_syllable": "xác"
@@ -137723,7 +137723,7 @@
     "char_id": "c02289",
     "pinyin_syllable": "lǎ",
     "ko_syllable": "나",
-    "ko_base": "나",
+    "ko_base": "라",
     "vi_syllable": null
   },
   {
@@ -137741,7 +137741,7 @@
     "char_id": "c02290",
     "pinyin_syllable": "là",
     "ko_syllable": "납",
-    "ko_base": "납",
+    "ko_base": "랍",
     "vi_syllable": null
   },
   {
@@ -137768,7 +137768,7 @@
     "char_id": "c02291",
     "pinyin_syllable": "là",
     "ko_syllable": "납",
-    "ko_base": "납",
+    "ko_base": "랍",
     "vi_syllable": null
   },
   {
@@ -137804,7 +137804,7 @@
     "char_id": "c00127",
     "pinyin_syllable": "lái",
     "ko_syllable": "내",
-    "ko_base": "내",
+    "ko_base": "래",
     "vi_syllable": null
   },
   {
@@ -137822,7 +137822,7 @@
     "char_id": "c00127",
     "pinyin_syllable": "lái",
     "ko_syllable": "내",
-    "ko_base": "내",
+    "ko_base": "래",
     "vi_syllable": null
   },
   {
@@ -137840,7 +137840,7 @@
     "char_id": "c00127",
     "pinyin_syllable": "lái",
     "ko_syllable": "내",
-    "ko_base": "내",
+    "ko_base": "래",
     "vi_syllable": null
   },
   {
@@ -137876,7 +137876,7 @@
     "char_id": "c00127",
     "pinyin_syllable": "lái",
     "ko_syllable": "내",
-    "ko_base": "내",
+    "ko_base": "래",
     "vi_syllable": "lai"
   },
   {
@@ -137894,7 +137894,7 @@
     "char_id": "c00127",
     "pinyin_syllable": "lái",
     "ko_syllable": "내",
-    "ko_base": "내",
+    "ko_base": "래",
     "vi_syllable": null
   },
   {
@@ -137948,7 +137948,7 @@
     "char_id": "c00127",
     "pinyin_syllable": "lái",
     "ko_syllable": "내",
-    "ko_base": "내",
+    "ko_base": "래",
     "vi_syllable": null
   },
   {
@@ -138011,7 +138011,7 @@
     "char_id": "c01633",
     "pinyin_syllable": "lán",
     "ko_syllable": "난",
-    "ko_base": "난",
+    "ko_base": "란",
     "vi_syllable": null
   },
   {
@@ -138092,7 +138092,7 @@
     "char_id": "c01634",
     "pinyin_syllable": "lǎn",
     "ko_syllable": "나",
-    "ko_base": "나",
+    "ko_base": "라",
     "vi_syllable": null
   },
   {
@@ -138110,7 +138110,7 @@
     "char_id": "c02298",
     "pinyin_syllable": "làn",
     "ko_syllable": "남",
-    "ko_base": "남",
+    "ko_base": "람",
     "vi_syllable": "lạm"
   },
   {
@@ -138137,7 +138137,7 @@
     "char_id": "c02299",
     "pinyin_syllable": "láng",
     "ko_syllable": "낭",
-    "ko_base": "낭",
+    "ko_base": "랑",
     "vi_syllable": null
   },
   {
@@ -138155,7 +138155,7 @@
     "char_id": "c01329",
     "pinyin_syllable": "lǎng",
     "ko_syllable": "낭",
-    "ko_base": "낭",
+    "ko_base": "랑",
     "vi_syllable": null
   },
   {
@@ -138191,7 +138191,7 @@
     "char_id": "c01330",
     "pinyin_syllable": "láo",
     "ko_syllable": "노",
-    "ko_base": "노",
+    "ko_base": "로",
     "vi_syllable": null
   },
   {
@@ -138236,7 +138236,7 @@
     "char_id": "c01330",
     "pinyin_syllable": "láo",
     "ko_syllable": "노",
-    "ko_base": "노",
+    "ko_base": "로",
     "vi_syllable": null
   },
   {
@@ -138254,7 +138254,7 @@
     "char_id": "c01635",
     "pinyin_syllable": "láo",
     "ko_syllable": "뇌",
-    "ko_base": "뇌",
+    "ko_base": "뢰",
     "vi_syllable": null
   },
   {
@@ -138272,7 +138272,7 @@
     "char_id": "c01635",
     "pinyin_syllable": "láo",
     "ko_syllable": "뇌",
-    "ko_base": "뇌",
+    "ko_base": "뢰",
     "vi_syllable": null
   },
   {
@@ -138353,7 +138353,7 @@
     "char_id": "c00128",
     "pinyin_syllable": "lǎo",
     "ko_syllable": "노",
-    "ko_base": "노",
+    "ko_base": "로",
     "vi_syllable": null
   },
   {
@@ -138371,7 +138371,7 @@
     "char_id": "c00128",
     "pinyin_syllable": "lǎo",
     "ko_syllable": "노",
-    "ko_base": "노",
+    "ko_base": "로",
     "vi_syllable": null
   },
   {
@@ -138389,7 +138389,7 @@
     "char_id": "c00128",
     "pinyin_syllable": "lǎo",
     "ko_syllable": "노",
-    "ko_base": "노",
+    "ko_base": "로",
     "vi_syllable": null
   },
   {
@@ -138569,7 +138569,7 @@
     "char_id": "c00426",
     "pinyin_syllable": "lè",
     "ko_syllable": "낙",
-    "ko_base": "낙",
+    "ko_base": "락",
     "vi_syllable": null
   },
   {
@@ -138596,7 +138596,7 @@
     "char_id": "c01030",
     "pinyin_syllable": "léi",
     "ko_syllable": "뇌",
-    "ko_base": "뇌",
+    "ko_base": "뢰",
     "vi_syllable": null
   },
   {
@@ -138614,7 +138614,7 @@
     "char_id": "c00130",
     "pinyin_syllable": "lěi",
     "ko_syllable": "누",
-    "ko_base": "누",
+    "ko_base": "루",
     "vi_syllable": null
   },
   {
@@ -138632,7 +138632,7 @@
     "char_id": "c00130",
     "pinyin_syllable": "lěi",
     "ko_syllable": "누",
-    "ko_base": "누",
+    "ko_base": "루",
     "vi_syllable": null
   },
   {
@@ -138650,7 +138650,7 @@
     "char_id": "c00723",
     "pinyin_syllable": "lèi",
     "ko_syllable": "유",
-    "ko_base": "유",
+    "ko_base": "류",
     "vi_syllable": null
   },
   {
@@ -138668,7 +138668,7 @@
     "char_id": "c02309",
     "pinyin_syllable": "léng",
     "ko_syllable": "능",
-    "ko_base": "능",
+    "ko_base": "릉",
     "vi_syllable": null
   },
   {
@@ -138686,7 +138686,7 @@
     "char_id": "c00131",
     "pinyin_syllable": "lěng",
     "ko_syllable": "냉",
-    "ko_base": "냉",
+    "ko_base": "랭",
     "vi_syllable": null
   },
   {
@@ -138704,7 +138704,7 @@
     "char_id": "c00131",
     "pinyin_syllable": "lěng",
     "ko_syllable": "냉",
-    "ko_base": "냉",
+    "ko_base": "랭",
     "vi_syllable": null
   },
   {
@@ -138722,7 +138722,7 @@
     "char_id": "c00131",
     "pinyin_syllable": "lěng",
     "ko_syllable": "냉",
-    "ko_base": "냉",
+    "ko_base": "랭",
     "vi_syllable": null
   },
   {
@@ -138776,7 +138776,7 @@
     "char_id": "c00131",
     "pinyin_syllable": "lěng",
     "ko_syllable": "냉",
-    "ko_base": "냉",
+    "ko_base": "랭",
     "vi_syllable": null
   },
   {
@@ -138830,7 +138830,7 @@
     "char_id": "c00131",
     "pinyin_syllable": "lěng",
     "ko_syllable": "냉",
-    "ko_base": "냉",
+    "ko_base": "랭",
     "vi_syllable": null
   },
   {
@@ -138848,7 +138848,7 @@
     "char_id": "c00131",
     "pinyin_syllable": "lěng",
     "ko_syllable": "냉",
-    "ko_base": "냉",
+    "ko_base": "랭",
     "vi_syllable": null
   },
   {
@@ -138920,7 +138920,7 @@
     "char_id": "c00427",
     "pinyin_syllable": "lí",
     "ko_syllable": "이",
-    "ko_base": "이",
+    "ko_base": "리",
     "vi_syllable": null
   },
   {
@@ -138938,7 +138938,7 @@
     "char_id": "c02311",
     "pinyin_syllable": "lí",
     "ko_syllable": "여",
-    "ko_base": "여",
+    "ko_base": "려",
     "vi_syllable": null
   },
   {
@@ -138956,7 +138956,7 @@
     "char_id": "c00428",
     "pinyin_syllable": "lǐ",
     "ko_syllable": "예",
-    "ko_base": "예",
+    "ko_base": "례",
     "vi_syllable": "lễ"
   },
   {
@@ -138992,7 +138992,7 @@
     "char_id": "c00428",
     "pinyin_syllable": "lǐ",
     "ko_syllable": "예",
-    "ko_base": "예",
+    "ko_base": "례",
     "vi_syllable": "lễ"
   },
   {
@@ -139055,7 +139055,7 @@
     "char_id": "c00429",
     "pinyin_syllable": "lǐ",
     "ko_syllable": "이",
-    "ko_base": "이",
+    "ko_base": "리",
     "vi_syllable": null
   },
   {
@@ -139073,7 +139073,7 @@
     "char_id": "c00429",
     "pinyin_syllable": "lǐ",
     "ko_syllable": "이",
-    "ko_base": "이",
+    "ko_base": "리",
     "vi_syllable": null
   },
   {
@@ -139091,7 +139091,7 @@
     "char_id": "c00429",
     "pinyin_syllable": "lǐ",
     "ko_syllable": "이",
-    "ko_base": "이",
+    "ko_base": "리",
     "vi_syllable": null
   },
   {
@@ -139109,7 +139109,7 @@
     "char_id": "c00429",
     "pinyin_syllable": "lǐ",
     "ko_syllable": "이",
-    "ko_base": "이",
+    "ko_base": "리",
     "vi_syllable": "lý"
   },
   {
@@ -139127,7 +139127,7 @@
     "char_id": "c00429",
     "pinyin_syllable": "lǐ",
     "ko_syllable": "이",
-    "ko_base": "이",
+    "ko_base": "리",
     "vi_syllable": null
   },
   {
@@ -139163,7 +139163,7 @@
     "char_id": "c00429",
     "pinyin_syllable": "lǐ",
     "ko_syllable": "이",
-    "ko_base": "이",
+    "ko_base": "리",
     "vi_syllable": "lý"
   },
   {
@@ -139271,7 +139271,7 @@
     "char_id": "c00430",
     "pinyin_syllable": "lì",
     "ko_syllable": "역",
-    "ko_base": "역",
+    "ko_base": "력",
     "vi_syllable": null
   },
   {
@@ -139325,7 +139325,7 @@
     "char_id": "c00430",
     "pinyin_syllable": "lì",
     "ko_syllable": "역",
-    "ko_base": "역",
+    "ko_base": "력",
     "vi_syllable": null
   },
   {
@@ -139343,7 +139343,7 @@
     "char_id": "c00725",
     "pinyin_syllable": "lì",
     "ko_syllable": "역",
-    "ko_base": "역",
+    "ko_base": "력",
     "vi_syllable": "lịch"
   },
   {
@@ -139415,7 +139415,7 @@
     "char_id": "c00725",
     "pinyin_syllable": "lì",
     "ko_syllable": "역",
-    "ko_base": "역",
+    "ko_base": "력",
     "vi_syllable": null
   },
   {
@@ -139433,7 +139433,7 @@
     "char_id": "c00726",
     "pinyin_syllable": "lì",
     "ko_syllable": "입",
-    "ko_base": "입",
+    "ko_base": "립",
     "vi_syllable": "lập"
   },
   {
@@ -139478,7 +139478,7 @@
     "char_id": "c00726",
     "pinyin_syllable": "lì",
     "ko_syllable": "입",
-    "ko_base": "입",
+    "ko_base": "립",
     "vi_syllable": "lập"
   },
   {
@@ -139523,7 +139523,7 @@
     "char_id": "c00726",
     "pinyin_syllable": "lì",
     "ko_syllable": "입",
-    "ko_base": "입",
+    "ko_base": "립",
     "vi_syllable": null
   },
   {
@@ -139559,7 +139559,7 @@
     "char_id": "c01334",
     "pinyin_syllable": "lì",
     "ko_syllable": "여",
-    "ko_base": "여",
+    "ko_base": "려",
     "vi_syllable": null
   },
   {
@@ -139577,7 +139577,7 @@
     "char_id": "c00431",
     "pinyin_syllable": "lì",
     "ko_syllable": "이",
-    "ko_base": "이",
+    "ko_base": "리",
     "vi_syllable": "lợi"
   },
   {
@@ -139595,7 +139595,7 @@
     "char_id": "c00431",
     "pinyin_syllable": "lì",
     "ko_syllable": "이",
-    "ko_base": "이",
+    "ko_base": "리",
     "vi_syllable": "lợi"
   },
   {
@@ -139604,7 +139604,7 @@
     "char_id": "c01046",
     "pinyin_syllable": "lǜ",
     "ko_syllable": "율",
-    "ko_base": "율",
+    "ko_base": "률",
     "vi_syllable": "suất"
   },
   {
@@ -139676,7 +139676,7 @@
     "char_id": "c00728",
     "pinyin_syllable": "lián",
     "ko_syllable": "연",
-    "ko_base": "연",
+    "ko_base": "련",
     "vi_syllable": "liên"
   },
   {
@@ -139694,7 +139694,7 @@
     "char_id": "c00728",
     "pinyin_syllable": "lián",
     "ko_syllable": "연",
-    "ko_base": "연",
+    "ko_base": "련",
     "vi_syllable": null
   },
   {
@@ -139712,7 +139712,7 @@
     "char_id": "c00728",
     "pinyin_syllable": "lián",
     "ko_syllable": "연",
-    "ko_base": "연",
+    "ko_base": "련",
     "vi_syllable": null
   },
   {
@@ -139730,7 +139730,7 @@
     "char_id": "c00728",
     "pinyin_syllable": "lián",
     "ko_syllable": "연",
-    "ko_base": "연",
+    "ko_base": "련",
     "vi_syllable": null
   },
   {
@@ -139757,7 +139757,7 @@
     "char_id": "c00728",
     "pinyin_syllable": "lián",
     "ko_syllable": "연",
-    "ko_base": "연",
+    "ko_base": "련",
     "vi_syllable": null
   },
   {
@@ -139775,7 +139775,7 @@
     "char_id": "c01335",
     "pinyin_syllable": "lián",
     "ko_syllable": "연",
-    "ko_base": "연",
+    "ko_base": "련",
     "vi_syllable": null
   },
   {
@@ -139811,7 +139811,7 @@
     "char_id": "c02315",
     "pinyin_syllable": "lián",
     "ko_syllable": "연",
-    "ko_base": "연",
+    "ko_base": "련",
     "vi_syllable": null
   },
   {
@@ -139829,7 +139829,7 @@
     "char_id": "c00729",
     "pinyin_syllable": "lián",
     "ko_syllable": "연",
-    "ko_base": "연",
+    "ko_base": "련",
     "vi_syllable": "liên"
   },
   {
@@ -139883,7 +139883,7 @@
     "char_id": "c02316",
     "pinyin_syllable": "lián",
     "ko_syllable": "염",
-    "ko_base": "염",
+    "ko_base": "렴",
     "vi_syllable": null
   },
   {
@@ -139901,7 +139901,7 @@
     "char_id": "c02316",
     "pinyin_syllable": "lián",
     "ko_syllable": "염",
-    "ko_base": "염",
+    "ko_base": "렴",
     "vi_syllable": "liêm"
   },
   {
@@ -139919,7 +139919,7 @@
     "char_id": "c02316",
     "pinyin_syllable": "lián",
     "ko_syllable": "염",
-    "ko_base": "염",
+    "ko_base": "렴",
     "vi_syllable": "liêm"
   },
   {
@@ -140027,7 +140027,7 @@
     "char_id": "c01035",
     "pinyin_syllable": "liáng",
     "ko_syllable": "양",
-    "ko_base": "양",
+    "ko_base": "량",
     "vi_syllable": "lương"
   },
   {
@@ -140045,7 +140045,7 @@
     "char_id": "c01035",
     "pinyin_syllable": "liáng",
     "ko_syllable": "양",
-    "ko_base": "양",
+    "ko_base": "량",
     "vi_syllable": null
   },
   {
@@ -140108,7 +140108,7 @@
     "char_id": "c00133",
     "pinyin_syllable": "liǎng",
     "ko_syllable": "양",
-    "ko_base": "양",
+    "ko_base": "량",
     "vi_syllable": null
   },
   {
@@ -140180,7 +140180,7 @@
     "char_id": "c01637",
     "pinyin_syllable": "liàng",
     "ko_syllable": "양",
-    "ko_base": "양",
+    "ko_base": "량",
     "vi_syllable": null
   },
   {
@@ -140216,7 +140216,7 @@
     "char_id": "c01037",
     "pinyin_syllable": "liáo",
     "ko_syllable": "요",
-    "ko_base": "요",
+    "ko_base": "료",
     "vi_syllable": "liệu"
   },
   {
@@ -140306,7 +140306,7 @@
     "char_id": "c00129",
     "pinyin_syllable": "liǎo",
     "ko_syllable": "요",
-    "ko_base": "요",
+    "ko_base": "료",
     "vi_syllable": null
   },
   {
@@ -140360,7 +140360,7 @@
     "char_id": "c01039",
     "pinyin_syllable": "liào",
     "ko_syllable": "요",
-    "ko_base": "요",
+    "ko_base": "료",
     "vi_syllable": "liệu"
   },
   {
@@ -140396,7 +140396,7 @@
     "char_id": "c01040",
     "pinyin_syllable": "liè",
     "ko_syllable": "열",
-    "ko_base": "열",
+    "ko_base": "렬",
     "vi_syllable": null
   },
   {
@@ -140414,7 +140414,7 @@
     "char_id": "c02324",
     "pinyin_syllable": "liè",
     "ko_syllable": "열",
-    "ko_base": "열",
+    "ko_base": "렬",
     "vi_syllable": null
   },
   {
@@ -140450,7 +140450,7 @@
     "char_id": "c00730",
     "pinyin_syllable": "liè",
     "ko_syllable": "열",
-    "ko_base": "열",
+    "ko_base": "렬",
     "vi_syllable": "liệt"
   },
   {
@@ -140468,7 +140468,7 @@
     "char_id": "c02325",
     "pinyin_syllable": "liè",
     "ko_syllable": "엽",
-    "ko_base": "엽",
+    "ko_base": "렵",
     "vi_syllable": null
   },
   {
@@ -140486,7 +140486,7 @@
     "char_id": "c02325",
     "pinyin_syllable": "liè",
     "ko_syllable": "엽",
-    "ko_base": "엽",
+    "ko_base": "렵",
     "vi_syllable": null
   },
   {
@@ -140549,7 +140549,7 @@
     "char_id": "c01338",
     "pinyin_syllable": "lín",
     "ko_syllable": "인",
-    "ko_base": "인",
+    "ko_base": "린",
     "vi_syllable": "lân"
   },
   {
@@ -140576,7 +140576,7 @@
     "char_id": "c01042",
     "pinyin_syllable": "lín",
     "ko_syllable": "임",
-    "ko_base": "임",
+    "ko_base": "림",
     "vi_syllable": "lâm"
   },
   {
@@ -140648,7 +140648,7 @@
     "char_id": "c01639",
     "pinyin_syllable": "líng",
     "ko_syllable": "영",
-    "ko_base": "영",
+    "ko_base": "령",
     "vi_syllable": "linh"
   },
   {
@@ -140666,7 +140666,7 @@
     "char_id": "c01639",
     "pinyin_syllable": "líng",
     "ko_syllable": "영",
-    "ko_base": "영",
+    "ko_base": "령",
     "vi_syllable": "linh"
   },
   {
@@ -140720,7 +140720,7 @@
     "char_id": "c01639",
     "pinyin_syllable": "líng",
     "ko_syllable": "영",
-    "ko_base": "영",
+    "ko_base": "령",
     "vi_syllable": "linh"
   },
   {
@@ -140756,7 +140756,7 @@
     "char_id": "c01639",
     "pinyin_syllable": "líng",
     "ko_syllable": "영",
-    "ko_base": "영",
+    "ko_base": "령",
     "vi_syllable": null
   },
   {
@@ -140837,7 +140837,7 @@
     "char_id": "c00134",
     "pinyin_syllable": "líng",
     "ko_syllable": "영",
-    "ko_base": "영",
+    "ko_base": "령",
     "vi_syllable": null
   },
   {
@@ -140891,7 +140891,7 @@
     "char_id": "c00731",
     "pinyin_syllable": "lǐng",
     "ko_syllable": "영",
-    "ko_base": "영",
+    "ko_base": "령",
     "vi_syllable": "lĩnh"
   },
   {
@@ -140909,7 +140909,7 @@
     "char_id": "c00731",
     "pinyin_syllable": "lǐng",
     "ko_syllable": "영",
-    "ko_base": "영",
+    "ko_base": "령",
     "vi_syllable": null
   },
   {
@@ -140927,7 +140927,7 @@
     "char_id": "c00731",
     "pinyin_syllable": "lǐng",
     "ko_syllable": "영",
-    "ko_base": "영",
+    "ko_base": "령",
     "vi_syllable": "lĩnh"
   },
   {
@@ -140945,7 +140945,7 @@
     "char_id": "c00731",
     "pinyin_syllable": "lǐng",
     "ko_syllable": "영",
-    "ko_base": "영",
+    "ko_base": "령",
     "vi_syllable": "lãnh"
   },
   {
@@ -140963,7 +140963,7 @@
     "char_id": "c00731",
     "pinyin_syllable": "lǐng",
     "ko_syllable": "영",
-    "ko_base": "영",
+    "ko_base": "령",
     "vi_syllable": "lãnh"
   },
   {
@@ -140990,7 +140990,7 @@
     "char_id": "c00731",
     "pinyin_syllable": "lǐng",
     "ko_syllable": "영",
-    "ko_base": "영",
+    "ko_base": "령",
     "vi_syllable": "lãnh"
   },
   {
@@ -141008,7 +141008,7 @@
     "char_id": "c00731",
     "pinyin_syllable": "lǐng",
     "ko_syllable": "영",
-    "ko_base": "영",
+    "ko_base": "령",
     "vi_syllable": null
   },
   {
@@ -141044,7 +141044,7 @@
     "char_id": "c00731",
     "pinyin_syllable": "lǐng",
     "ko_syllable": "영",
-    "ko_base": "영",
+    "ko_base": "령",
     "vi_syllable": "lĩnh"
   },
   {
@@ -141152,7 +141152,7 @@
     "char_id": "c00439",
     "pinyin_syllable": "liú",
     "ko_syllable": "유",
-    "ko_base": "유",
+    "ko_base": "류",
     "vi_syllable": "lưu"
   },
   {
@@ -141188,7 +141188,7 @@
     "char_id": "c00439",
     "pinyin_syllable": "liú",
     "ko_syllable": "유",
-    "ko_base": "유",
+    "ko_base": "류",
     "vi_syllable": "lưu"
   },
   {
@@ -141206,7 +141206,7 @@
     "char_id": "c00439",
     "pinyin_syllable": "liú",
     "ko_syllable": "유",
-    "ko_base": "유",
+    "ko_base": "류",
     "vi_syllable": "lưu"
   },
   {
@@ -141224,7 +141224,7 @@
     "char_id": "c00440",
     "pinyin_syllable": "liú",
     "ko_syllable": "유",
-    "ko_base": "유",
+    "ko_base": "류",
     "vi_syllable": null
   },
   {
@@ -141260,7 +141260,7 @@
     "char_id": "c00440",
     "pinyin_syllable": "liú",
     "ko_syllable": "유",
-    "ko_base": "유",
+    "ko_base": "류",
     "vi_syllable": null
   },
   {
@@ -141278,7 +141278,7 @@
     "char_id": "c00440",
     "pinyin_syllable": "liú",
     "ko_syllable": "유",
-    "ko_base": "유",
+    "ko_base": "류",
     "vi_syllable": null
   },
   {
@@ -141296,7 +141296,7 @@
     "char_id": "c00440",
     "pinyin_syllable": "liú",
     "ko_syllable": "유",
-    "ko_base": "유",
+    "ko_base": "류",
     "vi_syllable": "lưu"
   },
   {
@@ -141314,7 +141314,7 @@
     "char_id": "c00440",
     "pinyin_syllable": "liú",
     "ko_syllable": "유",
-    "ko_base": "유",
+    "ko_base": "류",
     "vi_syllable": null
   },
   {
@@ -141332,7 +141332,7 @@
     "char_id": "c00440",
     "pinyin_syllable": "liú",
     "ko_syllable": "유",
-    "ko_base": "유",
+    "ko_base": "류",
     "vi_syllable": "lưu"
   },
   {
@@ -141350,7 +141350,7 @@
     "char_id": "c00440",
     "pinyin_syllable": "liú",
     "ko_syllable": "유",
-    "ko_base": "유",
+    "ko_base": "류",
     "vi_syllable": null
   },
   {
@@ -141368,7 +141368,7 @@
     "char_id": "c00440",
     "pinyin_syllable": "liú",
     "ko_syllable": "유",
-    "ko_base": "유",
+    "ko_base": "류",
     "vi_syllable": null
   },
   {
@@ -141386,7 +141386,7 @@
     "char_id": "c00440",
     "pinyin_syllable": "liú",
     "ko_syllable": "유",
-    "ko_base": "유",
+    "ko_base": "류",
     "vi_syllable": "lưu"
   },
   {
@@ -141440,7 +141440,7 @@
     "char_id": "c00440",
     "pinyin_syllable": "liú",
     "ko_syllable": "유",
-    "ko_base": "유",
+    "ko_base": "류",
     "vi_syllable": "lưu"
   },
   {
@@ -141458,7 +141458,7 @@
     "char_id": "c00440",
     "pinyin_syllable": "liú",
     "ko_syllable": "유",
-    "ko_base": "유",
+    "ko_base": "류",
     "vi_syllable": "lưu"
   },
   {
@@ -141476,7 +141476,7 @@
     "char_id": "c00440",
     "pinyin_syllable": "liú",
     "ko_syllable": "유",
-    "ko_base": "유",
+    "ko_base": "류",
     "vi_syllable": null
   },
   {
@@ -141521,7 +141521,7 @@
     "char_id": "c00733",
     "pinyin_syllable": "lóng",
     "ko_syllable": "용",
-    "ko_base": "용",
+    "ko_base": "룡",
     "vi_syllable": null
   },
   {
@@ -141602,7 +141602,7 @@
     "char_id": "c02345",
     "pinyin_syllable": "lǒng",
     "ko_syllable": "농",
-    "ko_base": "농",
+    "ko_base": "롱",
     "vi_syllable": null
   },
   {
@@ -141665,7 +141665,7 @@
     "char_id": "c01641",
     "pinyin_syllable": "lòu",
     "ko_syllable": "노",
-    "ko_base": "노",
+    "ko_base": "로",
     "vi_syllable": "lộ"
   },
   {
@@ -141683,7 +141683,7 @@
     "char_id": "c02348",
     "pinyin_syllable": "lú",
     "ko_syllable": "노",
-    "ko_base": "노",
+    "ko_base": "로",
     "vi_syllable": null
   },
   {
@@ -141800,7 +141800,7 @@
     "char_id": "c00137",
     "pinyin_syllable": "lù",
     "ko_syllable": "노",
-    "ko_base": "노",
+    "ko_base": "로",
     "vi_syllable": "lộ"
   },
   {
@@ -141818,7 +141818,7 @@
     "char_id": "c00137",
     "pinyin_syllable": "lù",
     "ko_syllable": "노",
-    "ko_base": "노",
+    "ko_base": "로",
     "vi_syllable": null
   },
   {
@@ -141872,8 +141872,8 @@
     "char_id": "c00137",
     "pinyin_syllable": "lù",
     "ko_syllable": "노",
-    "ko_base": "노",
-    "vi_syllable": "lộ"
+    "ko_base": "로",
+    "vi_syllable": null
   },
   {
     "word_id": "w08122",
@@ -141882,7 +141882,7 @@
     "pinyin_syllable": "miàn",
     "ko_syllable": "면",
     "ko_base": "면",
-    "vi_syllable": "diện"
+    "vi_syllable": null
   },
   {
     "word_id": "w08123",
@@ -141890,7 +141890,7 @@
     "char_id": "c00137",
     "pinyin_syllable": "lù",
     "ko_syllable": "노",
-    "ko_base": "노",
+    "ko_base": "로",
     "vi_syllable": null
   },
   {
@@ -141944,7 +141944,7 @@
     "char_id": "c01641",
     "pinyin_syllable": "lù",
     "ko_syllable": "노",
-    "ko_base": "노",
+    "ko_base": "로",
     "vi_syllable": "lộ"
   },
   {
@@ -141962,7 +141962,7 @@
     "char_id": "c00441",
     "pinyin_syllable": "lǚ",
     "ko_syllable": "여",
-    "ko_base": "여",
+    "ko_base": "려",
     "vi_syllable": null
   },
   {
@@ -141980,7 +141980,7 @@
     "char_id": "c00441",
     "pinyin_syllable": "lǚ",
     "ko_syllable": "여",
-    "ko_base": "여",
+    "ko_base": "려",
     "vi_syllable": null
   },
   {
@@ -142016,7 +142016,7 @@
     "char_id": "c02358",
     "pinyin_syllable": "lǚ",
     "ko_syllable": "누",
-    "ko_base": "누",
+    "ko_base": "루",
     "vi_syllable": null
   },
   {
@@ -142043,7 +142043,7 @@
     "char_id": "c02360",
     "pinyin_syllable": "lǚ",
     "ko_syllable": "이",
-    "ko_base": "이",
+    "ko_base": "리",
     "vi_syllable": null
   },
   {
@@ -142088,7 +142088,7 @@
     "char_id": "c00442",
     "pinyin_syllable": "lǜ",
     "ko_syllable": "녹",
-    "ko_base": "녹",
+    "ko_base": "록",
     "vi_syllable": "lục"
   },
   {
@@ -142169,7 +142169,7 @@
     "char_id": "c02364",
     "pinyin_syllable": "lüè",
     "ko_syllable": "약",
-    "ko_base": "약",
+    "ko_base": "략",
     "vi_syllable": null
   },
   {
@@ -142223,7 +142223,7 @@
     "char_id": "c02366",
     "pinyin_syllable": "lún",
     "ko_syllable": "윤",
-    "ko_base": "윤",
+    "ko_base": "륜",
     "vi_syllable": "luân"
   },
   {
@@ -142241,7 +142241,7 @@
     "char_id": "c01047",
     "pinyin_syllable": "lún",
     "ko_syllable": "윤",
-    "ko_base": "윤",
+    "ko_base": "륜",
     "vi_syllable": null
   },
   {
@@ -142259,7 +142259,7 @@
     "char_id": "c01047",
     "pinyin_syllable": "lún",
     "ko_syllable": "윤",
-    "ko_base": "윤",
+    "ko_base": "륜",
     "vi_syllable": null
   },
   {
@@ -142313,7 +142313,7 @@
     "char_id": "c00443",
     "pinyin_syllable": "lùn",
     "ko_syllable": "논",
-    "ko_base": "논",
+    "ko_base": "론",
     "vi_syllable": null
   },
   {
@@ -142331,7 +142331,7 @@
     "char_id": "c00443",
     "pinyin_syllable": "lùn",
     "ko_syllable": "논",
-    "ko_base": "논",
+    "ko_base": "론",
     "vi_syllable": null
   },
   {
@@ -142349,7 +142349,7 @@
     "char_id": "c00443",
     "pinyin_syllable": "lùn",
     "ko_syllable": "논",
-    "ko_base": "논",
+    "ko_base": "론",
     "vi_syllable": "luận"
   },
   {
@@ -142376,7 +142376,7 @@
     "char_id": "c02368",
     "pinyin_syllable": "luó",
     "ko_syllable": "나",
-    "ko_base": "나",
+    "ko_base": "라",
     "vi_syllable": null
   },
   {
@@ -142394,7 +142394,7 @@
     "char_id": "c02369",
     "pinyin_syllable": "luó",
     "ko_syllable": "나",
-    "ko_base": "나",
+    "ko_base": "라",
     "vi_syllable": null
   },
   {
@@ -142475,7 +142475,7 @@
     "char_id": "c00736",
     "pinyin_syllable": "luò",
     "ko_syllable": "낙",
-    "ko_base": "낙",
+    "ko_base": "락",
     "vi_syllable": null
   },
   {
@@ -142493,7 +142493,7 @@
     "char_id": "c00736",
     "pinyin_syllable": "luò",
     "ko_syllable": "낙",
-    "ko_base": "낙",
+    "ko_base": "락",
     "vi_syllable": null
   },
   {
@@ -142529,7 +142529,7 @@
     "char_id": "c00736",
     "pinyin_syllable": "luò",
     "ko_syllable": "낙",
-    "ko_base": "낙",
+    "ko_base": "락",
     "vi_syllable": null
   },
   {
@@ -146586,7 +146586,7 @@
     "word_id": "w08371",
     "position": 1,
     "char_id": "c00160",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "nán",
     "ko_syllable": null,
     "ko_base": null,
     "vi_syllable": null
@@ -146595,7 +146595,7 @@
     "word_id": "w08371",
     "position": 2,
     "char_id": "c00556",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "yǐ",
     "ko_syllable": null,
     "ko_base": null,
     "vi_syllable": null
@@ -146604,7 +146604,7 @@
     "word_id": "w08371",
     "position": 3,
     "char_id": "c00244",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "xiǎng",
     "ko_syllable": null,
     "ko_base": null,
     "vi_syllable": null
@@ -146613,7 +146613,7 @@
     "word_id": "w08371",
     "position": 4,
     "char_id": "c00838",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "xiàng",
     "ko_syllable": null,
     "ko_base": null,
     "vi_syllable": null
@@ -147038,7 +147038,7 @@
     "char_id": "c01661",
     "pinyin_syllable": "ní",
     "ko_syllable": "이",
-    "ko_base": "이",
+    "ko_base": "니",
     "vi_syllable": null
   },
   {
@@ -147092,7 +147092,7 @@
     "char_id": "c02437",
     "pinyin_syllable": "nì",
     "ko_syllable": "익",
-    "ko_base": "익",
+    "ko_base": "닉",
     "vi_syllable": null
   },
   {
@@ -147110,7 +147110,7 @@
     "char_id": "c00165",
     "pinyin_syllable": "nián",
     "ko_syllable": "연",
-    "ko_base": "연",
+    "ko_base": "년",
     "vi_syllable": null
   },
   {
@@ -147146,7 +147146,7 @@
     "char_id": "c00165",
     "pinyin_syllable": "nián",
     "ko_syllable": "연",
-    "ko_base": "연",
+    "ko_base": "년",
     "vi_syllable": "niên"
   },
   {
@@ -147209,7 +147209,7 @@
     "char_id": "c00165",
     "pinyin_syllable": "nián",
     "ko_syllable": "연",
-    "ko_base": "연",
+    "ko_base": "년",
     "vi_syllable": null
   },
   {
@@ -147236,7 +147236,7 @@
     "char_id": "c00749",
     "pinyin_syllable": "niàn",
     "ko_syllable": "염",
-    "ko_base": "염",
+    "ko_base": "념",
     "vi_syllable": null
   },
   {
@@ -147272,7 +147272,7 @@
     "char_id": "c00749",
     "pinyin_syllable": "niàn",
     "ko_syllable": "염",
-    "ko_base": "염",
+    "ko_base": "념",
     "vi_syllable": null
   },
   {
@@ -147290,7 +147290,7 @@
     "char_id": "c00749",
     "pinyin_syllable": "niàn",
     "ko_syllable": "염",
-    "ko_base": "염",
+    "ko_base": "념",
     "vi_syllable": null
   },
   {
@@ -147515,7 +147515,7 @@
     "char_id": "c02445",
     "pinyin_syllable": "niǔ",
     "ko_syllable": "유",
-    "ko_base": "유",
+    "ko_base": "뉴",
     "vi_syllable": null
   },
   {
@@ -147767,7 +147767,7 @@
     "char_id": "c00168",
     "pinyin_syllable": "nǚ",
     "ko_syllable": "여",
-    "ko_base": "여",
+    "ko_base": "녀",
     "vi_syllable": null
   },
   {
@@ -147839,7 +147839,7 @@
     "char_id": "c01664",
     "pinyin_syllable": "nuò",
     "ko_syllable": "낙",
-    "ko_base": "낙",
+    "ko_base": "락",
     "vi_syllable": null
   },
   {
@@ -149826,7 +149826,7 @@
     "word_id": "w08550",
     "position": 1,
     "char_id": "c01369",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "píng",
     "ko_syllable": null,
     "ko_base": null,
     "vi_syllable": null
@@ -149835,7 +149835,7 @@
     "word_id": "w08550",
     "position": 2,
     "char_id": "c00283",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "zhe",
     "ko_syllable": null,
     "ko_base": null,
     "vi_syllable": null
@@ -150107,7 +150107,7 @@
     "char_id": "c01638",
     "pinyin_syllable": "liè",
     "ko_syllable": "열",
-    "ko_base": "열",
+    "ko_base": "렬",
     "vi_syllable": null
   },
   {
@@ -160683,7 +160683,7 @@
     "pinyin_syllable": "shí",
     "ko_syllable": "실",
     "ko_base": "실",
-    "vi_syllable": "thực"
+    "vi_syllable": null
   },
   {
     "word_id": "w09110",
@@ -160692,7 +160692,7 @@
     "pinyin_syllable": "wù",
     "ko_syllable": "물",
     "ko_base": "물",
-    "vi_syllable": "vật"
+    "vi_syllable": null
   },
   {
     "word_id": "w09111",
@@ -161085,7 +161085,7 @@
     "word_id": "w09129",
     "position": 1,
     "char_id": "c00201",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "shì",
     "ko_syllable": null,
     "ko_base": null,
     "vi_syllable": "sự"
@@ -161094,7 +161094,7 @@
     "word_id": "w09129",
     "position": 2,
     "char_id": "c03060",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "jì",
     "ko_syllable": null,
     "ko_base": null,
     "vi_syllable": "tích"
@@ -161322,7 +161322,7 @@
     "pinyin_syllable": "shì",
     "ko_syllable": "시",
     "ko_base": "시",
-    "vi_syllable": "thị"
+    "vi_syllable": null
   },
   {
     "word_id": "w09141",
@@ -161331,7 +161331,7 @@
     "pinyin_syllable": "jiǎo",
     "ko_syllable": "각",
     "ko_base": "각",
-    "vi_syllable": "giác"
+    "vi_syllable": null
   },
   {
     "word_id": "w09142",
@@ -164118,7 +164118,7 @@
     "word_id": "w09289",
     "position": 1,
     "char_id": "c00211",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "shuō",
     "ko_syllable": null,
     "ko_base": null,
     "vi_syllable": null
@@ -164127,7 +164127,7 @@
     "word_id": "w09289",
     "position": 2,
     "char_id": "c00175",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "qǐ",
     "ko_syllable": null,
     "ko_base": null,
     "vi_syllable": null
@@ -164136,7 +164136,7 @@
     "word_id": "w09289",
     "position": 3,
     "char_id": "c00127",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "lái",
     "ko_syllable": null,
     "ko_base": null,
     "vi_syllable": null
@@ -164982,7 +164982,7 @@
     "word_id": "w09329",
     "position": 1,
     "char_id": "c01416",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "sōu",
     "ko_syllable": null,
     "ko_base": null,
     "vi_syllable": "sưu"
@@ -164991,7 +164991,7 @@
     "word_id": "w09329",
     "position": 2,
     "char_id": "c00686",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "jí",
     "ko_syllable": null,
     "ko_base": null,
     "vi_syllable": "tập"
@@ -175881,7 +175881,7 @@
     "word_id": "w09903",
     "position": 1,
     "char_id": "c01446",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "xiàn",
     "ko_syllable": "헌",
     "ko_base": "헌",
     "vi_syllable": null
@@ -175890,7 +175890,7 @@
     "word_id": "w09903",
     "position": 2,
     "char_id": "c00841",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "xiě",
     "ko_syllable": "혈",
     "ko_base": "혈",
     "vi_syllable": null
@@ -177195,7 +177195,7 @@
     "word_id": "w09971",
     "position": 1,
     "char_id": "c00840",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "xiào",
     "ko_syllable": null,
     "ko_base": null,
     "vi_syllable": null
@@ -177204,7 +177204,7 @@
     "word_id": "w09971",
     "position": 2,
     "char_id": "c01261",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "fǎng",
     "ko_syllable": null,
     "ko_base": null,
     "vi_syllable": null
@@ -178863,7 +178863,7 @@
     "pinyin_syllable": "xiōng",
     "ko_syllable": null,
     "ko_base": null,
-    "vi_syllable": "hung"
+    "vi_syllable": null
   },
   {
     "word_id": "w10055",
@@ -178872,7 +178872,7 @@
     "pinyin_syllable": "è",
     "ko_syllable": null,
     "ko_base": null,
-    "vi_syllable": "ác"
+    "vi_syllable": null
   },
   {
     "word_id": "w10056",
@@ -179861,7 +179861,7 @@
     "char_id": "c01044",
     "pinyin_syllable": "lǜ",
     "ko_syllable": "율",
-    "ko_base": "율",
+    "ko_base": "률",
     "vi_syllable": null
   },
   {
@@ -180816,7 +180816,7 @@
     "pinyin_syllable": "yán",
     "ko_syllable": "언",
     "ko_base": "언",
-    "vi_syllable": "ngôn"
+    "vi_syllable": null
   },
   {
     "word_id": "w10167",
@@ -180825,7 +180825,7 @@
     "pinyin_syllable": "cí",
     "ko_syllable": "사",
     "ko_base": "사",
-    "vi_syllable": "từ"
+    "vi_syllable": null
   },
   {
     "word_id": "w10168",
@@ -184802,7 +184802,7 @@
     "char_id": "c01757",
     "pinyin_syllable": "yì",
     "ko_syllable": "이",
-    "ko_base": "이",
+    "ko_base": "리",
     "vi_syllable": null
   },
   {
@@ -184874,7 +184874,7 @@
     "char_id": "c01757",
     "pinyin_syllable": "yì",
     "ko_syllable": "이",
-    "ko_base": "이",
+    "ko_base": "리",
     "vi_syllable": "dị"
   },
   {
@@ -184892,7 +184892,7 @@
     "char_id": "c01757",
     "pinyin_syllable": "yì",
     "ko_syllable": "이",
-    "ko_base": "이",
+    "ko_base": "리",
     "vi_syllable": "dị"
   },
   {
@@ -189597,7 +189597,7 @@
     "word_id": "w10592",
     "position": 1,
     "char_id": "c03028",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "zàn",
     "ko_syllable": null,
     "ko_base": null,
     "vi_syllable": null
@@ -189606,7 +189606,7 @@
     "word_id": "w10592",
     "position": 2,
     "char_id": "c01709",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "tàn",
     "ko_syllable": null,
     "ko_base": null,
     "vi_syllable": null
@@ -189615,7 +189615,7 @@
     "word_id": "w10592",
     "position": 3,
     "char_id": "c00019",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "bù",
     "ko_syllable": null,
     "ko_base": null,
     "vi_syllable": null
@@ -189624,7 +189624,7 @@
     "word_id": "w10592",
     "position": 4,
     "char_id": "c00555",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "yǐ",
     "ko_syllable": null,
     "ko_base": null,
     "vi_syllable": null
@@ -195710,7 +195710,7 @@
     "char_id": "c00283",
     "pinyin_syllable": "zhuó",
     "ko_syllable": "저",
-    "ko_base": "저",
+    "ko_base": null,
     "vi_syllable": null
   },
   {
@@ -195798,7 +195798,7 @@
     "word_id": "w10930",
     "position": 1,
     "char_id": "c00283",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "zhuó",
     "ko_syllable": null,
     "ko_base": null,
     "vi_syllable": null
@@ -195807,7 +195807,7 @@
     "word_id": "w10930",
     "position": 2,
     "char_id": "c00548",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "yǎn",
     "ko_syllable": null,
     "ko_base": null,
     "vi_syllable": null
@@ -195816,7 +195816,7 @@
     "word_id": "w10930",
     "position": 3,
     "char_id": "c00573",
-    "pinyin_syllable": null,
+    "pinyin_syllable": "yú",
     "ko_syllable": null,
     "ko_base": null,
     "vi_syllable": null
@@ -198392,7 +198392,7 @@
     "char_id": "c00729",
     "pinyin_syllable": "lián",
     "ko_syllable": "연",
-    "ko_base": "연",
+    "ko_base": "련",
     "vi_syllable": "liên"
   },
   {
@@ -198410,7 +198410,7 @@
     "char_id": "c00728",
     "pinyin_syllable": "lián",
     "ko_syllable": "연",
-    "ko_base": "연",
+    "ko_base": "련",
     "vi_syllable": "liên"
   },
   {
@@ -198824,7 +198824,7 @@
     "char_id": "c00430",
     "pinyin_syllable": "lì",
     "ko_syllable": "역",
-    "ko_base": "역",
+    "ko_base": "력",
     "vi_syllable": "lực"
   },
   {
@@ -199796,7 +199796,7 @@
     "char_id": "c00726",
     "pinyin_syllable": "lì",
     "ko_syllable": "입",
-    "ko_base": "입",
+    "ko_base": "립",
     "vi_syllable": "lập"
   },
   {
@@ -200129,7 +200129,7 @@
     "char_id": "c02360",
     "pinyin_syllable": "lǚ",
     "ko_syllable": "이",
-    "ko_base": "이",
+    "ko_base": "리",
     "vi_syllable": "lý"
   },
   {
@@ -200597,7 +200597,7 @@
     "char_id": "c02367",
     "pinyin_syllable": "luó",
     "ko_syllable": "나",
-    "ko_base": "나",
+    "ko_base": "라",
     "vi_syllable": "la"
   },
   {
@@ -201389,7 +201389,7 @@
     "char_id": "c00443",
     "pinyin_syllable": "lùn",
     "ko_syllable": "논",
-    "ko_base": "논",
+    "ko_base": "론",
     "vi_syllable": "luận"
   },
   {
@@ -201425,7 +201425,7 @@
     "char_id": "c01757",
     "pinyin_syllable": "yì",
     "ko_syllable": "이",
-    "ko_base": "이",
+    "ko_base": "리",
     "vi_syllable": "dị"
   },
   {
@@ -201614,7 +201614,7 @@
     "char_id": "c00731",
     "pinyin_syllable": "lǐng",
     "ko_syllable": "영",
-    "ko_base": "영",
+    "ko_base": "령",
     "vi_syllable": "lãnh"
   },
   {
@@ -201704,7 +201704,7 @@
     "char_id": "c01035",
     "pinyin_syllable": null,
     "ko_syllable": "양",
-    "ko_base": "양",
+    "ko_base": "량",
     "vi_syllable": "lương"
   },
   {
@@ -201830,7 +201830,7 @@
     "char_id": "c01330",
     "pinyin_syllable": "láo",
     "ko_syllable": "노",
-    "ko_base": "노",
+    "ko_base": "로",
     "vi_syllable": "lao"
   },
   {
@@ -201938,7 +201938,7 @@
     "char_id": "c00733",
     "pinyin_syllable": "lóng",
     "ko_syllable": "용",
-    "ko_base": "용",
+    "ko_base": "룡",
     "vi_syllable": "long"
   },
   {
@@ -202496,7 +202496,7 @@
     "char_id": "c00165",
     "pinyin_syllable": "nián",
     "ko_syllable": "연",
-    "ko_base": "연",
+    "ko_base": "년",
     "vi_syllable": "niên"
   },
   {
@@ -203639,7 +203639,7 @@
     "char_id": "c01757",
     "pinyin_syllable": "yì",
     "ko_syllable": "이",
-    "ko_base": "이",
+    "ko_base": "리",
     "vi_syllable": "dị"
   },
   {
@@ -203711,7 +203711,7 @@
     "char_id": "c02298",
     "pinyin_syllable": null,
     "ko_syllable": "남",
-    "ko_base": "남",
+    "ko_base": "람",
     "vi_syllable": "lạm"
   },
   {
@@ -204179,7 +204179,7 @@
     "char_id": "c03108",
     "pinyin_syllable": "liú",
     "ko_syllable": "유",
-    "ko_base": "유",
+    "ko_base": "류",
     "vi_syllable": "lưu"
   },
   {
@@ -205115,7 +205115,7 @@
     "char_id": "c02315",
     "pinyin_syllable": "lián",
     "ko_syllable": "연",
-    "ko_base": "연",
+    "ko_base": "련",
     "vi_syllable": "liên"
   },
   {
@@ -206429,7 +206429,7 @@
     "char_id": "c01044",
     "pinyin_syllable": "lǜ",
     "ko_syllable": "율",
-    "ko_base": "율",
+    "ko_base": "률",
     "vi_syllable": "luật"
   },
   {
@@ -206456,7 +206456,7 @@
     "char_id": "c01044",
     "pinyin_syllable": "lǜ",
     "ko_syllable": "율",
-    "ko_base": "율",
+    "ko_base": "률",
     "vi_syllable": "luật"
   },
   {
@@ -206843,7 +206843,7 @@
     "char_id": "c02307",
     "pinyin_syllable": "lěi",
     "ko_syllable": "뇌",
-    "ko_base": "뇌",
+    "ko_base": "뢰",
     "vi_syllable": "lỗi"
   },
   {
@@ -206897,7 +206897,7 @@
     "char_id": "c01341",
     "pinyin_syllable": null,
     "ko_syllable": "영",
-    "ko_base": "영",
+    "ko_base": "령",
     "vi_syllable": "lệnh"
   },
   {
@@ -207356,7 +207356,7 @@
     "char_id": "c00726",
     "pinyin_syllable": "lì",
     "ko_syllable": "입",
-    "ko_base": "입",
+    "ko_base": "립",
     "vi_syllable": "lập"
   },
   {
@@ -207509,7 +207509,7 @@
     "char_id": "c00438",
     "pinyin_syllable": "liàng",
     "ko_syllable": "양",
-    "ko_base": "양",
+    "ko_base": "량",
     "vi_syllable": "lượng"
   },
   {
@@ -208184,7 +208184,7 @@
     "char_id": "c00134",
     "pinyin_syllable": "líng",
     "ko_syllable": "영",
-    "ko_base": "영",
+    "ko_base": "령",
     "vi_syllable": "linh"
   },
   {
@@ -208202,7 +208202,7 @@
     "char_id": "c01639",
     "pinyin_syllable": "líng",
     "ko_syllable": "영",
-    "ko_base": "영",
+    "ko_base": "령",
     "vi_syllable": "linh"
   },
   {
@@ -208220,7 +208220,7 @@
     "char_id": "c00725",
     "pinyin_syllable": null,
     "ko_syllable": "역",
-    "ko_base": "역",
+    "ko_base": "력",
     "vi_syllable": "lịch"
   },
   {
@@ -209732,7 +209732,7 @@
     "char_id": "c01044",
     "pinyin_syllable": null,
     "ko_syllable": "율",
-    "ko_base": "율",
+    "ko_base": "률",
     "vi_syllable": "luật"
   },
   {
@@ -209750,7 +209750,7 @@
     "char_id": "c02313",
     "pinyin_syllable": "lì",
     "ko_syllable": "예",
-    "ko_base": "예",
+    "ko_base": "례",
     "vi_syllable": "lệ"
   },
   {
@@ -209768,7 +209768,7 @@
     "char_id": "c02313",
     "pinyin_syllable": "lì",
     "ko_syllable": "예",
-    "ko_base": "예",
+    "ko_base": "례",
     "vi_syllable": "lệ"
   },
   {
@@ -210182,7 +210182,7 @@
     "char_id": "c00735",
     "pinyin_syllable": "luàn",
     "ko_syllable": "난",
-    "ko_base": "난",
+    "ko_base": "란",
     "vi_syllable": "loạn"
   },
   {
@@ -210875,7 +210875,7 @@
     "char_id": "c00136",
     "pinyin_syllable": "lóu",
     "ko_syllable": "누",
-    "ko_base": "누",
+    "ko_base": "루",
     "vi_syllable": "lâu"
   },
   {
@@ -210965,7 +210965,7 @@
     "char_id": "c00440",
     "pinyin_syllable": "liú",
     "ko_syllable": "유",
-    "ko_base": "유",
+    "ko_base": "류",
     "vi_syllable": "lưu"
   },
   {
@@ -211721,7 +211721,7 @@
     "char_id": "c00726",
     "pinyin_syllable": "lì",
     "ko_syllable": "입",
-    "ko_base": "입",
+    "ko_base": "립",
     "vi_syllable": "lập"
   },
   {
@@ -211856,7 +211856,7 @@
     "char_id": "c01757",
     "pinyin_syllable": "yì",
     "ko_syllable": "이",
-    "ko_base": "이",
+    "ko_base": "리",
     "vi_syllable": "dị"
   },
   {
@@ -211874,7 +211874,7 @@
     "char_id": "c00726",
     "pinyin_syllable": null,
     "ko_syllable": "입",
-    "ko_base": "입",
+    "ko_base": "립",
     "vi_syllable": "lập"
   },
   {
@@ -212702,7 +212702,7 @@
     "char_id": "c01035",
     "pinyin_syllable": null,
     "ko_syllable": "양",
-    "ko_base": "양",
+    "ko_base": "량",
     "vi_syllable": "lương"
   },
   {
@@ -212756,7 +212756,7 @@
     "char_id": "c01030",
     "pinyin_syllable": "léi",
     "ko_syllable": "뇌",
-    "ko_base": "뇌",
+    "ko_base": "뢰",
     "vi_syllable": "lôi"
   },
   {
@@ -212882,7 +212882,7 @@
     "char_id": "c01330",
     "pinyin_syllable": "láo",
     "ko_syllable": "노",
-    "ko_base": "노",
+    "ko_base": "로",
     "vi_syllable": "lao"
   },
   {
@@ -212900,7 +212900,7 @@
     "char_id": "c01330",
     "pinyin_syllable": "láo",
     "ko_syllable": "노",
-    "ko_base": "노",
+    "ko_base": "로",
     "vi_syllable": "lao"
   },
   {
@@ -212918,7 +212918,7 @@
     "char_id": "c01330",
     "pinyin_syllable": "láo",
     "ko_syllable": "노",
-    "ko_base": "노",
+    "ko_base": "로",
     "vi_syllable": "lao"
   },
   {
@@ -213206,7 +213206,7 @@
     "char_id": "c00135",
     "pinyin_syllable": "liù",
     "ko_syllable": "육",
-    "ko_base": "육",
+    "ko_base": "륙",
     "vi_syllable": "lục"
   },
   {
@@ -213476,7 +213476,7 @@
     "char_id": "c01029",
     "pinyin_syllable": "láng",
     "ko_syllable": "낭",
-    "ko_base": "낭",
+    "ko_base": "랑",
     "vi_syllable": "lang"
   },
   {
@@ -215825,7 +215825,7 @@
     "char_id": "c01042",
     "pinyin_syllable": "lín",
     "ko_syllable": "임",
-    "ko_base": "임",
+    "ko_base": "림",
     "vi_syllable": "lâm"
   },
   {
@@ -216896,7 +216896,7 @@
     "char_id": "c00440",
     "pinyin_syllable": "liú",
     "ko_syllable": "유",
-    "ko_base": "유",
+    "ko_base": "류",
     "vi_syllable": "lưu"
   },
   {
@@ -217373,7 +217373,7 @@
     "char_id": "c03148",
     "pinyin_syllable": "luò",
     "ko_syllable": "낙",
-    "ko_base": "낙",
+    "ko_base": "락",
     "vi_syllable": "lạc"
   },
   {
@@ -217445,7 +217445,7 @@
     "char_id": "c02329",
     "pinyin_syllable": "líng",
     "ko_syllable": "능",
-    "ko_base": "능",
+    "ko_base": "릉",
     "vi_syllable": "lăng"
   },
   {
@@ -217679,7 +217679,7 @@
     "char_id": "c00735",
     "pinyin_syllable": "luàn",
     "ko_syllable": "난",
-    "ko_base": "난",
+    "ko_base": "란",
     "vi_syllable": "loạn"
   },
   {
@@ -217697,7 +217697,7 @@
     "char_id": "c01047",
     "pinyin_syllable": "lún",
     "ko_syllable": "윤",
-    "ko_base": "윤",
+    "ko_base": "륜",
     "vi_syllable": "luân"
   },
   {
@@ -218777,7 +218777,7 @@
     "char_id": "c00725",
     "pinyin_syllable": null,
     "ko_syllable": "역",
-    "ko_base": "역",
+    "ko_base": "력",
     "vi_syllable": "lịch"
   },
   {
@@ -218867,7 +218867,7 @@
     "char_id": "c02367",
     "pinyin_syllable": "luó",
     "ko_syllable": "나",
-    "ko_base": "나",
+    "ko_base": "라",
     "vi_syllable": "la"
   },
   {
@@ -218939,7 +218939,7 @@
     "char_id": "c01338",
     "pinyin_syllable": "lín",
     "ko_syllable": "인",
-    "ko_base": "인",
+    "ko_base": "린",
     "vi_syllable": "lân"
   },
   {
@@ -219857,7 +219857,7 @@
     "char_id": "c02319",
     "pinyin_syllable": "liáo",
     "ko_syllable": "요",
-    "ko_base": "요",
+    "ko_base": "료",
     "vi_syllable": "liêu"
   },
   {
