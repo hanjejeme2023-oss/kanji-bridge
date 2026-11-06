@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 2026-11-06 — Stage 4b pilot review [Claude]
+- Verified the frozen build after Codex's override-backup restore: `pipeline/overrides.csv` byte-identical to `03b3bf9` (121 rows); no file under `data/` differs; `pipeline/id_map.csv` differs in line endings only.
+- Reviewed both models' task-1/task-2 pilot outputs on identical inputs, all Flash task-3/task-4 outputs, all low-confidence and non-`same_word` items, retry causes and costs: `docs/STAGE4B_REVIEW.md` (10 side-by-side examples), script `docs/review_scripts/stage4b_compare.py`.
+- D60: Gemini 4 Argon for all tasks, full run by 2026-11-30; prompts `task1_v2.md`, `task2_v2.md`, `task3_v2.md` added (v1 kept); schema `propertyOrdering`, two validator rules, task-4 input filter and a date guard assigned to Codex with an Argon re-pilot. No pipeline code or data changed. Next: Codex Stage 4b-fix.
+
 ## 2026-11-06 — Stage 4a Vertex generation script and pilot [Codex]
 - Added `pipeline/stage4_generate.py` and `pipeline/stage4/`: deterministic builders for four tasks, strict local validators, Vertex-only ADC client, API-key guard, structured schemas, retries/backoff, token accounting, date-aware Flash/Argon prices, and a shared $100 hard ceiling. Pinned `google-genai==2.34.0` separately; `run_all.py` remains isolated.
 - Added versioned English prompts, exact pilot JSONL inputs, per-request outputs/logs, and `content/cost_log.csv`. No readings are emitted by model outputs. Final saved pilot output passed every local validator.
