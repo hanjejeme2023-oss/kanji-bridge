@@ -74,6 +74,9 @@ Rerun checks 1-13, C1 and C2 above, with these expected values and three extra c
 | R6 | **All 77 overrides still apply** | each `pipeline/overrides.csv` row's value equals the output value for its key and column (a test does this) |
 | R7 | Test words | the table above, unchanged: 新聞 `vi` stays empty (`obsolete_only`) |
 | R8 | 30 random words (new seed) | include at least 10 `kaikki_en_han` words, checked against the 7C entry |
+| R9 | D55 support built, switched off | `config/vi_sources.json` has `kaikki_en_char_readings: false` and the build equals a build without the feature; empty and replacing `vi` overrides covered by tests; Codex's note gives the switched-on numbers |
+
+After the repeat gate passes: **Vietnamese finalization (D55)**, then the freeze and the Stage 4 assignment.
 
 | Stage | Gate date | Result | Attempt | Gate by |
 |---|---|---|---|---|

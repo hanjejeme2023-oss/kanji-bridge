@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 2026-11-05 — Vietnamese finalization step added (D55) [Claude]
+- User decision: between the repeat Stage 3 gate and the word-list freeze, Claude prepares `docs/VI_SHORTLIST.md` (16 A/B vs A2 disagreements, about 19 wrong-looking composed readings, 6 `obsolete_only` words, 38 rule-B values filed under other characters, 7C character readings if seeded precision ≥ 95%, a fresh 50-word sample with target ≥ 98%). The user confirms, overrides are written, rebuild and recheck (D52 tie rule, all overrides apply), then freeze and the Stage 4 assignment.
+- Found while recording it: the override code cannot clear a value and moves a replaced `vi` into `vi_alt` (accepted as correct by `judge()`), and overrides cannot verify or add character readings. D55 defines empty/replacing `vi` overrides that never feed `vi_alt`, and 7C character readings behind `config/vi_sources.json` (default off). Both were added to the current Codex task (items 8-9) and to GATES (R9). SCHEMA tags `kaikki_en_char`, `override_cleared`, `override_replaced`.
+- Next assignment unchanged: Codex integrates 7C.
+
 ## 2026-11-05 — D36 Vietnamese source search [Claude]
 - Checked 8 candidates, licence first (user limits: at most 8; precision ≥ 95% on a seeded sample; gain ≥ +300 HSK words or +3 pp). Downloads only to a scratch folder outside the repo; `raw/`, `pipeline/`, `data/` unchanged.
 - **Accepted:** Kaikki English-Wiktionary Vietnamese entries (SOURCES 7C), for the word list only, as rule A2 (D53). Seeded overlap sample 199/200 (seed 36), whole overlap 99.45%; gain +356 HSK words, 35.18% → 38.41% (+3.23 pp). A2 fills only empty `vi`; 6 obsolete/archaic-only words are reported, not used (新聞 stays empty). VI-only selection takes A2 pairs as extra candidates.
