@@ -1,11 +1,9 @@
 word_id,lang,reason,detail
 w00113,vi,not_in_all,position 1: càn
-w00361,vi,not_in_all,position 1: tuế
-w00459,vi,not_in_all,position 1: vũ
+w00215,vi,not_in_all,position 1: lụy
 w00724,vi,not_in_all,position 1: hiếu
 w00844,vi,not_in_all,position 1: ly
 w00876,vi,not_in_all,position 1: miến
-w00911,vi,not_in_all,position 1: thiên
 w01000,ko,ko_exception,position 1: 숫->수
 w01062,vi,not_in_all,position 1: oản
 w01121,vi,not_in_all,position 2: vi
@@ -25,6 +23,7 @@ w02567,vi,not_in_all,position 1: cơ
 w02643,vi,not_in_all,position 1: cự
 w02643,vi,not_in_all,position 2: ly
 w02788,vi,not_in_all,position 1: kỳ
+w02810,vi,not_in_all,position 1: khuyên
 w02904,vi,not_in_all,position 1: toan
 w02955,vi,not_in_all,position 2: hối
 w03187,vi,not_in_all,position 1: trước
@@ -33,12 +32,12 @@ w03259,vi,not_in_all,position 1: pha
 w03259,vi,not_in_all,position 2: lê
 w03323,vi,not_in_all,position 1: thừa
 w03453,vi,not_in_all,position 2: ly
+w03462,vi,not_in_all,position 2: tùng
 w03514,vi,not_in_all,position 2: hoạch
 w03676,vi,not_in_all,position 1: lợi
 w03707,vi,not_in_all,position 1: mậu
 w03758,vi,not_in_all,position 2: phu
 w03846,vi,not_in_all,position 1: tản
-w03884,vi,not_in_all,position 1: thừa
 w04038,vi,not_in_all,position 1: hướng
 w04236,vi,not_in_all,position 1: trúng
 w04498,vi,not_in_all,position 1: điếu
@@ -51,15 +50,14 @@ w04704,vi,not_in_all,position 1: giám
 w04711,vi,not_in_all,position 1: tiêu
 w04810,vi,not_in_all,position 2: minh
 w04952,vi,not_in_all,position 1: khoán
-w05049,vi,not_in_all,position 1: tháp
 w05072,vi,not_in_all,position 2: kinh
+w05098,vi,not_in_all,position 1: tha
 w05135,vi,not_in_all,position 2: đạo
 w05205,vi,not_in_all,position 1: dưỡng
 w05501,vi,not_in_all,position 1: bão
 w05515,vi,not_in_all,position 2: thù
 w05523,vi,not_in_all,position 1: báo
 w05577,vi,not_in_all,position 1: tỵ
-w05782,vi,not_in_all,position 1: thiền
 w05822,ko,ko_exception,position 1: 찻->차
 w05860,vi,not_in_all,position 2: khẩn
 w05923,vi,not_in_all,position 1: trù
@@ -74,7 +72,6 @@ w06580,vi,not_in_all,position 2: hoàng
 w06584,vi,not_in_all,position 1: phô
 w06614,vi,not_in_all,position 2: họa
 w06795,vi,not_in_all,position 1: câu
-w06900,vi,not_in_all,position 1: quy
 w06945,vi,not_in_all,position 2: ngạn
 w07001,vi,not_in_all,position 1: hiếu
 w07123,vi,not_in_all,position 1: hoạt
@@ -83,7 +80,6 @@ w07318,vi,not_in_all,position 1: kỵ
 w07461,vi,not_in_all,position 1: tiêu
 w07461,vi,not_in_all,position 2: cự
 w07467,vi,not_in_all,position 2: hoạt
-w07548,vi,not_in_all,position 3: tháp
 w07576,vi,not_in_all,position 2: kỵ
 w07630,vi,not_in_all,position 2: nhi
 w07710,vi,not_in_all,position 2: kỹ
@@ -95,7 +91,6 @@ w07805,vi,not_in_all,position 1: khẩn
 w07914,vi,not_in_all,position 2: can
 w07952,vi,not_in_all,position 1: lãnh
 w08023,vi,not_in_all,position 2: thê
-w08138,vi,not_in_all,position 1: noãn
 w08212,vi,not_in_all,position 1: mân
 w08212,vi,not_in_all,position 2: côi
 w08232,vi,not_in_all,position 2: đăng
@@ -103,7 +98,6 @@ w08240,vi,not_in_all,position 2: lung
 w08299,vi,not_in_all,position 2: tác
 w08329,vi,not_in_all,position 1: mẫu
 w08329,vi,not_in_all,position 2: đơn
-w08330,vi,not_in_all,position 1: mẫu
 w08437,vi,not_in_all,position 1: na
 w08471,vi,not_in_all,position 1: phôi
 w08518,vi,not_in_all,position 1: phiếu
@@ -112,7 +106,6 @@ w08589,vi,not_in_all,position 1: kỳ
 w08590,vi,not_in_all,position 1: kỳ
 w09016,vi,not_in_all,position 1: thân
 w09053,vi,not_in_all,position 2: nhai
-w09070,vi,not_in_all,position 1: thặng
 w09154,vi,not_in_all,position 2: hiếu
 w09400,vi,not_in_all,position 1: đàm
 w09529,vi,not_in_all,position 2: minh
@@ -125,10 +118,13 @@ w10087,vi,not_in_all,position 1: từ
 w10087,vi,not_in_all,position 2: từ
 w10104,vi,not_in_all,position 2: hoa
 w10424,vi,not_in_all,position 1: dung
+w10556,vi,not_in_all,position 1: nhạc
+w10557,vi,not_in_all,position 1: nhạc
 w10563,vi,not_in_all,position 1: vẫn
 w10628,vi,not_in_all,position 1: niêm
 w10739,vi,not_in_all,position 2: kỷ
 w10805,vi,not_in_all,position 2: tuần
+w10854,vi,not_in_all,position 1: trụ
 w10943,vi,not_in_all,position 2: ty
 w11024,vi,not_in_all,position 1: tọa
 w11025,vi,not_in_all,position 1: tọa
@@ -137,7 +133,6 @@ w12290,vi,not_in_all,position 1: minh
 w12314,vi,not_in_all,position 2: độ
 w12325,vi,not_in_all,position 1: hạ
 w12354,vi,not_in_all,position 1: tự
-w12372,vi,not_in_all,position 1: vũ
 w12436,vi,not_in_all,position 2: cuộc
 w12495,vi,not_in_all,position 2: lý
 w12475,vi,not_in_all,position 2: cuộc
@@ -170,7 +165,6 @@ w12742,vi,not_in_all,position 1: hoành
 w12743,vi,not_in_all,position 2: hoành
 w12747,vi,not_in_all,position 1: cúng
 w12747,vi,not_in_all,position 2: dường
-w12752,vi,not_in_all,position 2: tuế
 w12753,vi,not_in_all,position 2: khoán
 w12754,vi,not_in_all,position 2: khoán
 w12759,vi,not_in_all,position 2: điêu
@@ -178,7 +172,6 @@ w12763,vi,not_in_all,position 1: niêm
 w12764,vi,not_in_all,position 3: đới
 w12765,vi,not_in_all,position 2: đới
 w12766,vi,not_in_all,position 1: tọa
-w12766,vi,not_in_all,position 2: thiền
 w12768,vi,not_in_all,position 1: thệ
 w12775,vi,not_in_all,position 1: khải
 w12781,vi,not_in_all,position 2: khố
@@ -194,7 +187,6 @@ w12806,vi,not_in_all,position 1: chỉ
 w12835,vi,not_in_all,position 2: lại
 w12849,vi,not_in_all,position 2: tự
 w12864,vi,not_in_all,position 1: chỉ
-w12931,vi,not_in_all,position 2: thường
 w12992,vi,not_in_all,position 2: kỳ
 w12951,vi,not_in_all,position 1: minh
 w12952,vi,not_in_all,position 1: tuần

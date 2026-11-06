@@ -69,11 +69,14 @@ class Stage3D53Tests(unittest.TestCase):
         )
 
     def test_obsolete_only_words_remain_empty_and_reported(self) -> None:
-        expected = {"新聞", "戲劇", "伯父", "不宜", "岳父", "岳母"}
-        for trad in expected:
+        # D57: the user put 岳父 nhạc phụ and 岳母 nhạc mẫu on cards through overrides; the rest stay empty.
+        empty = {"新聞", "戲劇", "伯父", "不宜", "聘", "隧道"}
+        for trad in empty:
             self.assertTrue((self.words.loc[self.words["trad"] == trad, "vi"] == "").all(), trad)
+        self.assertEqual(self.word("岳父")["vi"], "nhạc phụ")
+        self.assertEqual(self.word("岳母")["vi"], "nhạc mẫu")
         reported = set(self.ambiguous.loc[self.ambiguous["reason"] == "obsolete_only", "trad"])
-        self.assertTrue(expected.issubset(reported))
+        self.assertTrue((empty | {"岳父", "岳母"}).issubset(reported))
 
     def test_all_committed_overrides_apply(self) -> None:
         words = self.words.set_index("word_id", drop=False)
@@ -82,8 +85,9 @@ class Stage3D53Tests(unittest.TestCase):
             key = f"{row.trad}|{row.pinyin}" if row.source_level == "hsk30" else f"x|{row.trad}"
             word_key[key] = row
         chars = self.chars.set_index("key_char")
-        # 77 confirmed at the Stage 3 gate; repeat gate (D56): +6 chars, -2 VI-only words.
-        self.assertEqual(len(self.overrides), 81)
+        # 77 confirmed at the Stage 3 gate; repeat gate (D56): +6 chars, -2 VI-only words;
+        # D55/D57 Vietnamese finalization: +11 replacements, +29 clears.
+        self.assertEqual(len(self.overrides), 121)
         for override in self.overrides.itertuples(index=False):
             with self.subTest(table=override.table, key=override.key, column=override.column):
                 if override.table == "words":
@@ -108,9 +112,28 @@ class Stage3D53Tests(unittest.TestCase):
         self.assertEqual(reports.iloc[0]["reason"], "override_cleared")
         self.assertEqual(reports.iloc[0]["candidates"], "sai")
 
-    def test_character_source_switch_is_off(self) -> None:
-        self.assertFalse(kaikki_en_char_readings_enabled())
-        self.assertFalse((self.chars["source_vi"] == "kaikki_en_char").any())
+    def test_character_source_switch_follows_config(self) -> None:
+        # D57: switched on after the D55 precision check (80/81 readings correct).
+        self.assertTrue(kaikki_en_char_readings_enabled())
+        self.assertTrue((self.chars["source_vi"] == "kaikki_en_char").any())
+        by_trad = self.chars.set_index("key_char")
+        self.assertEqual(by_trad.loc["棟", "vi"], "đống")
+        self.assertEqual(by_trad.loc["歲", "vi"], "tuế")
+
+    def test_d55_cleared_values_stay_out_of_vi_alt(self) -> None:
+        cleared = self.overrides.loc[
+            (self.overrides["table"] == "words") & (self.overrides["column"] == "vi")
+            & (self.overrides["value"] == "")
+        ]
+        self.assertEqual(len(cleared), 29)
+        reported = set(self.ambiguous.loc[self.ambiguous["reason"] == "override_cleared", "word_key"])
+        for key in cleared["key"]:
+            trad, pinyin = key.split("|")
+            row = self.words.loc[(self.words["trad"] == trad) & (self.words["pinyin"] == pinyin)].iloc[0]
+            with self.subTest(key=key):
+                self.assertEqual(row["vi"], "")
+                self.assertEqual(row["vi_alt"], "")
+                self.assertIn(key, reported)
 
     def test_a2_merge_is_real_and_validated(self) -> None:
         report = read_csv(ROOT / "data" / "final" / "merge_report.csv")

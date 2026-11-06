@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 2026-11-06 — D55 Vietnamese finalization applied; word list frozen [Claude]
+- User confirmed `docs/VI_SHORTLIST.md` (all as proposed; Q1 a, Q2 yes, Q3 a; plus 岳父 nhạc phụ, 岳母 nhạc mẫu). DECISIONS D57.
+- `pipeline/overrides.csv` 81 → 121 rows: 11 Vietnamese replacements (一 nhất, 詞 từ, 累 lụy, 圈 khuyên, 祝福 chúc phúc, 服從 phục tùng, 拖 tha, 拄 trụ, 馴 thuần, 岳父, 岳母) and 29 clears (rule-B values that are a different Vietnamese word). `config/vi_sources.json`: 7C character readings on (80/81 correct).
+- Effect: HSK `vi` 4,239 → 4,245, all four 3,362 → 3,367; HSK verified character readings 1,835 → 1,913; one primary changed by the overrides (馴 thuần, the user's pick), tie 福 phúc/phước removed. Cards unchanged (7,354 / 8,555).
+- Tests: `test_stage3_d53.py` updated for D57 (121 overrides, obsolete-only words, switch on, new test for cleared values); `test_chars.py` sanity range counts the `kaikki_en_char` verified tag. Full suite: rebuild test passes (identical); all non-rebuild tests OK.
+- Why: D55 (user wants every known Vietnamese doubt settled before Stage 4). Remaining rule-B false matches are found by a Stage 4 meaning flag (D57 Q1 a). Next: Claude documentation consolidation and the Stage 4 assignment.
+
 ## 2026-11-06 — Repeat Stage 3 gate after D53, attempt 2: PASS; D55 short list [Claude]
 - Rechecked G1-G3, R2, R4, R5, R6, checks 6, 8, 11, 13 on `4919d5b` against `0d581fa` and `7827546` (`docs/review_scripts/stage3_repeat_gate_attempt2_reference.py`). All 1,122 A2 values equal an independent implementation of D56 item 2 applied to 7C; 0 invented consonant + y spellings in `words`, `ff_candidates`, `rules_examples`; `ff_candidates` 2,504 rows with 0 overlap with `words`; VI-only 6 added / 6 dropped, no ID reused; 0 character primary or `*_all` changes, no tie created or broken; all 81 overrides apply; 38 tests OK; rebuild byte-identical. Gate logged in `GATES.md`.
 - D55: wrote `docs/VI_SHORTLIST.md` for the user: 17 rule A/B vs A2 disagreements (replace 8), 42 rule-B values that are other Vietnamese words or variant spellings (clear 24, keep 18), 8 `obsolete_only` words (keep empty), 7C character readings (one switched-on build measured and discarded: 80/81 readings correct, HSK `vi` +32, 5 wrong new word values to clear), 調 / 馴, and a 50-word seeded sample (48/50; both errors are rule-B false matches, sized at about 7% of multi-character rule-B words by a second sample of 60). Three questions (Q1-Q3) for the user.

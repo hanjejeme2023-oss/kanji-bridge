@@ -100,11 +100,13 @@ class CharacterTableTests(unittest.TestCase):
     def test_expected_stage2_sanity_ranges(self) -> None:
         base = self.chars.loc[self.chars["in_hsk_chars"] == "true"]
         jp_missing = int((base["jp"] == "").sum())
-        verified_vi = int(base["source_vi"].isin(["kaikki_aligned", "unihan_hvsyl"]).sum())
+        # kaikki_en_char is a verified tag since D55 b / D57 (7C character readings switched on):
+        # Stage 2 measured about 1,835 verified; 7C confirms 45 and adds readings, giving about 1,913.
+        verified_vi = int(base["source_vi"].isin(["kaikki_aligned", "kaikki_en_char", "unihan_hvsyl"]).sum())
         self.assertGreaterEqual(jp_missing, 35)
         self.assertLessEqual(jp_missing, 55)
-        self.assertGreaterEqual(verified_vi, 1800)
-        self.assertLessEqual(verified_vi, 1870)
+        self.assertGreaterEqual(verified_vi, 1880)
+        self.assertLessEqual(verified_vi, 1950)
 
 
 if __name__ == "__main__":

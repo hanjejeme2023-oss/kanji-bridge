@@ -1,6 +1,6 @@
 # Vietnamese finalization (D55): short list for the user
 
-**Status: proposed by Claude on 2026-11-06, waiting for the user. Nothing is written to `pipeline/overrides.csv` and `config/vi_sources.json` stays `false` until the user confirms.**
+**Status: confirmed by the user on 2026-11-06 ("All as proposed. Q1: a. Q2: yes. Q3: a.", plus 岳父 nhạc phụ and 岳母 nhạc mẫu on cards). Applied: `pipeline/overrides.csv` 121 rows, `config/vi_sources.json` `true`; see DECISIONS D57 and GATES "D55 Vietnamese finalization applied".**
 
 Built from commit `4919d5b` (repeat Stage 3 gate, attempt 2: PASS). Every replacement value below is a dictionary candidate the build accepts (an A2 / 7C value for the word's form, or a candidate listed in `vi_ambiguous.csv`). "Clear" means an empty `vi` override with a reason (D55 a): the value leaves the card and is listed in `vi_ambiguous.csv` as `override_cleared`. It does not go to `vi_alt`. Evidence: `docs/review_scripts/d55_vi_shortlist_reference.py` (items 1, 2, 6), the switched-on build for item 5 (not committed), and `docs/D36_VI_SOURCE_SEARCH.md`.
 

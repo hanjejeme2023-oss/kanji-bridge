@@ -270,3 +270,18 @@ Checked on commit `4919d5b` (Codex, D56 G1-G3) against the attempt-1 build `0d58
 **Non-blocking, for D55 / loop 1:** (1) `vi_alt` keeps tied rule-B candidates when `vi` is empty or later filled by A2: 馴 xùn (`vi` empty, `vi_alt` tuần;thuần) and 調 diào (`vi` điệu, `vi_alt` điều;điệu). `judge()` accepts `vi_alt`, so 調 diào also accepts điều (the tiáo reading). Cause: `build_words.py:1146` writes all candidates to `vi_alt` when the D44 count ties. (2) D56 writes 自卑 as `tự ty` (7C tự ti); both spellings are in use, as with công ty.
 
 Stage 3 repeat gate: **PASS**. Next (same session, D55): Vietnamese finalization short list, `docs/VI_SHORTLIST.md`.
+
+## D55 Vietnamese finalization applied (D57), 2026-11-06
+
+User answer: all of `docs/VI_SHORTLIST.md` as proposed, Q1 a, Q2 yes, Q3 a, plus 岳父 nhạc phụ / 岳母 nhạc mẫu. Script: `docs/review_scripts/d55_apply_check.py` (compares with `4919d5b` and with the uncommitted switch-on-only build, so the effect of the overrides is separated from the effect of the switch).
+
+| Item | Evidence | Result |
+|---|---|---|
+| Overrides | 81 → 121 rows (11 replacements, 29 clears); every row equals the output value; the 29 cleared words have empty `vi` and empty `vi_alt` and are listed `override_cleared` | OK |
+| D52 tie rule | Against the switch-on-only build: **one character primary changed, 馴 tuần → thuần** (the 馴 word override is its only evidence word; thuần is the standard reading and the user's word pick). Ties: 福 phúc 2 / phước 2 → 3 / 1 (primary phúc unchanged, tie removed). 拄, 拖, 爺, 薪, 酬, 飼 lose their only evidence word, primaries unchanged. No other primary, `*_all` set, `ko` or `ja` value changed | OK |
+| Characters (switch, against `4919d5b`) | 0 `ko`, `ja_on`, `pinyin`, `ko_all`, `ko_base_all` changes; `vi` primary: 36 new readings, 棟 chống → đống, 馴 tuần → thuần; `vi_final` 16; HSK-list verified readings 1,835 → 1,913 (`kaikki_en_char` 130) | OK |
+| Words (against `4919d5b`) | 63 `vi` changes = 27 new rule-B values from the switch, 剩 thừa → thặng, 9 replacements, 2 obsolete-only filled, 24 clears (E1-E5 were empty at `4919d5b`); 0 `ko`, `ja`, `card_eligible` changes. HSK `vi` 4,239 → **4,245**, all four 3,362 → **3,367**; `card_eligible` 7,354 / 8,555; words with `vi` 5,446 | OK |
+| Reports | `vi_ambiguous` 88 (32 `rule_b_conflict`, 29 `override_cleared`, 11 `override_replaced`, 8 `several_candidates`, 8 `obsolete_only`); `alignment_mismatches` 195; `rules_examples` 2,243; `char_primary_changes` 107; `char_primary_no_evidence` 1,782; `ff_candidates` 2,504 | OK |
+| Tests; rebuild | Full suite: the three-build rebuild test passed (identical with, without and with overrides) and every file in `data/final/`, `ff_candidates.csv` and `id_map.csv` hashed identical before and after; one stale assertion failed (`tests/test_chars.py` counted only the Stage 2 verified tags, 1,783 < 1,800) and now counts `kaikki_en_char` (D55 b) with the range 1,880-1,950. `tests/test_stage3_d53.py`: 121 overrides, 岳父/岳母 filled, switch on, new test for the 29 clears. All 38 non-rebuild tests rerun OK | OK |
+
+**The word list is frozen** (D46, D55, D57).

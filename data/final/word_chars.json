@@ -60,7 +60,7 @@
     "pinyin_syllable": "bà",
     "ko_syllable": "파",
     "ko_base": "파",
-    "vi_syllable": null
+    "vi_syllable": "ba"
   },
   {
     "word_id": "w00006",
@@ -222,7 +222,7 @@
     "pinyin_syllable": "bēi",
     "ko_syllable": "배",
     "ko_base": "배",
-    "vi_syllable": null
+    "vi_syllable": "bôi"
   },
   {
     "word_id": "w00019",
@@ -1599,7 +1599,7 @@
     "pinyin_syllable": "gān",
     "ko_syllable": "건",
     "ko_base": "건",
-    "vi_syllable": null
+    "vi_syllable": "kiền"
   },
   {
     "word_id": "w00114",
@@ -1608,7 +1608,7 @@
     "pinyin_syllable": "jìng",
     "ko_syllable": "정",
     "ko_base": "정",
-    "vi_syllable": null
+    "vi_syllable": "tịnh"
   },
   {
     "word_id": "w00115",
@@ -3039,7 +3039,7 @@
     "pinyin_syllable": "lèi",
     "ko_syllable": "루",
     "ko_base": "루",
-    "vi_syllable": "lũy"
+    "vi_syllable": "lụy"
   },
   {
     "word_id": "w00216",
@@ -3282,7 +3282,7 @@
     "pinyin_syllable": "mǎi",
     "ko_syllable": "매",
     "ko_base": "매",
-    "vi_syllable": null
+    "vi_syllable": "mãi"
   },
   {
     "word_id": "w00235",
@@ -3309,7 +3309,7 @@
     "pinyin_syllable": "máo",
     "ko_syllable": "모",
     "ko_base": "모",
-    "vi_syllable": null
+    "vi_syllable": "mao"
   },
   {
     "word_id": "w00238",
@@ -6342,7 +6342,7 @@
     "pinyin_syllable": "yī",
     "ko_syllable": "일",
     "ko_base": "일",
-    "vi_syllable": "nhứt"
+    "vi_syllable": "nhất"
   },
   {
     "word_id": "w00436",
@@ -6882,7 +6882,7 @@
     "pinyin_syllable": "zǎo",
     "ko_syllable": "조",
     "ko_base": "조",
-    "vi_syllable": null
+    "vi_syllable": "tảo"
   },
   {
     "word_id": "w00468",
@@ -8889,7 +8889,7 @@
     "pinyin_syllable": "cí",
     "ko_syllable": "사",
     "ko_base": "사",
-    "vi_syllable": "tờ"
+    "vi_syllable": "từ"
   },
   {
     "word_id": "w00592",
@@ -10653,7 +10653,7 @@
     "pinyin_syllable": "gōng",
     "ko_syllable": null,
     "ko_base": null,
-    "vi_syllable": "công"
+    "vi_syllable": null
   },
   {
     "word_id": "w00697",
@@ -10662,7 +10662,7 @@
     "pinyin_syllable": "lǐ",
     "ko_syllable": null,
     "ko_base": null,
-    "vi_syllable": "lý"
+    "vi_syllable": null
   },
   {
     "word_id": "w00698",
@@ -10752,7 +10752,7 @@
     "pinyin_syllable": "gòu",
     "ko_syllable": "구",
     "ko_base": "구",
-    "vi_syllable": null
+    "vi_syllable": "cú"
   },
   {
     "word_id": "w00704",
@@ -12948,7 +12948,7 @@
     "pinyin_syllable": "lǎo",
     "ko_syllable": null,
     "ko_base": null,
-    "vi_syllable": "lão"
+    "vi_syllable": null
   },
   {
     "word_id": "w00842",
@@ -12957,7 +12957,7 @@
     "pinyin_syllable": "shì",
     "ko_syllable": null,
     "ko_base": null,
-    "vi_syllable": "thị"
+    "vi_syllable": null
   },
   {
     "word_id": "w00843",
@@ -15081,7 +15081,7 @@
     "pinyin_syllable": "shēng",
     "ko_syllable": null,
     "ko_base": null,
-    "vi_syllable": "sinh"
+    "vi_syllable": null
   },
   {
     "word_id": "w00976",
@@ -15090,7 +15090,7 @@
     "pinyin_syllable": "cí",
     "ko_syllable": null,
     "ko_base": null,
-    "vi_syllable": "từ"
+    "vi_syllable": null
   },
   {
     "word_id": "w00977",
@@ -17439,7 +17439,7 @@
     "pinyin_syllable": "xíng",
     "ko_syllable": "행",
     "ko_base": "행",
-    "vi_syllable": "hạnh"
+    "vi_syllable": null
   },
   {
     "word_id": "w01120",
@@ -17448,7 +17448,7 @@
     "pinyin_syllable": "rén",
     "ko_syllable": "인",
     "ko_base": "인",
-    "vi_syllable": "nhân"
+    "vi_syllable": null
   },
   {
     "word_id": "w01121",
@@ -17745,7 +17745,7 @@
     "pinyin_syllable": "yè",
     "ko_syllable": "야",
     "ko_base": "야",
-    "vi_syllable": null
+    "vi_syllable": "dạ"
   },
   {
     "word_id": "w01141",
@@ -18177,7 +18177,7 @@
     "pinyin_syllable": "yīn",
     "ko_syllable": null,
     "ko_base": null,
-    "vi_syllable": "nhân"
+    "vi_syllable": null
   },
   {
     "word_id": "w01162",
@@ -18186,7 +18186,7 @@
     "pinyin_syllable": "wèi",
     "ko_syllable": null,
     "ko_base": null,
-    "vi_syllable": "vị"
+    "vi_syllable": null
   },
   {
     "word_id": "w01163",
@@ -22317,7 +22317,7 @@
     "pinyin_syllable": "dāo",
     "ko_syllable": "도",
     "ko_base": "도",
-    "vi_syllable": null
+    "vi_syllable": "đao"
   },
   {
     "word_id": "w01406",
@@ -38949,7 +38949,7 @@
     "pinyin_syllable": "dēng",
     "ko_syllable": "등",
     "ko_base": "등",
-    "vi_syllable": "đăng"
+    "vi_syllable": null
   },
   {
     "word_id": "w02394",
@@ -38958,7 +38958,7 @@
     "pinyin_syllable": "guāng",
     "ko_syllable": "광",
     "ko_base": "광",
-    "vi_syllable": "quang"
+    "vi_syllable": null
   },
   {
     "word_id": "w02395",
@@ -45960,7 +45960,7 @@
     "pinyin_syllable": "quān",
     "ko_syllable": "권",
     "ko_base": "권",
-    "vi_syllable": "quyển"
+    "vi_syllable": "khuyên"
   },
   {
     "word_id": "w02811",
@@ -49596,7 +49596,7 @@
     "pinyin_syllable": "xiǎo",
     "ko_syllable": "소",
     "ko_base": "소",
-    "vi_syllable": "tiểu"
+    "vi_syllable": null
   },
   {
     "word_id": "w03026",
@@ -49605,7 +49605,7 @@
     "pinyin_syllable": "xíng",
     "ko_syllable": "형",
     "ko_base": "형",
-    "vi_syllable": "hình"
+    "vi_syllable": null
   },
   {
     "word_id": "w03027",
@@ -52350,7 +52350,7 @@
     "pinyin_syllable": "fú",
     "ko_syllable": "복",
     "ko_base": "복",
-    "vi_syllable": "phước"
+    "vi_syllable": "phúc"
   },
   {
     "word_id": "w03186",
@@ -52935,7 +52935,7 @@
     "pinyin_syllable": "bá",
     "ko_syllable": "발",
     "ko_base": "발",
-    "vi_syllable": null
+    "vi_syllable": "bạt"
   },
   {
     "word_id": "w03220",
@@ -57129,7 +57129,7 @@
     "pinyin_syllable": "cóng",
     "ko_syllable": "종",
     "ko_base": "종",
-    "vi_syllable": "tòng"
+    "vi_syllable": "tùng"
   },
   {
     "word_id": "w03463",
@@ -61872,7 +61872,7 @@
     "pinyin_syllable": "nuǎn",
     "ko_syllable": "난",
     "ko_base": "난",
-    "vi_syllable": null
+    "vi_syllable": "noãn"
   },
   {
     "word_id": "w03744",
@@ -62061,7 +62061,7 @@
     "pinyin_syllable": "pén",
     "ko_syllable": "분",
     "ko_base": "분",
-    "vi_syllable": null
+    "vi_syllable": "bồn"
   },
   {
     "word_id": "w03757",
@@ -63744,7 +63744,7 @@
     "pinyin_syllable": "shè",
     "ko_syllable": null,
     "ko_base": null,
-    "vi_syllable": "thiết"
+    "vi_syllable": null
   },
   {
     "word_id": "w03864",
@@ -63753,7 +63753,7 @@
     "pinyin_syllable": "xiǎng",
     "ko_syllable": null,
     "ko_base": null,
-    "vi_syllable": "tưởng"
+    "vi_syllable": null
   },
   {
     "word_id": "w03865",
@@ -64077,7 +64077,7 @@
     "pinyin_syllable": "shèng",
     "ko_syllable": "잉",
     "ko_base": "잉",
-    "vi_syllable": "thừa"
+    "vi_syllable": "thặng"
   },
   {
     "word_id": "w03885",
@@ -65067,7 +65067,7 @@
     "pinyin_syllable": "suì",
     "ko_syllable": "세",
     "ko_base": "세",
-    "vi_syllable": null
+    "vi_syllable": "tuế"
   },
   {
     "word_id": "w03941",
@@ -65076,7 +65076,7 @@
     "pinyin_syllable": "yuè",
     "ko_syllable": "월",
     "ko_base": "월",
-    "vi_syllable": null
+    "vi_syllable": "nguyệt"
   },
   {
     "word_id": "w03942",
@@ -67731,7 +67731,7 @@
     "pinyin_syllable": "yī",
     "ko_syllable": "일",
     "ko_base": "일",
-    "vi_syllable": null
+    "vi_syllable": "nhất"
   },
   {
     "word_id": "w04098",
@@ -67740,7 +67740,7 @@
     "pinyin_syllable": "dàn",
     "ko_syllable": "단",
     "ko_base": "단",
-    "vi_syllable": null
+    "vi_syllable": "đán"
   },
   {
     "word_id": "w04099",
@@ -71682,7 +71682,7 @@
     "pinyin_syllable": "biǎn",
     "ko_syllable": "편",
     "ko_base": "편",
-    "vi_syllable": null
+    "vi_syllable": "biển"
   },
   {
     "word_id": "w04321",
@@ -72708,7 +72708,7 @@
     "pinyin_syllable": "cháng",
     "ko_syllable": null,
     "ko_base": null,
-    "vi_syllable": "trưởng"
+    "vi_syllable": null
   },
   {
     "word_id": "w04378",
@@ -72717,7 +72717,7 @@
     "pinyin_syllable": "jià",
     "ko_syllable": null,
     "ko_base": null,
-    "vi_syllable": "giả"
+    "vi_syllable": null
   },
   {
     "word_id": "w04379",
@@ -74769,7 +74769,7 @@
     "pinyin_syllable": "diàn",
     "ko_syllable": "전",
     "ko_base": "전",
-    "vi_syllable": "điện"
+    "vi_syllable": null
   },
   {
     "word_id": "w04497",
@@ -74778,7 +74778,7 @@
     "pinyin_syllable": "qì",
     "ko_syllable": "기",
     "ko_base": "기",
-    "vi_syllable": "khí"
+    "vi_syllable": null
   },
   {
     "word_id": "w04498",
@@ -76767,7 +76767,7 @@
     "pinyin_syllable": "guā",
     "ko_syllable": "괄",
     "ko_base": "괄",
-    "vi_syllable": null
+    "vi_syllable": "quát"
   },
   {
     "word_id": "w04616",
@@ -82545,7 +82545,7 @@
     "pinyin_syllable": "rì",
     "ko_syllable": "일",
     "ko_base": "일",
-    "vi_syllable": null
+    "vi_syllable": "nhật"
   },
   {
     "word_id": "w04962",
@@ -82554,7 +82554,7 @@
     "pinyin_syllable": "yè",
     "ko_syllable": "야",
     "ko_base": "야",
-    "vi_syllable": null
+    "vi_syllable": "dạ"
   },
   {
     "word_id": "w04963",
@@ -84138,7 +84138,7 @@
     "pinyin_syllable": "tàn",
     "ko_syllable": null,
     "ko_base": null,
-    "vi_syllable": "thán"
+    "vi_syllable": null
   },
   {
     "word_id": "w05053",
@@ -84147,7 +84147,7 @@
     "pinyin_syllable": "qì",
     "ko_syllable": null,
     "ko_base": null,
-    "vi_syllable": "khí"
+    "vi_syllable": null
   },
   {
     "word_id": "w05054",
@@ -84867,7 +84867,7 @@
     "pinyin_syllable": "tuō",
     "ko_syllable": "타",
     "ko_base": "타",
-    "vi_syllable": "đà"
+    "vi_syllable": "tha"
   },
   {
     "word_id": "w05099",
@@ -89394,7 +89394,7 @@
     "pinyin_syllable": "zhōng",
     "ko_syllable": "충",
     "ko_base": "충",
-    "vi_syllable": "trung"
+    "vi_syllable": null
   },
   {
     "word_id": "w05354",
@@ -89403,7 +89403,7 @@
     "pinyin_syllable": "xīn",
     "ko_syllable": "심",
     "ko_base": "심",
-    "vi_syllable": "tâm"
+    "vi_syllable": null
   },
   {
     "word_id": "w05355",
@@ -90402,7 +90402,7 @@
     "pinyin_syllable": "ái",
     "ko_syllable": "암",
     "ko_base": "암",
-    "vi_syllable": null
+    "vi_syllable": "nham"
   },
   {
     "word_id": "w05413",
@@ -91158,7 +91158,7 @@
     "pinyin_syllable": "bà",
     "ko_syllable": "파",
     "ko_base": "파",
-    "vi_syllable": null
+    "vi_syllable": "bãi"
   },
   {
     "word_id": "w05452",
@@ -91167,7 +91167,7 @@
     "pinyin_syllable": "miǎn",
     "ko_syllable": "면",
     "ko_base": "면",
-    "vi_syllable": null
+    "vi_syllable": "miễn"
   },
   {
     "word_id": "w05453",
@@ -92337,7 +92337,7 @@
     "pinyin_syllable": "bào",
     "ko_syllable": "보",
     "ko_base": "보",
-    "vi_syllable": "báo"
+    "vi_syllable": null
   },
   {
     "word_id": "w05516",
@@ -92346,7 +92346,7 @@
     "pinyin_syllable": "chou",
     "ko_syllable": "수",
     "ko_base": "수",
-    "vi_syllable": "thù"
+    "vi_syllable": null
   },
   {
     "word_id": "w05517",
@@ -104298,7 +104298,7 @@
     "pinyin_syllable": "dǎi",
     "ko_syllable": "체",
     "ko_base": "체",
-    "vi_syllable": null
+    "vi_syllable": "đãi"
   },
   {
     "word_id": "w06129",
@@ -105864,7 +105864,7 @@
     "pinyin_syllable": "dēng",
     "ko_syllable": "등",
     "ko_base": "등",
-    "vi_syllable": "đăng"
+    "vi_syllable": null
   },
   {
     "word_id": "w06208",
@@ -105873,7 +105873,7 @@
     "pinyin_syllable": "lù",
     "ko_syllable": "륙",
     "ko_base": "륙",
-    "vi_syllable": "lục"
+    "vi_syllable": null
   },
   {
     "word_id": "w06209",
@@ -108078,7 +108078,7 @@
     "pinyin_syllable": "dòng",
     "ko_syllable": "동",
     "ko_base": "동",
-    "vi_syllable": null
+    "vi_syllable": "đống"
   },
   {
     "word_id": "w06330",
@@ -113793,7 +113793,7 @@
     "pinyin_syllable": "fù",
     "ko_syllable": "부",
     "ko_base": "부",
-    "vi_syllable": null
+    "vi_syllable": "phú"
   },
   {
     "word_id": "w06629",
@@ -113802,7 +113802,7 @@
     "pinyin_syllable": "wēng",
     "ko_syllable": "옹",
     "ko_base": "옹",
-    "vi_syllable": null
+    "vi_syllable": "ông"
   },
   {
     "word_id": "w06630",
@@ -130596,7 +130596,7 @@
     "pinyin_syllable": "jiě",
     "ko_syllable": "해",
     "ko_base": "해",
-    "vi_syllable": "giải"
+    "vi_syllable": null
   },
   {
     "word_id": "w07523",
@@ -130605,7 +130605,7 @@
     "pinyin_syllable": "dú",
     "ko_syllable": "독",
     "ko_base": "독",
-    "vi_syllable": "độc"
+    "vi_syllable": null
   },
   {
     "word_id": "w07524",
@@ -142089,7 +142089,7 @@
     "pinyin_syllable": "lǜ",
     "ko_syllable": "녹",
     "ko_base": "록",
-    "vi_syllable": "lục"
+    "vi_syllable": null
   },
   {
     "word_id": "w08136",
@@ -142098,7 +142098,7 @@
     "pinyin_syllable": "dì",
     "ko_syllable": "지",
     "ko_base": "지",
-    "vi_syllable": "địa"
+    "vi_syllable": null
   },
   {
     "word_id": "w08137",
@@ -147399,7 +147399,7 @@
     "pinyin_syllable": "níng",
     "ko_syllable": "응",
     "ko_base": "응",
-    "vi_syllable": null
+    "vi_syllable": "ngưng"
   },
   {
     "word_id": "w08415",
@@ -147408,7 +147408,7 @@
     "pinyin_syllable": "jù",
     "ko_syllable": "취",
     "ko_base": "취",
-    "vi_syllable": null
+    "vi_syllable": "tụ"
   },
   {
     "word_id": "w08416",
@@ -148839,7 +148839,7 @@
     "pinyin_syllable": "pī",
     "ko_syllable": "벽",
     "ko_base": "벽",
-    "vi_syllable": null
+    "vi_syllable": "phách"
   },
   {
     "word_id": "w08496",
@@ -149712,7 +149712,7 @@
     "pinyin_syllable": "píng",
     "ko_syllable": "평",
     "ko_base": "평",
-    "vi_syllable": "bình"
+    "vi_syllable": null
   },
   {
     "word_id": "w08544",
@@ -149721,7 +149721,7 @@
     "pinyin_syllable": "dìng",
     "ko_syllable": "정",
     "ko_base": "정",
-    "vi_syllable": "định"
+    "vi_syllable": null
   },
   {
     "word_id": "w08545",
@@ -150450,7 +150450,7 @@
     "pinyin_syllable": "qī",
     "ko_syllable": "기",
     "ko_base": "기",
-    "vi_syllable": null
+    "vi_syllable": "khi"
   },
   {
     "word_id": "w08581",
@@ -150459,7 +150459,7 @@
     "pinyin_syllable": "zhà",
     "ko_syllable": "사",
     "ko_base": "사",
-    "vi_syllable": null
+    "vi_syllable": "trá"
   },
   {
     "word_id": "w08582",
@@ -152754,7 +152754,7 @@
     "pinyin_syllable": "qiào",
     "ko_syllable": "교",
     "ko_base": "교",
-    "vi_syllable": null
+    "vi_syllable": "kiều"
   },
   {
     "word_id": "w08695",
@@ -158145,7 +158145,7 @@
     "pinyin_syllable": "shàng",
     "ko_syllable": null,
     "ko_base": null,
-    "vi_syllable": "thượng"
+    "vi_syllable": null
   },
   {
     "word_id": "w08979",
@@ -158154,7 +158154,7 @@
     "pinyin_syllable": "wèi",
     "ko_syllable": null,
     "ko_base": null,
-    "vi_syllable": "vị"
+    "vi_syllable": null
   },
   {
     "word_id": "w08980",
@@ -160737,7 +160737,7 @@
     "pinyin_syllable": "shí",
     "ko_syllable": "식",
     "ko_base": "식",
-    "vi_syllable": "thực"
+    "vi_syllable": null
   },
   {
     "word_id": "w09113",
@@ -160746,7 +160746,7 @@
     "pinyin_syllable": "yòng",
     "ko_syllable": "용",
     "ko_base": "용",
-    "vi_syllable": "dụng"
+    "vi_syllable": null
   },
   {
     "word_id": "w09114",
@@ -170439,7 +170439,7 @@
     "pinyin_syllable": "wài",
     "ko_syllable": null,
     "ko_base": null,
-    "vi_syllable": "ngoại"
+    "vi_syllable": null
   },
   {
     "word_id": "w09627",
@@ -170448,7 +170448,7 @@
     "pinyin_syllable": "háng",
     "ko_syllable": null,
     "ko_base": null,
-    "vi_syllable": "hạng"
+    "vi_syllable": null
   },
   {
     "word_id": "w09628",
@@ -172752,7 +172752,7 @@
     "pinyin_syllable": "wú",
     "ko_syllable": "무",
     "ko_base": "무",
-    "vi_syllable": "vô"
+    "vi_syllable": null
   },
   {
     "word_id": "w09752",
@@ -172761,7 +172761,7 @@
     "pinyin_syllable": "cháng",
     "ko_syllable": "상",
     "ko_base": "상",
-    "vi_syllable": "thường"
+    "vi_syllable": null
   },
   {
     "word_id": "w09753",
@@ -180420,7 +180420,7 @@
     "pinyin_syllable": "xùn",
     "ko_syllable": "순",
     "ko_base": "순",
-    "vi_syllable": null
+    "vi_syllable": "thuần"
   },
   {
     "word_id": "w10144",
@@ -181779,7 +181779,7 @@
     "pinyin_syllable": "yāo",
     "ko_syllable": "요",
     "ko_base": "요",
-    "vi_syllable": null
+    "vi_syllable": "yêu"
   },
   {
     "word_id": "w10222",
@@ -186945,7 +186945,7 @@
     "pinyin_syllable": "yǒu",
     "ko_syllable": "우",
     "ko_base": "우",
-    "vi_syllable": "hữu"
+    "vi_syllable": null
   },
   {
     "word_id": "w10461",
@@ -186954,7 +186954,7 @@
     "pinyin_syllable": "qíng",
     "ko_syllable": "정",
     "ko_base": "정",
-    "vi_syllable": "tình"
+    "vi_syllable": null
   },
   {
     "word_id": "w10462",
@@ -188520,7 +188520,7 @@
     "pinyin_syllable": "yuán",
     "ko_syllable": "원",
     "ko_base": "원",
-    "vi_syllable": "nguyên"
+    "vi_syllable": null
   },
   {
     "word_id": "w10535",
@@ -188529,7 +188529,7 @@
     "pinyin_syllable": "xíng",
     "ko_syllable": "형",
     "ko_base": "형",
-    "vi_syllable": "hình"
+    "vi_syllable": null
   },
   {
     "word_id": "w10536",
@@ -188961,7 +188961,7 @@
     "pinyin_syllable": "yuè",
     "ko_syllable": "악",
     "ko_base": "악",
-    "vi_syllable": null
+    "vi_syllable": "nhạc"
   },
   {
     "word_id": "w10556",
@@ -188970,7 +188970,7 @@
     "pinyin_syllable": "fù",
     "ko_syllable": "부",
     "ko_base": "부",
-    "vi_syllable": null
+    "vi_syllable": "phụ"
   },
   {
     "word_id": "w10557",
@@ -188979,7 +188979,7 @@
     "pinyin_syllable": "yuè",
     "ko_syllable": "악",
     "ko_base": "악",
-    "vi_syllable": null
+    "vi_syllable": "nhạc"
   },
   {
     "word_id": "w10557",
@@ -188988,7 +188988,7 @@
     "pinyin_syllable": "mǔ",
     "ko_syllable": "모",
     "ko_base": "모",
-    "vi_syllable": null
+    "vi_syllable": "mẫu"
   },
   {
     "word_id": "w10558",
@@ -193974,7 +193974,7 @@
     "pinyin_syllable": "zhòng",
     "ko_syllable": "중",
     "ko_base": "중",
-    "vi_syllable": "trọng"
+    "vi_syllable": null
   },
   {
     "word_id": "w10827",
@@ -193983,7 +193983,7 @@
     "pinyin_syllable": "xíng",
     "ko_syllable": "형",
     "ko_base": "형",
-    "vi_syllable": "hình"
+    "vi_syllable": null
   },
   {
     "word_id": "w10828",
@@ -194487,7 +194487,7 @@
     "pinyin_syllable": "zhǔ",
     "ko_syllable": "주",
     "ko_base": "주",
-    "vi_syllable": "chủ"
+    "vi_syllable": "trụ"
   },
   {
     "word_id": "w10855",

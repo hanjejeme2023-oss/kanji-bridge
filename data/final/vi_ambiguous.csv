@@ -39,6 +39,43 @@ word_key,word_id,trad,pinyin,level,candidates,reason
 更|gèng,w00693,更,gèng,2,canh,override_replaced
 占|zhàn,w01208,占,zhàn,2,chiêm,override_replaced
 將|jiāng,w03600,將,jiāng,5,tướng,override_replaced
+一|yī,w00435,一,yī,1,nhứt,override_replaced
+詞|cí,w00591,詞,cí,2,tờ,override_replaced
+累|lèi,w00215,累,lèi,1,lũy,override_replaced
+圈|quān,w02810,圈,quān,4,quyển,override_replaced
+祝福|zhùfú,w03185,祝福,zhùfú,4,chúc phước,override_replaced
+服從|fúcóng,w03462,服從,fúcóng,5,phục tòng,override_replaced
+拖|tuō,w05098,拖,tuō,6,đà,override_replaced
+拄|zhǔ,w10854,拄,zhǔ,7,chủ,override_replaced
+老是|lǎoshì,w00842,老是,lǎoshì,2,lão thị,override_cleared
+行人|xíngrén,w01120,行人,xíngrén,2,hạnh nhân,override_cleared
+燈光|dēngguāng,w02394,燈光,dēngguāng,4,đăng quang,override_cleared
+長假|chángjià,w04378,長假,chángjià,6,trưởng giả,override_cleared
+嘆氣|tànqì,w05053,嘆氣,tànqì,6,thán khí,override_cleared
+忠心|zhōngxīn,w05354,忠心,zhōngxīn,6,trung tâm,override_cleared
+報酬|bàochou,w05516,報酬,bàochou,7,báo thù,override_cleared
+解讀|jiědú,w07523,解讀,jiědú,7,giải độc,override_cleared
+綠地|lǜdì,w08136,綠地,lǜdì,7,lục địa,override_cleared
+尚未|shàngwèi,w08979,尚未,shàngwèi,7,thượng vị,override_cleared
+食用|shíyòng,w09113,食用,shíyòng,7,thực dụng,override_cleared
+無償|wúcháng,w09752,無償,wúcháng,7,vô thường,override_cleared
+友情|yǒuqíng,w10461,友情,yǒuqíng,7,hữu tình,override_cleared
+評定|píngdìng,w08544,評定,píngdìng,7,bình định,override_cleared
+小型|xiǎoxíng,w03026,小型,xiǎoxíng,4,tiểu hình,override_cleared
+外行|wàiháng,w09627,外行,wàiháng,7,ngoại hạng,override_cleared
+登陸|dēnglù,w06208,登陸,dēnglù,7,đăng lục,override_cleared
+公里|gōnglǐ,w00697,公里,gōnglǐ,2,công lý,override_cleared
+設想|shèxiǎng,w03864,設想,shèxiǎng,5,thiết tưởng,override_cleared
+電器|diànqì,w04497,電器,diànqì,6,điện khí,override_cleared
+原型|yuánxíng,w10535,原型,yuánxíng,7,nguyên hình,override_cleared
+生詞|shēngcí,w00976,生詞,shēngcí,2,sinh từ,override_cleared
+重型|zhòngxíng,w10827,重型,zhòngxíng,7,trọng hình,override_cleared
+因為|yīnwèi,w01162,因為,yīnwèi,2,nhân vị,override_cleared
+爸爸|bàba,w00004,爸爸,bàba,1,ba ba,override_cleared
+大爺|dàye,w02373,大爺,dàye,4,đại gia,override_cleared
+飼養|sìyǎng,w09323,飼養,sìyǎng,7,tự dưỡng,override_cleared
+飼料|sìliào,w09322,飼料,sìliào,7,tự liệu,override_cleared
+薪水|xīnshui,w05174,薪水,xīnshui,6,tân thủy,override_cleared
 ff|学園,,學園,xuéyuán,,học viên,rule_b_conflict
 ff|機体,,機體,jītǐ,,cơ thể,rule_b_conflict
 ff|原人,,原人,yuánrén,,nguyên nhân,rule_b_conflict

@@ -1,7 +1,7 @@
 char_id,trad,key_char,simp,jp,ja_on,ko,pinyin,vi,ja_on_all,ko_all,pinyin_all,vi_all,ko_base_all,ko_final,vi_final,in_hsk_chars,level,gloss_en,source_ko,source_vi,source_ja,source_pinyin
 c00001,愛,愛,爱,愛,あい,애,ài,ái,あい,애,ài,ái,애,,,true,1,"love, be fond of, like",unihan,kaikki_aligned,kanjidic2,unihan
 c00002,八,八,八,八,はち,팔,bā,bát,はち;はつ,팔,bā;bá,bát,팔,ㄹ,t,true,1,"eight; all around, all sides",unihan,kaikki_aligned,kanjidic2,unihan
-c00003,爸,爸,爸,爸,は,파,bà,,は,파,bà,,파,,,true,1,"father, papa",unihan,,kanjidic2,unihan
+c00003,爸,爸,爸,爸,は,파,bà,ba,は,파,bà,ba,파,,,true,1,"father, papa",unihan,kaikki_en_char,kanjidic2,unihan
 c00004,吧,吧,吧,吧,は,파,ba,và,は;へ,파,ba;bā;pā,và,파,,,true,1,emphatic final particle,unihan,kaikki_aligned,kanjidic2,unihan
 c00005,白,白,白,白,はく,백,bái,bạch,はく;びゃく,백,bái;bó,bạch,백,ㄱ,ch,true,1,"white; pure, unblemished; bright",unihan,kaikki_aligned,kanjidic2,unihan
 c00006,百,百,百,百,ひゃく,백,bǎi,bách,ひゃく;びゃく,백,bǎi;bó;mò,bách;bá,백,ㄱ,ch,true,1,"one hundred; numerous, many",unihan,kaikki_aligned,kanjidic2,unihan
@@ -9,11 +9,11 @@ c00007,班,班,班,班,はん,반,bān,ban,はん,반,bān,ban,반,ㄴ,n,true,1,
 c00008,半,半,半,半,はん,반,bàn,bán,はん,반,bàn;pàn,bán,반,ㄴ,n,true,1,half,unihan,kaikki_aligned,kanjidic2,unihan
 c00009,幫,幫,帮,幫,ほう,방,bāng,bang,ほう,방,bāng,bang,방,ㅇ,ng,true,1,"to help, assist; to defend; shoe upper",unihan,kaikki_aligned,kanjidic2,unihan
 c00010,包,包,包,包,ほう,포,bāo,bao,ほう,포,bāo;páo;fú,bao,포,,,true,1,"wrap, pack, bundle; package",unihan,kaikki_aligned,kanjidic2,unihan
-c00011,杯,杯,杯,杯,はい,배,bēi,bôi,はい,배,bēi,bôi,배,,,true,1,"cup, glass",unihan,unihan_unverified,kanjidic2,unihan
+c00011,杯,杯,杯,杯,はい,배,bēi,bôi,はい,배,bēi,bôi,배,,,true,1,"cup, glass",unihan,kaikki_en_char,kanjidic2,unihan
 c00012,北,北,北,北,ほく,북,běi,bắc,ほく,북;배,běi;bèi,bắc,북;배,ㄱ,c,true,1,north; northern; northward,unihan,kaikki_aligned,kanjidic2,unihan
 c00013,備,備,备,備,び,비,bèi,bị,び,비,bèi,bị,비,,,true,1,"prepare, ready, perfect",unihan,kaikki_aligned,kanjidic2,unihan
 c00014,本,本,本,本,ほん,본,běn,bản,ほん,본,běn;bēn,bản;bổn,본,ㄴ,n,true,1,"root, origin, source; basis",unihan,kaikki_aligned,kanjidic2,unihan
-c00015,比,比,比,比,ひ,비,bǐ,tỷ,ひ,비,bǐ;bì;pí;pǐ,tỷ,비,,,true,1,"to compare, liken; comparison; than; hexagram ䷇",unihan,kaikki_aligned,kanjidic2,unihan
+c00015,比,比,比,比,ひ,비,bǐ,tỷ,ひ,비,bǐ;bì;pí;pǐ,tỷ;tỉ,비,,,true,1,"to compare, liken; comparison; than; hexagram ䷇",unihan,kaikki_aligned,kanjidic2,unihan
 c00016,邊,邊,边,辺,へん,변,biān,biên,へん,변,biān;bian,biên,변,ㄴ,n,true,1,"edge, margin, side, border",unihan,kaikki_aligned,kanjidic2,unihan
 c00017,別,別,别,別,べつ,별,bié,biệt,べつ,별,bié,biệt,별,ㄹ,t,true,1,"separate, other; do not",unihan,kaikki_aligned,kanjidic2,unihan
 c00018,病,病,病,病,びょう,병,bìng,bệnh,びょう;へい,병,bìng,bệnh,병,ㅇ,nh,true,1,"illness, sickness, disease",unihan,kaikki_aligned,kanjidic2,unihan
@@ -46,14 +46,14 @@ c00044,弟,弟,弟,弟,てい,제,dì,đệ,てい;だい;で,제,dì;tì;tuí,�
 c00045,第,第,第,第,だい,제,dì,đệ,だい;てい,제,dì,đệ,제,,,true,1,"sequence, number; grade, degree",unihan,kaikki_aligned,kanjidic2,unihan
 c00046,點,點,点,点,てん,점,diǎn,điểm,てん,점,diǎn;zhān;duò,điểm,점,ㅁ,m,true,1,"dot, speck, spot; point, degree",unihan,kaikki_aligned,kanjidic2,unihan
 c00047,電,電,电,電,でん,전,diàn,điện,でん,전,diàn,điện,전,ㄴ,n,true,1,"electricity, electric; lightning",unihan,kaikki_aligned,kanjidic2,unihan
-c00048,店,店,店,店,てん,점,diàn,điếm,てん,점,diàn,điếm,점,ㅁ,m,true,1,"shop, store; inn, hotel",unihan,unihan_hvsyl,kanjidic2,unihan
+c00048,店,店,店,店,てん,점,diàn,điếm,てん,점,diàn,điếm,점,ㅁ,m,true,1,"shop, store; inn, hotel",unihan,kaikki_en_char,kanjidic2,unihan
 c00049,東,東,东,東,とう,동,dōng,đông,とう,동,dōng,đông;đang,동,ㅇ,ng,true,1,"east, eastern, eastward",unihan,kaikki_aligned,kanjidic2,unihan
 c00050,動,動,动,動,どう,동,dòng,động,どう,동,dòng,động,동,ㅇ,ng,true,1,"move, happen; movement, action",unihan,kaikki_aligned,kanjidic2,unihan
 c00051,都,都,都,都,と,도,dōu,đô,と;つ,도,dōu;dū,đô,도,,,true,1,"metropolis, capital; all, the whole; elegant, refined",unihan,kaikki_aligned,kanjidic2,unihan
 c00052,讀,讀,读,読,どく,독,dú,độc,どく;とく;とう,독;두,dú;dòu,độc,독;두,ㄱ,c,true,1,"read, study; pronounce",unihan,kaikki_aligned,kanjidic2,unihan
 c00053,對,對,对,対,たい,대,duì,đối,たい;つい,대,duì,đối,대,,,true,1,"correct, right; facing, opposed",unihan,kaikki_aligned,kanjidic2,unihan
 c00054,多,多,多,多,た,다,duō,đa,た,다,duō,đa,다,,,true,1,"much, many; more than, over",unihan,kaikki_aligned,kanjidic2,unihan
-c00055,餓,餓,饿,餓,が,아,è,,が,아,è,,아,,,true,1,hungry; greedy for; hunger,unihan,,kanjidic2,unihan
+c00055,餓,餓,饿,餓,が,아,è,ngạ,が,아,è,ngạ,아,,,true,1,hungry; greedy for; hunger,unihan,kaikki_en_char,kanjidic2,unihan
 c00056,兒,兒,儿,児,じ,아,ér,nhi,じ;に;げい,아;예,ér;ní,nhi,아;예,,,true,1,"son, child, oneself; final part",unihan,kaikki_aligned,kanjidic2,unihan
 c00057,二,二,二,二,に,이,èr,nhị,に;じ,이,èr,nhị,이,,,true,1,two; twice,unihan,kaikki_aligned,kanjidic2,unihan
 c00058,飯,飯,饭,飯,はん,반,fàn,,はん,반,fàn,,반,ㄴ,,true,1,cooked rice; food; meal,unihan,,kanjidic2,unihan
@@ -65,7 +65,7 @@ c00063,非,非,非,非,ひ,비,fēi,phi,ひ,비,fēi;fěi,phi,비,,,true,1,"not,
 c00064,分,分,分,分,ぶん,분,fēn,phân,ぶん;ふん;ぶ,분,fēn;fèn;fén;bàn,phân;phận;phần,분,ㄴ,n,true,1,divide; small unit of time etc.,unihan,kaikki_aligned,kanjidic2,unihan
 c00065,風,風,风,風,ふう,풍,fēng,phong,ふう;ふ,풍,fēng;fèng;fěng,phong,풍,ㅇ,ng,true,1,"wind; air; manners, atmosphere; Kangxi radical 182",unihan,kaikki_aligned,kanjidic2,unihan
 c00066,服,服,服,服,ふく,복,fú,phục,ふく,복,fú;fù;bì;bó,phục,복,ㄱ,c,true,1,"clothes; wear, dress",unihan,kaikki_aligned,kanjidic2,unihan
-c00067,乾,乾,干,乾,かん,건,qián,kiền,かん;けん,건;간,qián;gān,kiền,건;간,ㄴ,n,true,1,"dry; warming principle of the sun, penetrating and fertilizing, heavenly generative principle (male); trigram ☰; hexagram ䷀",unihan,unihan_unverified,kanjidic2,unihan
+c00067,乾,乾,干,乾,かん,건,qián,kiền,かん;けん,건;간,qián;gān,kiền,건;간,ㄴ,n,true,1,"dry; warming principle of the sun, penetrating and fertilizing, heavenly generative principle (male); trigram ☰; hexagram ䷀",unihan,kaikki_en_char,kanjidic2,unihan
 c00068,高,高,高,高,こう,고,gāo,cao,こう,고,gāo;gào,cao,고,,,true,1,"high, tall; lofty, elevated; Kangxi radical 189",unihan,kaikki_aligned,kanjidic2,unihan
 c00069,告,告,告,告,こく,고,gào,cáo,こく,고,gào;jū;gù,cáo,고,,,true,1,"tell, announce, inform; accuse",unihan,kaikki_aligned,kanjidic2,unihan
 c00070,哥,哥,哥,哥,か,가,gē,ca,か;こ,가,gē,ca,가,,,true,1,elder brother,unihan,unihan_hvsyl,kanjidic2,unihan
@@ -139,10 +139,10 @@ c00137,路,路,路,路,ろ,로,lù,lộ,ろ;る,로;노,lù;luò,lộ,로,,,true
 c00138,媽,媽,妈,媽,ぼ,마,mā,má,ぼ;も,마,mā,má,마,,,true,1,"mother, mama",unihan,unihan_unverified,kanjidic2,unihan
 c00139,馬,馬,马,馬,ば,마,mǎ,mã,ば;め;ま;ぼ;も,마,mǎ,mã,마,,,true,1,horse; surname; Kangxi radical 187,unihan,kaikki_aligned,kanjidic2,unihan
 c00140,嗎,嗎,吗,嗎,ば,마,ma,mửa,ば,마,ma;mà;má;mǎ,mửa,마,,,true,1,final interrogative particle,unihan,unihan_unverified,kanjidic2,unihan
-c00141,買,買,买,買,ばい,매,mǎi,mãi,ばい,매,mǎi,mãi,매,,,true,1,"buy, purchase; bribe, persuade",unihan,unihan_unverified,kanjidic2,unihan
+c00141,買,買,买,買,ばい,매,mǎi,mãi,ばい,매,mǎi,mãi,매,,,true,1,"buy, purchase; bribe, persuade",unihan,kaikki_en_char,kanjidic2,unihan
 c00142,慢,慢,慢,慢,まん,만,màn,mạn,まん,만,màn;mán,mạn,만,ㄴ,n,true,1,"slow(ly), leisurely, sluggish",unihan,kaikki_aligned,kanjidic2,unihan
 c00143,忙,忙,忙,忙,ぼう,망,máng,mang,ぼう;もう,망,máng,mang,망,ㅇ,ng,true,1,"busy, pressed for time; hustling",unihan,kaikki_aligned,kanjidic2,unihan
-c00144,毛,毛,毛,毛,もう,모,máo,mao,もう,모,máo;mào,mao,모,,,true,1,"hair, fur, feathers; coarse",unihan,unihan_unverified,kanjidic2,unihan
+c00144,毛,毛,毛,毛,もう,모,máo,mao,もう,모,máo;mào,mao,모,,,true,1,"hair, fur, feathers; coarse",unihan,kaikki_en_char,kanjidic2,unihan
 c00145,麼,麼,么,麼,び,마,me,,び;み;ば;ま;も,마,me,,마,,,true,1,"interrogative final particle; insignificant, small, tiny",unihan,,kanjidic2,unihan
 c00146,沒,沒,没,没,ぼつ,몰,méi,một,ぼつ;もつ,몰,méi,một;mốt,몰,ㄹ,t,true,1,"not, have not, none; to drown, sink",unihan,unihan_unverified,kanjidic2,unihan
 c00147,妹,妹,妹,妹,まい,매,mèi,muội,まい,매,mèi,muội,매,,,true,1,younger sister,unihan,unihan_hvsyl,kanjidic2,unihan
@@ -213,7 +213,7 @@ c00211,說,說,说,説,せつ,설,shuō,thuyết,せつ;ぜい,설;세;열,shuō
 c00212,四,四,四,四,し,사,sì,tứ,し,사,sì,tứ,사,,,true,1,four,unihan,kaikki_aligned,kanjidic2,unihan
 c00213,送,送,送,送,そう,송,sòng,tống,そう,송,sòng,tống,송,ㅇ,ng,true,1,"see off, send off; dispatch, give",unihan,kaikki_aligned,kanjidic2,unihan
 c00214,訴,訴,诉,訴,そ,소,sù,tố,そ,소,sù,tố,소,,,true,1,accuse; sue; inform; narrate,unihan,kaikki_aligned,kanjidic2,unihan
-c00215,歲,歲,岁,歳,さい,세,suì,,さい;せい,세,suì;suò,,세,,,true,1,year; age; harvest,unihan,,kanjidic2,unihan
+c00215,歲,歲,岁,歳,さい,세,suì,tuế,さい;せい,세,suì;suò,tuế,세,,,true,1,year; age; harvest,unihan,kaikki_en_char,kanjidic2,unihan
 c00216,他,他,他,他,た,타,tā,tha,た,타,tā;tuó,tha,타,,,true,1,"other, another; he, she, it",unihan,kaikki_aligned,kanjidic2,unihan
 c00217,她,她,她,她,ち,저,tā,,ち;じ;しゃ;た;い,저,tā;jiě;chí,,저,,,true,1,"she, her",unihan,,kanjidic2,unihan
 c00218,太,太,太,太,たい,태,tài,thái,たい;た,태,tài;tā,thái,태,,,true,1,"very, too, much; big; extreme",unihan,kaikki_aligned,kanjidic2,unihan
@@ -232,7 +232,7 @@ c00230,文,文,文,文,ぶん,문,wén,văn,ぶん;もん,문,wén,văn,문,ㄴ,
 c00231,問,問,问,問,もん,문,wèn,vấn,もん,문,wèn,vấn,문,ㄴ,n,true,1,"ask (about), inquire after",unihan,kaikki_aligned,kanjidic2,unihan
 c00232,我,我,我,我,が,아,wǒ,ngã,が,아,wǒ,ngã,아,,,true,1,"our, us, i, me, my, we",unihan,kaikki_aligned,kanjidic2,unihan
 c00233,五,五,五,五,ご,오,wǔ,ngũ,ご,오,wǔ,ngũ,오,,,true,1,five; surname,unihan,kaikki_aligned,kanjidic2,unihan
-c00234,午,午,午,午,ご,오,wǔ,ngọ,ご,오,wǔ,ngọ,오,,,true,1,seventh earthly branch,unihan,unihan_unverified,kanjidic2,unihan
+c00234,午,午,午,午,ご,오,wǔ,ngọ,ご,오,wǔ,ngọ,오,,,true,1,seventh earthly branch,unihan,kaikki_en_char,kanjidic2,unihan
 c00235,西,西,西,西,せい,서,xī,tây,せい;さい;す,서,xī,tây,서,,,true,1,west(ern); westward; occident; Kangxi radical 146,unihan,kaikki_aligned,kanjidic2,unihan
 c00236,息,息,息,息,そく,식,xī,tức,そく,식,xī,tức,식,ㄱ,c,true,1,"rest, put stop to, end, cease",unihan,unihan_hvsyl,kanjidic2,unihan
 c00237,習,習,习,習,しゅう,습,xí,tập,しゅう;じゅ,습,xí,tập,습,ㅂ,p,true,1,practice; flapping wings,unihan,kaikki_aligned,kanjidic2,unihan
@@ -245,7 +245,7 @@ c00243,現,現,现,現,げん,현,xiàn,hiện,げん,현,xiàn,hiện,현,ㄴ,n
 c00244,想,想,想,想,そう,상,xiǎng,tưởng,そう;そ,상,xiǎng,tưởng,상,ㅇ,ng,true,1,"think, speculate, plan, consider",unihan,kaikki_aligned,kanjidic2,unihan
 c00245,小,小,小,小,しょう,소,xiǎo,tiểu,しょう,소,xiǎo,tiểu,소,,,true,1,"small, tiny, insignificant",unihan,kaikki_aligned,kanjidic2,unihan
 c00246,校,校,校,校,こう,교,xiào,hiệu,こう;きょう,교,xiào;jiào;jiǎo;qiāo,hiệu,교,,,true,1,school; military field officer,unihan,kaikki_aligned,kanjidic2,unihan
-c00247,笑,笑,笑,笑,しょう,소,xiào,,しょう,소,xiào,,소,,,true,1,"smile, laugh, giggle; snicker",unihan,,kanjidic2,unihan
+c00247,笑,笑,笑,笑,しょう,소,xiào,tiếu,しょう,소,xiào,tiếu,소,,,true,1,"smile, laugh, giggle; snicker",unihan,kaikki_en_char,kanjidic2,unihan
 c00248,些,些,些,些,さ,사,xiē,ta,さ;しゃ,사,xiē;suò;suō,ta,사,,,true,1,"little, few; rather, somewhat",unihan,unihan_hvsyl,kanjidic2,unihan
 c00249,寫,寫,写,写,しゃ,사,xiě,tả,しゃ;じゃ,사,xiě;xiè,tả,사,,,true,1,"write; draw, sketch; compose",unihan,kaikki_aligned,kanjidic2,unihan
 c00250,謝,謝,谢,謝,しゃ,사,xiè,tạ,しゃ,사,xiè,tạ,사,,,true,1,thank; decline,unihan,kaikki_aligned,kanjidic2,unihan
@@ -257,7 +257,7 @@ c00255,休,休,休,休,きゅう,휴,xiū,hưu,きゅう,휴,xiū;xù,hưu,휴,,
 c00256,學,學,学,学,がく,학,xué,học,がく,학,xué;huá;jiào,học,학,ㄱ,c,true,1,"learning, knowledge; school",unihan,kaikki_aligned,kanjidic2,unihan
 c00257,樣,樣,样,様,よう,양,yàng,dạng,よう;しょう,양;상,yàng;xiàng,dạng,양;상,ㅇ,ng,true,1,"shape, form, pattern, style",unihan,kaikki_aligned,kanjidic2,unihan
 c00258,要,要,要,要,よう,요,yào,yếu,よう,요,yào;yāo;yǎo,yếu;yêu,요,,,true,1,"necessary, essential; necessity",unihan,kaikki_aligned,kanjidic2,unihan
-c00259,爺,爺,爷,爺,や,야,yé,,や,야,yé,,야,,,true,1,"father, grandfather",unihan,,kanjidic2,unihan
+c00259,爺,爺,爷,爺,や,야,yé,gia,や,야,yé,gia,야,,,true,1,"father, grandfather",unihan,kaikki_en_char,kanjidic2,unihan
 c00260,也,也,也,也,や,야,yě,dã,や;え,야,yě;yí,dã,야,,,true,1,also; classical final particle of strong affirmation or identity,unihan,unihan_hvsyl,kanjidic2,unihan
 c00261,頁,頁,页,頁,けつ,혈,yè,,けつ,혈,yè;xié,,혈,ㄹ,,true,1,"page, sheet, leaf; Kangxi radical 181",unihan,,kanjidic2,unihan
 c00262,一,一,一,一,いち,일,yī,nhất,いち;いつ,일,yī;yí;yì,nhất;nhứt,일,ㄹ,t,true,1,"one; a, an; alone",unihan,kaikki_aligned,kanjidic2,unihan
@@ -268,7 +268,7 @@ c00266,用,用,用,用,よう,용,yòng,dụng,よう,용,yòng,dụng,용,ㅇ,n
 c00267,友,友,友,友,ゆう,우,yǒu,hữu,ゆう,우,yǒu,hữu,우,,,true,1,"friend, companion; fraternity",unihan,kaikki_aligned,kanjidic2,unihan
 c00268,有,有,有,有,ゆう,유,yǒu,hữu,ゆう;う,유,yǒu;yòu;wěi,hữu,유,,,true,1,"have, own, possess; exist",unihan,kaikki_aligned,kanjidic2,unihan
 c00269,右,右,右,右,う,우,yòu,hữu,う;ゆう,우,yòu,hữu,우,,,true,1,right; west; right-wing,unihan,unihan_hvsyl,kanjidic2,unihan
-c00270,雨,雨,雨,雨,う,우,yǔ,,う,우,yǔ;yù,,우,,,true,1,rain; rainy; Kangxi radical 173,unihan,,kanjidic2,unihan
+c00270,雨,雨,雨,雨,う,우,yǔ,vũ,う,우,yǔ;yù,vũ,우,,,true,1,rain; rainy; Kangxi radical 173,unihan,kaikki_en_char,kanjidic2,unihan
 c00271,語,語,语,語,ご,어,yǔ,ngữ,ご,어,yǔ;yù,ngữ,어,,,true,1,"language, words; saying, expression",unihan,kaikki_aligned,kanjidic2,unihan
 c00272,元,元,元,元,げん,원,yuán,nguyên,げん;がん,원,yuán,nguyên,원,ㄴ,n,true,1,first; dollar; origin; head,unihan,kaikki_aligned,kanjidic2,unihan
 c00273,遠,遠,远,遠,えん,원,yuǎn,viễn,えん;おん,원,yuǎn;yuàn,viễn,원,ㄴ,n,true,1,"distant, remote, far; profound",unihan,kaikki_aligned,kanjidic2,unihan
@@ -276,7 +276,7 @@ c00274,院,院,院,院,いん,원,yuàn,viện,いん,원,yuàn,viện,원,ㄴ,n
 c00275,月,月,月,月,げつ,월,yuè,nguyệt,げつ;がつ,월,yuè;rù,nguyệt,월,ㄹ,t,true,1,moon; month; Kangxi radical 74,unihan,kaikki_aligned,kanjidic2,unihan
 c00276,再,再,再,再,さい,재,zài,tái,さい;さ,재,zài,tái,재,,,true,1,"again, twice, re-",unihan,kaikki_aligned,kanjidic2,unihan
 c00277,在,在,在,在,ざい,재,zài,tại,ざい,재,zài,tại,재,,,true,1,"be at, in, on; consist in, rest",unihan,kaikki_aligned,kanjidic2,unihan
-c00278,早,早,早,早,そう,조,zǎo,tảo,そう;さっ,조,zǎo,tảo,조,,,true,1,early; soon; morning,unihan,unihan_unverified,kanjidic2,unihan
+c00278,早,早,早,早,そう,조,zǎo,tảo,そう;さっ,조,zǎo,tảo,조,,,true,1,early; soon; morning,unihan,kaikki_en_char,kanjidic2,unihan
 c00279,怎,怎,怎,怎,しん,즘,zěn,chẩn,しん;そ,즘,zěn,chẩn,즘,ㅁ,n,true,1,what? why? how?,unihan,unihan_hvsyl,kanjidic2,unihan
 c00280,站,站,站,站,たん,참,zhàn,trạm,たん,참,zhàn;zhān,trạm,참,ㅁ,m,true,1,"stand up; a stand, station",unihan,unihan_unverified,kanjidic2,unihan
 c00281,找,找,找,找,そう,조,zhǎo,quơ,そう,조,zhǎo;huá,quơ,조,,,true,1,"search, seek, look for; find",unihan,unihan_unverified,kanjidic2,unihan
@@ -290,9 +290,9 @@ c00288,重,重,重,重,じゅう,중,zhòng,trọng,じゅう;ちょう,중,zhò
 c00289,住,住,住,住,じゅう,주,zhù,trú,じゅう;ぢゅう;ちゅう,주,zhù,trú,주,,,true,1,"reside, live at, dwell, lodge; stop",unihan,kaikki_aligned,kanjidic2,unihan
 c00290,準,準,准,準,じゅん,준,zhǔn,chuẩn,じゅん,준,zhǔn;zhuó,chuẩn,준,ㄴ,n,true,1,"rule, guideline, standard",unihan,kaikki_aligned,kanjidic2,unihan
 c00291,桌,桌,桌,桌,たく,탁,zhuō,,たく,탁,zhuō,,탁,ㄱ,,true,1,"table, desk, stand",unihan,,kanjidic2,unihan
-c00292,子,子,子,子,し,자,zǐ,tử,し;す;つ,자,zǐ;zi,tử;tý,자,,,true,1,"offspring, child; fruit, seed of; first earthly branch",unihan,kaikki_aligned,kanjidic2,unihan
+c00292,子,子,子,子,し,자,zǐ,tử,し;す;つ,자,zǐ;zi,tử;tý;tí,자,,,true,1,"offspring, child; fruit, seed of; first earthly branch",unihan,kaikki_aligned,kanjidic2,unihan
 c00293,字,字,字,字,じ,자,zì,tự,じ,자,zì,tự,자,,,true,1,"letter, character, word",unihan,kaikki_aligned,kanjidic2,unihan
-c00294,走,走,走,走,そう,주,zǒu,tẩu,そう,주,zǒu,tẩu,주,,,true,1,"walk, go on foot; run; leave; Kangxi radical 156",unihan,unihan_unverified,kanjidic2,unihan
+c00294,走,走,走,走,そう,주,zǒu,tẩu,そう,주,zǒu,tẩu,주,,,true,1,"walk, go on foot; run; leave; Kangxi radical 156",unihan,kaikki_en_char,kanjidic2,unihan
 c00295,最,最,最,最,さい,최,zuì,tối,さい;しゅ,최,zuì;cuō,tối,최,,,true,1,"most, extremely, exceedingly",unihan,kaikki_aligned,kanjidic2,unihan
 c00296,昨,昨,昨,昨,さく,작,zuó,,さく,작,zuó,,작,ㄱ,,true,1,"yesterday; in former times, past",unihan,,kanjidic2,unihan
 c00297,左,左,左,左,さ,좌,zuǒ,tả,さ;しゃ,좌,zuǒ,tả,좌,,,true,1,"left; east; unorthodox, improper",unihan,kaikki_aligned,kanjidic2,unihan
@@ -341,7 +341,7 @@ c00339,低,低,低,低,てい,저,dī,đê,てい,저,dī,đê,저,,,true,2,"low
 c00340,典,典,典,典,てん,전,diǎn,điển,てん;でん,전,diǎn;tiǎn,điển,전,ㄴ,n,true,2,"law, canon; documentation; classic, scripture",unihan,kaikki_aligned,kanjidic2,unihan
 c00341,掉,掉,掉,掉,とう,도,diào,trao,とう;ちょう,도,diào;nuó,trao,도,,,true,2,"turn, move; shake, wag; drop down",unihan,unihan_unverified,kanjidic2,unihan
 c00342,定,定,定,定,てい,정,dìng,định,てい;じょう,정,dìng,định,정,ㅇ,nh,true,2,"decide, settle, fix",unihan,kaikki_aligned,kanjidic2,unihan
-c00343,冬,冬,冬,冬,とう,동,dōng,đông,とう,동,dōng,đông,동,ㅇ,ng,true,2,"winter, 11th lunar month",unihan,unihan_hvsyl,kanjidic2,unihan
+c00343,冬,冬,冬,冬,とう,동,dōng,đông,とう,동,dōng,đông,동,ㅇ,ng,true,2,"winter, 11th lunar month",unihan,kaikki_en_char,kanjidic2,unihan
 c00344,懂,懂,懂,懂,とう,동,dǒng,,とう;つ,동,dǒng,,동,ㅇ,,true,2,"understand, comprehend",unihan,,kanjidic2,unihan
 c00345,度,度,度,度,ど,도,dù,độ,ど;と;たく,도;탁,dù;duó;zhái,độ;đạc,도;탁,,,true,2,"degree, system; manner; to consider",unihan,kaikki_aligned,kanjidic2,unihan
 c00346,短,短,短,短,たん,단,duǎn,đoản,たん,단,duǎn,đoản,단,ㄴ,n,true,2,"short; brief; deficient, lacking",unihan,kaikki_aligned,kanjidic2,unihan
@@ -361,7 +361,7 @@ c00359,更,更,更,更,こう,경,gèng,cánh,こう,경;갱,gèng;gēng,cánh;c
 c00360,公,公,公,公,こう,공,gōng,công,こう;く,공,gōng,công,공,ㅇ,ng,true,2,"fair, equitable; public; duke",unihan,kaikki_aligned,kanjidic2,unihan
 c00361,共,共,共,共,きょう,공,gòng,cộng,きょう,공,gòng;gōng;gǒng;hóng,cộng,공,ㅇ,ng,true,2,"together with, all, total; to share",unihan,kaikki_aligned,kanjidic2,unihan
 c00362,狗,狗,狗,狗,く,구,gǒu,cẩu,く;こう,구,gǒu,cẩu,구,,,true,2,"dog, Canis familiaris",unihan,unihan_hvsyl,kanjidic2,unihan
-c00363,夠,夠,够,,,구,gòu,,,구,gòu,,구,,,true,2,"enough, adequate",unihan,,,unihan
+c00363,夠,夠,够,,,구,gòu,cú,,구,gòu,cú,구,,,true,2,"enough, adequate",unihan,kaikki_en_char,,unihan
 c00364,故,故,故,故,こ,고,gù,cố,こ,고,gù,cố,고,,,true,2,"ancient, old; reason, because",unihan,kaikki_aligned,kanjidic2,unihan
 c00365,顧,顧,顾,顧,こ,고,gù,cố,こ,고,gù,cố,고,,,true,2,look back; look at; look after,unihan,kaikki_aligned,kanjidic2,unihan
 c00366,觀,觀,观,観,かん,관,guān,quan,かん,관,guān;guàn,quan,관,ㄴ,n,true,2,"see, observe, view; appearance; hexagram ䷓",unihan,kaikki_aligned,kanjidic2,unihan
@@ -371,7 +371,7 @@ c00369,海,海,海,海,かい,해,hǎi,hải,かい,해,hǎi,hải,해,,,true,2,
 c00370,喊,喊,喊,喊,かん,함,hǎn,,かん;やく,함,hǎn;kàn;jiān,,함,ㅁ,,true,2,"shout, call out, yell; howl; cry",unihan,,kanjidic2,unihan
 c00371,合,合,合,合,ごう,합,hé,hợp,ごう;がっ;かっ,합,hé;gě,hợp;hiệp,합,ㅂ,p,true,2,"combine, unite, join; gather",unihan,kaikki_aligned,kanjidic2,unihan
 c00372,河,河,河,河,か,하,hé,hà,か,하,hé,hà,하,,,true,2,river; stream; the Yellow River,unihan,kaikki_aligned,kanjidic2,unihan
-c00373,黑,黑,黑,黒,こく,흑,hēi,hắc,こく,흑,hēi,hắc,흑,ㄱ,c,true,2,"black; dark; evil, sinister; Kangxi radical 203",unihan,unihan_unverified,kanjidic2,unihan
+c00373,黑,黑,黑,黒,こく,흑,hēi,hắc,こく,흑,hēi,hắc,흑,ㄱ,c,true,2,"black; dark; evil, sinister; Kangxi radical 203",unihan,kaikki_en_char,kanjidic2,unihan
 c00374,紅,紅,红,紅,こう,홍,hóng,hồng,こう;く,홍,hóng;gōng;jiàng,hồng,홍,ㅇ,ng,true,2,"red, vermillion; blush, flush",unihan,kaikki_aligned,kanjidic2,unihan
 c00375,忽,忽,忽,忽,こつ,홀,hū,hốt,こつ,홀,hū,hốt,홀,ㄹ,t,true,2,"suddenly, abruptly; neglect",unihan,unihan_unverified,kanjidic2,unihan
 c00376,湖,湖,湖,湖,こ,호,hú,hồ,こ,호,hú,hồ,호,,,true,2,"a lake; Hubei, Hunan; bluish-green",unihan,kaikki_aligned,kanjidic2,unihan
@@ -381,10 +381,10 @@ c00379,畫,畫,画,画,が,화,huà,họa,が;かく;え;かい,화;획,huà,h�
 c00380,換,換,换,換,かん,환,huàn,hoán,かん,환,huàn,hoán,환,ㄴ,n,true,2,"change, exchange; substitute",unihan,kaikki_aligned,kanjidic2,unihan
 c00381,黃,黃,黄,黄,こう,황,huáng,hoàng,こう;おう,황,huáng,hoàng;huỳnh,황,ㅇ,ng,true,2,yellow; surname; Kangxi radical 201,unihan,kaikki_aligned,kanjidic2,unihan
 c00382,活,活,活,活,かつ,활,huó,hoạt,かつ,활,huó;guō,hoạt,활,ㄹ,t,true,2,"live, exist, survive; lively",unihan,kaikki_aligned,kanjidic2,unihan
-c00383,或,或,或,或,わく,혹,huò,hoặc,わく;こく;いき,혹,huò;yù,hoặc,혹,ㄱ,c,true,2,"or, either, else; perhaps, maybe",unihan,unihan_hvsyl,kanjidic2,unihan
+c00383,或,或,或,或,わく,혹,huò,hoặc,わく;こく;いき,혹,huò;yù,hoặc,혹,ㄱ,c,true,2,"or, either, else; perhaps, maybe",unihan,kaikki_en_char,kanjidic2,unihan
 c00384,級,級,级,級,きゅう,급,jí,cấp,きゅう,급,jí,cấp,급,ㅂ,p,true,2,"level, rank, class; grade",unihan,kaikki_aligned,kanjidic2,unihan
 c00385,急,急,急,急,きゅう,급,jí,cấp,きゅう,급,jí,cấp,급,ㅂ,p,true,2,"quick, quickly; urgent, pressing",unihan,kaikki_aligned,kanjidic2,unihan
-c00386,己,己,己,己,こ,기,jǐ,kỉ,こ;き,기,jǐ;qǐ,kỉ,기,,,true,2,"self, oneself; personal, private; 6th heavenly stem",unihan,unihan_hvsyl,kanjidic2,unihan
+c00386,己,己,己,己,こ,기,jǐ,kỉ,こ;き,기,jǐ;qǐ,kỉ,기,,,true,2,"self, oneself; personal, private; 6th heavenly stem",unihan,kaikki_en_char,kanjidic2,unihan
 c00387,計,計,计,計,けい,계,jì,kế,けい,계,jì,kế;kê,계,,,true,2,"plan, plot; stratagem; scheme",unihan,kaikki_aligned,kanjidic2,unihan
 c00388,際,際,际,際,さい,제,jì,tế,さい,제,jì,tế,제,,,true,2,"border, boundary, juncture",unihan,kaikki_aligned,kanjidic2,unihan
 c00389,績,績,绩,績,せき,적,jī,tích,せき,적,jī,tích,적,ㄱ,ch,true,2,spin; achievements,unihan,kaikki_aligned,kanjidic2,unihan
@@ -454,14 +454,14 @@ c00452,爬,爬,爬,爬,は,파,pá,bò,は,파,pá,bò,파,,,true,2,"crawl, cree
 c00453,怕,怕,怕,怕,はく,파,pà,,はく;ひゃく;は,파,pà;bó,,파,,,true,2,"to fear, be afraid of; apprehensive",unihan,,kanjidic2,unihan
 c00454,排,排,排,排,はい,배,pái,bài,はい,배,pái;bài;pǎi,bài,배,,,true,2,"row, rank, line",unihan,kaikki_aligned,kanjidic2,unihan
 c00455,碰,碰,碰,碰,ほう,팽,pèng,,ほう,팽,pèng,,팽,ㅇ,,true,2,"collide, bump into",unihan,,kanjidic2,unihan
-c00456,篇,篇,篇,篇,へん,편,piān,,へん,편,piān,,편,ㄴ,,true,2,"chapter, section, essay, article",unihan,,kanjidic2,unihan
+c00456,篇,篇,篇,篇,へん,편,piān,thiên,へん,편,piān,thiên,편,ㄴ,n,true,2,"chapter, section, essay, article",unihan,kaikki_en_char,kanjidic2,unihan
 c00457,片,片,片,片,へん,편,piàn,phiến,へん,편,piàn;piān;pàn,phiến;phiện,편,ㄴ,n,true,2,"slice, splinter, strip; rad. 91",unihan,kaikki_aligned,kanjidic2,unihan
 c00458,漂,漂,漂,漂,ひょう,표,piào,phiêu,ひょう,표,piào;piāo;piǎo;biāo,phiêu,표,,,true,2,"float, drift; tossed about",unihan,kaikki_aligned,kanjidic2,unihan
 c00459,平,平,平,平,へい,평,píng,bình,へい;びょう;ひょう,평,píng;pián;bìng;bēng,bình;bằng,평,ㅇ,nh,true,2,"flat, level, even; peaceful",unihan,kaikki_aligned,kanjidic2,unihan
 c00460,瓶,瓶,瓶,瓶,びん,병,píng,bình,びん;へい,병,píng,bình,병,ㅇ,nh,true,2,"jug, pitcher, vase, jar, bottle",unihan,unihan_hvsyl,kanjidic2,unihan
 c00461,普,普,普,普,ふ,보,pǔ,phổ,ふ,보,pǔ,phổ,보,,,true,2,"universal, general, widespread",unihan,kaikki_aligned,kanjidic2,unihan
 c00462,其,其,其,其,き,기,qí,kì,き;ぎ;ご,기,qí;jī;jì,kì,기,,,true,2,"his, her, its, their; that",unihan,unihan_hvsyl,kanjidic2,unihan
-c00463,騎,騎,骑,騎,き,기,qí,kị,き,기,qí;jì,kị,기,,,true,2,ride horseback; mount; cavalry,unihan,unihan_hvsyl,kanjidic2,unihan
+c00463,騎,騎,骑,騎,き,기,qí,kị,き,기,qí;jì,kị,기,,,true,2,ride horseback; mount; cavalry,unihan,kaikki_en_char,kanjidic2,unihan
 c00464,千,千,千,千,せん,천,qiān,thiên,せん,천,qiān,thiên,천,ㄴ,n,true,2,"thousand; many, numerous; very; (Cant.) a cheater, swindler",unihan,kaikki_aligned,kanjidic2,unihan
 c00465,牆,牆,墙,牆,しょう,장,qiáng,tường,しょう,장,qiáng,tường,장,ㅇ,ng,true,2,wall,unihan,unihan_hvsyl,kanjidic2,unihan
 c00466,且,且,且,且,しょ,차,qiě,thả,しょ;そ;しょう,차,qiě;jū;cú,thả,차,,,true,2,"moreover, also (post-subject); about to, will soon (pre-verb)",unihan,kaikki_aligned,kanjidic2,unihan
@@ -481,7 +481,7 @@ c00479,如,如,如,如,じょ,여,rú,như,じょ;にょ,여,rú,như,여,,,true
 c00480,入,入,入,入,にゅう,입,rù,nhập,にゅう;じゅ,입,rù,nhập,입,ㅂ,p,true,2,"enter, come in(to), join",unihan,kaikki_aligned,kanjidic2,unihan
 c00481,色,色,色,色,しょく,색,sè,sắc,しょく;しき,색,sè;shǎi,sắc,색,ㄱ,c,true,2,"color, tint, hue, shade; form, body; beauty, desire for beauty; Kangxi radical 139",unihan,kaikki_aligned,kanjidic2,unihan
 c00482,聲,聲,声,声,せい,성,shēng,thanh,せい;しょう,성,shēng,thanh,성,ㅇ,nh,true,2,"sound, voice, noise; tone; music",unihan,kaikki_aligned,kanjidic2,unihan
-c00483,省,省,省,省,せい,성,shěng,tỉnh,せい;しょう,성;생,shěng;xǐng;xiǎn,tỉnh,성;생,ㅇ,nh,true,2,"province; save, economize",unihan,unihan_hvsyl,kanjidic2,unihan
+c00483,省,省,省,省,せい,성,shěng,tỉnh,せい;しょう,성;생,shěng;xǐng;xiǎn,tỉnh,성;생,ㅇ,nh,true,2,"province; save, economize",unihan,kaikki_en_char,kanjidic2,unihan
 c00484,實,實,实,実,じつ,실,shí,thực,じつ;しつ,실;지,shí;zhì,thực;thật,실;지,ㄹ,c,true,2,"real, true, solid, honest",unihan,kaikki_aligned,kanjidic2,unihan
 c00485,食,食,食,食,しょく,식,shí,thực,しょく;じき,식;사,shí;sì;yì,thực,식;사,ㄱ,c,true,2,eat; meal; food; Kangxi radical 184,unihan,kaikki_aligned,kanjidic2,unihan
 c00486,使,使,使,使,し,사,shǐ,sứ,し,사,shǐ,sứ;sử,사,,,true,2,"cause, send on a mission, order; envoy, messenger, ambassador",unihan,kaikki_aligned,kanjidic2,unihan
@@ -491,11 +491,11 @@ c00489,適,適,适,適,てき,적,shì,thích,てき,적,shì;dí;tì;zhé,thíc
 c00490,室,室,室,室,しつ,실,shì,thất,しつ,실,shì,thất,실,ㄹ,t,true,2,"room, home, house, chamber; 13th lunar mansion, determinative star α Pegasi (Markab)",unihan,kaikki_aligned,kanjidic2,unihan
 c00491,收,收,收,収,しゅう,수,shōu,thu,しゅう,수,shōu,thu,수,,,true,2,"gather together, collect; harvest",unihan,kaikki_aligned,kanjidic2,unihan
 c00492,受,受,受,受,じゅ,수,shòu,thụ,じゅ,수,shòu;dào,thụ,수,,,true,2,"receive, accept, get; bear, stand",unihan,kaikki_aligned,kanjidic2,unihan
-c00493,舒,舒,舒,舒,じょ,서,shū,thư,じょ;しょ,서,shū;yù,thư,서,,,true,2,"open up, unfold, stretch out; comfortable, easy",unihan,unihan_hvsyl,kanjidic2,unihan
+c00493,舒,舒,舒,舒,じょ,서,shū,thư,じょ;しょ,서,shū;yù,thư,서,,,true,2,"open up, unfold, stretch out; comfortable, easy",unihan,kaikki_en_char,kanjidic2,unihan
 c00494,熟,熟,熟,熟,じゅく,숙,shú,thục,じゅく,숙,shú;shóu,thục,숙,ㄱ,c,true,2,well-cooked; ripe; familiar with,unihan,kaikki_aligned,kanjidic2,unihan
 c00495,數,數,数,数,すう,수,shù,số,すう;す;さく;そく;しゅ,수;삭,shù;shǔ;shuò,số,수;삭,,,true,2,number; several; count; fate,unihan,kaikki_aligned,kanjidic2,unihan
 c00496,順,順,顺,順,じゅん,순,shùn,thuận,じゅん,순,shùn,thuận,순,ㄴ,n,true,2,"obey, submit to, go along with",unihan,kaikki_aligned,kanjidic2,unihan
-c00497,司,司,司,司,し,사,sī,ty,し,사,sī;cí;sì,ty;tư,사,,,true,2,"take charge of, control, manage; officer",unihan,kaikki_aligned,kanjidic2,unihan
+c00497,司,司,司,司,し,사,sī,ty,し,사,sī;cí;sì,ty;tư;ti,사,,,true,2,"take charge of, control, manage; officer",unihan,kaikki_aligned,kanjidic2,unihan
 c00498,思,思,思,思,し,사,sī,tư,し,사,sī;sāi,tư;tứ,사,,,true,2,"think, consider, ponder; final particle",unihan,kaikki_aligned,kanjidic2,unihan
 c00499,算,算,算,算,さん,산,suàn,toán,さん,산,suàn,toán,산,ㄴ,n,true,2,"count, calculate, figure; plan",unihan,kaikki_aligned,kanjidic2,unihan
 c00500,雖,雖,虽,雖,すい,수,suī,tuy,すい,수,suī,tuy,수,,,true,2,"although, even if",unihan,kaikki_aligned,kanjidic2,unihan
@@ -536,7 +536,7 @@ c00534,相,相,相,相,そう,상,xiāng,tương,そう;しょう,상,xiāng;xi�
 c00535,響,響,响,響,きょう,향,xiǎng,hưởng,きょう,향,xiǎng,hưởng;hướng,향,ㅇ,ng,true,2,"make sound, make noise; sound",unihan,kaikki_aligned,kanjidic2,unihan
 c00536,向,向,向,向,こう,향,xiàng,hướng,こう,향,xiàng,hướng,향,ㅇ,ng,true,2,"toward, direction, trend",unihan,kaikki_aligned,kanjidic2,unihan
 c00537,像,像,像,像,ぞう,상,xiàng,tượng,ぞう,상,xiàng,tượng,상,ㅇ,ng,true,2,"a picture, image, figure; to resemble",unihan,kaikki_aligned,kanjidic2,unihan
-c00538,鞋,鞋,鞋,鞋,あい,혜,xié,hài,あい;かい,혜,xié;wā,hài,혜,,,true,2,"shoes, footwear in general",unihan,unihan_hvsyl,kanjidic2,unihan
+c00538,鞋,鞋,鞋,鞋,あい,혜,xié,hài,あい;かい,혜,xié;wā,hài,혜,,,true,2,"shoes, footwear in general",unihan,kaikki_en_char,kanjidic2,unihan
 c00539,心,心,心,心,しん,심,xīn,tâm,しん,심,xīn,tâm,심,ㅁ,m,true,2,"heart; mind, intelligence; soul; 5th lunar mansion, determinative star α Scorpii (Antares)",unihan,kaikki_aligned,kanjidic2,unihan
 c00540,信,信,信,信,しん,신,xìn,tín,しん,신,xìn;shēn,tín,신,ㄴ,n,true,2,"trust, believe; letter",unihan,kaikki_aligned,kanjidic2,unihan
 c00541,姓,姓,姓,姓,せい,성,xìng,tính,せい;しょう,성,xìng;shēng,tính,성,ㅇ,nh,true,2,"one's family name; clan, people",unihan,kaikki_aligned,kanjidic2,unihan
@@ -551,7 +551,7 @@ c00549,陽,陽,阳,陽,よう,양,yáng,dương,よう,양,yáng,dương,양,ㅇ
 c00550,養,養,养,養,よう,양,yǎng,dưỡng,よう;りょう,양,yǎng;yàng,dưỡng,양,ㅇ,ng,true,2,"raise, rear, bring up; support",unihan,kaikki_aligned,kanjidic2,unihan
 c00551,藥,藥,药,薬,やく,약,yào,dược,やく,약,yào;shuò;lüè,dược,약,ㄱ,c,true,2,"drugs, pharmaceuticals, medicine",unihan,kaikki_aligned,kanjidic2,unihan
 c00552,業,業,业,業,ぎょう,업,yè,nghiệp,ぎょう;ごう,업,yè,nghiệp,업,ㅂ,p,true,2,"profession, business, trade",unihan,kaikki_aligned,kanjidic2,unihan
-c00553,夜,夜,夜,夜,や,야,yè,dạ,や,야,yè,dạ,야,,,true,2,"night, dark; in night; by night",unihan,unihan_unverified,kanjidic2,unihan
+c00553,夜,夜,夜,夜,や,야,yè,dạ,や,야,yè,dạ,야,,,true,2,"night, dark; in night; by night",unihan,kaikki_en_char,kanjidic2,unihan
 c00554,宜,宜,宜,宜,ぎ,의,yí,nghi,ぎ,의,yí,nghi,의,,,true,2,"suitable, right, fitting, proper",unihan,kaikki_aligned,kanjidic2,unihan
 c00555,已,已,已,已,い,이,yǐ,dĩ,い,이,yǐ;sì,dĩ,이,,,true,2,already; finished; stop,unihan,kaikki_aligned,kanjidic2,unihan
 c00556,以,以,以,以,い,이,yǐ,dĩ,い,이,yǐ;sì,dĩ,이,,,true,2,"by means of; thereby, therefore; consider as; in order to",unihan,kaikki_aligned,kanjidic2,unihan
@@ -587,7 +587,7 @@ c00585,占,占,占,占,せん,점,zhàn,chiếm,せん,점,zhàn;zhān;tiē,chi�
 c00586,照,照,照,照,しょう,조,zhào,chiếu,しょう,조,zhào,chiếu,조,,,true,2,"shine, illumine, reflect",unihan,kaikki_aligned,kanjidic2,unihan
 c00587,者,者,者,者,しゃ,자,zhě,giả,しゃ,자,zhě,giả,자,,,true,2,that which; he who; those who,unihan,kaikki_aligned,kanjidic2,unihan
 c00588,直,直,直,直,ちょく,직,zhí,trực,ちょく;じき;じか,직,zhí,trực,직,ㄱ,c,true,2,"straight, erect, vertical",unihan,kaikki_aligned,kanjidic2,unihan
-c00589,只,只,只,只,し,지,zhǐ,chỉ,し,지,zhǐ;zhī,chỉ,지,,,true,2,"only, just, simply",unihan,unihan_hvsyl,kanjidic2,unihan
+c00589,只,只,只,只,し,지,zhǐ,chỉ,し,지,zhǐ;zhī,chỉ,지,,,true,2,"only, just, simply",unihan,kaikki_en_char,kanjidic2,unihan
 c00590,紙,紙,纸,紙,し,지,zhǐ,chỉ,し,지,zhǐ,chỉ,지,,,true,2,paper,unihan,kaikki_aligned,kanjidic2,unihan
 c00591,鐘,鐘,钟,鐘,しょう,종,zhōng,chuông,しょう,종,zhōng,chuông,종,ㅇ,ng,true,2,clock; bell,unihan,unihan_unverified,kanjidic2,unihan
 c00592,周,周,周,周,しゅう,주,zhōu,chu,しゅう,주,zhōu,chu,주,,,true,2,Zhou dynasty; circumference,unihan,kaikki_aligned,kanjidic2,unihan
@@ -614,7 +614,7 @@ c00612,步,步,步,歩,ほ,보,bù,bộ,ほ;ぶ;ふ,보,bù,bộ,보,,,true,3,"s
 c00613,材,材,材,材,ざい,재,cái,tài,ざい,재,cái,tài,재,,,true,3,"material, stuff; timber; talent",unihan,kaikki_aligned,kanjidic2,unihan
 c00614,採,採,采,採,さい,채,cǎi,thái,さい,채,cǎi,thái,채,,,true,3,"gather, collect; pick, select",unihan,unihan_hvsyl,kanjidic2,unihan
 c00615,彩,彩,彩,彩,さい,채,cǎi,thái,さい,채,cǎi,thái,채,,,true,3,"hue, color; variegated colors",unihan,unihan_hvsyl,kanjidic2,unihan
-c00616,曾,曾,曾,曽,そう,증,céng,tăng,そう;そ;ぞう,증,céng;zēng,tăng,증,ㅇ,ng,true,3,already; sign of past,unihan,kaikki_aligned,kanjidic2,unihan
+c00616,曾,曾,曾,曽,そう,증,céng,tăng,そう;そ;ぞう,증,céng;zēng,tăng;tằng,증,ㅇ,ng,true,3,already; sign of past,unihan,kaikki_aligned,kanjidic2,unihan
 c00617,察,察,察,察,さつ,찰,chá,sát,さつ,찰,chá;cuì,sát,찰,ㄹ,t,true,3,"examine, investigate; notice",unihan,kaikki_aligned,kanjidic2,unihan
 c00618,產,產,产,産,さん,산,chǎn,sản,さん,산,chǎn,sản,산,ㄴ,n,true,3,"give birth, bring forth, produce",unihan,kaikki_aligned,kanjidic2,unihan
 c00619,廠,廠,厂,廠,しょう,창,chǎng,xưởng,しょう,창,chǎng,xưởng,창,ㅇ,ng,true,3,"factory, plant, workshop, mill",unihan,kaikki_aligned,kanjidic2,unihan
@@ -636,7 +636,7 @@ c00634,存,存,存,存,そん,존,cún,tồn,そん;ぞん,존,cún,tồn,존,�
 c00635,達,達,达,達,たつ,달,dá,đạt,たつ;だ,달,dá;tà,đạt,달,ㄹ,t,true,3,"arrive at, reach; intelligent",unihan,kaikki_aligned,kanjidic2,unihan
 c00636,代,代,代,代,だい,대,dài,đại,だい;たい,대,dài,đại,대,,,true,3,"replace, replacement (of person or generation); era, generation",unihan,kaikki_aligned,kanjidic2,unihan
 c00637,待,待,待,待,たい,대,dài,đãi,たい,대,dài;dāi,đãi,대,,,true,3,"treat, entertain, receive; wait",unihan,kaikki_aligned,kanjidic2,unihan
-c00638,刀,刀,刀,刀,とう,도,dāo,đao,とう,도,dāo;diāo,đao,도,,,true,3,knife; old coin; measure,unihan,unihan_unverified,kanjidic2,unihan
+c00638,刀,刀,刀,刀,とう,도,dāo,đao,とう,도,dāo;diāo,đao,도,,,true,3,knife; old coin; measure,unihan,kaikki_en_char,kanjidic2,unihan
 c00639,導,導,导,導,どう,도,dǎo,đạo,どう,도,dǎo;dào,đạo,도,,,true,3,"direct, guide, lead, conduct",unihan,kaikki_aligned,kanjidic2,unihan
 c00640,底,底,底,底,てい,저,dǐ,để,てい,저,dǐ;de,để,저,,,true,3,"bottom, underneath, underside",unihan,kaikki_aligned,kanjidic2,unihan
 c00641,調,調,调,調,ちょう,조,diào,điều,ちょう,조;주,diào;tiáo;zhōu,điều;điệu,조;주,,,true,3,"transfer, move, change; tune",unihan,kaikki_aligned,kanjidic2,unihan
@@ -651,7 +651,7 @@ c00649,訪,訪,访,訪,ほう,방,fǎng,phỏng,ほう,방,fǎng,phỏng;phóng,
 c00650,啡,啡,啡,啡,はい,배,fēi,,はい;へ;ひ,배,fēi;pèi;pái;pēi;bài,,배,,,true,3,morphine; coffee,unihan,,kanjidic2,unihan
 c00651,費,費,费,費,ひ,비,fèi,phí,ひ,비,fèi;fú;bì,phí,비,,,true,3,"expenses, expenditures, fee",unihan,kaikki_aligned,kanjidic2,unihan
 c00652,豐,豐,丰,豊,ほう,풍,fēng,phong,ほう;ぶ,풍,fēng,phong,풍,ㅇ,ng,true,3,"abundant, lush, bountiful, plenty; hexagram ䷶",unihan,kaikki_aligned,kanjidic2,unihan
-c00653,否,否,否,否,ひ,부,fǒu,phủ,ひ,부,fǒu;pǐ,phủ,부,,,true,3,"not, no, negative; final particle; hexagram ䷋",unihan,kaikki_aligned,kanjidic2,unihan
+c00653,否,否,否,否,ひ,부,fǒu,phủ,ひ,부,fǒu;pǐ,phủ;bĩ,부,,,true,3,"not, no, negative; final particle; hexagram ䷋",unihan,kaikki_aligned,kanjidic2,unihan
 c00654,夫,夫,夫,夫,ふ,부,fū,phu,ふ;ふう;ぶ,부,fū;fú,phu,부,,,true,3,"man, male adult, husband; those",unihan,kaikki_aligned,kanjidic2,unihan
 c00655,福,福,福,福,ふく,복,fú,phúc,ふく,복,fú;fù,phúc;phước,복,ㄱ,c,true,3,"happiness, good fortune, blessing",unihan,kaikki_aligned,kanjidic2,unihan
 c00656,父,父,父,父,ふ,부,fù,phụ,ふ,부,fù;fǔ,phụ,부,,,true,3,father; Kangxi radical 88,unihan,kaikki_aligned,kanjidic2,unihan
@@ -750,7 +750,7 @@ c00748,內,內,内,内,ない,내,nèi,nội,ない;だい,내,nèi,nội,내,,,
 c00749,念,念,念,念,ねん,념,niàn,niệm,ねん,념;염,niàn,niệm,념,ㅁ,m,true,3,"think of, recall, study",unihan,kaikki_aligned,kanjidic2,unihan
 c00750,娘,娘,娘,娘,じょう,낭,niáng,nương,じょう,낭;냥,niáng,nương,낭;냥,ㅇ,ng,true,3,mother; young girl; woman; wife,unihan,kaikki_aligned,kanjidic2,unihan
 c00751,農,農,农,農,のう,농,nóng,nông,のう,농,nóng,nông,농,ㅇ,ng,true,3,"agriculture, farming; farmer",unihan,kaikki_aligned,kanjidic2,unihan
-c00752,暖,暖,暖,暖,だん,난,nuǎn,,だん;のん,난,nuǎn;xuān,,난,ㄴ,,true,3,"warm, genial",unihan,,kanjidic2,unihan
+c00752,暖,暖,暖,暖,だん,난,nuǎn,noãn,だん;のん,난,nuǎn;xuān,noãn,난,ㄴ,n,true,3,"warm, genial",unihan,kaikki_en_char,kanjidic2,unihan
 c00753,拍,拍,拍,拍,はく,박,pāi,phếch,はく;ひょう,박,pāi;bó,phếch,박,ㄱ,ch,true,3,"clap, tap, beat; beat or rhythm",unihan,unihan_unverified,kanjidic2,unihan
 c00754,牌,牌,牌,牌,はい,패,pái,bài,はい,패,pái,bài,패,,,true,3,"signboard, placard",unihan,unihan_hvsyl,kanjidic2,unihan
 c00755,派,派,派,派,は,파,pài,phái,は,파,pài;mài;bài;pā,phái,파,,,true,3,"school of thought, sect, branch",unihan,kaikki_aligned,kanjidic2,unihan
@@ -758,7 +758,7 @@ c00756,判,判,判,判,はん,판,pàn,phán,はん;ばん,판,pàn,phán,판,�
 c00757,胖,胖,胖,胖,はん,반,pàng,bỡn,はん,반,pàng;pàn;pán,bỡn,반,ㄴ,n,true,3,"fat, obese; fatty",unihan,unihan_unverified,kanjidic2,unihan
 c00758,配,配,配,配,はい,배,pèi,phối,はい,배,pèi,phối,배,,,true,3,"match, pair; equal; blend",unihan,kaikki_aligned,kanjidic2,unihan
 c00759,批,批,批,批,ひ,비,pī,phê,ひ,비,pī;pí,phê,비,,,true,3,"comment, criticize; wholesale",unihan,kaikki_aligned,kanjidic2,unihan
-c00760,皮,皮,皮,皮,ひ,피,pí,bì,ひ,피,pí,bì,피,,,true,3,"skin, hide, fur, feather; outer",unihan,unihan_unverified,kanjidic2,unihan
+c00760,皮,皮,皮,皮,ひ,피,pí,bì,ひ,피,pí,bì,피,,,true,3,"skin, hide, fur, feather; outer",unihan,kaikki_en_char,kanjidic2,unihan
 c00761,啤,啤,啤,啤,ひ,비,pí,,ひ,비,pí,,비,,,true,3,beer,unihan,,kanjidic2,unihan
 c00762,品,品,品,品,ひん,품,pǐn,phẩm,ひん;ほん,품,pǐn,phẩm,품,ㅁ,m,true,3,"article, product, commodity",unihan,kaikki_aligned,kanjidic2,unihan
 c00763,評,評,评,評,ひょう,평,píng,bình,ひょう,평,píng,bình,평,ㅇ,nh,true,3,"appraise, criticize, evaluate",unihan,kaikki_aligned,kanjidic2,unihan
@@ -809,8 +809,8 @@ c00807,死,死,死,死,し,사,sǐ,tử,し,사,sǐ,tử,사,,,true,3,die; dead;
 c00808,速,速,速,速,そく,속,sù,tốc,そく,속,sù,tốc,속,ㄱ,c,true,3,"quick, prompt, speedy",unihan,kaikki_aligned,kanjidic2,unihan
 c00809,臺,臺,台,台,だい,대,tái,đài,だい;たい,대,tái,đài,대,,,true,3,"tower, lookout; stage, platform",unihan,kaikki_aligned,kanjidic2,unihan
 c00810,談,談,谈,談,だん,담,tán,đàm,だん,담,tán,đàm,담,ㅁ,m,true,3,talk; conversation; surname,unihan,kaikki_aligned,kanjidic2,unihan
-c00811,湯,湯,汤,湯,とう,탕,tāng,thang,とう,탕,tāng;tàng;shāng;yáng,thang,탕,ㅇ,ng,true,3,"hot water; soup, gravy, broth",unihan,unihan_unverified,kanjidic2,unihan
-c00812,糖,糖,糖,糖,とう,당,táng,đường,とう,당;탕,táng,đường,당;탕,ㅇ,ng,true,3,sugar; candy; sweets,unihan,unihan_hvsyl,kanjidic2,unihan
+c00811,湯,湯,汤,湯,とう,탕,tāng,thang,とう,탕,tāng;tàng;shāng;yáng,thang,탕,ㅇ,ng,true,3,"hot water; soup, gravy, broth",unihan,kaikki_en_char,kanjidic2,unihan
+c00812,糖,糖,糖,糖,とう,당,táng,đường,とう,당;탕,táng,đường,당;탕,ㅇ,ng,true,3,sugar; candy; sweets,unihan,kaikki_en_char,kanjidic2,unihan
 c00813,甜,甜,甜,甜,てん,첨,tián,,てん,첨,tián,,첨,ㅁ,,true,3,"sweet, sweetness",unihan,,kanjidic2,unihan
 c00814,跳,跳,跳,跳,ちょう,도,tiào,khiêu,ちょう,도;조,tiào;diào;táo,khiêu,도;조,,,true,3,"jump, leap, vault, bounce; dance",unihan,kaikki_aligned,kanjidic2,unihan
 c00815,痛,痛,痛,痛,つう,통,tòng,thống,つう,통,tòng,thống,통,ㅇ,ng,true,3,"pain, ache; sorry, sad; bitter",unihan,unihan_hvsyl,kanjidic2,unihan
@@ -852,7 +852,7 @@ c00850,壓,壓,压,圧,あつ,압,yā,áp,あつ;えん;おう,압,yā;yà,áp,�
 c00851,煙,煙,烟,煙,えん,연,yān,,えん,연,yān,,연,ㄴ,,true,3,"smoke, soot; opium; tobacco, cigarettes",unihan,,kanjidic2,unihan
 c00852,演,演,演,演,えん,연,yǎn,diễn,えん,연,yǎn;yàn,diễn,연,ㄴ,n,true,3,"perform, put on; exercise",unihan,kaikki_aligned,kanjidic2,unihan
 c00853,驗,驗,验,験,けん,험,yàn,nghiệm,けん;げん,험,yàn,nghiệm,험,ㅁ,m,true,3,"test, examine, inspect; verify",unihan,kaikki_aligned,kanjidic2,unihan
-c00854,羊,羊,羊,羊,よう,양,yáng,dương,よう,양,yáng,dương,양,ㅇ,ng,true,3,"sheep, goat; Kangxi radical 123",unihan,unihan_hvsyl,kanjidic2,unihan
+c00854,羊,羊,羊,羊,よう,양,yáng,dương,よう,양,yáng,dương,양,ㅇ,ng,true,3,"sheep, goat; Kangxi radical 123",unihan,kaikki_en_char,kanjidic2,unihan
 c00855,義,義,义,義,ぎ,의,yì,nghĩa,ぎ,의,yì;yí;xī,nghĩa;ngãi,의,,,true,3,"right conduct, righteousness",unihan,kaikki_aligned,kanjidic2,unihan
 c00856,藝,藝,艺,芸,げい,예,yì,nghệ,げい;うん,예,yì,nghệ,예,,,true,3,"art; talent, ability; craft",unihan,kaikki_aligned,kanjidic2,unihan
 c00857,議,議,议,議,ぎ,의,yì,nghị,ぎ,의,yì,nghị,의,,,true,3,"consult, talk over, discuss",unihan,kaikki_aligned,kanjidic2,unihan
@@ -889,7 +889,7 @@ c00887,種,種,种,種,しゅ,종,zhǒng,chủng,しゅ,종,zhǒng;chóng;zhòng
 c00888,眾,眾,众,眾,しゅう,중,zhòng,chúng,しゅう;しゅ,중,zhòng,chúng,중,ㅇ,ng,true,3,"masses, people, multitude, crowd",unihan,kaikki_aligned,kanjidic2,unihan
 c00889,豬,豬,猪,豬,ちょ,저,zhū,trư,ちょ,저,zhū,trư,저,,,true,3,"pig, hog",unihan,unihan_unverified,kanjidic2,unihan
 c00890,注,注,注,注,ちゅう,주,zhù,chú,ちゅう,주,zhù;zhòu,chú,주,,,true,3,"concentrate, focus, direct",unihan,kaikki_aligned,kanjidic2,unihan
-c00891,祝,祝,祝,祝,しゅく,축,zhù,chúc,しゅく;しゅう,축,zhù;zhòu;chù,chúc,축,ㄱ,c,true,3,pray for happiness or blessings,unihan,unihan_hvsyl,kanjidic2,unihan
+c00891,祝,祝,祝,祝,しゅく,축,zhù,chúc,しゅく;しゅう,축,zhù;zhòu;chù,chúc,축,ㄱ,c,true,3,pray for happiness or blessings,unihan,kaikki_en_char,kanjidic2,unihan
 c00892,抓,抓,抓,抓,そう,조,zhuā,co,そう,조,zhuā,co,조,,,true,3,"scratch; clutch, seize, grab",unihan,unihan_unverified,kanjidic2,unihan
 c00893,專,專,专,専,せん,전,zhuān,chuyên,せん,전,zhuān;tuán;shuàn,chuyên,전,ㄴ,n,true,3,"monopolize, take sole possession",unihan,kaikki_aligned,kanjidic2,unihan
 c00894,轉,轉,转,転,てん,전,zhuǎn,chuyển,てん,전,zhuǎn;zhuàn;zhuǎi,chuyển,전,ㄴ,n,true,3,"shift, move, turn",unihan,kaikki_aligned,kanjidic2,unihan
@@ -906,19 +906,19 @@ c00904,暗,暗,暗,暗,あん,암,àn,ám,あん,암,àn,ám,암,ㅁ,m,true,4,"d
 c00905,巴,巴,巴,巴,は,파,bā,ba,は,파,bā,ba,파,,,true,4,"greatly desire, anxiously hope",unihan,kaikki_aligned,kanjidic2,unihan
 c00906,擺,擺,摆,擺,はい,파,bǎi,bẫy,はい,파,bǎi,bẫy,파,,,true,4,"put, place; display; swing, sway",unihan,unihan_unverified,kanjidic2,unihan
 c00907,敗,敗,败,敗,はい,패,bài,bại,はい,패,bài,bại,패,,,true,4,"be defeated, decline, fail",unihan,kaikki_aligned,kanjidic2,unihan
-c00908,伴,伴,伴,伴,はん,반,bàn,bạn,はん;ばん,반,bàn;pàn,bạn,반,ㄴ,n,true,4,"companion, comrade, partner; accompany",unihan,unihan_unverified,kanjidic2,unihan
+c00908,伴,伴,伴,伴,はん,반,bàn,bạn,はん;ばん,반,bàn;pàn,bạn,반,ㄴ,n,true,4,"companion, comrade, partner; accompany",unihan,kaikki_en_char,kanjidic2,unihan
 c00909,薄,薄,薄,薄,はく,박,báo,bạc,はく,박,báo;bó;bù;bò,bạc,박,ㄱ,c,true,4,"thin, slight, weak; poor, stingy",unihan,kaikki_aligned,kanjidic2,unihan
 c00910,寶,寶,宝,宝,ほう,보,bǎo,bảo,ほう,보,bǎo,bảo,보,,,true,4,"treasure, jewel; precious, rare",unihan,kaikki_aligned,kanjidic2,unihan
 c00911,抱,抱,抱,抱,ほう,포,bào,bão,ほう,포,bào;pāo;pǒu,bão,포,,,true,4,"embrace, hold in arms, enfold",unihan,kaikki_aligned,kanjidic2,unihan
 c00912,貝,貝,贝,貝,ばい,패,bèi,bối,ばい,패;배,bèi,bối,패;배,,,true,4,"sea shell; money, currency; Kangxi radical 154",unihan,kaikki_aligned,kanjidic2,unihan
-c00913,倍,倍,倍,倍,ばい,배,bèi,bội,ばい,배,bèi;péi,bội,배,,,true,4,"times, fold, multiple times",unihan,unihan_hvsyl,kanjidic2,unihan
+c00913,倍,倍,倍,倍,ばい,배,bèi,bội,ばい,배,bèi;péi,bội,배,,,true,4,"times, fold, multiple times",unihan,kaikki_en_char,kanjidic2,unihan
 c00914,笨,笨,笨,笨,ほん,분,bèn,,ほん,분,bèn,,분,ㄴ,,true,4,"foolish, stupid, dull; awkward",unihan,,kanjidic2,unihan
 c00915,畢,畢,毕,畢,ひつ,필,bì,tất,ひつ,필,bì,tất,필,ㄹ,t,true,4,"end, finish, conclude; completed; 19th lunar mansion, determinative star ε Tauri (Ain)",unihan,kaikki_aligned,kanjidic2,unihan
 c00916,閉,閉,闭,閉,へい,폐,bì,bế,へい,폐,bì,bế,폐,,,true,4,"shut, close; obstruct, block up",unihan,kaikki_aligned,kanjidic2,unihan
 c00917,避,避,避,避,ひ,피,bì,tị,ひ,피,bì,tị,피,,,true,4,avoid; turn aside; escape; hide,unihan,unihan_unverified,kanjidic2,unihan
 c00918,編,編,编,編,へん,편,biān,biên,へん,편,biān;biǎn;biàn,biên,편,ㄴ,n,true,4,"knit, weave; arrange; compile",unihan,kaikki_aligned,kanjidic2,unihan
 c00919,辯,辯,辩,弁,べん,변,biàn,biện,べん;へん,변,biàn;pián;biǎn;bàn,biện,변,ㄴ,n,true,4,"dispute, argue, debate, discuss",unihan,kaikki_aligned,kanjidic2,unihan
-c00920,冰,冰,冰,氷,ひょう,빙,bīng,băng,ひょう,빙,bīng;níng,băng,빙,ㅇ,ng,true,4,ice; ice-cold,unihan,unihan_hvsyl,kanjidic2,unihan
+c00920,冰,冰,冰,氷,ひょう,빙,bīng,băng,ひょう,빙,bīng;níng,băng,빙,ㅇ,ng,true,4,ice; ice-cold,unihan,kaikki_en_char,kanjidic2,unihan
 c00921,兵,兵,兵,兵,へい,병,bīng,binh,へい;ひょう,병,bīng,binh,병,ㅇ,nh,true,4,"soldier, troops",unihan,kaikki_aligned,kanjidic2,unihan
 c00922,擦,擦,擦,擦,さつ,찰,cā,sát,さつ,찰,cā,sát,찰,ㄹ,t,true,4,"wipe, scrub, rub, scour; brush",unihan,kaikki_aligned,kanjidic2,unihan
 c00923,財,財,财,財,ざい,재,cái,tài,ざい;さい;ぞく,재,cái,tài,재,,,true,4,"wealth, valuables, riches",unihan,kaikki_aligned,kanjidic2,unihan
@@ -935,12 +935,12 @@ c00933,尺,尺,尺,尺,しゃく,척,chǐ,xích,しゃく;せき,척,chǐ;chě,x
 c00934,衝,衝,冲,衝,しょう,충,chōng,xung,しょう,충,chōng;chǒng;chòng,xung,충,ㅇ,ng,true,4,"rush against, charge ahead",unihan,kaikki_aligned,kanjidic2,unihan
 c00935,蟲,蟲,虫,虫,ちゅう,충,chóng,trùng,ちゅう;き,충,chóng;zhòng;tóng,trùng,충,ㅇ,ng,true,4,worms; insects,unihan,kaikki_aligned,kanjidic2,unihan
 c00936,抽,抽,抽,抽,ちゅう,추,chōu,trừu,ちゅう,추,chōu,trừu,추,,,true,4,"draw out, pull out; sprout",unihan,kaikki_aligned,kanjidic2,unihan
-c00937,窗,窗,窗,窗,そう,창,chuāng,song,そう;す,창,chuāng;cōng,song,창,ㅇ,ng,true,4,window,unihan,unihan_hvsyl,kanjidic2,unihan
+c00937,窗,窗,窗,窗,そう,창,chuāng,song,そう;す,창,chuāng;cōng,song,창,ㅇ,ng,true,4,window,unihan,kaikki_en_char,kanjidic2,unihan
 c00938,純,純,纯,純,じゅん,순,chún,thuần,じゅん,순;준,chún;zhǔn;tún;quán;zī;zhūn,thuần,순;준,ㄴ,n,true,4,"pure, clean, simple",unihan,kaikki_aligned,kanjidic2,unihan
 c00939,刺,刺,刺,刺,し,자,cì,thích,し,자;척,cì;qì;cī,thích,자;척,,ch,true,4,"stab; prick, irritate; prod",unihan,kaikki_aligned,kanjidic2,unihan
 c00940,粗,粗,粗,粗,そ,조,cū,thô,そ,조,cū,thô,조,,,true,4,"rough, thick, course; rude",unihan,kaikki_aligned,kanjidic2,unihan
 c00941,促,促,促,促,そく,촉,cù,xúc,そく,촉,cù;chuò,xúc,촉,ㄱ,c,true,4,"urge, press, hurry; close",unihan,kaikki_aligned,kanjidic2,unihan
-c00942,寸,寸,寸,寸,すん,촌,cùn,thốn,すん,촌,cùn;cǔn,thốn,촌,ㄴ,n,true,4,"inch; small, tiny; Kangxi radical 41",unihan,unihan_unverified,kanjidic2,unihan
+c00942,寸,寸,寸,寸,すん,촌,cùn,thốn,すん,촌,cùn;cǔn,thốn,촌,ㄴ,n,true,4,"inch; small, tiny; Kangxi radical 41",unihan,kaikki_en_char,kanjidic2,unihan
 c00943,措,措,措,措,そ,조,cuò,thố,そ,조,cuò;zé;cì,thố,조,,,true,4,"place; collect, arrange; employ",unihan,kaikki_aligned,kanjidic2,unihan
 c00944,袋,袋,袋,袋,たい,대,dài,đãy,たい;だい,대,dài,đãy,대,,,true,4,"pocket, bag, sack, pouch",unihan,unihan_unverified,kanjidic2,unihan
 c00945,戴,戴,戴,戴,たい,대,dài,,たい,대,dài,,대,,,true,4,wear on top; support,unihan,,kanjidic2,unihan
@@ -951,7 +951,7 @@ c00949,敵,敵,敌,敵,てき,적,dí,địch,てき,적,dí,địch,적,ㄱ,ch,
 c00950,遞,遞,递,逓,てい,체,dì,đệ,てい,체,dì;shì;dài,đệ,체,,,true,4,"hand over, deliver; substitute",unihan,kaikki_aligned,kanjidic2,unihan
 c00951,頂,頂,顶,頂,ちょう,정,dǐng,đỉnh,ちょう,정,dǐng,đỉnh,정,ㅇ,nh,true,4,"top, peak; carry on head; very",unihan,kaikki_aligned,kanjidic2,unihan
 c00952,鬥,鬥,斗,闘,とう,두,dòu,đấu,とう,두,dòu,đấu,두,,,true,4,"struggle, fight, compete, contend; Kangxi radical 191",unihan,kaikki_aligned,kanjidic2,unihan
-c00953,豆,豆,豆,豆,とう,두,dòu,đậu,とう;ず,두,dòu,đậu,두,,,true,4,"beans, peas; bean-shaped; Kangxi radical 151",unihan,unihan_unverified,kanjidic2,unihan
+c00953,豆,豆,豆,豆,とう,두,dòu,đậu,とう;ず,두,dòu,đậu,두,,,true,4,"beans, peas; bean-shaped; Kangxi radical 151",unihan,kaikki_en_char,kanjidic2,unihan
 c00954,獨,獨,独,独,どく,독,dú,độc,どく;とく,독,dú,độc,독,ㄱ,c,true,4,"alone, single, solitary, only",unihan,kaikki_aligned,kanjidic2,unihan
 c00955,堵,堵,堵,堵,と,도,dǔ,,と,도,dǔ;zhě;dū,,도,,,true,4,"wall; stop, prevent; stop up",unihan,,kanjidic2,unihan
 c00956,肚,肚,肚,肚,と,두,dù,,と,두,dù;dǔ,,두,,,true,4,belly; abdomen; bowels,unihan,,kanjidic2,unihan
@@ -1062,7 +1062,7 @@ c01060,寧,寧,宁,寧,ねい,녕,níng,ninh,ねい,녕;령;영,níng;nìng,ninh
 c01061,濃,濃,浓,濃,のう,농,nóng,nống,のう,농,nóng,nống,농,ㅇ,ng,true,4,"thick, strong, concentrated",unihan,unihan_unverified,kanjidic2,unihan
 c01062,盤,盤,盘,盤,ばん,반,pán,bàn,ばん,반,pán;xuán,bàn,반,ㄴ,n,true,4,"tray, plate, dish; examine",unihan,kaikki_aligned,kanjidic2,unihan
 c01063,培,培,培,培,ばい,배,péi,bồi,ばい,배;부,péi;pǒu;pī,bồi,배;부,,,true,4,bank up with dirt; cultivate,unihan,kaikki_aligned,kanjidic2,unihan
-c01064,婆,婆,婆,婆,ば,파,pó,bà,ば,파,pó,bà,파,,,true,4,old woman; grandmother,unihan,unihan_hvsyl,kanjidic2,unihan
+c01064,婆,婆,婆,婆,ば,파,pó,bà,ば,파,pó,bà,파,,,true,4,old woman; grandmother,unihan,kaikki_en_char,kanjidic2,unihan
 c01065,迫,迫,迫,迫,はく,박,pò,bách,はく,박,pò;pǎi,bách,박,ㄱ,ch,true,4,"coerce, force, compel; urgent",unihan,kaikki_aligned,kanjidic2,unihan
 c01066,妻,妻,妻,妻,さい,처,qī,thê,さい,처,qī;qì,thê,처,,,true,4,wife,unihan,kaikki_aligned,kanjidic2,unihan
 c01067,企,企,企,企,き,기,qǐ,xí,き,기,qǐ,xí,기,,,true,4,plan a project; stand on tiptoe,unihan,kaikki_aligned,kanjidic2,unihan
@@ -1100,17 +1100,17 @@ c01098,殊,殊,殊,殊,しゅ,수,shū,thù,しゅ,수,shū,thù,수,,,true,4,"d
 c01099,暑,暑,暑,暑,しょ,서,shǔ,,しょ,서,shǔ,,서,,,true,4,hot,unihan,,kanjidic2,unihan
 c01100,述,述,述,述,じゅつ,술,shù,thuật,じゅつ,술,shù,thuật,술,ㄹ,t,true,4,"narrate, state, express",unihan,kaikki_aligned,kanjidic2,unihan
 c01101,刷,刷,刷,刷,さつ,쇄,shuā,loát,さつ,쇄,shuā;shuà,loát,쇄,,t,true,4,"brush; clean with brush, scrub",unihan,kaikki_aligned,kanjidic2,unihan
-c01102,帥,帥,帅,帥,すい,솔,shuài,soái,すい,솔;수,shuài,soái,솔;수,ㄹ,,true,4,"commander, commander-in-chief",unihan,unihan_unverified,kanjidic2,unihan
+c01102,帥,帥,帅,帥,すい,솔,shuài,soái,すい,솔;수,shuài,soái,솔;수,ㄹ,,true,4,"commander, commander-in-chief",unihan,kaikki_en_char,kanjidic2,unihan
 c01103,鬆,鬆,松,鬆,しょう,송,sōng,,しょう;そう;しゅ,송,sōng;sòng;sóng,,송,ㅇ,,true,4,"lax, loose; loosen, relax",unihan,,kanjidic2,unihan
 c01104,俗,俗,俗,俗,ぞく,속,sú,tục,ぞく,속,sú,"tục;tục,",속,ㄱ,c,true,4,"social customs; vulgar, unrefined",unihan,kaikki_aligned,kanjidic2,unihan
 c01105,塑,塑,塑,塑,そ,소,sù,,そ,소,sù,,소,,,true,4,"model in clay, sculpt; plastics",unihan,,kanjidic2,unihan
 c01106,酸,酸,酸,酸,さん,산,suān,,さん,산,suān,,산,ㄴ,,true,4,"tart, sour; acid; stiff; spoiled",unihan,,kanjidic2,unihan
-c01107,孫,孫,孙,孫,そん,손,sūn,tôn,そん,손,sūn;xùn,tôn,손,ㄴ,n,true,4,"grandchild, descendent; surname",unihan,unihan_hvsyl,kanjidic2,unihan
+c01107,孫,孫,孙,孫,そん,손,sūn,tôn,そん,손,sūn;xùn,tôn,손,ㄴ,n,true,4,"grandchild, descendent; surname",unihan,kaikki_en_char,kanjidic2,unihan
 c01108,縮,縮,缩,縮,しゅく,축,suō,,しゅく,축,suō;sù,,축,ㄱ,,true,4,"contract, draw in, reduce",unihan,,kanjidic2,unihan
 c01109,躺,躺,躺,躺,とう,당,tǎng,thẳng,とう,당,tǎng;tàng,thẳng,당,ㅇ,ng,true,4,"lie down, recline",unihan,unihan_unverified,kanjidic2,unihan
 c01110,梯,梯,梯,梯,てい,제,tī,,てい;たい,제,tī;tí,,제,,,true,4,"ladder, steps, stairs; lean",unihan,,kanjidic2,unihan
 c01111,替,替,替,替,たい,체,tì,thế,たい,체,tì,thế,체,,,true,4,"change, replace, substitute for",unihan,kaikki_aligned,kanjidic2,unihan
-c01112,填,填,填,塡,てん,전,tián,điền,てん;ちん,전,tián;tiǎn;chén;zhèn,điền,전,ㄴ,n,true,4,"fill in, fill up; make good",unihan,unihan_hvsyl,kanjidic2,unihan
+c01112,填,填,填,塡,てん,전,tián,điền,てん;ちん,전,tián;tiǎn;chén;zhèn,điền,전,ㄴ,n,true,4,"fill in, fill up; make good",unihan,kaikki_en_char,kanjidic2,unihan
 c01113,挑,挑,挑,挑,ちょう,도,tiāo,khiêu,ちょう,도,tiāo;tiǎo;táo;diào;tiáo;tiao,khiêu,도,,,true,4,a load carried on the shoulders; to carry,unihan,kaikki_aligned,kanjidic2,unihan
 c01114,貼,貼,贴,貼,てん,첩,tiē,,てん;ちょう,첩,tiē,,첩,ㅂ,,true,4,"paste to, stick on; attached to",unihan,,kanjidic2,unihan
 c01115,童,童,童,童,どう,동,tóng,đồng,どう,동,tóng;zhōng,đồng,동,ㅇ,ng,true,4,"child, boy, servant boy; virgin",unihan,kaikki_aligned,kanjidic2,unihan
@@ -1124,7 +1124,7 @@ c01122,彎,彎,弯,弯,わん,만,wān,,わん,만,wān,,만,ㄴ,,true,4,"bend, 
 c01123,微,微,微,微,び,미,wēi,vi,び,미,wēi,vi,미,,,true,4,"small, prefix micro-, trifling",unihan,kaikki_aligned,kanjidic2,unihan
 c01124,維,維,维,維,い,유,wéi,duy,い,유,wéi;yí,duy,유,,,true,4,"maintain, preserve, safeguard",unihan,kaikki_aligned,kanjidic2,unihan
 c01125,尾,尾,尾,尾,び,미,wěi,vĩ,び,미,wěi;yǐ,vĩ,미,,,true,4,"tail, extremity; end, stern; 6th lunar mansion, determinative star μ¹ Scorpii (Xamidimura)",unihan,kaikki_aligned,kanjidic2,unihan
-c01126,未,未,未,未,み,미,wèi,vị,み;び,미,wèi,vị,미,,,true,4,not yet; eighth earthly branch,unihan,kaikki_aligned,kanjidic2,unihan
+c01126,未,未,未,未,み,미,wèi,vị,み;び,미,wèi,vị;mùi,미,,,true,4,not yet; eighth earthly branch,unihan,kaikki_aligned,kanjidic2,unihan
 c01127,謂,謂,谓,謂,い,위,wèi,vị,い,위,wèi,vị,위,,,true,4,"say, tell; call, name; be called",unihan,kaikki_aligned,kanjidic2,unihan
 c01128,穩,穩,稳,穏,おん,온,wěn,ổn,おん,온,wěn,ổn,온,ㄴ,n,true,4,"stable, firm, solid, steady",unihan,kaikki_aligned,kanjidic2,unihan
 c01129,無,無,无,無,む,무,wú,vô,む;ぶ,무,wú;mó,vô,무,,,true,4,"negative, no, not; lack, have no",unihan,kaikki_aligned,kanjidic2,unihan
@@ -1201,7 +1201,7 @@ c01199,綜,綜,综,綜,そう,종,zōng,,そう,종,zōng;zèng;zòng,,종,ㅇ,,
 c01200,阻,阻,阻,阻,そ,조,zǔ,trở,そ,조,zǔ;zhù,trở,조,,,true,4,"impede, hinder, obstruct; oppose",unihan,kaikki_aligned,kanjidic2,unihan
 c01201,礙,礙,碍,礙,がい,애,ài,ngại,がい;げ,애,ài;yí,ngại,애,,,true,5,"obstruct, hinder, block, deter",unihan,kaikki_aligned,kanjidic2,unihan
 c01202,岸,岸,岸,岸,がん,안,àn,ngàn,がん,안,àn,ngàn,안,ㄴ,n,true,5,"bank, shore; beach, coast",unihan,unihan_unverified,kanjidic2,unihan
-c01203,拔,拔,拔,抜,ばつ,발,bá,bạt,ばつ;はつ;はい,발,bá;bō;bié;fá;bèi,bạt,발,ㄹ,t,true,5,"uproot, pull out",unihan,unihan_unverified,kanjidic2,unihan
+c01203,拔,拔,拔,抜,ばつ,발,bá,bạt,ばつ;はつ;はい,발,bá;bō;bié;fá;bèi,bạt,발,ㄹ,t,true,5,"uproot, pull out",unihan,kaikki_en_char,kanjidic2,unihan
 c01204,拜,拜,拜,拝,はい,배,bài,bái,はい,배,bài,bái,배,,,true,5,"do obeisance, bow, kowtow",unihan,kaikki_aligned,kanjidic2,unihan
 c01205,版,版,版,版,はん,판,bǎn,bản,はん,판,bǎn,bản,판,ㄴ,n,true,5,printing blocks; edition,unihan,kaikki_aligned,kanjidic2,unihan
 c01206,扮,扮,扮,扮,ふん,분,bàn,,ふん;はん;へん,분,bàn;fěn;fēn;huǒ,,분,ㄴ,,true,5,dress up; dress up as,unihan,,kanjidic2,unihan
@@ -1209,7 +1209,7 @@ c01207,棒,棒,棒,棒,ぼう,봉,bàng,vổng,ぼう,봉;방,bàng,vổng,봉;�
 c01208,悲,悲,悲,悲,ひ,비,bēi,bi,ひ,비,bēi,bi,비,,,true,5,"sorrow, grief; sorry, sad",unihan,kaikki_aligned,kanjidic2,unihan
 c01209,輩,輩,辈,輩,はい,배,bèi,bối,はい,배,bèi,bối,배,,,true,5,"generation, lifetime; class",unihan,kaikki_aligned,kanjidic2,unihan
 c01210,鼻,鼻,鼻,鼻,び,비,bí,,び,비,bí,,비,,,true,5,nose; first; Kangxi radical 209,unihan,,kanjidic2,unihan
-c01211,彼,彼,彼,彼,ひ,피,bǐ,bỉ,ひ,피,bǐ,bỉ,피,,,true,5,"that, there, those",unihan,unihan_hvsyl,kanjidic2,unihan
+c01211,彼,彼,彼,彼,ひ,피,bǐ,bỉ,ひ,피,bǐ,bỉ,피,,,true,5,"that, there, those",unihan,kaikki_en_char,kanjidic2,unihan
 c01212,壁,壁,壁,壁,へき,벽,bì,bích,へき,벽,bì,bích,벽,ㄱ,ch,true,5,"partition wall; walls of a house; 14th lunar mansion, determinative star γ Pegasi (Algenib)",unihan,unihan_unverified,kanjidic2,unihan
 c01213,賓,賓,宾,賓,ひん,빈,bīn,tân,ひん,빈,bīn,tân,빈,ㄴ,n,true,5,"guest, visitor; surname; submit",unihan,kaikki_aligned,kanjidic2,unihan
 c01214,餅,餅,饼,餅,へい,병,bǐng,bánh,へい;ひょう,병,bǐng,bánh,병,ㅇ,nh,true,5,"rice-cakes, biscuits",unihan,unihan_unverified,kanjidic2,unihan
@@ -1221,7 +1221,7 @@ c01219,冊,冊,册,冊,さつ,책,cè,sách,さつ;さく,책,cè,sách,책,ㄱ,
 c01220,叉,叉,叉,叉,さ,차,chā,,さ;しゃ;さい,차,chā;chá;chǎ;chà,,차,,,true,5,"crotch; fork, prong",unihan,,kanjidic2,unihan
 c01221,插,插,插,挿,そう,삽,chā,sáp,そう,삽,chā;zhǎ,sáp,삽,ㅂ,p,true,5,"insert, stick into; plant",unihan,kaikki_aligned,kanjidic2,unihan
 c01222,拆,拆,拆,拆,たく,탁,chāi,sách,たく;せき,탁,chāi;chè;chì;cā,sách,탁,ㄱ,ch,true,5,"to break up, split apart, rip open; to destroy",unihan,unihan_hvsyl,kanjidic2,unihan
-c01223,柴,柴,柴,柴,さい,시,chái,sài,さい;し,시,chái;cī;zhài;zì,sài,시,,,true,5,"firewood, faggots, fuel",unihan,unihan_hvsyl,kanjidic2,unihan
+c01223,柴,柴,柴,柴,さい,시,chái,sài,さい;し,시,chái;cī;zhài;zì,sài,시,,,true,5,"firewood, faggots, fuel",unihan,kaikki_en_char,kanjidic2,unihan
 c01224,腸,腸,肠,腸,ちょう,장,cháng,tràng,ちょう,장,cháng,tràng,장,ㅇ,ng,true,5,intestines; emotions; sausage,unihan,kaikki_aligned,kanjidic2,unihan
 c01225,嚐,嚐,尝,,,상,cháng,,,상,cháng,,상,ㅇ,,true,5,taste,unihan,,,unihan
 c01226,償,償,偿,償,しょう,상,cháng,thường,しょう,상,cháng,thường,상,ㅇ,ng,true,5,"repay, recompense; restitution",unihan,kaikki_aligned,kanjidic2,unihan
@@ -1240,7 +1240,7 @@ c01238,脆,脆,脆,脆,ぜい,취,cuì,,ぜい;せい;せつ,취,cuì,,취,,,tru
 c01239,呆,呆,呆,呆,ほう,매,dāi,ngốc,ほう,매;태,dāi;bǎo;ái,ngốc,매;태,,c,true,5,"dull; dull-minded, simple, stupid",unihan,unihan_unverified,kanjidic2,unihan
 c01240,貸,貸,贷,貸,たい,대,dài,,たい,대,dài;tè,,대,,,true,5,lend; borrow; pardon,unihan,,kanjidic2,unihan
 c01241,膽,膽,胆,胆,たん,담,dǎn,đảm,たん,담,dǎn,đảm,담,ㅁ,m,true,5,"gall bladder; bravery, courage",unihan,kaikki_aligned,kanjidic2,unihan
-c01242,旦,旦,旦,旦,たん,단,dàn,đán,たん;だん,단,dàn,đán,단,ㄴ,n,true,5,dawn; morning; day,unihan,unihan_unverified,kanjidic2,unihan
+c01242,旦,旦,旦,旦,たん,단,dàn,đán,たん;だん,단,dàn,đán,단,ㄴ,n,true,5,dawn; morning; day,unihan,kaikki_en_char,kanjidic2,unihan
 c01243,彈,彈,弹,弾,だん,탄,dàn,đạn,だん;たん,탄,dàn;tán,đạn;đàn,탄,ㄴ,n,true,5,"pellet, bullet, shot, shell",unihan,kaikki_aligned,kanjidic2,unihan
 c01244,擋,擋,挡,擋,とう,당,dǎng,,とう,당,dǎng;dàng,,당,ㅇ,,true,5,to obstruct; shut out; shelter from; keep off; stop; resist,unihan,,kanjidic2,unihan
 c01245,德,德,德,徳,とく,덕,dé,đức,とく,덕,dé,đức,덕,ㄱ,c,true,5,"ethics, morality, virtue",unihan,kaikki_aligned,kanjidic2,unihan
@@ -1288,7 +1288,7 @@ c01286,恨,恨,恨,恨,こん,한,hèn,hận,こん,한,hèn,hận,한,ㄴ,n,tru
 c01287,猴,猴,猴,猴,こう,후,hóu,hầu,こう,후,hóu,hầu,후,,,true,5,"monkey, ape; monkey-like",unihan,unihan_hvsyl,kanjidic2,unihan
 c01288,胡,胡,胡,胡,う,호,hú,hồ,う;こ;ご,호,hú,hồ,호,,,true,5,"recklessly, foolishly; wildly",unihan,kaikki_aligned,kanjidic2,unihan
 c01289,糊,糊,糊,糊,こ,호,hú,hồ,こ;ご;こつ,호,hú;hū;hù,hồ,호,,,true,5,"paste, stick on with paste",unihan,unihan_hvsyl,kanjidic2,unihan
-c01290,虎,虎,虎,虎,こ,호,hǔ,hổ,こ,호,hǔ;hù,hổ,호,,,true,5,"tiger; brave, fierce; surname",unihan,unihan_hvsyl,kanjidic2,unihan
+c01290,虎,虎,虎,虎,こ,호,hǔ,hổ,こ,호,hǔ;hù,hổ,호,,,true,5,"tiger; brave, fierce; surname",unihan,kaikki_en_char,kanjidic2,unihan
 c01291,滑,滑,滑,滑,かつ,활,huá,gột,かつ;こつ,활;골,huá;gǔ,gột,활;골,ㄹ,t,true,5,"slip, slide; slippery, polished",unihan,unihan_unverified,kanjidic2,unihan
 c01292,慌,慌,慌,慌,こう,황,huāng,hoảng,こう,황,huāng;huǎng;huang,hoảng;hoang,황,ㅇ,ng,true,5,"nervous, panicky, frantic",unihan,kaikki_aligned,kanjidic2,unihan
 c01293,灰,灰,灰,灰,かい,회,huī,hôi,かい,회,huī,hôi,회,,,true,5,"ashes; dust; lime, mortar",unihan,unihan_unverified,kanjidic2,unihan
@@ -1329,7 +1329,7 @@ c01327,覽,覽,览,覧,らん,람,lǎn,lãm,らん,람,lǎn;làn,lãm,람,ㅁ,m,
 c01328,爛,爛,烂,爛,らん,란,làn,lạn,らん,란;난,làn,lạn,란,ㄴ,n,true,5,"rotten, spoiled, decayed",unihan,kaikki_aligned,kanjidic2,unihan
 c01329,朗,朗,朗,朗,ろう,랑,lǎng,lãng,ろう,랑;낭,lǎng,lãng,랑,ㅇ,ng,true,5,"clear, bright; distinct",unihan,kaikki_aligned,kanjidic2,unihan
 c01330,勞,勞,劳,労,ろう,로,láo,lao,ろう,로;노,láo;lào;liáo,lao,로,,,true,5,"labor, toil, do manual work",unihan,kaikki_aligned,kanjidic2,unihan
-c01331,梨,梨,梨,梨,り,리,lí,lê,り,리;이,lí,lê,리,,,true,5,"pear; opera; cut, slash",unihan,unihan_unverified,kanjidic2,unihan
+c01331,梨,梨,梨,梨,り,리,lí,lê,り,리;이,lí,lê,리,,,true,5,"pear; opera; cut, slash",unihan,kaikki_en_char,kanjidic2,unihan
 c01332,璃,璃,璃,璃,り,리,lí,li,り,리,lí,li;ly,리,,,true,5,glass,unihan,unihan_hvsyl,kanjidic2,unihan
 c01333,厲,厲,厉,厲,れい,려,lì,lệ,れい;らい;れつ;れち,려,lì;lài,lệ,려,,,true,5,"whetstone; grind, sharpen; whet",unihan,kaikki_aligned,kanjidic2,unihan
 c01334,勵,勵,励,励,れい,려,lì,lệ,れい,려;여,lì,lệ,려,,,true,5,strive; encourage,unihan,unihan_hvsyl,kanjidic2,unihan
@@ -1360,7 +1360,7 @@ c01358,偶,偶,偶,偶,ぐう,우,ǒu,ngẫu,ぐう,우,ǒu,ngẫu,우,,,true,5,
 c01359,陪,陪,陪,陪,ばい,배,péi,,ばい,배,péi,,배,,,true,5,"accompany, be with, keep company",unihan,,kanjidic2,unihan
 c01360,賠,賠,赔,賠,ばい,배,péi,bồi,ばい,배,péi,bồi,배,,,true,5,"indemnify, suffer loss",unihan,kaikki_aligned,kanjidic2,unihan
 c01361,噴,噴,喷,噴,ふん,분,pēn,phún,ふん,분,pēn;pèn;fèn,phún,분,ㄴ,n,true,5,"spurt, blow out, puff out",unihan,unihan_unverified,kanjidic2,unihan
-c01362,盆,盆,盆,盆,ぼん,분,pén,bồn,ぼん,분,pén,bồn;bòn;bộn;bùn;buồn;dồn;vồn,분,ㄴ,n,true,5,"basin, tub, pot, bowl",unihan,unihan_unverified,kanjidic2,unihan
+c01362,盆,盆,盆,盆,ぼん,분,pén,bồn,ぼん,분,pén,bồn,분,ㄴ,n,true,5,"basin, tub, pot, bowl",unihan,kaikki_en_char,kanjidic2,unihan
 c01363,披,披,披,披,ひ,피,pī,phơ,ひ,피,pī,phơ,피,,,true,5,wear; split; crack,unihan,unihan_unverified,kanjidic2,unihan
 c01364,脾,脾,脾,脾,ひ,비,pí,tì,ひ,비,pí;pái;bì;pì,tì,비,,,true,5,"spleen, pancreas; disposition",unihan,unihan_hvsyl,kanjidic2,unihan
 c01365,匹,匹,匹,匹,ひつ,필,pǐ,thất,ひつ,필,pǐ,thất,필,ㄹ,t,true,5,bolt of cloth; counter for horses,unihan,kaikki_aligned,kanjidic2,unihan
@@ -1402,7 +1402,7 @@ c01400,捨,捨,舍,捨,しゃ,사,shě,xả,しゃ,사,shě,xả,사,,,true,5,"d
 c01401,射,射,射,射,しゃ,사,shè,xạ,しゃ,사;야,shè;yè;yì,xạ,사;야,,,true,5,"shoot, eject, issue forth, emit",unihan,kaikki_aligned,kanjidic2,unihan
 c01402,攝,攝,摄,摂,せつ,섭,shè,nhiếp,せつ;しょう,섭,shè;zhé;niè;shà,nhiếp,섭,ㅂ,p,true,5,"take in, absorb; act as deputy; administer, assist",unihan,kaikki_aligned,kanjidic2,unihan
 c01403,伸,伸,伸,伸,しん,신,shēn,,しん,신,shēn,,신,ㄴ,,true,5,"extend, stretch out, open up; trust",unihan,,kanjidic2,unihan
-c01404,剩,剩,剩,剰,じょう,잉,shèng,,じょう,잉,shèng,,잉,ㅇ,,true,5,"leftovers, residue, remains",unihan,,kanjidic2,unihan
+c01404,剩,剩,剩,剰,じょう,잉,shèng,thặng,じょう,잉,shèng,thặng,잉,ㅇ,ng,true,5,"leftovers, residue, remains",unihan,kaikki_en_char,kanjidic2,unihan
 c01405,拾,拾,拾,拾,しゅう,습,shí,thập,しゅう;じゅう,습;십,shí;shè;jiè,thập,습;십,ㅂ,p,true,5,"pick up, collect, tidy up; accounting form of the numeral ten",unihan,kaikki_aligned,kanjidic2,unihan
 c01406,駛,駛,驶,駛,し,사,shǐ,,し,사,shǐ,,사,,,true,5,"sail, drive, pilot; fast, quick",unihan,,kanjidic2,unihan
 c01407,飾,飾,饰,飾,しょく,식,shì,sức,しょく,식,shì;chì,sức,식,ㄱ,c,true,5,"decorate, ornament, adorn; to deceive",unihan,kaikki_aligned,kanjidic2,unihan
@@ -1450,7 +1450,7 @@ c01448,享,享,享,享,きょう,향,xiǎng,hưởng,きょう;こう,향,xiǎng
 c01449,歇,歇,歇,歇,けつ,헐,xiē,hết,けつ;かい;かつ,헐,xiē;yà,hết,헐,ㄹ,t,true,5,"rest, stop, lodge",unihan,unihan_unverified,kanjidic2,unihan
 c01450,協,協,协,協,きょう,협,xié,hiệp,きょう,협,xié,hiệp;hiếp,협,ㅂ,p,true,5,be united; cooperate,unihan,kaikki_aligned,kanjidic2,unihan
 c01451,斜,斜,斜,斜,しゃ,사,xié,tà,しゃ,사,xié;xiá;chá;yé,tà,사,,,true,5,"slanting, sloping, inclined",unihan,unihan_hvsyl,kanjidic2,unihan
-c01452,辛,辛,辛,辛,しん,신,xīn,tân,しん,신,xīn,tân,신,ㄴ,n,true,5,"bitter; toilsome, laborious; 8th heavenly stem; Kangxi radical 160",unihan,unihan_hvsyl,kanjidic2,unihan
+c01452,辛,辛,辛,辛,しん,신,xīn,tân,しん,신,xīn,tân,신,ㄴ,n,true,5,"bitter; toilsome, laborious; 8th heavenly stem; Kangxi radical 160",unihan,kaikki_en_char,kanjidic2,unihan
 c01453,欣,欣,欣,欣,きん,흔,xīn,hân,きん;ごん;こん,흔,xīn,hân,흔,ㄴ,n,true,5,"happy, joyous, delighted",unihan,kaikki_aligned,kanjidic2,unihan
 c01454,雄,雄,雄,雄,ゆう,웅,xióng,hùng,ゆう,웅,xióng,hùng,웅,ㅇ,ng,true,5,male of species; hero; manly,unihan,kaikki_aligned,kanjidic2,unihan
 c01455,熊,熊,熊,熊,ゆう,웅,xióng,hùng,ゆう,웅,xióng,hùng,웅,ㅇ,ng,true,5,a bear; brilliant; bright; surname,unihan,unihan_hvsyl,kanjidic2,unihan
@@ -1461,7 +1461,7 @@ c01459,鴨,鴨,鸭,鴨,おう,압,yā,,おう,압,yā,,압,ㅂ,,true,5,duck; Ana
 c01460,厭,厭,厌,厭,えん,염,yàn,ướm,えん;おん;あん;おう;ゆう;よう,염,yàn;yā;yǎn;yān;yì,ướm,염,ㅁ,m,true,5,"dislike, detest, reject; satiate",unihan,unihan_unverified,kanjidic2,unihan
 c01461,艷,艷,艳,艶,えん,염,yàn,diễm,えん,염,yàn,diễm,염,ㅁ,m,true,5,"beautiful, sexy, voluptuous",unihan,unihan_unverified,kanjidic2,unihan
 c01462,央,央,央,央,おう,앙,yāng,ương,おう,앙,yāng;yīng,ương,앙,ㅇ,ng,true,5,"center, conclude, run out; beg",unihan,kaikki_aligned,kanjidic2,unihan
-c01463,邀,邀,邀,邀,よう,요,yāo,,よう,요,yāo,,요,,,true,5,"invite, welcome; meet, intercept",unihan,,kanjidic2,unihan
+c01463,邀,邀,邀,邀,よう,요,yāo,yêu,よう,요,yāo,yêu,요,,,true,5,"invite, welcome; meet, intercept",unihan,kaikki_en_char,kanjidic2,unihan
 c01464,咬,咬,咬,咬,こう,교,yǎo,rao,こう;よう,교;요,yǎo;jiāo;yāo;jiǎo,rao,교;요,,,true,5,"bite, gnaw",unihan,unihan_hvsyl,kanjidic2,unihan
 c01465,乙,乙,乙,乙,おつ,을,yǐ,ất,おつ;いつ,을,yǐ;yì;jué,ất,을,ㄹ,t,true,5,second; 2nd heavenly stem,unihan,kaikki_aligned,kanjidic2,unihan
 c01466,憶,憶,忆,憶,おく,억,yì,ức,おく,억,yì,ức,억,ㄱ,c,true,5,"remember, reflect upon; memory",unihan,unihan_hvsyl,kanjidic2,unihan
@@ -1501,15 +1501,15 @@ c01499,尊,尊,尊,尊,そん,존,zūn,tôn,そん,존,zūn,tôn,존,ㄴ,n,true,
 c01500,遵,遵,遵,遵,じゅん,준,zūn,tuân,じゅん,준,zūn,tuân,준,ㄴ,n,true,5,"obey, comply with, follow; honor",unihan,kaikki_aligned,kanjidic2,unihan
 c01501,挨,挨,挨,挨,あい,애,āi,,あい,애,āi;ái,,애,,,true,6,"near, close by, next to, towards, against; to wait; to lean on",unihan,,kanjidic2,unihan
 c01502,傲,傲,傲,傲,ごう,오,ào,ngạo,ごう,오,ào;áo,ngạo,오,,,true,6,"proud, haughty, overbearing",unihan,kaikki_aligned,kanjidic2,unihan
-c01503,罷,罷,罢,罷,ひ,파,bà,bãi,ひ,파,bà;pí;pì;bǐ;ba;bǎi,bãi,파,,,true,6,"cease, finish, stop; give up",unihan,unihan_unverified,kanjidic2,unihan
+c01503,罷,罷,罢,罷,ひ,파,bà,bãi,ひ,파,bà;pí;pì;bǐ;ba;bǎi,bãi,파,,,true,6,"cease, finish, stop; give up",unihan,kaikki_en_char,kanjidic2,unihan
 c01504,榜,榜,榜,榜,ぼう,방,bǎng,bàng,ぼう;ほう,방,bǎng;bēng;bàng;páng;péng,bàng;báng,방,ㅇ,ng,true,6,placard; list of successful exam candidates,unihan,unihan_hvsyl,kanjidic2,unihan
-c01505,傍,傍,傍,傍,ぼう,방,bàng,bàng,ぼう,방,bàng;páng;bēng;péng,bàng,방,ㅇ,ng,true,6,"by side of, beside, near, close",unihan,unihan_hvsyl,kanjidic2,unihan
+c01505,傍,傍,傍,傍,ぼう,방,bàng,bàng,ぼう,방,bàng;páng;bēng;péng,bàng,방,ㅇ,ng,true,6,"by side of, beside, near, close",unihan,kaikki_en_char,kanjidic2,unihan
 c01506,胞,胞,胞,胞,ほう,포,bāo,bào,ほう,포,bāo;páo;pào,bào,포,,,true,6,"womb, placenta, fetal membrane",unihan,kaikki_aligned,kanjidic2,unihan
 c01507,暴,暴,暴,暴,ぼう,폭,bào,bạo,ぼう;ばく,폭;포,bào;pù;bó,bạo;bộc,폭;포,ㄱ,,true,6,"violent, brutal, tyrannical",unihan,kaikki_aligned,kanjidic2,unihan
 c01508,爆,爆,爆,爆,ばく,폭,bào,bộc,ばく,폭,bào;bó,bộc,폭,ㄱ,c,true,6,"crackle, pop, burst, explode",unihan,kaikki_aligned,kanjidic2,unihan
 c01509,奔,奔,奔,奔,ほん,분,bēn,bôn,ほん,분,bēn;bèn;fèn,bôn;hợp,분,ㄴ,n,true,6,"run fast, flee; rush about; run",unihan,kaikki_aligned,kanjidic2,unihan
 c01510,逼,逼,逼,逼,ふく,핍,bī,bức,ふく;ひつ;ひょく;ひき,핍,bī,bức,핍,ㅂ,c,true,6,"compel, pressure, force; bother",unihan,kaikki_aligned,kanjidic2,unihan
-c01511,扁,扁,扁,扁,へん,편,biǎn,biển,へん,편,biǎn;piān;biān;pián,biển,편,ㄴ,n,true,6,"flat; tablet, signboard",unihan,unihan_unverified,kanjidic2,unihan
+c01511,扁,扁,扁,扁,へん,편,biǎn,biển,へん,편,biǎn;piān;biān;pián,biển,편,ㄴ,n,true,6,"flat; tablet, signboard",unihan,kaikki_en_char,kanjidic2,unihan
 c01512,撥,撥,拨,撥,はつ,발,bō,,はつ;ばち,발,bō;fá,,발,ㄹ,,true,6,"move; dispel; distribute; plectrum, play stringed instrument",unihan,,kanjidic2,unihan
 c01513,波,波,波,波,は,파,bō,ba,は,파,bō;bēi;bì,ba,파,,,true,6,"waves, breakers; undulations",unihan,kaikki_aligned,kanjidic2,unihan
 c01514,捕,捕,捕,捕,ほ,포,bǔ,bõ,ほ,포,bǔ,bõ,포,,,true,6,"arrest, catch, seize",unihan,unihan_unverified,kanjidic2,unihan
@@ -1551,13 +1551,13 @@ c01549,蹲,蹲,蹲,蹲,そん,준,dūn,,そん;しゅん,준,dūn;zún;cún;zūn
 c01550,奪,奪,夺,奪,だつ,탈,duó,đoạt,だつ,탈,duó;duì,đoạt,탈,ㄹ,t,true,6,"take by force, rob, snatch",unihan,kaikki_aligned,kanjidic2,unihan
 c01551,額,額,额,額,がく,액,é,ngạch,がく,액,é,ngạch,액,ㄱ,ch,true,6,"forehead; tablet, plaque; fixed",unihan,unihan_unverified,kanjidic2,unihan
 c01552,恩,恩,恩,恩,おん,은,ēn,ân,おん,은,ēn,ân,은,ㄴ,n,true,6,"kindness, mercy, charity",unihan,kaikki_aligned,kanjidic2,unihan
-c01553,番,番,番,番,ばん,번,fān,phiên,ばん,번,fān;fán;bō;pó;pān;pán;pàn;pí,phiên;phiện,번,ㄴ,n,true,6,"to take turns; a turn, a time; to repeat",unihan,unihan_hvsyl,kanjidic2,unihan
+c01553,番,番,番,番,ばん,번,fān,phiên,ばん,번,fān;fán;bō;pó;pān;pán;pàn;pí,phiên;phiện,번,ㄴ,n,true,6,"to take turns; a turn, a time; to repeat",unihan,kaikki_en_char,kanjidic2,unihan
 c01554,凡,凡,凡,凡,ぼん,범,fán,phàm,ぼん;はん,범,fán,phàm,범,ㅁ,m,true,6,"all, any, every; ordinary, common",unihan,kaikki_aligned,kanjidic2,unihan
 c01555,犯,犯,犯,犯,はん,범,fàn,phạm,はん;ぼん,범,fàn,phạm,범,ㅁ,m,true,6,"commit crime, violate; criminal",unihan,kaikki_aligned,kanjidic2,unihan
 c01556,肺,肺,肺,肺,はい,폐,fèi,,はい,폐,fèi;pèi,,폐,,,true,6,lungs,unihan,,kanjidic2,unihan
 c01557,廢,廢,废,廃,はい,폐,fèi,phế,はい,폐,fèi,phế,폐,,,true,6,"abrogate, terminate, discard",unihan,kaikki_aligned,kanjidic2,unihan
 c01558,氛,氛,氛,氛,ふん,분,fēn,,ふん,분,fēn,,분,ㄴ,,true,6,"gas, vapor, air",unihan,,kanjidic2,unihan
-c01559,粉,粉,粉,粉,ふん,분,fěn,phấn,ふん,분,fěn,phấn,분,ㄴ,n,true,6,"powder, face powder; plaster",unihan,unihan_hvsyl,kanjidic2,unihan
+c01559,粉,粉,粉,粉,ふん,분,fěn,phấn,ふん,분,fěn,phấn,분,ㄴ,n,true,6,"powder, face powder; plaster",unihan,kaikki_en_char,kanjidic2,unihan
 c01560,憤,憤,愤,憤,ふん,분,fèn,phẫn,ふん,분,fèn,phẫn,분,ㄴ,n,true,6,"resent, hate; indignant",unihan,kaikki_aligned,kanjidic2,unihan
 c01561,峰,峰,峰,峰,ほう,봉,fēng,,ほう,봉,fēng,,봉,ㅇ,,true,6,"peak, summit; hump of camel",unihan,,kanjidic2,unihan
 c01562,鋒,鋒,锋,鋒,ほう,봉,fēng,phong,ほう,봉,fēng,phong,봉,ㅇ,ng,true,6,"point of spear, sharp point",unihan,kaikki_aligned,kanjidic2,unihan
@@ -1577,7 +1577,7 @@ c01575,貢,貢,贡,貢,こう,공,gòng,cống,こう;く,공,gòng,cống,공,�
 c01576,孤,孤,孤,孤,こ,고,gū,cô,こ,고,gū,cô,고,,,true,6,"orphan, fatherless; solitary",unihan,kaikki_aligned,kanjidic2,unihan
 c01577,谷,谷,谷,谷,こく,곡,gǔ,cốc,こく,곡,gǔ;lù;yù,cốc,곡,ㄱ,c,true,6,"valley, gorge, ravine; Kangxi radical 150",unihan,unihan_hvsyl,kanjidic2,unihan
 c01578,股,股,股,股,こ,고,gǔ,cổ,こ,고,gǔ,cổ,고,,,true,6,"thighs, haunches, rump; share",unihan,kaikki_aligned,kanjidic2,unihan
-c01579,刮,刮,刮,刮,かつ,괄,guā,,かつ,괄,guā,,괄,ㄹ,,true,6,"shave, pare off, scrape",unihan,,kanjidic2,unihan
+c01579,刮,刮,刮,刮,かつ,괄,guā,quát,かつ,괄,guā,quát,괄,ㄹ,t,true,6,"shave, pare off, scrape",unihan,kaikki_en_char,kanjidic2,unihan
 c01580,拐,拐,拐,拐,かい,괴,guǎi,quái,かい,괴,guǎi,quái,괴,,,true,6,"kidnap, abduct; turn",unihan,unihan_hvsyl,kanjidic2,unihan
 c01581,貫,貫,贯,貫,かん,관,guàn,quán,かん,관,guàn;wān,quán;quan,관,ㄴ,n,true,6,a string of 1000 coins; to go through,unihan,kaikki_aligned,kanjidic2,unihan
 c01582,軌,軌,轨,軌,き,궤,guǐ,quỹ,き,궤,guǐ,quỹ,궤,,,true,6,"track, rut, path",unihan,kaikki_aligned,kanjidic2,unihan
@@ -1611,7 +1611,7 @@ c01609,艦,艦,舰,艦,かん,함,jiàn,hạm,かん,함,jiàn,hạm,함,ㅁ,m,t
 c01610,踐,踐,践,践,せん,천,jiàn,tiễn,せん,천,jiàn,tiễn,천,ㄴ,n,true,6,"trample, tread upon, walk on",unihan,kaikki_aligned,kanjidic2,unihan
 c01611,鑑,鑑,鉴,鑑,かん,감,jiàn,,かん,감,jiàn,,감,ㅁ,,true,6,"mirror, looking glass; reflect",unihan,,kanjidic2,unihan
 c01612,箭,箭,箭,箭,せん,전,jiàn,tiễn,せん,전,jiàn,tiễn,전,ㄴ,n,true,6,arrow; type of bamboo,unihan,kaikki_aligned,kanjidic2,unihan
-c01613,醬,醬,酱,醤,しょう,장,jiàng,tương,しょう,장,jiàng,tương,장,ㅇ,ng,true,6,any jam-like or paste-like food,unihan,unihan_hvsyl,kanjidic2,unihan
+c01613,醬,醬,酱,醤,しょう,장,jiàng,tương,しょう,장,jiàng,tương,장,ㅇ,ng,true,6,any jam-like or paste-like food,unihan,kaikki_en_char,kanjidic2,unihan
 c01614,驕,驕,骄,驕,きょう,교,jiāo,kiêu,きょう,교,jiāo;xiāo;jū;qiáo,kiêu,교,,,true,6,spirited horse; haughty,unihan,kaikki_aligned,kanjidic2,unihan
 c01615,焦,焦,焦,焦,しょう,초,jiāo,,しょう,초,jiāo;qiáo,,초,,,true,6,"burned, scorched; anxious, vexed",unihan,,kanjidic2,unihan
 c01616,揭,揭,揭,掲,けい,게,jiē,yết,けい,게,jiē;qì;hé,yết,게,,t,true,6,"raise, lift up; surname",unihan,unihan_hvsyl,kanjidic2,unihan
@@ -1633,8 +1633,8 @@ c01631,啦,啦,啦,啦,ろう,랍,lā,,ろう,랍,lā;la,,랍,ㅂ,,true,6,final 
 c01632,賴,賴,赖,頼,らい,뢰,lài,,らい,뢰,lài,,뢰,,,true,6,"rely, depend on; accuse falsely",unihan,,kanjidic2,unihan
 c01633,欄,欄,栏,欄,らん,란,lán,lan,らん,란;난,lán;liàn,lan;lang,란,ㄴ,n,true,6,"railing, balustrade; animal pen",unihan,unihan_hvsyl,kanjidic2,unihan
 c01634,懶,懶,懒,懶,らん,라,lǎn,,らん;らい,라;나;란,lǎn;lài,,라;란,,,true,6,"lazy, languid, listless",unihan,,kanjidic2,unihan
-c01635,牢,牢,牢,牢,ろう,뢰,láo,lao,ろう,뢰;뇌,láo;lào;lóu,lao,뢰,,,true,6,"prison; stable, pen; secure",unihan,unihan_hvsyl,kanjidic2,unihan
-c01636,梁,梁,梁,梁,りょう,량,liáng,lương,りょう,량;양,liáng,lương,량,ㅇ,ng,true,6,bridge; beam; rafters; surname,unihan,unihan_hvsyl,kanjidic2,unihan
+c01635,牢,牢,牢,牢,ろう,뢰,láo,lao,ろう,뢰;뇌,láo;lào;lóu,lao,뢰,,,true,6,"prison; stable, pen; secure",unihan,kaikki_en_char,kanjidic2,unihan
+c01636,梁,梁,梁,梁,りょう,량,liáng,lương,りょう,량;양,liáng,lương,량,ㅇ,ng,true,6,bridge; beam; rafters; surname,unihan,kaikki_en_char,kanjidic2,unihan
 c01637,諒,諒,谅,諒,りょう,량,liàng,lượng,りょう,량;양,liàng;liáng,lượng,량,ㅇ,ng,true,6,"excuse, forgive; guess, presume",unihan,unihan_hvsyl,kanjidic2,unihan
 c01638,裂,裂,裂,裂,れつ,렬,liè,liệt,れつ,렬;열,liè;liě,liệt,렬,ㄹ,t,true,6,"split, crack, break open; rend",unihan,kaikki_aligned,kanjidic2,unihan
 c01639,靈,靈,灵,霊,れい,령,líng,linh,れい;りょう,령;영,líng,linh,령,ㅇ,nh,true,6,"spirit, soul; spiritual world",unihan,kaikki_aligned,kanjidic2,unihan
@@ -1657,7 +1657,7 @@ c01655,膜,膜,膜,膜,まく,막,mó,mạc,まく,막,mó,mạc,막,ㄱ,c,true,
 c01656,磨,磨,磨,磨,ま,마,mó,mài,ま,마,mó;mò,mài,마,,,true,6,grind; polish; rub; wear out; a millstone,unihan,unihan_unverified,kanjidic2,unihan
 c01657,墨,墨,墨,墨,ぼく,묵,mò,,ぼく,묵,mò;mèi,,묵,ㄱ,,true,6,ink; writing,unihan,,kanjidic2,unihan
 c01658,謀,謀,谋,謀,ぼう,모,móu,mưu,ぼう;む,모,móu,mưu,모,,,true,6,"plan, scheme; stratagem",unihan,kaikki_aligned,kanjidic2,unihan
-c01659,墓,墓,墓,墓,ぼ,묘,mù,mộ,ぼ,묘,mù,mộ,묘,,,true,6,"grave, tomb",unihan,unihan_hvsyl,kanjidic2,unihan
+c01659,墓,墓,墓,墓,ぼ,묘,mù,mộ,ぼ,묘,mù,mộ,묘,,,true,6,"grave, tomb",unihan,kaikki_en_char,kanjidic2,unihan
 c01660,納,納,纳,納,のう,납,nà,nạp,のう;なっ;な;なん;とう,납,nà,nạp,납,ㅂ,p,true,6,"admit, take, receive, accept",unihan,kaikki_aligned,kanjidic2,unihan
 c01661,泥,泥,泥,泥,でい,니,ní,nệ,でい;ない;で;に,니;이,ní;nì;nǐ;niè;nìng,nệ,니,,,true,6,"mud, mire; earth, clay; plaster",unihan,kaikki_aligned,kanjidic2,unihan
 c01662,扭,扭,扭,扭,じゅう,뉴,niǔ,,じゅう;にゅ;ちゅう;ちゅ,뉴,niǔ;chǒu;zhǒu;zhòu,,뉴,,,true,6,"turn, twist, wrench; seize, grasp",unihan,,kanjidic2,unihan
@@ -1673,12 +1673,12 @@ c01671,屏,屏,屏,屏,へい,병,píng,bình,へい;びょう,병,píng;bǐng;b
 c01672,坡,坡,坡,坡,は,파,pō,pha,は;ひ,파,pō,pha,파,,,true,6,"slope, bank, hillside",unihan,kaikki_aligned,kanjidic2,unihan
 c01673,撲,撲,扑,撲,ぼく,박,pū,vục,ぼく,박;복,pū;bǔ,vục,박;복,ㄱ,c,true,6,"pound, beat, strike; attack",unihan,unihan_unverified,kanjidic2,unihan
 c01674,鋪,鋪,铺,舗,ほ,포,pù,phố,ほ,포,pù;pū,phố,포,,,true,6,"spread out, arrange; shop, store; place to sleep, bed",unihan,unihan_hvsyl,kanjidic2,unihan
-c01675,欺,欺,欺,欺,ぎ,기,qī,khi,ぎ,기,qī,khi,기,,,true,6,"cheat, double-cross, deceive",unihan,unihan_unverified,kanjidic2,unihan
+c01675,欺,欺,欺,欺,ぎ,기,qī,khi,ぎ,기,qī,khi,기,,,true,6,"cheat, double-cross, deceive",unihan,kaikki_en_char,kanjidic2,unihan
 c01676,旗,旗,旗,旗,き,기,qí,kỳ,き,기,qí,kỳ,기,,,true,6,"banner, flag, streamer",unihan,kaikki_aligned,kanjidic2,unihan
 c01677,恰,恰,恰,恰,こう,흡,qià,,こう;かっ;ちょう;きょう,흡,qià,,흡,ㅂ,,true,6,"just, exactly, precisely; proper",unihan,,kanjidic2,unihan
-c01678,遷,遷,迁,遷,せん,천,qiān,thiên,せん,천,qiān,thiên,천,ㄴ,n,true,6,"move, shift, change; transfer",unihan,unihan_hvsyl,kanjidic2,unihan
+c01678,遷,遷,迁,遷,せん,천,qiān,thiên,せん,천,qiān,thiên,천,ㄴ,n,true,6,"move, shift, change; transfer",unihan,kaikki_en_char,kanjidic2,unihan
 c01679,牽,牽,牵,牽,けん,견,qiān,,けん,견,qiān;qiàn,,견,ㄴ,,true,6,"drag, pull, lead by hand",unihan,,kanjidic2,unihan
-c01680,鉛,鉛,铅,鉛,えん,연,qiān,duyên,えん,연,qiān;yán,duyên,연,ㄴ,n,true,6,"lead (element 82, Pb)",unihan,unihan_hvsyl,kanjidic2,unihan
+c01680,鉛,鉛,铅,鉛,えん,연,qiān,duyên,えん,연,qiān;yán,duyên,연,ㄴ,n,true,6,"lead (element 82, Pb)",unihan,kaikki_en_char,kanjidic2,unihan
 c01681,謙,謙,谦,謙,けん,겸,qiān,khiêm,けん,겸,qiān;zhàn,khiêm,겸,ㅁ,m,true,6,"humble, modest; hexagram ䷎",unihan,kaikki_aligned,kanjidic2,unihan
 c01682,潛,潛,潜,潜,せん,잠,qián,tiềm,せん,잠,qián,tiềm,잠,ㅁ,m,true,6,"hide; hidden, secret, latent",unihan,kaikki_aligned,kanjidic2,unihan
 c01683,歉,歉,歉,歉,けん,겸,qiàn,,けん;かん,겸,qiàn,,겸,ㅁ,,true,6,"deficient, lacking, insufficient",unihan,,kanjidic2,unihan
@@ -1705,8 +1705,8 @@ c01703,稅,稅,税,税,ぜい,세,shuì,thuế,ぜい,세,shuì,thuế,세,,,tru
 c01704,寺,寺,寺,寺,じ,사,sì,,じ,사;시,sì;shì,,사;시,,,true,6,"court, office; temple, monastery",unihan,,kanjidic2,unihan
 c01705,甦,甦,苏,甦,そ,소,sū,,そ;こう,소,sū,,소,,,true,6,"be reborn; resuscitate, revive",unihan,,kanjidic2,unihan
 c01706,素,素,素,素,そ,소,sù,tố,そ;す,소,sù,tố,소,,,true,6,white (silk); plain; vegetarian; formerly; normally,unihan,kaikki_aligned,kanjidic2,unihan
-c01707,塔,塔,塔,塔,とう,탑,tǎ,,とう,탑,tǎ;dā;da,,탑,ㅂ,,true,6,"tower, spire, tall building",unihan,,kanjidic2,unihan
-c01708,踏,踏,踏,踏,とう,답,tà,đạp,とう,답,tà;tā,đạp,답,ㅂ,p,true,6,"step on, trample, tread on, walk",unihan,unihan_unverified,kanjidic2,unihan
+c01707,塔,塔,塔,塔,とう,탑,tǎ,tháp,とう,탑,tǎ;dā;da,tháp,탑,ㅂ,p,true,6,"tower, spire, tall building",unihan,kaikki_en_char,kanjidic2,unihan
+c01708,踏,踏,踏,踏,とう,답,tà,đạp,とう,답,tà;tā,đạp,답,ㅂ,p,true,6,"step on, trample, tread on, walk",unihan,kaikki_en_char,kanjidic2,unihan
 c01709,嘆,嘆,叹,嘆,たん,탄,tàn,thán,たん,탄,tàn,thán,탄,ㄴ,n,true,6,"sigh, admire",unihan,kaikki_aligned,kanjidic2,unihan
 c01710,探,探,探,探,たん,탐,tàn,thám,たん,탐,tàn;xián,thám,탐,ㅁ,m,true,6,"find, locate; search, grope for",unihan,kaikki_aligned,kanjidic2,unihan
 c01711,趟,趟,趟,趟,とう,쟁,tàng,,とう;ちょう;じょう,쟁,tàng;zhēng;zhèng;chéng;tāng,,쟁,ㅇ,,true,6,"time, occasion; take journey",unihan,,kanjidic2,unihan
@@ -1737,7 +1737,7 @@ c01735,曉,曉,晓,暁,ぎょう,효,xiǎo,hiểu,ぎょう;きょう,효,xiǎo,
 c01736,脅,脅,胁,脅,きょう,협,xié,hiếp,きょう,협,xié;xiàn;xī,hiếp,협,ㅂ,p,true,6,ribs; armpits; flank; threaten,unihan,kaikki_aligned,kanjidic2,unihan
 c01737,諧,諧,谐,諧,かい,해,xié,hài,かい,해,xié,hài,해,,,true,6,"harmonize, agree; joke, jest",unihan,kaikki_aligned,kanjidic2,unihan
 c01738,械,械,械,械,かい,계,xiè,giới,かい,계,xiè,giới,계,,,true,6,"weapons; implements, instruments",unihan,kaikki_aligned,kanjidic2,unihan
-c01739,薪,薪,薪,薪,しん,신,xīn,,しん,신,xīn,,신,ㄴ,,true,6,"fuel, firewood; salary",unihan,,kanjidic2,unihan
+c01739,薪,薪,薪,薪,しん,신,xīn,tân,しん,신,xīn,tân,신,ㄴ,n,true,6,"fuel, firewood; salary",unihan,kaikki_en_char,kanjidic2,unihan
 c01740,凶,凶,凶,凶,きょう,흉,xiōng,hung,きょう,흉,xiōng,hung,흉,ㅇ,ng,true,6,"culprit; murder; bad, sad",unihan,kaikki_aligned,kanjidic2,unihan
 c01741,袖,袖,袖,袖,しゅう,수,xiù,tụ,しゅう,수,xiù,tụ,수,,,true,6,sleeve; put something in sleeve,unihan,kaikki_aligned,kanjidic2,unihan
 c01742,緒,緒,绪,緒,しょ,서,xù,,しょ;ちょ,서,xù,,서,,,true,6,end of thread; thread,unihan,,kanjidic2,unihan
@@ -1766,7 +1766,7 @@ c01764,慾,慾,欲,慾,よく,욕,yù,dục,よく,욕,yù,dục,욕,ㄱ,c,true,
 c01765,譽,譽,誉,誉,よ,예,yù,dự,よ,예,yù,dự,예,,,true,6,"fame, reputation; praise",unihan,kaikki_aligned,kanjidic2,unihan
 c01766,援,援,援,援,えん,원,yuán,viện,えん,원,yuán;huàn,viện,원,ㄴ,n,true,6,"aid, assist; lead; cite",unihan,kaikki_aligned,kanjidic2,unihan
 c01767,緣,緣,缘,縁,えん,연,yuán,duyên,えん;-ねん,연,yuán;yuàn,duyên,연,ㄴ,n,true,6,"hem, margin; reason, cause; karma, fate",unihan,kaikki_aligned,kanjidic2,unihan
-c01768,躍,躍,跃,躍,やく,약,yuè,dược,やく,약,yuè;tì,dược,약,ㄱ,c,true,6,"skip, jump, frolic",unihan,unihan_hvsyl,kanjidic2,unihan
+c01768,躍,躍,跃,躍,やく,약,yuè,dược,やく,약,yuè;tì,dược,약,ㄱ,c,true,6,"skip, jump, frolic",unihan,kaikki_en_char,kanjidic2,unihan
 c01769,暈,暈,晕,暈,うん,훈,yūn,vừng,うん,훈;운,yūn;yùn,vừng,훈;운,ㄴ,ng,true,6,"halo in sky; fog; dizzy, faint",unihan,unihan_unverified,kanjidic2,unihan
 c01770,允,允,允,允,いん,윤,yǔn,,いん,윤,yǔn;yuán,,윤,ㄴ,,true,6,"to grant, to allow, to consent",unihan,,kanjidic2,unihan
 c01771,遭,遭,遭,遭,そう,조,zāo,tao,そう,조,zāo,tao,조,,,true,6,"come across, meet with, encounter",unihan,kaikki_aligned,kanjidic2,unihan
@@ -1801,9 +1801,9 @@ c01799,鑽,鑽,钻,鑽,さん,찬,zuān,,さん,찬,zuān;zuàn,,찬,ㄴ,,true,6
 c01800,罪,罪,罪,罪,ざい,죄,zuì,tội,ざい,죄,zuì,tội,죄,,,true,6,"crime, sin, vice; evil; hardship",unihan,kaikki_aligned,kanjidic2,unihan
 c01801,哎,哎,哎,哎,がい,애,āi,,がい,애,āi,,애,,,true,7,interjection of surprise,unihan,,kanjidic2,unihan
 c01802,哀,哀,哀,哀,あい,애,āi,ai,あい,애,āi,ai,애,,,true,7,"sad, mournful, pitiful; pity",unihan,unihan_hvsyl,kanjidic2,unihan
-c01803,癌,癌,癌,癌,がん,암,ái,,がん,암,ái;yán,,암,ㅁ,,true,7,cancer; marmoset,unihan,,kanjidic2,unihan
+c01803,癌,癌,癌,癌,がん,암,ái,nham,がん,암,ái;yán,nham,암,ㅁ,m,true,7,cancer; marmoset,unihan,kaikki_en_char,kanjidic2,unihan
 c01804,藹,藹,蔼,藹,あい,애,ǎi,,あい,애,ǎi,,애,,,true,7,"lush; affable, friendly",unihan,,kanjidic2,unihan
-c01805,艾,艾,艾,艾,かい,애,ài,ngải,かい;げい,애;예,ài;yì,ngải,애;예,,,true,7,"artemisia, mugwort",unihan,unihan_unverified,kanjidic2,unihan
+c01805,艾,艾,艾,艾,かい,애,ài,ngải,かい;げい,애;예,ài;yì,ngải,애;예,,,true,7,"artemisia, mugwort",unihan,kaikki_en_char,kanjidic2,unihan
 c01806,唉,唉,唉,唉,かい,애,āi,hãy,かい;き;あい;い,애,āi;ǎi;ài,hãy,애,,,true,7,"alas, exclamation of surprise or pain",unihan,unihan_unverified,kanjidic2,unihan
 c01807,隘,隘,隘,隘,あい,애,ài,ải,あい;やく,애,ài;è,ải,애,,,true,7,"narrow, confined; a strategic pass",unihan,unihan_unverified,kanjidic2,unihan
 c01808,昂,昂,昂,昂,こう,앙,áng,ngang,こう;ごう,앙,áng;yàng,ngang,앙,ㅇ,ng,true,7,"rise, raise; proud, bold; upright",unihan,unihan_unverified,kanjidic2,unihan
@@ -1843,12 +1843,12 @@ c01841,蹦,蹦,蹦,,,붕,bèng,,,붕,bèng,,붕,ㅇ,,true,7,"hop, leap, jump; br
 c01842,鄙,鄙,鄙,鄙,ひ,비,bǐ,bỉ,ひ,비,bǐ,bỉ,비,,,true,7,mean; low,unihan,kaikki_aligned,kanjidic2,unihan
 c01843,斃,斃,毙,斃,へい,폐,bì,,へい,폐,bì,,폐,,,true,7,kill; die violent death,unihan,,kanjidic2,unihan
 c01844,痺,痺,痹,痺,ひ,비,bì,,ひ,비,bì,,비,,,true,7,"paralysis, numbness",unihan,,kanjidic2,unihan
-c01845,碧,碧,碧,碧,へき,벽,bì,bích,へき;ひゃく,벽,bì,bích;biếc;vách,벽,ㄱ,ch,true,7,"jade; green, blue",unihan,unihan_unverified,kanjidic2,unihan
-c01846,蔽,蔽,蔽,蔽,へい,폐,bì,,へい;へつ;ふつ,폐,bì;biē;piē,,폐,,,true,7,"cover, hide, conceal; shelter",unihan,,kanjidic2,unihan
+c01845,碧,碧,碧,碧,へき,벽,bì,bích,へき;ひゃく,벽,bì,bích,벽,ㄱ,ch,true,7,"jade; green, blue",unihan,kaikki_en_char,kanjidic2,unihan
+c01846,蔽,蔽,蔽,蔽,へい,폐,bì,tế,へい;へつ;ふつ,폐,bì;biē;piē,tế,폐,,,true,7,"cover, hide, conceal; shelter",unihan,kaikki_en_char,kanjidic2,unihan
 c01847,弊,弊,弊,弊,へい,폐,bì,tệ,へい,폐,bì,tệ,폐,,,true,7,"evil, wrong, bad; criminal",unihan,unihan_hvsyl,kanjidic2,unihan
 c01848,臂,臂,臂,臂,ひ,비,bì,,ひ,비,bì;bei,,비,,,true,7,arm,unihan,,kanjidic2,unihan
 c01849,鞭,鞭,鞭,鞭,べん,편,biān,,べん;へん,편,biān,,편,ㄴ,,true,7,whip; whip; string of firecrackers,unihan,,kanjidic2,unihan
-c01850,貶,貶,贬,貶,へん,폄,biǎn,biếm,へん,폄,biǎn;fá,biếm,폄,ㅁ,m,true,7,"decrease, lower; censure, criticize",unihan,unihan_unverified,kanjidic2,unihan
+c01850,貶,貶,贬,貶,へん,폄,biǎn,biếm,へん,폄,biǎn;fá,biếm,폄,ㅁ,m,true,7,"decrease, lower; censure, criticize",unihan,kaikki_en_char,kanjidic2,unihan
 c01851,辨,辨,辨,弁,べん,변,biàn,biện,べん;へん,변,biàn;biǎn;bàn;piàn,biện,변,ㄴ,n,true,7,"distinguish, discriminate",unihan,kaikki_aligned,kanjidic2,unihan
 c01852,辮,辮,辫,辮,べん,변,biàn,,べん;へん,변,biàn,,변,ㄴ,,true,7,"braid; pigtail, plait, queue",unihan,,kanjidic2,unihan
 c01853,飆,飆,飙,飆,ひょう,표,biāo,,ひょう,표,biāo,,표,,,true,7,"whirlwind, stormy gale",unihan,,kanjidic2,unihan
@@ -1887,7 +1887,7 @@ c01885,詫,詫,诧,詫,た,타,chà,,た,타,chà;dù,,타,,,true,7,to brag; exa
 c01886,摻,摻,掺,摻,さん,섬,càn,,さん;せん;しん,섬;삼;참,càn;shǎn;shān;chān;sēn,,섬;삼;참,ㅁ,,true,7,"a delicate hand; mix, blend, adulterate",unihan,,kanjidic2,unihan
 c01887,攙,攙,搀,攙,せん,참,chān,sọm,せん;しん;さん,참,chān;shàn,sọm,참,ㅁ,m,true,7,"to give a helping hand; to support, hold up",unihan,unihan_unverified,kanjidic2,unihan
 c01888,饞,饞,馋,饞,さん,참,chán,thèm,さん;ぜん,참,chán,thèm,참,ㅁ,m,true,7,"gluttonous, greedy; lewd, lecherous",unihan,unihan_unverified,kanjidic2,unihan
-c01889,禪,禪,禅,禅,ぜん,선,chán,,ぜん;せん,선,chán;shàn;tán,,선,ㄴ,,true,7,"meditation, contemplation (dhyana); to level ground for altar; abdicate",unihan,,kanjidic2,unihan
+c01889,禪,禪,禅,禅,ぜん,선,chán,thiền,ぜん;せん,선,chán;shàn;tán,thiền,선,ㄴ,n,true,7,"meditation, contemplation (dhyana); to level ground for altar; abdicate",unihan,kaikki_en_char,kanjidic2,unihan
 c01890,纏,纏,缠,纏,てん,전,chán,triền,てん;でん,전,chán,triền,전,ㄴ,n,true,7,"wrap, wind around; tie, bind",unihan,unihan_unverified,kanjidic2,unihan
 c01891,剷,剷,铲,剷,さん,산,chǎn,xẻng,さん;せん,산,chǎn,xẻng,산,ㄴ,ng,true,7,"to level off, cut off, pare down, raze",unihan,unihan_unverified,kanjidic2,unihan
 c01892,闡,闡,阐,闡,せん,천,chǎn,xén,せん,천,chǎn,xén,천,ㄴ,n,true,7,"explain, clarify, elucidate",unihan,unihan_unverified,kanjidic2,unihan
@@ -1903,17 +1903,17 @@ c01901,臣,臣,臣,臣,しん,신,chén,thần,しん;じん,신,chén,thần,�
 c01902,塵,塵,尘,塵,ちん,진,chén,trần,ちん;じん,진,chén,trần,진,ㄴ,n,true,7,"dust, dirt, ashes, cinders",unihan,kaikki_aligned,kanjidic2,unihan
 c01903,辰,辰,辰,辰,しん,신,chén,,しん;じん,신;진,chén,,신;진,ㄴ,,true,7,early morning; fifth earthly branch; Kangxi radical 161,unihan,,kanjidic2,unihan
 c01904,陳,陳,陈,陳,ちん,진,chén,trần,ちん,진,chén;zhèn,trần,진,ㄴ,n,true,7,"exhibit, display; plead; surname",unihan,kaikki_aligned,kanjidic2,unihan
-c01905,趁,趁,趁,趁,ちん,진,chèn,sấn,ちん,진,chèn;zhēn;chén;niǎn;zhěn,sấn,진,ㄴ,n,true,7,"take advantage of, avail oneself",unihan,unihan_unverified,kanjidic2,unihan
+c01905,趁,趁,趁,趁,ちん,진,chèn,sấn,ちん,진,chèn;zhēn;chén;niǎn;zhěn,sấn,진,ㄴ,n,true,7,"take advantage of, avail oneself",unihan,kaikki_en_char,kanjidic2,unihan
 c01906,呈,呈,呈,呈,てい,정,chéng,trình,てい,정,chéng;kuáng;chěng,trình,정,ㅇ,nh,true,7,"submit, show; appear; petition",unihan,kaikki_aligned,kanjidic2,unihan
 c01907,懲,懲,惩,懲,ちょう,징,chéng,trừng,ちょう,징,chéng,trừng,징,ㅇ,ng,true,7,"punish, reprimand; warn",unihan,kaikki_aligned,kanjidic2,unihan
 c01908,澄,澄,澄,澄,ちょう,징,chéng,chừng,ちょう,징,chéng;dèng,chừng,징,ㅇ,ng,true,7,"purify water by allowing sediment to settle; clear, pure",unihan,unihan_unverified,kanjidic2,unihan
 c01909,橙,橙,橙,橙,とう,등,chéng,chanh,とう,등,chéng;dèng;chén,chanh,등,ㅇ,nh,true,7,orange,unihan,unihan_unverified,kanjidic2,unihan
-c01910,逞,逞,逞,逞,てい,령,chěng,sính,てい,령,chěng;yíng,sính,령,ㅇ,nh,true,7,"indulge oneself; brag, show off",unihan,unihan_unverified,kanjidic2,unihan
+c01910,逞,逞,逞,逞,てい,령,chěng,sính,てい,령,chěng;yíng,sính,령,ㅇ,nh,true,7,"indulge oneself; brag, show off",unihan,kaikki_en_char,kanjidic2,unihan
 c01911,秤,秤,秤,秤,しょう,칭,chèng,xứng,しょう;ひん;びん,칭,chèng;chēng;píng,xứng,칭,ㅇ,ng,true,7,"balance, scale, steelyard",unihan,unihan_hvsyl,kanjidic2,unihan
 c01912,痴,痴,痴,痴,ち,치,chī,,ち,치,chī,,치,,,true,7,"foolish, stupid, dumb, silly",unihan,,kanjidic2,unihan
 c01913,弛,弛,弛,弛,ち,이,chí,,ち;し,이,chí,,이,,,true,7,"loosen, relax, unstring a bow",unihan,,kanjidic2,unihan
 c01914,馳,馳,驰,馳,ち,치,chí,,ち;じ,치,chí,,치,,,true,7,go quickly or swiftly; hurry,unihan,,kanjidic2,unihan
-c01915,齒,齒,齿,歯,し,치,chǐ,xỉ,し,치,chǐ,xỉ,치,,,true,7,"teeth; gears, cogs; age; Kangxi radical 211",unihan,unihan_hvsyl,kanjidic2,unihan
+c01915,齒,齒,齿,歯,し,치,chǐ,xỉ,し,치,chǐ,xỉ,치,,,true,7,"teeth; gears, cogs; age; Kangxi radical 211",unihan,kaikki_en_char,kanjidic2,unihan
 c01916,侈,侈,侈,侈,し,치,chǐ,xỉ,し,치,chǐ,xỉ,치,,,true,7,"luxurious, extravagant",unihan,kaikki_aligned,kanjidic2,unihan
 c01917,恥,恥,耻,恥,ち,치,chǐ,sỉ,ち,치,chǐ,sỉ,치,,,true,7,"shame, humiliation; ashamed",unihan,kaikki_aligned,kanjidic2,unihan
 c01918,斥,斥,斥,斥,せき,척,chì,xích,せき,척,chì;chè;zhè,xích,척,ㄱ,ch,true,7,"to scold, upbraid, accuse, reproach",unihan,kaikki_aligned,kanjidic2,unihan
@@ -1938,7 +1938,7 @@ c01936,捶,捶,捶,捶,すい,추,chuí,,すい,추,chuí;duǒ,,추,,,true,7,"st
 c01937,錘,錘,锤,錘,すい,추,chuí,,すい,추,chuí,,추,,,true,7,balance weight on scale; hammer,unihan,,kanjidic2,unihan
 c01938,唇,唇,唇,唇,しん,진,chún,thần,しん,진;순,chún;zhēn;zhèn,thần,진;순,ㄴ,n,true,7,lips,unihan,unihan_hvsyl,kanjidic2,unihan
 c01939,醇,醇,醇,醇,じゅん,순,chún,,じゅん;しゅん,순,chún,,순,ㄴ,,true,7,"rich, good as wine; pure, unmixed",unihan,,kanjidic2,unihan
-c01940,蠢,蠢,蠢,蠢,しゅん,준,chǔn,xuẩn,しゅん,준,chǔn,xuẩn,준,ㄴ,n,true,7,wriggle; stupid; silly; fat,unihan,unihan_unverified,kanjidic2,unihan
+c01940,蠢,蠢,蠢,蠢,しゅん,준,chǔn,xuẩn,しゅん,준,chǔn,xuẩn,준,ㄴ,n,true,7,wriggle; stupid; silly; fat,unihan,kaikki_en_char,kanjidic2,unihan
 c01941,戳,戳,戳,戳,たく,착,chuō,,たく,착,chuō,,착,ㄱ,,true,7,"prick, stab; stamp, seal, chop",unihan,,kanjidic2,unihan
 c01942,綽,綽,绰,綽,しゃく,작,chuò,xước,しゃく,작,chuò;chāo,xước,작,ㄱ,c,true,7,"graceful, delicate; spacious",unihan,unihan_unverified,kanjidic2,unihan
 c01943,瓷,瓷,瓷,瓷,し,자,cí,từ,し,자,cí,từ;sứ;tư,자,,,true,7,"crockery, porcelain, chinaware",unihan,unihan_hvsyl,kanjidic2,unihan
@@ -1955,12 +1955,12 @@ c01953,竄,竄,窜,竄,ざん,찬,cuàn,,ざん;さん,찬,cuàn;cuān,,찬,ㄴ,
 c01954,催,催,催,催,さい,최,cuī,thôi,さい,최,cuī,thôi,최,,,true,7,"press, urge",unihan,kaikki_aligned,kanjidic2,unihan
 c01955,摧,摧,摧,摧,さい,최,cuī,,さい;さ,최,cuī;zuì;cuò,,최,,,true,7,"destroy, break, injure",unihan,,kanjidic2,unihan
 c01956,粹,粹,粹,粋,すい,수,cuì,túy,すい,수,cuì;suì,túy,수,,,true,7,pure; unadulterated; select,unihan,unihan_hvsyl,kanjidic2,unihan
-c01957,翠,翠,翠,翠,すい,취,cuì,thúy,すい,취,cuì,thúy,취,,,true,7,color green; kingfisher,unihan,unihan_unverified,kanjidic2,unihan
+c01957,翠,翠,翠,翠,すい,취,cuì,thúy,すい,취,cuì,thúy,취,,,true,7,color green; kingfisher,unihan,kaikki_en_char,kanjidic2,unihan
 c01958,搓,搓,搓,搓,さ,차,cuō,sai,さ;さい,차,cuō;cuǒ;chāi,sai,차,,,true,7,to rub or roll between the hands,unihan,unihan_hvsyl,kanjidic2,unihan
 c01959,磋,磋,磋,磋,さ,차,cuō,tha,さ,차,cuō,tha,차,,,true,7,"polish, buff; scrutinize",unihan,unihan_hvsyl,kanjidic2,unihan
 c01960,挫,挫,挫,挫,ざ,좌,cuò,dọa,ざ;さ,좌,cuò;zuò,dọa,좌,,,true,7,push down; chop down; grind,unihan,unihan_unverified,kanjidic2,unihan
 c01961,歹,歹,歹,歹,がつ,알,dǎi,ngạt,がつ;がち;たい,알,dǎi;è;dāi,ngạt,알,ㄹ,t,true,7,"bad, vicious, depraved, wicked",unihan,unihan_unverified,kanjidic2,unihan
-c01962,逮,逮,逮,逮,たい,체,dǎi,,たい,체,dǎi;dài;dì,,체,,,true,7,"seize, catch; reach, arrive",unihan,,kanjidic2,unihan
+c01962,逮,逮,逮,逮,たい,체,dǎi,đãi,たい,체,dǎi;dài;dì,đãi,체,,,true,7,"seize, catch; reach, arrive",unihan,kaikki_en_char,kanjidic2,unihan
 c01963,怠,怠,怠,怠,たい,태,dài,,たい,태,dài;yí,,태,,,true,7,"idle, remiss, negligent; neglect",unihan,,kanjidic2,unihan
 c01964,丹,丹,丹,丹,たん,단,dān,đan,たん,단;란,dān,đan;đam,단;란,ㄴ,n,true,7,cinnabar (native HgS); vermilion (artificial HgS used as pigment),unihan,kaikki_aligned,kanjidic2,unihan
 c01965,耽,耽,耽,耽,たん,탐,dān,đam,たん,탐,dān,đam,탐,ㅁ,m,true,7,indulge in; be negligent,unihan,kaikki_aligned,kanjidic2,unihan
@@ -1980,7 +1980,7 @@ c01978,滌,滌,涤,滌,でき,척,dí,sạch,でき;てき;じょう,척,dí,s�
 c01979,笛,笛,笛,笛,てき,적,dí,địch,てき,적,dí,địch,적,ㄱ,ch,true,7,bamboo flute; whistle,unihan,unihan_hvsyl,kanjidic2,unihan
 c01980,蒂,蒂,蒂,蒂,てい,체,dì,đế,てい;たい,체,dì,đế,체,,,true,7,peduncle or stem of plants,unihan,unihan_hvsyl,kanjidic2,unihan
 c01981,締,締,缔,締,てい,체,dì,rế,てい,체,dì,rế,체,,,true,7,"tie, join, connect; connection",unihan,unihan_unverified,kanjidic2,unihan
-c01982,顛,顛,颠,顛,てん,전,diān,điên,てん,전,diān,điên,전,ㄴ,n,true,7,"top, peak, summit; upset",unihan,unihan_hvsyl,kanjidic2,unihan
+c01982,顛,顛,颠,顛,てん,전,diān,điên,てん,전,diān,điên,전,ㄴ,n,true,7,"top, peak, summit; upset",unihan,kaikki_en_char,kanjidic2,unihan
 c01983,巔,巔,巅,,,전,diān,,,전,diān,,전,ㄴ,,true,7,"summit of mountain, mountain top",unihan,,,unihan
 c01984,甸,甸,甸,甸,でん,전,diàn,điện,でん;てん,전,diàn;tián;shèng;yìng,điện,전,ㄴ,n,true,7,suburbs of capital; govern; crops,unihan,kaikki_aligned,kanjidic2,unihan
 c01985,墊,墊,垫,墊,てん,점,diàn,,てん;ちょう,점,diàn,,점,ㅁ,,true,7,"advance money, pay for another",unihan,,kanjidic2,unihan
@@ -2003,13 +2003,13 @@ c02001,盯,盯,盯,,,정,dīng,,,정,dīng;chéng,,정,ㅇ,,true,7,"rivet gaze u
 c02002,鼎,鼎,鼎,鼎,てい,정,dǐng,đỉnh,てい,정,dǐng;zhēn,đỉnh,정,ㅇ,nh,true,7,"large, three-legged bronze caldron; Kangxi radical 206; hexagram ䷱",unihan,unihan_hvsyl,kanjidic2,unihan
 c02003,釘,釘,钉,釘,てい,정,dīng,đinh,てい;ちょう,정,dīng;dìng;líng,đinh,정,ㅇ,nh,true,7,"nail, spike; pursue closely",unihan,unihan_hvsyl,kanjidic2,unihan
 c02004,董,董,董,董,とう,동,dǒng,đổng,とう,동,dǒng;zhǒng,đổng,동,ㅇ,ng,true,7,"direct, supervise; surname",unihan,unihan_unverified,kanjidic2,unihan
-c02005,棟,棟,栋,棟,とう,동,dòng,chống,とう,동,dòng,chống;đóng;đống;đúng;gióng,동,ㅇ,ng,true,7,the main beams supporting a house,unihan,unihan_unverified,kanjidic2,unihan
+c02005,棟,棟,栋,棟,とう,동,dòng,đống,とう,동,dòng,đống,동,ㅇ,ng,true,7,the main beams supporting a house,unihan,kaikki_en_char,kanjidic2,unihan
 c02006,兜,兜,兜,兜,とう,두,dōu,đâu,とう;と,두;도,dōu,đâu,두;도,,,true,7,pouch,unihan,unihan_unverified,kanjidic2,unihan
 c02007,抖,抖,抖,抖,と,두,dǒu,,と;とう,두,dǒu,,두,,,true,7,"tremble, shake, rouse; give shake",unihan,,kanjidic2,unihan
 c02008,陡,陡,陡,陡,とう,두,dǒu,,とう;つ,두,dǒu,,두,,,true,7,"steep, sloping; abruptly, sudden",unihan,,kanjidic2,unihan
 c02009,逗,逗,逗,逗,とう,두,dòu,,とう;ず,두,dòu;zhù;tóu;qí,,두,,,true,7,"tempt, allure, arouse, stir",unihan,,kanjidic2,unihan
 c02010,睹,睹,睹,睹,と,도,dǔ,đủ,と,도,dǔ,đủ,도,,,true,7,"look at, gaze at; observe",unihan,unihan_unverified,kanjidic2,unihan
-c02011,杜,杜,杜,杜,と,두,dù,đỗ,と;とう;ず,두,dù;dǔ;tú,đỗ,두,,,true,7,"stop, prevent; restrict; surname",unihan,unihan_unverified,kanjidic2,unihan
+c02011,杜,杜,杜,杜,と,두,dù,đỗ,と;とう;ず,두,dù;dǔ;tú,đỗ,두,,,true,7,"stop, prevent; restrict; surname",unihan,kaikki_en_char,kanjidic2,unihan
 c02012,妒,妒,妒,妒,と,투,dù,đố,と;つ,투,dù,đố,투,,,true,7,"jealous, envious",unihan,kaikki_aligned,kanjidic2,unihan
 c02013,兌,兌,兑,兌,だ,태,duì,,だ;えい;えつ;たい,태,duì,,태,,,true,7,"cash; exchange, barter; weight; trigram ☱; hexagram ䷹",unihan,,kanjidic2,unihan
 c02014,敦,敦,敦,敦,とん,돈,dūn,đôn,とん;たい;だん;ちょう,돈,dūn;duī;tuán;diāo;dùn;dào;zhǔn;tūn;duì;tún,đôn,돈,ㄴ,n,true,7,"esteem; honest, candid, sincere",unihan,kaikki_aligned,kanjidic2,unihan
@@ -2076,7 +2076,7 @@ c02074,岡,岡,冈,岡,こう,강,gāng,,こう,강,gāng,,강,ㅇ,,true,7,ridge
 c02075,缸,缸,缸,缸,こう,항,gāng,cong,こう,항,gāng,cong,항,ㅇ,ng,true,7,"earthenware jug, crock; cistern",unihan,unihan_unverified,kanjidic2,unihan
 c02076,槓,槓,杠,槓,こう,공,gàng,cổng,こう,공,gàng,cổng,공,ㅇ,ng,true,7,"lever, pole, crowbar; sharpen; (Cant.) a wardrobe, trunk",unihan,unihan_unverified,kanjidic2,unihan
 c02077,膏,膏,膏,膏,こう,고,gāo,cao,こう,고,gāo;gào,cao,고,,,true,7,"grease, fat; paste, ointment",unihan,kaikki_aligned,kanjidic2,unihan
-c02078,戈,戈,戈,戈,か,과,gē,qua,か,과,gē,qua,과,,,true,7,"halberd, spear, lance; rad. 62",unihan,unihan_hvsyl,kanjidic2,unihan
+c02078,戈,戈,戈,戈,か,과,gē,qua,か,과,gē,qua,과,,,true,7,"halberd, spear, lance; rad. 62",unihan,kaikki_en_char,kanjidic2,unihan
 c02079,胳,胳,胳,胳,かく,각,gē,cặc,かく;ぎゃく,각,gē;gé;gā,cặc,각,ㄱ,c,true,7,"armpit, arms",unihan,unihan_unverified,kanjidic2,unihan
 c02080,鴿,鴿,鸽,鴿,こう,합,gē,,こう,합,gē,,합,ㅂ,,true,7,"pigeon, dove; Columba species (various)",unihan,,kanjidic2,unihan
 c02081,擱,擱,搁,擱,かく,각,gē,gác,かく,각,gē;gé,gác,각,ㄱ,c,true,7,"place, put, lay down; delay",unihan,unihan_unverified,kanjidic2,unihan
@@ -2084,7 +2084,7 @@ c02082,割,割,割,割,かつ,할,gē,cát,かつ,할,gē,cát,할,ㄹ,t,true,7,
 c02083,閣,閣,阁,閣,かく,각,gé,các,かく,각,gé,các,각,ㄱ,c,true,7,"chamber, pavilion; cabinet",unihan,kaikki_aligned,kanjidic2,unihan
 c02084,耕,耕,耕,耕,こう,경,gēng,canh,こう,경,gēng,canh,경,ㅇ,nh,true,7,"plow, cultivate",unihan,kaikki_aligned,kanjidic2,unihan
 c02085,耿,耿,耿,耿,こう,경,gěng,,こう,경,gěng,,경,ㅇ,,true,7,"bright, shining; have guts",unihan,,kanjidic2,unihan
-c02086,弓,弓,弓,弓,きゅう,궁,gōng,cung,きゅう,궁,gōng,cung,궁,ㅇ,ng,true,7,"bow; curved, arched; Kangxi radical 57",unihan,unihan_hvsyl,kanjidic2,unihan
+c02086,弓,弓,弓,弓,きゅう,궁,gōng,cung,きゅう,궁,gōng,cung,궁,ㅇ,ng,true,7,"bow; curved, arched; Kangxi radical 57",unihan,kaikki_en_char,kanjidic2,unihan
 c02087,恭,恭,恭,恭,きょう,공,gōng,cung,きょう,공,gōng,cung,공,ㅇ,ng,true,7,"respectful, polite, reverent",unihan,unihan_hvsyl,kanjidic2,unihan
 c02088,躬,躬,躬,躬,きゅう,궁,gōng,cung,きゅう;きょう,궁,gōng,cung,궁,ㅇ,ng,true,7,"body; personally, in person",unihan,unihan_hvsyl,kanjidic2,unihan
 c02089,拱,拱,拱,拱,きょう,공,gǒng,cõng,きょう;こう,공,gǒng;jú,cõng,공,ㅇ,ng,true,7,"fold hands on breast; bow, salute",unihan,unihan_unverified,kanjidic2,unihan
@@ -2094,13 +2094,13 @@ c02092,沽,沽,沽,沽,こ,고,gū,,こ,고,gū;gǔ,,고,,,true,7,buy and sell; 
 c02093,菇,菇,菇,菇,こ,고,gū,,こ;く,고,gū,,고,,,true,7,mushrooms,unihan,,kanjidic2,unihan
 c02094,辜,辜,辜,辜,こ,고,gū,,こ,고,gū,,고,,,true,7,"crime, criminal offense",unihan,,kanjidic2,unihan
 c02095,雇,雇,雇,雇,こ,고,gù,,こ,고,gù;hù,,고,,,true,7,"employ, to hire",unihan,,kanjidic2,unihan
-c02096,寡,寡,寡,寡,か,과,guǎ,quả,か,과,guǎ,quả,과,,,true,7,"widowed; alone, friendless",unihan,unihan_hvsyl,kanjidic2,unihan
+c02096,寡,寡,寡,寡,か,과,guǎ,quả,か,과,guǎ,quả,과,,,true,7,"widowed; alone, friendless",unihan,kaikki_en_char,kanjidic2,unihan
 c02097,卦,卦,卦,卦,か,괘,guà,quái,か;かい;け,괘,guà,quái,괘,,,true,7,fortune telling; tell fortunes,unihan,kaikki_aligned,kanjidic2,unihan
 c02098,乖,乖,乖,乖,かい,괴,guāi,quai,かい,괴,guāi,quai,괴,,,true,7,"rebel; crafty, shrewd",unihan,unihan_unverified,kanjidic2,unihan
 c02099,棺,棺,棺,棺,かん,관,guān,quan,かん,관,guān;guàn,quan,관,ㄴ,n,true,7,coffin,unihan,kaikki_aligned,kanjidic2,unihan
 c02100,灌,灌,灌,灌,かん,관,guàn,,かん,관,guàn;huàn,,관,ㄴ,,true,7,"pour; water; irrigate, flood",unihan,,kanjidic2,unihan
 c02101,罐,罐,罐,缶,かん,관,guàn,,かん,관,guàn,,관,ㄴ,,true,7,"jar, jug, pitcher, pot",unihan,,kanjidic2,unihan
-c02102,龜,龜,龟,亀,き,구,guī,,き;きゅう;きん,구;귀;균,guī;qiū;jūn,,구;귀;균,,,true,7,turtle or tortoise; cuckold; Kangxi radical 213,unihan,,kanjidic2,unihan
+c02102,龜,龜,龟,亀,き,구,guī,quy,き;きゅう;きん,구;귀;균,guī;qiū;jūn,quy,구;귀;균,,,true,7,turtle or tortoise; cuckold; Kangxi radical 213,unihan,kaikki_en_char,kanjidic2,unihan
 c02103,閨,閨,闺,閨,けい,규,guī,khuê,けい;け,규,guī,khuê,규,,,true,7,small entrance; women's quarters,unihan,unihan_unverified,kanjidic2,unihan
 c02104,瑰,瑰,瑰,瑰,かい,괴,guī,,かい,괴,guī,,괴,,,true,7,"extraordinary, fabulous; rose",unihan,,kanjidic2,unihan
 c02105,桂,桂,桂,桂,けい,계,guì,quế,けい,계,guì,quế,계,,,true,7,cassia or cinnamon,unihan,kaikki_aligned,kanjidic2,unihan
@@ -2163,7 +2163,7 @@ c02161,豁,豁,豁,豁,かつ,활,huō,,かつ,활,huō;huò;huá,,활,ㄹ,,true
 c02162,禍,禍,祸,禍,か,화,huò,họa,か,화,huò,họa,화,,,true,7,"misfortune, calamity, disaster",unihan,kaikki_aligned,kanjidic2,unihan
 c02163,惑,惑,惑,惑,わく,혹,huò,hoặc,わく,혹,huò,hoặc,혹,ㄱ,c,true,7,"confuse, mislead, baffle; doubt",unihan,kaikki_aligned,kanjidic2,unihan
 c02164,霍,霍,霍,霍,かく,곽,huò,hoắc,かく,곽,huò;hè;suǒ,hoắc,곽,ㄱ,c,true,7,"quickly, suddenly; surname",unihan,unihan_unverified,kanjidic2,unihan
-c02165,譏,譏,讥,譏,き,기,jī,,き,기,jī,,기,,,true,7,"ridicule, jeer, mock; inspect",unihan,,kanjidic2,unihan
+c02165,譏,譏,讥,譏,き,기,jī,cơ,き,기,jī,cơ,기,,,true,7,"ridicule, jeer, mock; inspect",unihan,kaikki_en_char,kanjidic2,unihan
 c02166,飢,飢,饥,飢,き,기,jī,cơ,き,기,jī,cơ,기,,,true,7,"hunger, starving; hungry; a famine",unihan,unihan_hvsyl,kanjidic2,unihan
 c02167,緝,緝,缉,緝,しゅう,집,jī,,しゅう,집,jī;qì;qī;jí,,집,ㅂ,,true,7,to sew in close stitches,unihan,,kanjidic2,unihan
 c02168,畸,畸,畸,畸,き,기,jī,,き,기,jī;qí,,기,,,true,7,"odd, fractional, remainder, odds",unihan,,kanjidic2,unihan
@@ -2187,7 +2187,7 @@ c02185,煎,煎,煎,煎,せん,전,jiān,,せん,전,jiān;jiàn;jiǎn,,전,ㄴ,,
 c02186,揀,揀,拣,揀,かん,간,jiǎn,gióng,かん;けん,간,jiǎn,gióng,간,ㄴ,ng,true,7,choose; select; pick up; gather,unihan,unihan_unverified,kanjidic2,unihan
 c02187,柬,柬,柬,柬,かん,간,jiǎn,,かん;けん,간,jiǎn,,간,ㄴ,,true,7,"letter, invitation; choose",unihan,,kanjidic2,unihan
 c02188,儉,儉,俭,倹,けん,검,jiǎn,kiệm,けん,검,jiǎn,kiệm,검,ㅁ,m,true,7,"temperate, frugal, economical",unihan,kaikki_aligned,kanjidic2,unihan
-c02189,薦,薦,荐,薦,せん,천,jiàn,,せん,천,jiàn,,천,ㄴ,,true,7,"offer, present; recommend",unihan,,kanjidic2,unihan
+c02189,薦,薦,荐,薦,せん,천,jiàn,tiến,せん,천,jiàn,tiến,천,ㄴ,n,true,7,"offer, present; recommend",unihan,kaikki_en_char,kanjidic2,unihan
 c02190,賤,賤,贱,賤,せん,천,jiàn,tiện,せん;ぜん,천,jiàn,tiện,천,ㄴ,n,true,7,"mean, low; cheap, worthless",unihan,kaikki_aligned,kanjidic2,unihan
 c02191,濺,濺,溅,濺,せん,천,jiàn,,せん,천,jiàn;jiān;zàn,,천,ㄴ,,true,7,"sprinkle, spray; spill, splash",unihan,,kanjidic2,unihan
 c02192,薑,薑,姜,薑,きょう,강,jiāng,gừng,きょう;こう,강,jiāng,gừng,강,ㅇ,ng,true,7,ginger,unihan,unihan_unverified,kanjidic2,unihan
@@ -2271,7 +2271,7 @@ c02269,坑,坑,坑,坑,こう,갱,kēng,ganh,こう,갱,kēng;kàng,ganh,갱,ㅇ
 c02270,吭,吭,吭,吭,こう,항,kēng,,こう,항,kēng;háng;hàng,,항,ㅇ,,true,7,throat,unihan,,kanjidic2,unihan
 c02271,孔,孔,孔,孔,こう,공,kǒng,khổng,こう;く,공,kǒng,khổng,공,ㅇ,ng,true,7,"opening, hole, orifice; great",unihan,unihan_unverified,kanjidic2,unihan
 c02272,摳,摳,抠,摳,こう,구,kōu,khua,こう;く;おう;う,구,kōu;ōu,khua,구,,,true,7,"raise, lift up; tight-fisted",unihan,unihan_unverified,kanjidic2,unihan
-c02273,枯,枯,枯,枯,こ,고,kū,khô,こ,고,kū;gū,khô,고,,,true,7,"dried out, withered, decayed",unihan,unihan_unverified,kanjidic2,unihan
+c02273,枯,枯,枯,枯,こ,고,kū,khô,こ,고,kū;gū,khô,고,,,true,7,"dried out, withered, decayed",unihan,kaikki_en_char,kanjidic2,unihan
 c02274,窟,窟,窟,窟,くつ,굴,kū,,くつ;こつ,굴,kū,,굴,ㄹ,,true,7,"hole, cave; cellar; underground",unihan,,kanjidic2,unihan
 c02275,誇,誇,夸,誇,こ,과,kuā,khoa,こ,과,kuā;qù,khoa,과,,,true,7,"exaggerate; brag, boast; flaunt",unihan,kaikki_aligned,kanjidic2,unihan
 c02276,垮,垮,垮,,,과,kuǎ,khoai,,과,kuǎ,khoai,과,,,true,7,"be defeated, fail, collapse",unihan,unihan_unverified,,unihan
@@ -2309,7 +2309,7 @@ c02307,磊,磊,磊,磊,らい,뢰,lěi,lỗi,らい,뢰;뇌,lěi,lỗi,뢰,,,tru
 c02308,蕾,蕾,蕾,蕾,らい,뢰,lěi,,らい,뢰,lěi,,뢰,,,true,7,"buds, unopened flowers",unihan,,kanjidic2,unihan
 c02309,稜,稜,棱,稜,りょう,릉,léng,,りょう;ろう,릉;능,léng;lèng;líng,,릉,ㅇ,,true,7,"corner, edge, angle; square block",unihan,,kanjidic2,unihan
 c02310,愣,愣,愣,,,릉,lèng,,,릉,lèng,,릉,ㅇ,,true,7,be in a daze,unihan,,,unihan
-c02311,黎,黎,黎,黎,れい,려,lí,lê,れい;り,려;여,lí,lê,려,,,true,7,"surname; numerous, many; black",unihan,unihan_unverified,kanjidic2,unihan
+c02311,黎,黎,黎,黎,れい,려,lí,lê,れい;り,려;여,lí,lê,려,,,true,7,"surname; numerous, many; black",unihan,kaikki_en_char,kanjidic2,unihan
 c02312,吏,吏,吏,吏,り,리,lì,lại,り,리;이,lì,lại,리,,,true,7,"government official, magistrate",unihan,kaikki_aligned,kanjidic2,unihan
 c02313,隸,隸,隶,隸,れい,례,lì,lệ,れい,례;예,lì,lệ,례;예,,,true,7,be subservient to; servant,unihan,kaikki_aligned,kanjidic2,unihan
 c02314,粒,粒,粒,粒,りゅう,립,lì,lạp,りゅう,립;입,lì,lạp,립,ㅂ,p,true,7,grain; small particle,unihan,unihan_unverified,kanjidic2,unihan
@@ -2328,13 +2328,13 @@ c02326,拎,拎,拎,拎,れい,령,līn,,れい;りょう,령,līn;līng,,령,ㅇ
 c02327,淋,淋,淋,淋,りん,림,lín,lấm,りん,림;임,lín;lìn,lấm,림,ㅁ,m,true,7,"drip, soak, drench; perfectly",unihan,unihan_unverified,kanjidic2,unihan
 c02328,賃,賃,赁,賃,ちん,임,lìn,,ちん,임,lìn,,임,ㅁ,,true,7,"rent, hire; hired person",unihan,,kanjidic2,unihan
 c02329,凌,凌,凌,凌,りょう,릉,líng,lăng,りょう,릉;능,líng;lìng,lăng,릉,ㅇ,ng,true,7,pure; virtuous; insult; maltreat,unihan,kaikki_aligned,kanjidic2,unihan
-c02330,陵,陵,陵,陵,りょう,릉,líng,lăng,りょう,릉;능,líng,lăng,릉,ㅇ,ng,true,7,"hill, mound; mausoleum",unihan,unihan_hvsyl,kanjidic2,unihan
+c02330,陵,陵,陵,陵,りょう,릉,líng,lăng,りょう,릉;능,líng,lăng,릉,ㅇ,ng,true,7,"hill, mound; mausoleum",unihan,kaikki_en_char,kanjidic2,unihan
 c02331,嶺,嶺,岭,嶺,れい,령,lǐng,,れい;りょう,령;영,lǐng,,령,ㅇ,,true,7,"mountain ridge, mountain peak",unihan,,kanjidic2,unihan
 c02332,溜,溜,溜,溜,りゅう,류,liū,,りゅう,류;유,liū;liù;liú,,류,,,true,7,"slide, glide, slip; slippery",unihan,,kanjidic2,unihan
 c02333,刘,刘,刘,刘,りゅう,류,liú,,りゅう;る,류,liú,,류,,,true,7,"surname; kill, destroy",unihan,,kanjidic2,unihan
 c02334,瀏,瀏,浏,瀏,りゅう,류,liú,,りゅう,류,liú;liū,,류,,,true,7,clear; bright; whistling,unihan,,kanjidic2,unihan
 c02335,瘤,瘤,瘤,瘤,りゅう,류,liú,,りゅう;る,류,liú,,류,,,true,7,"tumor, lump, goiter",unihan,,kanjidic2,unihan
-c02336,柳,柳,柳,柳,りゅう,류,liǔ,liễu,りゅう,류;유,liǔ,liễu,류,,,true,7,"willow tree; pleasure; 24th lunar mansion, determinative star δ Hydrae",unihan,unihan_hvsyl,kanjidic2,unihan
+c02336,柳,柳,柳,柳,りゅう,류,liǔ,liễu,りゅう,류;유,liǔ,liễu,류,,,true,7,"willow tree; pleasure; 24th lunar mansion, determinative star δ Hydrae",unihan,kaikki_en_char,kanjidic2,unihan
 c02337,遛,遛,遛,遛,りゅう,류,liù,,りゅう,류,liù;liú,,류,,,true,7,"take walk, stroll",unihan,,kanjidic2,unihan
 c02338,嚨,嚨,咙,嚨,ろう,롱,lóng,lùng,ろう;る,롱,lóng,lùng,롱,ㅇ,ng,true,7,throat,unihan,unihan_unverified,kanjidic2,unihan
 c02339,朧,朧,胧,朧,ろう,롱,lóng,,ろう,롱,lóng;lǒng,,롱,ㅇ,,true,7,condition or appearance of moon,unihan,,kanjidic2,unihan
@@ -2361,7 +2361,7 @@ c02359,縷,縷,缕,縷,る,루,lǚ,lụa,る;ろう,루;누,lǚ,lụa,루,,,true
 c02360,履,履,履,履,り,리,lǚ,lý,り,리;이,lǚ,lý,리,,,true,7,"footwear, shoes; walk on, tread; hexagram ䷉",unihan,kaikki_aligned,kanjidic2,unihan
 c02361,濾,濾,滤,沪,,려,lǜ,,,려;여,lǜ,,려,,,true,7,"strain out, filter",unihan,,,unihan
 c02362,孿,孿,孪,孿,さん,산,luán,,さん;せん;れん,산;련,luán,,산;련,ㄴ,,true,7,twins,unihan,,kanjidic2,unihan
-c02363,卵,卵,卵,卵,らん,란,luǎn,,らん,란;난,luǎn;kūn,,란,ㄴ,,true,7,egg; ovum; roe; spawn,unihan,,kanjidic2,unihan
+c02363,卵,卵,卵,卵,らん,란,luǎn,noãn,らん,란;난,luǎn;kūn,noãn,란,ㄴ,n,true,7,egg; ovum; roe; spawn,unihan,kaikki_en_char,kanjidic2,unihan
 c02364,掠,掠,掠,掠,りゃく,략,lüè,lướt,りゃく;りょう,략;약,lüè;lüě,lướt,략,ㄱ,t,true,7,"rob, ransack, plunder; pass by",unihan,unihan_unverified,kanjidic2,unihan
 c02365,掄,掄,抡,掄,ろん,륜,lūn,,ろん;りん,륜;론,lūn;lún,,륜;론,ㄴ,,true,7,"swing, brandish, flourish",unihan,,kanjidic2,unihan
 c02366,倫,倫,伦,倫,りん,륜,lún,luân,りん,륜;윤,lún,luân,륜,ㄴ,n,true,7,normal human relationships,unihan,kaikki_aligned,kanjidic2,unihan
@@ -2382,8 +2382,8 @@ c02380,茅,茅,茅,茅,ぼう,모,máo,,ぼう;みょう,모,máo,,모,,,true,7,
 c02381,髦,髦,髦,髦,ぼう,모,máo,mao,ぼう;もう,모,máo,mao,모,,,true,7,flowing hair of young child,unihan,unihan_unverified,kanjidic2,unihan
 c02382,茂,茂,茂,茂,も,무,mào,,も,무,mào,,무,,,true,7,"thick, lush, dense; talented",unihan,,kanjidic2,unihan
 c02383,玫,玫,玫,玫,ばい,매,méi,,ばい;め;まい,매,méi,,매,,,true,7,rose,unihan,,kanjidic2,unihan
-c02384,枚,枚,枚,枚,まい,매,méi,mai,まい;ばい,매,méi,mai,매,,,true,7,"stalk of shrub, trunk of tree",unihan,unihan_hvsyl,kanjidic2,unihan
-c02385,眉,眉,眉,眉,び,미,méi,mi,び;み,미,méi,mi,미,,,true,7,eyebrows; upper margin of book,unihan,unihan_unverified,kanjidic2,unihan
+c02384,枚,枚,枚,枚,まい,매,méi,mai,まい;ばい,매,méi,mai,매,,,true,7,"stalk of shrub, trunk of tree",unihan,kaikki_en_char,kanjidic2,unihan
+c02385,眉,眉,眉,眉,び,미,méi,mi,び;み,미,méi,mi,미,,,true,7,eyebrows; upper margin of book,unihan,kaikki_en_char,kanjidic2,unihan
 c02386,霉,霉,霉,霉,ばい,매,méi,,ばい;め,매,méi,,매,,,true,7,"mildew, mold; moldy, mildewed",unihan,,kanjidic2,unihan
 c02387,昧,昧,昧,昧,まい,매,mèi,muội,まい;ばい,매,mèi;wěn;mò,muội,매,,,true,7,"obscure, dark; darken",unihan,kaikki_aligned,kanjidic2,unihan
 c02388,媚,媚,媚,媚,び,미,mèi,mị,び,미,mèi,mị,미,,,true,7,"charming, attractive; flatter",unihan,kaikki_aligned,kanjidic2,unihan
@@ -2407,7 +2407,7 @@ c02405,廟,廟,庙,廟,びょう,묘,miào,miếu,びょう;みょう,묘,miào,
 c02406,蔑,蔑,蔑,蔑,べつ,멸,miè,miệt,べつ,멸,miè,miệt,멸,ㄹ,t,true,7,"disdain, disregard; slight",unihan,unihan_unverified,kanjidic2,unihan
 c02407,鳴,鳴,鸣,鳴,めい,명,míng,,めい,명,míng,,명,ㅇ,,true,7,cry of bird or animal; make sound,unihan,,kanjidic2,unihan
 c02408,銘,銘,铭,銘,めい,명,míng,,めい,명,míng,,명,ㅇ,,true,7,"inscribe, engrave; unforgettably",unihan,,kanjidic2,unihan
-c02409,謬,謬,谬,謬,びゅう,류,miù,,びゅう;びょう;みゅう,류,miù,,류,,,true,7,"error, exaggeration; erroneous",unihan,,kanjidic2,unihan
+c02409,謬,謬,谬,謬,びゅう,류,miù,mậu,びゅう;びょう;みゅう,류,miù,mậu,류,,,true,7,"error, exaggeration; erroneous",unihan,kaikki_en_char,kanjidic2,unihan
 c02410,蘑,蘑,蘑,蘑,ま,마,mó,,ま,마,mó,,마,,,true,7,type of edible mushroom,unihan,,kanjidic2,unihan
 c02411,魔,魔,魔,魔,ま,마,mó,ma,ま,마,mó,ma,마,,,true,7,"demon, evil spirits; magic power",unihan,kaikki_aligned,kanjidic2,unihan
 c02412,抹,抹,抹,抹,まつ,말,mǒ,mạt,まつ,말,mǒ;mò;mā,mạt,말,ㄹ,t,true,7,"smear, apply, wipe off, erase",unihan,kaikki_aligned,kanjidic2,unihan
@@ -2416,12 +2416,12 @@ c02414,陌,陌,陌,陌,はく,맥,mò,,はく,맥,mò,,맥,ㄱ,,true,7,foot path
 c02415,莫,莫,莫,莫,ばく,막,mò,mạc,ばく;ぼ;まく;も;ない,막,mò;mù,mạc,막,ㄱ,c,true,7,"do not, is not, can not; negative",unihan,unihan_hvsyl,kanjidic2,unihan
 c02416,寞,寞,寞,寞,ばく,막,mò,mịch,ばく;まく,막,mò,mịch,막,ㄱ,ch,true,7,"silent, still, lonely, solitary",unihan,kaikki_aligned,kanjidic2,unihan
 c02417,牡,牡,牡,牡,ぼ,모,mǔ,,ぼ;ぼう,모,mǔ,,모,,,true,7,male of animals; bolt of door,unihan,,kanjidic2,unihan
-c02418,畝,畝,亩,畝,ぼう,묘,mǔ,,ぼう;ほ;も;む,묘;무,mǔ;mǒu,,묘;무,,,true,7,Chinese land measure; fields,unihan,,kanjidic2,unihan
+c02418,畝,畝,亩,畝,ぼう,묘,mǔ,mẫu,ぼう;ほ;も;む,묘;무,mǔ;mǒu,mẫu,묘;무,,,true,7,Chinese land measure; fields,unihan,kaikki_en_char,kanjidic2,unihan
 c02419,姆,姆,姆,姆,ぼ,모,mǔ,,ぼ;も,모,mǔ,,모,,,true,7,child's governess; matron,unihan,,kanjidic2,unihan
 c02420,沐,沐,沐,沐,もく,목,mù,múc,もく,목,mù,múc,목,ㄱ,c,true,7,"bathe, cleanse, wash, shampoo",unihan,unihan_unverified,kanjidic2,unihan
 c02421,牧,牧,牧,牧,ぼく,목,mù,mục,ぼく,목,mù,mục,목,ㄱ,c,true,7,"tend cattle, shepherd",unihan,kaikki_aligned,kanjidic2,unihan
 c02422,募,募,募,募,ぼ,모,mù,mộ,ぼ,모,mù;bó,mộ,모,,,true,7,"levy, raise; summon; recruit",unihan,kaikki_aligned,kanjidic2,unihan
-c02423,睦,睦,睦,睦,ぼく,목,mù,mục,ぼく;もく,목,mù,mục,목,ㄱ,c,true,7,"friendly, amiable, peaceful",unihan,unihan_hvsyl,kanjidic2,unihan
+c02423,睦,睦,睦,睦,ぼく,목,mù,mục,ぼく;もく,목,mù,mục,목,ㄱ,c,true,7,"friendly, amiable, peaceful",unihan,kaikki_en_char,kanjidic2,unihan
 c02424,慕,慕,慕,慕,ぼ,모,mù,mộ,ぼ,모,mù,mộ,모,,,true,7,"long for, desire; admire",unihan,kaikki_aligned,kanjidic2,unihan
 c02425,暮,暮,暮,暮,ぼ,모,mù,mộ,ぼ,모,mù,mộ,모,,,true,7,"evening, dusk, sunset; ending",unihan,unihan_hvsyl,kanjidic2,unihan
 c02426,穆,穆,穆,穆,ぼく,목,mù,,ぼく;もく,목,mù,,목,ㄱ,,true,7,"majestic, solemn, reverent; calm",unihan,,kanjidic2,unihan
@@ -2435,31 +2435,31 @@ c02433,嫩,嫩,嫩,嫩,どん,눈,nèn,non,どん;のん,눈;논,nèn,non,눈;�
 c02434,尼,尼,尼,尼,に,니,ní,ni,に,니,ní;nǐ,ni,니,,,true,7,Buddhist nun; transliteration,unihan,kaikki_aligned,kanjidic2,unihan
 c02435,擬,擬,拟,擬,ぎ,의,nǐ,nghĩ,ぎ,의,nǐ,nghĩ,의,,,true,7,"draft; intend, plan, propose",unihan,unihan_unverified,kanjidic2,unihan
 c02436,逆,逆,逆,逆,ぎゃく,역,nì,nghịch,ぎゃく;げき,역,nì,nghịch,역,ㄱ,ch,true,7,"disobey, rebel; rebel, traitor",unihan,kaikki_aligned,kanjidic2,unihan
-c02437,匿,匿,匿,匿,とく,닉,nì,nặc,とく,닉;익,nì;tè,nặc,닉,ㄱ,c,true,7,hide; go into hiding,unihan,unihan_unverified,kanjidic2,unihan
+c02437,匿,匿,匿,匿,とく,닉,nì,nặc,とく,닉;익,nì;tè,nặc,닉,ㄱ,c,true,7,hide; go into hiding,unihan,kaikki_en_char,kanjidic2,unihan
 c02438,膩,膩,腻,膩,じ,니,nì,nhị,じ;に,니,nì,nhị,니,,,true,7,"greasy, oily, dirty; smooth",unihan,kaikki_aligned,kanjidic2,unihan
 c02439,黏,黏,黏,黏,ねん,점,nián,,ねん,점,nián,,점,ㅁ,,true,7,"stick to; glutinous, sticky; glue",unihan,,kanjidic2,unihan
 c02440,釀,釀,酿,醸,じょう,양,niàng,,じょう,양,niàng;niáng,,양,ㅇ,,true,7,"brew, ferment",unihan,,kanjidic2,unihan
 c02441,尿,尿,尿,尿,にょう,뇨,niào,niệu,にょう,뇨;요,niào;suī,niệu,뇨,,,true,7,urine; urinate,unihan,kaikki_aligned,kanjidic2,unihan
 c02442,捏,捏,捏,捏,ねつ,날,niē,,ねつ;てつ;ねち,날,niē,,날,ㄹ,,true,7,pick with fingers; knead; mold,unihan,,kanjidic2,unihan
 c02443,擰,擰,拧,擰,どう,녕,níng,,どう;にょう,녕,níng;nǐng;nìng,,녕,ㅇ,,true,7,"pinch; twist, wring; determined",unihan,,kanjidic2,unihan
-c02444,凝,凝,凝,凝,ぎょう,응,níng,ngưng,ぎょう,응,níng,ngưng,응,ㅇ,ng,true,7,coagulate; congeal; freeze,unihan,unihan_unverified,kanjidic2,unihan
+c02444,凝,凝,凝,凝,ぎょう,응,níng,ngưng,ぎょう,응,níng,ngưng,응,ㅇ,ng,true,7,coagulate; congeal; freeze,unihan,kaikki_en_char,kanjidic2,unihan
 c02445,紐,紐,纽,紐,ちゅう,뉴,niǔ,néo,ちゅう;じゅう,뉴;유,niǔ,néo,뉴,,,true,7,"knot; button; handle, knob; tie",unihan,unihan_unverified,kanjidic2,unihan
 c02446,奴,奴,奴,奴,ど,노,nú,nô,ど,노,nú,nô,노,,,true,7,"slave, servant",unihan,kaikki_aligned,kanjidic2,unihan
 c02447,虐,虐,虐,虐,ぎゃく,학,nüè,ngược,ぎゃく,학,nüè,ngược,학,ㄱ,c,true,7,"cruel, harsh, oppressive",unihan,kaikki_aligned,kanjidic2,unihan
 c02448,挪,挪,挪,挪,だ,나,nuó,ná,だ;な,나,nuó,ná,나,,,true,7,"move, shift on one side",unihan,unihan_unverified,kanjidic2,unihan
-c02449,哦,哦,哦,哦,が,아,ó,nga,が,아,ó;é;ò,nga,아,,,true,7,oh? really? is that so?,unihan,unihan_hvsyl,kanjidic2,unihan
+c02449,哦,哦,哦,哦,が,아,ó,nga,が,아,ó;é;ò,nga,아,,,true,7,oh? really? is that so?,unihan,kaikki_en_char,kanjidic2,unihan
 c02450,欧,欧,欧,欧,おう,구,ōu,,おう,구,ōu,,구,,,true,7,translit.: Europe; ohm; surname,unihan,,kanjidic2,unihan
 c02451,毆,毆,殴,殴,おう,구,ōu,ẩu,おう,구,ōu;kōu;qū,ẩu,구,,,true,7,"beat, fight with fists, hit; to strike, brawl",unihan,kaikki_aligned,kanjidic2,unihan
 c02452,嘔,嘔,呕,嘔,おう,구,ǒu,,おう;く,구,ǒu;ōu;òu;xū;chū;ou,,구,,,true,7,"to vomit; annoy, enrage",unihan,,kanjidic2,unihan
 c02453,趴,趴,趴,,,파,pā,,,파,pā,,파,,,true,7,"lying prone, leaning over",unihan,,,unihan
 c02454,帕,帕,帕,帕,ばつ,말,pà,,ばつ;めち;は;へ;はく;みゃく;みゅく,말;파,pà;mò,,말;파,ㄹ,,true,7,"turban, kerchief, veil; wrap",unihan,,kanjidic2,unihan
 c02455,徘,徘,徘,徘,はい,배,pái,bồi,はい,배,pái,bồi,배,,,true,7,"walk back and forth, hesitate",unihan,kaikki_aligned,kanjidic2,unihan
-c02456,潘,潘,潘,潘,はん,반,pān,,はん,반,pān;pàn;bō;pán;fān,,반,ㄴ,,true,7,surname; water in which rice has been rinsed; a river that flows into the Han,unihan,,kanjidic2,unihan
+c02456,潘,潘,潘,潘,はん,반,pān,phan,はん,반,pān;pàn;bō;pán;fān,phan,반,ㄴ,n,true,7,surname; water in which rice has been rinsed; a river that flows into the Han,unihan,kaikki_en_char,kanjidic2,unihan
 c02457,攀,攀,攀,攀,はん,반,pān,,はん,반,pān,,반,ㄴ,,true,7,climb; pull; hang on to,unihan,,kanjidic2,unihan
 c02458,叛,叛,叛,叛,はん,반,pàn,bạn,はん;ほん,반,pàn,bạn,반,ㄴ,n,true,7,rebel; rebellion; rebellious,unihan,unihan_unverified,kanjidic2,unihan
 c02459,畔,畔,畔,畔,はん,반,pàn,,はん,반,pàn,,반,ㄴ,,true,7,boundary path dividing fields,unihan,,kanjidic2,unihan
 c02460,乓,乓,乓,,,팡,pāng,,,팡,pāng,,팡,ㅇ,,true,7,(used with 乒) “pong” of “ping pong”,unihan,,,unihan
-c02461,龐,龐,庞,龐,ほう,방,páng,,ほう;ろう;る,방;롱,páng;lóng,,방;롱,ㅇ,,true,7,"disorderly, messy; huge, big",unihan,,kanjidic2,unihan
+c02461,龐,龐,庞,龐,ほう,방,páng,bàng,ほう;ろう;る,방;롱,páng;lóng,bàng,방;롱,ㅇ,ng,true,7,"disorderly, messy; huge, big",unihan,kaikki_en_char,kanjidic2,unihan
 c02462,膀,膀,膀,膀,ぼう,방,bǎng,bàng,ぼう;ほう,방,bǎng;páng;pāng;bàng;pǎng,bàng,방,ㅇ,ng,true,7,upper arm; shoulder; wing,unihan,kaikki_aligned,kanjidic2,unihan
 c02463,拋,拋,抛,,,포,pāo,,,포,pāo,,포,,,true,7,"throw (away), abandon, reject",unihan,,,unihan
 c02464,刨,刨,刨,刨,ほう,포,páo,bào,ほう;びょう,포,páo;bào,bào,포,,,true,7,"carpenter's plane; plane, level",unihan,unihan_hvsyl,kanjidic2,unihan
@@ -2475,7 +2475,7 @@ c02473,鵬,鵬,鹏,鵬,ほう,붕,péng,bằng,ほう,붕,péng;fèng,bằng,붕
 c02474,篷,篷,篷,篷,ほう,봉,péng,bong,ほう,봉,péng,bong,봉,ㅇ,ng,true,7,"awning, covering; sail; boat",unihan,unihan_unverified,kanjidic2,unihan
 c02475,膨,膨,膨,膨,ぼう,팽,péng,bành,ぼう,팽,péng;pèng,bành,팽,ㅇ,nh,true,7,"to swell; swollen, bloated, inflated",unihan,kaikki_aligned,kanjidic2,unihan
 c02476,捧,捧,捧,捧,ほう,봉,pěng,bổng,ほう,봉,pěng;fèng,bổng,봉,ㅇ,ng,true,7,hold up in two hands,unihan,unihan_hvsyl,kanjidic2,unihan
-c02477,劈,劈,劈,劈,へき,벽,pī,,へき;ひゃく,벽,pī;pǐ,,벽,ㄱ,,true,7,"cut apart, split, chop",unihan,,kanjidic2,unihan
+c02477,劈,劈,劈,劈,へき,벽,pī,phách,へき;ひゃく,벽,pī;pǐ,phách,벽,ㄱ,ch,true,7,"cut apart, split, chop",unihan,kaikki_en_char,kanjidic2,unihan
 c02478,疲,疲,疲,疲,ひ,피,pí,bì,ひ,피,pí,bì,피,,,true,7,"feel tired, be exhausted; weak",unihan,unihan_unverified,kanjidic2,unihan
 c02479,闢,闢,辟,闢,へき,벽,pì,,へき;びゃく,벽,pì;pī,,벽,ㄱ,,true,7,"open; settle, develop, open up",unihan,,kanjidic2,unihan
 c02480,媲,媲,媲,媲,へい,비,pì,,へい;ひ,비,pì;bī;pí,,비,,,true,7,"marry off, pair, match; compare",unihan,,kanjidic2,unihan
@@ -2522,7 +2522,7 @@ c02520,喬,喬,乔,喬,きょう,교,qiáo,,きょう,교,qiáo;jiǎo,,교,,,tru
 c02521,僑,僑,侨,僑,きょう,교,qiáo,kiều,きょう,교,qiáo;jiǎo,kiều,교,,,true,7,"sojourn, lodge",unihan,kaikki_aligned,kanjidic2,unihan
 c02522,俏,俏,俏,俏,しょう,소,qiào,,しょう,소;초,qiào;xiào;xiāo,,소;초,,,true,7,"like, similar; resemble; pretty",unihan,,kanjidic2,unihan
 c02523,竅,竅,窍,竅,きょう,규,qiào,khiếu,きょう,규,qiào,khiếu,규,,,true,7,"hole, opening, aperture",unihan,kaikki_aligned,kanjidic2,unihan
-c02524,翹,翹,翘,翹,ぎょう,교,qiào,,ぎょう,교,qiào;qiáo,,교,,,true,7,"turn up, lift, elevate, raise",unihan,,kanjidic2,unihan
+c02524,翹,翹,翘,翹,ぎょう,교,qiào,kiều,ぎょう,교,qiào;qiáo,kiều,교,,,true,7,"turn up, lift, elevate, raise",unihan,kaikki_en_char,kanjidic2,unihan
 c02525,撬,撬,撬,撬,きょう,효,qiào,,きょう,효,qiào,,효,,,true,7,"lift, raise; pry open",unihan,,kanjidic2,unihan
 c02526,怯,怯,怯,怯,きょう,겁,qiè,khiếp,きょう;こう,겁,qiè,khiếp,겁,ㅂ,p,true,7,"lacking in courage, afraid",unihan,kaikki_aligned,kanjidic2,unihan
 c02527,竊,竊,窃,窃,せつ,절,qiè,thiết,せつ,절,qiè,thiết,절,ㄹ,t,true,7,"secretly, stealthily; steal; thief",unihan,kaikki_aligned,kanjidic2,unihan
@@ -2570,7 +2570,7 @@ c02568,鯊,鯊,鲨,鯊,さ,사,shā,,さ;しゃ,사,shā,,사,,,true,7,shark,uni
 c02569,廈,廈,厦,廈,か,하,shà,hè,か;さ,하,shà;xià,hè,하,,,true,7,"big building, mansion",unihan,unihan_unverified,kanjidic2,unihan
 c02570,篩,篩,筛,篩,し,사,shāi,rây,し;さい,사,shāi;shī,rây,사,,,true,7,"sieve, filter, screen; sift",unihan,unihan_unverified,kanjidic2,unihan
 c02571,刪,刪,删,刪,さん,산,shān,,さん,산,shān,,산,ㄴ,,true,7,"to cut; delete, erase; to geld",unihan,,kanjidic2,unihan
-c02572,煽,煽,煽,煽,せん,선,shān,phiến,せん,선,shān,phiến,선,ㄴ,n,true,7,"stir up, incite, agitate, provoke",unihan,unihan_hvsyl,kanjidic2,unihan
+c02572,煽,煽,煽,煽,せん,선,shān,phiến,せん,선,shān,phiến,선,ㄴ,n,true,7,"stir up, incite, agitate, provoke",unihan,kaikki_en_char,kanjidic2,unihan
 c02573,擅,擅,擅,擅,せん,천,shàn,chen,せん,천,shàn,chen,천,ㄴ,n,true,7,monopolize; claim; arbitrarily; to dare,unihan,unihan_unverified,kanjidic2,unihan
 c02574,膳,膳,膳,膳,ぜん,선,shàn,,ぜん;せん,선,shàn,,선,ㄴ,,true,7,"meals, provisions, board",unihan,,kanjidic2,unihan
 c02575,贍,贍,赡,贍,せん,섬,shàn,thiệm,せん,섬,shàn;dàn,thiệm,섬,ㅁ,m,true,7,"support, aid; to be sufficient; rich, elegant",unihan,unihan_unverified,kanjidic2,unihan
@@ -2588,7 +2588,7 @@ c02586,屍,屍,尸,屍,し,시,shī,thi,し,시,shī;shì,thi,시,,,true,7,"corp
 c02587,獅,獅,狮,獅,し,사,shī,sư,し,사,shī,sư,사,,,true,7,lion,unihan,kaikki_aligned,kanjidic2,unihan
 c02588,蝕,蝕,蚀,蝕,しょく,식,shí,,しょく,식,shí;lì;lóng,,식,ㄱ,,true,7,nibble away; erode; eclipse,unihan,,kanjidic2,unihan
 c02589,矢,矢,矢,矢,し,시,shǐ,tẻ,し,시,shǐ,tẻ;thẻ;thỉ,시,,,true,7,"arrow, dart; vow, swear",unihan,unihan_unverified,kanjidic2,unihan
-c02590,氏,氏,氏,氏,し,씨,shì,thị,し,씨,shì;zhī;jīng,thị,씨,,,true,7,"clan, family; mister",unihan,unihan_hvsyl,kanjidic2,unihan
+c02590,氏,氏,氏,氏,し,씨,shì,thị,し,씨,shì;zhī;jīng,thị,씨,,,true,7,"clan, family; mister",unihan,kaikki_en_char,kanjidic2,unihan
 c02591,侍,侍,侍,侍,じ,시,shì,thị,じ;し,시,shì,thị,시,,,true,7,"serve, attend upon; attendant, servant; samurai",unihan,kaikki_aligned,kanjidic2,unihan
 c02592,逝,逝,逝,逝,せい,서,shì,,せい,서,shì,,서,,,true,7,pass away; die,unihan,,kanjidic2,unihan
 c02593,嗜,嗜,嗜,嗜,し,기,shì,thị,し,기,shì,thị,기,,,true,7,"be fond of, have weakness for",unihan,kaikki_aligned,kanjidic2,unihan
@@ -2620,12 +2620,12 @@ c02618,斯,斯,斯,斯,し,사,sī,tư,し,사,sī;shǐ,tư,사,,,true,7,"this, 
 c02619,撕,撕,撕,撕,せい,서,sī,,せい;し,서;사;시,sī;xī,,서;사;시,,,true,7,"rip, tear; buy cloth",unihan,,kanjidic2,unihan
 c02620,伺,伺,伺,伺,し,사,cì,,し,사,cì;sì,,사,,,true,7,"serve, wait upon, attend; examine",unihan,,kanjidic2,unihan
 c02621,祀,祀,祀,祀,し,사,sì,tự,し,사,sì,tự,사,,,true,7,"to sacrifice, worship",unihan,kaikki_aligned,kanjidic2,unihan
-c02622,飼,飼,饲,飼,し,사,sì,,し,사,sì,,사,,,true,7,raise animals; feed; nourish,unihan,,kanjidic2,unihan
-c02623,肆,肆,肆,肆,し,사,sì,,し,사,sì;tì,,사,,,true,7,"indulge; excess; numeral four; particle meaning now, therefore; shop",unihan,,kanjidic2,unihan
+c02622,飼,飼,饲,飼,し,사,sì,tự,し,사,sì,tự,사,,,true,7,raise animals; feed; nourish,unihan,kaikki_en_char,kanjidic2,unihan
+c02623,肆,肆,肆,肆,し,사,sì,tứ,し,사,sì;tì,tứ,사,,,true,7,"indulge; excess; numeral four; particle meaning now, therefore; shop",unihan,kaikki_en_char,kanjidic2,unihan
 c02624,聳,聳,耸,聳,しょう,용,sǒng,,しょう,용,sǒng,,용,ㅇ,,true,7,"urge on; rise up; stir, excite; to raise up; lofty",unihan,,kanjidic2,unihan
 c02625,訟,訟,讼,訟,しょう,송,sòng,tụng,しょう,송,sòng,tụng,송,ㅇ,ng,true,7,"accuse; argue, dispute; litigate; hexagram ䷅",unihan,unihan_hvsyl,kanjidic2,unihan
 c02626,宋,宋,宋,宋,そう,송,sòng,tống,そう,송,sòng,tống,송,ㅇ,ng,true,7,Song dynasty; surname,unihan,unihan_hvsyl,kanjidic2,unihan
-c02627,誦,誦,诵,誦,しょう,송,sòng,tụng,しょう;じゅ;ず,송,sòng,tụng,송,ㅇ,ng,true,7,"recite, chant, repeat",unihan,unihan_hvsyl,kanjidic2,unihan
+c02627,誦,誦,诵,誦,しょう,송,sòng,tụng,しょう;じゅ;ず,송,sòng,tụng,송,ㅇ,ng,true,7,"recite, chant, repeat",unihan,kaikki_en_char,kanjidic2,unihan
 c02628,頌,頌,颂,頌,しょう,송,sòng,tụng,しょう;じゅ;よう,송,sòng;róng,tụng,송,ㅇ,ng,true,7,"laud, acclaim; hymn; ode",unihan,kaikki_aligned,kanjidic2,unihan
 c02629,艘,艘,艘,艘,しょう,소,sōu,,しょう;しゅう;そう,소,sōu,,소,,,true,7,"counter for ships, vessels",unihan,,kanjidic2,unihan
 c02630,嗽,嗽,嗽,嗽,そう,수,sòu,,そう;しゅう;そく,수,sòu;shuò;shù,,수,,,true,7,"cough, gargle, clear throat",unihan,,kanjidic2,unihan
@@ -2633,8 +2633,8 @@ c02631,酥,酥,酥,酥,そ,소,sū,,そ,소;수,sū,,소;수,,,true,7,"butter; f
 c02632,溯,溯,溯,溯,そ,소,sù,,そ;さく,소,sù;shuò,,소,,,true,7,"go upstream, go against current; formerly",unihan,,kanjidic2,unihan
 c02633,蒜,蒜,蒜,蒜,さん,산,suàn,tỏi,さん,산,suàn,tỏi,산,ㄴ,,true,7,garlic,unihan,unihan_unverified,kanjidic2,unihan
 c02634,髓,髓,髓,髄,ずい,수,suǐ,tủy,ずい,수,suǐ,tủy,수,,,true,7,"bone marrow; essences, substances",unihan,unihan_unverified,kanjidic2,unihan
-c02635,遂,遂,遂,遂,すい,수,suì,toại,すい,수,suì;suí,toại,수,,,true,7,"comply with, follow along; thereupon",unihan,unihan_unverified,kanjidic2,unihan
-c02636,隧,隧,隧,隧,すい,수,suì,,すい;つい,수,suì;zhuì,,수,,,true,7,"tunnel, underground passageway, path to a tomb",unihan,,kanjidic2,unihan
+c02635,遂,遂,遂,遂,すい,수,suì,toại,すい,수,suì;suí,toại,수,,,true,7,"comply with, follow along; thereupon",unihan,kaikki_en_char,kanjidic2,unihan
+c02636,隧,隧,隧,隧,すい,수,suì,toại,すい;つい,수,suì;zhuì,toại,수,,,true,7,"tunnel, underground passageway, path to a tomb",unihan,kaikki_en_char,kanjidic2,unihan
 c02637,嗦,嗦,嗦,,,색,suō,,,색,suō,,색,ㄱ,,true,7,suck,unihan,,,unihan
 c02638,塌,塌,塌,塌,とう,탑,tā,,とう,탑,tā;dā,,탑,ㅂ,,true,7,"fall in ruins, collapse",unihan,,kanjidic2,unihan
 c02639,胎,胎,胎,胎,たい,태,tāi,thai,たい,태,tāi,thai,태,,,true,7,"unborn child, embryo, fetus",unihan,kaikki_aligned,kanjidic2,unihan
@@ -2670,7 +2670,7 @@ c02668,惕,惕,惕,惕,てき,척,tì,thích,てき;ちゃく,척,tì,thích,척
 c02669,舔,舔,舔,舔,てん,첨,tiǎn,,てん,첨,tiǎn;tān,,첨,ㅁ,,true,7,lick with tongue; taste,unihan,,kanjidic2,unihan
 c02670,帖,帖,帖,帖,ちょう,첩,tiē,thiếp,ちょう;じょう,첩,tiē;tiè;tiě,thiếp,첩,ㅂ,p,true,7,invitation card; notice,unihan,kaikki_aligned,kanjidic2,unihan
 c02671,廷,廷,廷,廷,てい,정,tíng,đình,てい,정,tíng,đình,정,ㅇ,nh,true,7,court,unihan,kaikki_aligned,kanjidic2,unihan
-c02672,亭,亭,亭,亭,てい,정,tíng,đình,てい;ちん,정,tíng,đình,정,ㅇ,nh,true,7,pavilion; erect,unihan,unihan_hvsyl,kanjidic2,unihan
+c02672,亭,亭,亭,亭,てい,정,tíng,đình,てい;ちん,정,tíng,đình,정,ㅇ,nh,true,7,pavilion; erect,unihan,kaikki_en_char,kanjidic2,unihan
 c02673,艇,艇,艇,艇,てい,정,tǐng,,てい,정,tǐng,,정,ㅇ,,true,7,"small boat, dugout, punt",unihan,,kanjidic2,unihan
 c02674,捅,捅,捅,,,통,tǒng,thòng,,통,tǒng,thòng,통,ㅇ,ng,true,7,jab,unihan,unihan_unverified,,unihan
 c02675,桶,桶,桶,桶,よう,통,tǒng,thùng,よう;とう,통,tǒng,thùng,통,ㅇ,ng,true,7,"pail, bucket, tub; cask, keg",unihan,unihan_unverified,kanjidic2,unihan
@@ -2706,7 +2706,7 @@ c02704,紋,紋,纹,紋,もん,문,wén,văn,もん,문,wén;wèn,văn,문,ㄴ,n,
 c02705,蚊,蚊,蚊,蚊,ぶん,문,wén,,ぶん,문,wén,,문,ㄴ,,true,7,mosquito; gnat,unihan,,kanjidic2,unihan
 c02706,吻,吻,吻,吻,ふん,문,wěn,vẫn,ふん;ぶん,문,wěn,vẫn,문,ㄴ,n,true,7,kiss; the lips; coinciding,unihan,unihan_hvsyl,kanjidic2,unihan
 c02707,紊,紊,紊,紊,びん,문,wěn,,びん;ぶん,문,wěn;wèn,,문,ㄴ,,true,7,"confused, disorder",unihan,,kanjidic2,unihan
-c02708,翁,翁,翁,翁,おう,옹,wēng,ông,おう,옹,wēng;wěng,ông,옹,ㅇ,ng,true,7,"old man; father, father-in-law",unihan,unihan_unverified,kanjidic2,unihan
+c02708,翁,翁,翁,翁,おう,옹,wēng,ông,おう,옹,wēng;wěng,ông,옹,ㅇ,ng,true,7,"old man; father, father-in-law",unihan,kaikki_en_char,kanjidic2,unihan
 c02709,渦,渦,涡,渦,か,와,wō,,か,와,wō;guō,,와,,,true,7,"swirl, whirlpool, eddy",unihan,,kanjidic2,unihan
 c02710,窩,窩,窝,窩,か,와,wō,,か;わ,와,wō,,와,,,true,7,"nest; cave, den; hiding place",unihan,,kanjidic2,unihan
 c02711,沃,沃,沃,沃,よう,옥,wò,óc,よう;よく;おく,옥,wò,óc,옥,ㄱ,c,true,7,"water, irrigate; fertile, rich",unihan,unihan_unverified,kanjidic2,unihan
@@ -2785,9 +2785,9 @@ c02783,徐,徐,徐,徐,じょ,서,xú,chờ,じょ,서,xú,chờ,서,,,true,7,"s
 c02784,旭,旭,旭,旭,きょく,욱,xù,hóc,きょく,욱,xù,hóc,욱,ㄱ,c,true,7,rising sun; brilliance; radiant,unihan,unihan_unverified,kanjidic2,unihan
 c02785,敘,敘,叙,叙,じょ,서,xù,tự,じょ,서,xù,tự,서,,,true,7,"express, state, relate, narrate",unihan,kaikki_aligned,kanjidic2,unihan
 c02786,卹,卹,恤,卹,しゅつ,휼,xù,,しゅつ;しゅち;そつ;そち,휼;술,xù;sū,,휼;술,ㄹ,,true,7,"sympathy, pity; comfort",unihan,,kanjidic2,unihan
-c02787,酗,酗,酗,酗,く,후,xù,,く,후,xù,,후,,,true,7,"drunk, to become violent under the influence of alcohol",unihan,,kanjidic2,unihan
+c02787,酗,酗,酗,酗,く,후,xù,húng,く,후,xù,húng,후,,ng,true,7,"drunk, to become violent under the influence of alcohol",unihan,kaikki_en_char,kanjidic2,unihan
 c02788,絮,絮,絮,絮,じょ,서,xù,,じょ;しょ,서,xù;chù;nǜ;nà,,서,,,true,7,"waste cotton, raw silk or cotton",unihan,,kanjidic2,unihan
-c02789,婿,婿,婿,婿,せい,서,xù,,せい,서,xù,,서,,,true,7,son-in-law; husband,unihan,,kanjidic2,unihan
+c02789,婿,婿,婿,婿,せい,서,xù,tế,せい,서,xù,tế,서,,,true,7,son-in-law; husband,unihan,kaikki_en_char,kanjidic2,unihan
 c02790,蓄,蓄,蓄,蓄,ちく,축,xù,súc,ちく,축,xù,súc,축,ㄱ,c,true,7,"store, save, hoard, gather",unihan,kaikki_aligned,kanjidic2,unihan
 c02791,喧,喧,喧,喧,けん,훤,xuān,huyên,けん,훤,xuān;xuǎn,huyên,훤,ㄴ,n,true,7,"lively, noisy; clamor, talk loudly",unihan,kaikki_aligned,kanjidic2,unihan
 c02792,玄,玄,玄,玄,げん,현,xuán,huyền,げん,현,xuán;xuàn,huyền,현,ㄴ,n,true,7,"deep, profound, abstruse; Kangxi radical 95",unihan,kaikki_aligned,kanjidic2,unihan
@@ -2799,7 +2799,7 @@ c02797,熏,熏,熏,熏,くん,훈,xūn,,くん,훈,xūn;xùn,,훈,ㄴ,,true,7,"s
 c02798,旬,旬,旬,旬,じゅん,순,xún,,じゅん;しゅん,순,xún;jūn,,순,ㄴ,,true,7,ten-day period; period of time,unihan,,kanjidic2,unihan
 c02799,巡,巡,巡,巡,じゅん,순,xún,tuần,じゅん,순,xún;yán;shùn,tuần,순,ㄴ,n,true,7,"patrol, go on circuit, cruise",unihan,unihan_hvsyl,kanjidic2,unihan
 c02800,汛,汛,汛,汛,しん,신,xùn,vàm,しん;さん;しゃ,신,xùn,vàm,신,ㄴ,m,true,7,"high water, flood tides",unihan,unihan_unverified,kanjidic2,unihan
-c02801,馴,馴,驯,馴,じゅん,순,xún,tuần,じゅん;しゅん;くん,순,xún,tuần;thuần,순,ㄴ,n,true,7,"tame, docile, obedient",unihan,kaikki_aligned,kanjidic2,unihan
+c02801,馴,馴,驯,馴,じゅん,순,xún,thuần,じゅん;しゅん;くん,순,xún,thuần;tuần,순,ㄴ,n,true,7,"tame, docile, obedient",unihan,unihan_hvsyl,kanjidic2,unihan
 c02802,遜,遜,逊,遜,そん,손,xùn,tốn,そん,손,xùn,tốn,손,ㄴ,n,true,7,"humble, modest; yield",unihan,kaikki_aligned,kanjidic2,unihan
 c02803,丫,丫,丫,丫,あ,아,yā,a,あ;や,아,yā,a,아,,,true,7,forked; bifurcation,unihan,unihan_hvsyl,kanjidic2,unihan
 c02804,鴉,鴉,鸦,鴉,あ,아,yā,nha,あ,아,yā;yǎ,nha;á,아,,,true,7,"crow, raven; Corvus species (various)",unihan,kaikki_aligned,kanjidic2,unihan
@@ -2819,7 +2819,7 @@ c02817,雁,雁,雁,雁,がん,안,yàn,,がん,안,yàn,,안,ㄴ,,true,7,wild go
 c02818,焰,焰,焰,焔,えん,염,yàn,diễm,えん,염,yàn,diễm,염,ㅁ,m,true,7,"flame, blaze; glowing, blazing",unihan,unihan_unverified,kanjidic2,unihan
 c02819,燕,燕,燕,燕,えん,연,yàn,én,えん,연,yàn;yān,én,연,ㄴ,n,true,7,"swallow (bird); comfort, enjoy",unihan,unihan_unverified,kanjidic2,unihan
 c02820,殃,殃,殃,殃,おう,앙,yāng,ương,おう;よう,앙,yāng,ương,앙,ㅇ,ng,true,7,"misfortune, disaster, calamity",unihan,unihan_hvsyl,kanjidic2,unihan
-c02821,秧,秧,秧,秧,おう,앙,yāng,ương,おう,앙,yāng,ương,앙,ㅇ,ng,true,7,"rice seedlings, young rice plants",unihan,unihan_hvsyl,kanjidic2,unihan
+c02821,秧,秧,秧,秧,おう,앙,yāng,ương,おう,앙,yāng,ương,앙,ㅇ,ng,true,7,"rice seedlings, young rice plants",unihan,kaikki_en_char,kanjidic2,unihan
 c02822,楊,楊,杨,楊,よう,양,yáng,dương,よう,양,yáng,dương,양,ㅇ,ng,true,7,"willow, poplar, aspen; surname",unihan,kaikki_aligned,kanjidic2,unihan
 c02823,癢,癢,痒,癢,よう,양,yǎng,,よう,양,yǎng,,양,ㅇ,,true,7,itch,unihan,,kanjidic2,unihan
 c02824,漾,漾,漾,漾,よう,양,yàng,,よう,양,yàng,,양,ㅇ,,true,7,"overflow; swirl, ripple; to be tossed by waves",unihan,,kanjidic2,unihan
@@ -2847,7 +2847,7 @@ c02845,裔,裔,裔,裔,えい,예,yì,duệ,えい,예,yì,duệ,예,,,true,7,"p
 c02846,溢,溢,溢,溢,いつ,일,yì,,いつ,일,yì,,일,ㄹ,,true,7,"overflow, brim over; full",unihan,,kanjidic2,unihan
 c02847,毅,毅,毅,毅,き,의,yì,nghị,き;ぎ,의,yì,nghị,의,,,true,7,"resolute, decisive, firm, persist",unihan,kaikki_aligned,kanjidic2,unihan
 c02848,翼,翼,翼,翼,よく,익,yì,dực,よく,익,yì,dực,익,ㄱ,c,true,7,"wings; fins on fish; shelter; 27th lunar mansion, determinative star α Crateris (Alkes)",unihan,unihan_unverified,kanjidic2,unihan
-c02849,蔭,蔭,荫,蔭,いん,음,yīn,ấm,いん;おん,음,yīn;yìn,ấm,음,ㅁ,m,true,7,"shade, shelter; protect",unihan,unihan_hvsyl,kanjidic2,unihan
+c02849,蔭,蔭,荫,蔭,いん,음,yīn,ấm,いん;おん,음,yīn;yìn,ấm,음,ㅁ,m,true,7,"shade, shelter; protect",unihan,kaikki_en_char,kanjidic2,unihan
 c02850,姻,姻,姻,姻,いん,인,yīn,nhân,いん,인,yīn,nhân,인,ㄴ,n,true,7,relatives by marriage,unihan,kaikki_aligned,kanjidic2,unihan
 c02851,殷,殷,殷,殷,いん,은,yīn,ân,いん;あん,은,yīn;yǐn;yān,ân,은,ㄴ,n,true,7,"many, great; abundant, flourishing",unihan,kaikki_aligned,kanjidic2,unihan
 c02852,癮,癮,瘾,癮,いん,은,yǐn,,いん;おん,은,yǐn,,은,ㄴ,,true,7,"rash; addiction, craving, habit",unihan,,kanjidic2,unihan
@@ -2860,7 +2860,7 @@ c02858,蠅,蠅,蝇,蠅,よう,승,yíng,nhặng,よう,승,yíng,nhặng,승,ㅇ
 c02859,穎,穎,颖,頴,えい,영,yǐng,dĩnh,えい,영,yǐng,dĩnh,영,ㅇ,nh,true,7,rice tassel; sharp point; clever,unihan,kaikki_aligned,kanjidic2,unihan
 c02860,傭,傭,佣,傭,よう,용,yōng,,よう;ちょう,용,yōng;chōng;yòng,,용,ㅇ,,true,7,"hire, employ, charter; servant",unihan,,kanjidic2,unihan
 c02861,庸,庸,庸,庸,よう,용,yōng,,よう,용,yōng;yóng,,용,ㅇ,,true,7,"usual, common, ordinary, mediocre",unihan,,kanjidic2,unihan
-c02862,詠,詠,咏,詠,えい,영,yǒng,vịnh,えい,영,yǒng,vịnh,영,ㅇ,nh,true,7,"sing, hum, chant",unihan,unihan_unverified,kanjidic2,unihan
+c02862,詠,詠,咏,詠,えい,영,yǒng,vịnh,えい,영,yǒng,vịnh,영,ㅇ,nh,true,7,"sing, hum, chant",unihan,kaikki_en_char,kanjidic2,unihan
 c02863,湧,湧,涌,湧,ゆう,용,yǒng,rụng,ゆう;よう;ゆ,용,yǒng,rụng,용,ㅇ,ng,true,7,well up; gush forth; rise,unihan,unihan_unverified,kanjidic2,unihan
 c02864,踴,踴,踊,踴,よう,용,yǒng,,よう,용,yǒng,,용,ㅇ,,true,7,"leap, jump",unihan,,kanjidic2,unihan
 c02865,悠,悠,悠,悠,ゆう,유,yōu,,ゆう,유,yōu,,유,,,true,7,"long, far, remote, distant; leisurely",unihan,,kanjidic2,unihan
@@ -2877,11 +2877,11 @@ c02875,郁,郁,郁,郁,いく,욱,yù,,いく,욱,yù,,욱,ㄱ,,true,7,"sweet sm
 c02876,籲,籲,吁,籲,ゆ,유,yù,,ゆ;やく,유,yù,,유,,,true,7,appeal; request; implore,unihan,,kanjidic2,unihan
 c02877,獄,獄,狱,獄,ごく,옥,yù,ngục,ごく,옥,yù,ngục,옥,ㄱ,c,true,7,"prison, jail; case; lawsuit",unihan,kaikki_aligned,kanjidic2,unihan
 c02878,浴,浴,浴,浴,よく,욕,yù,,よく,욕,yù,,욕,ㄱ,,true,7,"bathe, wash; bath",unihan,,kanjidic2,unihan
-c02879,喻,喻,喻,,,유,yù,dụ,,유,yù;yú,dụ,유,,,true,7,"metaphor, analogy; example; like",unihan,unihan_hvsyl,,unihan
+c02879,喻,喻,喻,,,유,yù,dụ,,유,yù;yú,dụ,유,,,true,7,"metaphor, analogy; example; like",unihan,kaikki_en_char,,unihan
 c02880,禦,禦,御,御,ぎょ,어,yù,ngự,ぎょ;ご,어,yù,ngự,어,,,true,7,"defend, resist, hold out against",unihan,kaikki_aligned,kanjidic2,unihan
 c02881,寓,寓,寓,寓,ぐう,우,yù,ngụ,ぐう;ぐ;どう,우,yù,ngụ,우,,,true,7,residence; lodge; dwell,unihan,kaikki_aligned,kanjidic2,unihan
 c02882,裕,裕,裕,裕,ゆう,유,yù,dịu,ゆう,유,yù,dịu,유,,,true,7,"abundant, rich, plentiful",unihan,unihan_unverified,kanjidic2,unihan
-c02883,癒,癒,愈,癒,ゆ,유,yù,,ゆ,유,yù,,유,,,true,7,"get well, recover",unihan,,kanjidic2,unihan
+c02883,癒,癒,愈,癒,ゆ,유,yù,dũ,ゆ,유,yù,dũ,유,,,true,7,"get well, recover",unihan,kaikki_en_char,kanjidic2,unihan
 c02884,冤,冤,冤,冤,えん,원,yuān,oan,えん,원,yuān,oan,원,ㄴ,n,true,7,"grievance, injustice, wrong",unihan,kaikki_aligned,kanjidic2,unihan
 c02885,淵,淵,渊,淵,えん,연,yuān,uyên,えん;かく;こう,연,yuān,uyên,연,ㄴ,n,true,7,"gulf, abyss, deep",unihan,kaikki_aligned,kanjidic2,unihan
 c02886,袁,袁,袁,袁,えん,원,yuán,,えん;おん,원,yuán,,원,ㄴ,,true,7,robe; surname,unihan,,kanjidic2,unihan
@@ -2907,7 +2907,7 @@ c02905,藻,藻,藻,藻,そう,조,zǎo,,そう,조,zǎo,,조,,,true,7,"splendid,
 c02906,皂,皂,皂,,,조,zào,,,조,zào,,조,,,true,7,soap; black; menial servant,unihan,,,unihan
 c02907,灶,灶,灶,灶,そう,조,zào,táo,そう,조,zào,táo,조,,,true,7,"kitchen stove, cooking stove",unihan,unihan_hvsyl,kanjidic2,unihan
 c02908,噪,噪,噪,噪,そう,조,zào,tháo,そう,조,zào,tháo,조,,,true,7,be noisy; chirp loudly,unihan,unihan_hvsyl,kanjidic2,unihan
-c02909,燥,燥,燥,燥,そう,조,zào,táo,そう,조,zào;sào,táo,조,,,true,7,"dry, parched, arid; quick-tempered",unihan,unihan_hvsyl,kanjidic2,unihan
+c02909,燥,燥,燥,燥,そう,조,zào,táo,そう,조,zào;sào,táo,조,,,true,7,"dry, parched, arid; quick-tempered",unihan,kaikki_en_char,kanjidic2,unihan
 c02910,躁,躁,躁,躁,そう,조,zào,táo,そう,조,zào,táo;tháo,조,,,true,7,"tense, excited, irritable",unihan,kaikki_aligned,kanjidic2,unihan
 c02911,澤,澤,泽,沢,たく,택,zé,rạch,たく,택,zé;shì;yì;duó,rạch,택,ㄱ,ch,true,7,"marsh, swamp; grace, brilliance; damp, moist; fertile",unihan,unihan_unverified,kanjidic2,unihan
 c02912,賊,賊,贼,賊,ぞく,적,zéi,tặc,ぞく,적,zéi,tặc,적,ㄱ,c,true,7,"thief, traitor",unihan,kaikki_aligned,kanjidic2,unihan
@@ -2944,14 +2944,14 @@ c02942,偵,偵,侦,偵,てい,정,zhēn,trinh,てい,정,zhēn;zhēng,trinh,정,
 c02943,枕,枕,枕,枕,ちん,침,zhěn,chẳm,ちん;しん,침,zhěn;chén,chẳm,침,ㅁ,m,true,7,pillow,unihan,unihan_unverified,kanjidic2,unihan
 c02944,睜,睜,睁,睜,せい,정,zhēng,,せい;じょう,정,zhēng,,정,ㅇ,,true,7,to open the eyes; stare,unihan,,kanjidic2,unihan
 c02945,箏,箏,筝,箏,そう,쟁,zhēng,tranh,そう;しょう,쟁,zhēng,tranh,쟁,ㅇ,nh,true,7,stringed musical instrument; kite,unihan,unihan_hvsyl,kanjidic2,unihan
-c02946,蒸,蒸,蒸,蒸,じょう,증,zhēng,chưng,じょう;せい,증,zhēng,chưng,증,ㅇ,ng,true,7,steam; evaporate,unihan,unihan_unverified,kanjidic2,unihan
+c02946,蒸,蒸,蒸,蒸,じょう,증,zhēng,chưng,じょう;せい,증,zhēng,chưng,증,ㅇ,ng,true,7,steam; evaporate,unihan,kaikki_en_char,kanjidic2,unihan
 c02947,拯,拯,拯,拯,しょう,증,zhěng,chửng,しょう;じょう,증,zhěng,chửng,증,ㅇ,ng,true,7,"help, save, aid; lift, raise",unihan,unihan_unverified,kanjidic2,unihan
-c02948,鄭,鄭,郑,鄭,てい,정,zhèng,trịnh,てい;じょう,정,zhèng,trịnh,정,ㅇ,nh,true,7,state in today's Henan; surname,unihan,unihan_unverified,kanjidic2,unihan
+c02948,鄭,鄭,郑,鄭,てい,정,zhèng,trịnh,てい;じょう,정,zhèng,trịnh,정,ㅇ,nh,true,7,state in today's Henan; surname,unihan,kaikki_en_char,kanjidic2,unihan
 c02949,芝,芝,芝,芝,し,지,zhī,chi,し,지,zhī,chi,지,,,true,7,sesame; a purplish or brown mushroom thought to have miraculous powers; 'a divine and felicitous plant' (Karlgren),unihan,unihan_hvsyl,kanjidic2,unihan
 c02950,肢,肢,肢,肢,し,지,zhī,chi,し,지,zhī;shì,chi,지,,,true,7,human limbs; animal feet,unihan,kaikki_aligned,kanjidic2,unihan
 c02951,脂,脂,脂,脂,し,지,zhī,,し,지,zhī;zhǐ,,지,,,true,7,"fat, grease, lard; grease",unihan,,kanjidic2,unihan
 c02952,旨,旨,旨,旨,し,지,zhǐ,chỉ,し,지,zhǐ,chỉ,지,,,true,7,"purpose, aim; excellent",unihan,unihan_hvsyl,kanjidic2,unihan
-c02953,幟,幟,帜,幟,し,치,zhì,xí,し,치,zhì,xí,치,,,true,7,"flag, pennant; sign; fasten",unihan,unihan_hvsyl,kanjidic2,unihan
+c02953,幟,幟,帜,幟,し,치,zhì,xí,し,치,zhì,xí,치,,,true,7,"flag, pennant; sign; fasten",unihan,kaikki_en_char,kanjidic2,unihan
 c02954,峙,峙,峙,峙,じ,치,zhì,,じ,치,zhì;shì,,치,,,true,7,"stand erect, stand up; pile up",unihan,,kanjidic2,unihan
 c02955,摯,摯,挚,摯,し,지,zhì,,し,지,zhì,,지,,,true,7,"sincere, warm, cordial; surname",unihan,,kanjidic2,unihan
 c02956,秩,秩,秩,秩,ちつ,질,zhì,trật,ちつ,질,zhì,trật,질,ㄹ,t,true,7,order; orderly; salary; decade,unihan,kaikki_aligned,kanjidic2,unihan
@@ -2961,7 +2961,7 @@ c02959,稚,稚,稚,稚,ち,치,zhì,trĩ,ち;じ,치,zhì,trĩ,치,,,true,7,"you
 c02960,衷,衷,衷,衷,ちゅう,충,zhōng,,ちゅう,충,zhōng;zhòng,,충,ㅇ,,true,7,"heart, from bottom of one's heart",unihan,,kanjidic2,unihan
 c02961,仲,仲,仲,仲,ちゅう,중,zhòng,trọng,ちゅう,중,zhòng,trọng,중,ㅇ,ng,true,7,"middle brother; go between, mediator; surname",unihan,kaikki_aligned,kanjidic2,unihan
 c02962,舟,舟,舟,舟,しゅう,주,zhōu,,しゅう,주,zhōu,,주,,,true,7,"boat, ship; Kangxi radical 137",unihan,,kanjidic2,unihan
-c02963,州,州,州,州,しゅう,주,zhōu,châu,しゅう;す,주,zhōu,châu,주,,,true,7,"administrative division, state",unihan,unihan_hvsyl,kanjidic2,unihan
+c02963,州,州,州,州,しゅう,주,zhōu,châu,しゅう;す,주,zhōu,châu,주,,,true,7,"administrative division, state",unihan,kaikki_en_char,kanjidic2,unihan
 c02964,洲,洲,洲,洲,しゅう,주,zhōu,châu,しゅう;す,주,zhōu,châu,주,,,true,7,continent; island; islet,unihan,kaikki_aligned,kanjidic2,unihan
 c02965,軸,軸,轴,軸,じく,축,zhóu,trục,じく,축,zhóu;zhú;zhòu,trục,축,ㄱ,c,true,7,"axle, axletree; pivot; axis",unihan,unihan_hvsyl,kanjidic2,unihan
 c02966,宙,宙,宙,宙,ちゅう,주,zhòu,trụ,ちゅう,주,zhòu,trụ,주,,,true,7,time as concept; infinite time,unihan,kaikki_aligned,kanjidic2,unihan
@@ -2987,7 +2987,7 @@ c02985,墜,墜,坠,墜,つい,추,zhuì,trụy,つい,추,zhuì,trụy,추,,,tru
 c02986,綴,綴,缀,綴,てい,철,zhuì,,てい;てつ;てち;げつ,철;체,zhuì;chuò,,철;체,ㄹ,,true,7,"patch together, link, connect",unihan,,kanjidic2,unihan
 c02987,拙,拙,拙,拙,せつ,졸,zhuō,chút,せつ,졸,zhuō,chút,졸,ㄹ,t,true,7,"stupid, clumsy, crude; convention",unihan,unihan_unverified,kanjidic2,unihan
 c02988,灼,灼,灼,灼,しゃく,작,zhuó,chước,しゃく,작,zhuó,chước,작,ㄱ,c,true,7,burn; broil; cauterize; bright,unihan,unihan_hvsyl,kanjidic2,unihan
-c02989,卓,卓,卓,卓,たく,탁,zhuó,trác,たく,탁,zhuó;zhuō,trác,탁,ㄱ,c,true,7,"profound, brilliant, lofty",unihan,unihan_unverified,kanjidic2,unihan
+c02989,卓,卓,卓,卓,たく,탁,zhuó,trác,たく,탁,zhuó;zhuō,trác,탁,ㄱ,c,true,7,"profound, brilliant, lofty",unihan,kaikki_en_char,kanjidic2,unihan
 c02990,濁,濁,浊,濁,だく,탁,zhuó,trọc,だく;じょく,탁,zhuó,trọc,탁,ㄱ,c,true,7,"muddy, turbid, dirty, filthy",unihan,unihan_unverified,kanjidic2,unihan
 c02991,酌,酌,酌,酌,しゃく,작,zhuó,chước,しゃく,작,zhuó,chước,작,ㄱ,c,true,7,serve wine; feast; deliberate,unihan,kaikki_aligned,kanjidic2,unihan
 c02992,琢,琢,琢,琢,たく,탁,zuó,chác,たく,탁,zuó;zhuó,chác,탁,ㄱ,c,true,7,polish jade; cut jade,unihan,unihan_unverified,kanjidic2,unihan
@@ -3028,7 +3028,7 @@ c03026,餵,餵,喂,餵,だい,위,wèi,,だい;い,위,wèi,,위,,,false,4,"to f
 c03027,緻,緻,致,緻,ち,치,zhì,,ち,치,zhì,,치,,,false,4,"delicate, fine; dense",unihan,,kanjidic2,unihan
 c03028,贊,贊,赞,賛,さん,찬,zàn,tán,さん,찬,zàn,tán,찬,ㄴ,n,false,4,"help, support, assist, aid",unihan,kaikki_aligned,kanjidic2,unihan
 c03029,征,征,征,征,せい,정,zhēng,chinh,せい,정,zhēng,chinh,정,ㅇ,nh,false,4,"invade, attack, conquer",unihan,kaikki_aligned,kanjidic2,unihan
-c03030,嘗,嘗,尝,嘗,しょう,상,cháng,,しょう;じょう,상,cháng,,상,ㅇ,,false,5,"taste; experience, experiment",unihan,,kanjidic2,unihan
+c03030,嘗,嘗,尝,嘗,しょう,상,cháng,thường,しょう;じょう,상,cháng,thường,상,ㅇ,ng,false,5,"taste; experience, experiment",unihan,kaikki_en_char,kanjidic2,unihan
 c03031,干,干,干,干,かん,간,gàn,can,かん,간,gàn;gān;àn,can,간,ㄴ,n,false,5,"oppose, offend; invade; dried",unihan,kaikki_aligned,kanjidic2,unihan
 c03032,併,併,并,併,へい,병,bìng,tính,へい,병,bìng,tính,병,ㅇ,nh,false,5,"combine, annex",unihan,kaikki_aligned,kanjidic2,unihan
 c03033,鬍,鬍,胡,鬍,こ,호,hú,,こ,호,hú,,호,,,false,5,beard; mustache; whiskers,unihan,,kanjidic2,unihan
@@ -3052,7 +3052,7 @@ c03050,惡,惡,恶,悪,あく,악,è,ác,あく;お,악;오,è;wù;wū;ě;hū,á
 c03051,祕,祕,秘,秘,ひ,비,mì,,ひ,비,mì;bì,,비,,,false,7,"mysterious, secret, abstruse",unihan,,kanjidic2,unihan
 c03052,籤,籤,签,籤,せん,첨,qiān,,せん,첨,qiān,,첨,ㅁ,,false,7,tally; lot; marker,unihan,,kanjidic2,unihan
 c03053,彆,彆,别,,,별,biè,,,별,biè,,별,ㄹ,,false,7,awkward,unihan,,,unihan
-c03054,鏟,鏟,铲,鏟,さん,산,chǎn,,さん;せん,산,chǎn,,산,ㄴ,,false,7,"spade, shovel, trowel, scoop",unihan,,kanjidic2,unihan
+c03054,鏟,鏟,铲,鏟,さん,산,chǎn,sạn,さん;せん,산,chǎn,sạn,산,ㄴ,n,false,7,"spade, shovel, trowel, scoop",unihan,kaikki_en_char,kanjidic2,unihan
 c03055,獃,獃,呆,獃,がい,애,dāi,,がい,애,dāi;ái,,애,,,false,7,"dull; dull-minded, simple, stupid",unihan,,kanjidic2,unihan
 c03056,沖,沖,冲,沖,ちゅう,충,chōng,trùng,ちゅう,충,chōng,trùng;xung,충,ㅇ,ng,false,7,"pour, infuse, steep; wash away",unihan,unihan_hvsyl,kanjidic2,unihan
 c03057,摺,摺,折,摺,しょう,접,zhé,dập,しょう;しゅう;ろう,접;랍,zhé;lā;xié,dập,접;랍,ㅂ,p,false,7,"fold, bend; twisted, curved",unihan,unihan_unverified,kanjidic2,unihan
@@ -3079,7 +3079,7 @@ c03077,嚥,嚥,咽,嚥,えん,연,yàn,,えん,연,yàn,,연,ㄴ,,false,7,"swall
 c03078,鬱,鬱,郁,鬱,うつ,울,yù,uất,うつ,울,yù,uất,울,ㄹ,t,false,6,"luxuriant; dense, thick; moody",unihan,kaikki_aligned,kanjidic2,unihan
 c03079,余,余,余,余,よ,여,yú,dư,よ,여,yú;tú;xú;yù,dư,여,,,false,7,"I, my, me; surname; surplus",unihan,unihan_hvsyl,kanjidic2,unihan
 c03080,愈,愈,愈,愈,ゆ,유,yù,rủ,ゆ,유,yù,rủ,유,,,false,7,"more and more, even more",unihan,unihan_unverified,kanjidic2,unihan
-c03081,卜,卜,卜,卜,ぼく,복,bo,bốc,ぼく,복,bo;bǔ;pū,bốc,복,ㄱ,c,false,7,fortune telling; prophesy,unihan,unihan_unverified,kanjidic2,unihan
+c03081,卜,卜,卜,卜,ぼく,복,bo,bốc,ぼく,복,bo;bǔ;pū,bốc,복,ㄱ,c,false,7,fortune telling; prophesy,unihan,kaikki_en_char,kanjidic2,unihan
 c03082,癥,癥,症,癥,ちょう,징,zhēng,,ちょう,징,zhēng,,징,ㅇ,,false,7,obstruction of bowels,unihan,,kanjidic2,unihan
 c03083,礮,礮,𪿫,礮,,포,pào,bác,,포,pào,bác,포,,c,false,3,"ancient ballista for throwing heavy stones a cannon, a gun",unihan,kaikki_aligned,,unihan
 c03179,絶,絶,绝,絶,ぜつ,절,jué,tuyệt,ぜつ,절,jué,tuyệt,절,ㄹ,t,false,4,cut,unihan,unihan_hvsyl,kanjidic2,unihan
