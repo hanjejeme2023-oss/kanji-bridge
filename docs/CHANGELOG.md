@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 2026-11-05 — D36 Vietnamese source search [Claude]
+- Checked 8 candidates, licence first (user limits: at most 8; precision ≥ 95% on a seeded sample; gain ≥ +300 HSK words or +3 pp). Downloads only to a scratch folder outside the repo; `raw/`, `pipeline/`, `data/` unchanged.
+- **Accepted:** Kaikki English-Wiktionary Vietnamese entries (SOURCES 7C), for the word list only, as rule A2 (D53). Seeded overlap sample 199/200 (seed 36), whole overlap 99.45%; gain +356 HSK words, 35.18% → 38.41% (+3.23 pp). A2 fills only empty `vi`; 6 obsolete/archaic-only words are reported, not used (新聞 stays empty). VI-only selection takes A2 pairs as extra candidates.
+- **Rejected (7D-7J):** CVDICT (machine-translated), wordfreq and Leipzig (syllable tokens; Leipzig terms unreadable, NC), Wikidata lexemes (no gain), HanViet data and duyet word list (GPL-2.0), English-Wiktionary Chinese descendants (gain +231, vernacular forms). No licensed Vietnamese word-frequency list found; D26 proxy stays.
+- Added `docs/D36_VI_SOURCE_SEARCH.md` (candidates, numbers, 30 seeded new readings for the user's spot check, loop-1 lists), reference scripts `docs/review_scripts/d36_*.py`, SOURCES rows 7C-7J, D53, SCHEMA tags (`kaikki_en_han`, `obsolete_only`, `vi_only_report.source_vi`), GATES repeat-gate checks R1-R8 (incl. D52 tie rule and the 77 overrides).
+- **Stage 4 mode (D54):** the user chose a Python batch script on the Gemini API (key in `GEMINI_API_KEY`, never committed) over an Antigravity agent session, after a cost/reproducibility/Rule 3 comparison.
+- Why: D36 (35% Vietnamese coverage too low for the user's goal); the word list freezes only after the repeat gate (D46).
+
 ## 2026-11-05 — Stage 3 gate PASS: confirmed overrides applied [Claude]
 - `pipeline/overrides.csv`: 77 user-confirmed rows (D52): 59 `words` (23 ko, 16 ja incl. the user's 家 か and 月 げつ, 19 vi) and 18 `chars` (茶 차, 寧 녕, 13 law-form base forms; 貝 패, 滑 활, 省 성, 更 경 to undo D39 tie flips the word overrides caused, confirmed by the user after the first rebuild).
 - Rebuilt: HSK `vi` 3,861 → 3,880, all four languages 3,094 → 3,111, `rules_examples` 2,031 → 2,044, `char_primary_changes` 84 → 103; `card_eligible` unchanged; `*_all` sets unchanged.

@@ -61,6 +61,20 @@ Empty means no value is expected from the current sources; the value must then b
 
 Characters: 樂 `ko`=락 or 악, `ko_all` still contains 낙; 歷 `ko`=력; 行 `ko`=행; **茶 `ko`=차 when the gate passes** (다 is possible at Codex's first build, check 9); `ja_on` of all of them = KANJIDIC2 first (so 國 `chars.ja_on` = こく = its word's `ja`); `pinyin` = first `kMandarin` value.
 
+### Stage 3 repeat gate after the D36 integration (D46, D53)
+Rerun checks 1-13, C1 and C2 above, with these expected values and three extra checks. Baseline = commit `7827546` (Stage 3 PASS).
+
+| # | Check | Expected |
+|---|---|---|
+| R1 | HSK coverage | `vi` about 4,236 / 11,028 (38.4%, +356; the D43 variant forms may add a few); all four about 3,360; `ja`, `ko`, pinyin unchanged; HSK `card_eligible` unchanged (7,354) |
+| R2 | Rule A2 fills only empty values | no HSK word whose `vi` was non-empty at `7827546` has a different `vi`, except where an override says so; every `kaikki_en_han` value is a 7C pair for the word's form |
+| R3 | `vi_ambiguous.csv` | previous rows minus any that A2 filled, plus 6 `obsolete_only` rows (新聞, 戲劇, 伯父, 不宜, 岳父, 岳母) |
+| R4 | VI-only | `vi_only_report.csv` has `source_vi`; selected = VI-only row count; cap 1,200 + 越南; bands per D27; no variant repeat of an HSK word; changed and dropped VI-only words listed in the hand-off note; dropped IDs unused, not reused |
+| R5 | **D52 tie rule** | diff `char_primary_changes.csv` (and `chars.ko`/`chars.vi`) against `7827546`; review every primary that changed and every tie created or broken by the new evidence words; a needed `chars` override goes to the user before the gate passes |
+| R6 | **All 77 overrides still apply** | each `pipeline/overrides.csv` row's value equals the output value for its key and column (a test does this) |
+| R7 | Test words | the table above, unchanged: 新聞 `vi` stays empty (`obsolete_only`) |
+| R8 | 30 random words (new seed) | include at least 10 `kaikki_en_han` words, checked against the 7C entry |
+
 | Stage | Gate date | Result | Attempt | Gate by |
 |---|---|---|---|---|
 | 1 | 2026-11-04 | PASS | 1 | Claude |
