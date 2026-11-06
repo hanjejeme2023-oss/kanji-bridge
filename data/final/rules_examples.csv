@@ -694,7 +694,7 @@ c01717,徒,도,đồ,(open),(open),と,tú,6,kaikki_han
 c01719,拖,타,đà,(open),(open),た,tuō,6,unihan_hvsyl
 c01727,威,위,uy,(open),(open),い,wēi,6,kaikki_han
 c01728,烏,오,ô,(open),(open),う,wū,6,kaikki_aligned
-c01729,伍,오,ngũ,(open),(open),ご,wǔ,6,kaikki_han
+c01729,伍,오,ngũ,(open),(open),ご,wǔ,6,kaikki_aligned
 c01730,悟,오,ngộ,(open),(open),ご,wù,6,kaikki_han
 c01731,犧,희,hy,(open),(open),ぎ,xī,6,kaikki_han
 c01735,曉,효,hiểu,(open),(open),ぎょう,xiǎo,6,kaikki_en_han
@@ -829,11 +829,12 @@ c02275,誇,과,khoa,(open),(open),こ,kuā,7,kaikki_han
 c02282,魁,괴,khôi,(open),(open),かい,kuí,7,kaikki_aligned
 c02303,嘮,로,lao,(open),(open),,láo,7,unihan_hvsyl
 c02306,壘,루,lũy,(open),(open),るい,lěi,7,unihan_hvsyl
+c02307,磊,뢰,lỗi,(open),(open),らい,lěi,7,kaikki_aligned
 c02312,吏,리,lại,(open),(open),り,lì,7,kaikki_han
 c02313,隸,예,lệ,(open),(open),れい,lì,7,kaikki_han
 c02319,遼,료,liêu,(open),(open),りょう,liáo,7,kaikki_aligned
 c02320,僚,료,liêu,(open),(open),りょう,liáo,7,kaikki_en_han
-c02321,寥,요,liêu,(open),(open),りょう,liáo,7,kaikki_han
+c02321,寥,료,liêu,(open),(open),りょう,liáo,7,kaikki_aligned
 c02336,柳,류,liễu,(open),(open),りゅう,liǔ,7,kaikki_en_han
 c02347,陋,루,lậu,(open),(open),ろう,lòu,7,kaikki_aligned
 c02348,蘆,로,lô,(open),(open),ろ,lú,7,kaikki_aligned
@@ -1521,6 +1522,7 @@ c02251,駿,준,tuấn,ㄴ,n,しゅん,jùn,7,unihan_hvsyl
 c02266,墾,간,khẩn,ㄴ,n,こん,kěn,7,kaikki_han
 c02267,懇,간,khẩn,ㄴ,n,こん,kěn,7,kaikki_en_han
 c02286,昆,곤,côn,ㄴ,n,こん,kūn,7,kaikki_han
+c02292,蘭,란,lan,ㄴ,n,らん,lán,7,kaikki_aligned
 c02295,瀾,란,lan,ㄴ,n,らん,lán,7,unihan_hvsyl
 c02315,蓮,련,liên,ㄴ,n,れん,lián,7,kaikki_han
 c02363,卵,란,noãn,ㄴ,n,らん,luǎn,7,kaikki_en_han
@@ -1844,7 +1846,6 @@ c00229,忘,망,vong,ㅇ,ng,ぼう,wàng,1,unihan_hvsyl
 c00244,想,상,tưởng,ㅇ,ng,そう,xiǎng,1,kaikki_han
 c00253,行,행,hàng,ㅇ,ng,こう,xíng,1,kaikki_en_han
 c00253,行,행,hạng,ㅇ,ng,こう,xíng,1,kaikki_aligned
-c00253,行,항,hàng,ㅇ,ng,こう,xíng,1,kaikki_han
 c00254,興,흥,hứng,ㅇ,ng,こう,xìng,1,kaikki_han
 c00254,興,흥,hưng,ㅇ,ng,こう,xìng,1,kaikki_han
 c00257,樣,양,dạng,ㅇ,ng,よう,yàng,1,kaikki_en_han
@@ -1980,7 +1981,7 @@ c01322,控,공,khống,ㅇ,ng,こう,kòng,5,kaikki_han
 c01325,狂,광,cuồng,ㅇ,ng,きょう,kuáng,5,kaikki_han
 c01329,朗,랑,lãng,ㅇ,ng,ろう,lǎng,5,kaikki_aligned
 c01369,憑,빙,bằng,ㅇ,ng,ひょう,píng,5,kaikki_han
-c01376,槍,창,thương,ㅇ,ng,そう,qiāng,5,unihan_hvsyl
+c01376,槍,창,thương,ㅇ,ng,そう,qiāng,5,kaikki_en_han
 c01404,剩,잉,thặng,ㅇ,ng,じょう,shèng,5,kaikki_en_han
 c01447,詳,상,tường,ㅇ,ng,しょう,xiáng,5,kaikki_aligned
 c01448,享,향,hưởng,ㅇ,ng,きょう,xiǎng,5,kaikki_han

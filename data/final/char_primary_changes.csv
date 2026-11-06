@@ -11,7 +11,7 @@ c00136,樓,樓,ko,누,루,0,4
 c00137,路,路,ko,노,로,0,23
 c00146,沒,沒,vi,mốt,một,0,1
 c00238,洗,洗,ko,선,세,0,3
-c00253,行,行,ko,항,행,1,50
+c00253,行,行,ko,항,행,0,50
 c00254,興,興,vi,hứng,hưng,3,6
 c00257,樣,樣,ko,상,양,0,6
 c00312,便,便,ko,변,편,4,7
@@ -100,3 +100,9 @@ c00912,貝,貝,ko,배,패,override,override
 c01291,滑,滑,ko,골,활,override,override
 c00483,省,省,ko,생,성,override,override
 c00359,更,更,ko,갱,경,override,override
+c02353,鹿,鹿,ko,녹,록,override,override
+c02307,磊,磊,ko,뇌,뢰,override,override
+c02313,隸,隸,ko,예,례,override,override
+c02292,蘭,蘭,ko,난,란,override,override
+c01964,丹,丹,ko,란,단,override,override
+c00858,易,易,ko,역,이,override,override

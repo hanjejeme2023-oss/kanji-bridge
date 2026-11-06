@@ -856,7 +856,7 @@ c00854,羊,羊,羊,羊,よう,양,yáng,dương,よう,양,yáng,dương,양,ㅇ
 c00855,義,義,义,義,ぎ,의,yì,nghĩa,ぎ,의,yì;yí;xī,nghĩa;ngãi,의,,,true,3,"right conduct, righteousness",unihan,kaikki_aligned,kanjidic2,unihan
 c00856,藝,藝,艺,芸,げい,예,yì,nghệ,げい;うん,예,yì,nghệ,예,,,true,3,"art; talent, ability; craft",unihan,kaikki_aligned,kanjidic2,unihan
 c00857,議,議,议,議,ぎ,의,yì,nghị,ぎ,의,yì,nghị,의,,,true,3,"consult, talk over, discuss",unihan,kaikki_aligned,kanjidic2,unihan
-c00858,易,易,易,易,えき,역,yì,dị,えき;い,역;이,yì,dị;dịch,역;이,ㄱ,,true,3,change; easy,unihan,kaikki_aligned,kanjidic2,unihan
+c00858,易,易,易,易,えき,이,yì,dị,えき;い,이;역,yì,dị;dịch,이;역,,,true,3,change; easy,unihan,kaikki_aligned,kanjidic2,unihan
 c00859,營,營,营,営,えい,영,yíng,doanh,えい,영,yíng;cuō,doanh;dinh,영,ㅇ,nh,true,3,"encampment, barracks; manage",unihan,kaikki_aligned,kanjidic2,unihan
 c00860,贏,贏,赢,贏,えい,영,yíng,,えい,영,yíng,,영,ㅇ,,true,3,"win; surplus, gain, profit",unihan,,kanjidic2,unihan
 c00861,泳,泳,泳,泳,えい,영,yǒng,,えい,영,yǒng,,영,ㅇ,,true,3,dive; swim,unihan,,kanjidic2,unihan
@@ -1962,7 +1962,7 @@ c01960,挫,挫,挫,挫,ざ,좌,cuò,dọa,ざ;さ,좌,cuò;zuò,dọa,좌,,,true
 c01961,歹,歹,歹,歹,がつ,알,dǎi,ngạt,がつ;がち;たい,알,dǎi;è;dāi,ngạt,알,ㄹ,t,true,7,"bad, vicious, depraved, wicked",unihan,unihan_unverified,kanjidic2,unihan
 c01962,逮,逮,逮,逮,たい,체,dǎi,,たい,체,dǎi;dài;dì,,체,,,true,7,"seize, catch; reach, arrive",unihan,,kanjidic2,unihan
 c01963,怠,怠,怠,怠,たい,태,dài,,たい,태,dài;yí,,태,,,true,7,"idle, remiss, negligent; neglect",unihan,,kanjidic2,unihan
-c01964,丹,丹,丹,丹,たん,란,dān,đan,たん,란;단,dān,đan;đam,란;단,ㄴ,n,true,7,cinnabar (native HgS); vermilion (artificial HgS used as pigment),unihan,kaikki_aligned,kanjidic2,unihan
+c01964,丹,丹,丹,丹,たん,단,dān,đan,たん,단;란,dān,đan;đam,단;란,ㄴ,n,true,7,cinnabar (native HgS); vermilion (artificial HgS used as pigment),unihan,kaikki_aligned,kanjidic2,unihan
 c01965,耽,耽,耽,耽,たん,탐,dān,đam,たん,탐,dān,đam,탐,ㅁ,m,true,7,indulge in; be negligent,unihan,kaikki_aligned,kanjidic2,unihan
 c01966,盪,盪,荡,盪,とう,탕,dàng,,とう,탕,dàng,,탕,ㅇ,,true,7,to toss about; to swing; to rock,unihan,,kanjidic2,unihan
 c01967,叨,叨,叨,叨,とう,도,dāo,,とう,도,dāo;tāo;dáo,,도,,,true,7,talkative; quarrelous,unihan,,kanjidic2,unihan
@@ -2290,7 +2290,7 @@ c02288,廓,廓,廓,廓,かく,곽,kuò,quách,かく,곽;확,kuò,quách,곽;확
 c02289,喇,喇,喇,喇,らつ,라,lǎ,lạt,らつ;ら,라;나;랄,lǎ;lá;lā;la,lạt,라;랄,,t,true,7,"horn, bugle; lama; final particle",unihan,unihan_unverified,kanjidic2,unihan
 c02290,臘,臘,腊,臘,ろう,랍,là,chạp,ろう,랍;납,là;liè,chạp,랍,ㅂ,p,true,7,year-end sacrifice; dried meat,unihan,unihan_unverified,kanjidic2,unihan
 c02291,蠟,蠟,蜡,蝋,ろう,랍,là,rệp,ろう,랍;납,là,rệp,랍,ㅂ,p,true,7,"wax; candle; waxy, glazed",unihan,unihan_unverified,kanjidic2,unihan
-c02292,蘭,蘭,兰,蘭,らん,난,lán,lan,らん;ら,난;란,lán,lan,난;란,ㄴ,n,true,7,"orchid; elegant, graceful",unihan,kaikki_aligned,kanjidic2,unihan
+c02292,蘭,蘭,兰,蘭,らん,란,lán,lan,らん;ら,란;난,lán,lan,란,ㄴ,n,true,7,"orchid; elegant, graceful",unihan,kaikki_aligned,kanjidic2,unihan
 c02293,攔,攔,拦,攔,らん,란,lán,dan,らん,란,lán,dan,란,ㄴ,n,true,7,"obstruct, impede, bar, hinder",unihan,unihan_unverified,kanjidic2,unihan
 c02294,婪,婪,婪,婪,らん,람,lán,lam,らん,람,lán;lǎn,lam,람,ㅁ,m,true,7,"covet; covetous, avaricious",unihan,kaikki_aligned,kanjidic2,unihan
 c02295,瀾,瀾,澜,瀾,らん,란,lán,lan,らん,란,lán,lan,란,ㄴ,n,true,7,"overflowing; waves, ripples",unihan,unihan_hvsyl,kanjidic2,unihan
@@ -2305,13 +2305,13 @@ c02303,嘮,嘮,唠,,,로,láo,lao,,로,láo;chāo;lào;xiāo,lao,로,,,true,7,"c
 c02304,澇,澇,涝,澇,ろう,로,lào,,ろう,로,lào;láo,,로,,,true,7,"inundate, flood; torrent",unihan,,kanjidic2,unihan
 c02305,勒,勒,勒,勒,ろく,륵,lēi,lắc,ろく,륵;늑,lēi;lè;lei,lắc,륵,ㄱ,c,true,7,"strangle, tighten",unihan,unihan_unverified,kanjidic2,unihan
 c02306,壘,壘,垒,塁,るい,루,lěi,lũy,るい;らい;すい,루;누,lěi;léi;lǜ,lũy,루,,,true,7,"rampart, military wall",unihan,unihan_hvsyl,kanjidic2,unihan
-c02307,磊,磊,磊,磊,らい,뇌,lěi,lỗi,らい,뇌;뢰,lěi,lỗi,뇌;뢰,,,true,7,pile of rocks or stones; great,unihan,kaikki_aligned,kanjidic2,unihan
+c02307,磊,磊,磊,磊,らい,뢰,lěi,lỗi,らい,뢰;뇌,lěi,lỗi,뢰,,,true,7,pile of rocks or stones; great,unihan,kaikki_aligned,kanjidic2,unihan
 c02308,蕾,蕾,蕾,蕾,らい,뢰,lěi,,らい,뢰,lěi,,뢰,,,true,7,"buds, unopened flowers",unihan,,kanjidic2,unihan
 c02309,稜,稜,棱,稜,りょう,릉,léng,,りょう;ろう,릉;능,léng;lèng;líng,,릉,ㅇ,,true,7,"corner, edge, angle; square block",unihan,,kanjidic2,unihan
 c02310,愣,愣,愣,,,릉,lèng,,,릉,lèng,,릉,ㅇ,,true,7,be in a daze,unihan,,,unihan
 c02311,黎,黎,黎,黎,れい,려,lí,lê,れい;り,려;여,lí,lê,려,,,true,7,"surname; numerous, many; black",unihan,unihan_unverified,kanjidic2,unihan
 c02312,吏,吏,吏,吏,り,리,lì,lại,り,리;이,lì,lại,리,,,true,7,"government official, magistrate",unihan,kaikki_aligned,kanjidic2,unihan
-c02313,隸,隸,隶,隸,れい,예,lì,lệ,れい,예;례,lì,lệ,예;례,,,true,7,be subservient to; servant,unihan,kaikki_aligned,kanjidic2,unihan
+c02313,隸,隸,隶,隸,れい,례,lì,lệ,れい,례;예,lì,lệ,례;예,,,true,7,be subservient to; servant,unihan,kaikki_aligned,kanjidic2,unihan
 c02314,粒,粒,粒,粒,りゅう,립,lì,lạp,りゅう,립;입,lì,lạp,립,ㅂ,p,true,7,grain; small particle,unihan,unihan_unverified,kanjidic2,unihan
 c02315,蓮,蓮,莲,蓮,れん,련,lián,liên,れん,련;연,lián;liǎn,liên,련,ㄴ,n,true,7,"lotus, water lily; paradise",unihan,kaikki_aligned,kanjidic2,unihan
 c02316,廉,廉,廉,廉,れん,렴,lián,liêm,れん,렴;염,lián,liêm,렴,ㅁ,m,true,7,"upright, honorable, honest",unihan,kaikki_aligned,kanjidic2,unihan
@@ -2319,7 +2319,7 @@ c02317,斂,斂,敛,斂,れん,렴,liǎn,,れん,렴,liǎn;lián,,렴,ㅁ,,true,7
 c02318,鏈,鏈,链,鏈,れん,련,liàn,,れん,련,liàn;lián,,련,ㄴ,,true,7,"chain, wire, cable; chain, shack",unihan,,kanjidic2,unihan
 c02319,遼,遼,辽,遼,りょう,료,liáo,liêu,りょう,료;요,liáo,liêu,료,,,true,7,"distant, far",unihan,kaikki_aligned,kanjidic2,unihan
 c02320,僚,僚,僚,僚,りょう,료,liáo,liêu,りょう,료;요,liáo;liǎo;lǎo,liêu,료,,,true,7,"companion, colleague; officials; bureaucracy; a pretty face",unihan,unihan_hvsyl,kanjidic2,unihan
-c02321,寥,寥,寥,寥,りょう,료,liáo,liêu,りょう,료;요,liáo,liêu,료;요,,,true,7,"few, scarce; empty, deserted",unihan,kaikki_aligned,kanjidic2,unihan
+c02321,寥,寥,寥,寥,りょう,료,liáo,liêu,りょう,료;요,liáo,liêu,료,,,true,7,"few, scarce; empty, deserted",unihan,kaikki_aligned,kanjidic2,unihan
 c02322,潦,潦,潦,潦,ろう,로,liáo,lẻo,ろう,로;료,liáo;lǎo;lào;láo;liǎo,lẻo,로;료,,,true,7,to flood; a puddle; without care,unihan,unihan_unverified,kanjidic2,unihan
 c02323,咧,咧,咧,咧,れつ,렬,liě,lác,れつ;れち,렬,liě;liè;liē;lié;lie,lác,렬,ㄹ,c,true,7,"stretch mouth, grimace, grin",unihan,unihan_unverified,kanjidic2,unihan
 c02324,劣,劣,劣,劣,れつ,렬,liè,liệt,れつ,렬;열,liè,liệt,렬,ㄹ,t,true,7,"bad, inferior; slightly",unihan,kaikki_aligned,kanjidic2,unihan
@@ -2351,7 +2351,7 @@ c02349,滷,滷,卤,滷,ろ,로,lǔ,,ろ,로,lǔ,,로,,,true,7,"thick gravy, sauc
 c02350,虜,虜,虏,虜,りょ,로,lǔ,,りょ;ろ,로;노,lǔ,,로,,,true,7,"to capture, imprison, seize; a prison",unihan,,kanjidic2,unihan
 c02351,魯,魯,鲁,魯,ろ,로,lǔ,lỗ,ろ,로;노,lǔ;lǚ,lỗ,로,,,true,7,"foolish, stupid, rash; vulgar",unihan,kaikki_aligned,kanjidic2,unihan
 c02352,賂,賂,赂,賂,ろ,뢰,lù,lộ,ろ,뢰;뇌,lù,lộ,뢰,,,true,7,bribe; give present,unihan,kaikki_aligned,kanjidic2,unihan
-c02353,鹿,鹿,鹿,鹿,ろく,녹,lù,lộc,ろく,녹;록,lù;lǘ,lộc,녹;록,ㄱ,c,true,7,deer; surname; Kangxi radical 198,unihan,kaikki_aligned,kanjidic2,unihan
+c02353,鹿,鹿,鹿,鹿,ろく,록,lù,lộc,ろく,록;녹,lù;lǘ,lộc,록,ㄱ,c,true,7,deer; surname; Kangxi radical 198,unihan,kaikki_aligned,kanjidic2,unihan
 c02354,碌,碌,碌,碌,ろく,록,lù,,ろく,록;녹,lù;luò;liù,,록,ㄱ,,true,7,"rough, uneven, rocky; mediocre",unihan,,kanjidic2,unihan
 c02355,吕,吕,吕,,,려,lǚ,,,려,lǚ,,려,,,true,7,surname; a musical note,unihan,,,unihan
 c02356,侶,侶,侣,侶,りょ,려,lǚ,lứa,りょ;ろ,려,lǚ,lứa,려,,,true,7,companion; associate with,unihan,unihan_unverified,kanjidic2,unihan

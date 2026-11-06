@@ -220410,40 +220410,40 @@
     "vi_syllable": "pháp"
   },
   {
-    "word_id": "w11990",
+    "word_id": "w12987",
     "position": 1,
-    "char_id": "c00253",
-    "pinyin_syllable": null,
-    "ko_syllable": "항",
-    "ko_base": "항",
-    "vi_syllable": "hàng"
+    "char_id": "c01376",
+    "pinyin_syllable": "qiāng",
+    "ko_syllable": "창",
+    "ko_base": "창",
+    "vi_syllable": "thương"
   },
   {
-    "word_id": "w11990",
+    "word_id": "w12987",
     "position": 2,
-    "char_id": "c01729",
-    "pinyin_syllable": null,
-    "ko_syllable": "오",
-    "ko_base": "오",
-    "vi_syllable": "ngũ"
+    "char_id": "c00351",
+    "pinyin_syllable": "fǎ",
+    "ko_syllable": "법",
+    "ko_base": "법",
+    "vi_syllable": "pháp"
   },
   {
-    "word_id": "w12212",
+    "word_id": "w12988",
     "position": 1,
-    "char_id": "c02177",
-    "pinyin_syllable": "jì",
-    "ko_syllable": "적",
-    "ko_base": "적",
-    "vi_syllable": "tịch"
+    "char_id": "c00351",
+    "pinyin_syllable": "fǎ",
+    "ko_syllable": "법",
+    "ko_base": "법",
+    "vi_syllable": "pháp"
   },
   {
-    "word_id": "w12212",
+    "word_id": "w12988",
     "position": 2,
-    "char_id": "c02321",
-    "pinyin_syllable": "liáo",
-    "ko_syllable": "요",
-    "ko_base": "요",
-    "vi_syllable": "liêu"
+    "char_id": "c00103",
+    "pinyin_syllable": "jiā",
+    "ko_syllable": "가",
+    "ko_base": "가",
+    "vi_syllable": "gia"
   },
   {
     "word_id": "w12229",

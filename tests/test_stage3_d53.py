@@ -62,7 +62,8 @@ class Stage3D53Tests(unittest.TestCase):
             key = f"{row.trad}|{row.pinyin}" if row.source_level == "hsk30" else f"x|{row.trad}"
             word_key[key] = row
         chars = self.chars.set_index("key_char")
-        self.assertEqual(len(self.overrides), 77)
+        # 77 confirmed at the Stage 3 gate; repeat gate (D56): +6 chars, -2 VI-only words.
+        self.assertEqual(len(self.overrides), 81)
         for override in self.overrides.itertuples(index=False):
             with self.subTest(table=override.table, key=override.key, column=override.column):
                 if override.table == "words":

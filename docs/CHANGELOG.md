@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## 2026-11-05 — Repeat Stage 3 gate after D53, attempt 1: FAIL [Claude]
+- Checked R1-R9, checks 1-13, C1, C2 on `97780a0` against `7827546` (`docs/review_scripts/stage3_repeat_gate_reference.py`). Passed: rows/IDs (no dropped ID reused), merges, coverage (HSK `vi` 4,239, all four 3,362), `card_eligible`, `vi_ambiguous`, VI-only bands, all 77 overrides, test words, Japanese, collisions, 36 tests and identical rebuild.
+- **Failed:** (1) rule A2 respells every consonant + i as y (`canonicalize_iy`): 143 A2 words differ from 7C, 104 (32 HSK) with spellings no source has (皮膚 bỳ phu, 移 dy, 王妃 vương phy); about 50 such pairs reached `rules_examples.csv`. (2) `ff_candidates.csv` keeps its pre-D53 membership through a legacy VI-only selection, so 440 rows are now also VI-only words (D47).
+- **User decisions (D52 tie rule):** `chars` overrides 鹿 록, 磊 뢰, 隸 례, 蘭 란, 丹 단, 易 이 (易 asked at this gate). Vietnamese primary changes 沒 một, 盆 bồn, 訪 phỏng, 武 vũ accepted.
+- **Reviewed at the user's request:** Codex's pin of overridden VI-only words. Not accepted (D56 item 4); `x|行伍 항오` and `x|寂寥 적요` removed from `overrides.csv` because they stayed in the list only through the pin (ranks 1,199-1,200, `freq_score` 1,074 and 137 vs about 8,700 at the cut). `overrides.csv` 77 → 81 rows.
+- **Confirmed for the user:** the VI-only churn (757 of 1,201 replaced) is D53 item 4's intended effect: 904 `ja_common` candidates instead of 342 fill the cap first; every dropped word was non-`ja_common` at levels 5-7.
+- Rebuilt with the current code and 81 overrides: only the six primaries changed (no tie flip); 行伍/寂寥 left the VI-only list (IDs reserved), 槍法/法家 entered; coverage and cards unchanged. `tests/test_stage3_d53.py` override count 77 → 81; 35 non-rebuild tests OK; second rebuild byte-identical.
+- D56 recorded; SCHEMA §1.8 row `words_kaikki_en`; HANDOFF: fixes G1-G3 for Codex, D55 list additions (調, 馴, 複合/凶悪, 自己), Stage 4 note on explaining other readings (user idea), planned-sequence step for documentation consolidation after the freeze (user request).
+
 ## 2026-11-05 — Source 7C integrated; Stage 3 rerun [Codex]
 - Added reproducible download/licence handling and `load_kaikki_en.py` for Kaikki English-Wiktionary Vietnamese data. The locked file exactly matches the D36 measurement (83,424,329 bytes; SHA-256 `186cd0a62d876dada70c9761bc05e598c8cf7b9a48e0aa518bab6c649e28d945`); loader output is 14,513 raw pairs, 10,064 filtered aligned pairs / 9,995 forms, plus 917 chữ-Hán reading pairs.
 - Implemented D53 rule A2 as a validated `1:1` indicator merge after A/B, including obsolete reporting, word evidence, rule tags, the D44 `i/y` canonical form (`自己` → `tự kỷ`), A2 candidates for overrides, and A2 fills for the frozen 2,944 false-friend rows.

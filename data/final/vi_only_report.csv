@@ -462,7 +462,7 @@ han,trad,word_id,vi_values,source_vi,selected,reason,freq_score,rank,level
 含蓄,,,hàm súc,kaikki_han,false,hsk_or_variant,,,
 函數,,,hàm số,kaikki_han,false,candidate,,,
 航空,,,hàng không,kaikki_han,false,hsk_or_variant,,,
-行伍,行伍,w11990,hàng ngũ,kaikki_han,true,candidate,1074,1199,7
+行伍,,,hàng ngũ,kaikki_han,false,candidate,,,
 行下,行下,w11462,hành hạ,kaikki_han,true,candidate,8953,1180,7
 行法,行法,w11468,hành pháp,kaikki_han,true,candidate,8710,1196,7
 行爲,,,hành vi,kaikki_han,false,hsk_or_variant,,,
@@ -1570,7 +1570,7 @@ han,trad,word_id,vi_values,source_vi,selected,reason,freq_score,rank,level
 直覺,,,trực giác,kaikki_han,false,hsk_or_variant,,,
 邪心,,,tà tâm,kaikki_han,false,candidate,,,
 賓語,,,tân ngữ,kaikki_han,false,no_ja_or_ko,,,
-寂寥,寂寥,w12212,tịch liêu,kaikki_han,true,candidate,137,1200,7
+寂寥,,,tịch liêu,kaikki_han,false,candidate,,,
 損傷,,,tổn thương,kaikki_han,false,hsk_or_variant,,,
 族,,,tộc,kaikki_han,false,single_character,,,
 酒色,,,tửu sắc,kaikki_han,false,candidate,,,
@@ -5552,7 +5552,7 @@ han,trad,word_id,vi_values,source_vi,selected,reason,freq_score,rank,level
 救命,,,cứu mạng,kaikki_en_han,false,hsk_or_variant,,,
 橫行,橫行,w12742,hoành hành,kaikki_en_han,true,candidate,329,829,6
 醉拳,,,túy quyền,kaikki_en_han,false,candidate,,,
-法家,,,pháp gia,kaikki_en_han,false,candidate,,,
+法家,法家,w12988,pháp gia,kaikki_en_han,true,candidate,8710,1200,7
 墨家,,,mặc gia,kaikki_en_han,false,candidate,,,
 胞子,,,bào tử,kaikki_en_han,false,candidate,,,
 內胞子,,,nội bào tử,kaikki_en_han,false,no_ja_or_ko,,,
@@ -6770,7 +6770,7 @@ han,trad,word_id,vi_values,source_vi,selected,reason,freq_score,rank,level
 貴地,,,quý địa,kaikki_en_han,false,candidate,,,
 飛身,,,phi thân,kaikki_en_han,false,no_ja_or_ko,,,
 高明,,,cao minh,kaikki_en_han,false,hsk_or_variant,,,
-槍法,,,thương pháp,kaikki_en_han,false,candidate,,,
+槍法,槍法,w12987,thương pháp,kaikki_en_han,true,candidate,8710,1199,7
 義兄,,,nghĩa huynh,kaikki_en_han,false,candidate,,,
 義弟,,,nghĩa đệ,kaikki_en_han,false,candidate,,,
 使徒,,,sứ đồ,kaikki_en_han,false,candidate,,,

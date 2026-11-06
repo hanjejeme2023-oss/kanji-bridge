@@ -89,6 +89,7 @@ Not a pandas table to maintain: `config/rules.json` text + examples computed fro
 | words (`trad`, `pinyin`) | `ja_match` | word key | `1:1` | about 5,650 |
 | words | `ko_match` | word key | `1:1` | about 7,100 |
 | words | `vi_match` | word key | `1:1` | about 3,870 |
+| words (all, HSK + VI-only) | `kaikki_en_match` (rule A2, D53; one row per word key with an A2 value) | word key | `1:1`, `indicator` (`words_kaikki_en`) | 4,377 `both` at the D53 build; A2 fills `vi` only where it is still empty |
 | characters of words | `chars` | D37/D38 linking, not a plain merge | row count = sum of word lengths | 0 unlinked; about 190 new rows |
 Each `*_match` table holds one row per word key, so a form with several dictionary entries can never multiply rows.
 
