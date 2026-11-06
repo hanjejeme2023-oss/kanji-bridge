@@ -11,7 +11,7 @@ from typing import Iterable
 
 import pandas as pd
 
-from common import nfc, split_multi, unique_preserve
+from common import TONE_MARKS, nfc, split_multi, unique_preserve
 
 
 STRICT_PRI_RE = re.compile(r"^(?:ichi1|news1|spec1|gai1|nf(?:0[1-9]|1\d|2[0-4]))$")
@@ -214,14 +214,50 @@ def generate_variant_forms(
 def collapse_iy(readings: Iterable[str]) -> list[str]:
     values = unique_preserve(readings)
     groups: dict[str, list[str]] = defaultdict(list)
+
+    def key(value: str) -> str:
+        syllables = []
+        for syllable in value.split():
+            decomposed = unicodedata.normalize("NFD", syllable)
+            tone = "".join(char for char in decomposed if char in TONE_MARKS)
+            base = unicodedata.normalize(
+                "NFC", "".join(char for char in decomposed if char not in TONE_MARKS)
+            )
+            if re.fullmatch(r"[bcdđghklmnpqrstvx]+[iy]", base) and base != "gi":
+                base = base[:-1] + "Y"
+            syllables.append(base + "/" + tone)
+        return " ".join(syllables)
+
+    def y_score(value: str) -> int:
+        score = 0
+        for syllable in value.split():
+            base = unicodedata.normalize(
+                "NFC",
+                "".join(char for char in unicodedata.normalize("NFD", syllable) if char not in TONE_MARKS),
+            )
+            if base.endswith("y"):
+                score += 1
+        return score
+
     for value in values:
-        key = re.sub(r"[iy]$", "Y", value)
-        groups[key].append(value)
+        groups[key(value)].append(value)
     result = []
     for group in groups.values():
-        y = [value for value in group if value.endswith("y") or value.endswith("ỳ") or value.endswith("ý") or value.endswith("ỷ") or value.endswith("ỹ") or value.endswith("ỵ")]
-        result.append(y[0] if y else group[0])
+        result.append(max(group, key=y_score))
     return unique_preserve(result)
+
+
+def canonicalize_iy(value: object) -> str:
+    """Use D44's preferred y spelling for eligible terminal Vietnamese i."""
+    output = []
+    for syllable in nfc(value).split():
+        decomposed = unicodedata.normalize("NFD", syllable)
+        base = "".join(char for char in decomposed if char not in TONE_MARKS)
+        if re.fullmatch(r"[bcdđghklmnpqrstvx]+i", base) and base != "gi":
+            index = max(i for i, char in enumerate(decomposed) if char == "i")
+            decomposed = decomposed[:index] + "y" + decomposed[index + 1 :]
+        output.append(unicodedata.normalize("NFC", decomposed))
+    return " ".join(output)
 
 
 @dataclass

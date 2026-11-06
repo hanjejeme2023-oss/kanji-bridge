@@ -19,7 +19,7 @@ from common import (
     write_csv, write_json,
 )
 from stage3_match import (
-    ReadingLookup, collapse_iy, find_jmdict, generate_variant_forms, initial_of,
+    ReadingLookup, canonicalize_iy, collapse_iy, find_jmdict, generate_variant_forms, initial_of,
     korean_base, korean_normalized_base, law_penalty, make_jmdict_index,
     strict_priority, tags, toneless, variant_char, vowel_of,
 )
@@ -191,10 +191,17 @@ def make_lookup() -> tuple[ReadingLookup, dict[str, dict[str, object]], dict[str
     kd_frame = read_stage("kanjidic2.csv")
     lib = read_stage("libhangul.csv")
     kaikki_chars = read_stage("kaikki_char_readings.csv")
+    kaikkien_chars = read_stage("kaikki_en_char_readings.csv")
+    vi_config_path = ROOT / "config" / "vi_sources.json"
+    vi_config = json.loads(vi_config_path.read_text(encoding="utf-8")) if vi_config_path.exists() else {}
+    enable_kaikki_en_chars = vi_config.get("kaikki_en_char_readings") is True
     hv = set(read_stage("kaikki_hv_syllables.csv")["vi"].map(nfc))
     kd = {row.literal: row._asdict() for row in kd_frame.itertuples(index=False)}
     lib_map = {key: unique_preserve(group["ko"]) for key, group in lib.groupby("char", sort=False)}
     kaikki_map = {key: unique_preserve(group["vi"]) for key, group in kaikki_chars.groupby("char", sort=False)}
+    kaikkien_map = {
+        key: unique_preserve(group["vi"]) for key, group in kaikkien_chars.groupby("char", sort=False)
+    }
     ko: dict[str, list[str]] = {}
     vi: dict[str, list[str]] = {}
     vi_source: dict[tuple[str, str], str] = {}
@@ -202,10 +209,20 @@ def make_lookup() -> tuple[ReadingLookup, dict[str, dict[str, object]], dict[str
     for row in unihan.itertuples(index=False):
         ko[row.char] = unique_preserve([*split_multi(row.kHangul), *lib_map.get(row.char, [])])
         kaikki_values = kaikki_map.get(row.char, [])
-        hvsyl = [value for value in split_multi(row.kVietnamese) if value in hv]
-        vi[row.char] = unique_preserve([*kaikki_values, *hvsyl])
+        unihan_values = split_multi(row.kVietnamese)
+        hvsyl = [value for value in unihan_values if value in hv]
+        en_values = kaikkien_map.get(row.char, []) if enable_kaikki_en_chars else []
+        confirmed_en = [value for value in en_values if value in unihan_values]
+        if not unihan_values and not kaikki_values and not hvsyl:
+            confirmed_en = en_values
+        vi[row.char] = unique_preserve([*kaikki_values, *confirmed_en, *hvsyl])
         for value in vi[row.char]:
-            vi_source[(row.char, value)] = "kaikki_aligned" if value in kaikki_values else "unihan_hvsyl"
+            if value in kaikki_values:
+                vi_source[(row.char, value)] = "kaikki_aligned"
+            elif value in confirmed_en:
+                vi_source[(row.char, value)] = "kaikki_en_char"
+            else:
+                vi_source[(row.char, value)] = "unihan_hvsyl"
         pinyin[row.char] = unique_preserve([
             *pinyin_values(row.kMandarin), *pinyin_values(row.kHanyuPinyin, referenced=True),
             *pinyin_values(row.kXHC1983, referenced=True),
@@ -462,6 +479,42 @@ def explicit_index() -> dict[str, pd.DataFrame]:
     return {key: group.copy() for key, group in frame.groupby("han", sort=False)}
 
 
+def kaikki_en_index() -> dict[str, pd.DataFrame]:
+    frame = read_stage("kaikki_en.csv")
+    frame["obsolete_only"] = frame["obsolete_only"].str.lower().isin({"true", "1"})
+    return {key: group.copy() for key, group in frame.groupby("han", sort=False)}
+
+
+def kaikki_en_candidates(
+    row: object,
+    explicit_en: dict[str, pd.DataFrame],
+    graph: dict[str, list[str]],
+) -> list[dict[str, object]]:
+    trad = nfc(row.trad)
+    forms = [trad] if len(trad) == 1 else unique_preserve(
+        [trad, getattr(row, "simp", ""), *generate_variant_forms(trad, graph)]
+    )
+    values: list[dict[str, object]] = []
+    for form in forms:
+        group = explicit_en.get(form)
+        if group is None:
+            continue
+        for record in group.itertuples(index=False):
+            vi = canonicalize_iy(normalize_vietnamese(record.vi))
+            if len(vi.split()) == len(trad):
+                values.append({
+                    "vi": vi,
+                    "source": "kaikki_en_han",
+                    "gloss_vi": nfc(record.gloss_vi),
+                    "obsolete_only": bool(record.obsolete_only),
+                    "rule_b_conflict": False,
+                })
+        if values:
+            break
+    collapsed = collapse_iy(value["vi"] for value in values)
+    return [next(value for value in values if value["vi"] == vi) for vi in collapsed]
+
+
 def headword_index() -> dict[str, dict[str, object]]:
     frame = read_stage("kaikki_headwords.csv")
     return {
@@ -529,6 +582,11 @@ def frequency_score(value: object, counts: dict[str, int]) -> int | None:
     return min(counts[syllable] for syllable in syllables)
 
 
+def prefer_existing_vi(current: object, a2_value: object) -> str:
+    """D53 rule A2 fills only an empty Vietnamese value."""
+    return nfc(current) or nfc(a2_value)
+
+
 def initial_jp_form(word: str, kd: dict[str, dict[str, object]], opencc: pd.DataFrame) -> str:
     candidates: dict[str, list[str]] = defaultdict(list)
     for row in opencc.itertuples(index=False):
@@ -551,10 +609,11 @@ def select_vi_only(
     korean_index: dict[str, list[object]],
     phrases: dict[str, list[str]],
     explicit: dict[str, pd.DataFrame],
+    explicit_en: dict[str, pd.DataFrame],
     headwords: dict[str, dict[str, object]],
     frequency: dict[str, int],
     merge_rows: list[dict[str, object]],
-) -> tuple[pd.DataFrame, pd.DataFrame]:
+) -> tuple[pd.DataFrame, pd.DataFrame, set[str]]:
     opencc = read_stage("opencc.csv")
     cedict = read_stage("cedict.csv")
     cedict_trad: dict[str, list[dict[str, object]]] = defaultdict(list)
@@ -583,12 +642,23 @@ def select_vi_only(
         right_on="han",
     )
     del outer
-    for han, group in explicit.items():
+    candidate_groups: dict[str, tuple[pd.DataFrame, str]] = {
+        han: (group, "kaikki_han") for han, group in explicit.items()
+    }
+    for han, group in explicit_en.items():
+        if han not in candidate_groups and len(han) >= 2:
+            candidate_groups[han] = (group, "kaikki_en_han")
+
+    for han, (group, source_vi) in candidate_groups.items():
         vis = collapse_iy(
             normalize_vietnamese(row.vi) for row in group.itertuples(index=False)
             if len(normalize_vietnamese(row.vi).split()) == len(han)
+            and not bool(getattr(row, "obsolete_only", False))
         )
-        base = {"han": han, "vi_values": ";".join(vis), "selected": False, "reason": ""}
+        base = {
+            "han": han, "vi_values": ";".join(vis), "source_vi": source_vi,
+            "selected": False, "reason": "",
+        }
         if len(han) < 2:
             report.append({**base, "reason": "single_character"})
             continue
@@ -596,7 +666,8 @@ def select_vi_only(
             report.append({**base, "reason": "hsk_or_variant"})
             continue
         if len(vis) != 1:
-            report.append({**base, "reason": "ambiguous_vi"})
+            reason = "obsolete_only" if source_vi == "kaikki_en_han" and not vis else "ambiguous_vi"
+            report.append({**base, "reason": reason})
             continue
         vi = vis[0]
         score = frequency_score(vi, frequency)
@@ -633,8 +704,9 @@ def select_vi_only(
             "word_key": f"x|{trad}", "origin": "vi_freq", "source_level": "vi_band",
             "gloss_en": gloss_en, "cedict_pinyin_spaced": cedict_spaced,
             "source_pinyin": "cc-cedict" if pinyin else "", "vi": vi,
-            "source_vi": "kaikki_han", "gloss_vi": nfc(group.iloc[0]["gloss_vi"]),
+            "source_vi": source_vi, "gloss_vi": nfc(group.iloc[0]["gloss_vi"]),
             "freq_score": score, "pre_ja_common": bool(ja_match["ja_common"]),
+            "pre_jp": nfc(ja_match["jp"]) or nfc(pseudo.jp_form),
             "candidate_ko": ko,
         })
         report.append({**base, "reason": "candidate", "freq_score": score})
@@ -666,14 +738,67 @@ def select_vi_only(
             "vi": seed_vi, "source_vi": "composed_attested",
             "gloss_vi": "", "freq_score": frequency_score(seed_vi, frequency) or 0,
             "pre_ja_common": True, "candidate_ko": "",
+            "pre_jp": nfc(seed.jp_form),
             "is_seed": True,
         })
-        report.append({"han": "越南", "vi_values": seed_vi, "reason": "seed", "selected": True})
+        report.append({
+            "han": "越南", "vi_values": seed_vi, "source_vi": "composed_attested",
+            "reason": "seed", "selected": True,
+        })
 
     candidates = pd.DataFrame(rows)
-    normal = candidates.loc[candidates["trad"] != "越南"].sort_values(
-        ["pre_ja_common", "freq_score", "trad"], ascending=[False, False, True], kind="stable"
-    ).head(1200).copy()
+    legacy_normal = candidates.loc[
+        (candidates["trad"] != "越南") & (candidates["source_vi"] != "kaikki_en_han")
+    ].sort_values(
+        ["pre_ja_common", "freq_score", "trad"],
+        ascending=[False, False, True], kind="stable",
+    ).head(1200)
+    legacy_selected = pd.concat(
+        [legacy_normal, candidates.loc[candidates["trad"] == "越南"]], ignore_index=True
+    )
+    legacy_used = set()
+    for item in legacy_selected.itertuples(index=False):
+        legacy_used.update(
+            value for value in [nfc(item.han), nfc(item.trad), nfc(item.simp), nfc(item.pre_jp)] if value
+        )
+    candidates["source_rank"] = candidates["source_vi"].map(
+        {"kaikki_han": 0, "kaikki_en_han": 1, "composed_attested": 2}
+    ).fillna(9)
+    ranked_normal = candidates.loc[candidates["trad"] != "越南"].sort_values(
+        ["pre_ja_common", "freq_score", "source_rank", "trad", "han"],
+        ascending=[False, False, True, True, True],
+        kind="stable",
+    )
+    duplicate_keys = set(
+        ranked_normal.loc[ranked_normal["word_key"].duplicated(keep="first"), "han"]
+    )
+    unique_ranked = ranked_normal.drop_duplicates("word_key", keep="first")
+    override_path = ROOT / "pipeline" / "overrides.csv"
+    pinned_keys: set[str] = set()
+    if override_path.exists():
+        override_frame = pd.read_csv(
+            override_path, encoding="utf-8", keep_default_na=False, dtype=str
+        )
+        pinned_keys = set(
+            override_frame.loc[
+                (override_frame["table"] == "words")
+                & override_frame["key"].str.startswith("x|"),
+                "key",
+            ]
+        )
+    pinned = unique_ranked.loc[unique_ranked["word_key"].isin(pinned_keys)]
+    if set(pinned["word_key"]) != pinned_keys:
+        missing = sorted(pinned_keys - set(pinned["word_key"]))
+        raise ValueError(f"Overridden VI-only words are no longer source candidates: {missing}")
+    remaining = unique_ranked.loc[~unique_ranked["word_key"].isin(pinned_keys)]
+    normal = pd.concat([pinned, remaining.head(1200 - len(pinned))], ignore_index=True)
+    normal = normal.sort_values(
+        ["pre_ja_common", "freq_score", "source_rank", "trad", "han"],
+        ascending=[False, False, True, True, True], kind="stable",
+    )
+    for item in report:
+        if item["han"] in duplicate_keys and item.get("reason") == "candidate":
+            item["reason"] = "duplicate_word_key"
     seed_rows = candidates.loc[candidates["trad"] == "越南"].copy()
     selected = pd.concat([normal, seed_rows], ignore_index=True)
     selected["rank"] = range(1, len(selected) + 1)
@@ -694,10 +819,10 @@ def select_vi_only(
     )
     report_frame["selected"] = report_frame["word_key"].map(nfc) != ""
     report_frame = report_frame[[
-        "han", "trad", "word_key", "vi_values", "selected", "reason",
+        "han", "trad", "word_key", "vi_values", "source_vi", "selected", "reason",
         "freq_score", "rank", "level",
     ]]
-    return selected, report_frame
+    return selected, report_frame, legacy_used
 
 
 def split_pinyin_by_template(word: str, spaced: str, expected: int) -> list[str]:
@@ -923,6 +1048,7 @@ def match_all_words(
     jmdict_index: dict[str, list[dict[str, object]]],
     korean_index: dict[str, list[object]],
     explicit: dict[str, pd.DataFrame],
+    explicit_en: dict[str, pd.DataFrame],
     headwords: dict[str, dict[str, object]],
     phrases: dict[str, list[str]],
     merge_rows: list[dict[str, object]],
@@ -998,6 +1124,7 @@ def match_all_words(
         result[column] = [value[column] for value in ko_values]
     print("stage3: matching Vietnamese", flush=True)
     vi_cache: dict[str, list[dict[str, object]]] = {}
+    a2_cache: dict[str, list[dict[str, object]]] = {}
     triple_counts: Counter[tuple[str, str, str]] = Counter()
     for row in result.itertuples(index=False):
         candidates = vi_candidates(row, explicit, graph, lookup, headwords)
@@ -1008,7 +1135,8 @@ def match_all_words(
                 "gloss_vi": nfc(getattr(row, "gloss_vi", "")),
                 "rule_b_conflict": False,
             }]
-        vi_cache[row.word_key] = candidates
+        a2_cache[row.word_key] = kaikki_en_candidates(row, explicit_en, graph)
+        vi_cache[row.word_key] = [*candidates, *a2_cache[row.word_key]]
         valid_candidates = [value for value in candidates if not value.get("rule_b_conflict", False)]
         if len(valid_candidates) == 1 and len(row.trad) > 1:
             parts = valid_candidates[0]["vi"].split()
@@ -1017,12 +1145,15 @@ def match_all_words(
                 for char, pinyin_part, vi in zip(row.trad, py, parts):
                     triple_counts[(char, pinyin_part, vi)] += 1
     vi_values = []
-    vi_reports = []
+    unresolved: dict[str, dict[str, object]] = {}
     for row in result.itertuples(index=False):
-        all_candidates = vi_cache[row.word_key]
+        all_candidates = [
+            value for value in vi_cache[row.word_key] if value.get("source") != "kaikki_en_han"
+        ]
         conflicts = [value for value in all_candidates if value.get("rule_b_conflict", False)]
         candidates = [value for value in all_candidates if not value.get("rule_b_conflict", False)]
         chosen = ""
+        several = []
         if len(candidates) == 1:
             chosen = candidates[0]["vi"]
         elif len(candidates) > 1:
@@ -1039,19 +1170,7 @@ def match_all_words(
             if len(scores) == 1 or scores[0][0] > scores[1][0]:
                 chosen = scores[0][1]["vi"]
             else:
-                vi_reports.append({
-                    "word_key": row.word_key, "word_id": row.word_id, "trad": row.trad,
-                    "pinyin": row.pinyin, "level": row.level,
-                    "candidates": ";".join(value["vi"] for value in candidates),
-                    "reason": "several_candidates",
-                })
-        if conflicts:
-            vi_reports.append({
-                "word_key": row.word_key, "word_id": row.word_id, "trad": row.trad,
-                "pinyin": row.pinyin, "level": row.level,
-                "candidates": ";".join(value["vi"] for value in conflicts),
-                "reason": "rule_b_conflict",
-            })
+                several = candidates
         selected = next((value for value in candidates if value["vi"] == chosen), None)
         vi_values.append({
             "vi": chosen,
@@ -1060,8 +1179,72 @@ def match_all_words(
             "gloss_vi": selected["gloss_vi"] if selected else "",
             "vi_evidence": len(candidates) == 1,
         })
+        unresolved[row.word_key] = {
+            "row": row, "several": several, "conflicts": conflicts,
+        }
     for column in ["vi", "vi_alt", "source_vi", "gloss_vi", "vi_evidence"]:
         result[column] = [value[column] for value in vi_values]
+
+    a2_rows = []
+    for row in result.itertuples(index=False):
+        active = [value for value in a2_cache[row.word_key] if not value.get("obsolete_only", False)]
+        if len(active) == 1:
+            candidate = active[0]
+            a2_rows.append({
+                "word_key": row.word_key,
+                "vi_a2": candidate["vi"],
+                "source_vi_a2": candidate["source"],
+                "gloss_vi_a2": candidate["gloss_vi"],
+            })
+    a2_frame = pd.DataFrame(
+        a2_rows, columns=["word_key", "vi_a2", "source_vi_a2", "gloss_vi_a2"]
+    )
+    result = merge_with_report(
+        result,
+        a2_frame,
+        name="words_kaikki_en",
+        reports=merge_rows,
+        how="left",
+        validate="1:1",
+        on="word_key",
+    )
+    for column in ["vi_a2", "source_vi_a2", "gloss_vi_a2"]:
+        result[column] = result[column].fillna("").map(nfc)
+    use_a2 = (result["vi"] == "") & (result["vi_a2"] != "")
+    result.loc[use_a2, "vi"] = [
+        prefer_existing_vi(current, candidate)
+        for current, candidate in zip(result.loc[use_a2, "vi"], result.loc[use_a2, "vi_a2"])
+    ]
+    result.loc[use_a2, "source_vi"] = result.loc[use_a2, "source_vi_a2"]
+    result.loc[use_a2, "gloss_vi"] = result.loc[use_a2, "gloss_vi_a2"]
+    result.loc[use_a2, "vi_evidence"] = True
+
+    vi_reports = []
+    for row in result.itertuples(index=False):
+        if nfc(row.vi):
+            continue
+        info = unresolved[row.word_key]
+        active = [value for value in a2_cache[row.word_key] if not value.get("obsolete_only", False)]
+        obsolete = [value for value in a2_cache[row.word_key] if value.get("obsolete_only", False)]
+        if len(active) > 1:
+            report_candidates, reason = active, "several_candidates"
+        elif obsolete and not active:
+            report_candidates, reason = obsolete, "obsolete_only"
+        elif info["several"]:
+            report_candidates, reason = info["several"], "several_candidates"
+        elif info["conflicts"]:
+            report_candidates, reason = info["conflicts"], "rule_b_conflict"
+        else:
+            continue
+        vi_reports.append({
+            "word_key": row.word_key, "word_id": row.word_id, "trad": row.trad,
+            "pinyin": row.pinyin, "level": row.level,
+            "candidates": ";".join(value["vi"] for value in report_candidates),
+            "reason": reason,
+        })
+    result = result.drop(
+        columns=["vi_a2", "source_vi_a2", "gloss_vi_a2", "_merge_words_kaikki_en"]
+    )
 
     computed = result.copy()
     result = backbone.copy()
@@ -1120,8 +1303,9 @@ def apply_word_overrides(
     overrides: pd.DataFrame,
     ko_cache: dict[str, list[dict[str, object]]],
     vi_cache: dict[str, list[dict[str, object]]],
-) -> pd.DataFrame:
+) -> tuple[pd.DataFrame, pd.DataFrame]:
     result = words.copy()
+    vi_reports = []
     for override in overrides.loc[overrides["table"] == "words"].itertuples(index=False):
         matches = result.index[result["word_key"] == override.key].tolist()
         if len(matches) != 1:
@@ -1142,12 +1326,19 @@ def apply_word_overrides(
             selected_record = None
         else:
             raise ValueError(f"Unsupported word override column: {override.column}")
-        if override.value not in allowed:
+        is_vi_clear = override.column == "vi" and override.value == ""
+        if is_vi_clear and not nfc(override.reason):
+            raise ValueError(f"A clearing Vietnamese override requires a reason: {override.key}")
+        if not is_vi_clear and override.value not in allowed:
             raise ValueError(f"Override value is not a dictionary candidate: {override}")
         old = nfc(result.at[index, override.column])
         alt_column = f"{override.column}_alt"
-        if alt_column in result:
+        if alt_column in result and override.column != "vi":
             result.at[index, alt_column] = ";".join(unique_preserve([old, *split_multi(result.at[index, alt_column])]))
+        elif alt_column in result and override.column == "vi" and override.value:
+            result.at[index, alt_column] = ";".join(
+                value for value in split_multi(result.at[index, alt_column]) if value != override.value
+            )
         result.at[index, override.column] = override.value
         if override.column == "ko":
             result.at[index, "ko_evidence"] = True
@@ -1155,11 +1346,24 @@ def apply_word_overrides(
                 result.at[index, "source_ko"] = selected_record["source"]
                 result.at[index, "gloss_ko"] = selected_record["comment"]
         elif override.column == "vi":
-            result.at[index, "vi_evidence"] = True
-            if selected_record is not None:
+            result.at[index, "vi_evidence"] = not is_vi_clear
+            if old and old != override.value:
+                vi_reports.append({
+                    "word_key": override.key,
+                    "word_id": result.at[index, "word_id"],
+                    "trad": result.at[index, "trad"],
+                    "pinyin": result.at[index, "pinyin"],
+                    "level": result.at[index, "level"],
+                    "candidates": old,
+                    "reason": "override_cleared" if is_vi_clear else "override_replaced",
+                })
+            if is_vi_clear:
+                result.at[index, "source_vi"] = ""
+                result.at[index, "gloss_vi"] = ""
+            elif selected_record is not None:
                 result.at[index, "source_vi"] = selected_record["source"]
                 result.at[index, "gloss_vi"] = selected_record["gloss_vi"]
-    return result
+    return result, pd.DataFrame(vi_reports, columns=REPORT_COLUMNS["vi_ambiguous"])
 
 
 def align_word_readings(
@@ -1381,18 +1585,19 @@ def write_character_reports(chars: pd.DataFrame, word_chars: pd.DataFrame, words
             continue
         char = by_char.loc[row.char_id]
         source = nfc(char["source_vi"])
-        if (
-            row.vi_syllable not in split_multi(char["vi_all"])
-            and word_sources.get(row.word_id) == "kaikki_han"
-        ):
-            source = "kaikki_han"
+        if word_sources.get(row.word_id) in {"kaikki_han", "kaikki_en_han"}:
+            source = word_sources[row.word_id]
         key = (row.char_id, row.ko_base, row.vi_syllable)
-        if key not in pairs or source == "kaikki_han":
+        if key not in pairs or source in {"kaikki_han", "kaikki_en_han"}:
             pairs[key] = source
     for row in chars.itertuples(index=False):
         ko_base_values = split_multi(row.ko_base_all)
         vi_values = split_multi(row.vi_all)
-        if len(ko_base_values) == 1 and len(vi_values) == 1 and row.source_vi in {"kaikki_aligned", "unihan_hvsyl"}:
+        if (
+            len(ko_base_values) == 1
+            and len(vi_values) == 1
+            and row.source_vi in {"kaikki_aligned", "kaikki_en_char", "unihan_hvsyl"}
+        ):
             pairs.setdefault((row.char_id, ko_base_values[0], vi_values[0]), row.source_vi)
     pair_frame = pd.DataFrame([
         {"char_id": key[0], "ko": key[1], "vi": key[2], "source_vi": source}
@@ -1475,12 +1680,15 @@ def build_ff_candidates(
     jmdict_index: dict[str, pd.DataFrame],
     cedict: pd.DataFrame,
     explicit: dict[str, pd.DataFrame],
+    explicit_en: dict[str, pd.DataFrame],
     korean_index: dict[str, list[object]],
     graph: dict[str, list[str]],
     lookup: ReadingLookup,
     headwords: dict[str, dict[str, object]],
+    legacy_vi_used: set[str],
 ) -> tuple[pd.DataFrame, pd.DataFrame]:
-    used = set(words["trad"]) | set(words["simp"]) | set(words["jp"])
+    hsk_words = words.loc[words["source_level"] == "hsk30"]
+    used = set(legacy_vi_used) | set(hsk_words["trad"]) | set(hsk_words["simp"]) | set(hsk_words["jp"])
     opencc = read_stage("opencc.csv")
     inverse: dict[str, list[str]] = defaultdict(list)
     for row in opencc.itertuples(index=False):
@@ -1528,7 +1736,12 @@ def build_ff_candidates(
         all_vi_values = vi_candidates(pseudo, explicit, graph, lookup, headwords)
         vi_values = [value for value in all_vi_values if not value.get("rule_b_conflict", False)]
         conflicts = [value for value in all_vi_values if value.get("rule_b_conflict", False)]
-        if conflicts:
+        if not vi_values:
+            vi_values = [
+                value for value in kaikki_en_candidates(pseudo, explicit_en, graph)
+                if not value.get("obsolete_only", False)
+            ]
+        if conflicts and len(vi_values) != 1:
             vi_conflicts.append({
                 "word_key": f"ff|{form}", "word_id": "", "trad": trad,
                 "pinyin": nfc(cc_first["pinyin"]) if cc_first is not None else "",
@@ -1566,15 +1779,16 @@ def main() -> None:
     jmdict_index = make_jmdict_index(jmdict)
     korean_index = libhangul_index()
     explicit = explicit_index()
+    explicit_en = kaikki_en_index()
     headwords = headword_index()
     frequency_frame = read_stage("frequencywords.csv")
     frequency = dict(zip(frequency_frame["token"], frequency_frame["count"].astype(int)))
     phrases = phrase_inverse()
 
     print("stage3: selecting VI-only words", flush=True)
-    vi_only, vi_only_report = select_vi_only(
+    vi_only, vi_only_report, legacy_vi_used = select_vi_only(
         hsk, lookup, kd, graph, jmdict_index, korean_index, phrases,
-        explicit, headwords, frequency, merge_rows,
+        explicit, explicit_en, headwords, frequency, merge_rows,
     )
     words = pd.concat([hsk, vi_only], ignore_index=True, sort=False)
     print(f"stage3: selected {len(vi_only):,} VI-only rows", flush=True)
@@ -1586,7 +1800,7 @@ def main() -> None:
             lambda value: str(int(float(value))) if nfc(value) else ""
         )
     vi_only_report = vi_only_report[[
-        "han", "trad", "word_id", "vi_values", "selected", "reason",
+        "han", "trad", "word_id", "vi_values", "source_vi", "selected", "reason",
         "freq_score", "rank", "level",
     ]]
     words = add_pinyin_segments(words)
@@ -1603,11 +1817,19 @@ def main() -> None:
     ])
     words, ko_cache, vi_cache = match_all_words(
         words, chars, lookup, graph, jmdict_index, korean_index,
-        explicit, headwords, phrases, merge_rows,
+        explicit, explicit_en, headwords, phrases, merge_rows,
     )
     print("stage3: word dictionaries matched", flush=True)
     overrides = load_overrides()
-    words = apply_word_overrides(words, overrides, ko_cache, vi_cache)
+    words, override_vi_reports = apply_word_overrides(words, overrides, ko_cache, vi_cache)
+    if not override_vi_reports.empty:
+        vi_report = pd.read_csv(
+            FINAL / "vi_ambiguous.csv", encoding="utf-8", keep_default_na=False, dtype=str
+        )
+        write_csv(
+            pd.concat([vi_report, override_vi_reports], ignore_index=True),
+            FINAL / "vi_ambiguous.csv",
+        )
     words, word_chars, alignment_mismatches = align_word_readings(words, links, chars, ko_cache)
     chars, primary_changes, primary_no_evidence = apply_d39(chars, words, word_chars, lookup, overrides)
     print("stage3: alignments and D39 complete", flush=True)
@@ -1634,8 +1856,9 @@ def main() -> None:
     write_character_reports(chars, word_chars, words)
     write_coverage(words, chars)
     ff, ff_vi_conflicts = build_ff_candidates(
-        words, jmdict, jmdict_index, read_stage("cedict.csv"), explicit,
+        words, jmdict, jmdict_index, read_stage("cedict.csv"), explicit, explicit_en,
         korean_index, graph, lookup, headwords,
+        legacy_vi_used,
     )
     if not ff_vi_conflicts.empty:
         vi_report = pd.read_csv(

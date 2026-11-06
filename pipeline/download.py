@@ -165,6 +165,19 @@ DOWNLOADS = [
         "KAIKKI-VIWIKTIONARY-LICENSE.html",
     ),
     Download(
+        "kaikki-enwiktionary",
+        "kaikki.org-dictionary-Vietnamese.jsonl",
+        "https://kaikki.org/dictionary/Vietnamese/kaikki.org-dictionary-Vietnamese.jsonl",
+        "data",
+    ),
+    Download(
+        "kaikki-enwiktionary",
+        "LICENSE.html",
+        "https://kaikki.org/dictionary/index.html",
+        "license",
+        "KAIKKI-ENWIKTIONARY-LICENSE.html",
+    ),
+    Download(
         "frequencywords-vi",
         "vi_50k.txt",
         "https://raw.githubusercontent.com/hermitdave/FrequencyWords/master/content/2018/vi/vi_50k.txt",

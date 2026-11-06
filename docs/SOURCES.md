@@ -43,6 +43,7 @@ Last updated: 2026-11-05 (D36 Vietnamese source search by Claude: rows 7C-7J, ev
 | 7 | None | None | Excluded: no licence and incomplete input provenance. |
 | 7A | `words`, `chars` | `words.vi` (rule A/B), `chars.vi`/`vi_all` (aligned readings), Hán-Việt syllable set, VI-only additions | Selected (D24, D27). Parsing rule in D24. |
 | 7B | `words` | `freq_vi` (proxy `syllable_min`) | Selected (D26). |
+| 7C | `words`, false-friend candidates; optional `chars` input | `vi`, `gloss_vi`, `source_vi=kaikki_en_han`; optional verified character readings behind `config/vi_sources.json` | Selected for rule A2 (D53). Character readings remain switched off pending D55 review. |
 | 8 | `chars` (`jp`), `words` (JMdict match) | shinjitai ↔ traditional character and phrase mappings | OpenCC chosen (D28); KANJIDIC2 validates/tie-breaks; phrase mappings are match candidates only. |
 
 ## 3. Implications to track

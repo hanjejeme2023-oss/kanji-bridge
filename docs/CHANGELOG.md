@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## 2026-11-05 — Source 7C integrated; Stage 3 rerun [Codex]
+- Added reproducible download/licence handling and `load_kaikki_en.py` for Kaikki English-Wiktionary Vietnamese data. The locked file exactly matches the D36 measurement (83,424,329 bytes; SHA-256 `186cd0a62d876dada70c9761bc05e598c8cf7b9a48e0aa518bab6c649e28d945`); loader output is 14,513 raw pairs, 10,064 filtered aligned pairs / 9,995 forms, plus 917 chữ-Hán reading pairs.
+- Implemented D53 rule A2 as a validated `1:1` indicator merge after A/B, including obsolete reporting, word evidence, rule tags, the D44 `i/y` canonical form (`自己` → `tự kỷ`), A2 candidates for overrides, and A2 fills for the frozen 2,944 false-friend rows.
+- Reran D46 VI-only selection over rule A ∪ A2. The cap remains 1,201 including 越南; duplicate resolved word keys are audited and the three existing overridden VI-only rows stay within the cap. Final scope: 12,229 words, 24,496 word-character rows, 3,138 chars.
+- Added D55 support: Vietnamese clears/replacements never enter `vi_alt` and are reported; optional 7C character verification lives behind `config/vi_sources.json` (committed off). Switch-on measurement: 46 confirmations, 36 first readings, HSK `vi` 4,271, all-four 3,381.
+- Final switch-off coverage: HSK `vi` 4,239 and all-four 3,362; cards unchanged. Six Korean and four Vietnamese character primaries differ from `7827546` and are handed to Claude under D52 without new overrides. Two extra source-backed obsolete-only rows and the larger A2 alignment report are documented in HANDOFF.
+- Added D53/D55 regression tests and updated two pre-D53 assertions for the reranked data. **36 tests pass**, including two byte-identical rebuilds and `id_map.csv`; downloader rerun uses every locked file unchanged.
+- Next: Claude repeat Stage 3 gate (R1-R9, checks 1-13, C1/C2), then D55 Vietnamese finalization if it passes.
+
 ## 2026-11-05 — Vietnamese finalization step added (D55) [Claude]
 - User decision: between the repeat Stage 3 gate and the word-list freeze, Claude prepares `docs/VI_SHORTLIST.md` (16 A/B vs A2 disagreements, about 19 wrong-looking composed readings, 6 `obsolete_only` words, 38 rule-B values filed under other characters, 7C character readings if seeded precision ≥ 95%, a fresh 50-word sample with target ≥ 98%). The user confirms, overrides are written, rebuild and recheck (D52 tie rule, all overrides apply), then freeze and the Stage 4 assignment.
 - Found while recording it: the override code cannot clear a value and moves a replaced `vi` into `vi_alt` (accepted as correct by `judge()`), and overrides cannot verify or add character readings. D55 defines empty/replacing `vi` overrides that never feed `vi_alt`, and 7C character readings behind `config/vi_sources.json` (default off). Both were added to the current Codex task (items 8-9) and to GATES (R9). SCHEMA tags `kaikki_en_char`, `override_cleared`, `override_replaced`.

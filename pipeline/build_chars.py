@@ -9,6 +9,7 @@ import pandas as pd
 
 from common import (
     FINAL,
+    ROOT,
     STAGING,
     assign_ids,
     hangul_final,
@@ -35,6 +36,14 @@ PINYIN_REF_RE = re.compile(r"(?:^|\s)[^\s:]+:([^\s]+)")
 
 def read_stage(filename: str) -> pd.DataFrame:
     return pd.read_csv(STAGING / filename, encoding="utf-8", keep_default_na=False, dtype=str)
+
+
+def kaikki_en_char_readings_enabled() -> bool:
+    path = ROOT / "config" / "vi_sources.json"
+    if not path.exists():
+        return False
+    config = json.loads(path.read_text(encoding="utf-8"))
+    return config.get("kaikki_en_char_readings") is True
 
 
 def aggregate(frame: pd.DataFrame, key: str, value: str, output: str) -> pd.DataFrame:
@@ -138,6 +147,13 @@ def build() -> tuple[pd.DataFrame, dict[str, int]]:
         validate="one_to_one", reports=merge_reports,
     )
 
+    kaikkien = read_stage("kaikki_en_char_readings.csv")
+    kaikkien_agg = aggregate(kaikkien, "char", "vi", "vi_kaikki_en")
+    chars = merge_left(
+        chars, kaikkien_agg, name="kaikki_en_char", left_on="key_char", right_on="char",
+        validate="one_to_one", reports=merge_reports,
+    )
+
     kd_frame = read_stage("kanjidic2.csv")
     kd: dict[str, dict[str, object]] = {}
     for row in kd_frame.itertuples(index=False):
@@ -161,6 +177,7 @@ def build() -> tuple[pd.DataFrame, dict[str, int]]:
     )
 
     hv_syllables = set(read_stage("kaikki_hv_syllables.csv")["vi"].map(nfc))
+    enable_kaikki_en_chars = kaikki_en_char_readings_enabled()
     output_rows: list[dict[str, object]] = []
     for row in chars.itertuples(index=False):
         trad = nfc(row.trad)
@@ -191,9 +208,15 @@ def build() -> tuple[pd.DataFrame, dict[str, int]]:
         kaikki_vi = split_multi(row.vi_kaikki)
         unihan_vi = split_multi(row.kVietnamese)
         hvsyl_vi = [reading for reading in unihan_vi if reading in hv_syllables]
-        verified_vi = unique_preserve([*kaikki_vi, *hvsyl_vi])
+        kaikkien_vi = split_multi(row.vi_kaikki_en) if enable_kaikki_en_chars else []
+        confirmed_en = [reading for reading in kaikkien_vi if reading in unihan_vi]
+        if not unihan_vi and not kaikki_vi and not hvsyl_vi:
+            confirmed_en = kaikkien_vi
+        verified_vi = unique_preserve([*kaikki_vi, *confirmed_en, *hvsyl_vi])
         if kaikki_vi:
             vi, source_vi, vi_all = kaikki_vi[0], "kaikki_aligned", verified_vi
+        elif confirmed_en:
+            vi, source_vi, vi_all = confirmed_en[0], "kaikki_en_char", verified_vi
         elif hvsyl_vi:
             vi, source_vi, vi_all = hvsyl_vi[0], "unihan_hvsyl", verified_vi
         elif unihan_vi:
@@ -249,7 +272,9 @@ def build() -> tuple[pd.DataFrame, dict[str, int]]:
     summary = {
         "rows": len(output),
         "jp_missing": int(output["jp"].isna().sum()),
-        "vi_verified": int(output["source_vi"].isin(["kaikki_aligned", "unihan_hvsyl"]).sum()),
+        "vi_verified": int(
+            output["source_vi"].isin(["kaikki_aligned", "kaikki_en_char", "unihan_hvsyl"]).sum()
+        ),
         "vi_unverified": int((output["source_vi"] == "unihan_unverified").sum()),
         "vi_missing": int(output["vi"].isna().sum()),
     }
@@ -313,7 +338,7 @@ def write_reports(chars: pd.DataFrame, summary: dict[str, int]) -> None:
     eligible = chars.loc[
         chars["ko_all"].map(lambda value: len(split_multi(value)) == 1)
         & chars["vi_all"].map(lambda value: len(split_multi(value)) == 1)
-        & chars["source_vi"].isin(["kaikki_aligned", "unihan_hvsyl"])
+        & chars["source_vi"].isin(["kaikki_aligned", "kaikki_en_char", "unihan_hvsyl"])
     ].copy()
     eligible["vi_final_label"] = eligible["vi_final"].fillna("").replace("", "(open)")
     pivot = eligible.pivot_table(

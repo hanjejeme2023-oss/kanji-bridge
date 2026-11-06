@@ -24,6 +24,7 @@ LOADERS = [
     "load_opencc.py",
     "load_libhangul.py",
     "load_kaikki.py",
+    "load_kaikki_en.py",
     "load_frequencywords.py",
     "load_cedict.py",
     "load_jmdict.py",

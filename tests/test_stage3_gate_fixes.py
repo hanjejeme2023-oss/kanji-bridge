@@ -105,7 +105,12 @@ class Stage3GateFixTests(unittest.TestCase):
         ambiguous = read_csv(self.final / "vi_ambiguous.csv")
         conflict_forms = set(ambiguous.loc[ambiguous["reason"] == "rule_b_conflict", "trad"])
         self.assertTrue(dropped.issubset(conflict_forms))
-        self.assertEqual(self.words.loc[self.words["trad"] == "麵", "vi"].iloc[0], "")
+        # D53 rule A2 fills the former rule-B ambiguity from English Wiktionary.
+        self.assertEqual(self.words.loc[self.words["trad"] == "麵", "vi"].iloc[0], "miến")
+        self.assertEqual(
+            self.words.loc[self.words["trad"] == "麵", "source_vi"].iloc[0],
+            "kaikki_en_han",
+        )
         self.assertEqual(self.words.loc[self.words["trad"] == "穩", "vi"].iloc[0], "ổn")
 
         rule_b = self.words.loc[self.words["source_vi"] == "composed_attested"]
@@ -122,10 +127,13 @@ class Stage3GateFixTests(unittest.TestCase):
     def test_grown_simplified_forms_and_pinyin_alignment(self) -> None:
         expected = {"餵": "喂", "託": "托", "譁": "哗", "鵰": "雕", "陀": "陀", "簿": "簿"}
         for char, simplified in expected.items():
-            self.assertEqual(self.by_key.loc[char, "simp"], simplified)
+            # D53 reranks the capped VI-only set; a no-longer-used grown
+            # character may disappear, but every retained row keeps D51's simp.
+            if char in self.by_key.index:
+                self.assertEqual(self.by_key.loc[char, "simp"], simplified)
         self.assertFalse((self.chars["simp"] == "").any())
         mismatches = read_csv(self.final / "char_simp_mismatch.csv")
-        self.assertEqual(set(mismatches["trad"]), {"反覆", "答覆", "彷彿"})
+        self.assertEqual(set(mismatches["trad"]), {"反覆", "答覆"})
 
         alignment = read_csv(self.final / "alignment_mismatches.csv")
         self.assertFalse((alignment["lang"] == "pinyin").any())

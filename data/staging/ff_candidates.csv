@@ -3,7 +3,7 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 数数,數數,数数,かずかず,many,,shǔshù,to count; to reckon,,
 微風,微風,微风,そよかぜ,gentle breeze,미풍,wēifēng,breeze; light wind,,
 金糸雀,金絲雀,金丝雀,カナリア,"canary (esp. the island canary, Serinus canaria)",금사작,jīnsīquè,canary,,
-亜熱帯,亞熱帶,亚热带,あねったい,subtropics,아열대,yàrèdài,subtropical (zone or climate),,
+亜熱帯,亞熱帶,亚热带,あねったい,subtropics,아열대,yàrèdài,subtropical (zone or climate),á nhiệt đới,the subtropics
 哀愁,哀愁,哀愁,あいしゅう,pathos,애수,āichóu,sorrow; sadness; distressed; sorrowful,,
 哀悼,哀悼,哀悼,あいとう,condolence,애도,āidào,to grieve over sb's death; to lament sb's death; mourning,,
 愛犬,愛犬,爱犬,あいけん,pet dog,애견,àiquǎn,beloved pet dog,,
@@ -21,12 +21,12 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 安泰,安泰,安泰,あんたい,security,안태,āntài,at peace; healthy and secure,,
 安保,安保,安保,あんぽ,security (e.g. national security),안보,ānbǎo,security,,
 安眠,安眠,安眠,あんみん,sound sleep,안면,ānmián,to sleep peacefully,,
-暗礁,暗礁,暗礁,あんしょう,reef,암초,ànjiāo,submerged reef (rock),,
+暗礁,暗礁,暗礁,あんしょう,reef,암초,ànjiāo,submerged reef (rock),ám tiêu,(submerged) reef
 以降,以降,以降,いこう,on and after,이강,yǐjiàng,since (some point in the past),,
 偉業,偉業,伟业,いぎょう,great achievement,위업,wěiyè,exploit; great undertaking,,
 偉人,偉人,伟人,いじん,great person,위인,wěirén,great person,vĩ nhân,"Những cá nhân có cống hiến xuất sắc và to lớn trong khoa học, lịch sử... có tác dụng thúc đẩy bước tiến của nhân loại."
 委員長,委員長,委员长,いいんちょう,chairperson (of a committee),위원장,wěiyuánzhǎng,head of a committee,,
-委任,委任,委任,いにん,entrusting,위임,wěirèn,to appoint,,
+委任,委任,委任,いにん,entrusting,위임,wěirèn,to appoint,ủy nhiệm,"to appoint to a job, to assign a role"
 威嚇,威嚇,威吓,いかく,threat,,wēihè,to threaten; to intimidate; to cow,,
 威勢,威勢,威势,いせい,power,위세,wēishì,might; power and influence,uy thế,(xem từ nguyên 1) Quyền lực làm cho người khác phải e sợ.
 異国,異國,异国,いこく,foreign country,이국,yìguó,exotic; foreign,,
@@ -39,8 +39,8 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 衣装,衣裝,衣装,いしょう,clothing,,yīzhuāng,garment,y trang,Quần áo và tư trang (nói khái quát)
 衣裳,衣裳,衣裳,いしょう,clothing,의상,yīshang,(coll.) clothes,,
 衣料,衣料,衣料,いりょう,clothing,의료,yīliào,material for clothing,,
-違憲,違憲,违宪,いけん,unconstitutionality,위헌,wéixiàn,unconstitutional,,
-遺言,遺言,遗言,ゆいごん,will,유언,yíyán,words of the deceased; last words of the dying; wisdom of past sages,,
+違憲,違憲,违宪,いけん,unconstitutionality,위헌,wéixiàn,unconstitutional,vy hiến,to violate the constitution; to be unconstitutional
+遺言,遺言,遗言,ゆいごん,will,유언,yíyán,words of the deceased; last words of the dying; wisdom of past sages,dy ngôn,"last words, testament"
 遺骨,遺骨,遗骨,いこつ,cremated remains (esp. the bones),유골,yígǔ,(dead) human remains,,
 遺作,遺作,遗作,いさく,posthumous works,유작,yízuò,posthumous work,,
 遺志,遺志,遗志,いし,wishes of a deceased person,유지,yízhì,"the mission in life of a deceased person, left to others to carry on",,
@@ -94,8 +94,8 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 羽毛,羽毛,羽毛,うもう,feather,우모,yǔmáo,feather; plumage; plume,,
 雨具,雨具,雨具,あまぐ,rain gear,우구,yǔjù,rainwear,,
 雨天,雨天,雨天,うてん,rainy weather,우천,yǔtiān,rainy day; rainy weather,,
-雨量,雨量,雨量,うりょう,(amount of) rainfall,우량,yǔliàng,rainfall,,
-運動場,運動場,运动场,うんどうじょう,sports ground,운동장,yùndòngchǎng,sports field; playground; exercise yard,,
+雨量,雨量,雨量,うりょう,(amount of) rainfall,우량,yǔliàng,rainfall,vũ lượng,rainfall
+運動場,運動場,运动场,うんどうじょう,sports ground,운동장,yùndòngchǎng,sports field; playground; exercise yard,vận động trường,sportsfield; sports ground; stadium
 運命,運命,运命,うんめい,fate,운명,yùnmìng,fate; one's fortune,,
 営業時間,營業時間,营业时间,えいぎょうじかん,business hours,영업시간,yíngyèshíjiān,business hours; opening hours; office hours,,
 営利,營利,营利,えいり,money-making,영리,yínglì,for profit; to seek profit,doanh lợi,"Kết quả hoạt động sản xuất kinh doanh, là chỉ tiêu phản ánh hiệu quả sản xuất kinh doanh."
@@ -113,7 +113,7 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 円盤,圓盤,圆盘,えんばん,disk,원반,yuánpán,disk,,
 園芸,園藝,园艺,えんげい,horticulture,원예,yuányì,gardening; horticultural,,
 園長,園長,园长,えんちょう,head of a garden,원장,yuánzhǎng,"person in charge of a place that ends in 園|园[yuan2] (e.g. a vineyard 葡萄園|葡萄园[pu2 tao5 yuan2], zoo 動物園|动物园[dong4 wu4 yuan2], cemetery 陵園|陵园[ling2 yuan2] etc)",,
-演歌,演歌,演歌,えんか,enka,,yǎngē,enka (Japanese genre of sentimental ballads),,
+演歌,演歌,演歌,えんか,enka,,yǎngē,enka (Japanese genre of sentimental ballads),diễn ca,a historical category of texts that aim to versify works written in Literary Chinese in the national pronunciation (Quốc âm).
 演芸,演藝,演艺,えんげい,entertainment,연예,yǎnyì,performing arts,,
 演劇,演劇,演剧,えんげき,drama,연극,yǎnjù,to perform a play,diễn kịch,Diễn một loại kịch.
 演算,演算,演算,えんざん,operation,연산,yǎnsuàn,to perform calculations,,
@@ -133,7 +133,7 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 応答,應答,应答,おうとう,reply,응답,yìngdá,to reply,ứng đáp,Trả lời.
 応分,應分,应分,おうぶん,according to one's abilities,응분,yīngfèn,(of a course of action) within one's area of responsibility; expected of one; obligatory (for a person in that role),,
 横綱,橫綱,横纲,よこづな,yokozuna (highest rank in sumo),,hénggāng,yokozuna,,
-横行,橫行,横行,おうこう,being rampant,횡행,héngxíng,to go on the rampage; to riot; to run amuck,,
+横行,橫行,横行,おうこう,being rampant,횡행,héngxíng,to go on the rampage; to riot; to run amuck,hoành hành,"to go around and wreak havoc or cause rampage or wanton destruction, be it physical or institutional"
 横線,橫線,横线,おうせん,horizontal line,횡선,héngxiàn,horizontal line; (math.) horizontal axis,,
 横断,橫斷,横断,おうだん,"crossing (a road, river, etc.)",횡단,héngduàn,"to cross (a road, an ocean etc); to cut across",,
 横断歩道,橫斷步道,横断步道,おうだんほどう,pedestrian crossing,횡단보도,héngduànbùdào,pedestrian crossing,,
@@ -217,7 +217,7 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 回目,回目,回目,かいめ,nth time,,huímù,chapter title (in a novel),,
 回路,回路,回路,かいろ,circuit,회로,huílù,to return; circuit (e.g. electric); loop,,
 回廊,回廊,回廊,かいろう,corridor,회랑,huíláng,winding corridor; cloister; ambulatory (covered walkway around a cloister),,
-怪獣,怪獸,怪兽,かいじゅう,monster,괴수,guàishòu,rare animal; mythical animal; monster,,
+怪獣,怪獸,怪兽,かいじゅう,monster,괴수,guàishòu,rare animal; mythical animal; monster,quái thú,monster; beast; kaiju
 戒厳令,戒嚴令,戒严令,かいげんれい,martial law,계엄령,jièyánlìng,martial law,,
 改選,改選,改选,かいせん,election (for a seat or position at the end of a term),개선,gǎixuǎn,reelection; to reelect,cải tuyển,"Thuyên chuyển trật ngạch hành chánh, thường để chỉ công chức."
 改訂,改訂,改订,かいてい,revision (of text),개정,gǎidìng,"to revise (text, plan etc)",,
@@ -228,7 +228,7 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 絵文字,繪文字,绘文字,えもじ,emoji,,huìwénzì,emoji,,
 絵本,繪本,绘本,えほん,picture book,,huìběn,picture book,,
 開演,開演,开演,かいえん,curtain raising,개연,kāiyǎn,"(of a play, movie etc) to begin",khai diễn,Bắt đầu diễn một cuộc vui.
-開局,開局,开局,かいきょく,"opening (of a broadcasting station, post office, bureau, etc.)",개국,kāijú,"opening (chess etc); early stage of game, match, work, activity etc",,
+開局,開局,开局,かいきょく,"opening (of a broadcasting station, post office, bureau, etc.)",개국,kāijú,"opening (chess etc); early stage of game, match, work, activity etc",khai cuộc,opening (of a match); beginning; start
 開示,開示,开示,かいじ,"release (of information, documents, etc.)",,kāishì,to instruct (novices); to preach; to teach; to reveal,,
 開店,開店,开店,かいてん,opening a new shop,개점,kāidiàn,to open shop,,
 開票,開票,开票,かいひょう,counting ballots,개표,kāipiào,to open ballot boxes; to count votes; to make out a voucher or invoice etc; to write out a receipt,,
@@ -239,7 +239,7 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 外食,外食,外食,がいしょく,eating out,외식,wàishí,to eat out; food brought in from outside; food not purchased within the premises,,
 外人,外人,外人,がいじん,foreigner (esp. a Westerner),외인,wàirén,outsider; foreigner; stranger,,
 外相,外相,外相,がいしょう,Foreign Minister,외상,wàixiàng,Foreign Minister,,
-外務,外務,外务,がいむ,foreign affairs,외무,wàiwù,foreign affairs,,
+外務,外務,外务,がいむ,foreign affairs,외무,wàiwù,foreign affairs,ngoại vụ,foreign affairs
 外務省,外務省,外务省,がいむしょう,Ministry of Foreign Affairs,외무성,wàiwùshěng,foreign ministry (e.g. of Japan or Korea),,
 外野,外野,外野,がいや,outfield,외야,wàiyě,(baseball) outfield,,
 外野手,外野手,外野手,がいやしゅ,outfielder,외야수,wàiyěshǒu,(baseball) outfielder,,
@@ -267,7 +267,7 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 楽団,樂團,乐团,がくだん,orchestra,악단,yuètuán,band; orchestra,,
 楽譜,樂譜,乐谱,がくふ,score,악보,yuèpǔ,a musical score; sheet music,,
 活気,活氣,活气,かっき,energy,활기,huóqì,spirited atmosphere,,
-活字,活字,活字,かつじ,(piece of) type,활자,huózì,movable type,,
+活字,活字,活字,かつじ,(piece of) type,활자,huózì,movable type,hoạt tự,movable type
 活性,活性,活性,かっせい,activity,활성,huóxìng,(chemistry) activity; active; activated,,
 活動家,活動家,活动家,かつどうか,activist,활동가,huódòngjiā,activist,,
 活用,活用,活用,かつよう,practical use,활용,huóyòng,to apply (knowledge etc) creatively and flexibly; to use a word flexibly (e.g. a noun as an adjective),,
@@ -322,8 +322,8 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 奇異,奇異,奇异,きい,odd,기이,qíyì,fantastic; bizarre; odd; exotic; astonished,kỳ dị,Lạ lùng.
 奇襲,奇襲,奇袭,きしゅう,surprise attack,기습,qíxí,surprise attack; raid,,
 奇数,奇數,奇数,きすう,odd number,기수,jīshù,odd number,cơ số,Số dùng làm cơ sở để xây dựng một hệ thống số.
-寄生虫,寄生蟲,寄生虫,きせいちゅう,parasite,기생충,jìshēngchóng,parasite (biology); (fig.) freeloader,,
-幾何,幾何,几何,きか,geometry,기하,jǐhé,geometry; (literary) how much,,
+寄生虫,寄生蟲,寄生虫,きせいちゅう,parasite,기생충,jìshēngchóng,parasite (biology); (fig.) freeloader,ký sinh trùng,a parasite
+幾何,幾何,几何,きか,geometry,기하,jǐhé,geometry; (literary) how much,kỷ hà,"geometric, as in rectangular, square, triangular, circular, etc."
 幾何学,幾何學,几何学,きかがく,geometry,기하학,jǐhéxué,geometry,,
 幾分,幾分,几分,いくぶん,somewhat,기분,jǐfēn,somewhat; a bit,,
 旗手,旗手,旗手,きしゅ,standard-bearer,기수,qíshǒu,a flag carrier (army); ensign,,
@@ -367,7 +367,7 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 騎手,騎手,骑手,きしゅ,horseman,기수,qíshǒu,horse rider; equestrian; jockey; bike rider,,
 騎馬,騎馬,骑马,きば,horse riding,기마,qímǎ,to ride a horse,kị mã,Như kỵ mã.
 亀裂,龜裂,龟裂,きれつ,crack,,jūnliè,to crack; cracked; fissured; creviced; (of skin) chapped,,
-技師,技師,技师,ぎし,engineer,기사,jìshī,senior technician; technical expert,,
+技師,技師,技师,ぎし,engineer,기사,jìshī,senior technician; technical expert,kỹ sư,an engineer
 技法,技法,技法,ぎほう,technique,기법,jìfǎ,technique; method,,
 犠牲者,犧牲者,牺牲者,ぎせいしゃ,victim (esp. someone killed),희생자,xīshēngzhě,sb who sacrifices himself; sacrificial victim; sb who is expendable,,
 疑義,疑義,疑义,ぎぎ,doubt,의의,yíyì,a doubtful point,,
@@ -392,7 +392,7 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 休学,休學,休学,きゅうがく,temporary absence from school,휴학,xiūxué,to suspend schooling; to defer study,,
 休憩,休憩,休憩,きゅうけい,rest,휴게,xiūqì,to rest; to relax; to take a break,,
 休止,休止,休止,きゅうし,pause,휴지,xiūzhǐ,to stop,,
-休戦,休戰,休战,きゅうせん,cease-fire,휴전,xiūzhàn,armistice,,
+休戦,休戰,休战,きゅうせん,cease-fire,휴전,xiūzhàn,armistice,hưu chiến,to call a truce; to agree on a cease-fire
 吸血鬼,吸血鬼,吸血鬼,きゅうけつき,vampire,흡혈귀,xīxuèguǐ,"leech; bloodsucking vermin; vampire (translated European notion); fig. cruel exploiter, esp. a capitalist exploiting the workers",,
 急速,急速,急速,きゅうそく,rapid (e.g. progress),급속,jísù,hurried; at a great speed; rapid (development),cấp tốc,Rất nhanh để tranh thủ thời gian.
 急務,急務,急务,きゅうむ,urgent business,급무,jíwù,urgent task; pressing matter,,
@@ -421,10 +421,10 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 漁場,漁場,渔场,ぎょじょう,fishing grounds,어장,yúchǎng,fishing ground,ngư trường,"Khu vực biển có nguồn thủy sản tập trung cao, thuận tiện cho việc đánh bắt."
 魚類,魚類,鱼类,ぎょるい,fish,어류,yúlèi,fishes,,
 供述,供述,供述,きょうじゅつ,affidavit,공술,gòngshù,confession,,
-供養,供養,供养,くよう,memorial service for the dead,공양,gōngyǎng;gòngyǎng,to supply; to provide for one's elders; to support one's parents;to make offerings to (gods or ancestors); Taiwan pr. [gong4yang4],,
+供養,供養,供养,くよう,memorial service for the dead,공양,gōngyǎng;gòngyǎng,to supply; to provide for one's elders; to support one's parents;to make offerings to (gods or ancestors); Taiwan pr. [gong4yang4],cúng dường,to make an offering
 競争力,競爭力,竞争力,きょうそうりょく,competitiveness,경쟁력,jìngzhēnglì,competitive strength; competitiveness,,
 競走,競走,竞走,きょうそう,race,경주,jìngzǒu,walking race (athletics event),,
-共産主義,共產主義,共产主义,きょうさんしゅぎ,communism,공산주의,gòngchǎnzhǔyì,communism,,
+共産主義,共產主義,共产主义,きょうさんしゅぎ,communism,공산주의,gòngchǎnzhǔyì,communism,cộng sản chủ nghĩa,communist
 共生,共生,共生,きょうせい,coexistence,공생,gòngshēng,symbiosis,cộng sinh,"Mối quan hệ giữa hai hay nhiều loài sinh vật chung sống thường xuyên với nhau, trong đó các loài tham gia đều có lợi ích."
 共通,共通,共通,きょうつう,common,공통,gòngtōng,universal; applicable to all (or both); shared; common,,
 共犯,共犯,共犯,きょうはん,complicity,공범,gòngfàn,accomplice,,
@@ -449,7 +449,7 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 胸中,胸中,胸中,きょうちゅう,one's heart,흉중,xiōngzhōng,one's mind,,
 脅迫,脅迫,胁迫,きょうはく,threat,협박,xiépò,to coerce; to compel; to force,,
 興味,興味,兴味,きょうみ,interest (in something),흥미,xìngwèi,interest; taste,,
-蕎麦,蕎麥,荞麦,そば,buckwheat (Fagopyrum esculentum),교맥,qiáomài,buckwheat,,
+蕎麦,蕎麥,荞麦,そば,buckwheat (Fagopyrum esculentum),교맥,qiáomài,buckwheat,kiều mạch,buckwheat (grain)
 凝縮,凝縮,凝缩,ぎょうしゅく,"condensation (of ideas, emotions, etc.)",응축,níngsuō,to condense; to concentrate; compression; concentration,,
 業界,業界,业界,ぎょうかい,business world,업계,yèjiè,industry,,
 業者,業者,业者,ぎょうしゃ,trader,업자,yèzhě,dealer; trader; person or company engaged in some industry or trade,,
@@ -486,11 +486,11 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 苦労,苦勞,苦劳,くろう,trouble,고로,kǔláo,toil; hard work,,
 駆使,驅使,驱使,くし,using freely,구사,qūshǐ,to urge; to prompt; to spur on; to order sb about,,
 駆除,驅除,驱除,くじょ,extermination (of pests),구제,qūchú,to drive off; to dispel; to expel,,
-駆逐艦,驅逐艦,驱逐舰,くちくかん,destroyer (ship),구축함,qūzhújiàn,destroyer (warship),,
+駆逐艦,驅逐艦,驱逐舰,くちくかん,destroyer (ship),구축함,qūzhújiàn,destroyer (warship),khu trục hạm,destroyer (type of warship)
 具象,具象,具象,ぐしょう,concreteness,구상,jùxiàng,tangible image; concrete; representational (art),,
 具体化,具體化,具体化,ぐたいか,embodiment,구체화,jùtǐhuà,to concretize,cụ thể hóa,"Làm cho trở thành cụ thể, rõ ràng."
 空港,空港,空港,くうこう,airport,공항,kōnggǎng,airport (abbr. for 航空港[hang2 kong1 gang3]),,
-空手,空手,空手,からて,karate,공수,kōngshǒu,"empty-handed; unarmed; (painting, embroidery etc) without following a model; (abbr. for 空手道[kong1 shou3 dao4]) karate",,
+空手,空手,空手,からて,karate,공수,kōngshǒu,"empty-handed; unarmed; (painting, embroidery etc) without following a model; (abbr. for 空手道[kong1 shou3 dao4]) karate",không thủ,karate
 空襲,空襲,空袭,くうしゅう,air-raid,공습,kōngxí,to make an air raid,không tập,Tập kích bằng không quân.
 空洞,空洞,空洞,くうどう,cavity,공동,kōngdòng,cavity; empty; vacuous,,
 空腹,空腹,空腹,くうふく,empty stomach,공복,kōngfù,an empty stomach,,
@@ -507,8 +507,8 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 軍備,軍備,军备,ぐんび,armaments,군비,jūnbèi,(military) arms; armaments,quân bị,Vũ khí trang bị cho quân đội.
 軍用,軍用,军用,ぐんよう,for military use,군용,jūnyòng,(for) military use; military application,quân dụng,Dùng cho quân đội.
 傾注,傾注,倾注,けいちゅう,devoting (oneself) to,경주,qīngzhù,to throw into,,
-形跡,形跡,形迹,けいせき,traces,형적,xíngjì,manner; bearing; trace; mark; trail; etiquette,,
-形容詞,形容詞,形容词,けいようし,adjective,형용사,xíngróngcí,adjective,,
+形跡,形跡,形迹,けいせき,traces,형적,xíngjì,manner; bearing; trace; mark; trail; etiquette,hình tích,concealed identity
+形容詞,形容詞,形容词,けいようし,adjective,형용사,xíngróngcí,adjective,hình dung từ,synonym of tính từ (“adjective”) (word that modifies a noun or describes a noun’s referent)
 掲載,揭載,揭载,けいさい,publication (e.g. of an article in a newspaper),게재,jiēzǎi,to publish,,
 敬称,敬稱,敬称,けいしょう,honorific title,경칭,jìngchēng,to address or refer to (sb) respectfully (as ...); respectful term of address; honorific title,,
 敬老,敬老,敬老,けいろう,respect for the aged,경로,jìnglǎo,to respect the elderly,kính lão,Kính đeo dành cho người có tuổi.
@@ -557,7 +557,7 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 倹約,儉約,俭约,けんやく,thrift,검약,jiǎnyuē,frugal; economical; thrifty,kiệm ước,Tằn tiện đúng mức.
 健康保険,健康保險,健康保险,けんこうほけん,health insurance,건강보험,jiànkāngbǎoxiǎn,health insurance,,
 健在,健在,健在,けんざい,in good health,건재,jiànzài,(of an elderly person) alive and in good health; (of a thing) intact; holding up OK; still going strong,,
-剣道,劍道,剑道,けんどう,kendo,검도,jiàndào,kendō (sports),,
+剣道,劍道,剑道,けんどう,kendo,검도,jiàndào,kendō (sports),kiếm đạo,kendo
 圏内,圈內,圈内,けんない,"inside (a region, area, etc.)",권내,quānnèi,"among insiders; within the community (of publishers, cyclists or cosplayers etc); (esp.) in show business circles",,
 嫌悪,嫌惡,嫌恶,けんお,disgust,혐오,xiánwù,to loathe; to abhor; hatred; revulsion,,
 建国,建國,建国,けんこく,founding of a nation,건국,jiànguó,to found a country; nation-building; the foundation of PRC by Mao Zedong in 1949,kiến quốc,Dựng nước.
@@ -611,7 +611,7 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 現況,現況,现况,げんきょう,present condition,현황,xiànkuàng,the current situation,,
 現役,現役,现役,げんえき,active duty,현역,xiànyì,"(military) active duty; (sports) currently active (player, athlete etc)",hiện dịch,Đang thi hành quân dịch.
 個展,個展,个展,こてん,solo exhibition,,gèzhǎn,a one-person exhibition,,
-古今,古今,古今,ここん,ancient and modern times,고금,gǔjīn,then and now; ancient and modern,,
+古今,古今,古今,ここん,ancient and modern times,고금,gǔjīn,then and now; ancient and modern,cổ kim,past and present; then and now
 古書,古書,古书,こしょ,old book,고서,gǔshū,ancient book; old book,,
 古都,古都,古都,こと,ancient city,고도,gǔdū,ancient capital,,
 古来,古來,古来,こらい,from ancient times,고래,gǔlái,since ancient times; it has ever been the case that,,
@@ -631,7 +631,7 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 互換,互換,互换,ごかん,interchange,호환,hùhuàn,to exchange,,
 午後,午後,午后,ごご,afternoon,오후,wǔhòu,afternoon,,
 午前,午前,午前,ごぜん,morning,오전,wǔqián,morning; a.m.,,
-後援,後援,后援,こうえん,support,후원,hòuyuán,reinforcement; back-up; supporting force,,
+後援,後援,后援,こうえん,support,후원,hòuyuán,reinforcement; back-up; supporting force,hậu viện,reinforcements
 後手,後手,后手,ごて,losing initiative,후수,hòushǒu,defensive position (in chess); room for maneuver; a way of escape,,
 後世,後世,后世,こうせい,posterity,후세,hòushì,later generations,hậu thế,Đời sau.
 後日,後日,后日,ごじつ,in the future,후일,hòurì,the day after tomorrow; from hence; from now; from now on; henceforth,,
@@ -641,9 +641,9 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 後部,後部,后部,こうぶ,rear,후부,hòubù,back section,,
 後方,後方,后方,こうほう,rear,후방,hòufāng,the rear; far behind the front line,hậu phương,(Xem từ nguyên 1) Miền ở sau mặt trận.
 神輿,神輿,神舆,みこし,mikoshi,신여,shényú,mikoshi (Japanese portable Shinto shrine),,
-語源,語源,语源,ごげん,origin of a word,어원,yǔyuán,etymology,,
+語源,語源,语源,ごげん,origin of a word,어원,yǔyuán,etymology,ngữ nguyên,etymology
 語彙,語彙,语汇,ごい,vocabulary,어휘,yǔhuì,vocabulary,,
-乞食,乞食,乞食,こじき,beggar,걸식,qǐshí,to beg for food,,
+乞食,乞食,乞食,こじき,beggar,걸식,qǐshí,to beg for food,khất thực,pindapata
 交響楽団,交響樂團,交响乐团,こうきょうがくだん,symphony orchestra,교향악단,jiāoxiǎngyuètuán,symphony orchestra,,
 交響曲,交響曲,交响曲,こうきょうきょく,symphony,교향곡,jiāoxiǎngqǔ,symphony,,
 交互,交互,交互,こうご,alternate,교호,jiāohù,mutual; interactive; each other; alternately; in turn; interaction,,
@@ -670,7 +670,7 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 公有,公有,公有,こうゆう,public ownership,공유,gōngyǒu,publicly owned; communal; held in common,công hữu,Thuộc quyền sở hữu của toàn xã hội hoặc của tập thể; phân biệt với tư hữu.
 公論,公論,公论,こうろん,public opinion,공론,gōnglùn,public opinion,công luận,Dư luận chung của xã hội.
 功績,功績,功绩,こうせき,achievement,공적,gōngjì,feat; contribution; merits and achievements,,
-効用,效用,效用,こうよう,use,효용,xiàoyòng,usefulness; effectiveness; (economics) utility,,
+効用,效用,效用,こうよう,use,효용,xiàoyòng,usefulness; effectiveness; (economics) utility,hiệu dụng,efficacious
 口紅,口紅,口红,くちべに,lipstick,,kǒuhóng,lipstick,,
 口実,口實,口实,こうじつ,excuse,구실,kǒushí,food; salary (old); a pretext; a cause for gossip,,
 好物,好物,好物,こうぶつ,favourite dish (favorite),호물,hǎowù,fine goods,,
@@ -728,7 +728,7 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 高見,高見,高见,こうけん,your views,고견,gāojiàn,wise opinion; brilliant idea (honorific),cao kiến,. Ý kiến hay và sáng suốt hơn hẳn những ý kiến thông thường.
 高校,高校,高校,こうこう,senior high school,고교,gāoxiào,universities and colleges; abbr. for 高等學校|高等学校,,
 高性能,高性能,高性能,こうせいのう,high efficiency,고성능,gāoxìngnéng,high performance,,
-高地,高地,高地,こうち,high ground,고지,gāodì,highland; upland,,
+高地,高地,高地,こうち,high ground,고지,gāodì,highland; upland,cao địa,upland; highland
 高等学校,高等學校,高等学校,こうとうがっこう,senior high school,고등학교,gāoděngxuéxiào,colleges and universities,,
 高熱,高熱,高热,こうねつ,high fever,고열,gāorè,(medicine) high fever; (physics) high heat,,
 高揚,高揚,高扬,こうよう,elevation (of spirits),고양,gāoyáng,held high; elevated; uplift; soaring,cao dương,"Một xã Tên gọi các xã thuộc h. Thanh Oai (Hà Tây), h. Kim Bôi (Hoà Bình), Việt Nam."
@@ -748,7 +748,7 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 国会議員,國會議員,国会议员,こっかいぎいん,member of the Diet,국회의원,guóhuìyìyuán,member of congress; congressman,,
 国技,國技,国技,こくぎ,national sport,국기,guójì,national pastime; national sport,,
 国境,國境,国境,こっきょう,border (between countries),국경,guójìng,national border; frontier,,
-国庫,國庫,国库,こっこ,national treasury,국고,guókù,national treasury,,
+国庫,國庫,国库,こっこ,national treasury,국고,guókù,national treasury,quốc khố,state treasury
 国債,國債,国债,こくさい,national debt,국채,guózhài,national debt; government debt,,
 国際化,國際化,国际化,こくさいか,internationalization,국제화,guójìhuà,to internationalize; internationalization,quốc tế hóa,Làm cho có tính chất quốc tế.
 国際法,國際法,国际法,こくさいほう,international law,국제법,guójìfǎ,international law,,
@@ -765,7 +765,7 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 穀物,穀物,谷物,こくもつ,grain,곡물,gǔwù,cereal; grain,,
 黒幕,黑幕,黑幕,くろまく,black curtain,흑막,hēimù,hidden details; dirty tricks; dark secrets,,
 骨子,骨子,骨子,こっし,main point,골자,gǔzi,ribs; frame,cốt tử,Vấn đề trọng tâm cần giải quyết gấp.
-骨髄,骨髓,骨髓,こつずい,bone marrow,골수,gǔsuǐ,bone marrow,,
+骨髄,骨髓,骨髓,こつずい,bone marrow,골수,gǔsuǐ,bone marrow,cốt tủy,bone marrow
 今宵,今宵,今宵,こよい,this evening,금소,jīnxiāo,(literary) tonight,,
 今晩,今晚,今晚,こんばん,tonight,금만,jīnwǎn,tonight,,
 今夜,今夜,今夜,こんや,this evening,금야,jīnyè,tonight; this evening,,
@@ -780,15 +780,15 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 混入,混入,混入,こんにゅう,mixing,혼입,hùnrù,to sneak into,,
 左手,左手,左手,ひだりて,left hand,좌수,zuǒshǒu,left hand; left-hand side,,
 左上,左上,左上,ひだりうえ,upper left,,zuǒshàng,upper left,,
-左派,左派,左派,さは,left wing,좌파,zuǒpài,(political) left; left wing; leftist,,
+左派,左派,左派,さは,left wing,좌파,zuǒpài,(political) left; left wing; leftist,tả phái,left wing
 左翼,左翼,左翼,さよく,left wing,좌익,zuǒyì,left-wing (political),,
 査証,查證,查证,さしょう,visa,사증,cházhèng,to check; to verify,,
 詐欺,詐欺,诈欺,さぎ,fraud,사기,zhàqī,fraud; deception,,
 鎖国,鎖國,锁国,さこく,national isolation,쇄국,suǒguó,"to close a country; to exclude foreign contact; closed country (Qing China, North Korea etc)",,
 座席,座席,座席,ざせき,seat (esp. in public places or places with assigned seating),좌석,zuòxí,seat (at banquet); by ext. guest of honor,,
-坐禅,坐禪,坐禅,ざぜん,"zazen (seated Zen meditation, usu. in a cross-legged position)",좌선,zuòchán,to sit in meditation; to meditate,,
-債券,債券,债券,さいけん,bond,채권,zhàiquàn,bond; debenture,,
-債権,債權,债权,さいけん,credit,채권,zhàiquán,creditor's rights (law),,
+坐禅,坐禪,坐禅,ざぜん,"zazen (seated Zen meditation, usu. in a cross-legged position)",좌선,zuòchán,to sit in meditation; to meditate,tọa thiền,zazen
+債券,債券,债券,さいけん,bond,채권,zhàiquàn,bond; debenture,trái khoán,a debenture; debt instrument (typically unsecured)
+債権,債權,债权,さいけん,credit,채권,zhàiquán,creditor's rights (law),trái quyền,creditor's rights
 二度,二度,二度,ふたたび,again,,èrdù,again; twice; (music) second (i.e. an interval between adjacent notes),,
 再会,再會,再会,さいかい,meeting again,재회,zàihuì,to meet again; until we meet again; goodbye,,
 再起,再起,再起,さいき,comeback,재기,zàiqǐ,to arise again; to make a comeback; resurgence,,
@@ -825,7 +825,7 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 索引,索引,索引,さくいん,index (in a book),,suǒyǐn,index,sách dẫn,Phần ở cuối quyển sách xếp các mục theo một thứ tự nhất định để giúp việc tra cứu.
 冊子,冊子,册子,さっし,book,책자,cèzi,a book; a volume,,
 殺気,殺氣,杀气,さっき,thirst for blood,살기,shāqì,menacing air; murderous look; to vent one's anger,sát khí,"Vẻ dữ tợn, như muốn đánh giết người."
-殺菌,殺菌,杀菌,さっきん,sterilization,살균,shājūn,to kill germs; to disinfect; to sterilize,,
+殺菌,殺菌,杀菌,さっきん,sterilization,살균,shājūn,to kill germs; to disinfect; to sterilize,sát khuẩn,antiseptic
 殺虫剤,殺蟲劑,杀虫剂,さっちゅうざい,insecticide,살충제,shāchóngjì,insecticide; pesticide,,
 甘薯,甘薯,甘薯,さつまいも,sweet potato (Ipomoea batatas),감서,gānshǔ,sweet potato; Ipomoea batatas,,
 雑音,雜音,杂音,ざつおん,noise (usu. unpleasant),잡음,záyīn,noise,tạp âm,Những tiếng động gây nhiễu loạn.
@@ -870,7 +870,7 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 史実,史實,史实,しじつ,historical fact,사실,shǐshí,historical fact,,
 史上,史上,史上,しじょう,in history,사상,shǐshàng,in history,,
 史料,史料,史料,しりょう,historical materials,사료,shǐliào,historical material or data,sử liệu,Tài liệu để nghiên cứu lịch sử.
-四時,四時,四时,よじ,four o'clock,사시,sìshí,"the four seasons, namely: spring 春[chun1], summer 夏[xia4], autumn 秋[qiu1] and winter 冬[dong1]",,
+四時,四時,四时,よじ,four o'clock,사시,sìshí,"the four seasons, namely: spring 春[chun1], summer 夏[xia4], autumn 秋[qiu1] and winter 冬[dong1]",tứ thời,yearly
 四捨五入,四捨五入,四舍五入,ししゃごにゅう,rounding (off; a number),사사오입,sìshěwǔrù,(math.) to round up or down; to round off,,
 四重奏,四重奏,四重奏,しじゅうそう,instrumental quartet,사중주,sìchóngzòu,quartet (musical ensemble),,
 四方,四方,四方,しほう,the four cardinal directions,사방,sìfāng,four-way; four-sided; in all directions; everywhere,tứ phương,"Bốn phương là Đông, Tây, Nam, Bắc."
@@ -890,7 +890,7 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 指紋,指紋,指纹,しもん,fingerprint,지문,zhǐwén,"fingerprint; the arches, loops and whorls on the fingers",,
 指環,指環,指环,ゆびわ,(finger) ring,지환,zhǐhuán,(finger) ring,,
 支店,支店,支店,してん,branch office,지점,zhīdiàn,branch store,,
-支流,支流,支流,しりゅう,tributary,지류,zhīliú,tributary (river),,
+支流,支流,支流,しりゅう,tributary,지류,zhīliú,tributary (river),chy lưu,tributary; affluent
 施政,施政,施政,しせい,government,시정,shīzhèng,administration,,
 死因,死因,死因,しいん,cause of death,사인,sǐyīn,cause of death,,
 死活,死活,死活,しかつ,life and death,사활,sǐhuó,life or death; fate; no matter what; anyway; for the life of me,,
@@ -922,7 +922,7 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 侍従,侍從,侍从,じじゅう,chamberlain,시종,shìcóng,to serve (an important personage); attendant; retainer,,
 字画,字畫,字画,じかく,strokes in a Chinese character,,zìhuà,the strokes of a character; calligraphy and painting,,
 字形,字形,字形,じけい,character style,자형,zìxíng,form of a Chinese character; variant of 字型[zi4 xing2],,
-寺院,寺院,寺院,じいん,Buddhist temple,사원,sìyuàn,cloister; temple; monastery; CL:座[zuo4],,
+寺院,寺院,寺院,じいん,Buddhist temple,사원,sìyuàn,cloister; temple; monastery; CL:座[zuo4],tự viện,Buddhist monastery
 時価,時價,时价,じか,current value,시가,shíjià,current price,thời giá,Giá cả hàng hóa trong một thời gian nhất định.
 時限,時限,时限,じげん,(school) period,시한,shíxiàn,time limit,thời hạn,Khoảng thời gian có giới hạn nhất định để làm việc gì.
 時効,時效,时效,じこう,prescription,시효,shíxiào,timeliness; period of viability or validity; (law) prescription; limitation; (metallurgy) aging,thời hiệu,"Thời gian trong đó một đạo luật, một điều luật có hiệu lực."
@@ -948,9 +948,9 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 自動化,自動化,自动化,じどうか,automation,자동화,zìdònghuà,to automate,tự động hóa,Tự động hoá.
 自動車,自動車,自动车,じどうしゃ,car,자동차,zìdòngchē,automobile,,
 自動販売機,自動販賣機,自动贩卖机,じどうはんばいき,vending machine,자동판매기,zìdòngfànmàijī,vending machine,,
-自白,自白,自白,じはく,confession,자백,zìbái,confession; to make clear one's position or intentions; to brag,,
+自白,自白,自白,じはく,confession,자백,zìbái,confession; to make clear one's position or intentions; to brag,tự bạch,self-expression
 自閉症,自閉症,自闭症,じへいしょう,autism,자폐증,zìbìzhèng,autism,,
-自由化,自由化,自由化,じゆうか,liberalization,자유화,zìyóuhuà,liberalization; freeing (from sth),,
+自由化,自由化,自由化,じゆうか,liberalization,자유화,zìyóuhuà,liberalization; freeing (from sth),tự do hóa,to liberalize
 自律,自律,自律,じりつ,autonomy,자율,zìlǜ,self-discipline; self-regulation; autonomy (ethics); autonomic (physiology),,
 辞書,辭書,辞书,じしょ,dictionary,사서,císhū,dictionary; encyclopedia,,
 辞任,辭任,辞任,じにん,resignation (from a position),사임,círèn,to resign (a position),từ nhiệm,(trang trọng) Như từ chức
@@ -976,7 +976,7 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 実名,實名,实名,じつめい,real name,실명,shímíng,real-name (registration etc); non-anonymous,,
 実利,實利,实利,じつり,utility,실리,shílì,advantage; gain; net profit,,
 実例,實例,实例,じつれい,example,실례,shílì,actual example; living example; illustration; demonstration; (computing) instance,,
-写真,寫眞,写真,しゃしん,photograph,사진,xiězhēn,portrait; to describe sth accurately,,
+写真,寫眞,写真,しゃしん,photograph,사진,xiězhēn,portrait; to describe sth accurately,tả chân,realistic; realist
 写生,寫生,写生,しゃせい,sketching,사생,xiěshēng,to sketch from nature; to do a still life drawing,,
 射殺,射殺,射杀,しゃさつ,shooting to death,사살,shèshā,"to shoot dead (with a gun, or bow and arrow)",,
 射精,射精,射精,しゃせい,ejaculation,사정,shèjīng,ejaculation; to ejaculate,,
@@ -1000,7 +1000,7 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 主幹,主幹,主干,しゅかん,chief editor,주간,zhǔgàn,trunk; main; core,,
 主計,主計,主计,しゅけい,paymaster,주계,zhǔjì,chief accounting officer; controller; comptroller; (Han Dynasty) treasurer,,
 主軸,主軸,主轴,しゅじく,main spindle,주축,zhǔzhóu,"axis; principal axis (in mechanics, optics, botany etc); main axle (of engine)",,
-主将,主將,主将,しゅしょう,commander-in-chief,주장,zhǔjiàng,commander-in-chief (military); star player (sports); key figure (in an organization),,
+主将,主將,主将,しゅしょう,commander-in-chief,주장,zhǔjiàng,commander-in-chief (military); star player (sports); key figure (in an organization),chủ tướng,the feudal commander-in-chief; chief commander of armed forces
 主導権,主導權,主导权,しゅどうけん,hegemony,주도권,zhǔdǎoquán,control; dominant position; decision-making power,,
 主犯,主犯,主犯,しゅはん,principal offence,주범,zhǔfàn,culprit,,
 取材,取材,取材,しゅざい,"gathering material (for an article, novel, etc.)",취재,qǔcái,to collect material,,
@@ -1040,7 +1040,7 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 修道,修道,修道,しゅうどう,learning,수도,xiūdào,to practice Daoism,,
 修道院,修道院,修道院,しゅうどういん,monastery,수도원,xiūdàoyuàn,monastery; convent,,
 拾得,拾得,拾得,しゅうとく,finding (lost property),습득,shídé,to find; to pick up; to collect,,
-終局,終局,终局,しゅうきょく,end,종국,zhōngjú,endgame; conclusion; outcome; final part of a chess game,,
+終局,終局,终局,しゅうきょく,end,종국,zhōngjú,endgame; conclusion; outcome; final part of a chess game,chung cuộc,end; outcome
 終戦,終戰,终战,しゅうせん,end of war,종전,zhōngzhàn,end of the war,chung chiến,Kết thúc chiến tranh.
 終日,終日,终日,しゅうじつ,all day,종일,zhōngrì,all day long,,
 終末,終末,终末,しゅうまつ,end,종말,zhōngmò,the end; (medicine) final phase; end-stage,,
@@ -1064,8 +1064,8 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 十六,十六,十六,じゅうろく,sixteen,십육,shíliù,sixteen; 16,,
 従軍,從軍,从军,じゅうぐん,military service,종군,cóngjūn,to enlist; to serve in the army,tòng quân,"Vào quân đội, nhập ngũ, đi lính."
 従属,從屬,从属,じゅうぞく,subordination,종속,cóngshǔ,subordinate,,
-柔道,柔道,柔道,じゅうどう,judo,유도,róudào,judo,,
-獣医,獸醫,兽医,じゅうい,veterinarian,수의,shòuyī,veterinarian; veterinary surgeon; vet,,
+柔道,柔道,柔道,じゅうどう,judo,유도,róudào,judo,nhu đạo,judo
+獣医,獸醫,兽医,じゅうい,veterinarian,수의,shòuyī,veterinarian; veterinary surgeon; vet,thú y,veterinary medicine; veterinary science
 重圧,重壓,重压,じゅうあつ,strong pressure,중압,zhòngyā,high pressure; bearing a heavy weight,,
 重工業,重工業,重工业,じゅうこうぎょう,heavy industry,중공업,zhònggōngyè,heavy industry; manufacturing,,
 重症,重症,重症,じゅうしょう,serious illness,중증,zhòngzhèng,acute (of medical condition); grave,,
@@ -1089,7 +1089,7 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 出版物,出版物,出版物,しゅっぱんぶつ,publication,출판물,chūbǎnwù,publications,,
 出品,出品,出品,しゅっぴん,exhibiting,출품,chūpǐn,to produce an item; output; items that are produced,,
 出力,出力,出力,しゅつりょく,"output (electrical, signal, etc.)",출력,chūlì,to exert oneself,,
-春夏秋冬,春夏秋冬,春夏秋冬,しゅんかしゅうとう,"spring, summer, autumn (fall) and winter",춘하추동,chūnxiàqiūdōng,"the four seasons; spring, summer, autumn and winter",,
+春夏秋冬,春夏秋冬,春夏秋冬,しゅんかしゅうとう,"spring, summer, autumn (fall) and winter",춘하추동,chūnxiàqiūdōng,"the four seasons; spring, summer, autumn and winter",xuân hạ thu đông,the four seasons
 春秋,春秋,春秋,しゅんじゅう,spring and autumn,춘추,chūnqiū,spring and autumn; four seasons; year; a person's age; annals (used in book titles),xuân thu,Cả năm.
 瞬時,瞬時,瞬时,しゅんじ,instant,순시,shùnshí,instantaneous,,
 潤滑油,潤滑油,润滑油,じゅんかつゆ,lubricating oil,윤활유,rùnhuáyóu,lubricating oil,,
@@ -1118,7 +1118,7 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 署名,署名,署名,しょめい,signature,서명,shǔmíng,to sign (a signature),,
 書簡,書簡,书简,しょかん,letter,서간,shūjiǎn,(literary) letter,,
 書斎,書齋,书斋,しょさい,study,서재,shūzhāi,study (room),,
-書体,書體,书体,しょたい,typeface,서체,shūtǐ,style of Chinese script,,
+書体,書體,书体,しょたい,typeface,서체,shūtǐ,style of Chinese script,thư thể,calligraphic styles:
 書評,書評,书评,しょひょう,book review,서평,shūpíng,book review; book notice,,
 書名,書名,书名,しょめい,book title,서명,shūmíng,name of a book; reputation as calligrapher,,
 諸君,諸君,诸君,しょくん,you (people),제군,zhūjūn,Gentlemen! (start of a speech); Ladies and Gentlemen!,,
@@ -1163,7 +1163,7 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 照準,照準,照准,しょうじゅん,sight (e.g. of a gun),조준,zhàozhǔn,request granted (formal usage in old document); to aim (gun),,
 症候群,症候羣,症候群,しょうこうぐん,syndrome,증후군,zhènghòuqún,(Tw) syndrome,,
 笑顔,笑顏,笑颜,えがお,smiling face,소안,xiàoyán,smiling face,,
-証券,證券,证券,しょうけん,bond,증권,zhèngquàn,negotiable security (financial); certificate; stocks and bonds,,
+証券,證券,证券,しょうけん,bond,증권,zhèngquàn,negotiable security (financial); certificate; stocks and bonds,chứng khoán,security (financial instrument)
 証言,證言,证言,しょうげん,testimony,증언,zhèngyán,testimony,,
 証明書,證明書,证明书,しょうめいしょ,certificate,증명서,zhèngmíngshū,certificate,chứng minh thư,Xem giấy chứng minh
 象牙,象牙,象牙,ぞうげ,ivory,상아,xiàngyá,ivory; elephant tusk,,
@@ -1328,7 +1328,7 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 生態系,生態系,生态系,せいたいけい,ecosystem,생태계,shēngtàixì,(Tw) ecosystem,,
 生姜,生姜,生姜,しょうが,ginger (Zingiber officinale),,shēngjiāng,fresh ginger,,
 盛況,盛況,盛况,せいきょう,success,성황,shèngkuàng,grand occasion,,
-精鋭,精銳,精锐,せいえい,elite,정예,jīngruì,elite (e.g. troops); crack; best quality personnel,,
+精鋭,精銳,精锐,せいえい,elite,정예,jīngruì,elite (e.g. troops); crack; best quality personnel,tinh nhuệ,well-equipped and high-spirited
 精巧,精巧,精巧,せいこう,elaborate,정교,jīngqiǎo,elaborate,tinh xảo,Khéo léo và tỉ mỉ.
 精算,精算,精算,せいさん,exact calculation,정산,jīngsuàn,actuarial,,
 精子,精子,精子,せいし,sperm,정자,jīngzǐ,sperm cell; spermatozoon,,
@@ -1345,7 +1345,7 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 西側,西側,西侧,にしがわ,west side,,xīcè,west side; west face,,
 西洋人,西洋人,西洋人,せいようじん,Western person,서양인,xīyángrén,Westerner,,
 西暦,西曆,西历,せいれき,Common Era,서력,xīlì,Gregorian calendar; Western calendar,tây lịch,
-誓約,誓約,誓约,せいやく,oath,서약,shìyuē,oath; vow; pledge; promise,,
+誓約,誓約,誓约,せいやく,oath,서약,shìyuē,oath; vow; pledge; promise,thệ ước,to vow; to pledge
 請願,請願,请愿,せいがん,petition,청원,qǐngyuàn,to petition,thỉnh nguyện,Bày tỏ nguyện vọng với người trên (cũ).
 青果,青果,青果,せいか,fruits and vegetables,청과,qīngguǒ,Chinese olive (Canarium album); green unripe fruit; (Tw) fresh fruits,,
 青色,青色,青色,あおいろ,blue,청색,qīngsè,cyan; blue-green,thanh sắc,Âm nhạc và sắc đẹp của phụ nữ.
@@ -1366,7 +1366,7 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 接戦,接戰,接战,せっせん,close contest,접전,jiēzhàn,to engage in battle,tiếp chiến,Đánh quân địch khi chúng tới đánh mình.
 接点,接點,接点,せってん,point of tangency,접점,jiēdiǎn,(electrical) contact,tiếp điểm,Điểm tiếp xúc giữa hai đường hoặc hai mặt.
 摂取,攝取,摄取,せっしゅ,intake (e.g. of salt),섭취,shèqǔ,to absorb (nutrients etc); to assimilate; intake; to take a photograph of (a scene),,
-折中,折中,折中,せっちゅう,compromise,절중,zhézhōng,to compromise; to take the middle road; a trade-off; eclectic,,
+折中,折中,折中,せっちゅう,compromise,절중,zhézhōng,to compromise; to take the middle road; a trade-off; eclectic,chiết trung,eclectic; compromising; reconciliatory
 折半,折半,折半,せっぱん,halving,절반,zhébàn,to reduce by fifty percent; half-price,,
 窃盗,竊盜,窃盗,せっとう,theft,절도,qièdào,theft; to steal,,
 説教,說教,说教,せっきょう,sermon,설교,shuōjiào,to preach,thuyết giáo,Giảng giải về lý lẽ tôn giáo.
@@ -1374,7 +1374,7 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 絶句,絕句,绝句,ぜっく,being lost for words,,juéjù,quatrain (poetic form),tuyệt cú,Bài thơ có bốn câu mỗi câu có năm hay bảy chữ.
 絶交,絕交,绝交,ぜっこう,breaking off a relationship,절교,juéjiāo,to break off relations; to break with sb,tuyệt giao,Cắt đứt sự giao thiệp với nhau.
 絶頂,絕頂,绝顶,ぜっちょう,top (of a mountain),절정,juédǐng,(lit. and fig.) summit; peak; extremely; utterly,tuyệt đỉnh,Điểm hoặc mức độ cao nhất.
-絶妙,絕妙,绝妙,ぜつみょう,exquisite,절묘,juémiào,exquisite,,
+絶妙,絕妙,绝妙,ぜつみょう,exquisite,절묘,juémiào,exquisite,tuyệt diệu,exquisite; fantastic; splendid
 絶滅,絕滅,绝灭,ぜつめつ,extinction,절멸,juémiè,to annihilate; to exterminate; extinction,,
 先駆,先驅,先驱,せんく,forerunner,선구,xiānqū,to pioneer; pioneer; trailblazer,,
 先決,先決,先决,せんけつ,deciding first,선결,xiānjué,prerequisite; necessary,tiên quyết,"Cần phải giải quyết trước, cần phải có trước thì mới làm cái khác được."
@@ -1470,8 +1470,8 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 蔵書,藏書,藏书,ぞうしょ,collection of books,장서,cángshū,to collect books; library collection,tàng thư,"hệ thống hồ sơ, tài liệu được quản lý, phân loại, sắp xếp theo trình tự nhất định để tra cứu và khai thác thông tin."
 造船,造船,造船,ぞうせん,shipbuilding,조선,zàochuán,shipbuilding,,
 側近,側近,侧近,そっきん,close aide (of a powerful person),측근,cèjìn,vicinity; nearby area,,
-即位,卽位,即位,そくい,accession to the throne,즉위,jíwèi,to succeed to the throne; accession,,
-即刻,卽刻,即刻,そっこく,immediately,즉각,jíkè,immediately; instant; instantly,,
+即位,卽位,即位,そくい,accession to the throne,즉위,jíwèi,to succeed to the throne; accession,tức vỵ,to become king; to ascend the throne
+即刻,卽刻,即刻,そっこく,immediately,즉각,jíkè,immediately; instant; instantly,tức khắc,instant; moment; split-second
 即席,卽席,即席,そくせき,impromptu,즉석,jíxí,impromptu; improvised; to take one's seat (at a banquet etc),,
 即日,卽日,即日,そくじつ,(on) the same day,즉일,jírì,this or that very day; in the next few days,,
 速報,速報,速报,そくほう,news flash,속보,sùbào,to report quickly; rapid reporting; bulletin (esp. one providing statistical data on a monthly basis),,
@@ -1488,7 +1488,7 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 多数決,多數決,多数决,たすうけつ,majority decision,다수결,duōshùjué,majority decision,,
 多大,多大,多大,ただい,"great (quantity, amount, etc.)",다대,duōdà,how old?; how big?; how much?; so big; that much,,
 多目的,多目的,多目的,たもくてき,multipurpose,다목적,duōmùdì,multipurpose,,
-多様化,多樣化,多样化,たようか,diversification,다양화,duōyànghuà,diversification; to diversify,,
+多様化,多樣化,多样化,たようか,diversification,다양화,duōyànghuà,diversification; to diversify,đa dạng hóa,to diversify
 多様性,多樣性,多样性,たようせい,diversity,다양성,duōyàngxìng,variegation; diversity,,
 多用,多用,多用,たよう,busyness,다용,duōyòng,multipurpose; having several uses,,
 体温計,體溫計,体温计,たいおんけい,(clinical) thermometer,체온계,tǐwēnjì,clinical thermometer,,
@@ -1521,10 +1521,10 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 代謝,代謝,代谢,たいしゃ,metabolism,대사,dàixiè,replacement; substitution; metabolism (biol.),,
 代償,代償,代偿,だいしょう,compensation,대상,dàicháng,(medical) compensation; to repay a debt or obligation in place of sb else,,
 代表作,代表作,代表作,だいひょうさく,"most important work (of a writer, artist, etc.)",대표작,dàibiǎozuò,representative work (of an author or artist),,
-代名詞,代名詞,代名词,だいめいし,pronoun,대명사,dàimíngcí,pronoun; synonym; byword,,
+代名詞,代名詞,代名词,だいめいし,pronoun,대명사,dàimíngcí,pronoun; synonym; byword,đại danh từ,pronoun
 台地,臺地,台地,だいち,plateau,대지,táidì,tableland; mesa,,
 台本,臺本,台本,だいほん,script,대본,táiběn,"script (of a play, movie, or television program)",,
-大尉,大尉,大尉,たいい,"captain (Army, US Marine Corps, USAF)",대위,dàwèi,captain (army rank); senior captain,,
+大尉,大尉,大尉,たいい,"captain (Army, US Marine Corps, USAF)",대위,dàwèi,captain (army rank); senior captain,đại úy,captain
 大雨,大雨,大雨,おおあめ,heavy rain,대우,dàyǔ,heavy rain; CL:場|场[chang2],,
 大火,大火,大火,たいか,large fire,대화,dàhuǒ,conflagration; large fire; CL:場|场[chang2],,
 大喜,大喜,大喜,おおよろこび,great joy,대희,dàxǐ,exultation,,
@@ -1535,7 +1535,7 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 大水,大水,大水,おおみず,flood,대수,dàshuǐ,flood,,
 大勢,大勢,大势,おおぜい,crowd of people,대세,dàshì,overall trend,,
 大腸,大腸,大肠,だいちょう,large intestine,대장,dàcháng,the large intestine,đại tràng,Như ruột già.
-大抵,大抵,大抵,たいてい,mostly,대저,dàdǐ,generally speaking; by and large; for the most part,,
+大抵,大抵,大抵,たいてい,mostly,대저,dàdǐ,generally speaking; by and large; for the most part,đại để,for the most part; generally
 大都市,大都市,大都市,だいとし,metropolis,대도시,dàdūshì,metropolis; large city; megacity,,
 大豆,大豆,大豆,だいず,soya bean (Glycine max),대두,dàdòu,soybean,,
 大麦,大麥,大麦,おおむぎ,barley (Hordeum vulgare),대맥,dàmài,barley,đại mạch,"Giống lúa hạt lớn, dùng làm thức ăn, rượu bia, đường."
@@ -1595,20 +1595,20 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 地盤,地盤,地盘,じばん,ground,지반,dìpán,domain; territory under one's control; foundation of a building; base of operations; crust of earth,địa bàn,"Khu vực, phạm vi, trong quan hệ với những hoạt động tiến hành ở đó."
 地平線,地平線,地平线,ちへいせん,horizon (related to land),지평선,dìpíngxiàn,horizon,,
 地雷,地雷,地雷,じらい,land mine,지뢰,dìléi,land mine (CL:顆|颗[ke1]); (fig.) sore point; weak spot,địa lôi,"Các loại mìn, đương lượng nổ được bố trí trên hoặc dưới mặt đất."
-致死,致死,致死,ちし,lethal,치사,zhìsǐ,to cause death; to be lethal; to be deadly,,
+致死,致死,致死,ちし,lethal,치사,zhìsǐ,to cause death; to be lethal; to be deadly,trý tử,guaranteed to cause death; fatal
 致命傷,致命傷,致命伤,ちめいしょう,fatal wound,치명상,zhìmìngshāng,mortal wound; (fig.) fatal weakness; Achilles' heel,,
 蜘蛛,蜘蛛,蜘蛛,くも,spider,지주,zhīzhū,spider,,
 遅延,遲延,迟延,ちえん,delay,지연,chíyán,to delay,,
 茶色,茶色,茶色,ちゃいろ,brown,,chásè,dark brown; tawny,,
 着衣,着衣,着衣,ちゃくい,clothes (that one is wearing),착의,zhuóyī,to get dressed,,
 着色,着色,着色,ちゃくしょく,colouring,착색,zhuósè,to apply color; to color; to paint,,
-中尉,中尉,中尉,ちゅうい,first lieutenant,중위,zhōngwèi,lieutenant (navy); first lieutenant (army); subaltern,,
+中尉,中尉,中尉,ちゅうい,first lieutenant,중위,zhōngwèi,lieutenant (navy); first lieutenant (army); subaltern,trung úy,lieutenant; first lieutenant
 中央集権,中央集權,中央集权,ちゅうおうしゅうけん,centralized authoritarian rule,중앙집권,zhōngyāngjíquán,centralized state power,,
 中継,中繼,中继,ちゅうけい,relay,중계,zhōngjì,to relay; to repeat,,
 中堅,中堅,中坚,ちゅうけん,nucleus,중견,zhōngjiān,core; nucleus; backbone,trung kiên,Trung thành và bền bỉ.
 中産階級,中產階級,中产阶级,ちゅうさんかいきゅう,middle class,중산계급,zhōngchǎnjiējí,middle class,,
 中軸,中軸,中轴,ちゅうじく,axis,중축,zhōngzhóu,axis; (bicycle) bottom bracket,,
-中傷,中傷,中伤,ちゅうしょう,slander,중상,zhòngshāng,to slander; to defame; to get hit (by a bullet); to be wounded,,
+中傷,中傷,中伤,ちゅうしょう,slander,중상,zhòngshāng,to slander; to defame; to get hit (by a bullet); to be wounded,trúng thương,to slander; to malign; to humiliate
 中小企業,中小企業,中小企业,ちゅうしょうきぎょう,small and medium-sized enterprises,중소기업,zhōngxiǎoqǐyè,small and medium enterprise,,
 中枢,中樞,中枢,ちゅうすう,centre,중추,zhōngshū,center; hub; the central administration,,
 中庭,中庭,中庭,なかにわ,courtyard,중정,zhōngtíng,courtyard,,
@@ -1619,7 +1619,7 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 媒人,媒人,媒人,なこうど,matchmaker,,méiren,matchmaker,,
 忠告,忠告,忠告,ちゅうこく,advice,충고,zhōnggào,to give sb a word of advice; advice; counsel; a wise word,trung cáo,"Khuyên bảo thẳng thắn, không sợ mếch lòng (cũ)."
 抽出,抽出,抽出,ちゅうしゅつ,extraction,추출,chōuchū,to take out; to extract,,
-注目,注目,注目,ちゅうもく,notice,주목,zhùmù,attention; to stare at; to fix attention on sth,,
+注目,注目,注目,ちゅうもく,notice,주목,zhùmù,attention; to stare at; to fix attention on sth,chú mục,to focus (on); to concentrate (on)
 駐留,駐留,驻留,ちゅうりゅう,stationing (e.g. of troops),주류,zhùliú,to stay; to remain; to linger; (computing) to reside; resident (program etc),,
 著作権,著作權,著作权,ちょさくけん,copyright,저작권,zhùzuòquán,copyright,,
 著書,著書,著书,ちょしょ,(written) work,저서,zhùshū,to write a book,,
@@ -1679,7 +1679,7 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 低気圧,低氣壓,低气压,ていきあつ,low (atmospheric) pressure,저기압,dīqìyā,low pressure; depression (meteorology),,
 低落,低落,低落,ていらく,fall,저락,dīluò,downcast; gloomy; to decline; to get worse,,
 低利,低利,低利,ていり,low interest rate,저리,dīlì,low interest,,
-停滞,停滯,停滞,ていたい,stagnation,정체,tíngzhì,stagnation; at a standstill; bogged down,,
+停滞,停滯,停滞,ていたい,stagnation,정체,tíngzhì,stagnation; at a standstill; bogged down,đình trệ,stagnant
 碇泊,碇泊,碇泊,ていはく,anchorage,정박,dìngbó,to moor; to drop anchor,,
 剃刀,剃刀,剃刀,かみそり,razor,체도,tìdāo,razor,,
 堤防,堤防,堤防,ていぼう,bank,제방,dīfáng,dike; embankment; levee,,
@@ -1693,10 +1693,10 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 定例,定例,定例,ていれい,regular,정례,dìnglì,usual practice; routine,,
 庭園,庭園,庭园,ていえん,garden,정원,tíngyuán,flower garden,,
 提案,提案,提案,ていあん,proposal,제안,tíàn,proposal; draft resolution; motion (to be debated); to propose a bill; to make a proposal,đề án,"Toàn bộ ý kiến có hệ thống về những công việc nào đó cần làm, được nêu ra để thảo luận, thông qua, xét duyệt."
-提携,提携,提携,ていけい,cooperation,제휴,tíxié,to lead by the hand; to guide; to support,,
+提携,提携,提携,ていけい,cooperation,제휴,tíxié,to lead by the hand; to guide; to support,đề huề,abundant and/or harmonious
 締結,締結,缔结,ていけつ,conclusion,체결,dìjié,to conclude (an agreement),,
 締約,締約,缔约,ていやく,conclusion of a treaty,체약,dìyuē,to conclude a treaty,,
-訂正,訂正,订正,ていせい,correction,정정,dìngzhèng,to make a correction,,
+訂正,訂正,订正,ていせい,correction,정정,dìngzhèng,to make a correction,đính chính,to correct; to rectify; to revise
 泥沼,泥沼,泥沼,どろぬま,bog,이소,nízhǎo,swamp,,
 敵意,敵意,敌意,てきい,hostility,적의,díyì,enmity; hostility,,
 敵対,敵對,敌对,てきたい,hostility,적대,díduì,hostile; enemy (factions); combative,,
@@ -1710,7 +1710,7 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 鉄棒,鐵棒,铁棒,てつぼう,iron rod,철봉,tiěbàng,iron club; steel rod,,
 天井,天井,天井,てんじょう,ceiling,천정,tiānjǐng,courtyard; atrium; opening in a roof; skylight; caisson ceiling; (TCM) acupuncture point TB10,,
 天候,天候,天候,てんこう,weather,천후,tiānhòu,weather,,
-天国,天國,天国,てんごく,paradise,천국,tiānguó,Kingdom of Heaven,,
+天国,天國,天国,てんごく,paradise,천국,tiānguó,Kingdom of Heaven,thiên quốc,heavenly kingdom; Kingdom of Heaven; paradise
 天文台,天文臺,天文台,てんもんだい,astronomical observatory,천문대,tiānwéntái,astronomical observatory,,
 天辺,天邊,天边,てっぺん,top,천변,tiānbiān,horizon; ends of the earth; remotest places,,
 天理,天理,天理,てんり,natural laws,천리,tiānlǐ,Heaven's law; the natural order of things,thiên lý,Nghìn dặm.
@@ -1736,7 +1736,7 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 田園,田園,田园,でんえん,the country,전원,tiányuán,fields; countryside; rural; bucolic,điền viên,"Ruộng vườn, nơi nghỉ ngơi vui thú."
 田舎,田舍,田舍,いなか,rural area,전사,tiánshè,farmhouse,,
 電圧,電壓,电压,でんあつ,voltage,전압,diànyā,voltage,điện áp,Đại lượng đặc trưng cho khả năng sinh công của điện trường giữa hai điểm đang xét.
-電機,電機,电机,でんき,electrical machinery,전기,diànjī,electrical machinery,,
+電機,電機,电机,でんき,electrical machinery,전기,diànjī,electrical machinery,điện cơ,electromechanics
 電気,電氣,电气,でんき,electricity,전기,diànqì,electricity; electric; electrical,điện khí,"Quá trình làm cho một máy móc hoặc hệ thống hoạt động bằng cách sử dụng điện (khi trước đó sử dụng các phương pháp khác như chạy bằng dầu, thủ công)."
 電極,電極,电极,でんきょく,electrode,전극,diànjí,electrode,điện cực,"Vật dẫn điện ở thể rắn có tác dụng đưa dòng điện đến các môi trường phi kim ở thể rắn hoặc các môi trường khác ở thể lỏng, thể khí, plasma hoặc chân không."
 電撃,電擊,电击,でんげき,electric shock,전격,diànjī,electric shock,,
@@ -1756,14 +1756,14 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 党首,黨首,党首,とうしゅ,party leader,당수,dǎngshǒu,party leader,,
 党内,黨內,党内,とうない,party-internal,당내,dǎngnèi,within the party (esp. Chinese communist party),,
 冬眠,冬眠,冬眠,とうみん,hibernation,동면,dōngmián,to hibernate; hibernation,,
-唐突,唐突,唐突,とうとつ,abrupt,당돌,tángtū,to be rude; to treat irreverently,,
+唐突,唐突,唐突,とうとつ,abrupt,당돌,tángtū,to be rude; to treat irreverently,đường đột,"too sudden or abrupt, to the point of being shocking, uncalled for, or even rude"
 投影,投影,投影,とうえい,projection (of a shadow),투영,tóuyǐng,to project; a projection,,
 投手,投手,投手,とうしゅ,pitcher,투수,tóushǒu,thrower; pitcher; bowler,,
 投書,投書,投书,とうしょ,letter (e.g. of complaint),투서,tóushū,"to submit a written piece (letter, article, opinion piece etc)",,
 搭載,搭載,搭载,とうさい,loading (on a ship),탑재,dāzài,(of a vehicle) to carry (a passenger or payload); (of a device or system) to be equipped with (a piece of hardware or software),,
 春宮,春宮,春宫,とうぐう,crown prince,춘궁,chūngōng,"Crown Prince's chambers; by extension, the Crown Prince; erotic picture",,
 東経,東經,东经,とうけい,east longitude,동경,dōngjīng,east longitude,đông kinh,"Một phường thuộc thành phố Lạng Sơn, tỉnh Lạng Sơn, Việt Nam."
-盗賊,盜賊,盗贼,とうぞく,thief,도적,dàozéi,robber,,
+盗賊,盜賊,盗贼,とうぞく,thief,도적,dàozéi,robber,đạo tặc,bandit; thief; robber
 盗塁,盜壘,盗垒,とうるい,base stealing,도루,dàolěi,(baseball) to steal a base; stolen base (SB),,
 灯台,燈臺,灯台,とうだい,lighthouse,등대,dēngtái,lampstand,,
 当局,當局,当局,とうきょく,authorities,당국,dāngjú,authorities,đương cục,(lỗi thời) Như Nhà đương cục
@@ -1782,17 +1782,17 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 頭痛,頭痛,头痛,ずつう,headache,두통,tóutòng,to have a headache,,
 頭文字,頭文字,头文字,かしらもじ,first letter of a word,두문자,tóuwénzì,initial; first letter of word (in Latin script),,
 動議,動議,动议,どうぎ,"motion (i.e. proposal to a committee, etc.)",동의,dòngyì,motion; proposal,,
-動植物,動植物,动植物,どうしょくぶつ,plants and animals,동식물,dòngzhíwù,plants and animals; flora and fauna,,
+動植物,動植物,动植物,どうしょくぶつ,plants and animals,동식물,dòngzhíwù,plants and animals; flora and fauna,động thực vật,flora and fauna
 動脈硬化,動脈硬化,动脉硬化,どうみゃくこうか,arteriosclerosis,동맥경화,dòngmàiyìnghuà,hardening of the arteries; arteriosclerosis,,
 動乱,動亂,动乱,どうらん,disturbance,동란,dòngluàn,turmoil; upheaval; unrest,,
-同化,同化,同化,どうか,assimilation,동화,tónghuà,"assimilation (cultural, digestive, phonemic etc)",,
+同化,同化,同化,どうか,assimilation,동화,tónghuà,"assimilation (cultural, digestive, phonemic etc)",đồng hóa,to assimilate
 同級,同級,同级,どうきゅう,the same grade,동급,tóngjí,on the same level; ranking equally,,
 同居,同居,同居,どうきょ,living together,동거,tóngjū,to live together; to cohabit,,
-同業,同業,同业,どうぎょう,same trade,동업,tóngyè,same trade or business; person in the same trade or business,,
+同業,同業,同业,どうぎょう,same trade,동업,tóngyè,same trade or business; person in the same trade or business,đồng nghiệp,working together
 同好,同好,同好,どうこう,similar tastes,동호,tónghào,fellow enthusiasts,,
 同時代,同時代,同时代,どうじだい,same age,동시대,tóngshídài,contemporary,,
 同上,同上,同上,どうじょう,same as above,동상,tóngshàng,as above; ditto; idem,,
-同性,同性,同性,どうせい,same sex,동성,tóngxìng,same nature; homosexual,,
+同性,同性,同性,どうせい,same sex,동성,tóngxìng,same nature; homosexual,đồng tính,homosexual; gay
 同性愛,同性愛,同性爱,どうせいあい,homosexuality,동성애,tóngxìngài,homosexual,,
 同調,同調,同调,どうちょう,conformity,동조,tóngdiào,same tone; in agreement with; homology (invariant of a topological space in math.),đồng điệu,"Cùng chung một nhịp điệu, một hành vi, lối sống hoặc suy nghĩ."
 同党,同黨,同党,どうとう,same (political) party,동당,tóngdǎng,to belong to the same party or organization; member of the same party or organization; (derog.) confederate; accomplice,,
@@ -1801,7 +1801,7 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 導入,導入,导入,どうにゅう,introduction,도입,dǎorù,to introduce into; to channel; to lead; to guide into; to import (data),,
 洞察,洞察,洞察,どうさつ,discernment,통찰,dòngchá,to see clearly,,
 胴体,胴體,胴体,どうたい,trunk,동체,dòngtǐ,carcass; naked body,,
-道場,道場,道场,どうじょう,dojo,,dàochǎng,Taoist or Buddhist rite; abbr. for 菩提道場|菩提道场[Pu2 ti2 dao4 chang3],,
+道場,道場,道场,どうじょう,dojo,,dàochǎng,Taoist or Buddhist rite; abbr. for 菩提道場|菩提道场[Pu2 ti2 dao4 chang3],đạo trường,dojo
 銅像,銅像,铜像,どうぞう,bronze statue,동상,tóngxiàng,"bronze statue; CL:尊[zun1],座[zuo4]",,
 得票,得票,得票,とくひょう,number of votes polled,득표,dépiào,vote-getting,,
 特異,特異,特异,とくい,unique,특이,tèyì,exceptionally good; excellent; clearly outstanding; distinctive; peculiar; unique,,
@@ -1819,12 +1819,12 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 独占,獨占,独占,どくせん,monopoly,독점,dúzhàn,to have all to oneself; to monopolize,độc chiếm,"Chiếm lấy, giành lấy riêng một mình."
 独創,獨創,独创,どくそう,originality,독창,dúchuàng,to come up with (an innovation); innovation,,
 独断,獨斷,独断,どくだん,one's own judgement (judgment),독단,dúduàn,to decide alone without consultation; arbitrary; dictatorial,độc đoán,"(Lối làm việc, xử sự) Dùng quyền của mình mà định đoạt công việc theo ý riêng, bất chấp ý kiến của những người khác."
-突起,突起,突起,とっき,protuberance,돌기,tūqǐ,to appear suddenly; projection; bit sticking out,,
+突起,突起,突起,とっき,protuberance,돌기,tūqǐ,to appear suddenly; projection; bit sticking out,đột khởi,to emerge suddenly; to rise up abruptly; to surge unexpectedly
 鈍化,鈍化,钝化,どんか,becoming dull,둔화,dùnhuà,(chemistry) to passivate,,
 内政,內政,内政,ないせい,domestic affairs,내정,nèizhèng,internal affairs (of a country),nội chính,Việc sửa trị trong nước.
 内線,內線,内线,ないせん,phone extension,내선,nèixiàn,inside source; mole; insider; inside information; insider connections; (military) interior lines; internal telephone line,nội tuyến,Người do thám trong hàng ngũ của địch.
 内装,內裝,内装,ないそう,interior design,내장,nèizhuāng,filled with; internal decoration; installed inside,,
-内臓,內臟,内脏,ないぞう,internal organs,내장,nèizàng,internal organs; viscera,,
+内臓,內臟,内脏,ないぞう,internal organs,내장,nèizàng,internal organs; viscera,nội tạng,viscera
 内側,內側,内侧,うちがわ,inside,내측,nèicè,inner side,,
 内定,內定,内定,ないてい,tentative decision,내정,nèidìng,to select sb for a position without announcing the decision until later; to decide behind closed doors; all cut and dried,,
 内野,內野,内野,ないや,infield,내야,nèiyě,(baseball) infield,,
@@ -1842,12 +1842,12 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 二十世紀,二十世紀,二十世纪,にじっせいき,twentieth century,이십세기,èrshíshìjì,20th century,,
 二重,二重,二重,にじゅう,double,이중,èrchóng,double; repeated twice,,
 二世,二世,二世,にせい,nisei,이세,èrshì,the Second (of numbered kings); second generation (e.g. Chinese Americans),,
-二分,二分,二分,にぶん,halving,이분,èrfēn,second part; the equinox,,
+二分,二分,二分,にぶん,halving,이분,èrfēn,second part; the equinox,nhỵ phân,binary
 二流,二流,二流,にりゅう,second-rate,이류,èrliú,second-rate; second-tier,,
 肉眼,肉眼,肉眼,にくがん,naked eye,육안,ròuyǎn,naked eye; layman's eyes,,
 肉食,肉食,肉食,にくしょく,meat eating,육식,ròushí,meat (as food); carnivorous; meat-eating,,
 肉体,肉體,肉体,にくたい,the body,육체,ròutǐ,physical body,,
-日刊,日刊,日刊,にっかん,daily publication,일간,rìkān,daily (publication),,
+日刊,日刊,日刊,にっかん,daily publication,일간,rìkān,daily (publication),nhật san,daily magazine
 日系,日系,日系,にっけい,(of) Japanese descent,일계,rìxì,(attributive) of Japanese origin,,
 日経,日經,日经,にっけい,"Nikkei (newspaper, share index)",,rìjīng,"Nikkei, abbr. for Nikkei Shimbun 日本經濟新聞|日本经济新闻[Ri4 ben3 Jing1 ji4 Xin1 wen2]; abbr. for Nikkei 225 index 日經指數|日经指数[Ri4 jing1 zhi3 shu4]",,
 日光,日光,日光,にっこう,sunlight,일광,rìguāng,sunlight,,
@@ -1858,7 +1858,7 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 日没,日沒,日没,にちぼつ,sunset,일몰,rìmò,sunset; sundown,,
 日用品,日用品,日用品,にちようひん,daily necessities,일용품,rìyòngpǐn,articles for daily use; CL:件[jian4],,
 乳児,乳兒,乳儿,にゅうじ,infant (below 1 year old),유아,rǔér,nursing infant; child less than one year old,,
-入院,入院,入院,にゅういん,hospitalization,입원,rùyuàn,to enter hospital; to be hospitalized,,
+入院,入院,入院,にゅういん,hospitalization,입원,rùyuàn,to enter hospital; to be hospitalized,nhập viện,to be admitted to hospital; to be hospitalised
 入園,入園,入园,にゅうえん,enrollment in kindergarten,입원,rùyuán,"to enter a park or other place for public recreation (typically, one whose name ends in 園|园: a zoo 動物園|动物园[dong4 wu4 yuan2], amusement park 遊樂園|游乐园[you2 le4 yuan2] etc); to enrol in a kindergarten 幼兒園|幼儿园[you4 er2 yuan2]; to start going to kindergarten",,
 入会,入會,入会,にゅうかい,"admission (to a society, club, etc.)",입회,rùhuì,"to join a society, association etc",nhập hội,Vào hội.
 入籍,入籍,入籍,にゅうせき,"registering (a marriage, etc.) in the family register",입적,rùjí,to become naturalized; to become a citizen,nhập tịch,Vào làm dân một nước khác.
@@ -1884,7 +1884,7 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 年輪,年輪,年轮,ねんりん,annual tree ring,연륜,niánlún,annual ring; growth ring,,
 念力,念力,念力,ねんりき,willpower,염력,niànlì,psychokinesis; telekinesis,,
 濃淡,濃淡,浓淡,のうたん,light and shade,농담,nóngdàn,"shade (of a color, i.e. light or dark)",,
-濃度,濃度,浓度,のうど,concentration,농도,nóngdù,concentration (percentage of dissolved material in a solution); consistency; thickness; density; viscosity,,
+濃度,濃度,浓度,のうど,concentration,농도,nóngdù,concentration (percentage of dissolved material in a solution); consistency; thickness; density; viscosity,nồng độ,concentration
 納豆,納豆,纳豆,なっとう,natto (fermented soybeans),,nàdòu,"nattō, a type of fermented soybean, popular as a breakfast food in Japan",,
 脳出血,腦出血,脑出血,のうしゅっけつ,cerebral hemorrhage,뇌출혈,nǎochūxuè,cerebral hemorrhage,,
 脳卒中,腦卒中,脑卒中,のうそっちゅう,stroke,뇌졸중,nǎocùzhòng,stroke; cerebral hemorrhage,,
@@ -1951,7 +1951,7 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 判例,判例,判例,はんれい,judicial precedent,판례,pànlì,judicial precedent,,
 半生,半生,半生,はんせい,half a lifetime,반생,bànshēng,half a lifetime,,
 半導体,半導體,半导体,はんどうたい,semiconductor,반도체,bàndǎotǐ,semiconductor,,
-半分,半分,半分,はんぶん,half,반분,bànfēn,a little bit,,
+半分,半分,半分,はんぶん,half,반분,bànfēn,a little bit,bán phần,partial
 反共,反共,反共,はんきょう,anticommunism,반공,fǎngòng,anti-communist,,
 反作用,反作用,反作用,はんさよう,reaction,반작용,fǎnzuòyòng,(physics) reaction; (fig.) backlash; unintended consequence,,
 反戦,反戰,反战,はんせん,anti-war,반전,fǎnzhàn,anti-war,phản chiến,Chống lại một cuộc chiến tranh đang được tiến hành.
@@ -1961,7 +1961,7 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 氾濫,氾濫,泛滥,はんらん,overflowing,범람,fànlàn,to overflow; to inundate; to flood; (fig.) to proliferate unchecked,,
 版画,版畫,版画,はんが,woodcut,판화,bǎnhuà,printmaking; a print,,
 犯罪者,犯罪者,犯罪者,はんざいしゃ,criminal,범죄자,fànzuìzhě,criminal; perpetrator,,
-犯人,犯人,犯人,はんにん,offender,범인,fànrén,convict; prisoner; criminal,,
+犯人,犯人,犯人,はんにん,offender,범인,fànrén,convict; prisoner; criminal,phạm nhân,a convict (person convicted of a crime)
 繁盛,繁盛,繁盛,はんじょう,prosperity,번성,fánshèng,prosperous; thriving; (of vegetation) luxuriant,phồn thịnh,
 煩雑,煩雜,烦杂,はんざつ,complex,번잡,fánzá,many and disorderly; muddled,phiền tạp,Rắc rối phức tạp.
 繁雑,繁雜,繁杂,はんざつ,complex,,fánzá,many; diverse,phồn tạp,"Bề bộn, phức tạp."
@@ -1976,7 +1976,7 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 皮肉,皮肉,皮肉,ひにく,irony,피육,píròu,skin and flesh; the physical body; (fig.) the superficial layer; surface aspects,,
 皮膚科,皮膚科,皮肤科,ひふか,dermatology,피부과,pífūkē,dermatology,,
 碑文,碑文,碑文,ひぶん,inscription,비문,bēiwén,inscription on a tablet,,
-肥大,肥大,肥大,ひだい,swelling,비대,féidà,(of clothes) baggy; loose; (of a person) fat; stout; (medicine) hypertrophy,,
+肥大,肥大,肥大,ひだい,swelling,비대,féidà,(of clothes) baggy; loose; (of a person) fat; stout; (medicine) hypertrophy,phỳ đại,hypertrophied
 被害者,被害者,被害者,ひがいしゃ,victim,피해자,bèihàizhě,victim (of a wounding or murder),,
 被告人,被告人,被告人,ひこくにん,accused,피고인,bèigàorén,defendant (in legal case),,
 非公式,非公式,非公式,ひこうしき,informal,비공식,fēigōngshì,unofficial; informal,,
@@ -1993,7 +1993,7 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 鼻水,鼻水,鼻水,はなみず,nasal mucus,비수,bíshuǐ,nasal mucus; snivel,,
 匹敵,匹敵,匹敌,ひってき,to be a match for,필적,pǐdí,to be equal to; to be well-matched; rival,,
 必需品,必需品,必需品,ひつじゅひん,necessities,필수품,bìxūpǐn,necessity; essential (thing),,
-必勝,必勝,必胜,ひっしょう,certain victory,필승,bìshèng,to be certain of victory; to be bound to prevail,,
+必勝,必勝,必胜,ひっしょう,certain victory,필승,bìshèng,to be certain of victory; to be bound to prevail,tất thắng,"be bound or predestined to win, as certainly without failure"
 必要性,必要性,必要性,ひつようせい,necessity,필요성,bìyàoxìng,necessity,,
 筆者,筆者,笔者,ひっしゃ,writer,필자,bǐzhě,the author; the writer (usu. refers to oneself),,
 筆順,筆順,笔顺,ひつじゅん,stroke order (esp. of a Chinese character),필순,bǐshùn,stroke order (when writing Chinese character),bút thuận,Thứ tự các nét khi viết một chữ Hán.
@@ -2032,7 +2032,7 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 不規則,不規則,不规则,ふきそく,irregular,불규칙,bùguīzé,irregular,,
 不吉,不吉,不吉,ふきつ,ominous,불길,bùjí,unlucky; inauspicious; ominous,,
 不孝,不孝,不孝,ふこう,undutifulness to one's parents,불효,bùxiào,unfilial,bất hiếu,"(thái độ đối với cha mẹ) tệ bạc, đối xử không phải đạo."
-不合理,不合理,不合理,ふごうり,irrational,불합리,bùhélǐ,unreasonable,,
+不合理,不合理,不合理,ふごうり,irrational,불합리,bùhélǐ,unreasonable,bất hợp lý,Xem bất hợp lí
 不在,不在,不在,ふざい,absence,부재,bùzài,not to be present; to be out; (euphemism) to pass away; to be deceased,,
 不自然,不自然,不自然,ふしぜん,unnatural,부자연,bùzìrán,unnatural; artificial,,
 不順,不順,不顺,ふじゅん,irregular,불순,bùshùn,unfavorable; adverse,,
@@ -2056,7 +2056,7 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 良人,良人,良人,おっと,husband,양인,liángrén,husband (arch.),lương nhân,"Người tốt, người đem duyên tốt lại."
 婦人,婦人,妇人,ふじん,woman,부인,fùrén,married woman,phụ nhân,Người đàn bà.
 布巾,布巾,布巾,ふきん,dish towel,포건,bùjīn,a cloth,,
-布施,布施,布施,ふせ,alms-giving,포시,bùshī,Dana (Buddhist practice of giving),,
+布施,布施,布施,ふせ,alms-giving,포시,bùshī,Dana (Buddhist practice of giving),bố thý,almsgiving; charity
 扶助,扶助,扶助,ふじょ,aid,부조,fúzhù,to assist,phù trợ,(hiếm) Như phù hộ
 扶養,扶養,扶养,ふよう,support (e.g. of one's dependents),부양,fúyǎng,to foster; to bring up; to raise,,
 敷設,敷設,敷设,ふせつ,"laying (a railroad, pipes, naval mines, etc.)",부설,fūshè,to lay; to spread out,,
@@ -2068,7 +2068,7 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 負債,負債,负债,ふさい,debt,부채,fùzhài,to be in debt; to incur debts; liability (finance),,
 負傷,負傷,负伤,ふしょう,injury,부상,fùshāng,to be wounded; to sustain an injury,,
 侮蔑,侮蔑,侮蔑,ぶべつ,scorn,모멸,wǔmiè,contempt; to despise,,
-武将,武將,武将,ぶしょう,military commander,무장,wǔjiàng,general; military leader; fierce man,,
+武将,武將,武将,ぶしょう,military commander,무장,wǔjiàng,general; military leader; fierce man,võ tướng,a historical military leader
 部下,部下,部下,ぶか,subordinate person,부하,bùxià,troops under one's command; subordinate,bộ hạ,Tay chân giúp việc.
 部族,部族,部族,ぶぞく,tribe,부족,bùzú,tribe; clan,bộ tộc,Như bộ lạc
 風習,風習,风习,ふうしゅう,custom,풍습,fēngxí,custom; practice,,
@@ -2114,7 +2114,7 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 文庫,文庫,文库,ぶんこ,library,문고,wénkù,"collection of documents; library; book series; sequence of data, esp. genome",,
 文体,文體,文体,ぶんたい,literary style,문체,wéntǐ,genre of writing; literary form; style; literary recreation and sporting activities,,
 文壇,文壇,文坛,ぶんだん,literary world,문단,wéntán,literary circles,văn đàn,Lĩnh vực của các nhà văn trong nước.
-文法,文法,文法,ぶんぽう,grammar,문법,wénfǎ,grammar,,
+文法,文法,文法,ぶんぽう,grammar,문법,wénfǎ,grammar,văn pháp,grammar
 文面,文面,文面,ぶんめん,contents of a document (esp. of a letter),문면,wénmiàn,to tattoo the face; face tattoo; to brand (ancient punishment),,
 兵員,兵員,兵员,へいいん,military strength,병원,bīngyuán,soldiers; troops,,
 兵隊,兵隊,兵队,へいたい,armed forces,병대,bīngduì,troops,binh đội,"Đơn vị cơ sở thuộc các binh chủng, quân chủng, bộ đội chuyên môn như trung đoàn, tiểu đoàn độc lập."
@@ -2128,7 +2128,7 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 別荘,別莊,别庄,べっそう,holiday house,별장,biézhuāng,villa,,
 偏重,偏重,偏重,へんちょう,attaching too much importance to,편중,piānzhòng,to stress in a prejudiced way; to emphasize sth unduly,,
 変化球,變化球,变化球,へんかきゅう,breaking ball (pitch),변화구,biànhuàqiú,(baseball) breaking ball; (fig.) curveball; unexpected turn of events,,
-変身,變身,变身,へんしん,metamorphosis,변신,biànshēn,to undergo a transformation; to morph; to turn into; transformed version of sb or sth; new incarnation,,
+変身,變身,变身,へんしん,metamorphosis,변신,biànshēn,to undergo a transformation; to morph; to turn into; transformed version of sb or sth; new incarnation,biến thân,transformation
 変造,變造,变造,へんぞう,alteration,변조,biànzào,to alter; to modify; to mutilate (of documents),,
 編成,編成,编成,へんせい,composition,편성,biānchéng,to organize; to put together; to edit,,
 編入,編入,编入,へんにゅう,admission,편입,biānrù,"to include (in a list etc); to assign (to a class, a work unit etc)",,
@@ -2197,8 +2197,8 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 北端,北端,北端,ほくたん,northern extremity,북단,běiduān,northern extremity,,
 撲滅,撲滅,扑灭,ぼくめつ,eradication,박멸,pūmiè,to eradicate; to extinguish,,
 牧草,牧草,牧草,ぼくそう,pasture,목초,mùcǎo,pasture grass; fodder,,
-牧畜,牧畜,牧畜,ぼくちく,stock-farming,목축,mùxù,raising livestock; animal husbandry,,
-勃起,勃起,勃起,ぼっき,erection (of the penis),발기,bóqǐ,erection; to have an erection,,
+牧畜,牧畜,牧畜,ぼくちく,stock-farming,목축,mùxù,raising livestock; animal husbandry,mục súc,pastoralism
+勃起,勃起,勃起,ぼっき,erection (of the penis),발기,bóqǐ,erection; to have an erection,bột khởi,to rise up vigorously; to flare up forcefully; to spring up energetically
 奔放,奔放,奔放,ほんぽう,wild,분방,bēnfàng,bold and unrestrained; untrammeled,,
 本位,本位,本位,ほんい,standard,본위,běnwèi,"(economics) standard; benchmark (as in 金本位[jin1 ben3 wei4] ""gold standard""); one's own department or unit; central reference point; fundamental frame of reference (used after a noun N, indicates an N-centered outlook, as in 學校本位|学校本位[xue2 xiao4 ben3 wei4] ""school-centered approach"")",bản vị,Kim loại quí dùng làm tiêu chuẩn tiền tệ.
 本家,本家,本家,ほんけ,head house,본가,běnjiā,a member of the same clan; a distant relative with the same family name,,
@@ -2215,15 +2215,15 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 本塁,本壘,本垒,ほんるい,base,본루,běnlěi,(baseball) home base; home plate,,
 本塁打,本壘打,本垒打,ほんるいだ,home run,본루타,běnlěidǎ,home run (baseball),,
 盆栽,盆栽,盆栽,ぼんさい,bonsai,분재,pénzāi,to grow (a plant) in a pot; potted plant (sometimes refers specifically to a bonsai plant),,
-盆地,盆地,盆地,ぼんち,basin (e.g. between mountains),분지,péndì,(geography) basin; depression,,
-魔女,魔女,魔女,まじょ,witch,마녀,mónǚ,witch; sorceress; enchantress,,
+盆地,盆地,盆地,ぼんち,basin (e.g. between mountains),분지,péndì,(geography) basin; depression,bồn địa,basin
+魔女,魔女,魔女,まじょ,witch,마녀,mónǚ,witch; sorceress; enchantress,ma nữ,the ghost of a dead girl or woman
 魔法,魔法,魔法,まほう,magic,마법,mófǎ,enchantment; magic,ma pháp,Như ma thuật.
 麻雀,麻雀,麻雀,マージャン,mahjong,마작,máquè,sparrow; (dialect) mahjong,,
 麻布,麻布,麻布,あさぬの,hemp cloth,마포,mábù,sackcloth,,
 麻薬,麻藥,麻药,まやく,narcotic,,máyào,anesthetic,,
 毎週,每週,每周,まいしゅう,every week,매주,měizhōu,every week,,
 毎日,每日,每日,まいにち,every day,매일,měirì,daily; (soup etc) of the day,,
-幕府,幕府,幕府,ばくふ,shogunate,막부,mùfǔ,"(orig.) tents forming the offices of a commanding officer; administration of a military government; (medieval Japan) ""bakufu"", administration of the shogun",,
+幕府,幕府,幕府,ばくふ,shogunate,막부,mùfǔ,"(orig.) tents forming the offices of a commanding officer; administration of a military government; (medieval Japan) ""bakufu"", administration of the shogun",mạc phủ,shogunate
 幕僚,幕僚,幕僚,ばくりょう,staff,막료,mùliáo,aides and advisors of top officials,,
 抹消,抹消,抹消,まっしょう,erasure,말소,mǒxiāo,to erase; to wipe,,
 末端,末端,末端,まったん,end,말단,mòduān,tip; extremity,,
@@ -2254,13 +2254,13 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 民宿,民宿,民宿,みんしゅく,guest house,민숙,mínsù,"(orthographic borrowing from Japanese 民宿 ""minshuku"") property rented via Airbnb or similar platform; guesthouse; bed-and-breakfast; homestay; pension",,
 民政,民政,民政,みんせい,civil administration,민정,mínzhèng,civil administration,dân chính,"Công việc hành chính thực hiện các chính sách, chế độ liên quan đến đời sống của người dân."
 民族自決,民族自決,民族自决,みんぞくじけつ,self-determination of peoples,민족자결,mínzúzìjué,self-determination,,
-民族主義,民族主義,民族主义,みんぞくしゅぎ,nationalism,민족주의,mínzúzhǔyì,"nationalism; national self-determination; principle of nationalism, the first of Dr Sun Yat-sen's 孫中山|孙中山 Three Principles of the People 三民主義|三民主义 (at the time, meaning parity between China and the great powers); racism",,
+民族主義,民族主義,民族主义,みんぞくしゅぎ,nationalism,민족주의,mínzúzhǔyì,"nationalism; national self-determination; principle of nationalism, the first of Dr Sun Yat-sen's 孫中山|孙中山 Three Principles of the People 三民主義|三民主义 (at the time, meaning parity between China and the great powers); racism",dân tộc chủ nghĩa,nationalism
 民兵,民兵,民兵,みんぺい,militia,민병,mínbīng,people's militia; militia; militiaman,dân binh,Như dân quân
 民法,民法,民法,みんぽう,civil law,민법,mínfǎ,civil law,,
 民謡,民謠,民谣,みんよう,folk song,민요,mínyáo,ballad; folk song,,
 夢中,夢中,梦中,むちゅう,absorbed in,몽중,mèngzhōng,in a dream,,
 無意識,無意識,无意识,むいしき,unconsciousness,무의식,wúyìshí,unconscious; involuntary,vô ý thức,"Không có chủ định, không nhận biết rõ ý nghĩa của việc (sai trái) mình đang làm."
-無言,無言,无言,むごん,silence (not speaking),무언,wúyán,to remain silent; to have nothing to say,,
+無言,無言,无言,むごん,silence (not speaking),무언,wúyán,to remain silent; to have nothing to say,vô ngôn,wordless
 無視,無視,无视,むし,disregarding,무시,wúshì,to ignore; to disregard,,
 無色,無色,无色,むしょく,colourless,무색,wúsè,colorless,,
 無人,無人,无人,むじん,unmanned,무인,wúrén,unmanned; uninhabited,vô nhân,"Là từ ghép của chữ vô, nghĩa là không, nhân nghĩa là người. Vô nhân là không có tính người."
@@ -2320,12 +2320,12 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 有志,有志,有志,ゆうし,interested person,유지,yǒuzhì,to be ambitious,,
 有償,有償,有偿,ゆうしょう,(involving) payment,유상,yǒucháng,paying; paid (not free),,
 有数,有數,有数,ゆうすう,prominent,유수,yǒushù,to have kept count; to know how many; (fig.) to know exactly how things stand; to know the score; not many; only a few,,
-有線,有線,有线,ゆうせん,wired,유선,yǒuxiàn,wired; cable (television),,
+有線,有線,有线,ゆうせん,wired,유선,yǒuxiàn,wired; cable (television),hữu tuyến,wired
 有無,有無,有无,うむ,existence or nonexistence,유무,yǒuwú,to have or have not; surplus and shortfall; tangible and intangible; corporeal and incorporeal,,
 有料,有料,有料,ゆうりょう,fee-charging,유료,yǒuliào,impressive,,
 誘拐,誘拐,诱拐,ゆうかい,abduction,유괴,yòuguǎi,to abduct; to kidnap,,
 誘導,誘導,诱导,ゆうどう,guidance,유도,yòudǎo,"to induce; to encourage; to provide guidance; (medicine, chemistry) to induce",,
-遊説,遊說,游说,ゆうぜい,election tour,,yóushuì,"to lobby; to campaign; to promote (an idea, a product); (old) to visit various rulers and promote one's political ideas (in the Warring States period)",,
+遊説,遊說,游说,ゆうぜい,election tour,,yóushuì,"to lobby; to campaign; to promote (an idea, a product); (old) to visit various rulers and promote one's political ideas (in the Warring States period)",du thuyết,to lobby; to drum up one's support for something
 融資,融資,融资,ゆうし,financing,융자,róngzī,financing,,
 昨夜,昨夜,昨夜,ゆうべ,last night,작야,zuóyè,last night,,
 夕陽,夕陽,夕阳,ゆうひ,evening sun,석양,xīyáng,sunset; the setting sun,tịch dương,Từ cũ dùng trong văn học chỉ lúc mặt trời lặn.
@@ -2335,7 +2335,7 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 余波,餘波,余波,よは,waves that remain after the wind has subsided,여파,yúbō,aftermath; repercussions; fallout,,
 余裕,餘裕,余裕,よゆう,surplus,여유,yúyù,ample; surplus,,
 余力,餘力,余力,よりょく,remaining strength,여력,yúlì,energy left over (to do sth else),,
-幼児,幼兒,幼儿,ようじ,young child,유아,yòuér,young child; infant; preschooler,,
+幼児,幼兒,幼儿,ようじ,young child,유아,yòuér,young child; infant; preschooler,ấu nhy,child; toddler; infant
 幼稚園,幼稚園,幼稚园,ようちえん,"kindergarten (in Japan, non-compulsory education from age 3 until primary school)",유치원,yòuzhìyuán,kindergarten (Tw),ấu trĩ viên,Cơ sở dưỡng dục trẻ con.
 容器,容器,容器,ようき,container,용기,róngqì,receptacle; vessel; (computing) container,,
 擁立,擁立,拥立,ようりつ,backing (for a position),옹립,yōnglì,(formal) to back sb as leader,,
@@ -2346,7 +2346,7 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 羊毛,羊毛,羊毛,ようもう,wool,양모,yángmáo,wool; fleece,,
 要員,要員,要员,よういん,(necessary) personnel,요원,yàoyuán,key participant; VIP,,
 要件,要件,要件,ようけん,important matter,요건,yàojiàn,key document; important condition; criterion; requirement; requisite; cornerstone,,
-要旨,要旨,要旨,ようし,(main) point,요지,yàozhǐ,the gist (of a text or argument); the main points,,
+要旨,要旨,要旨,ようし,(main) point,요지,yàozhǐ,the gist (of a text or argument); the main points,yếu chỷ,"main idea, essentials"
 養育,養育,养育,よういく,bringing up,양육,yǎngyù,to rear; to bring up; to nurture,dưỡng dục,"Nuôi nấng, dạy dỗ. Sinh thành."
 養子,養子,养子,ようし,adopted child (usu. male),양자,yǎngzǐ,adopted son; foster son,dưỡng tử,Con nuôi.
 養父,養父,养父,ようふ,foster father,양부,yǎngfù,foster father; adoptive father,,
@@ -2368,7 +2368,7 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 理工,理工,理工,りこう,science and engineering,이공,lǐgōng,science and engineering as academic subjects,,
 里子,里子,里子,さとご,foster child,,lǐzi,lining; (fig.) substance (as opposed to outward appearance),,
 離宮,離宮,离宫,りきゅう,imperial villa,이궁,lígōng,detached palace; imperial villa,,
-離散,離散,离散,りさん,dispersion,이산,lísàn,(of family members) separated from one another; scattered about; dispersed; (math.) discrete,,
+離散,離散,离散,りさん,dispersion,이산,lísàn,(of family members) separated from one another; scattered about; dispersed; (math.) discrete,ly tán,to get separated or dispersed
 陸上,陸上,陆上,りくじょう,(on) land,육상,lùshàng,land-based; on land,,
 陸路,陸路,陆路,りくろ,land route,육로,lùlù,land route; overland route,lục lộ,Việc quản lý đường sá trong thời Pháp thuộc.
 立案,立案,立案,りつあん,planning,입안,lìàn,to register (to an official organism); to file a case (for investigation),,
@@ -2403,7 +2403,7 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 隣人,鄰人,邻人,りんじん,neighbour,인인,línrén,neighbor,,
 隣接,鄰接,邻接,りんせつ,adjacency,인접,línjiē,adjacent; next to,,
 累進,累進,累进,るいしん,successive promotion,누진,lěijìn,progressive (taxation etc),lũy tiến,Luỹ tiến.
-類推,類推,类推,るいすい,analogy,유추,lèituī,to reason by analogy,,
+類推,類推,类推,るいすい,analogy,유추,lèituī,to reason by analogy,loại suy,analogy
 令状,令狀,令状,れいじょう,warrant,영장,lìngzhuàng,writ,,
 例会,例會,例会,れいかい,regular meeting,예회,lìhuì,regular meeting,,
 例題,例題,例题,れいだい,example,예제,lìtí,problem or question solved for illustrative purposes in the classroom; practice question (used in preparation for an exam); sample question,,
@@ -2421,7 +2421,7 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 露骨,露骨,露骨,ろこつ,open,노골,lùgǔ,"blatant; unsubtle; frank; (of sex, violence etc) explicit",,
 労作,勞作,劳作,ろうさく,toil,노작,láozuò,work; manual labor,lao tác,"Lao động trong một quá trình lâu dài, nhẫn nại để đạt đến một kết quả mong đợi."
 楼閣,樓閣,楼阁,ろうかく,multistoried building,누각,lóugé,building; pavilion,lâu các,Cung điện.
-浪人,浪人,浪人,ろうにん,ronin,낭인,làngrén,vagrant; unemployed person; rōnin (wandering masterless samurai),,
+浪人,浪人,浪人,ろうにん,ronin,낭인,làngrén,vagrant; unemployed person; rōnin (wandering masterless samurai),lãng nhân,ronin
 漏洩,漏洩,漏泄,ろうえい,"leak (of secrets, information, etc.)",누설,lòuxiè,a leak (e.g. of chemicals),,
 老朽,老朽,老朽,ろうきゅう,infirmity (due to old age),노후,lǎoxiǔ,decrepit and behind the times; old; useless; (humble) I; me (used by the elderly),lão hủ,"Già nua, cũ kỹ và vô dụng."
 老齢,老齡,老龄,ろうれい,old age,노령,lǎolíng,old age; aging; aged; geriatric; the aged,,
@@ -2436,12 +2436,12 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 和風,和風,和风,わふう,Japanese style,화풍,héfēng,breeze; (Tw) Japanese-style (cooking etc),,
 和服,和服,和服,わふく,Japanese clothes,화복,héfú,kimono,,
 惑星,惑星,惑星,わくせい,planet,혹성,huòxīng,(obsolete) planet,,
-刹那,剎那,刹那,せつな,moment,찰나,chànà,an instant (Sanskrit: ksana); split second; the twinkling of an eye,,
+刹那,剎那,刹那,せつな,moment,찰나,chànà,an instant (Sanskrit: ksana); split second; the twinkling of an eye,sát na,split-second
 毀損,毀損,毁损,きそん,damage,,huǐsǔn,"impair, damage",,
 屏風,屏風,屏风,びょうぶ,folding screen,,píngfēng,(furniture) screen,bình phong,"Vật dùng để chắn gió hoặc chắn một đoạn tầm mắt, hay che cho đỡ trống trải, thường xây bằng gạch trước sân hay làm bằng những khung gỗ có căng vải đặt trong phòng."
 捏造,捏造,捏造,ねつぞう,fabrication,날조,niēzào,to make up; to fabricate,,
 曖昧,曖昧,暧昧,あいまい,vague,애매,àimèi,vague; ambiguous; equivocal; dubious,,
-楷書,楷書,楷书,かいしょ,printed style (of writing Chinese characters),해서,kǎishū,regular script (Chinese calligraphic style),,
+楷書,楷書,楷书,かいしょ,printed style (of writing Chinese characters),해서,kǎishū,regular script (Chinese calligraphic style),khải thư,regular script
 洒落,洒落,洒落,しゃれ,joke,쇄락,sǎluò,"to fall downward in a scattered, lightly sprinkled manner (as light, petals, leaves etc); (literary) carefree and unrestrained; natural and elegant",,
 炒飯,炒飯,炒饭,チャーハン,Chinese-style fried rice,,chǎofàn,fried rice; (Tw) (slang) to have sex,,
 炸裂,炸裂,炸裂,さくれつ,violent explosion,작렬,zhàliè,to burst; to explode; to rupture; (neologism) (slang) amazing; epic; phenomenal,,
@@ -2449,8 +2449,8 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 眩暈,眩暈,眩晕,めまい,dizziness,,xuànyùn,"vertigo; dizziness; fainting; feeling of swaying, head spinning, lack of balance or floating (e.g. from a stroke); Taiwan pr. [xuan4 yun1]",,
 目眩,目眩,目眩,めまい,dizziness,,mùxuàn,dizzy; dazzled,,
 緻密,緻密,致密,ちみつ,"fine (grain, workmanship, etc.)",치밀,zhìmì,fine; dense; compact,,
-薔薇,薔薇,蔷薇,ばら,rose,장미,qiángwēi,Japanese rose (Rosa multiflora),,
-躊躇,躊躇,踌躇,ちゅうちょ,hesitation,주저,chóuchú,to hesitate; (literary) to pace back and forth; (literary) self-satisfied,,
+薔薇,薔薇,蔷薇,ばら,rose,장미,qiángwēi,Japanese rose (Rosa multiflora),tường vy,multiflora rose
+躊躇,躊躇,踌躇,ちゅうちょ,hesitation,주저,chóuchú,to hesitate; (literary) to pace back and forth; (literary) self-satisfied,trù trừ,to hesitate; to dither; to procrastinate; to delay (especially due to ambivalence)
 悪口,惡口,恶口,わるくち,(verbal) abuse,악구,èkǒu,bad language; foul mouth,ác khẩu,Người phát ngôn thô thiển.
 依存,依存,依存,いぞん,dependence,의존,yīcún,to depend on sth for existence; dependent on,,
 一家,一家,一家,いっか,a family,일가,yījiā,the whole family; the same family; the family ... (when preceded by a family name); group,,
@@ -2491,7 +2491,7 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 修業,修業,修业,しゅうぎょう,pursuit of knowledge,수업,xiūyè,to study at school,tu nghiệp,Nghiên cứu học thuật hay nghề nghiệp cho giỏi hơn.
 十四,十四,十四,じゅうし,fourteen,십사,shísì,fourteen; 14,,
 十七,十七,十七,じゅうなな,seventeen,십칠,shíqī,seventeen; 17,,
-縦横,縱橫,纵横,じゅうおう,length and width,종횡,zònghéng,"lit. warp and weft in weaving; vertically and horizontal; length and breadth; criss-crossed; able to move unhindered; abbr. for 合縱連橫|合纵连横[He2 zong4 Lian2 heng2], School of Diplomacy during the Warring States Period (475-221 BC)",,
+縦横,縱橫,纵横,じゅうおう,length and width,종횡,zònghéng,"lit. warp and weft in weaving; vertically and horizontal; length and breadth; criss-crossed; able to move unhindered; abbr. for 合縱連橫|合纵连横[He2 zong4 Lian2 heng2], School of Diplomacy during the Warring States Period (475-221 BC)",tung hoành,"to operate or travel wildly hither and thither; to rampage, especially through places far away"
 重荷,重荷,重荷,おもに,heavy load,중하,zhònghè,heavy load; heavy burden,,
 女方,女方,女方,おんながた,onnagata,,nǚfāng,the bride's side (of a wedding); of the bride's party,,
 上唇,上脣,上唇,うわくちびる,upper lip,상순,shàngchún,upper lip; (entomology) labrum,,
@@ -2499,7 +2499,7 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 人影,人影,人影,ひとかげ,figure of a person,인영,rényǐng,the shadow of a human figure; a trace of a person's presence (usu. combined with a negative verb),,
 人心,人心,人心,じんしん,human nature,인심,rénxīn,popular feeling; the will of the people,nhân tâm,Lòng người.
 水鳥,水鳥,水鸟,みずとり,waterfowl,수조,shuǐniǎo,waterbird,,
-正道,正道,正道,せいどう,path of righteousness,정도,zhèngdào,the correct path; the right way (Buddhism),,
+正道,正道,正道,せいどう,path of righteousness,정도,zhèngdào,the correct path; the right way (Buddhism),chính đạo,the correct path; a noble practice; righteous conduct
 扇形,扇形,扇形,せんけい,fan shape,선형,shànxíng,circular sector,,
 大河,大河,大河,たいが,large river,대하,dàhé,large river (esp the Yellow River),,
 中指,中指,中指,なかゆび,middle finger,중지,zhōngzhǐ,middle finger,,
@@ -2602,7 +2602,7 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 招請,招請,招请,しょうせい,invitation,초청,zhāoqǐng,to recruit; to take on (an employee),,
 娼婦,娼婦,娼妇,しょうふ,prostitute,창부,chāngfù,prostitute,,
 小量,小量,小量,しょうりょう,small quantity,소량,xiǎoliàng,a small quantity,,
-実情,實情,实情,じつじょう,real condition,실정,shíqíng,the actual situation; the truth,,
+実情,實情,实情,じつじょう,real condition,실정,shíqíng,the actual situation; the truth,thật tình,truthful; honest; frank
 潤色,潤色,润色,じゅんしょく,rhetorical flourishes,윤색,rùnsè,"to polish (a piece of writing); to add a few finishing touches to (a piece of writing, painting etc)",nhuận sắc,"Sửa chữa bài văn cho thêm hay. Làm tăng vẻ đẹp, làm tăng giá trị bằng cách sửa đổi, chỉnh, bổ sung, so sánh để có thêm nhiều độc giả."
 潤飾,潤飾,润饰,じゅんしょく,rhetorical flourishes,윤식,rùnshì,to adorn; to embellish,,
 上乗,上乘,上乘,じょうじょう,the very best,상승,shàngchéng,first-class; best quality; also pr. [shang4 sheng4],,
@@ -2621,14 +2621,14 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 淡淡,淡淡,淡淡,たんたん,uninterested,담담,dàndàn,faint; dim; dull; insipid; unenthusiastic; indifferent,,
 淡泊,淡泊,淡泊,たんぱく,"light (flavor, color, etc.)",담박,dànbó,living a simple life,,
 近道,近道,近道,ちかみち,shorter way,,jìndào,shortcut; a quicker method,,
-茶碗,茶碗,茶碗,ちゃわん,rice bowl,차완,cháwǎn,teacup,,
+茶碗,茶碗,茶碗,ちゃわん,rice bowl,차완,cháwǎn,teacup,trà oản,teacup
 徴候,徵候,征候,ちょうこう,sign,징후,zhēnghòu,sign; indication; symptom,,
 月月,月月,月月,つきづき,every month,,yuèyuè,every month,,
 定型,定型,定型,ていけい,fixed form,정형,dìngxíng,to finalize (a design etc); stereotype; permanent wave or perm (hairdressing),định hình,Trở nên có một hình thái ổn định.
 帝制,帝制,帝制,ていせい,imperial government,제제,dìzhì,autocratic monarchy; imperial regime,đế chế,Chế độ chính trị của nước có hoàng đế đứng đầu.
 手帳,手帳,手帐,てちょう,notebook,,shǒuzhàng,notebook; pocket diary,,
-出入口,出入口,出入口,でいりぐち,exit and entrance,출입구,chūrùkǒu,gateway,,
-堂堂,堂堂,堂堂,どうどう,magnificent,당당,tángtáng,grand; magnificent; stately; majestic appearance,,
+出入口,出入口,出入口,でいりぐち,exit and entrance,출입구,chūrùkǒu,gateway,xuất nhập khẩu,to export and import
+堂堂,堂堂,堂堂,どうどう,magnificent,당당,tángtáng,grand; magnificent; stately; majestic appearance,đường đường,dignified; majestic
 同名,同名,同名,どうめい,same name,동명,tóngmíng,of the same name; homonymous; self-titled (album),,
 内情,內情,内情,ないじょう,internal conditions,내정,nèiqíng,inside story; inside information,,
 中中,中中,中中,なかなか,very,,zhōngzhōng,"middling; average; impartial; (Hong Kong) secondary school that uses Chinese as the medium of instruction (""CMI school"")",,
@@ -2636,7 +2636,7 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 売春,賣春,卖春,ばいしゅん,prostitution,매춘,màichūn,to engage in prostitution,,
 馬鹿,馬鹿,马鹿,ばか,idiot,마록,mǎlù,"red deer; fool; idiot (from Japanese ""baka"")",,
 曝露,曝露,曝露,ばくろ,disclosure,,pùlù,"to expose (to the air, light etc); to leave uncovered; exposure",,
-万歳,萬歲,万岁,ばんざい,banzai,만세,wànsuì,"Long live (the king, the revolution etc)!; Your Majesty; His Majesty",,
+万歳,萬歲,万岁,ばんざい,banzai,만세,wànsuì,"Long live (the king, the revolution etc)!; Your Majesty; His Majesty",vạn tuế,"sago palm (Cycas revoluta), a palm-like cycad"
 久久,久久,久久,ひさびさ,(in a) long time,구구,jiǔjiǔ,for a very long time,,
 一周,一周,一周,いっしゅう,one round,일주,yīzhōu,one week; all the way around; a whole cycle,,
 雲雀,雲雀,云雀,ひばり,skylark (Alauda arvensis),운작,yúnquè,(bird species of China) Eurasian skylark (Alauda arvensis),,
@@ -2684,14 +2684,14 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 満面,滿面,满面,まんめん,the whole face,만면,mǎnmiàn,across one's whole face; (smiling) from ear to ear,,
 無機物,無機物,无机物,むきぶつ,inorganic matter,무기물,wújīwù,inorganic compound,,
 無心,無心,无心,むしん,innocence,무심,wúxīn,unintentionally; not in the mood to,vô tâm,"Không hay để ý, cả đến những điều người khác thường chú ý."
-無恥,無恥,无耻,むち,shameless,무치,wúchǐ,without any sense of shame; unembarrassed; shameless,,
+無恥,無恥,无耻,むち,shameless,무치,wúchǐ,without any sense of shame; unembarrassed; shameless,vô sỷ,"shameless, impudent"
 明月,明月,明月,めいげつ,harvest moon (trad. 15th day of the 8th lunar month),명월,míngyuè,"bright moon; refers to 夜明珠, a legendary pearl that can glow in the dark; CL:輪|轮[lun2]",minh nguyệt,Trăng sáng.
 有機物,有機物,有机物,ゆうきぶつ,organic matter,유기물,yǒujīwù,organic substance; organic matter,,
 利己主義,利己主義,利己主义,りこしゅぎ,egoism,이기주의,lìjǐzhǔyì,egoism,,
 領空,領空,领空,りょうくう,territorial airspace,영공,lǐngkōng,territorial air space,,
 面談,面談,面谈,めんだん,interview,면담,miàntán,face-to-face meeting; an interview,,
 稲田,稻田,稻田,いなだ,paddy field,도전,dàotián,paddy field; rice paddy,,
-引渡,引渡,引渡,ひきわたし,delivery,인도,yǐndù,to extradite,,
+引渡,引渡,引渡,ひきわたし,delivery,인도,yǐndù,to extradite,dẫn độ,to extradite
 英明,英明,英明,えいめい,intelligent,영명,yīngmíng,wise; brilliant,anh minh,(Người lãnh đạo) tài giỏi và sáng suốt.
 加点,加點,加点,かてん,adding points,가점,jiādiǎn,to work extra hours; to do overtime,,
 海戦,海戰,海战,かいせん,naval battle,해전,hǎizhàn,sea warfare; naval battle,hải chiến,"Trận chiến đấu trên biển bằng tàu, thuyền."
@@ -2699,7 +2699,7 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 完工,完工,完工,かんこう,completion of construction work,완공,wángōng,to finish work; to complete a project,,
 旗標,旗標,旗标,はたじるし,design (on a banner),기표,qíbiāo,flag,kỳ tiêu,"Tên một ngọn núi có phong cảnh rất đẹp ở Trung Quốc, còn gọi là Linh Sơn."
 議定書,議定書,议定书,ぎていしょ,protocol,의정서,yìdìngshū,protocol; treaty,nghị định thư,Văn kiện phụ của một hiệp định nhằm cụ thể hóa những điểm mà hiệp định chỉ nói khái quát và nêu lên phương thức và các biện pháp thi hành.
-救国,救國,救国,きゅうこく,salvation of one's country,구국,jiùguó,to save the nation,,
+救国,救國,救国,きゅうこく,salvation of one's country,구국,jiùguó,to save the nation,cứu quốc,to rescue the country; to save the nation
 旧派,舊派,旧派,きゅうは,old school,구파,jiùpài,old school; conservative faction,,
 順当,順當,顺当,じゅんとう,proper,순당,shùndang,smoothly,,
 生鮮,生鮮,生鲜,せいせん,fresh,생선,shēngxiān,fresh produce and freshly prepared foods,,
@@ -2846,7 +2846,7 @@ form,trad,simp,ja,gloss_ja_en,ko,pinyin,gloss_en,vi,gloss_vi
 勝率,勝率,胜率,しょうりつ,winning percentage,승률,shènglǜ,(sports) win rate; winning percentage; probability of winning,,
 総動員,總動員,总动员,そうどういん,general mobilization,총동원,zǒngdòngyuán,general mobilization (for war etc),tổng động viên,Động viên mọi lực lượng trong nước để phục vụ cho chiến tranh.
 数万,數萬,数万,すうまん,tens of thousands,수만,shùwàn,several tens of thousands; many thousand,,
-方法論,方法論,方法论,ほうほうろん,methodology,방법론,fāngfǎlùn,methodology,,
+方法論,方法論,方法论,ほうほうろん,methodology,방법론,fāngfǎlùn,methodology,phương pháp luận,methodology
 防弾,防彈,防弹,ぼうだん,bulletproof,방탄,fángdàn,bulletproof,,
 訪問者,訪問者,访问者,ほうもんしゃ,visitor,방문자,fǎngwènzhě,interviewer,,
 野合,野合,野合,やごう,illicit union,야합,yěhé,to commit adultery,,

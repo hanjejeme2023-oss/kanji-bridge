@@ -1,28 +1,25 @@
 word_key,word_id,trad,pinyin,level,candidates,reason
 不行|bùxíng,w00552,不行,bùxíng,2,bất hạnh,rule_b_conflict
 份|fèn,w00674,份,fèn,2,phận;phần,several_candidates
-更|gèng,w00693,更,gèng,2,cánh;canh,several_candidates
-過|guo,w00716,過,guo,2,quá;qua,several_candidates
+過|guo,w00716,過,guo,2,qua;quá,several_candidates
 食物|shíwù,w00986,食物,shíwù,2,thực vật,rule_b_conflict
-占|zhàn,w01208,占,zhàn,2,chiếm;chiêm,several_candidates
-長城|chángchéng,w01341,長城,chángchéng,3,trưởng thành,rule_b_conflict
-福|fú,w01468,福,fú,3,phước;phúc,several_candidates
-行|háng,w01546,行,háng,3,hành;hạnh;hàng;hạng,several_candidates
-容易|róngyì,w01863,容易,róngyì,3,dung dịch,rule_b_conflict
+新聞|xīnwén,w01112,新聞,xīnwén,2,tân văn,obsolete_only
+福|fú,w01468,福,fú,3,phúc;phước,several_candidates
 只是|zhǐshì,w02167,只是,zhǐshì,3,chỉ thị,rule_b_conflict
-激動|jīdòng,w02571,激動,jīdòng,4,kích động,rule_b_conflict
 濕|shī,w02857,濕,shī,4,thấm;thấp,several_candidates
 想象|xiǎngxiàng,w03018,想象,xiǎngxiàng,4,tưởng tượng,rule_b_conflict
-應|yīng,w03100,應,yīng,4,ứng;ưng,several_candidates
+應|yīng,w03100,應,yīng,4,ưng;ứng,several_candidates
 贊助|zànzhù,w03142,贊助,zànzhù,4,tán trợ,rule_b_conflict
-將|jiāng,w03600,將,jiāng,5,tướng;tương,several_candidates
 模糊|móhu,w03722,模糊,móhu,5,mô hồ,rule_b_conflict
+戲劇|xìjù,w04020,戲劇,xìjù,5,hý kịch,obsolete_only
 以往|yǐwǎng,w04105,以往,yǐwǎng,5,dĩ vãng,rule_b_conflict
 振動|zhèndòng,w04195,振動,zhèndòng,5,chấn động,rule_b_conflict
 創建|chuàngjiàn,w04439,創建,chuàngjiàn,6,sáng kiến,rule_b_conflict
 父女|fùnǚ,w04561,父女,fùnǚ,6,phụ nữ,rule_b_conflict
 合約|héyuē,w04648,合約,héyuē,6,hiệp ước,rule_b_conflict
 與|yǔ,w05267,與,yǔ,6,dữ;dự,several_candidates
+伯父|bófù,w05651,伯父,bófù,7,bá phụ,obsolete_only
+不宜|bùyí,w05700,不宜,bùyí,7,bất nghy,obsolete_only
 瓷|cí,w06019,瓷,cí,7,sứ;tư;từ,several_candidates
 定為|dìngwéi,w06300,定為,dìngwéi,7,định vị,rule_b_conflict
 敢情|gǎnqing,w06657,敢情,gǎnqing,7,cảm tình,rule_b_conflict
@@ -30,10 +27,18 @@ word_key,word_id,trad,pinyin,level,candidates,reason
 激勵|jīlì,w07271,激勵,jīlì,7,khích lệ,rule_b_conflict
 警官|jǐngguān,w07619,警官,jǐngguān,7,cảnh quan,rule_b_conflict
 路面|lùmiàn,w08122,路面,lùmiàn,7,lộ diện,rule_b_conflict
+聘|pìn,w08532,聘,pìn,7,sính,obsolete_only
 實物|shíwù,w09110,實物,shíwù,7,thực vật,rule_b_conflict
 視角|shìjiǎo,w09141,視角,shìjiǎo,7,thị giác,rule_b_conflict
+隧道|suìdào,w09362,隧道,suìdào,7,tụy đạo,obsolete_only
 兇惡|xiōng'è,w10055,兇惡,xiōng'è,7,hung ác,rule_b_conflict
+馴|xùn,w10143,馴,xùn,7,tuần;thuần,several_candidates
 言辭|yáncí,w10167,言辭,yáncí,7,ngôn từ,rule_b_conflict
+岳父|yuèfù,w10556,岳父,yuèfù,7,nhạc phụ,obsolete_only
+岳母|yuèmǔ,w10557,岳母,yuèmǔ,7,nhạc mẫu,obsolete_only
+更|gèng,w00693,更,gèng,2,canh,override_replaced
+占|zhàn,w01208,占,zhàn,2,chiêm,override_replaced
+將|jiāng,w03600,將,jiāng,5,tướng,override_replaced
 ff|学園,,學園,xuéyuán,,học viên,rule_b_conflict
 ff|機体,,機體,jītǐ,,cơ thể,rule_b_conflict
 ff|原人,,原人,yuánrén,,nguyên nhân,rule_b_conflict
@@ -41,7 +46,6 @@ ff|正体,,正體,zhèngtǐ,,chính thể,rule_b_conflict
 ff|先行,,先行,xiānxíng,,tiến hành,rule_b_conflict
 ff|直角,,直角,zhíjiǎo,,trực giác,rule_b_conflict
 ff|難民,,難民,nànmín,,nạn dân,rule_b_conflict
-ff|風土,,風土,fēngtǔ,,phong độ,rule_b_conflict
 ff|首位,,首位,shǒuwèi,,thú vị,rule_b_conflict
 ff|淡泊,,淡泊,dànbó,,đạm bạc,rule_b_conflict
 ff|浮游,,浮游,fúyóu,,phù du,rule_b_conflict

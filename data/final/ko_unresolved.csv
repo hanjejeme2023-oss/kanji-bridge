@@ -26,7 +26,6 @@ word_key,word_id,trad,pinyin,forms,candidates,reason
 鬥爭|dòuzhēng,w04505,鬥爭,dòuzhēng,鬥爭;闘争;斗争;鬥争;鬭爭;鬭争;鬬爭;鬬争;鬦爭;鬦争;鬪爭;鬪争;闘爭,,forms exist but alignment rejected
 桿|gǎn,w04572,桿,gǎn,桿;杆,간;한,multiple without evidence
 撲|pū,w04904,撲,pū,撲;扑,박;복,multiple without evidence
-寺|sì,w05040,寺,sì,寺,사;시,multiple without evidence
 扒|bā,w05445,扒,bā,扒,배;팔,multiple without evidence
 搏鬥|bódòu,w05655,搏鬥,bódòu,搏鬥;搏闘;搏斗;搏鬭;搏鬬;搏鬦;搏鬪,,forms exist but alignment rejected
 不予|bùyǔ,w05705,不予,bùyǔ,不予;不余;不豫,,forms exist but alignment rejected
@@ -52,3 +51,4 @@ word_key,word_id,trad,pinyin,forms,candidates,reason
 閘|zhá,w10618,閘,zhá,閘;闸,갑;잡,multiple without evidence
 拽|zhuài,w10869,拽,zhuài,拽;曳,열;예,multiple without evidence
 x|鬥士,w11072,鬥士,dòushì,鬥士;闘士;斗士;鬭士;鬬士;鬦士;鬪士,,forms exist but alignment rejected
+x|戰鬥機,w12283,戰鬥機,zhàndòujī,戰鬥機;戦闘機;战斗机;戰鬥机;戰鬭機;戰鬭机;戰鬬機;戰鬬机;戰鬦機;戰鬦机;戰鬪機;戰鬪机;戰闘機;戰闘机;戦鬥機;戦鬥机;戦鬭機;戦鬭机;戦鬬機;戦鬬机;戦鬦機;戦鬦机;戦鬪機;戦鬪机;戦闘机,,forms exist but alignment rejected
