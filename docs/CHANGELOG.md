@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 2026-11-06 — Stage 4b re-check; Stage 4c run plan [Claude]
+- Re-check of Codex's Stage 4b-fix (`f03010b`): **PASS** (`docs/GATES.md`). Frozen data unchanged (`id_map.csv` line endings only); 63 non-rebuild tests rerun OK; all pilot_v2 logs on Argon/`global` with the D60 settings; re-check list met. Notes for the Stage 4 gate: 財源 "= 資源" (impossible reading) and minor task-3 wording.
+- New finding: 9 task-4 Korean differences carry a D39-mapped base that is not the written syllable (「異性」では「리」); filter assigned (D62 item 6), 243 → 234 items.
+- **D61:** user items 9 (total-token billing), 10 (resume), 11 (timeout, UTC deadline guard) verified and recorded, with their known small gaps.
+- **D62:** Stage 4c is started by the user in a new PowerShell window, in two sittings (task 1, Claude review, tasks 2-4); Codex Stage 4c-prep adds a launcher (User-scope variables, keep-awake, auto-resume), `--status`, retry wait and a lock. User steps: new `docs/VERTEX_SETUP.md` part E2. No pipeline code or data changed. Next: Codex Stage 4c-prep.
+
 ## 2026-11-06 — Stage 4b-fix: D60 and Argon re-pilot [Codex]
 
 - Pinned Argon and v2 prompts; added response property ordering, D60 validators, the 243-item task-4 filter, the UTC deadline guard, and a 600-second per-request timeout.

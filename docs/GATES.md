@@ -296,3 +296,23 @@ The two rows were added at commit `4919d5b` (Codex, D56 fixes G1-G3), not by D57
 | `c03207` | 畿 | ko 기, pinyin jī, ja き, `vi` empty | 京畿 `w12993` kinh kỳ (VI-only, level 7) |
 
 **Why:** D56 item 2 (G1) made Codex apply the A2 spelling function **before** `freq_score` is computed. 7C writes these words with `kì` (thần kì, kinh kì); scored in that spelling they had no `freq_score` at `0d581fa` (empty in that commit's `vi_only_report.csv`), so they could not be selected (D46 requires a score). After G1 they are spelled `kỳ` (h/k/l/m/t + i rule), get a score (9,550 and 9,177) and rank inside the 1,200 cap (1,145 and 1,166), replacing lower-ranked words. Six words entered this way (病理學, 奇功, 神祇, 京畿, 經期, 奇才) and six left (行法, 解法, 無才, 拳法, 槍法, 法家; IDs kept unused). Only 神祇 and 京畿 use a character no other word uses, so `chars` grows by exactly these two rows (D38 / D40 step 5: a row for every character used in `words`); no row was removed because every character of the dropped words is still used elsewhere. Already recorded at the attempt-2 gate (R4, R5 above). Both rows have empty `vi`: `kỳ` is not in their (empty) `vi_all`, so both words are listed `not_in_all` in `alignment_mismatches.csv` (D45), as expected.
+
+## Stage 4b re-check (Argon re-pilot, before the full run), 2026-11-06: **PASS**, one fix before task 4
+
+Pilot review, not the PROMPT Stage 4 gate (that is Claude 4d, after the full run). Input: `docs/STAGE4B_FIX_REPORT.md`, commit `f03010b`, `content/generated/pilot_v2/`.
+
+| Item | Evidence | Result |
+|---|---|---|
+| Frozen data | `git diff HEAD -- data` empty; `pipeline/id_map.csv` working-tree diff empty with `--ignore-cr-at-eol` (line endings only); `stage3_match.py` change is an import fallback only | OK |
+| Tests | 63 non-rebuild tests rerun by Claude with `unittest`: all OK (incl. resume, UTC guard, timeout, total-token billing, credential scan, schema order, D60 validators) | OK |
+| D60 settings | every pilot_v2 log: `gemini-4-argon`, `global`, temperature 0.3, 600 s timeout, prompt and input SHA-256; task-1 input SHA equals the first pilot (`e0d78cd4…`); 5/5 requests valid on attempt 1 | OK |
+| User items 9-11 | code read (`runner.py`) + tests; recorded as **D61** | OK |
+| Cost | cost log migration kept all 15 earlier rows ($0.69781975); total spent $0.94261375 | OK |
+| Task 1 | 國, 茶 `same_word`; 樂, 試, 塗 (and 行) `unsure` + low, Vietnamese meaning kept; 自己 `same_word` with "autistic" meaning, `meanings_differ`; 平價 = 評價, 團圓 = 團員, 傷口 = 商口, 自制 = 自製 `different_word`; ko_rare 6 (小姐, 老公, 勉強, 精英, 擋, 回來). **One regression:** 財源 tài nguyên now `different_word` "= 資源", but 資源 reads tư nguyên, so the claim is impossible (v1 Argon had `same_word`, correct). 1 wrong of 5 flags; every non-`same_word` flag is reviewed at 4d anyway | OK, note for 4d |
+| Task 2 | `ja` in no `false_friend` (勉強 [zh, vi], 大丈夫 [ko, zh, vi], 手紙 [zh, vi], 新聞 [zh]); 自己 [vi]; 大丈夫 ko 대장부 trap is correct (common Korean word) | OK |
+| Task 3 | 12 passages, every translation complete; minor: 「在我们国」 is unnatural Chinese (我们国家), 下车 rendered 下りて | OK, 4d sample |
+| Task 4 | 243 items; i/y and `unihan_unverified` differences gone. **New finding:** 「異性」では「리」と読む — 異性 is 이성. In the full task-4 input 9 Korean differences have a `reading_here` (`ko_base`) that is not the syllable written in `ko` (異 ×6, 諾言, 鬧鐘, 寧靜): D39 base-mapping artefact (Stage 3 gate attempt 2 note 3). The validator cannot catch it (the wrong syllable is in the input) | **Fix before task 4: D62 item 6 (Codex)** |
+
+**For Claude 4d (method):** for every `different_word`, a script checks that the characters named in `vi_check_reason` can be read as the `vi` value from `chars.vi_all` (catches 財源 → 資源 tư nguyên).
+
+Re-check: **PASS**. The full run may start after Codex Stage 4c-prep (D62: launcher, `--status`, retry wait, lock, task-4 Korean filter). Run plan: D62; user steps: `docs/VERTEX_SETUP.md` part E2.

@@ -95,6 +95,32 @@ Start Codex for Stage 4a as usual. When its script is ready, it runs `--check`: 
 - **"Model not found" for location `global`:** run `setx GOOGLE_CLOUD_LOCATION "us-central1"`, restart the terminals and Codex, and try again.
 - **"Could not find default credentials" / "reauthentication needed":** repeat `gcloud auth application-default login`.
 
+## E2. Running the full generation yourself (Stage 4c, D62)
+
+You start the long runs, not an agent. There are **two sittings**: first task 1 (about 2 h 40 min), then, after Claude has checked task 1, tasks 2, 3 and 4 (about 1 h 30 min). Only start a sitting when `docs/HANDOFF.md` says **"Next: User — run Stage 4c …"**. Everything must be finished before the **evening of 2026-11-30** (the script refuses Argon requests from 2026-12-01 00:00 UTC, which is 7 pm on 30 November in US Eastern time).
+
+**Before each sitting (2 minutes)**
+1. Plug in the charger. Keep the laptop lid **open** (closing it can put the PC to sleep).
+2. Settings → **System** → **Power & battery** → **Screen, sleep & hibernate timeouts** → "When plugged in, put my device to sleep after" → **Never**. Remember the old value. (The screen may still turn off; that is fine. The script also asks Windows to stay awake, so this is a second safety.)
+3. Settings → **Windows Update** → **Pause updates** (1 week), so Windows does not restart in the middle.
+
+**Start (1 minute)**
+4. Open a **new** PowerShell window from the Start menu. Do not use an old window or Codex's terminal: only a new window has the settings from part C4.
+5. Type these two lines, pressing Enter after each:
+   ```powershell
+   cd "<project folder>"
+   powershell -ExecutionPolicy Bypass -File pipeline\stage4\run_stage4.ps1 -Tasks 1
+   ```
+   For the second sitting, the second line ends in `-Tasks 2,3,4` instead.
+6. Leave the window open. About every 2 minutes a line like `task=1 batch=b007 ok ...` appears. At the end the script prints a summary such as `task 1: 86/86 validated, 0 failed`, and the amount spent.
+
+**If something interrupts it** (window closed, PC restarted or asleep, Wi-Fi lost, an error): open a new window and do steps 4-5 again. Batches that are already finished are skipped (`skipped=validated`) and are not paid again; only the one request that was running is lost. Never run two windows at the same time (the script refuses).
+- If the error mentions **credentials**, **401**, **reauthentication** or **login**: run `gcloud auth application-default login`, choose your account in the browser, click **Allow**, then step 5 again.
+- If the summary still shows **failed** batches after the script's own retries: run step 5 once more. If they fail again, stop and tell Claude or Codex what the last lines say.
+- To see progress at any time without sending anything to Google: `powershell -ExecutionPolicy Bypass -File pipeline\stage4\run_stage4.ps1 -Status`
+
+**After each sitting:** set the sleep setting back to its old value, then start Claude ("Read PROMPT.md. You are Claude. …"). You do not need to commit anything; Claude does.
+
 ## F. When Stage 4 is finished (Claude will say so)
 
 Run these lines to remove the sign-in and switch off the API, so nothing can use the account by accident:
