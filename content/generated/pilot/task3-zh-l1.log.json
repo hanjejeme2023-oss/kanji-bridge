@@ -1,0 +1,39 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "timestamp": "2026-11-06T15:44:59Z",
+      "usage": {
+        "input_tokens": 981,
+        "output_tokens": 992,
+        "thinking_tokens": 0
+      },
+      "usd": 0.00445575,
+      "validation_ok": true
+    }
+  ],
+  "batch": "pilot-task3-zh-l1",
+  "counted_input_tokens": 753,
+  "input_sha256": "70786dd3d11d27b1c6a96348858e94ed9b7ba276c7b8be38e0e96644fada57ff",
+  "item_count": 1,
+  "location": "global",
+  "model": "gemini-3.8-flash",
+  "prompt_sha256": "c6a5479a2194f93ff08ee752c932a65625d0352fcdfdc2ca6cbc255e04b99929",
+  "settings": {
+    "max_output_tokens": 65536,
+    "temperature": 0.3,
+    "thinking": "model_default"
+  },
+  "task": 3,
+  "timestamp": "2026-11-06T15:44:59Z",
+  "usage": {
+    "input_tokens": 981,
+    "output_tokens": 992,
+    "thinking_tokens": 0
+  },
+  "usd": 0.00445575,
+  "validation": {
+    "error": "",
+    "ok": true
+  }
+}

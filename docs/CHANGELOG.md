@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## 2026-11-06 — Stage 4a Vertex generation script and pilot [Codex]
+- Added `pipeline/stage4_generate.py` and `pipeline/stage4/`: deterministic builders for four tasks, strict local validators, Vertex-only ADC client, API-key guard, structured schemas, retries/backoff, token accounting, date-aware Flash/Argon prices, and a shared $100 hard ceiling. Pinned `google-genai==2.34.0` separately; `run_all.py` remains isolated.
+- Added versioned English prompts, exact pilot JSONL inputs, per-request outputs/logs, and `content/cost_log.csv`. No readings are emitted by model outputs. Final saved pilot output passed every local validator.
+- Fixed check handling after the first 32-token check returned empty text: check budget 1,024; every response now checks text/finish reason before JSON parsing and reports finish reason plus token counts; failed checks are cost-logged. Corrected `--check` passed on `gemini-3.8-flash`, `global`, 123 tokens.
+- Ran the user-requested identical-input comparison on GA `gemini-4-argon` for pilot tasks 1 and 2 only. Flash remains pinned pending Claude's Stage 4b decision. Argon November/December prices are recorded separately.
+- Pilot final successful requests: Flash task 1 14,401/13,113/0 tokens; task 2 4,772/4,224/15,883; task 3 zh 981/992/0; task 3 vi 1,447/1,542/2,431; task 4 5,639/2,358/5,302. Argon task 1 14,280/13,859/0; task 2 4,780/4,228/0 (input/output/thinking). Actual logged corrected-check plus all pilot attempts: $0.69781975.
+- Successful-attempt Flash projection is $13.37 lower bound; about $15.23 with D58 task-3 sizing and about $25.49 with the observed task-1 retry factor. Argon task 1+2: $19.48 through November or $38.97 from December on one billed attempt, higher with observed retries. Full evidence in `docs/STAGE4A_REPORT.md`.
+- Added 16 Stage 4 tests covering frozen counts, deterministic inputs, bad outputs, schema constraints, secrets, empty responses and `run_all.py` isolation. One canonical rebuild completed and all 54 non-rebuild tests pass. No full run started. Next: Claude Stage 4b.
+
 ## 2026-11-06 — Documentation consolidation; Stage 4 on Vertex AI; Stage 4 assignment [Claude]
 - `docs/HANDOFF.md` cut to status, next assignment, planned sequence, notes, open problems and recent log; completed assignments, Codex evidence blocks, resolved notes and the full log moved **verbatim** to the new `docs/HANDOFF_ARCHIVE.md`.
 - `docs/DECISIONS.md`: superseded decisions or parts marked in italics at the start of D23, D24, D26, D27, D31, D32, D36, D38, D39, D44, D46, D47, D53, D54, D55 and open item E; nothing deleted.

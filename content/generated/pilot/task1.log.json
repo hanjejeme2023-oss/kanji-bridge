@@ -1,0 +1,63 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "error": "ValidationError: w09582.meaning_ja__vi presence does not match vi",
+      "timestamp": "2026-11-06T15:08:40Z",
+      "usage": {
+        "input_tokens": 14401,
+        "output_tokens": 13092,
+        "thinking_tokens": 0
+      },
+      "usd": 0.05989575,
+      "validation_ok": false
+    },
+    {
+      "attempt": 2,
+      "error": "ValidationError: w00131.meaning_ja__vi presence does not match vi",
+      "timestamp": "2026-11-06T15:10:08Z",
+      "usage": {
+        "input_tokens": 14401,
+        "output_tokens": 13131,
+        "thinking_tokens": 0
+      },
+      "usd": 0.060042,
+      "validation_ok": false
+    },
+    {
+      "attempt": 3,
+      "timestamp": "2026-11-06T15:13:13Z",
+      "usage": {
+        "input_tokens": 14401,
+        "output_tokens": 13113,
+        "thinking_tokens": 0
+      },
+      "usd": 0.0599745,
+      "validation_ok": true
+    }
+  ],
+  "batch": "pilot-task1",
+  "counted_input_tokens": 14090,
+  "input_sha256": "e0d78cd496151ac3d36aa04068fc8e7d3a4fecb36cf09b3cf78a90fb50fd906f",
+  "item_count": 100,
+  "location": "global",
+  "model": "gemini-3.8-flash",
+  "prompt_sha256": "8f4f698b611e58b7177ce810f915b047429d99ea5fb8fffb4559abed60918fc2",
+  "settings": {
+    "max_output_tokens": 65536,
+    "temperature": 0.3,
+    "thinking": "model_default"
+  },
+  "task": 1,
+  "timestamp": "2026-11-06T15:13:13Z",
+  "usage": {
+    "input_tokens": 14401,
+    "output_tokens": 13113,
+    "thinking_tokens": 0
+  },
+  "usd": 0.0599745,
+  "validation": {
+    "error": "",
+    "ok": true
+  }
+}
