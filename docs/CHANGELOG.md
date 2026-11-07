@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## 2026-11-07 — Stage 4 gate part 2: tasks 2-4 reviewed [Claude]
+- Committed the user's sitting-2 output: `content/inputs/task{2,3,4}/`, `content/generated/task{2,3,4}/` (79 + 14 + 5 batches, all validated on the first attempt), `content/cost_log.csv` (total $21.87953175).
+- Gate (`docs/GATES.md`, `docs/STAGE4D_PART2_REVIEW.md`, **D64**): task 2 accepted (79); task 3 Chinese accepted (b001-b007), **Vietnamese rejected (b008-b014)**; task 4 accepted (5).
+- New `config/task2_review.csv` (6 Korean homophone corrections, `same_as_ja`) and `config/task4_review.csv` (5 notes with a wrong Korean example corrected); new prompt `content/prompts/task3_v3.md` for the Vietnamese passage cells.
+- New error class found: Vietnamese values of `ff_candidates` rows were never checked; 25 of 68 Vietnamese traps there come from a different word or a place name (敬老 = "reading glasses"). They join the step-6 list as group B.
+- `docs/VI_CLEAR_SHORTLIST.md`: step-6 list for the user (39 words + 28 forms, with dictionary links and plain-language evidence).
+- User questions answered: task 4 234 → 212 (13 non-`same_word` + 9 non-card words, D63 words kept); task-2 token levels = layout only (about $2.05); all 16 D63 words handled in task 2.
+- Reference script `docs/review_scripts/stage4d_part2_reference.py`.
+
 ## 2026-11-07 — Stage 4c-prep2: D63 downstream overlay [Codex]
 - Added a fail-closed `config/task1_review.csv` overlay loader. It verifies unique review/output/frozen keys and exact `trad`, `vi` and original `vi_check` matches, then changes exactly the 16 reviewed `vi_check` values in memory; generated task-1 files remain untouched. Every task 2-4 build, including offline status and resume hashing, uses the overlay.
 - Task 2 always includes the 16 reviewed words with their Vietnamese reading, keeps or blanks `gloss_vi` per the review, and leaves the missing task-1 Vietnamese meaning empty for task 2 to supply. Frozen count: **3,937 items / 79 batches**.

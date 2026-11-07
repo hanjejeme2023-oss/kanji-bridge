@@ -1,0 +1,7 @@
+key,lang,action,meaning_ja_generated,is_trap_generated,meaning_ja_review,false_friend_review,reason
+質素,ko,same_as_ja,窒素（化学元素）,true,質素、飾り気がないこと,zh,"Korean 질소 here is 質素 (plain, frugal; same as Japanese); 窒素 (nitrogen) is a different word that sounds the same"
+定規,ko,same_as_ja,正規の規則、正式,true,線を引いたり長さを測ったりする文房具,zh,"Korean 정규 here is 定規 (a ruler; a fixed rule); 正規 (regular, official) is a different word that sounds the same"
+商談,ko,same_as_ja,相談、カウンセリング,true,商談、取引の話し合い,,Korean 상담 here is 商談 (business talk; same as Japanese); 相談 (counselling) is a different word that sounds the same
+濃淡,ko,same_as_ja,濃淡（同音で「冗談」の意が一般的）,true,色や味などの濃いことと薄いこと,,Korean 농담 here is 濃淡 (light and shade; same as Japanese); 弄談 (joke) is a different word that sounds the same
+等身,ko,same_as_ja,間抜け、ばか（俗語）,true,実際の身長と同じ大きさ、また頭身（頭と身長の比率）,,"Korean 등신 here is 等身 (life size, as in 등신대); 'fool' is usually written 等神, a different word"
+w12608,ko,same_as_ja,授業、学業を修めること,true,修業、学問や技芸を習い修めること,,Korean 수업 here is 修業 (learning a skill; same as Japanese); 授業 (a class) is a different word that sounds the same

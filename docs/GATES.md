@@ -335,3 +335,21 @@ PROMPT Stage 4 review for task 1 (D62 item 2). Full evidence: `docs/STAGE4D_TASK
 | `unsure` (9 multi + 40 single), `ko_rare` (60 of 930), other low (2), `meanings_differ` (25) | 0 errors | OK |
 
 **PASS.** Batches stay in `content/generated/task1/` until part 2. Before sitting 2: Codex applies D63 (`config/task1_review.csv` overlay in task 2-4 builders; task-3 `ko_rare` rule).
+
+## Stage 4 gate part 2 (tasks 2, 3, 4), 2026-11-07: **PASS for tasks 2 and 4 (with overlays) and task-3 Chinese; task-3 Vietnamese b008-b014 REJECTED**
+
+PROMPT Stage 4 review for tasks 2-4 (D62 item 2). Full evidence: `docs/STAGE4D_PART2_REVIEW.md`; reference script `docs/review_scripts/stage4d_part2_reference.py`. Decision: **D64**.
+
+| Item | Evidence | Result |
+|---|---|---|
+| Done-when | task 2: 3,937 items = every `meanings_differ` word, 自己, the 16 D63 words, all 2,504 `ff_candidates` rows; task 3: 6 passages in each of 14 cells, all tokens resolve; task 4: 212 notes ≤ 80 characters; validator rerun 0 failures; inputs byte-identical to a fresh build; no reading field in any output | OK |
+| Run | 98/98 batches first attempt; one prompt SHA per task; Argon `global` 0.3; ledger $21.87953175 (sitting 2 $7.51), room $78.12 | OK |
+| Frozen data | no diff in `data/`, `config/` (before this gate's new files), `overrides.csv`; `id_map.csv` line endings only | OK |
+| User Q1: task 4 234 → 212 | 22 dropped = Vietnamese-only differences without a `same_word` check: 13 non-`same_word` words + 9 words with no task-1 result (not `card_eligible`; their notes could never be shown); 2 of the 16 D63 words have task-4 differences, both kept | OK |
+| User Q2: task-2 output tokens | three fixed tokens-per-character levels at equal stored content: response layout only; about $2.05 of padding | OK, no action |
+| User Q3: D63 words in task 2 | 16/16 Vietnamese meaning + judgment; `gloss_vi` withheld for the 4 `blank` rows; 0 errors | OK |
+| Task 2 review | fixed items, 50 random, all 9 low, all 68 ff Vietnamese traps, all 64 Korean traps, 25 word Vietnamese traps: 31 errors / 3,937 (25 ff Vietnamese homophones or place names + 3 non-trap place-name meanings, 6 Korean homophones; 手紙's vi trap included) | **ACCEPT** 79; Korean → `config/task2_review.csv`; Vietnamese → step-6 group B |
+| Task 3 review | all 84 passages: zh natural; vi about 1 in 5 forces literary/archaic words, one wrong word (bên ngoại) | zh **ACCEPT** b001-b007; vi **REJECT** b008-b014 → `task3_v3.md` |
+| Task 4 review | 50 random: 0 model errors; script: 5 notes quote a Korean example whose written syllable differs (效率 효율, 戀愛 연애), builder-caused | **ACCEPT** 5; → `config/task4_review.csv` |
+
+Next: Codex 4c-prep3 (task-3 prompt per language), user reruns task 3 (Vietnamese cells) and answers `docs/VI_CLEAR_SHORTLIST.md`, then Claude re-checks task 3 and applies step 6.
