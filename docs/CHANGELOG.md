@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 2026-11-07 — Stage 4c-prep3: task-3 prompt per language [Codex]
+- Task 3 now resolves its prompt from each cell: Chinese uses unchanged `task3_v2.md`; Vietnamese uses Claude's unchanged `task3_v3.md`. Request text, log SHA, resume validation, offline status, cost estimation and dry-run all use the resolved cell prompt. Tasks 1, 2 and 4 retain their single prompts.
+- Resume/dry-run checks happen before rewriting an already validated input. The seven Chinese v2 batches remain valid; the seven Vietnamese batches logged with the v2 SHA are stale and selected for rerun. Dry-run now reports only the unvalidated batch count.
+- Added offline regressions for per-language selection, Chinese-v2 skip, Vietnamese-v2 rerun, pending-only dry-run, prompt-matched ceiling estimation and unchanged prompt behavior for tasks 1, 2 and 4. All **78 non-rebuild tests pass**; one canonical rebuild completed successfully.
+- Offline launcher `-Status`: task 1 **86/86**, task 2 **79/79**, task 3 **7/14**, task 4 **5/5** validated; spend $21.87953175, room $78.12046825. No request was sent, no task was started, and no file under `content/generated/`, `content/inputs/`, `config/` or `content/prompts/` was modified.
+
 ## 2026-11-07 — Stage 4 gate part 2: tasks 2-4 reviewed [Claude]
 - Committed the user's sitting-2 output: `content/inputs/task{2,3,4}/`, `content/generated/task{2,3,4}/` (79 + 14 + 5 batches, all validated on the first attempt), `content/cost_log.csv` (total $21.87953175).
 - Gate (`docs/GATES.md`, `docs/STAGE4D_PART2_REVIEW.md`, **D64**): task 2 accepted (79); task 3 Chinese accepted (b001-b007), **Vietnamese rejected (b008-b014)**; task 4 accepted (5).

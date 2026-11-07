@@ -38,8 +38,11 @@ ARGON_DEADLINE_UTC = "2026-12-01"
 PROMPT_FILES = {
     1: PROMPTS / "task1_v2.md",
     2: PROMPTS / "task2_v2.md",
-    3: PROMPTS / "task3_v2.md",
     4: PROMPTS / "task4_v1.md",
+}
+TASK3_PROMPT_FILES = {
+    "zh": PROMPTS / "task3_v2.md",
+    "vi": PROMPTS / "task3_v3.md",
 }
 COST_FIELDS = [
     "timestamp", "task", "batch", "attempt", "model", "input_tokens",
@@ -243,12 +246,25 @@ def append_cost(row: dict[str, Any]) -> None:
         writer.writerow({field: row.get(field, "") for field in COST_FIELDS})
 
 
-def prompt_text(task: int) -> str:
-    return unicodedata.normalize("NFC", PROMPT_FILES[task].read_text(encoding="utf-8").strip())
+def prompt_path(task: int, items: list[dict[str, Any]] | None = None) -> Path:
+    if task != 3:
+        return PROMPT_FILES[task]
+    languages = {
+        str(item.get("language", "")).strip()
+        for item in (items or [])
+    }
+    if len(languages) != 1 or next(iter(languages), "") not in TASK3_PROMPT_FILES:
+        raise Stage4Error("Task 3 prompt requires exactly one zh or vi cell")
+    return TASK3_PROMPT_FILES[next(iter(languages))]
+
+
+def prompt_text(task: int, items: list[dict[str, Any]] | None = None) -> str:
+    path = prompt_path(task, items)
+    return unicodedata.normalize("NFC", path.read_text(encoding="utf-8").strip())
 
 
 def request_text(task: int, items: list[dict[str, Any]]) -> str:
-    return prompt_text(task) + "\n\nINPUT JSONL:\n" + builders.jsonl_text(items)
+    return prompt_text(task, items) + "\n\nINPUT JSONL:\n" + builders.jsonl_text(items)
 
 
 def count_tokens(client: Any, contents: str, model_id: str = MODEL_ID) -> int:
@@ -261,7 +277,11 @@ def count_tokens(client: Any, contents: str, model_id: str = MODEL_ID) -> int:
     return int(value)
 
 
-def _successful_logs(task: int, model_id: str = MODEL_ID) -> list[dict[str, Any]]:
+def _successful_logs(
+    task: int,
+    model_id: str = MODEL_ID,
+    prompt_sha256: str | None = None,
+) -> list[dict[str, Any]]:
     logs: list[dict[str, Any]] = []
     for path in GENERATED.rglob("*.log.json") if GENERATED.exists() else []:
         try:
@@ -269,14 +289,20 @@ def _successful_logs(task: int, model_id: str = MODEL_ID) -> list[dict[str, Any]
         except (OSError, json.JSONDecodeError):
             continue
         if (value.get("task") == task and value.get("model") == model_id
-                and value.get("validation", {}).get("ok") is True):
+                and value.get("validation", {}).get("ok") is True
+                and (prompt_sha256 is None or value.get("prompt_sha256") == prompt_sha256)):
             logs.append(value)
     return logs
 
 
-def estimated_chargeable_output(task: int, item_count: int, model_id: str = MODEL_ID) -> int:
+def estimated_chargeable_output(
+    task: int,
+    item_count: int,
+    model_id: str = MODEL_ID,
+    prompt_sha256: str | None = None,
+) -> int:
     totals = []
-    for log in _successful_logs(task, model_id):
+    for log in _successful_logs(task, model_id, prompt_sha256):
         usage = log.get("usage", {})
         count = int(log.get("item_count", 0) or 0)
         if count:
@@ -289,10 +315,19 @@ def estimated_chargeable_output(task: int, item_count: int, model_id: str = MODE
     return int(average * item_count + 0.999)
 
 
-def enforce_ceiling(input_tokens: int, task: int, item_count: int, model_id: str = MODEL_ID) -> None:
+def enforce_ceiling(
+    input_tokens: int,
+    task: int,
+    item_count: int,
+    model_id: str = MODEL_ID,
+    prompt_sha256: str | None = None,
+) -> None:
     prices = load_prices()
     projected = existing_cost() + calculate_cost(
-        input_tokens, estimated_chargeable_output(task, item_count, model_id), 0, model_id
+        input_tokens,
+        estimated_chargeable_output(task, item_count, model_id, prompt_sha256),
+        0,
+        model_id,
     )
     ceiling = float(prices["hard_ceiling"])
     if projected > ceiling:
@@ -415,7 +450,8 @@ def generate_batch(
     _, location = vertex_settings()
     contents = request_text(task, items)
     input_text = builders.jsonl_text(items)
-    prompt = prompt_text(task)
+    prompt = prompt_text(task, items)
+    prompt_sha256 = builders.sha256_text(prompt)
     counted_input: int | None = None
     attempts: list[dict[str, Any]] = []
     retry = 0
@@ -429,7 +465,9 @@ def generate_batch(
             enforce_argon_deadline(model_id, allow_after_deadline)
             if counted_input is None:
                 counted_input = count_tokens(client, contents, model_id)
-                enforce_ceiling(counted_input, task, len(items), model_id)
+                enforce_ceiling(
+                    counted_input, task, len(items), model_id, prompt_sha256
+                )
             operation = "generate_content"
             response = client.models.generate_content(
                 model=model_id, contents=contents, config=generation_config(task)
@@ -470,7 +508,7 @@ def generate_batch(
                     "max_output_tokens": MAX_OUTPUT_TOKENS,
                     "request_timeout_seconds": REQUEST_TIMEOUT_SECONDS,
                 },
-                "prompt_sha256": builders.sha256_text(prompt),
+                "prompt_sha256": prompt_sha256,
                 "input_sha256": builders.sha256_text(input_text),
                 "item_count": len(items), "counted_input_tokens": counted_input,
                 "usage": usage, "usd": usd, "attempts": attempts,
@@ -533,7 +571,7 @@ def generate_batch(
             "max_output_tokens": MAX_OUTPUT_TOKENS,
             "request_timeout_seconds": REQUEST_TIMEOUT_SECONDS,
         },
-        "prompt_sha256": builders.sha256_text(prompt),
+        "prompt_sha256": prompt_sha256,
         "input_sha256": builders.sha256_text(input_text),
         "item_count": len(items), "counted_input_tokens": counted_input or 0,
         "usage": {
@@ -643,7 +681,7 @@ def validated_batch_exists(
             "task": task,
             "batch": batch_name,
             "model": model_id,
-            "prompt_sha256": builders.sha256_text(prompt_text(task)),
+            "prompt_sha256": builders.sha256_text(prompt_text(task, items)),
             "input_sha256": builders.sha256_text(builders.jsonl_text(items)),
             "item_count": len(items),
         }
@@ -695,23 +733,25 @@ def run_task(
             raise Stage4Error(f"Task {task} batch must be 1..{len(batches)}")
         numbered = [(batch_number, batches[batch_number - 1])]
     total_counted = 0
+    counted_batches = 0
     failed = 0
     for number, items in numbered:
         name = f"b{number:03d}"
-        input_path = INPUTS / f"task{task}" / f"{name}.jsonl"
-        builders.write_jsonl(input_path, items)
-        contents = request_text(task, items)
-        if dry_run:
-            counted = count_tokens(client, contents)
-            total_counted += counted
-            print(f"task={task} batch={name} input_tokens={counted}")
-            continue
         output_path = GENERATED / f"task{task}" / f"{name}.jsonl"
         log_path = GENERATED / f"task{task}" / f"{name}.log.json"
         if batch_number is None and validated_batch_exists(
             task, name, items, output_path, log_path,
         ):
             print(f"task={task} batch={name} skipped=validated")
+            continue
+        input_path = INPUTS / f"task{task}" / f"{name}.jsonl"
+        builders.write_jsonl(input_path, items)
+        contents = request_text(task, items)
+        if dry_run:
+            counted = count_tokens(client, contents)
+            total_counted += counted
+            counted_batches += 1
+            print(f"task={task} batch={name} input_tokens={counted}")
             continue
         result = generate_batch(
             client, task, name, items,
@@ -720,7 +760,7 @@ def run_task(
         )
         failed += result is None
     if dry_run:
-        print(f"task={task} batches={len(numbered)} total_input_tokens={total_counted}")
+        print(f"task={task} batches={counted_batches} total_input_tokens={total_counted}")
     return failed
 
 

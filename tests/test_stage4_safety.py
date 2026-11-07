@@ -21,6 +21,7 @@ from pipeline.stage4.runner import (
     REQUEST_TIMEOUT_MS,
     Stage4Error,
     calculate_cost,
+    estimated_chargeable_output,
     enforce_argon_deadline,
     generation_config,
     guard_api_keys,
@@ -29,6 +30,7 @@ from pipeline.stage4.runner import (
     run_task,
     generate_batch,
     main,
+    prompt_text,
     stage4_lock,
     usage_from_response,
 )
@@ -78,6 +80,16 @@ class Stage4SafetyTests(unittest.TestCase):
         self.assertEqual(options.timeout, REQUEST_TIMEOUT_MS)
         self.assertEqual(options.retry_options.attempts, 1)
 
+    def test_task3_prompt_is_selected_by_cell_language(self) -> None:
+        zh_prompt = prompt_text(3, [{"language": "zh"}])
+        vi_prompt = prompt_text(3, [{"language": "vi"}])
+        self.assertIn("(v2", zh_prompt)
+        self.assertIn("(v3, Vietnamese cells)", vi_prompt)
+        self.assertNotEqual(zh_prompt, vi_prompt)
+        for task in (1, 2, 4):
+            with self.subTest(task=task):
+                self.assertEqual(prompt_text(task), prompt_text(task, [{"language": "vi"}]))
+
     def test_argon_deadline_guard_uses_utc_date(self) -> None:
         before = datetime(2026, 11, 30, 23, 59, tzinfo=timezone.utc)
         boundary = datetime(2026, 12, 1, 0, 0, tzinfo=timezone.utc)
@@ -126,6 +138,103 @@ class Stage4SafetyTests(unittest.TestCase):
                 log_path.write_text(json.dumps(log), encoding="utf-8")
                 self.assertEqual(run_task(Mock(), 1, None, False), 0)
                 generate.assert_called_once()
+
+    def test_task3_resume_keeps_zh_v2_and_reruns_vi_v2(self) -> None:
+        zh_items = [{"language": "zh", "level": 1, "words": []}]
+        vi_items = [{"language": "vi", "level": 1, "words": []}]
+        v2_sha = builders.sha256_text(prompt_text(3, zh_items))
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            generated = root / "generated"
+            for number, items in enumerate((zh_items, vi_items), 1):
+                name = f"b{number:03d}"
+                output_path = generated / "task3" / f"{name}.jsonl"
+                log_path = generated / "task3" / f"{name}.log.json"
+                builders.write_jsonl(output_path, [{"passages": []}])
+                log_path.write_text(json.dumps({
+                    "task": 3,
+                    "batch": name,
+                    "model": MODEL_ID,
+                    "prompt_sha256": v2_sha,
+                    "input_sha256": builders.sha256_text(builders.jsonl_text(items)),
+                    "item_count": 1,
+                    "validation": {"ok": True, "error": ""},
+                }), encoding="utf-8")
+            generate = Mock(return_value={"passages": []})
+            with (
+                patch("pipeline.stage4.runner.INPUTS", root / "inputs"),
+                patch("pipeline.stage4.runner.GENERATED", generated),
+                patch("pipeline.stage4.runner.task1_outputs_from_generated", return_value=[]),
+                patch("pipeline.stage4.runner.builders.task_batches", return_value=[zh_items, vi_items]),
+                patch("pipeline.stage4.runner.read_generated_output", return_value={"passages": []}),
+                patch("pipeline.stage4.runner.validate"),
+                patch("pipeline.stage4.runner.generate_batch", generate),
+            ):
+                self.assertEqual(run_task(Mock(), 3, None, False), 0)
+            generate.assert_called_once()
+            self.assertEqual(generate.call_args.args[2], "b002")
+            self.assertEqual(generate.call_args.args[3], vi_items)
+
+    def test_task3_dry_run_counts_only_stale_prompt_batches(self) -> None:
+        zh_items = [{"language": "zh", "level": 1, "words": []}]
+        vi_items = [{"language": "vi", "level": 1, "words": []}]
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            generated = root / "generated"
+            output_path = generated / "task3" / "b001.jsonl"
+            log_path = generated / "task3" / "b001.log.json"
+            builders.write_jsonl(output_path, [{"passages": []}])
+            log_path.write_text(json.dumps({
+                "task": 3,
+                "batch": "b001",
+                "model": MODEL_ID,
+                "prompt_sha256": builders.sha256_text(prompt_text(3, zh_items)),
+                "input_sha256": builders.sha256_text(builders.jsonl_text(zh_items)),
+                "item_count": 1,
+                "validation": {"ok": True, "error": ""},
+            }), encoding="utf-8")
+            count = Mock(return_value=17)
+            stream = io.StringIO()
+            with (
+                patch("pipeline.stage4.runner.INPUTS", root / "inputs"),
+                patch("pipeline.stage4.runner.GENERATED", generated),
+                patch("pipeline.stage4.runner.task1_outputs_from_generated", return_value=[]),
+                patch("pipeline.stage4.runner.builders.task_batches", return_value=[zh_items, vi_items]),
+                patch("pipeline.stage4.runner.read_generated_output", return_value={"passages": []}),
+                patch("pipeline.stage4.runner.validate"),
+                patch("pipeline.stage4.runner.count_tokens", count),
+                redirect_stdout(stream),
+            ):
+                self.assertEqual(run_task(Mock(), 3, None, True), 0)
+            self.assertEqual(count.call_count, 1)
+            self.assertTrue(count.call_args.args[1].startswith(prompt_text(3, vi_items)))
+            self.assertIn("task=3 batches=1 total_input_tokens=17", stream.getvalue())
+
+    def test_ceiling_estimate_uses_only_matching_prompt_logs(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            generated = Path(temp)
+            logs = (
+                ("zh", 100, prompt_text(3, [{"language": "zh"}])),
+                ("vi", 900, prompt_text(3, [{"language": "vi"}])),
+            )
+            for label, output_tokens, prompt in logs:
+                (generated / f"{label}.log.json").write_text(json.dumps({
+                    "task": 3,
+                    "model": MODEL_ID,
+                    "prompt_sha256": builders.sha256_text(prompt),
+                    "item_count": 1,
+                    "usage": {
+                        "output_tokens": output_tokens,
+                        "thinking_tokens": 0,
+                        "unreported_tokens": 0,
+                    },
+                    "validation": {"ok": True},
+                }), encoding="utf-8")
+            with patch("pipeline.stage4.runner.GENERATED", generated):
+                estimate = estimated_chargeable_output(
+                    3, 2, prompt_sha256=builders.sha256_text(logs[1][2])
+                )
+            self.assertEqual(estimate, 1800)
 
     def test_api_errors_wait_30_then_60_seconds(self) -> None:
         client = SimpleNamespace(
