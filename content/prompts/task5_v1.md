@@ -1,26 +1,34 @@
-# Task 5: Korean usage check (v1)
+# Task 5: usage check for Japanese, Korean and Vietnamese readings (v1)
 
-You are checking the Korean side of a vocabulary study tool. The learner is a native speaker of Japanese and Korean who is learning Chinese and Vietnamese. Each input item is a multi-character Han word with its Korean reading `ko`, taken from a hanja dictionary. That dictionary lists every possible Sino-Korean reading, including words that Korean speakers never use. Your job is to say whether **Korean speakers actually use this word**, and whether `meaning_ja__ko` (the Korean meaning the app would show) is right.
+You are checking a vocabulary study tool for a learner who is a native speaker of Japanese and Korean and is learning Chinese and Vietnamese. Each input item is a Han word with its dictionary readings. The dictionaries list every reading they know, including words that speakers of that language do not actually use. Your job is to say, for each language listed in the item's `checks`, whether **speakers of that language actually use this word**.
 
-Everything in the input is given evidence. Never change, add or write a reading. Do not judge the Japanese, Chinese or Vietnamese side.
+Everything in the input is given evidence. Never change, add or write a reading. Do not judge Chinese.
 
-Return exactly one object per input `key`, in the response schema's field order.
+Return exactly one object per input `key`, in the response schema's field order. For a language **not** listed in `checks`, its check field and its reason field are empty strings.
 
-## `ko_check`
+## `ja_check` and `ko_check` (Japanese `ja`, Korean `ko`)
 
-Ask: *would an educated Korean speaker today recognise `ko` as the word written with these characters, and use it?*
+Ask: *would an educated native speaker today recognise this reading as the word written with these characters, and use it?*
 
-- `used`: yes, and `meaning_ja__ko` describes how Koreans use it (small nuance differences are fine). Formal, technical, legal or literary words count when they are used in their field (臨床 임상, 上訴 상소, 收斂 수렴). A Korean meaning that differs from the Japanese or Chinese one is still `used`: that is a false friend, which the app wants (工夫 공부 "study", 愛人 애인 "lover", 汽車 기차 "train", 東西 동서 "east and west").
-- `rare`: the word is not in active use in modern Korean in any meaning. This covers dictionary-only, archaic or classical entries, Chinese or Japanese words whose Korean reading Koreans do not say, and cases where Koreans would hear the Hangul only as **another word written with other characters**. Examples: 小姐 소저, 老公 노공, 出來 출래, 勉強 면강, 同事 동사 (Koreans hear 動詞 "verb"; for "colleague" they use 同僚), 不大 부대 (heard as 部隊), 調度 조도 (heard as 照度), 順路 순로.
-- `wrong_meaning`: Koreans use this word written with these characters, but `meaning_ja__ko` is not its Korean meaning. Typical causes: the meaning of a homophone written with other characters, or a Chinese or Japanese sense that the Korean word does not have. Example: 研究生 연구생 given 「大学院生」 (in Korean 연구생 is a research trainee; a graduate student is a different word).
-- `unsure`: you cannot tell. Use this rather than guessing. An item marked `unsure` is treated like `rare` until a reviewer checks it.
+- `used`: yes, and the given meaning in that language (`meaning_ja__ja` for Japanese, `meaning_ja__ko` for Korean) describes how speakers use it; small nuance differences are fine. Formal, technical, legal or literary words count when they are used in their field (Korean 臨床 임상, 上訴 상소; Japanese 収斂 しゅうれん). A meaning that differs from the other languages is still `used`: that is a false friend, which the tool wants (Korean 工夫 공부 "study", 愛人 애인 "lover"; Japanese 愛人 あいじん "mistress").
+- `rare`: the word is not in active modern use in any meaning. This covers dictionary-only, archaic or classical entries; Chinese words that speakers of this language do not say (including katakana renderings of Chinese pronunciation); and cases where speakers would hear the reading only as **another word written with other characters**. Korean examples: 小姐 소저, 老公 노공, 出來 출래, 勉強 면강, 同事 동사 (Koreans hear 動詞 "verb"; for "colleague" they use 同僚), 不大 부대 (heard as 部隊), 調度 조도 (heard as 照度), 順路 순로. Japanese examples: 同事 どうじ, 錄取 ろくしゅ (for "colleague" and "to admit" Japanese uses other words).
+- `wrong_meaning`: speakers use this word written with these characters, but the given meaning is not its meaning in that language (typically the meaning of a homophone written with other characters, or a Chinese sense this language does not have). Korean example: 研究生 연구생 given 「大学院生」 (in Korean 연구생 is a research trainee; a graduate student is a different word).
+- `unsure`: you cannot tell. Use this rather than guessing; a reviewer checks every `unsure`.
 
-Judge the Korean word itself, not how often the Chinese or Japanese word is used. A hanja dictionary entry with a definition is **not** evidence of use. `gloss_ko`, when present, comes from that dictionary.
+Judge the word itself in that language, not how common the Chinese word is. A dictionary entry with a definition is **not** evidence of use; `gloss_ko` comes from a hanja dictionary and `gloss_ja_en` from a dictionary that also lists rare words.
 
-## `reason`
+## `vi_use` (Vietnamese `vi`)
 
-- Empty for `used`.
-- Otherwise required: one short Japanese phrase (at most 60 characters) that gives the decisive fact, e.g. 「韓国語では「同僚」を使う。동사は通常「動詞」」 or 「辞書のみの古語」.
-- Name other words by their **Han characters**, not by Hangul. The only Hangul allowed in `reason` is the item's own `ko`. Write no pinyin, no Vietnamese and no other reading.
+The Vietnamese value is a correct Sino-Vietnamese reading of these characters and has already been checked to be the same word. Ask: *is it the word a Vietnamese speaker uses today in everyday speech and ordinary writing for this meaning?*
+
+- `common`: yes (經濟 kinh tế, 學生 học sinh, 電話 điện thoại, 問題 vấn đề). A single character counts when it is used on its own or is the normal reading taught for it (茶 trà, 學 học).
+- `literary`: understood and correct, but formal, literary, dated or technical, and everyday Vietnamese normally uses a different word for this meaning (飛機 phi cơ, 足球 túc cầu, 老師 lão sư, 地圖 địa đồ, 飯 phạn).
+- `unsure`: you cannot tell.
+
+## Reasons (`ja_reason`, `ko_reason`, `vi_reason`)
+
+- Empty when the check is `used` or `common`; otherwise required.
+- One short Japanese phrase, at most 80 characters, giving the decisive fact, e.g. 「韓国語では「同僚」を使う。동사は通常「動詞」」, 「辞書のみの古語」, 「日常語は固有語の別の語」.
+- Name other words by their **Han characters** or describe them in Japanese. The only Hangul allowed is the item's own `ko`; the only Latin-letter text allowed is the item's own `vi` or a part of it. Write no other reading of any language.
 
 Output JSON only.

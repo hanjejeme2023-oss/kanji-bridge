@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 2026-11-07 — D67: user decisions on the usage check (task 5) [Claude]
+- Korean option A with parentheses; Japanese check added (1,919 `ja_common=false` card words; `ja_common=true` and ff rows count as used by JMdict evidence); Vietnamese `vi_use` flag, data only; one user-approved UI change (`ruleTags` ignores the parentheses); the 12 prototype false friends kept as static content (`config/ff_static.csv`, 4e); user sample at gate part 4; Stage 5 performance and Final licence notes.
+- `content/prompts/task5_v1.md` rewritten (not yet sent); SCHEMA §1.2 (`ja_use`, `ko_use`, `vi_use`), §3.1 (`jr`/`k` parentheses, `ruleTags`), §5 (task 5, `ff_static`). Task 5: 10,400 items / 104 requests, about $7-16. UX_BACKLOG #4 updated, #5 added.
+- Backup check: no secret or credential file tracked or in history; 36 MB; `docs/BACKUP.md` with user steps. No data or code change.
+
 ## 2026-11-07 — Stage 4 gate part 3: task-3 Vietnamese accepted, step 6 applied, Korean usage check planned [Claude]
 - Task 3 Vietnamese rerun (prompt v3, user run, $0.385) reviewed in full: the forced archaic class is gone; 6 single slips in 42 passages → `config/task3_review.csv` (drop 4, trim 2 by token deletion); every cell keeps ≥ 5 passages; all 14 task-3 batches accepted (D65).
 - Step 6 (user: "All as proposed. A27: clear."): 37 `vi` clears in `pipeline/overrides.csv` (158 rows) and 28 `clear_vi` rows in `config/task2_review.csv`, written by `docs/review_scripts/stage4d_part3_step6.py`. Rebuild: only those 37 `vi` values changed; no primary or tie change (液 giá/dịch tie gone); `card_eligible` 8,555 → 8,554 (季女); HSK `vi` 4,211, all four 3,345. Test constants 8,555 → 8,554 updated.

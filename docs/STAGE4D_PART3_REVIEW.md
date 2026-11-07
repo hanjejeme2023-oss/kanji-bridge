@@ -72,3 +72,7 @@ User: the Korean readings of 同事 동사, 不大 부대, 順路 순로, 調度
 So the problem is real and wider than the `ff_candidates` rows: an estimated ~700 unflagged card words and ~650 `ff_candidates` rows besides the 847 already flagged. The rule, scope, cost and run plan are in **D66**; the prompt is `content/prompts/task5_v1.md`.
 
 **Held-out cases for gate part 4** (not in the prompt): rare 誠信, 會意, 事宜, 差數, 王牌, 折中, 小羊, 幾度, 世相, 奇麗, 嫩葉, 浴衣, 疑義; used 用意 용의, 唯獨 유독, 文件 문건, 教書 교서, 上場 상장, 臨床 임상, 告白 고백, 言論 언론; real Korean false friends that must stay `used`: 工夫 공부, 愛人 애인, 汽車 기차, 小心 소심, 東西 동서 (in the prompt as examples, so a weaker test) and every Korean trap of task 2.
+
+## 6. User decisions on D66 (same day) → D67
+
+The user chose option A with parentheses for Korean, extended the check to Japanese (scope set by `ja_common`, D67 item 2) and Vietnamese (`vi_use`, data only), approved one UI change (`ruleTags` ignores the parentheses), and asked to keep the 12 prototype false friends. All twelve prototype entries resolve to a word or `ff_candidates` form and every reading cell matches the tables (娘 むすめ is `ja_alt`). Task 5 becomes 10,400 items in 104 requests, about $7-16. Details: DECISIONS D67.

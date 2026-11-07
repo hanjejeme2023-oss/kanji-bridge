@@ -58,6 +58,8 @@ If this file and the spec disagree, the spec wins, except where DECISIONS.md D12
 | false_friend | str | `;`-separated lang codes where meaning differs from the others, e.g. `zh` or `ko;zh`; empty = not a false friend |
 | syl_aligned | bool | true when `word_chars` gives a full Korean AND Vietnamese syllable alignment (D14) |
 | verified | bool | |
+| ja_use / ko_use | `used` / `rare` / `wrong_meaning` / '' | Stage 4 task 5 after `config/task5_review.csv` (D66, D67). '' = not checked: empty reading, single character, or (`ja_use`) `ja_common=true` / `ff_only` form, which JMdict marks common. `rare` → the reading is displayed in （ ） and the language's meaning and false-friend entry are dropped; `wrong_meaning` → meaning and false-friend entry dropped, reading shown normally |
+| vi_use | `common` / `literary` / `unsure` / '' | task 5 (D67 item 4); data only in this run, not read by the app |
 | source_ja / source_ko / source_pinyin / source_vi / source_level | str | provenance tags. `source_vi` ∈ `kaikki_han` / `composed_attested` (D24) / `kaikki_en_han` (rule A2, D53); `source_ja` ∈ `jmdict` / `kanjidic2_on` (D42); a word with only a built `jp` (D31) has `ja` empty, and `built_from_chars` tags that form; `source_ko` ∈ `libhangul` / `libhangul_variant` (D43); `source_level` ∈ `hsk30` / `vi_band`. A value set by `overrides.csv` keeps its source tag; the override file records the reason. A `words` `vi` override may have an empty value, which clears `vi` (D55) |
 
 ### 1.3 `word_chars`
@@ -124,12 +126,12 @@ The view code stays as is. Adapters rebuild the prototype's array shapes from `K
 | `j` | `jp` | fall back to `trad` |
 | `z` | `simp` | fall back to `trad` |
 | `p` | `pinyin` | `''`; card needs target check (below) |
-| `jr` | `ja` | `''` (render nothing) |
-| `k` | `ko` | `''` |
+| `jr` | `ja`, as `（ja）` when `ja_use=rare` (D67) | `''` (render nothing) |
+| `k` | `ko`, as `（ko）` when `ko_use=rare` (D67) | `''` |
 | `v` | `vi` | `''` |
 | `va` (new, optional) | `vi_alt` split on `;` | omit; `judge()` for Vietnamese also accepts these (D14) |
 | `note` | `note_ja` | omit |
-| `syl` (new) | `syl_aligned` + `word_chars` | `ruleTags` shows tags only when `syl` true, iterating `word_chars` instead of `[...w.k]` / `w.v.split(' ')` |
+| `syl` (new) | `syl_aligned` + `word_chars` | `ruleTags` shows tags only when `syl` true, iterating `word_chars` instead of `[...w.k]` / `w.v.split(' ')`; it never reads the displayed `k`, and strips `（ ）` and `( )` from `k` wherever it would (user-approved exception to Global Rule 10, D67 item 3) |
 
 Deck rule: `card_eligible`, ordered by `level` then `freq_vi` (nulls last) then `word_id`. Due list is filtered by the target switch: `vi` → word has `v`; `zh` → has `p`; `both` → both. Words added from 読解 ("カードに追加") bypass `card_eligible` but not the target filter.
 Front of card: `w.j` is always shown; `w.jr` and `w.k` shown only if non-empty. Card shows `alt` line when `h !== j`.
@@ -200,8 +202,9 @@ Written only by the Stage 4 script (Codex's code, Gemini's content); read by the
 
 **Output objects** (enforced by the API schema and re-validated locally; no object has a reading field, readings are copied from the tables at merge):
 - Task 1 (one per `card_eligible` word): `word_id, meaning_ja__ja, meaning_ja__ko, meaning_ja__zh, meaning_ja__vi, meanings_differ (bool), vi_check (same_word | different_word | unsure | ""), vi_check_reason, confidence (high | low), low_reason`. A meaning is non-empty exactly when that language's reading (`ja`, `ko`, `pinyin`, `vi`) is non-empty, except `vi_check=different_word` → `meaning_ja__vi` empty. → `words.meaning_ja__*`.
-- Task 2: `key` (`word_id`, or `form` for an `ff_candidates.csv` row), `false_friend` (list of lang codes), `meanings` (`[{lang, meaning_ja, is_trap}]`, one per language present), `confidence`, `low_reason`. → `words.false_friend` (`;`-joined), `ff_meanings` (§1.4; `reading` copied from the table), `ff_only` words (IDs `x|trad`).
+- Task 2: `key` (`word_id`, or `form` for an `ff_candidates.csv` row), `false_friend` (list of lang codes), `meanings` (`[{lang, meaning_ja, is_trap}]`, one per language present), `confidence`, `low_reason`. → `words.false_friend` (`;`-joined), `ff_meanings` (§1.4; `reading` copied from the table), `ff_only` words (IDs `x|trad`). For the 12 prototype false friends, `config/ff_static.csv` (D67 item 5) replaces the generated rows of the languages it has.
 - Task 3: `passages` = `[{translation_ja, tokens}]`, tokens as §1.5. → `passages` (IDs `lang|level|n`).
+- Task 5 (D66, D67): `key, ja_check, ja_reason, ko_check, ko_reason, vi_use, vi_reason`; a check is non-empty exactly for the languages in the item's `checks`; `ja_check`/`ko_check` ∈ `used | rare | wrong_meaning | unsure`, `vi_use` ∈ `common | literary | unsure`; a reason is empty iff its check is `used`/`common`. → `words.ja_use`, `ko_use`, `vi_use` after `config/task5_review.csv` (an `unsure` left by the review counts as `rare` / `literary`); reasons are review-only.
 - Task 4: `word_id, note_ja` (one line, ≤ 80 characters). → `words.note_ja`; `config/word_notes.csv` (`word_id, note_ja`, static text, e.g. 越南 from the prototype, D14) comes first when a word has both.
 
 Review-only fields (`meanings_differ`, `vi_check`, `vi_check_reason`, `confidence`, `low_reason`) stay in `content/` and are not added to `words`; `verified` = true for words whose task-1 batch was accepted at the Stage 4 gate.
