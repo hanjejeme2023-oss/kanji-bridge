@@ -1,0 +1,61 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "duration_seconds": 169.05078599997796,
+      "error": "ValidationError: w07838.meaning_ja__ko presence does not match ko",
+      "timestamp": "2026-11-06T22:45:47Z",
+      "usage": {
+        "input_tokens": 13290,
+        "output_tokens": 14039,
+        "thinking_tokens": 0,
+        "total_token_count": 27329,
+        "unreported_tokens": 0
+      },
+      "usd": 0.16697,
+      "validation_ok": false
+    },
+    {
+      "attempt": 2,
+      "duration_seconds": 172.07351650000783,
+      "timestamp": "2026-11-06T22:48:36Z",
+      "usage": {
+        "input_tokens": 13290,
+        "output_tokens": 13729,
+        "thinking_tokens": 0,
+        "total_token_count": 27019,
+        "unreported_tokens": 0
+      },
+      "usd": 0.16387,
+      "validation_ok": true
+    }
+  ],
+  "batch": "b054",
+  "counted_input_tokens": 13069,
+  "input_sha256": "0f7e98604d01e58c43b44d0f3e5d48474f5bd7b5f7002c1aef085657e4e12e2b",
+  "item_count": 100,
+  "location": "global",
+  "model": "gemini-4-argon",
+  "prompt_sha256": "8d6843182c9069164f79f3714fe6284d990cbaf4b7d211f55a3aae2b9717b77d",
+  "settings": {
+    "max_output_tokens": 65536,
+    "request_timeout_seconds": 600,
+    "temperature": 0.3,
+    "thinking": "model_default"
+  },
+  "task": 1,
+  "timestamp": "2026-11-06T22:48:36Z",
+  "usage": {
+    "input_tokens": 13290,
+    "output_tokens": 13729,
+    "thinking_tokens": 0,
+    "total_token_count": 27019,
+    "unreported_tokens": 0
+  },
+  "usd": 0.16387,
+  "validation": {
+    "error": "",
+    "ok": true
+  },
+  "wall_clock_seconds": 341.27601770003093
+}

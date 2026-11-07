@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 2026-11-07 — Stage 4 gate part 1: task 1 accepted [Claude]
+- Committed the user's sitting-1 output: `content/inputs/task1/`, `content/generated/task1/` (86 batches), `content/cost_log.csv` (total $14.37353775).
+- Gate **PASS** (`docs/GATES.md`, `docs/STAGE4D_TASK1_REVIEW.md`): all 86 batches accepted; 0 errors in 50 random items, the fixed words, `unsure`, `ko_rare` samples; 16 of 46 `different_word` decisions wrong or not to be applied.
+- **D63:** `config/task1_review.csv` (16 rows) is an overlay on the task-1 output for tasks 2-4 and the 4e merge (`vi_check` → `same_word`, forced task-2 items with `vi`); task-3 Vietnamese linkable words no longer lose `ko_rare` words. Draft step-6 clear list (30 + 9) in the review.
+- User run-log notes answered: low output tokens = response formatting only (about $3.1 padding); b083 all `same_word` is plausible; b040 hangs logged at $0 (D61 gap). Codex fix `c2caac3` checked: correct.
+- Reference script `docs/review_scripts/stage4d_task1_reference.py`. No pipeline or data change.
+
 ## 2026-11-06 — Stage 4c sitting-1 transport retry and live output fix [Codex]
 - Root cause of the top-level `RemoteProtocolError`: the ceiling estimate called `count_tokens` before `generate_batch` entered its retry wrapper. Moved token counting into the existing per-batch attempt budget while retaining a successful count across later generation retries. A transport failure from either `count_tokens` or `generate_content` now waits 30 seconds, then 60 seconds, is recorded with its operation, and after the third failure writes the batch `failed` and continues. This includes 504 `DEADLINE_EXCEEDED` and `httpx`/`httpcore` transport exceptions; fatal access errors, 429 handling and immediate local-validation retries are unchanged.
 - The PowerShell launcher now invokes Python with `-u`, so successful progress lines are not buffered behind the launcher.

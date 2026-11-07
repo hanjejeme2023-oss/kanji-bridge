@@ -1,0 +1,64 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "duration_seconds": 597.3210371999885,
+      "error": "ServerError: 504 DEADLINE_EXCEEDED. {'error': {'code': 504, 'message': 'Deadline expired before operation could complete.', 'status': 'DEADLINE_EXCEEDED'}}",
+      "timestamp": "2026-11-06T21:45:45Z",
+      "usage": {},
+      "usd": 0,
+      "validation_ok": false
+    },
+    {
+      "attempt": 2,
+      "duration_seconds": 609.5559936999925,
+      "error": "RemoteProtocolError: Server disconnected without sending a response.",
+      "timestamp": "2026-11-06T21:56:12Z",
+      "usage": {},
+      "usd": 0,
+      "validation_ok": false
+    },
+    {
+      "attempt": 3,
+      "duration_seconds": 164.50171009998303,
+      "timestamp": "2026-11-06T22:08:11Z",
+      "usage": {
+        "input_tokens": 13868,
+        "output_tokens": 13179,
+        "thinking_tokens": 0,
+        "total_token_count": 27047,
+        "unreported_tokens": 0
+      },
+      "usd": 0.159526,
+      "validation_ok": true
+    }
+  ],
+  "batch": "b040",
+  "counted_input_tokens": 13659,
+  "input_sha256": "638f540c6a7f9f455ad2ab8477207256ec8203734b8d60c1fd65f1085504fabb",
+  "item_count": 100,
+  "location": "global",
+  "model": "gemini-4-argon",
+  "prompt_sha256": "8d6843182c9069164f79f3714fe6284d990cbaf4b7d211f55a3aae2b9717b77d",
+  "settings": {
+    "max_output_tokens": 65536,
+    "request_timeout_seconds": 600,
+    "temperature": 0.3,
+    "thinking": "model_default"
+  },
+  "task": 1,
+  "timestamp": "2026-11-06T22:08:11Z",
+  "usage": {
+    "input_tokens": 13868,
+    "output_tokens": 13179,
+    "thinking_tokens": 0,
+    "total_token_count": 27047,
+    "unreported_tokens": 0
+  },
+  "usd": 0.159526,
+  "validation": {
+    "error": "",
+    "ok": true
+  },
+  "wall_clock_seconds": 1511.4806576999836
+}

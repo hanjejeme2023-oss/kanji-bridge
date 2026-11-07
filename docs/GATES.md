@@ -316,3 +316,22 @@ Pilot review, not the PROMPT Stage 4 gate (that is Claude 4d, after the full run
 **For Claude 4d (method):** for every `different_word`, a script checks that the characters named in `vi_check_reason` can be read as the `vi` value from `chars.vi_all` (catches 財源 → 資源 tư nguyên).
 
 Re-check: **PASS**. The full run may start after Codex Stage 4c-prep (D62: launcher, `--status`, retry wait, lock, task-4 Korean filter). Run plan: D62; user steps: `docs/VERTEX_SETUP.md` part E2.
+
+## Stage 4 gate part 1 (task 1), 2026-11-07: **PASS**, all 86 batches accepted; 16 corrections before tasks 2-4
+
+PROMPT Stage 4 review for task 1 (D62 item 2). Full evidence: `docs/STAGE4D_TASK1_REVIEW.md`; reference script `docs/review_scripts/stage4d_task1_reference.py`.
+
+| Item | Evidence | Result |
+|---|---|---|
+| Done-when (task 1) | 8,555 / 8,555 `card_eligible` words, unique `word_id`; 86/86 logs valid; Claude's validator rerun 0 failures; inputs byte-identical to a fresh build; one prompt SHA, Argon `global` 0.3 | OK |
+| Frozen data | no diff in `data/`, `config/` (before D63's new file), `overrides.csv`; `id_map.csv` line endings only | OK |
+| Cost | ledger $14.37353775 (task 1 $13.43 incl. one failed validation attempt); 6 transport failures logged at $0 (D61 gap, worst case about $1) | OK |
+| Codex fix `c2caac3` | `count_tokens` inside the counted retry loop; `Stage4Error` still fatal; failed log + continue; `python -u` | OK |
+| Token drop (user note 1) | bimodal 0.381 vs 0.564 output tokens per stored character at equal content size: response formatting only; about $3.1 of padding | OK, no action |
+| b083 (user note 2) | 100 VI-only `kaikki_en_han` words; gloss is the Han entry's own gloss; 15 sampled agree | OK |
+| Fixed items | 20 test words + 自己, 財源, 容易, 小姐, 老公: 0 errors (財源 regression gone) | OK |
+| Random 50 (seed 20261106) | 0 errors | OK |
+| All `different_word` (46) | 12 wrong (same word), 4 right for the gloss but `vi` also real; ≤ 2 per batch | corrected by D63 overlay |
+| `unsure` (9 multi + 40 single), `ko_rare` (60 of 930), other low (2), `meanings_differ` (25) | 0 errors | OK |
+
+**PASS.** Batches stay in `content/generated/task1/` until part 2. Before sitting 2: Codex applies D63 (`config/task1_review.csv` overlay in task 2-4 builders; task-3 `ko_rare` rule).

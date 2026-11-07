@@ -1,0 +1,55 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "duration_seconds": 45.68189360003453,
+      "error": "RemoteProtocolError: Server disconnected without sending a response.",
+      "timestamp": "2026-11-06T19:43:03Z",
+      "usage": {},
+      "usd": 0,
+      "validation_ok": false
+    },
+    {
+      "attempt": 2,
+      "duration_seconds": 162.06106539996108,
+      "timestamp": "2026-11-06T19:44:19Z",
+      "usage": {
+        "input_tokens": 15039,
+        "output_tokens": 13451,
+        "thinking_tokens": 0,
+        "total_token_count": 28490,
+        "unreported_tokens": 0
+      },
+      "usd": 0.164588,
+      "validation_ok": true
+    }
+  ],
+  "batch": "b004",
+  "counted_input_tokens": 14813,
+  "input_sha256": "dfa936ac872e18c070bffcb901cd9f1d973f92e16e0c67fecf26baea4a66c97d",
+  "item_count": 100,
+  "location": "global",
+  "model": "gemini-4-argon",
+  "prompt_sha256": "8d6843182c9069164f79f3714fe6284d990cbaf4b7d211f55a3aae2b9717b77d",
+  "settings": {
+    "max_output_tokens": 65536,
+    "request_timeout_seconds": 600,
+    "temperature": 0.3,
+    "thinking": "model_default"
+  },
+  "task": 1,
+  "timestamp": "2026-11-06T19:44:19Z",
+  "usage": {
+    "input_tokens": 15039,
+    "output_tokens": 13451,
+    "thinking_tokens": 0,
+    "total_token_count": 28490,
+    "unreported_tokens": 0
+  },
+  "usd": 0.164588,
+  "validation": {
+    "error": "",
+    "ok": true
+  },
+  "wall_clock_seconds": 238.0437619999866
+}
