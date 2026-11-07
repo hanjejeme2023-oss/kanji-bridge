@@ -15,6 +15,9 @@ TASK1_KEYS = {
 }
 TASK2_KEYS = {"key", "false_friend", "meanings", "confidence", "low_reason"}
 TASK4_KEYS = {"word_id", "note_ja"}
+TASK5_KEYS = {
+    "key", "ja_check", "ja_reason", "ko_check", "ko_reason", "vi_use", "vi_reason",
+}
 PUNCT_RE = re.compile(r"^[\s\u3000-\u303f\uff01-\uff65.,!?;:…—–―・]+$")
 HANGUL_RE = re.compile(r"[가-힣]+")
 LATIN_RE = re.compile(r"[A-Za-zÀ-ÖØ-öø-ỹĐđ]+")
@@ -223,8 +226,54 @@ def validate_task4(output: Any, inputs: list[dict[str, Any]]) -> None:
             _fail(f"{word_id}: output is not NFC")
 
 
+def validate_task5(output: Any, inputs: list[dict[str, Any]]) -> None:
+    values, input_map = _check_output_collection(output, inputs, "key")
+    field_specs = {
+        "ja": ("ja_check", "ja_reason", {"used", "rare", "wrong_meaning", "unsure"}, "used"),
+        "ko": ("ko_check", "ko_reason", {"used", "rare", "wrong_meaning", "unsure"}, "used"),
+        "vi": ("vi_use", "vi_reason", {"common", "literary", "unsure"}, "common"),
+    }
+    for value in values:
+        key = str(value.get("key", ""))
+        _expect_exact_keys(value, TASK5_KEYS, key)
+        source = input_map[key]
+        checks = source.get("checks")
+        if (not isinstance(checks, list) or not checks
+                or len(checks) != len(set(checks)) or not set(checks).issubset(field_specs)):
+            _fail(f"{key}.checks is invalid")
+        for field in TASK5_KEYS:
+            _expect_string(value[field], f"{key}.{field}")
+        for lang, (check_field, reason_field, allowed, no_reason_value) in field_specs.items():
+            check = value[check_field]
+            reason = value[reason_field]
+            expected = lang in checks
+            if bool(check) != expected or bool(reason) and not expected:
+                _fail(f"{key}.{lang} fields must be non-empty exactly when that language is checked")
+            if not expected:
+                continue
+            if check not in allowed:
+                _fail(f"{key}.{check_field} invalid: {check!r}")
+            if (check == no_reason_value) != (reason == ""):
+                _fail(f"{key}.{reason_field} must be empty iff {check_field}={no_reason_value}")
+            if reason and (len(reason) > 80 or "\n" in reason or "\r" in reason):
+                _fail(f"{key}.{reason_field} must be one line of at most 80 characters")
+        reasons = " ".join(value[field] for field in ("ja_reason", "ko_reason", "vi_reason"))
+        ko = str(source.get("ko", ""))
+        vi = str(source.get("vi", ""))
+        for part in HANGUL_RE.findall(reasons):
+            if part not in ko:
+                _fail(f"{key}: reason contains Hangul outside input ko: {part!r}")
+        vi_folded = vi.casefold()
+        for part in LATIN_RE.findall(reasons):
+            if part.casefold() not in vi_folded:
+                _fail(f"{key}: reason contains Latin text outside input vi: {part!r}")
+        if not _is_nfc(value):
+            _fail(f"{key}: output is not NFC")
+
+
 def validate(task: int, output: Any, inputs: list[dict[str, Any]]) -> None:
-    {1: validate_task1, 2: validate_task2, 3: validate_task3, 4: validate_task4}[task](output, inputs)
+    {1: validate_task1, 2: validate_task2, 3: validate_task3, 4: validate_task4,
+     5: validate_task5}[task](output, inputs)
 
 
 STRING = {"type": "string"}
@@ -282,9 +331,19 @@ PASSAGE_SCHEMA = _object({
 })
 TASK3_SCHEMA = _object({"passages": {"type": "array", "items": PASSAGE_SCHEMA}})
 TASK4_ITEM_SCHEMA = _object({"word_id": STRING, "note_ja": STRING})
+TASK5_ITEM_SCHEMA = _object({
+    "key": STRING,
+    "ja_check": STRING,
+    "ja_reason": STRING,
+    "ko_check": STRING,
+    "ko_reason": STRING,
+    "vi_use": STRING,
+    "vi_reason": STRING,
+}, ["key", "ja_check", "ja_reason", "ko_check", "ko_reason", "vi_use", "vi_reason"])
 RESPONSE_SCHEMAS = {
     1: {"type": "array", "items": TASK1_ITEM_SCHEMA},
     2: {"type": "array", "items": TASK2_ITEM_SCHEMA},
     3: TASK3_SCHEMA,
     4: {"type": "array", "items": TASK4_ITEM_SCHEMA},
+    5: {"type": "array", "items": TASK5_ITEM_SCHEMA},
 }

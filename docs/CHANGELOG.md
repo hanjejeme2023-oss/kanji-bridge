@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 2026-11-07 — Stage 4c-prep4: accepted layout and D67 task 5 [Codex]
+- Fixed the D65 clear gap: clearing a word's `vi` now also clears `vi_alt`. A canonical rebuild changed only 平價 `vi_alt` (`bằng giá` → empty) in `words.csv`/`words.json`.
+- Tasks 1-4 now validate and report from `content/accepted/`; runner/dry-run and launcher attempts to regenerate them fail with a D65 refusal. Offline status reports all accepted batches (86/86, 79/79, 14/14, 5/5).
+- Added the deterministic D67 task-5 builder, response schema, strict local validator, resume/status/ceiling support and launcher `-Tasks 5`. Scope: 10,400 items / 104 batches; checks ko 9,090, ja 1,919, vi 5,126; batch-hash aggregate `dcc14617dd28328d60593053c7f9db23bc1ce33ba607742e79bcdd04b374f0ab`.
+- The conservative no-log estimator uses 1,650,000 input and 120 chargeable output tokens per item: $15.78 at the November Argon rate. All 85 non-rebuild tests pass; one canonical rebuild completed. No request was sent and no task was started.
+
 ## 2026-11-07 — D67: user decisions on the usage check (task 5) [Claude]
 - Korean option A with parentheses; Japanese check added (1,919 `ja_common=false` card words; `ja_common=true` and ff rows count as used by JMdict evidence); Vietnamese `vi_use` flag, data only; one user-approved UI change (`ruleTags` ignores the parentheses); the 12 prototype false friends kept as static content (`config/ff_static.csv`, 4e); user sample at gate part 4; Stage 5 performance and Final licence notes.
 - `content/prompts/task5_v1.md` rewritten (not yet sent); SCHEMA §1.2 (`ja_use`, `ko_use`, `vi_use`), §3.1 (`jr`/`k` parentheses, `ruleTags`), §5 (task 5, `ff_static`). Task 5: 10,400 items / 104 requests, about $7-16. UX_BACKLOG #4 updated, #5 added.

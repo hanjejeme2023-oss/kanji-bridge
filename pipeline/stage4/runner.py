@@ -23,6 +23,7 @@ CONTENT = ROOT / "content"
 PROMPTS = CONTENT / "prompts"
 INPUTS = CONTENT / "inputs"
 GENERATED = CONTENT / "generated"
+ACCEPTED = CONTENT / "accepted"
 COST_LOG = CONTENT / "cost_log.csv"
 LOCK_PATH = CONTENT / ".stage4.lock"
 PRICE_PATH = Path(__file__).with_name("prices.json")
@@ -39,6 +40,7 @@ PROMPT_FILES = {
     1: PROMPTS / "task1_v2.md",
     2: PROMPTS / "task2_v2.md",
     4: PROMPTS / "task4_v1.md",
+    5: PROMPTS / "task5_v1.md",
 }
 TASK3_PROMPT_FILES = {
     "zh": PROMPTS / "task3_v2.md",
@@ -49,7 +51,9 @@ COST_FIELDS = [
     "output_tokens", "thinking_tokens", "total_token_count", "unreported_tokens",
     "duration_seconds", "usd",
 ]
-FALLBACK_CHARGEABLE_OUTPUT_PER_ITEM = {1: 140, 2: 120, 3: 1600, 4: 100}
+FALLBACK_CHARGEABLE_OUTPUT_PER_ITEM = {1: 140, 2: 120, 3: 1600, 4: 100, 5: 120}
+TASK5_ESTIMATED_INPUT_TOKENS = 1_650_000
+ACCEPTED_BATCH_COUNTS = {1: 86, 2: 79, 3: 14, 4: 5}
 
 
 class Stage4Error(RuntimeError):
@@ -694,28 +698,41 @@ def validated_batch_exists(
     return True
 
 
-def task1_outputs_from_generated() -> list[dict[str, Any]]:
-    outputs: list[dict[str, Any]] = []
-    for number, items in enumerate(builders.build_task1_batches(), 1):
+def accepted_task_batches(task: int) -> list[list[dict[str, Any]]]:
+    batches: list[list[dict[str, Any]]] = []
+    for number in range(1, ACCEPTED_BATCH_COUNTS[task] + 1):
+        path = ACCEPTED / f"task{task}" / "inputs" / f"b{number:03d}.jsonl"
+        batches.append(builders.read_jsonl_files([path]) if path.is_file() else [])
+    return batches
+
+
+def accepted_task_states(task: int) -> dict[str, int]:
+    counts = {"validated": 0, "failed": 0, "missing": 0}
+    for number, items in enumerate(accepted_task_batches(task), 1):
         name = f"b{number:03d}"
-        output_path = GENERATED / "task1" / f"{name}.jsonl"
-        log_path = GENERATED / "task1" / f"{name}.log.json"
-        if validated_batch_exists(1, name, items, output_path, log_path):
-            outputs.extend(read_generated_output(output_path, 1))
-    if not outputs:
-        raise Stage4Error("Validated task 1 generated output is required before task 2, 3 or 4")
-    expected = {item["word_id"] for item in builders.build_task1_items()}
-    actual = [str(item.get("word_id", "")) for item in outputs]
-    missing = expected - set(actual)
-    duplicates = len(actual) - len(set(actual))
-    unexpected = set(actual) - expected
-    if missing or duplicates or unexpected:
-        raise Stage4Error(
-            "Task 1 must be complete before task 2, 3 or 4: "
-            f"expected={len(expected)}, loaded={len(actual)}, missing={len(missing)}, "
-            f"duplicates={duplicates}, unexpected={len(unexpected)}"
+        if not items:
+            counts["missing"] += 1
+            continue
+        state = batch_state(
+            task, name, items,
+            ACCEPTED / f"task{task}" / f"{name}.jsonl",
+            ACCEPTED / f"task{task}" / f"{name}.log.json",
         )
-    return outputs
+        counts[state] += 1
+    return counts
+
+
+def require_accepted_layout() -> None:
+    failures = []
+    for task, expected in ACCEPTED_BATCH_COUNTS.items():
+        counts = accepted_task_states(task)
+        if counts["validated"] != expected:
+            failures.append(
+                f"task {task}: {counts['validated']}/{expected} validated, "
+                f"{counts['failed']} failed, {counts['missing']} missing"
+            )
+    if failures:
+        raise Stage4Error("D65 accepted-content layout is incomplete: " + "; ".join(failures))
 
 
 def run_task(
@@ -725,7 +742,12 @@ def run_task(
     dry_run: bool,
     allow_after_deadline: bool = False,
 ) -> int:
-    outputs = task1_outputs_from_generated() if task in {2, 3, 4} else None
+    if task in {1, 2, 3, 4}:
+        raise Stage4Error(
+            f"D65 refusal: task {task} is accepted and its stale inputs must never be regenerated"
+        )
+    require_accepted_layout()
+    outputs = None
     batches = builders.task_batches(task, outputs)
     numbered = list(enumerate(batches, 1))
     if batch_number is not None:
@@ -803,19 +825,18 @@ def print_task_status(task: int, counts: dict[str, int]) -> None:
 
 def run_status() -> None:
     """Print resume-aware status without constructing a Vertex client or making API calls."""
-    task1_batches = builders.build_task1_batches()
-    task1_counts = task_states(1, task1_batches)
-    print_task_status(1, task1_counts)
-    if task1_counts["validated"] != len(task1_batches):
-        for task in (2, 3, 4):
-            print(f"task {task}: waiting for task 1")
-    else:
-        task1_outputs = task1_outputs_from_generated()
-        for task in (2, 3, 4):
-            batches = builders.task_batches(task, task1_outputs)
-            print_task_status(task, task_states(task, batches))
+    for task in (1, 2, 3, 4):
+        print_task_status(task, accepted_task_states(task))
+    task5_batches = builders.build_task5_batches()
+    print_task_status(5, task_states(5, task5_batches))
     spent = existing_cost()
     ceiling = float(load_prices()["hard_ceiling"])
+    estimated_output = estimated_chargeable_output(5, sum(map(len, task5_batches)))
+    estimated_cost = calculate_cost(TASK5_ESTIMATED_INPUT_TOKENS, estimated_output, 0)
+    print(
+        f"task 5 conservative estimate: ${estimated_cost:.8f} "
+        f"({TASK5_ESTIMATED_INPUT_TOKENS} input + {estimated_output} chargeable output tokens)"
+    )
     print(f"spend to date: ${spent:.8f}")
     print(f"room under ${ceiling:.2f} ceiling: ${max(ceiling - spent, 0):.8f}")
 
@@ -871,7 +892,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     mode = parser.add_mutually_exclusive_group(required=True)
     mode.add_argument("--check", action="store_true", help="make one tiny Vertex request")
     mode.add_argument("--pilot", action="store_true", help="run the five Stage 4b Argon re-pilot requests")
-    mode.add_argument("--task", type=int, choices=range(1, 5), help="run one full task")
+    mode.add_argument("--task", type=int, choices=range(1, 6), help="run one full task")
     mode.add_argument("--status", action="store_true", help="show offline resume status")
     parser.add_argument("--batch", type=int, help="run/rerun one 1-based batch")
     parser.add_argument("--dry-run", action="store_true", help="count inputs without generation")
@@ -893,6 +914,10 @@ def main(argv: list[str] | None = None) -> int:
         if args.status:
             run_status()
             return 0
+        if args.task in {1, 2, 3, 4}:
+            raise Stage4Error(
+                f"D65 refusal: task {args.task} is accepted and its stale inputs must never be regenerated"
+            )
         with stage4_lock():
             client = create_client()
             if args.check:

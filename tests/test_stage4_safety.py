@@ -100,25 +100,23 @@ class Stage4SafetyTests(unittest.TestCase):
 
     def test_task_resume_skips_validated_batch_and_runs_failed_batch(self) -> None:
         item = {
-            "word_id": "w1", "trad": "文字", "ja": "もじ", "ko": "문자",
+            "key": "w1", "checks": ["ko"], "trad": "文字", "ja": "もじ", "ko": "문자",
             "pinyin": "wénzì", "vi": "văn tự",
         }
         output = [{
-            "word_id": "w1", "meaning_ja__ja": "文字", "meaning_ja__ko": "文字",
-            "meaning_ja__zh": "文字", "meaning_ja__vi": "文字",
-            "meanings_differ": False, "vi_check": "same_word",
-            "vi_check_reason": "", "confidence": "high", "low_reason": "",
+            "key": "w1", "ja_check": "", "ja_reason": "",
+            "ko_check": "used", "ko_reason": "", "vi_use": "", "vi_reason": "",
         }]
         prompt = "test prompt"
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)
             inputs = root / "inputs"
             generated = root / "generated"
-            output_path = generated / "task1" / "b001.jsonl"
-            log_path = generated / "task1" / "b001.log.json"
+            output_path = generated / "task5" / "b001.jsonl"
+            log_path = generated / "task5" / "b001.log.json"
             builders.write_jsonl(output_path, output)
             log = {
-                "task": 1, "batch": "b001", "model": MODEL_ID,
+                "task": 5, "batch": "b001", "model": MODEL_ID,
                 "prompt_sha256": builders.sha256_text(prompt),
                 "input_sha256": builders.sha256_text(builders.jsonl_text([item])),
                 "item_count": 1, "validation": {"ok": True, "error": ""},
@@ -130,13 +128,14 @@ class Stage4SafetyTests(unittest.TestCase):
                 patch("pipeline.stage4.runner.GENERATED", generated),
                 patch("pipeline.stage4.runner.prompt_text", return_value=prompt),
                 patch("pipeline.stage4.runner.builders.task_batches", return_value=[[item]]),
+                patch("pipeline.stage4.runner.require_accepted_layout"),
                 patch("pipeline.stage4.runner.generate_batch", generate),
             ):
-                self.assertEqual(run_task(Mock(), 1, None, False), 0)
+                self.assertEqual(run_task(Mock(), 5, None, False), 0)
                 generate.assert_not_called()
                 log["validation"]["ok"] = False
                 log_path.write_text(json.dumps(log), encoding="utf-8")
-                self.assertEqual(run_task(Mock(), 1, None, False), 0)
+                self.assertEqual(run_task(Mock(), 5, None, False), 0)
                 generate.assert_called_once()
 
     def test_task3_resume_keeps_zh_v2_and_reruns_vi_v2(self) -> None:
@@ -164,32 +163,34 @@ class Stage4SafetyTests(unittest.TestCase):
             with (
                 patch("pipeline.stage4.runner.INPUTS", root / "inputs"),
                 patch("pipeline.stage4.runner.GENERATED", generated),
-                patch("pipeline.stage4.runner.task1_outputs_from_generated", return_value=[]),
+                patch("pipeline.stage4.runner.require_accepted_layout"),
                 patch("pipeline.stage4.runner.builders.task_batches", return_value=[zh_items, vi_items]),
                 patch("pipeline.stage4.runner.read_generated_output", return_value={"passages": []}),
                 patch("pipeline.stage4.runner.validate"),
                 patch("pipeline.stage4.runner.generate_batch", generate),
             ):
-                self.assertEqual(run_task(Mock(), 3, None, False), 0)
-            generate.assert_called_once()
-            self.assertEqual(generate.call_args.args[2], "b002")
-            self.assertEqual(generate.call_args.args[3], vi_items)
+                with self.assertRaisesRegex(Stage4Error, "D65 refusal"):
+                    run_task(Mock(), 3, None, False)
+            generate.assert_not_called()
 
-    def test_task3_dry_run_counts_only_stale_prompt_batches(self) -> None:
-        zh_items = [{"language": "zh", "level": 1, "words": []}]
-        vi_items = [{"language": "vi", "level": 1, "words": []}]
+    def test_task5_dry_run_counts_only_stale_batches(self) -> None:
+        first_items = [{"key": "a", "checks": ["ko"], "ko": "가", "vi": ""}]
+        second_items = [{"key": "b", "checks": ["ko"], "ko": "나", "vi": ""}]
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)
             generated = root / "generated"
-            output_path = generated / "task3" / "b001.jsonl"
-            log_path = generated / "task3" / "b001.log.json"
-            builders.write_jsonl(output_path, [{"passages": []}])
+            output_path = generated / "task5" / "b001.jsonl"
+            log_path = generated / "task5" / "b001.log.json"
+            builders.write_jsonl(output_path, [{
+                "key": "a", "ja_check": "", "ja_reason": "", "ko_check": "used",
+                "ko_reason": "", "vi_use": "", "vi_reason": "",
+            }])
             log_path.write_text(json.dumps({
-                "task": 3,
+                "task": 5,
                 "batch": "b001",
                 "model": MODEL_ID,
-                "prompt_sha256": builders.sha256_text(prompt_text(3, zh_items)),
-                "input_sha256": builders.sha256_text(builders.jsonl_text(zh_items)),
+                "prompt_sha256": builders.sha256_text(prompt_text(5, first_items)),
+                "input_sha256": builders.sha256_text(builders.jsonl_text(first_items)),
                 "item_count": 1,
                 "validation": {"ok": True, "error": ""},
             }), encoding="utf-8")
@@ -198,17 +199,15 @@ class Stage4SafetyTests(unittest.TestCase):
             with (
                 patch("pipeline.stage4.runner.INPUTS", root / "inputs"),
                 patch("pipeline.stage4.runner.GENERATED", generated),
-                patch("pipeline.stage4.runner.task1_outputs_from_generated", return_value=[]),
-                patch("pipeline.stage4.runner.builders.task_batches", return_value=[zh_items, vi_items]),
-                patch("pipeline.stage4.runner.read_generated_output", return_value={"passages": []}),
-                patch("pipeline.stage4.runner.validate"),
+                patch("pipeline.stage4.runner.require_accepted_layout"),
+                patch("pipeline.stage4.runner.builders.task_batches", return_value=[first_items, second_items]),
                 patch("pipeline.stage4.runner.count_tokens", count),
                 redirect_stdout(stream),
             ):
-                self.assertEqual(run_task(Mock(), 3, None, True), 0)
+                self.assertEqual(run_task(Mock(), 5, None, True), 0)
             self.assertEqual(count.call_count, 1)
-            self.assertTrue(count.call_args.args[1].startswith(prompt_text(3, vi_items)))
-            self.assertIn("task=3 batches=1 total_input_tokens=17", stream.getvalue())
+            self.assertTrue(count.call_args.args[1].startswith(prompt_text(5, second_items)))
+            self.assertIn("task=5 batches=1 total_input_tokens=17", stream.getvalue())
 
     def test_ceiling_estimate_uses_only_matching_prompt_logs(self) -> None:
         with tempfile.TemporaryDirectory() as temp:
@@ -291,6 +290,7 @@ class Stage4SafetyTests(unittest.TestCase):
                 patch("pipeline.stage4.runner.vertex_settings", return_value=("project", "global")),
                 patch("pipeline.stage4.runner.prompt_text", return_value="prompt"),
                 patch("pipeline.stage4.runner.builders.task_batches", return_value=batches),
+                patch("pipeline.stage4.runner.require_accepted_layout"),
                 patch("pipeline.stage4.runner.enforce_ceiling"),
                 patch("pipeline.stage4.runner.generation_config", return_value=object()),
                 patch("pipeline.stage4.runner.validate"),
@@ -298,13 +298,13 @@ class Stage4SafetyTests(unittest.TestCase):
                 patch("pipeline.stage4.runner.append_cost"),
                 patch("pipeline.stage4.runner.time.sleep") as sleep,
             ):
-                failed = run_task(client, 1, None, False)
+                failed = run_task(client, 5, None, False)
 
             failed_log = json.loads(
-                (generated / "task1" / "b001.log.json").read_text(encoding="utf-8")
+                (generated / "task5" / "b001.log.json").read_text(encoding="utf-8")
             )
             next_log = json.loads(
-                (generated / "task1" / "b002.log.json").read_text(encoding="utf-8")
+                (generated / "task5" / "b002.log.json").read_text(encoding="utf-8")
             )
 
         self.assertEqual(failed, 1)
@@ -339,19 +339,22 @@ class Stage4SafetyTests(unittest.TestCase):
                     self.assertEqual(lock.read_text(encoding="ascii").strip(), str(os.getpid()))
             self.assertFalse(lock.exists())
 
-    def test_status_is_offline_and_reports_task1_wait(self) -> None:
+    def test_status_is_offline_and_reports_accepted_and_task5(self) -> None:
         with tempfile.TemporaryDirectory() as temp:
             stream = io.StringIO()
             with (
                 patch("pipeline.stage4.runner.GENERATED", Path(temp)),
                 patch("pipeline.stage4.runner.existing_cost", return_value=1.25),
                 patch("pipeline.stage4.runner.load_prices", return_value={"hard_ceiling": 100}),
+                patch("pipeline.stage4.runner.calculate_cost", return_value=15.78),
                 redirect_stdout(stream),
             ):
                 run_status()
             output = stream.getvalue()
-            self.assertIn("task 1: 0/86 validated, 0 failed, 86 missing", output)
-            self.assertIn("task 2: waiting for task 1", output)
+            self.assertIn("task 1: 86/86 validated, 0 failed, 0 missing", output)
+            self.assertIn("task 2: 79/79 validated, 0 failed, 0 missing", output)
+            self.assertIn("task 5: 0/104 validated, 0 failed, 104 missing", output)
+            self.assertIn("task 5 conservative estimate:", output)
             self.assertIn("spend to date: $1.25000000", output)
 
         with (
@@ -363,6 +366,15 @@ class Stage4SafetyTests(unittest.TestCase):
             status.assert_called_once_with()
             create_client.assert_not_called()
             lock.assert_not_called()
+
+    def test_tasks_1_to_4_refuse_before_client_creation(self) -> None:
+        for task in range(1, 5):
+            with (
+                self.subTest(task=task),
+                patch("pipeline.stage4.runner.create_client") as create_client,
+            ):
+                self.assertEqual(main(["--task", str(task)]), 1)
+                create_client.assert_not_called()
 
     def test_run_all_does_not_import_stage4(self) -> None:
         source = (ROOT / "pipeline" / "run_all.py").read_text(encoding="utf-8").lower()

@@ -10,6 +10,7 @@ from pipeline.stage4.validators import (
     validate_task2,
     validate_task3,
     validate_task4,
+    validate_task5,
 )
 from pipeline.stage4.runner import generation_config
 
@@ -44,6 +45,10 @@ class Stage4ValidatorTests(unittest.TestCase):
             task2["properties"]["meanings"]["items"]["propertyOrdering"],
             ["lang", "meaning_ja", "is_trap"],
         )
+        task5 = generation_config(5).response_schema["items"]
+        self.assertEqual(task5["propertyOrdering"], [
+            "key", "ja_check", "ja_reason", "ko_check", "ko_reason", "vi_use", "vi_reason",
+        ])
 
     def setUp(self) -> None:
         self.task1_input = [{
@@ -165,6 +170,73 @@ class Stage4ValidatorTests(unittest.TestCase):
         bad_vi = [{"word_id": "w1", "note_ja": "「丹」は通常「dịch」、「牡丹」では「란」と読む。"}]
         with self.assertRaises(ValidationError):
             validate_task4(bad_vi, inputs)
+
+    @staticmethod
+    def valid_task5() -> tuple[list[dict], list[dict]]:
+        inputs = [{
+            "key": "w1", "checks": ["ja", "ko", "vi"], "trad": "同事",
+            "ja": "どうじ", "ko": "동사", "pinyin": "tóngshì", "vi": "đồng sự",
+        }]
+        output = [{
+            "key": "w1", "ja_check": "rare", "ja_reason": "辞書のみの古語",
+            "ko_check": "rare", "ko_reason": "동사は通常「動詞」",
+            "vi_use": "common", "vi_reason": "",
+        }]
+        return output, inputs
+
+    def test_task5_accepts_valid_item(self) -> None:
+        output, inputs = self.valid_task5()
+        validate_task5(output, inputs)
+
+    def test_task5_rejects_key_or_field_mismatch(self) -> None:
+        output, inputs = self.valid_task5()
+        bad = copy.deepcopy(output)
+        bad[0]["key"] = "wrong"
+        with self.assertRaises(ValidationError):
+            validate_task5(bad, inputs)
+        bad = copy.deepcopy(output)
+        del bad[0]["vi_reason"]
+        with self.assertRaises(ValidationError):
+            validate_task5(bad, inputs)
+
+    def test_task5_rejects_presence_enum_and_reason_rules(self) -> None:
+        output, inputs = self.valid_task5()
+        for mutate in (
+            lambda item: item.update({"ja_check": ""}),
+            lambda item: item.update({"ko_check": "obsolete"}),
+            lambda item: item.update({"vi_use": "common", "vi_reason": "不要"}),
+            lambda item: item.update({"ja_check": "used", "ja_reason": "不要"}),
+            lambda item: item.update({"ko_reason": ""}),
+            lambda item: item.update({"ko_reason": "長" * 81}),
+            lambda item: item.update({"ko_reason": "一行目\n二行目"}),
+        ):
+            bad = copy.deepcopy(output)
+            mutate(bad[0])
+            with self.subTest(bad=bad), self.assertRaises(ValidationError):
+                validate_task5(bad, inputs)
+
+    def test_task5_rejects_unchecked_language_output_and_bad_input_checks(self) -> None:
+        output, inputs = self.valid_task5()
+        inputs[0]["checks"] = ["ko"]
+        bad = copy.deepcopy(output)
+        with self.assertRaises(ValidationError):
+            validate_task5(bad, inputs)
+        output, inputs = self.valid_task5()
+        inputs[0]["checks"] = ["ko", "ko"]
+        with self.assertRaises(ValidationError):
+            validate_task5(output, inputs)
+
+    def test_task5_rejects_unknown_hangul_latin_and_non_nfc(self) -> None:
+        output, inputs = self.valid_task5()
+        for field, reason in (
+            ("ko_reason", "공부を使う"),
+            ("ja_reason", "modern word"),
+            ("ja_reason", "カフェ\u0301のみ"),
+        ):
+            bad = copy.deepcopy(output)
+            bad[0][field] = reason
+            with self.subTest(reason=reason), self.assertRaises(ValidationError):
+                validate_task5(bad, inputs)
 
 
 if __name__ == "__main__":

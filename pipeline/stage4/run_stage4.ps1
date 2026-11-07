@@ -87,11 +87,14 @@ try {
                 Where-Object { $_ -ne '' }
         )
         if ($TaskNumbers.Count -eq 0) {
-            throw '-Tasks must contain one or more task numbers (1, 2, 3 or 4).'
+            throw '-Tasks must contain task number 5.'
         }
         foreach ($TaskNumber in $TaskNumbers) {
-            if ($TaskNumber -notmatch '^[1-4]$') {
-                throw "Invalid task '$TaskNumber'. Use only 1, 2, 3 or 4."
+            if ($TaskNumber -match '^[1-4]$') {
+                throw "D65 refusal: task $TaskNumber is accepted and its stale inputs must never be regenerated. Use -Tasks 5."
+            }
+            if ($TaskNumber -ne '5') {
+                throw "Invalid task '$TaskNumber'. Use only 5."
             }
         }
 

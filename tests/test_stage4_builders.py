@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import tempfile
 import unittest
+from collections import Counter
 from pathlib import Path
 from unittest.mock import patch
 
@@ -14,16 +15,28 @@ class Stage4BuilderTests(unittest.TestCase):
     def setUpClass(cls) -> None:
         cls.task1 = builders.build_task1_items()
         cls.task4 = builders.build_task4_items()
-        cls.generated_task1 = builders.read_jsonl_files(
-            (builders.ROOT / "content" / "generated" / "task1").glob("b*.jsonl")
+        cls.accepted_task1 = builders.read_jsonl_files(
+            (builders.ROOT / "content" / "accepted" / "task1").glob("b*.jsonl")
         )
-        cls.reviewed_task1 = builders.apply_task1_review(cls.generated_task1)
+        cls.reviewed_task1 = builders.apply_task1_review(cls.accepted_task1)
+        cls.task5 = builders.build_task5_items()
 
     def test_frozen_item_counts(self) -> None:
         self.assertEqual(len(self.task1), 8554)  # D65 step 6 (季女); accepted task-1 output keeps 8,555
         self.assertEqual(len(builders.chunked(self.task1, 100)), 86)
         self.assertEqual(len(self.task4), 228)  # D65 step 6 cleared vi of 一行 中斷 更改 案件 液體 進出 (already outside the 212 accepted notes)
         self.assertEqual(len(builders.chunked(self.task4, 50)), 5)
+        self.assertEqual(len(self.task5), 10400)
+        self.assertEqual(len(builders.chunked(self.task5, 100)), 104)
+        word_ids = set(builders.load_csv(builders.WORDS_PATH)["word_id"])
+        word_items = [item for item in self.task5 if item["key"] in word_ids]
+        ff_items = [item for item in self.task5 if item["key"] not in word_ids]
+        self.assertEqual((len(word_items), len(ff_items)), (8030, 2370))
+        self.assertEqual(sum("ko" in item["checks"] for item in word_items), 6720)
+        self.assertEqual(
+            Counter(check for item in self.task5 for check in item["checks"]),
+            Counter({"ko": 9090, "ja": 1919, "vi": 5126}),
+        )
 
     def test_task4_korean_filter_uses_the_written_syllable(self) -> None:
         by_trad = {item["trad"]: item for item in self.task4}
@@ -63,6 +76,26 @@ class Stage4BuilderTests(unittest.TestCase):
         first4 = builders.jsonl_text(self.task4)
         second4 = builders.jsonl_text(builders.build_task4_items())
         self.assertEqual(builders.sha256_text(first4), builders.sha256_text(second4))
+        first5 = builders.jsonl_text(self.task5)
+        second5 = builders.jsonl_text(builders.build_task5_items())
+        self.assertEqual(builders.sha256_text(first5), builders.sha256_text(second5))
+        batch_hashes = "".join(
+            builders.sha256_text(builders.jsonl_text(batch))
+            for batch in builders.build_task5_batches()
+        )
+        self.assertEqual(
+            builders.sha256_text(batch_hashes),
+            "dcc14617dd28328d60593053c7f9db23bc1ce33ba607742e79bcdd04b374f0ab",
+        )
+
+    def test_task5_uses_accepted_content_and_review_overlays(self) -> None:
+        by_key = {item["key"]: item for item in self.task5}
+        self.assertEqual(by_key["質素"]["meaning_ja__ko"], "質素、飾り気がないこと")
+        self.assertEqual(by_key["上達"]["vi"], "")
+        self.assertEqual(by_key["上達"]["meaning_ja__vi"], "")
+        self.assertEqual(by_key["上達"]["checks"], ["ko"])
+        for item in self.task5:
+            self.assertEqual(list(item), builders.TASK5_FIELDS)
 
     def test_task4_filters_iy_and_unverified_vietnamese_differences(self) -> None:
         chars = builders.load_csv(builders.CHARS_PATH).set_index("key_char")
@@ -77,7 +110,7 @@ class Stage4BuilderTests(unittest.TestCase):
                 )
 
     def test_task1_review_changes_exactly_16_vi_checks(self) -> None:
-        before = {item["word_id"]: item["vi_check"] for item in self.generated_task1}
+        before = {item["word_id"]: item["vi_check"] for item in self.accepted_task1}
         after = {item["word_id"]: item["vi_check"] for item in self.reviewed_task1}
         changed = {word_id for word_id in before if before[word_id] != after[word_id]}
         review_ids = set(builders._task1_review()["word_id"])
@@ -95,7 +128,7 @@ class Stage4BuilderTests(unittest.TestCase):
                 patch.object(builders, "TASK1_REVIEW_PATH", review_path),
                 self.assertRaisesRegex(ValueError, "frozen-word mismatch"),
             ):
-                builders.apply_task1_review(self.generated_task1)
+                builders.apply_task1_review(self.accepted_task1)
 
     def test_task2_includes_reviewed_words_with_reviewed_gloss_policy(self) -> None:
         items = builders.build_task2_items(self.reviewed_task1)

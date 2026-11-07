@@ -21,6 +21,8 @@ CHARS_PATH = ROOT / "data" / "final" / "chars.csv"
 WORD_CHARS_PATH = ROOT / "data" / "final" / "word_chars.csv"
 FF_PATH = ROOT / "data" / "staging" / "ff_candidates.csv"
 TASK1_REVIEW_PATH = ROOT / "config" / "task1_review.csv"
+TASK2_REVIEW_PATH = ROOT / "config" / "task2_review.csv"
+ACCEPTED = ROOT / "content" / "accepted"
 
 TASK1_FIELDS = [
     "word_id", "trad", "simp", "jp", "ja", "ja_alt", "ja_common", "ko",
@@ -39,6 +41,11 @@ PILOT_TASK1_REQUIRED = ["越南", "自己", "容易", "小姐", "老公"]
 PILOT_TASK2_REQUIRED = ["自己", "手紙", "大丈夫", "勉強", "新聞"]
 PILOT_TASK4_REQUIRED = ["牡丹", "貿易", "音樂"]
 TASK3_SAMPLE_SEED = 4103
+TASK5_FIELDS = [
+    "key", "checks", "trad", "ja", "ko", "pinyin", "vi", "gloss_en",
+    "gloss_ja_en", "gloss_ko", "gloss_vi", "meaning_ja__ja",
+    "meaning_ja__ko", "meaning_ja__zh", "meaning_ja__vi",
+]
 
 
 def load_csv(path: Path) -> pd.DataFrame:
@@ -139,6 +146,13 @@ def read_jsonl_files(paths: Iterable[Path]) -> list[dict[str, Any]]:
     return result
 
 
+def read_accepted_outputs(task: int) -> list[dict[str, Any]]:
+    paths = sorted((ACCEPTED / f"task{task}").glob("b*.jsonl"))
+    if not paths:
+        raise ValueError(f"No accepted task-{task} outputs found")
+    return read_jsonl_files(paths)
+
+
 def _task1_map(outputs: Iterable[dict[str, Any]]) -> dict[str, dict[str, Any]]:
     result: dict[str, dict[str, Any]] = {}
     for item in outputs:
@@ -198,6 +212,136 @@ def apply_task1_review(
             )
         result["vi_check"] = row["vi_check_review"]
     return output_list
+
+
+def _task2_meanings_after_review(
+    outputs: Iterable[dict[str, Any]],
+) -> tuple[dict[str, dict[str, str]], set[str]]:
+    """Return accepted task-2 meanings with the D64/D65 overlay applied fail-closed."""
+    meaning_maps: dict[str, dict[str, str]] = {}
+    trap_maps: dict[str, dict[str, bool]] = {}
+    for item in outputs:
+        key = str(item.get("key", ""))
+        if not key or key in meaning_maps:
+            raise ValueError(f"Duplicate or empty task-2 key: {key!r}")
+        meanings = item.get("meanings")
+        if not isinstance(meanings, list):
+            raise ValueError(f"Task-2 meanings are not a list for {key}")
+        meaning_maps[key] = {}
+        trap_maps[key] = {}
+        for meaning in meanings:
+            lang = str(meaning.get("lang", ""))
+            if not lang or lang in meaning_maps[key]:
+                raise ValueError(f"Duplicate or empty task-2 language for {key}: {lang!r}")
+            meaning_maps[key][lang] = str(meaning.get("meaning_ja", ""))
+            trap_maps[key][lang] = bool(meaning.get("is_trap"))
+
+    review = load_csv(TASK2_REVIEW_PATH)
+    required = {
+        "key", "lang", "action", "meaning_ja_generated", "is_trap_generated",
+        "meaning_ja_review", "false_friend_review", "reason",
+    }
+    missing = required - set(review.columns)
+    if missing:
+        raise ValueError(f"Task-2 review is missing columns: {sorted(missing)}")
+    if review[["key", "lang"]].duplicated().any() or review["key"].eq("").any():
+        raise ValueError("Task-2 review has an empty or duplicate (key, lang)")
+    cleared_vi: set[str] = set()
+    for row in review.to_dict(orient="records"):
+        key, lang, action = row["key"], row["lang"], row["action"]
+        if key not in meaning_maps or lang not in meaning_maps[key]:
+            raise ValueError(f"Task-2 review target is missing from accepted output: {key}/{lang}")
+        if meaning_maps[key][lang] != row["meaning_ja_generated"]:
+            raise ValueError(f"Task-2 review meaning mismatch for {key}/{lang}")
+        expected_trap = str(trap_maps[key][lang]).lower()
+        if expected_trap != row["is_trap_generated"].lower():
+            raise ValueError(f"Task-2 review trap mismatch for {key}/{lang}")
+        if action == "same_as_ja":
+            if lang != "ko" or not row["meaning_ja_review"]:
+                raise ValueError(f"Invalid same_as_ja review row for {key}/{lang}")
+            meaning_maps[key][lang] = row["meaning_ja_review"]
+        elif action == "clear_vi":
+            if lang != "vi" or row["meaning_ja_review"]:
+                raise ValueError(f"Invalid clear_vi review row for {key}/{lang}")
+            meaning_maps[key][lang] = ""
+            cleared_vi.add(key)
+        else:
+            raise ValueError(f"Unknown task-2 review action for {key}/{lang}: {action!r}")
+    return meaning_maps, cleared_vi
+
+
+def build_task5_items(
+    words: pd.DataFrame | None = None,
+    ff: pd.DataFrame | None = None,
+    task1_outputs: Iterable[dict[str, Any]] | None = None,
+    task2_outputs: Iterable[dict[str, Any]] | None = None,
+) -> list[dict[str, Any]]:
+    """Build the D67 usage-check inputs from accepted Stage 4 content."""
+    words = load_csv(WORDS_PATH) if words is None else words.copy()
+    ff = load_csv(FF_PATH) if ff is None else ff.copy()
+    accepted1 = read_accepted_outputs(1) if task1_outputs is None else list(task1_outputs)
+    accepted2 = read_accepted_outputs(2) if task2_outputs is None else list(task2_outputs)
+    task1_map = _task1_map(apply_task1_review(accepted1, words))
+    task2_meanings, cleared_vi = _task2_meanings_after_review(accepted2)
+
+    items: list[dict[str, Any]] = []
+    eligible = words.loc[words["card_eligible"].str.lower() == "true"].sort_values("word_id")
+    for _, row in eligible.iterrows():
+        multi = len(str(row["trad"])) > 1
+        checks: list[str] = []
+        if multi and row["ja"] and row["ja_common"].lower() == "false":
+            checks.append("ja")
+        if multi and row["ko"]:
+            checks.append("ko")
+        if row["vi"]:
+            checks.append("vi")
+        if not checks:
+            continue
+        word_id = row["word_id"]
+        if word_id not in task1_map:
+            raise ValueError(f"Task 5 word is missing accepted task-1 output: {word_id}")
+        meanings = {
+            lang: str(task1_map[word_id].get(f"meaning_ja__{lang}", ""))
+            for lang in ("ja", "ko", "zh", "vi")
+        }
+        meanings.update(task2_meanings.get(word_id, {}))
+        item = {
+            "key": word_id, "checks": checks,
+            "trad": row["trad"], "ja": row["ja"], "ko": row["ko"],
+            "pinyin": row["pinyin"], "vi": row["vi"],
+            "gloss_en": row["gloss_en"], "gloss_ja_en": row["gloss_ja_en"],
+            "gloss_ko": row["gloss_ko"],
+            "gloss_vi": row["gloss_vi"] if "vi" in checks else "",
+            **{f"meaning_ja__{lang}": meanings[lang] for lang in ("ja", "ko", "zh", "vi")},
+        }
+        items.append(_clean(item))
+
+    for _, row in ff.loc[ff["ko"] != ""].sort_values("form").iterrows():
+        key = row["form"]
+        if key not in task2_meanings:
+            raise ValueError(f"Task 5 ff row is missing accepted task-2 output: {key}")
+        meanings = task2_meanings[key]
+        vi = "" if key in cleared_vi else row.get("vi", "")
+        item = {
+            "key": key, "checks": ["ko"],
+            "trad": row.get("trad", ""), "ja": row.get("ja", ""),
+            "ko": row["ko"], "pinyin": row.get("pinyin", ""), "vi": vi,
+            "gloss_en": row.get("gloss_en", ""),
+            "gloss_ja_en": row.get("gloss_ja_en", ""), "gloss_ko": "", "gloss_vi": "",
+            **{f"meaning_ja__{lang}": meanings.get(lang, "") for lang in ("ja", "ko", "zh", "vi")},
+        }
+        items.append(_clean(item))
+
+    keys = [item["key"] for item in items]
+    if len(keys) != len(set(keys)):
+        raise ValueError("Task 5 keys are not unique")
+    if any(list(item) != TASK5_FIELDS for item in items):
+        raise ValueError("Task 5 input field order differs from the D67 contract")
+    return items
+
+
+def build_task5_batches() -> list[list[dict[str, Any]]]:
+    return chunked(build_task5_items(), 100)
 
 
 def _word_task2_item(row: pd.Series, result: dict[str, Any]) -> dict[str, Any]:
@@ -487,4 +631,6 @@ def task_batches(task: int, task1_outputs: Iterable[dict[str, Any]] | None = Non
     if task == 4:
         reviewed = apply_task1_review(task1_outputs) if task1_outputs is not None else None
         return build_task4_batches(reviewed)
+    if task == 5:
+        return build_task5_batches()
     raise ValueError(f"Unknown task: {task}")

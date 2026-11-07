@@ -1308,6 +1308,8 @@ def apply_word_overrides(
             result.at[index, alt_column] = ";".join(
                 value for value in split_multi(result.at[index, alt_column]) if value != override.value
             )
+        elif alt_column in result and is_vi_clear:
+            result.at[index, alt_column] = ""
         result.at[index, override.column] = override.value
         if override.column == "ko":
             result.at[index, "ko_evidence"] = True

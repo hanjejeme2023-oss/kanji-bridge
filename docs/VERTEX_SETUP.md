@@ -95,9 +95,9 @@ Start Codex for Stage 4a as usual. When its script is ready, it runs `--check`: 
 - **"Model not found" for location `global`:** run `setx GOOGLE_CLOUD_LOCATION "us-central1"`, restart the terminals and Codex, and try again.
 - **"Could not find default credentials" / "reauthentication needed":** repeat `gcloud auth application-default login`.
 
-## E2. Running the full generation yourself (Stage 4c, D62)
+## E2. Running the full generation yourself (Stage 4c, D62/D67)
 
-You start the long runs, not an agent. There are **two sittings**: first task 1 (about 2 h 40 min), then, after Claude has checked task 1, tasks 2, 3 and 4 (about 1 h 30 min). Only start a sitting when `docs/HANDOFF.md` says **"Next: User — run Stage 4c …"**. Everything must be finished before the **evening of 2026-11-30** (the script refuses Argon requests from 2026-12-01 00:00 UTC, which is 7 pm on 30 November in US Eastern time).
+You start the long runs, not an agent. Tasks 1-4 are accepted and the launcher now refuses to regenerate them (D65). The remaining sitting is **task 5** (about 1.5-2 hours, about $7-16). Only start it when `docs/HANDOFF.md` says **"Next: User — run `-Tasks 5`"**. It must finish before the **evening of 2026-11-30** (the script refuses Argon requests from 2026-12-01 00:00 UTC, which is 7 pm on 30 November in US Eastern time).
 
 **Before each sitting (2 minutes)**
 1. Plug in the charger. Keep the laptop lid **open** (closing it can put the PC to sleep).
@@ -109,10 +109,9 @@ You start the long runs, not an agent. There are **two sittings**: first task 1 
 5. Type these two lines, pressing Enter after each:
    ```powershell
    cd "<project folder>"
-   powershell -ExecutionPolicy Bypass -File pipeline\stage4\run_stage4.ps1 -Tasks 1
+   powershell -ExecutionPolicy Bypass -File pipeline\stage4\run_stage4.ps1 -Tasks 5
    ```
-   For the second sitting, the second line ends in `-Tasks 2,3,4` instead.
-6. Leave the window open. About every 2 minutes a line like `task=1 batch=b007 ok ...` appears. At the end the script prints a summary such as `task 1: 86/86 validated, 0 failed`, and the amount spent.
+6. Leave the window open. About every 1-2 minutes a line like `task=5 batch=b007 ok ...` appears. At the end the script prints a summary such as `task 5: 104/104 validated, 0 failed`, and the amount spent.
 
 **If something interrupts it** (window closed, PC restarted or asleep, Wi-Fi lost, an error): open a new window and do steps 4-5 again. Batches that are already finished are skipped (`skipped=validated`) and are not paid again; only the one request that was running is lost. Never run two windows at the same time (the script refuses).
 - If the error mentions **credentials**, **401**, **reauthentication** or **login**: run `gcloud auth application-default login`, choose your account in the browser, click **Allow**, then step 5 again.
