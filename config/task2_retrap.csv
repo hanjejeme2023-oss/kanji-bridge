@@ -1,0 +1,9 @@
+key,trad,lang,meaning_ja_generated,is_trap_generated,is_trap_review,false_friend_review,reason
+w00107,放學,ko,学校の長期休暇（夏休み・冬休みなど）,true,false,zh,"ja ほうがく is rare (task 5), so the baseline is Korean 방학; Korean is not a trap, Chinese still is"
+w02908,孫子,ko,孫、男の孫,true,false,,"ja まごこ is rare; Korean 손자 and Chinese mean the same (grandson): no trap left, the entry leaves"
+w02908,孫子,zh,孫（息子の息子）,true,false,,"ja まごこ is rare; Korean 손자 and Chinese mean the same (grandson): no trap left, the entry leaves"
+w04879,內衣,ko,下着、肌着,true,false,,"ja ないい is rare; Korean, Chinese and Vietnamese all mean underwear: no trap left, the entry leaves"
+w04879,內衣,zh,下着、肌着,true,false,,"ja ないい is rare; Korean, Chinese and Vietnamese all mean underwear: no trap left, the entry leaves"
+w04879,內衣,vi,下着、肌着,true,false,,"ja ないい is rare; Korean, Chinese and Vietnamese all mean underwear: no trap left, the entry leaves"
+w10232,藥方,ko,薬局、処方,true,false,zh,"ja やくほう is rare; baseline Korean 약방 (pharmacy), so Chinese (prescription) is the trap"
+w10232,藥方,zh,処方箋、薬の処方,false,true,zh,"ja やくほう is rare; baseline Korean 약방 (pharmacy), so Chinese (prescription) is the trap"

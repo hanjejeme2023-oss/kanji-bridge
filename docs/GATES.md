@@ -369,3 +369,18 @@ Evidence: `docs/STAGE4D_PART3_REVIEW.md`; scripts `docs/review_scripts/stage4d_p
 | Korean finding (user) | five examples are task-1 card words; `ko_rare` review-only; sample: task 1 misses about 10-14%, `ff_candidates` about 28% | → task 5 (D66) before 4e |
 
 Next: Codex 4c-prep4 (vi_alt fix, accepted layout, task 5), User `-Tasks 5`, Claude gate part 4, Codex 4e.
+
+## Stage 4 gate part 4 (task 5, usage check), 2026-11-07: **PASS for 103 of 104 batches** (with an overlay); b055 to rerun; user sample open
+
+Evidence: `docs/STAGE4D_PART4_REVIEW.md`; scripts `docs/review_scripts/stage4d_part4_reference.py`, `stage4d_part4_effects.py`; user sample `docs/TASK5_USER_SAMPLE.md`. Decision: **D68**.
+
+| Item | Evidence | Result |
+|---|---|---|
+| Run integrity | `--status` 103/104 validated, b055 failed; 104 inputs byte-identical to a fresh build; 103 outputs re-validated; 31 reason-script failures + 6 transport retries; ledger $35.42644775 (task 5 $13.18), room $64.57 | OK; b055 → D68 item 1 (reason rule = warning for task 5, rerun b055 only) |
+| Every HSK level 1-3 flag (user item 2) | 335 read (ko 239, ja 96): 6 clear false positives, 3 class corrections, 8 borderline to the user | corrected in `config/task5_review.csv` |
+| D66 item 7 samples | ko rare/task-1 high 50 (2 FP), ko used/task-1 `ko_rare` all 15 (9 FN), ff rows rare 50 (1 FP), ko used 50 (0), ja rare 50 (1 FP), ja used 40 (0), ja `wrong_meaning` 2 (1), vi 60 (0 blocking), `unsure` 1 (奔 hợp, known data error) | clear FP 11 / 487 flags = 2.3%; no batch above 5% |
+| Held-out cases | rare 10/13 (折中, 疑義 corrected; 會意 defensible); used 8/8; user's five 5/5; 工夫, 愛人, 汽車, 小心, 東西, 大丈夫, 新聞, 自己 `used`; task-2 Korean traps 52/58 `used`, the other 6 right | OK |
+| Japanese baseline dropped (D67 item 2) | 82 entries read; 4 re-based on Korean → `config/task2_retrap.csv` (8 rows); 應當 waits for user B7; 師長 → overlay | OK |
+| App effect | （ ）: Korean 1,479 cards, Japanese 436; 偽の友達: 276 of 1,245 entries change, 2 leave (D68 fixed notes; the D67 rule would have removed 131); Vietnamese `literary` 1,261 of 5,077 | reported to the user |
+
+Next: Codex 4c-prep5 (D68 item 1), User reruns b055 and answers `docs/TASK5_USER_SAMPLE.md`, Claude gate part 4b (b055 + user answers; move task 5 to `content/accepted/`), Codex 4e.

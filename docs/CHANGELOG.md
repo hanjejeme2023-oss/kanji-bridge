@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 2026-11-07 — Stage 4 gate part 4: task 5 accepted except b055; D68 [Claude]
+- Task-5 run checked: inputs equal a fresh build, 103 outputs re-validated; b055 failed 3/3 on one review note (「기사는」); ledger $35.43 (task 5 $13.18).
+- Review: all 335 HSK level 1-3 `rare`/`wrong_meaning` flags and the D66 samples (487 flags, 2.3% clear false positives); held-out cases, the user's five, real false friends and task-2 Korean traps checked. New overlays `config/task5_review.csv` (26 rows) and `config/task2_retrap.csv` (8 trap flags re-based on Korean where the Japanese reading is rare; 4e only).
+- D68: task-5 reason script rule becomes a warning (Codex 4c-prep5; b055 rerun only); user change to D67: a word stays in 偽の友達 and each unused Japanese/Korean language shows a fixed note (`config/ff_fixed_notes.csv`; SCHEMA §1.4 `reading_display`, §3.3; no UI change).
+- App effect (103 batches): Korean （ ） on 1,479 cards, Japanese 436; 276 of 1,245 false-friend entries change, 2 leave; Vietnamese `literary` 1,261 of 5,077.
+- User sample `docs/TASK5_USER_SAMPLE.md`. Task-5 output, inputs and cost log committed (still in `content/generated/task5/`).
+
 ## 2026-11-07 — Stage 4c-prep4: accepted layout and D67 task 5 [Codex]
 - Fixed the D65 clear gap: clearing a word's `vi` now also clears `vi_alt`. A canonical rebuild changed only 平價 `vi_alt` (`bằng giá` → empty) in `words.csv`/`words.json`.
 - Tasks 1-4 now validate and report from `content/accepted/`; runner/dry-run and launcher attempts to regenerate them fail with a D65 refusal. Offline status reports all accepted batches (86/86, 79/79, 14/14, 5/5).

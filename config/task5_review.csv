@@ -1,0 +1,27 @@
+key,lang,trad,reading,check_generated,reason_generated,check_review,reason
+w01990,ko,推動,추동,rare,辞書のみの語。韓国語では「推進」や「促進」を使う,used,추동 is in active use in Korean writing (추동력; 변화를 추동하다)
+w01661,ko,具有,구유,rare,文語的。日常では「保有」や固有語を使う,used,구유하다 is a formal word used in academic and legal Korean
+w01661,ja,具有,ぐゆう,rare,文語的。日常では「備える」や「有する」を使う,used,具有 is used in formal Japanese (両性具有; 〜を具有する)
+w01447,ko,反正,반정,rare,辞書のみの語。歴史用語の「反正」以外は使わない,used,"반정 is the standard Korean history term (인조반정, 중종반정); a real false friend of zh ""anyway"""
+w01370,ko,初中,초중,rare,中国の学校制度を指す場合を除き、韓国では使わない,used,"초중 is in everyday use as 초등+중등 (초중고, 초중등교육); the given meaning describes that use"
+w01548,ja,好奇,こうき,rare,単独ではほぼ使わず「好奇心」の形で使う,used,"好奇 is used on its own in Japanese (好奇の目, 好奇に満ちた)"
+w09973,ko,效益,효익,rare,辞書のみの中国語由来の語。韓国語では「効率」や「収益」を使う。,used,"효익 is a standard accounting and economics term (경제적 효익, 비용 대비 효익)"
+w06529,ko,吩咐,분부,rare,韓国語の분부は「分付」と書き、「吩咐」とは書かない,used,분부 is a living Korean word; the standard dictionary lists 分付/吩咐 for it
+異状,ko,異狀,이상,rare,韓国語では「異常」と書く,used,"이상(異狀) ""an abnormal state"" is used (이상 없음); the reason argues only about the hanja spelling"
+w04986,ja,上市,じょうし,rare,中国語由来の表現で、日本語では「発売」や「上場」と言う,used,上市 じょうし is the standard Japanese pharmaceutical term (新薬の上市)
+w08023,ja,兩棲,りょうせい,wrong_meaning,日本語では「両生」と書き、「兩棲」とは書かない,used,両棲 りょうせい is a valid spelling of 両生 (両棲類); the meaning is right
+w00650,ko,短信,단신,rare,辞書のみの文語。단신は通常「単身」や「短身」,wrong_meaning,"단신 is used, but as a short news item (단신 기사), not as a short letter or SMS"
+w00714,ko,過年,과년,rare,辞書のみの語。現代語では「越年」や固有語表現を使う,wrong_meaning,"과년 is used, but for a woman past marriageable age (과년한 딸), not for New Year"
+w01118,ko,星星,성성,rare,辞書のみの漢字語であり、日常では固有語を使う。,wrong_meaning,"성성하다 is used for greying hair (백발이 성성하다), not for stars"
+w06871,ko,管子,관자,used,,wrong_meaning,the given meaning mixes the homophones 貫子 and 冠者; 管子 is only the historical person
+w00087,ko,東邊,동변,used,,rare,동변 is a dictionary-only word; Korean says 동쪽
+w00021,ko,北邊,북변,used,,rare,북변 is a dictionary-only or historical word; Korean says 북쪽
+w10073,ko,秀美,수미,used,,rare,수미 for 秀美 is a dictionary-only word
+w05976,ko,觸犯,촉범,used,,rare,촉범 is a dictionary-only word; Korean uses 저촉 or 위반
+w05745,ko,慘痛,참통,used,,rare,참통 is a dictionary-only word; Korean uses 비통 or 참담
+w07289,ko,急劇,급극,used,,rare,급극 is a dictionary-only word; Korean uses 급격 (急激)
+w06949,ko,海量,해량,used,,rare,해량 is heard as 海諒 (forgiveness); 海量 is not used
+w04250,ko,注重,주중,used,,rare,주중 is heard as 週中; 注重 is not used
+w12777,ko,折中,절중,used,,rare,held-out case: Korean uses 절충 (折衷); 절중 is not used
+疑義,ko,疑義,의의,used,,rare,held-out case: 의의 is heard as 意義; Korean uses 의문 or 이의
+w09084,ko,師長,사장,used,,rare,"사장 is heard as 社長; Korean says 사단장 (師團長) for a division commander, 스승 for a teacher"

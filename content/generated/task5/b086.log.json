@@ -1,0 +1,63 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "duration_seconds": 83.34315949998563,
+      "error": "ValidationError: 右手: reason contains Hangul outside input ko: '우수는'",
+      "operation": "validation",
+      "timestamp": "2026-11-07T22:31:32Z",
+      "usage": {
+        "input_tokens": 12733,
+        "output_tokens": 6730,
+        "thinking_tokens": 0,
+        "total_token_count": 19463,
+        "unreported_tokens": 0
+      },
+      "usd": 0.092766,
+      "validation_ok": false
+    },
+    {
+      "attempt": 2,
+      "duration_seconds": 47.00825650000479,
+      "operation": "validation",
+      "timestamp": "2026-11-07T22:32:56Z",
+      "usage": {
+        "input_tokens": 12733,
+        "output_tokens": 3696,
+        "thinking_tokens": 0,
+        "total_token_count": 16429,
+        "unreported_tokens": 0
+      },
+      "usd": 0.062426,
+      "validation_ok": true
+    }
+  ],
+  "batch": "b086",
+  "counted_input_tokens": 12717,
+  "input_sha256": "3da2001f17d8c286f888df587ba270dcc9a647666a9f922747d0deef8892710e",
+  "item_count": 100,
+  "location": "global",
+  "model": "gemini-4-argon",
+  "prompt_sha256": "6f7d76c7013698d43770722dc44787a932d5b8c4f17d0ce2ab4174803f05800c",
+  "settings": {
+    "max_output_tokens": 65536,
+    "request_timeout_seconds": 600,
+    "temperature": 0.3,
+    "thinking": "model_default"
+  },
+  "task": 5,
+  "timestamp": "2026-11-07T22:32:56Z",
+  "usage": {
+    "input_tokens": 12733,
+    "output_tokens": 3696,
+    "thinking_tokens": 0,
+    "total_token_count": 16429,
+    "unreported_tokens": 0
+  },
+  "usd": 0.062426,
+  "validation": {
+    "error": "",
+    "ok": true
+  },
+  "wall_clock_seconds": 130.37140879995422
+}
