@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 2026-11-07 — Stage 4c-prep2: D63 downstream overlay [Codex]
+- Added a fail-closed `config/task1_review.csv` overlay loader. It verifies unique review/output/frozen keys and exact `trad`, `vi` and original `vi_check` matches, then changes exactly the 16 reviewed `vi_check` values in memory; generated task-1 files remain untouched. Every task 2-4 build, including offline status and resume hashing, uses the overlay.
+- Task 2 always includes the 16 reviewed words with their Vietnamese reading, keeps or blanks `gloss_vi` per the review, and leaves the missing task-1 Vietnamese meaning empty for task 2 to supply. Frozen count: **3,937 items / 79 batches**.
+- Task 3 Vietnamese inputs now accept `same_word` entries with high confidence or `low_reason=ko_rare`; `different_word` and missing Vietnamese meanings remain excluded. Frozen count: **14 cell-items / 14 batches**, containing **6,455 linkable-word entries**.
+- Task 4 applies the overlay before its `vi_check` filter, retaining reviewed Vietnamese differences. Frozen count: **212 items / 5 batches**.
+- Added offline regressions for the 16 exact changes, mismatch refusal, task-2 membership/gloss policy, task-3 `ko_rare` inclusion and `different_word` exclusion, and task-4 reviewed-difference retention. All **74 non-rebuild tests pass**. Launcher `-Status`: task 1 86/86 validated; tasks 2/3/4 0/79, 0/14, 0/5; spend $14.37353775, room $85.62646225. No task was started; no file under `content/generated/` was modified.
+
 ## 2026-11-07 — Stage 4 gate part 1: task 1 accepted [Claude]
 - Committed the user's sitting-1 output: `content/inputs/task1/`, `content/generated/task1/` (86 batches), `content/cost_log.csv` (total $14.37353775).
 - Gate **PASS** (`docs/GATES.md`, `docs/STAGE4D_TASK1_REVIEW.md`): all 86 batches accepted; 0 errors in 50 random items, the fixed words, `unsure`, `ko_rare` samples; 16 of 46 `different_word` decisions wrong or not to be applied.

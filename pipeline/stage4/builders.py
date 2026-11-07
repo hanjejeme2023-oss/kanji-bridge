@@ -20,6 +20,7 @@ WORDS_PATH = ROOT / "data" / "final" / "words.csv"
 CHARS_PATH = ROOT / "data" / "final" / "chars.csv"
 WORD_CHARS_PATH = ROOT / "data" / "final" / "word_chars.csv"
 FF_PATH = ROOT / "data" / "staging" / "ff_candidates.csv"
+TASK1_REVIEW_PATH = ROOT / "config" / "task1_review.csv"
 
 TASK1_FIELDS = [
     "word_id", "trad", "simp", "jp", "ja", "ja_alt", "ja_common", "ko",
@@ -148,6 +149,57 @@ def _task1_map(outputs: Iterable[dict[str, Any]]) -> dict[str, dict[str, Any]]:
     return result
 
 
+def _task1_review() -> pd.DataFrame:
+    review = load_csv(TASK1_REVIEW_PATH)
+    required = {
+        "word_id", "trad", "vi", "vi_check_task1", "vi_check_review",
+        "gloss_vi_task2", "reason",
+    }
+    missing = required - set(review.columns)
+    if missing:
+        raise ValueError(f"Task-1 review is missing columns: {sorted(missing)}")
+    if review["word_id"].eq("").any() or review["word_id"].duplicated().any():
+        raise ValueError("Task-1 review has an empty or duplicate word_id")
+    invalid_gloss = set(review["gloss_vi_task2"]) - {"keep", "blank"}
+    if invalid_gloss:
+        raise ValueError(f"Task-1 review has invalid gloss_vi_task2 values: {sorted(invalid_gloss)}")
+    return review
+
+
+def apply_task1_review(
+    outputs: Iterable[dict[str, Any]], words: pd.DataFrame | None = None,
+) -> list[dict[str, Any]]:
+    """Apply D63 without modifying the generated task-1 files."""
+    output_list = [_clean(dict(item)) for item in outputs]
+    output_map = _task1_map(output_list)
+    words = load_csv(WORDS_PATH) if words is None else words.copy()
+    if words["word_id"].eq("").any() or words["word_id"].duplicated().any():
+        raise ValueError("Frozen words table has an empty or duplicate word_id")
+    word_map = words.set_index("word_id", drop=False)
+
+    for row in _task1_review().to_dict(orient="records"):
+        word_id = row["word_id"]
+        if word_id not in word_map.index:
+            raise ValueError(f"Task-1 review word_id is missing from frozen words: {word_id}")
+        if word_id not in output_map:
+            raise ValueError(f"Task-1 review word_id is missing from task-1 output: {word_id}")
+        word = word_map.loc[word_id]
+        if word["trad"] != row["trad"] or word["vi"] != row["vi"]:
+            raise ValueError(
+                f"Task-1 review frozen-word mismatch for {word_id}: "
+                f"expected trad={word['trad']!r}, vi={word['vi']!r}"
+            )
+        result = output_map[word_id]
+        if result.get("vi_check") != row["vi_check_task1"]:
+            raise ValueError(
+                f"Task-1 review generated-output mismatch for {word_id}: "
+                f"expected vi_check={row['vi_check_task1']!r}, "
+                f"got {result.get('vi_check')!r}"
+            )
+        result["vi_check"] = row["vi_check_review"]
+    return output_list
+
+
 def _word_task2_item(row: pd.Series, result: dict[str, Any]) -> dict[str, Any]:
     item = {field: row[field] for field in WORD_CONTEXT_FIELDS}
     item["key"] = row["word_id"]
@@ -178,16 +230,21 @@ def build_task2_items(
     words = load_csv(WORDS_PATH) if words is None else words.copy()
     ff = load_csv(FF_PATH) if ff is None else ff.copy()
     result_map = _task1_map(task1_outputs)
+    review_map = _task1_review().set_index("word_id")
     selected_ids = {
         word_id for word_id, result in result_map.items() if result.get("meanings_differ") is True
     }
     selected_ids.update(words.loc[words["trad"] == "自己", "word_id"])
+    selected_ids.update(review_map.index)
     word_by_id = words.set_index("word_id", drop=False)
-    items = [
-        _word_task2_item(word_by_id.loc[word_id], result_map[word_id])
-        for word_id in sorted(selected_ids)
-        if word_id in word_by_id.index and word_id in result_map
-    ]
+    items: list[dict[str, Any]] = []
+    for word_id in sorted(selected_ids):
+        if word_id not in word_by_id.index or word_id not in result_map:
+            continue
+        item = _word_task2_item(word_by_id.loc[word_id], result_map[word_id])
+        if word_id in review_map.index and review_map.loc[word_id, "gloss_vi_task2"] == "blank":
+            item["gloss_vi"] = ""
+        items.append(item)
     items.extend(_ff_task2_item(row) for _, row in ff.sort_values("form").iterrows())
     keys = [item["key"] for item in items]
     if len(keys) != len(set(keys)):
@@ -243,8 +300,12 @@ def _task3_candidates(
             continue
         if int(row["level"]) > level or not result.get(meaning_key):
             continue
-        if lang == "vi" and (result.get("vi_check") != "same_word" or result.get("confidence") == "low"):
-            continue
+        if lang == "vi":
+            confidence_ok = (
+                result.get("confidence") == "high" or result.get("low_reason") == "ko_rare"
+            )
+            if result.get("vi_check") != "same_word" or not confidence_ok:
+                continue
         display = row["simp"] or row["trad"] if lang == "zh" else row["vi"]
         rows.append({
             "word_id": row["word_id"], "display": display,
@@ -418,11 +479,12 @@ def task_batches(task: int, task1_outputs: Iterable[dict[str, Any]] | None = Non
     if task == 2:
         if task1_outputs is None:
             raise ValueError("Task 2 requires accepted/generated task-1 output")
-        return build_task2_batches(task1_outputs)
+        return build_task2_batches(apply_task1_review(task1_outputs))
     if task == 3:
         if task1_outputs is None:
             raise ValueError("Task 3 requires accepted/generated task-1 output")
-        return build_task3_batches(task1_outputs)
+        return build_task3_batches(apply_task1_review(task1_outputs))
     if task == 4:
-        return build_task4_batches(task1_outputs)
+        reviewed = apply_task1_review(task1_outputs) if task1_outputs is not None else None
+        return build_task4_batches(reviewed)
     raise ValueError(f"Unknown task: {task}")
