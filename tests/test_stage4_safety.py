@@ -12,6 +12,9 @@ from pathlib import Path
 from types import SimpleNamespace
 from unittest.mock import Mock, patch
 
+import httpcore
+import httpx
+
 from pipeline.stage4 import builders
 from pipeline.stage4.runner import (
     MODEL_ID,
@@ -126,7 +129,9 @@ class Stage4SafetyTests(unittest.TestCase):
 
     def test_api_errors_wait_30_then_60_seconds(self) -> None:
         client = SimpleNamespace(
-            models=SimpleNamespace(generate_content=Mock(side_effect=RuntimeError("transport")))
+            models=SimpleNamespace(
+                generate_content=Mock(side_effect=RuntimeError("504 DEADLINE_EXCEEDED"))
+            )
         )
         item = {"word_id": "w1"}
         with tempfile.TemporaryDirectory() as temp:
@@ -145,6 +150,72 @@ class Stage4SafetyTests(unittest.TestCase):
                 )
         self.assertIsNone(result)
         self.assertEqual([call.args[0] for call in sleep.call_args_list], [30, 60])
+
+    def test_count_tokens_remote_protocol_error_is_retried_inside_batch(self) -> None:
+        response = SimpleNamespace(
+            text="[]",
+            usage_metadata=SimpleNamespace(
+                prompt_token_count=1,
+                candidates_token_count=1,
+                thoughts_token_count=0,
+                total_token_count=2,
+            ),
+        )
+        client = SimpleNamespace(models=SimpleNamespace(
+            count_tokens=Mock(side_effect=[
+                httpcore.RemoteProtocolError(
+                    b"Server disconnected without sending a response."
+                ),
+                httpx.RemoteProtocolError("Server disconnected without sending a response."),
+                httpx.RemoteProtocolError("Server disconnected without sending a response."),
+                SimpleNamespace(total_tokens=1),
+            ]),
+            generate_content=Mock(return_value=response),
+        ))
+        batches = [[{"word_id": "w1"}], [{"word_id": "w2"}]]
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            generated = root / "generated"
+            with (
+                patch("pipeline.stage4.runner.INPUTS", root / "inputs"),
+                patch("pipeline.stage4.runner.GENERATED", generated),
+                patch("pipeline.stage4.runner.vertex_settings", return_value=("project", "global")),
+                patch("pipeline.stage4.runner.prompt_text", return_value="prompt"),
+                patch("pipeline.stage4.runner.builders.task_batches", return_value=batches),
+                patch("pipeline.stage4.runner.enforce_ceiling"),
+                patch("pipeline.stage4.runner.generation_config", return_value=object()),
+                patch("pipeline.stage4.runner.validate"),
+                patch("pipeline.stage4.runner.write_output"),
+                patch("pipeline.stage4.runner.append_cost"),
+                patch("pipeline.stage4.runner.time.sleep") as sleep,
+            ):
+                failed = run_task(client, 1, None, False)
+
+            failed_log = json.loads(
+                (generated / "task1" / "b001.log.json").read_text(encoding="utf-8")
+            )
+            next_log = json.loads(
+                (generated / "task1" / "b002.log.json").read_text(encoding="utf-8")
+            )
+
+        self.assertEqual(failed, 1)
+        self.assertEqual(client.models.count_tokens.call_count, 4)
+        client.models.generate_content.assert_called_once()
+        self.assertEqual([call.args[0] for call in sleep.call_args_list], [30, 60])
+        self.assertEqual(
+            [attempt["operation"] for attempt in failed_log["attempts"]],
+            ["count_tokens", "count_tokens", "count_tokens"],
+        )
+        self.assertTrue(all(
+            "RemoteProtocolError" in attempt["error"]
+            for attempt in failed_log["attempts"]
+        ))
+        self.assertFalse(failed_log["validation"]["ok"])
+        self.assertTrue(next_log["validation"]["ok"])
+
+    def test_launcher_uses_unbuffered_python(self) -> None:
+        source = (ROOT / "pipeline" / "stage4" / "run_stage4.ps1").read_text(encoding="utf-8")
+        self.assertIn("& $PythonPath -u $Generator @Arguments | Out-Host", source)
 
     def test_lock_refuses_live_process_and_replaces_dead_process(self) -> None:
         with tempfile.TemporaryDirectory() as temp:

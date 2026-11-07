@@ -55,7 +55,7 @@ public static class Stage4ExecutionState {
 
 function Invoke-Stage4Python {
     param([string[]]$Arguments)
-    & $PythonPath $Generator @Arguments | Out-Host
+    & $PythonPath -u $Generator @Arguments | Out-Host
     return $LASTEXITCODE
 }
 

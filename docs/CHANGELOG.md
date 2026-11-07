@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 2026-11-06 — Stage 4c sitting-1 transport retry and live output fix [Codex]
+- Root cause of the top-level `RemoteProtocolError`: the ceiling estimate called `count_tokens` before `generate_batch` entered its retry wrapper. Moved token counting into the existing per-batch attempt budget while retaining a successful count across later generation retries. A transport failure from either `count_tokens` or `generate_content` now waits 30 seconds, then 60 seconds, is recorded with its operation, and after the third failure writes the batch `failed` and continues. This includes 504 `DEADLINE_EXCEEDED` and `httpx`/`httpcore` transport exceptions; fatal access errors, 429 handling and immediate local-validation retries are unchanged.
+- The PowerShell launcher now invokes Python with `-u`, so successful progress lines are not buffered behind the launcher.
+- Added no-network regressions for exhausted `count_tokens` `RemoteProtocolError` handling (including advancing to the next batch), 504 retry exhaustion and unbuffered launcher invocation. All **69 non-rebuild tests pass**.
+- Offline launcher `-Status` proves resume safety after the user's sitting 1: task 1 **86/86 validated, 0 failed, 0 missing**; task 2 0/79, task 3 0/14 and task 4 0/5; spend $14.37353775, room under the $100 ceiling $85.62646225. Codex did not modify, stage or commit any file under `content/`; prompts, model, settings and task inputs are unchanged. Next: Claude — Stage 4 gate part 1 (task 1).
+
 ## 2026-11-06 — Stage 4c-prep: safe user launcher and task-4 Korean filter [Codex]
 - Added `pipeline/stage4/run_stage4.ps1` for Windows PowerShell 5.1: repository-root discovery, safe User-scope Vertex setting copy, API-key refusal, fixed Python 3.12 selection, Windows keep-awake with `finally` reset, ordered comma-separated tasks, two delayed launcher retries, stop-before-next-task behavior and a final status summary.
 - Added offline, resume-aware `--status` with validated / failed / missing counts, the task-1 prerequisite for tasks 2-4, spend to date and room under the $100 ceiling. Added a PID lock for `--task`, `--pilot` and `--check`; live locks refuse a second run, stale locks are replaced and owned locks are removed on every exit. `--status` ignores the lock.

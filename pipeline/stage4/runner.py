@@ -416,8 +416,7 @@ def generate_batch(
     contents = request_text(task, items)
     input_text = builders.jsonl_text(items)
     prompt = prompt_text(task)
-    counted_input = count_tokens(client, contents, model_id)
-    enforce_ceiling(counted_input, task, len(items), model_id)
+    counted_input: int | None = None
     attempts: list[dict[str, Any]] = []
     retry = 0
     rate_wait = 2
@@ -425,8 +424,13 @@ def generate_batch(
         attempt_number = len(attempts) + 1
         timestamp = utc_now()
         attempt_started = time.perf_counter()
+        operation = "count_tokens" if counted_input is None else "generate_content"
         try:
             enforce_argon_deadline(model_id, allow_after_deadline)
+            if counted_input is None:
+                counted_input = count_tokens(client, contents, model_id)
+                enforce_ceiling(counted_input, task, len(items), model_id)
+            operation = "generate_content"
             response = client.models.generate_content(
                 model=model_id, contents=contents, config=generation_config(task)
             )
@@ -445,6 +449,7 @@ def generate_batch(
                 attempts.append({
                     "attempt": attempt_number, "timestamp": timestamp, "usage": usage,
                     "usd": usd, "duration_seconds": duration_seconds, "validation_ok": False,
+                    "operation": "validation",
                     "error": f"{type(validation_exc).__name__}: {validation_exc}",
                 })
                 retry += 1
@@ -454,6 +459,7 @@ def generate_batch(
             attempts.append({
                 "attempt": attempt_number, "timestamp": timestamp, "usage": usage,
                 "usd": usd, "duration_seconds": duration_seconds, "validation_ok": True,
+                "operation": "validation",
             })
             write_output(output_path, task, output)
             log = {
@@ -481,10 +487,16 @@ def generate_batch(
             return output
         except Exception as exc:  # SDK exceptions vary by transport/version.
             duration_seconds = time.perf_counter() - attempt_started
+            if isinstance(exc, Stage4Error):
+                raise
             if is_fatal_vertex_access_error(exc):
                 raise
             if is_rate_limit(exc):
-                print(f"task={task} batch={batch_name} rate limited; waiting {rate_wait}s", file=sys.stderr)
+                print(
+                    f"task={task} batch={batch_name} {operation} rate limited; "
+                    f"waiting {rate_wait}s",
+                    file=sys.stderr,
+                )
                 time.sleep(rate_wait)
                 rate_wait = min(rate_wait * 2, 60)
                 continue
@@ -498,13 +510,14 @@ def generate_batch(
             attempts.append({
                 "attempt": attempt_number, "timestamp": timestamp, "usage": {}, "usd": 0,
                 "duration_seconds": duration_seconds, "validation_ok": False,
+                "operation": operation,
                 "error": f"{type(exc).__name__}: {exc}",
             })
             retry += 1
             if retry <= MAX_RETRIES:
                 wait_seconds = API_ERROR_RETRY_WAITS[retry - 1]
                 print(
-                    f"task={task} batch={batch_name} API/transport error; "
+                    f"task={task} batch={batch_name} {operation} API/transport error; "
                     f"waiting {wait_seconds}s before retry {retry}",
                     file=sys.stderr,
                 )
@@ -522,7 +535,7 @@ def generate_batch(
         },
         "prompt_sha256": builders.sha256_text(prompt),
         "input_sha256": builders.sha256_text(input_text),
-        "item_count": len(items), "counted_input_tokens": counted_input,
+        "item_count": len(items), "counted_input_tokens": counted_input or 0,
         "usage": {
             "input_tokens": 0, "output_tokens": 0, "thinking_tokens": 0,
             "total_token_count": 0, "unreported_tokens": 0,
