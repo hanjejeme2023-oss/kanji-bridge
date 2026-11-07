@@ -448,7 +448,7 @@ c00988,戶,호,hộ,(open),(open),こ,hù,4,kaikki_en_han
 c00989,懷,회,hoài,(open),(open),かい,huái,4,kaikki_han
 c00991,揮,휘,huy,(open),(open),き,huī,4,kaikki_han
 c00994,貨,화,hóa,(open),(open),か,huò,4,kaikki_en_han
-c00999,季,계,quý,(open),(open),き,jì,4,kaikki_en_han
+c00999,季,계,quý,(open),(open),き,jì,4,kaikki_han
 c01001,寄,기,ký,(open),(open),き,jì,4,kaikki_en_han
 c01007,階,계,giai,(open),(open),かい,jiē,4,kaikki_han
 c01014,究,구,cứu,(open),(open),きゅう,jiū,4,kaikki_han
@@ -983,7 +983,6 @@ c00772,切,체,thiết,(open),t,せつ,qiè,3,kaikki_han
 c01101,刷,쇄,loát,(open),t,さつ,shuā,4,kaikki_han
 c01616,揭,게,yết,(open),t,けい,jiē,6,unihan_hvsyl
 c01507,暴,폭,bạo,ㄱ,(open),ぼう,bào,6,kaikki_han
-c01755,液,액,giá,ㄱ,(open),えき,yè,6,kaikki_aligned
 c01862,伯,백,bá,ㄱ,(open),はく,bó,7,kaikki_han
 c00012,北,북,bắc,ㄱ,c,ほく,běi,1,kaikki_han
 c00040,得,득,đắc,ㄱ,c,とく,dé,1,kaikki_en_han
@@ -1352,7 +1351,6 @@ c00893,專,전,chuyên,ㄴ,n,せん,zhuān,3,kaikki_han
 c00894,轉,전,chuyển,ㄴ,n,てん,zhuǎn,3,kaikki_en_han
 c03012,准,준,chuẩn,ㄴ,n,じゅん,zhǔn,3,kaikki_han
 c00903,案,안,án,ㄴ,n,あん,àn,4,kaikki_en_han
-c00903,案,안,yên,ㄴ,n,あん,àn,4,kaikki_aligned
 c00908,伴,반,bạn,ㄴ,n,はん,bàn,4,kaikki_en_char
 c00918,編,편,biên,ㄴ,n,へん,biān,4,kaikki_en_han
 c00919,辯,변,biện,ㄴ,n,べん,biàn,4,kaikki_han
@@ -1524,7 +1522,7 @@ c02267,懇,간,khẩn,ㄴ,n,こん,kěn,7,kaikki_en_han
 c02286,昆,곤,côn,ㄴ,n,こん,kūn,7,kaikki_han
 c02292,蘭,란,lan,ㄴ,n,らん,lán,7,kaikki_aligned
 c02295,瀾,란,lan,ㄴ,n,らん,lán,7,unihan_hvsyl
-c02315,蓮,련,liên,ㄴ,n,れん,lián,7,kaikki_han
+c02315,蓮,련,liên,ㄴ,n,れん,lián,7,kaikki_aligned
 c02363,卵,란,noãn,ㄴ,n,らん,luǎn,7,kaikki_en_char
 c02366,倫,륜,luân,ㄴ,n,りん,lún,7,kaikki_aligned
 c02373,蠻,만,man,ㄴ,n,ばん,mán,7,kaikki_han
@@ -1850,7 +1848,6 @@ c00228,網,망,võng,ㅇ,ng,もう,wǎng,1,kaikki_han
 c00229,忘,망,vong,ㅇ,ng,ぼう,wàng,1,unihan_hvsyl
 c00244,想,상,tưởng,ㅇ,ng,そう,xiǎng,1,kaikki_han
 c00253,行,행,hàng,ㅇ,ng,こう,xíng,1,kaikki_en_han
-c00253,行,행,hạng,ㅇ,ng,こう,xíng,1,kaikki_aligned
 c00254,興,흥,hứng,ㅇ,ng,こう,xìng,1,kaikki_han
 c00254,興,흥,hưng,ㅇ,ng,こう,xìng,1,kaikki_han
 c00257,樣,양,dạng,ㅇ,ng,よう,yàng,1,kaikki_en_han
@@ -2139,7 +2136,6 @@ c00326,成,성,thành,ㅇ,nh,せい,chéng,2,kaikki_han
 c00342,定,정,định,ㅇ,nh,てい,dìng,2,kaikki_en_han
 c00359,更,갱,cánh,ㅇ,nh,こう,gèng,2,kaikki_han
 c00359,更,갱,canh,ㅇ,nh,こう,gèng,2,kaikki_aligned
-c00359,更,경,canh,ㅇ,nh,こう,gèng,2,kaikki_aligned
 c00381,黃,황,huỳnh,ㅇ,nh,こう,huáng,2,kaikki_han
 c00406,經,경,kinh,ㅇ,nh,けい,jīng,2,kaikki_en_han
 c00408,靜,정,tĩnh,ㅇ,nh,せい,jìng,2,kaikki_en_han

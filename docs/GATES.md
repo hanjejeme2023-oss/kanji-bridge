@@ -353,3 +353,19 @@ PROMPT Stage 4 review for tasks 2-4 (D62 item 2). Full evidence: `docs/STAGE4D_P
 | Task 4 review | 50 random: 0 model errors; script: 5 notes quote a Korean example whose written syllable differs (效率 효율, 戀愛 연애), builder-caused | **ACCEPT** 5; → `config/task4_review.csv` |
 
 Next: Codex 4c-prep3 (task-3 prompt per language), user reruns task 3 (Vietnamese cells) and answers `docs/VI_CLEAR_SHORTLIST.md`, then Claude re-checks task 3 and applies step 6.
+
+## Stage 4 gate part 3 (task-3 Vietnamese rerun; step 6), 2026-11-07: **PASS**, task 3 accepted with an overlay; all task 1-4 content accepted
+
+Evidence: `docs/STAGE4D_PART3_REVIEW.md`; scripts `docs/review_scripts/stage4d_part3_reference.py`, `stage4d_part3_step6.py`. Decisions: **D65**, **D66**.
+
+| Item | Evidence | Result |
+|---|---|---|
+| Task-3 rerun integrity | validator rerun 14/14 OK; inputs byte-identical to a fresh build; vi b008-b014 prompt SHA = v3 text, zh b001-b007 = v2; Argon `global` 0.3, thinking 0, first attempt; ledger $22.24585975, room $77.75 | OK |
+| Task-3 Vietnamese, all 42 passages | forced archaic class gone; 6 one-off slips (Hangul in one translation; học sinh for university students; nghiêm cách; điều độ misused; khoa ngoại khoa; có tự giác) | **ACCEPT** b008-b014 with `config/task3_review.csv` (drop 4, trim 2); each cell ≥ 5 passages; every resulting passage passes `validate_task3` |
+| Step 6 (user-confirmed) | 37 `vi` overrides (158 rows, all apply), 28 `clear_vi` rows; rebuild vs HEAD: only those 37 `vi` changed, `ko`/`ja`/chars unchanged; D52 ties 15 → 14, no new tie (液 giá/dịch gone) | OK |
+| Step-6 consequences | `card_eligible` 8,555 → 8,554 (季女); task-4 builder 234 → 228 items before the D59 filter (6 `different_word` words already outside the 212 notes); HSK `vi` 4,211, all four 3,345 | accepted (D65 item 2); 4 test constants updated |
+| Tests | `unittest discover`: 79 tests incl. the three-build rebuild test, which passed; afterwards every `data/final/` file equals the first rebuild (SHA-256). Non-rebuild rerun after the constant updates: 78 tests, **1 failure kept on purpose**: 平價 keeps `vi_alt` *bằng giá* after its `vi` clear (`test_d55_cleared_values_stay_out_of_vi_alt`); build fix → Codex 4c-prep4 item 0 | OK with one known gap |
+| Accepted content | 86 + 79 + 14 + 5 batches (output, log, input) moved to `content/accepted/taskN/` | OK |
+| Korean finding (user) | five examples are task-1 card words; `ko_rare` review-only; sample: task 1 misses about 10-14%, `ff_candidates` about 28% | → task 5 (D66) before 4e |
+
+Next: Codex 4c-prep4 (vi_alt fix, accepted layout, task 5), User `-Tasks 5`, Claude gate part 4, Codex 4e.

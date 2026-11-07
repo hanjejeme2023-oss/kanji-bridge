@@ -151,7 +151,7 @@ class Stage3GateFixTests(unittest.TestCase):
         self.assertEqual(report.loc[selected, "word_id"].nunique(), vi_only_count)
         for column in ["rank", "level"]:
             self.assertTrue(report.loc[selected, column].str.fullmatch(r"\d+").all())
-        self.assertEqual(int((self.words["card_eligible"] == "true").sum()), 8555)
+        self.assertEqual(int((self.words["card_eligible"] == "true").sum()), 8554)  # D65: 季女 lost its only target language
         self.assertEqual(
             int(((self.words["source_level"] == "hsk30") & (self.words["card_eligible"] == "true")).sum()),
             7354,

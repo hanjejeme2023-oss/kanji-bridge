@@ -1,0 +1,8 @@
+batch,passage,action,token_index,generated,review,reason
+b008,1,drop,,現在、多くの生徒が大学で外国語を学んでいます。彼らは知識を広げたいと思っています。,,"học sinh (school pupil) is used for university students; Vietnamese says sinh viên there"
+b010,4,drop,,空港の税関で手荷物を検査した後、私たちは国内線に乗り続けました。出発前に、母は私にパスポートを 안전한場所にしまうよう注意しました。,,"translation_ja contains Korean text (안전한); chuyến bay quốc nội is forced (everyday Vietnamese: chuyến bay nội địa)"
+b011,5,drop,,長時間の討論の後、双方はついに新しい計画に一致しました。主任はすべての社員が職場の規律を厳格に守るよう求めました。,,"nghiêm cách is a forced literary word (everyday: nghiêm túc / nghiêm khắc) and 'một cách nghiêm cách' repeats cách"
+b014,6,drop,,長時間のコンピューターの乱用は、私たちの視力を著しく低下させる原因となる。各自が目の健康を守るために、作業時間を適切に調整する自覚を持つ必要がある。,,"điều độ is linked to 調度 (meaning: to dispatch, adjust) but used as 'keep one's hours moderate'; the link teaches the wrong meaning"
+b013,3,delete_token,11,"{""gloss_ja"": ""科"", ""t"": ""Khoa""}",,"'Khoa ngoại khoa' repeats khoa; 'Ngoại khoa vừa được trang bị …' is natural"
+b013,3,set_t,12,ngoại khoa,Ngoại khoa,"sentence-initial capital after the deletion above (validator compares Vietnamese case-insensitively)"
+b013,4,delete_token,17,"{""gloss_ja"": ""持つ"", ""t"": ""có""}",,"'đều có tự giác bảo vệ' is unidiomatic; 'đều tự giác bảo vệ' is natural"

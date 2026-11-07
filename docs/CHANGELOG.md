@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 2026-11-07 — Stage 4 gate part 3: task-3 Vietnamese accepted, step 6 applied, Korean usage check planned [Claude]
+- Task 3 Vietnamese rerun (prompt v3, user run, $0.385) reviewed in full: the forced archaic class is gone; 6 single slips in 42 passages → `config/task3_review.csv` (drop 4, trim 2 by token deletion); every cell keeps ≥ 5 passages; all 14 task-3 batches accepted (D65).
+- Step 6 (user: "All as proposed. A27: clear."): 37 `vi` clears in `pipeline/overrides.csv` (158 rows) and 28 `clear_vi` rows in `config/task2_review.csv`, written by `docs/review_scripts/stage4d_part3_step6.py`. Rebuild: only those 37 `vi` values changed; no primary or tie change (液 giá/dịch tie gone); `card_eligible` 8,555 → 8,554 (季女); HSK `vi` 4,211, all four 3,345. Test constants 8,555 → 8,554 updated.
+- All task 1-4 batches (outputs, logs, inputs) moved to `content/accepted/taskN/` (D65 item 3).
+- User Korean finding: the five examples are task-1 card words; `ko_rare` was review-only; task 1 misses many rare Korean readings and `ff_candidates` rows were never checked → task 5 Korean usage check, prompt `content/prompts/task5_v1.md`, 9,091 items, about $4-7 (D66). UX_BACKLOG #4.
+
 ## 2026-11-07 — Stage 4c-prep3: task-3 prompt per language [Codex]
 - Task 3 now resolves its prompt from each cell: Chinese uses unchanged `task3_v2.md`; Vietnamese uses Claude's unchanged `task3_v3.md`. Request text, log SHA, resume validation, offline status, cost estimation and dry-run all use the resolved cell prompt. Tasks 1, 2 and 4 retain their single prompts.
 - Resume/dry-run checks happen before rewriting an already validated input. The seven Chinese v2 batches remain valid; the seven Vietnamese batches logged with the v2 SHA are stale and selected for rerun. Dry-run now reports only the unvalidated batch count.

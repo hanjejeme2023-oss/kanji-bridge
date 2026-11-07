@@ -841,8 +841,10 @@ c02120,呵,呵,vi,false
 c02121,禾,禾,vi,false
 c02122,閡,閡,ko,false
 c02122,閡,閡,vi,false
+c02123,荷,荷,vi,false
 c02125,鶴,鶴,vi,false
 c02126,嘿,嘿,vi,false
+c02127,痕,痕,vi,false
 c02128,哼,哼,vi,false
 c02131,哄,哄,vi,false
 c02132,烘,烘,ko,false
@@ -1001,6 +1003,7 @@ c02292,蘭,蘭,ko,true
 c02292,蘭,蘭,vi,false
 c02293,攔,攔,vi,false
 c02294,婪,婪,ko,false
+c02295,瀾,瀾,vi,false
 c02296,攬,攬,vi,false
 c02297,纜,纜,ko,false
 c02297,纜,纜,vi,false
@@ -1025,6 +1028,7 @@ c02310,愣,愣,vi,false
 c02311,黎,黎,vi,false
 c02314,粒,粒,ko,false
 c02314,粒,粒,vi,false
+c02315,蓮,蓮,vi,false
 c02317,斂,斂,vi,false
 c02318,鏈,鏈,ko,false
 c02318,鏈,鏈,vi,false

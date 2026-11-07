@@ -20,9 +20,9 @@ class Stage4BuilderTests(unittest.TestCase):
         cls.reviewed_task1 = builders.apply_task1_review(cls.generated_task1)
 
     def test_frozen_item_counts(self) -> None:
-        self.assertEqual(len(self.task1), 8555)
+        self.assertEqual(len(self.task1), 8554)  # D65 step 6 (季女); accepted task-1 output keeps 8,555
         self.assertEqual(len(builders.chunked(self.task1, 100)), 86)
-        self.assertEqual(len(self.task4), 234)
+        self.assertEqual(len(self.task4), 228)  # D65 step 6 cleared vi of 一行 中斷 更改 案件 液體 進出 (already outside the 212 accepted notes)
         self.assertEqual(len(builders.chunked(self.task4, 50)), 5)
 
     def test_task4_korean_filter_uses_the_written_syllable(self) -> None:

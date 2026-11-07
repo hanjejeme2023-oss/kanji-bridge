@@ -86,8 +86,8 @@ class Stage3D53Tests(unittest.TestCase):
             word_key[key] = row
         chars = self.chars.set_index("key_char")
         # 77 confirmed at the Stage 3 gate; repeat gate (D56): +6 chars, -2 VI-only words;
-        # D55/D57 Vietnamese finalization: +11 replacements, +29 clears.
-        self.assertEqual(len(self.overrides), 121)
+        # D55/D57 Vietnamese finalization: +11 replacements, +29 clears; D65 step 6: +37 clears.
+        self.assertEqual(len(self.overrides), 158)
         for override in self.overrides.itertuples(index=False):
             with self.subTest(table=override.table, key=override.key, column=override.column):
                 if override.table == "words":
@@ -125,11 +125,14 @@ class Stage3D53Tests(unittest.TestCase):
             (self.overrides["table"] == "words") & (self.overrides["column"] == "vi")
             & (self.overrides["value"] == "")
         ]
-        self.assertEqual(len(cleared), 29)
+        self.assertEqual(len(cleared), 66)  # 29 D55/D57 + 37 D65 step 6
         reported = set(self.ambiguous.loc[self.ambiguous["reason"] == "override_cleared", "word_key"])
         for key in cleared["key"]:
             trad, pinyin = key.split("|")
-            row = self.words.loc[(self.words["trad"] == trad) & (self.words["pinyin"] == pinyin)].iloc[0]
+            if trad == "x":  # VI-only word key x|trad (D65: 季女)
+                row = self.words.loc[(self.words["trad"] == pinyin) & (self.words["origin"] == "vi_freq")].iloc[0]
+            else:
+                row = self.words.loc[(self.words["trad"] == trad) & (self.words["pinyin"] == pinyin)].iloc[0]
             with self.subTest(key=key):
                 self.assertEqual(row["vi"], "")
                 self.assertEqual(row["vi_alt"], "")
