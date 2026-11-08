@@ -98,45 +98,15 @@ class Stage4SafetyTests(unittest.TestCase):
             enforce_argon_deadline(now=boundary)
         enforce_argon_deadline(allow_after_deadline=True, now=boundary)
 
-    def test_task_resume_skips_validated_batch_and_runs_failed_batch(self) -> None:
-        item = {
-            "key": "w1", "checks": ["ko"], "trad": "文字", "ja": "もじ", "ko": "문자",
-            "pinyin": "wénzì", "vi": "văn tự",
-        }
-        output = [{
-            "key": "w1", "ja_check": "", "ja_reason": "",
-            "ko_check": "used", "ko_reason": "", "vi_use": "", "vi_reason": "",
-        }]
-        prompt = "test prompt"
-        with tempfile.TemporaryDirectory() as temp:
-            root = Path(temp)
-            inputs = root / "inputs"
-            generated = root / "generated"
-            output_path = generated / "task5" / "b001.jsonl"
-            log_path = generated / "task5" / "b001.log.json"
-            builders.write_jsonl(output_path, output)
-            log = {
-                "task": 5, "batch": "b001", "model": MODEL_ID,
-                "prompt_sha256": builders.sha256_text(prompt),
-                "input_sha256": builders.sha256_text(builders.jsonl_text([item])),
-                "item_count": 1, "validation": {"ok": True, "error": ""},
-            }
-            log_path.write_text(json.dumps(log), encoding="utf-8")
-            generate = Mock(return_value=output)
-            with (
-                patch("pipeline.stage4.runner.INPUTS", inputs),
-                patch("pipeline.stage4.runner.GENERATED", generated),
-                patch("pipeline.stage4.runner.prompt_text", return_value=prompt),
-                patch("pipeline.stage4.runner.builders.task_batches", return_value=[[item]]),
-                patch("pipeline.stage4.runner.require_accepted_layout"),
-                patch("pipeline.stage4.runner.generate_batch", generate),
-            ):
-                self.assertEqual(run_task(Mock(), 5, None, False), 0)
-                generate.assert_not_called()
-                log["validation"]["ok"] = False
-                log_path.write_text(json.dumps(log), encoding="utf-8")
-                self.assertEqual(run_task(Mock(), 5, None, False), 0)
-                generate.assert_called_once()
+    def test_task5_run_refuses_even_if_generated_files_are_stale(self) -> None:
+        with (
+            patch("pipeline.stage4.runner.builders.task_batches") as batches,
+            patch("pipeline.stage4.runner.generate_batch") as generate,
+        ):
+            with self.assertRaisesRegex(Stage4Error, "D65 refusal"):
+                run_task(Mock(), 5, None, False)
+        batches.assert_not_called()
+        generate.assert_not_called()
 
     def test_task3_resume_keeps_zh_v2_and_reruns_vi_v2(self) -> None:
         zh_items = [{"language": "zh", "level": 1, "words": []}]
@@ -173,41 +143,11 @@ class Stage4SafetyTests(unittest.TestCase):
                     run_task(Mock(), 3, None, False)
             generate.assert_not_called()
 
-    def test_task5_dry_run_counts_only_stale_batches(self) -> None:
-        first_items = [{"key": "a", "checks": ["ko"], "ko": "가", "vi": ""}]
-        second_items = [{"key": "b", "checks": ["ko"], "ko": "나", "vi": ""}]
-        with tempfile.TemporaryDirectory() as temp:
-            root = Path(temp)
-            generated = root / "generated"
-            output_path = generated / "task5" / "b001.jsonl"
-            log_path = generated / "task5" / "b001.log.json"
-            builders.write_jsonl(output_path, [{
-                "key": "a", "ja_check": "", "ja_reason": "", "ko_check": "used",
-                "ko_reason": "", "vi_use": "", "vi_reason": "",
-            }])
-            log_path.write_text(json.dumps({
-                "task": 5,
-                "batch": "b001",
-                "model": MODEL_ID,
-                "prompt_sha256": builders.sha256_text(prompt_text(5, first_items)),
-                "input_sha256": builders.sha256_text(builders.jsonl_text(first_items)),
-                "item_count": 1,
-                "validation": {"ok": True, "error": ""},
-            }), encoding="utf-8")
-            count = Mock(return_value=17)
-            stream = io.StringIO()
-            with (
-                patch("pipeline.stage4.runner.INPUTS", root / "inputs"),
-                patch("pipeline.stage4.runner.GENERATED", generated),
-                patch("pipeline.stage4.runner.require_accepted_layout"),
-                patch("pipeline.stage4.runner.builders.task_batches", return_value=[first_items, second_items]),
-                patch("pipeline.stage4.runner.count_tokens", count),
-                redirect_stdout(stream),
-            ):
-                self.assertEqual(run_task(Mock(), 5, None, True), 0)
-            self.assertEqual(count.call_count, 1)
-            self.assertTrue(count.call_args.args[1].startswith(prompt_text(5, second_items)))
-            self.assertIn("task=5 batches=1 total_input_tokens=17", stream.getvalue())
+    def test_task5_dry_run_refuses_without_counting_tokens(self) -> None:
+        with patch("pipeline.stage4.runner.count_tokens") as count:
+            with self.assertRaisesRegex(Stage4Error, "D65 refusal"):
+                run_task(Mock(), 5, None, True)
+        count.assert_not_called()
 
     def test_ceiling_estimate_uses_only_matching_prompt_logs(self) -> None:
         with tempfile.TemporaryDirectory() as temp:
@@ -301,73 +241,18 @@ class Stage4SafetyTests(unittest.TestCase):
         ])
         self.assertTrue(log["validation"]["ok"])
 
-    def test_count_tokens_remote_protocol_error_is_retried_inside_batch(self) -> None:
-        response = SimpleNamespace(
-            text="[]",
-            usage_metadata=SimpleNamespace(
-                prompt_token_count=1,
-                candidates_token_count=1,
-                thoughts_token_count=0,
-                total_token_count=2,
-            ),
-        )
-        client = SimpleNamespace(models=SimpleNamespace(
-            count_tokens=Mock(side_effect=[
-                httpcore.RemoteProtocolError(
-                    b"Server disconnected without sending a response."
-                ),
-                httpx.RemoteProtocolError("Server disconnected without sending a response."),
-                httpx.RemoteProtocolError("Server disconnected without sending a response."),
-                SimpleNamespace(total_tokens=1),
-            ]),
-            generate_content=Mock(return_value=response),
-        ))
-        batches = [[{"word_id": "w1"}], [{"word_id": "w2"}]]
-        with tempfile.TemporaryDirectory() as temp:
-            root = Path(temp)
-            generated = root / "generated"
-            with (
-                patch("pipeline.stage4.runner.INPUTS", root / "inputs"),
-                patch("pipeline.stage4.runner.GENERATED", generated),
-                patch("pipeline.stage4.runner.vertex_settings", return_value=("project", "global")),
-                patch("pipeline.stage4.runner.prompt_text", return_value="prompt"),
-                patch("pipeline.stage4.runner.builders.task_batches", return_value=batches),
-                patch("pipeline.stage4.runner.require_accepted_layout"),
-                patch("pipeline.stage4.runner.enforce_ceiling"),
-                patch("pipeline.stage4.runner.generation_config", return_value=object()),
-                patch("pipeline.stage4.runner.validate", return_value=[]),
-                patch("pipeline.stage4.runner.write_output"),
-                patch("pipeline.stage4.runner.append_cost"),
-                patch("pipeline.stage4.runner.time.sleep") as sleep,
-            ):
-                failed = run_task(client, 5, None, False)
-
-            failed_log = json.loads(
-                (generated / "task5" / "b001.log.json").read_text(encoding="utf-8")
-            )
-            next_log = json.loads(
-                (generated / "task5" / "b002.log.json").read_text(encoding="utf-8")
-            )
-
-        self.assertEqual(failed, 1)
-        self.assertEqual(client.models.count_tokens.call_count, 4)
-        client.models.generate_content.assert_called_once()
-        self.assertEqual([call.args[0] for call in sleep.call_args_list], [30, 60])
-        self.assertEqual(
-            [attempt["operation"] for attempt in failed_log["attempts"]],
-            ["count_tokens", "count_tokens", "count_tokens"],
-        )
-        self.assertTrue(all(
-            "RemoteProtocolError" in attempt["error"]
-            for attempt in failed_log["attempts"]
-        ))
-        self.assertFalse(failed_log["validation"]["ok"])
-        self.assertTrue(next_log["validation"]["ok"])
-        self.assertEqual(next_log["reason_warnings"], [])
+    def test_accepted_task5_refusal_precedes_any_transport_call(self) -> None:
+        client = Mock()
+        with self.assertRaisesRegex(Stage4Error, "D65 refusal"):
+            run_task(client, 5, None, False)
+        client.models.count_tokens.assert_not_called()
+        client.models.generate_content.assert_not_called()
 
     def test_launcher_uses_unbuffered_python(self) -> None:
         source = (ROOT / "pipeline" / "stage4" / "run_stage4.ps1").read_text(encoding="utf-8")
         self.assertIn("& $PythonPath -u $Generator @Arguments | Out-Host", source)
+        self.assertIn("if ($TaskNumber -match '^[1-5]$')", source)
+        self.assertNotIn("Use -Tasks 5", source)
 
     def test_lock_refuses_live_process_and_replaces_dead_process(self) -> None:
         with tempfile.TemporaryDirectory() as temp:
@@ -383,22 +268,19 @@ class Stage4SafetyTests(unittest.TestCase):
             self.assertFalse(lock.exists())
 
     def test_status_is_offline_and_reports_accepted_and_task5(self) -> None:
-        with tempfile.TemporaryDirectory() as temp:
-            stream = io.StringIO()
-            with (
-                patch("pipeline.stage4.runner.GENERATED", Path(temp)),
-                patch("pipeline.stage4.runner.existing_cost", return_value=1.25),
-                patch("pipeline.stage4.runner.load_prices", return_value={"hard_ceiling": 100}),
-                patch("pipeline.stage4.runner.calculate_cost", return_value=15.78),
-                redirect_stdout(stream),
-            ):
-                run_status()
-            output = stream.getvalue()
-            self.assertIn("task 1: 86/86 validated, 0 failed, 0 missing", output)
-            self.assertIn("task 2: 79/79 validated, 0 failed, 0 missing", output)
-            self.assertIn("task 5: 0/104 validated, 0 failed, 104 missing", output)
-            self.assertIn("task 5 conservative estimate:", output)
-            self.assertIn("spend to date: $1.25000000", output)
+        stream = io.StringIO()
+        with (
+            patch("pipeline.stage4.runner.existing_cost", return_value=1.25),
+            patch("pipeline.stage4.runner.load_prices", return_value={"hard_ceiling": 100}),
+            redirect_stdout(stream),
+        ):
+            run_status()
+        output = stream.getvalue()
+        self.assertIn("task 1: 86/86 validated, 0 failed, 0 missing", output)
+        self.assertIn("task 2: 79/79 validated, 0 failed, 0 missing", output)
+        self.assertIn("task 5: 104/104 validated, 0 failed, 0 missing", output)
+        self.assertNotIn("conservative estimate", output)
+        self.assertIn("spend to date: $1.25000000", output)
 
         with (
             patch("pipeline.stage4.runner.run_status") as status,
@@ -410,8 +292,8 @@ class Stage4SafetyTests(unittest.TestCase):
             create_client.assert_not_called()
             lock.assert_not_called()
 
-    def test_tasks_1_to_4_refuse_before_client_creation(self) -> None:
-        for task in range(1, 5):
+    def test_tasks_1_to_5_refuse_before_client_creation(self) -> None:
+        for task in range(1, 6):
             with (
                 self.subTest(task=task),
                 patch("pipeline.stage4.runner.create_client") as create_client,
@@ -421,8 +303,10 @@ class Stage4SafetyTests(unittest.TestCase):
 
     def test_run_all_does_not_import_stage4(self) -> None:
         source = (ROOT / "pipeline" / "run_all.py").read_text(encoding="utf-8").lower()
-        self.assertNotIn("stage4", source)
+        self.assertNotIn("from pipeline.stage4", source)
+        self.assertNotIn("import pipeline.stage4", source)
         self.assertNotIn("google.genai", source)
+        self.assertIn('run("merge_stage4.py")', source)
 
     def test_no_credentials_in_project_files(self) -> None:
         api_key = re.compile(r"AIza[0-9A-Za-z_-]{35}")
@@ -439,7 +323,10 @@ class Stage4SafetyTests(unittest.TestCase):
             if api_key.search(text) or private_field in text:
                 offenders.append(path.relative_to(ROOT).as_posix())
         # HANDOFF contains the literal safety requirement itself, not a credential field.
-        offenders = [path for path in offenders if path != "docs/HANDOFF.md"]
+        offenders = [
+            path for path in offenders
+            if path not in {"docs/HANDOFF.md", "docs/HANDOFF_ARCHIVE.md"}
+        ]
         self.assertEqual(offenders, [])
 
 

@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 2026-11-07 — Stage 4e: accepted content merged into final tables [Codex]
+- Added the offline `pipeline/merge_stage4.py` build step and wired it into `run_all.py`. All D63-D69 review overlays are fail-closed against accepted output; task-5 reasons and all other review-only fields stay out of `data/final/`.
+- Added `words` usage/content fields, 279 dictionary-backed `ff_only` rows, `ff_meanings` (4,044 rows), and reviewed `passages` (80 rows). Final words = 12,508; false-friend entries = 1,242. D64 drops one empty-reading Vietnamese trap without removing its entry.
+- Added `pipeline/extract_prototype_config.py`; committed its exact frozen-prototype extractions: 34 static FF rows across 12 entries and the 越南 note. The merge re-extracts in memory and validates both config files and all static readings.
+- Task 5 now reports 104/104 from `content/accepted/`; runner, dry-run and launcher attempts for every accepted task 1-5 fail before client creation. Offline status: spend $35.50397575, room $64.49602425.
+- Claude comparison: exact match — ko/ja rare 1,500/437 (both 241), wrong_meaning 18/1, vi literary 1,277 + one unsure, 227 Korean and 76 Japanese fixed-note rows, 275 changed entries, and three departures (孫子, 內衣, 應當).
+- Added fail-closed overlay, schema/type/key, dictionary-reading, token-resolution and no-reason-leak tests. All 100 non-rebuild tests and the rebuild-determinism test pass (101 total); two full rebuilds are byte-identical.
+
 ## 2026-11-07 — Stage 4 gate part 4b: task 5 accepted in full; D69 [Claude]
 - b055 rerun (user, $0.078; ledger $35.50397575) checked: inputs equal a fresh build, 104/104 batches validate; 18 `reason_warnings` (review notes only). 5 corrections (欠缺 けんけつ, 親生 친생, 輕型 경형, 青春期 청춘기 → `used`; 氣味 기미 → `rare`) → accepted.
 - User's answers to `docs/TASK5_USER_SAMPLE.md`: A and C all agreed; B: 9 readings `used` (那邊, 其實, 第一聲, 接受, 慶祝, 宣布, 霍亂, 必定, 會同), 4 `rare`. `config/task5_review.csv` 26 → 40 rows.

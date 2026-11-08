@@ -146,7 +146,8 @@ class Stage3D53Tests(unittest.TestCase):
 
     def test_false_friend_candidates_exclude_every_current_word_form(self) -> None:
         ff = read_csv(ROOT / "data" / "staging" / "ff_candidates.csv")
-        used = set(self.words["trad"]) | set(self.words["simp"]) | set(self.words["jp"])
+        core = self.words.loc[self.words["origin"] != "ff_only"]
+        used = set(core["trad"]) | set(core["simp"]) | set(core["jp"])
         for column in ["form", "trad", "simp"]:
             self.assertFalse(set(ff[column]) & used, column)
         self.assertTrue({"手紙", "大丈夫"}.issubset(set(ff["form"])))

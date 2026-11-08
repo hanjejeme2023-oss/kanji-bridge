@@ -87,15 +87,13 @@ try {
                 Where-Object { $_ -ne '' }
         )
         if ($TaskNumbers.Count -eq 0) {
-            throw '-Tasks must contain task number 5.'
+            throw '-Tasks must contain a task number.'
         }
         foreach ($TaskNumber in $TaskNumbers) {
-            if ($TaskNumber -match '^[1-4]$') {
-                throw "D65 refusal: task $TaskNumber is accepted and its stale inputs must never be regenerated. Use -Tasks 5."
+            if ($TaskNumber -match '^[1-5]$') {
+                throw "D65 refusal: task $TaskNumber is accepted and its stale inputs must never be regenerated."
             }
-            if ($TaskNumber -ne '5') {
-                throw "Invalid task '$TaskNumber'. Use only 5."
-            }
+            throw "Invalid task '$TaskNumber'."
         }
 
         :TaskLoop foreach ($TaskNumber in $TaskNumbers) {

@@ -62,6 +62,7 @@ class CharacterCollisionTests(unittest.TestCase):
             ROOT / "data" / "final" / "words.csv", encoding="utf-8",
             keep_default_na=False, dtype=str,
         )
+        words = words.loc[words["origin"] != "ff_only"]
         used = {char for value in words["trad"] for char in value}
         available = set(self.chars["trad"]) | set(self.chars["key_char"])
         self.assertFalse(used - available)

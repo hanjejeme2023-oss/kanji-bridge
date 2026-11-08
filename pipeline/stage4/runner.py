@@ -53,7 +53,7 @@ COST_FIELDS = [
 ]
 FALLBACK_CHARGEABLE_OUTPUT_PER_ITEM = {1: 140, 2: 120, 3: 1600, 4: 100, 5: 120}
 TASK5_ESTIMATED_INPUT_TOKENS = 1_650_000
-ACCEPTED_BATCH_COUNTS = {1: 86, 2: 79, 3: 14, 4: 5}
+ACCEPTED_BATCH_COUNTS = {1: 86, 2: 79, 3: 14, 4: 5, 5: 104}
 
 
 class Stage4Error(RuntimeError):
@@ -743,7 +743,7 @@ def run_task(
     dry_run: bool,
     allow_after_deadline: bool = False,
 ) -> int:
-    if task in {1, 2, 3, 4}:
+    if task in ACCEPTED_BATCH_COUNTS:
         raise Stage4Error(
             f"D65 refusal: task {task} is accepted and its stale inputs must never be regenerated"
         )
@@ -826,18 +826,10 @@ def print_task_status(task: int, counts: dict[str, int]) -> None:
 
 def run_status() -> None:
     """Print resume-aware status without constructing a Vertex client or making API calls."""
-    for task in (1, 2, 3, 4):
+    for task in ACCEPTED_BATCH_COUNTS:
         print_task_status(task, accepted_task_states(task))
-    task5_batches = builders.build_task5_batches()
-    print_task_status(5, task_states(5, task5_batches))
     spent = existing_cost()
     ceiling = float(load_prices()["hard_ceiling"])
-    estimated_output = estimated_chargeable_output(5, sum(map(len, task5_batches)))
-    estimated_cost = calculate_cost(TASK5_ESTIMATED_INPUT_TOKENS, estimated_output, 0)
-    print(
-        f"task 5 conservative estimate: ${estimated_cost:.8f} "
-        f"({TASK5_ESTIMATED_INPUT_TOKENS} input + {estimated_output} chargeable output tokens)"
-    )
     print(f"spend to date: ${spent:.8f}")
     print(f"room under ${ceiling:.2f} ceiling: ${max(ceiling - spent, 0):.8f}")
 
@@ -915,7 +907,7 @@ def main(argv: list[str] | None = None) -> int:
         if args.status:
             run_status()
             return 0
-        if args.task in {1, 2, 3, 4}:
+        if args.task in ACCEPTED_BATCH_COUNTS:
             raise Stage4Error(
                 f"D65 refusal: task {args.task} is accepted and its stale inputs must never be regenerated"
             )

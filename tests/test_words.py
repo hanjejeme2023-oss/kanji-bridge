@@ -26,7 +26,9 @@ class WordTableTests(unittest.TestCase):
         )
 
     def row(self, trad: str, pinyin: str = "") -> pd.Series:
-        rows = self.words.loc[self.words["trad"] == trad]
+        rows = self.words.loc[
+            (self.words["trad"] == trad) & (self.words["origin"] != "ff_only")
+        ]
         if pinyin:
             rows = rows.loc[rows["pinyin"] == pinyin]
         self.assertEqual(len(rows), 1, (trad, pinyin, len(rows)))
@@ -37,7 +39,8 @@ class WordTableTests(unittest.TestCase):
         self.assertEqual(len(hsk), 11028)
         self.assertFalse(hsk.duplicated(["trad", "pinyin"]).any())
         self.assertFalse(self.words["word_id"].duplicated().any())
-        self.assertEqual(len(self.word_chars), self.words["trad"].str.len().sum())
+        core = self.words.loc[self.words["origin"] != "ff_only"]
+        self.assertEqual(len(self.word_chars), core["trad"].str.len().sum())
         self.assertFalse(self.word_chars.duplicated(["word_id", "position"]).any())
 
     def test_fixed_multichar_words(self) -> None:
@@ -78,7 +81,8 @@ class WordTableTests(unittest.TestCase):
         self.assertLessEqual(len(ff), 3300)
         self.assertIn("手紙", set(ff["form"]))
         self.assertIn("大丈夫", set(ff["form"]))
-        self.assertNotIn("手紙", set(self.words["trad"]))
+        core = self.words.loc[self.words["origin"] != "ff_only"]
+        self.assertNotIn("手紙", set(core["trad"]))
 
     def test_d39_character_primaries(self) -> None:
         by_key = self.chars.set_index("key_char")

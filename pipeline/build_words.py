@@ -30,7 +30,8 @@ WORD_COLUMNS = [
     "ja_alt", "ko_alt", "vi_alt", "pos", "hsk_ids", "gloss_en", "gloss_ja_en",
     "gloss_ko", "gloss_vi", "meaning_ja__ja", "meaning_ja__ko", "meaning_ja__zh",
     "meaning_ja__vi", "note_ja", "level", "freq_vi", "origin", "card_eligible",
-    "false_friend", "syl_aligned", "verified", "source_ja", "source_ko",
+    "false_friend", "syl_aligned", "verified", "ja_use", "ko_use", "vi_use",
+    "source_ja", "source_ko",
     "source_pinyin", "source_vi", "source_level",
 ]
 VARIANT_FIELDS = [
@@ -1607,6 +1608,9 @@ def set_final_word_fields(words: pd.DataFrame, frequency: dict[str, int]) -> pd.
         & (result["origin"] != "ff_only")
     )
     result["verified"] = False
+    result["ja_use"] = ""
+    result["ko_use"] = ""
+    result["vi_use"] = ""
     for column in [
         "meaning_ja__ja", "meaning_ja__ko", "meaning_ja__zh", "meaning_ja__vi",
         "note_ja", "false_friend",
@@ -1723,12 +1727,17 @@ def build_ff_candidates(
             "form": form, "trad": trad, "simp": simp, "ja": nfc(top["reb"]),
             "gloss_ja_en": nfc(top["gloss_ja_en"]),
             "ko": ko_candidates[0]["reading"] if len(ko_candidates) == 1 else "",
+            "source_ko": ko_candidates[0]["source"] if len(ko_candidates) == 1 else "",
             "pinyin": ";".join(unique_preserve(valid_cc["pinyin"])) if not valid_cc.empty else "",
             "gloss_en": ";".join(unique_preserve(valid_cc["gloss_en"])) if not valid_cc.empty else "",
             "vi": vi_values[0]["vi"] if len(vi_values) == 1 else "",
             "gloss_vi": vi_values[0]["gloss_vi"] if len(vi_values) == 1 else "",
+            "source_vi": vi_values[0]["source"] if len(vi_values) == 1 else "",
         })
-    frame = pd.DataFrame(forms, columns=["form", "trad", "simp", "ja", "gloss_ja_en", "ko", "pinyin", "gloss_en", "vi", "gloss_vi"])
+    frame = pd.DataFrame(forms, columns=[
+        "form", "trad", "simp", "ja", "gloss_ja_en", "ko", "source_ko",
+        "pinyin", "gloss_en", "vi", "gloss_vi", "source_vi",
+    ])
     return (
         frame.drop_duplicates("form", keep="first"),
         pd.DataFrame(vi_conflicts, columns=REPORT_COLUMNS["vi_ambiguous"]),

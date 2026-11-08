@@ -40,7 +40,10 @@ class RebuildDeterminismTests(unittest.TestCase):
         self.assertFalse(backup.exists())
         overrides.replace(backup)
         try:
-            subprocess.run(command, cwd=ROOT, check=True, stdout=subprocess.DEVNULL)
+            subprocess.run(
+                [*command, "--skip-stage4-merge"],
+                cwd=ROOT, check=True, stdout=subprocess.DEVNULL,
+            )
             selected_without_overrides = vi_only_word_ids()
         finally:
             backup.replace(overrides)

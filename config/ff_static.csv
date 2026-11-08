@@ -1,0 +1,35 @@
+word,lang,reading_display,meaning_ja,is_trap,row
+勉強,ja,べんきょう,勉強する,false,1
+勉強,ko,（普通は 공부 と言う）,,false,2
+勉強,zh,勉强 miǎnqiǎng,無理に・しぶしぶ,true,3
+工夫,ja,くふう,工夫・アイデア,false,4
+工夫,ko,공부,勉強,true,5
+工夫,zh,gōngfu,（かかる）時間・手間,true,6
+手紙,ja,てがみ,手紙,false,7
+手紙,zh,手纸 shǒuzhǐ,トイレットペーパー,true,8
+汽車,ja,きしゃ,（蒸気機関車の）列車,false,9
+汽車,ko,기차,列車,false,10
+汽車,zh,汽车 qìchē,自動車,true,11
+愛人,ja,あいじん,不倫相手,false,12
+愛人,ko,애인,恋人,false,13
+愛人,zh,爱人 àiren,配偶者（中国大陸）,true,14
+大丈夫,ja,だいじょうぶ,問題ない,false,15
+大丈夫,zh,dàzhàngfu,立派な男,true,16
+小心,ja,しょうしん,気が小さい,false,17
+小心,ko,소심,気が小さい,false,18
+小心,zh,xiǎoxīn,気をつけて,true,19
+東西,ja,とうざい,東と西,false,20
+東西,ko,동서,東と西,false,21
+東西,zh,东西 dōngxi,もの,true,22
+娘,ja,むすめ,娘,false,23
+娘,zh,niáng,母,true,24
+新聞,ja,しんぶん,新聞,false,25
+新聞,ko,신문,新聞,false,26
+新聞,zh,新闻 xīnwén,ニュース（新聞は 报纸）,true,27
+先生,ja,せんせい,先生,false,28
+先生,ko,선생,先生,false,29
+先生,zh,xiānsheng,〜さん（男性への敬称）・夫,true,30
+博士,ja,はかせ,博士号,false,31
+博士,ko,박사,博士号,false,32
+博士,zh,bóshì,博士号,false,33
+博士,vi,bác sĩ,医者,true,34

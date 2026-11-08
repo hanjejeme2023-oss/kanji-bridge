@@ -1,7 +1,8 @@
 """Rebuild Kanji Bridge data in dependency order.
 
-Stage 3 builds the character and word tables plus every review report. Later
-stages append accepted content and app-export steps without changing this entry point.
+Stage 3 builds the character and word tables plus every review report. The
+offline Stage 4 merge then applies accepted content; this entry point never
+imports generation code or makes an API request.
 """
 
 from __future__ import annotations
@@ -55,6 +56,11 @@ def main() -> None:
         action="store_true",
         help="skip raw-file verification (used only by rebuild determinism tests)",
     )
+    parser.add_argument(
+        "--skip-stage4-merge",
+        action="store_true",
+        help="stop after Stage 3 (used only by the override-independence test)",
+    )
     args = parser.parse_args()
     if not args.skip_download:
         run("download.py")
@@ -63,7 +69,11 @@ def main() -> None:
         run(loader)
     run("build_chars.py")
     run("build_words.py")
-    print("Stage 3 rebuild complete")
+    if args.skip_stage4_merge:
+        print("Stage 3 rebuild complete")
+    else:
+        run("merge_stage4.py")
+        print("Stage 4e rebuild complete")
 
 
 if __name__ == "__main__":
