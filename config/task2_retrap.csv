@@ -7,3 +7,5 @@ w04879,內衣,zh,下着、肌着,true,false,,"ja ないい is rare; Korean, Chin
 w04879,內衣,vi,下着、肌着,true,false,,"ja ないい is rare; Korean, Chinese and Vietnamese all mean underwear: no trap left, the entry leaves"
 w10232,藥方,ko,薬局、処方,true,false,zh,"ja やくほう is rare; baseline Korean 약방 (pharmacy), so Chinese (prescription) is the trap"
 w10232,藥方,zh,処方箋、薬の処方,false,true,zh,"ja やくほう is rare; baseline Korean 약방 (pharmacy), so Chinese (prescription) is the trap"
+w02100,應當,ko,当然、まさに〜すべきだ,true,false,,"ja おうとう is rare (user B7); Korean 응당 and Chinese mean the same (should, naturally): no trap left, the entry leaves"
+w02100,應當,zh,〜すべきである、当然〜すべきだ,true,false,,"ja おうとう is rare (user B7); Korean 응당 and Chinese mean the same (should, naturally): no trap left, the entry leaves"

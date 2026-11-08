@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 2026-11-07 — Stage 4 gate part 4b: task 5 accepted in full; D69 [Claude]
+- b055 rerun (user, $0.078; ledger $35.50397575) checked: inputs equal a fresh build, 104/104 batches validate; 18 `reason_warnings` (review notes only). 5 corrections (欠缺 けんけつ, 親生 친생, 輕型 경형, 青春期 청춘기 → `used`; 氣味 기미 → `rare`) → accepted.
+- User's answers to `docs/TASK5_USER_SAMPLE.md`: A and C all agreed; B: 9 readings `used` (那邊, 其實, 第一聲, 接受, 慶祝, 宣布, 霍亂, 必定, 會同), 4 `rare`. `config/task5_review.csv` 26 → 40 rows.
+- 應當 おうとう `rare` → Korean 응당 = Chinese, no trap: 2 rows in `config/task2_retrap.csv` (8 → 10), the entry leaves 偽の友達. Other part-B changes checked against task 2: no further retrap.
+- App effect (104 batches): Korean （ ） on 1,500 cards, Japanese 437; 275 of 1,245 false-friend entries change, 3 leave; Vietnamese `literary` 1,277.
+- Task-5 outputs, logs and inputs moved to `content/accepted/task5/`. The launcher's `-Status` still reads task 5 from `content/generated/` (Codex 4e item 0). UX_BACKLOG #6 (learner-facing explanation of unused readings). New script `docs/review_scripts/stage4d_part4b_reference.py`.
+
 ## 2026-11-07 — Stage 4c-prep5: D68 task-5 reason warnings [Codex]
 - Changed only task 5's reason-script checks: a Hangul run outside the item's `ko` or a Latin-letter run outside its `vi` now returns a structured `{key, field, text}` warning instead of rejecting the response. All other task-5 validation remains fail-closed, and task 1-4 validators are unchanged.
 - Successful generation logs now include `reason_warnings`, including an empty list when there are none. Offline regressions cover `기사는` (input `기사`), foreign Latin text, warning log persistence, an empty warning list and the existing strict rules.

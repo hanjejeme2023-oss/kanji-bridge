@@ -384,3 +384,18 @@ Evidence: `docs/STAGE4D_PART4_REVIEW.md`; scripts `docs/review_scripts/stage4d_p
 | App effect | （ ）: Korean 1,479 cards, Japanese 436; 偽の友達: 276 of 1,245 entries change, 2 leave (D68 fixed notes; the D67 rule would have removed 131); Vietnamese `literary` 1,261 of 5,077 | reported to the user |
 
 Next: Codex 4c-prep5 (D68 item 1), User reruns b055 and answers `docs/TASK5_USER_SAMPLE.md`, Claude gate part 4b (b055 + user answers; move task 5 to `content/accepted/`), Codex 4e.
+
+## Stage 4 gate part 4b (task 5: b055 and the user's sample answers), 2026-11-07: **PASS**, task 5 accepted in full (104/104)
+
+Evidence: `docs/STAGE4D_PART4_REVIEW.md` §8; script `docs/review_scripts/stage4d_part4b_reference.py`; answers in `docs/TASK5_USER_SAMPLE.md`. Decision: **D69**.
+
+| Item | Evidence | Result |
+|---|---|---|
+| b055 rerun integrity | user rerun, first attempt, $0.077528; ledger $35.50397575 (= `cost_log.csv` sum), room $64.50; 104 inputs byte-identical to a fresh build; `runner.batch_state` 104/104 validated at the accepted paths; 18 `reason_warnings`, all in b055 (17 vi, 1 ko), review-note text only | OK |
+| b055 review | 33 flags + 91 `used` checks read: 3 clear false positives (欠缺 けんけつ, 親生 친생, 輕型 경형), 1 borderline → `used` (青春期 청춘기), 1 missed `rare` (氣味 기미) = 5 / 100 items | **ACCEPT** with 5 rows in `config/task5_review.csv` |
+| User sample (D67 item 6) | A: 0 of 40 "not used" flags wrong (class not re-opened); C: 26/26 agreed; B: 9 `used`, 4 `rare` (user's final decisions) | 9 rows added; `task5_review.csv` 40 rows (fail-closed check passes) |
+| 應當 and other task-2 effects | おうとう `rare` → Korean 응당 = Chinese: no trap → 2 rows in `config/task2_retrap.csv` (10 rows); 霍亂, 會同 baseline back; 那邊 re-based on Korean, zh trap still valid; no other change | OK |
+| App effect (104 batches, both overlays) | （ ）: Korean 1,500 cards, Japanese 437 (both 241); `wrong_meaning` ko 18, ja 1; 偽の友達 275 of 1,245 entries change, 3 leave (孫子, 內衣, 應當); Vietnamese `literary` 1,277 of 5,126 | reported |
+| Accepted layout | 104 outputs, logs and inputs moved to `content/accepted/task5/` (+ `inputs/`); 87 non-rebuild tests pass | OK; launcher `-Status` still reads task 5 from `content/generated/` (prints 0/104 missing) → Codex 4e item 0 |
+
+Next: Codex 4e (merge, with D68/D69 additions), then Codex Stage 5.

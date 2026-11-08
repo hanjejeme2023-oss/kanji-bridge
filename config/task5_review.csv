@@ -25,3 +25,17 @@ w04250,ko,注重,주중,used,,rare,주중 is heard as 週中; 注重 is not used
 w12777,ko,折中,절중,used,,rare,held-out case: Korean uses 절충 (折衷); 절중 is not used
 疑義,ko,疑義,의의,used,,rare,held-out case: 의의 is heard as 意義; Korean uses 의문 or 이의
 w09084,ko,師長,사장,used,,rare,"사장 is heard as 社長; Korean says 사단장 (師團長) for a division commander, 스승 for a teacher"
+w08672,ja,欠缺,けんけつ,rare,文語。現代では「欠落」や「欠陥」を使う,used,"欠缺 けんけつ is a standard Japanese legal term (意思の欠缺, 要件の欠缺); the meaning fits"
+w08714,ko,親生,친생,rare,辞書のみの語。「実子」「実親」には「親息」「親父母」などを使う,used,"친생 is the standard Korean legal and news term (친생자, 친생부모); the meaning fits"
+w08726,ko,輕型,경형,rare,韓国語では「小型」や「軽量」を使う,used,"경형 is the Korean official vehicle class (경형 자동차, 경형 승용차); the meaning fits"
+w08721,ko,青春期,청춘기,rare,韓国語では「思春期」や「青春」を使う,used,청춘기 is a literary but current Korean word (청춘기를 보내다); formal words count as used
+w08617,ko,氣味,기미,used,,rare,기미 is heard as 幾微 (sign) or as freckles; 氣味 is used only in 기미상통; the given meaning mixes in 幾微
+w00262,ko,那邊,나변,rare,辞書のみの語。現代韓国語では固有語を使う,used,user B1: 나변 is used in formal writing (저의가 나변에 있는가)
+w01806,ko,其實,기실,rare,古風な文語であり、現代韓国語では「事実」や「実状」などを使う,used,user B2: 기실 is used as a written-style adverb
+第一声,ko,第一聲,제일성,rare,韓国語では「一声音」や固有語を使う,used,user B6: 제일성 is used in news (취임 제일성)
+w00785,ja,接受,せつじゅ,rare,古風な文語であり現代ではほぼ使わない,used,user B8: せつじゅ is used in diplomacy (接受国)
+w01827,ja,慶祝,けいしゅく,rare,文語・式典表現で日常では「祝賀」「お祝い」などを使う,used,"user B9: けいしゅく is used (慶祝行事, 慶祝式典)"
+w02071,ja,宣布,せんぷ,rare,文語・古語。日常では「宣言」「公表」を使う,used,user B10: せんぷ is used in law and history (宣布)
+w07247,ja,霍亂,かくらん,rare,近世以前の古語,used,user B11: かくらん is used in the idiom 鬼の霍乱
+w05572,ja,必定,ひつじょう,rare,古典・仏教語。現代語では「必ず」「きっと」を使う,used,user B12: ひつじょう is used (敗北は必定)
+w11404,ja,會同,かいどう,rare,文語・歴史用語。現代では「会合」などを使う,used,user B13: かいどう is used for official meetings (検察長官会同)

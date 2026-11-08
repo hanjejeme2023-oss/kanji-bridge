@@ -6,6 +6,11 @@ Gemini (task 5) judged whether Korean and Japanese speakers actually use each re
 
 Columns: *meaning* = the meaning the app would show for that language (from tasks 1-2); *reason* = Gemini's review note (never shown in the app).
 
+## Answers (user, 2026-11-07; applied in gate part 4b, D69)
+- **A:** all agreed (0 of 40 "not used" flags wrong; the class is not re-opened).
+- **C:** all 26 corrections agreed.
+- **B** (the user delegated the research; final decisions): B1 那邊 나변 **used**, B2 其實 기실 **used**, B3 明年 명년 rare, B4 立國 입국 rare, B5 開演 개연 rare, B6 第一聲 제일성 **used**, B7 應當 おうとう rare (user's own call), B8 接受 せつじゅ **used**, B9 慶祝 けいしゅく **used**, B10 宣布 せんぷ **used**, B11 霍亂 かくらん **used**, B12 必定 ひつじょう **used**, B13 會同 かいどう **used**. The 9 `used` answers are rows in `config/task5_review.csv`; 應當 leaves 偽の友達 (`config/task2_retrap.csv`).
+
 ## A. 50 random items (20 Korean and 20 Japanese "not used" flags, 10 "used", mixed)
 
 | # | lang | word | reading | check | meaning | reason |

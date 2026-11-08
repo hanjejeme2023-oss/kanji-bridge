@@ -58,3 +58,36 @@ False-positive rate over the flags read (335 + 152 sampled flags): **11 clear / 
 
 ## 7. Result
 **Accepted: 103 batches** (all except b055) with `config/task5_review.csv` (26 rows). Two items are open before Codex 4e: the b055 rerun and its check, and the user's answers to `docs/TASK5_USER_SAMPLE.md` (D67 item 6), which Claude adds to the overlay. If the user finds more than 2 of the 40 "not used" flags in part A wrong, Claude re-opens the class before 4e.
+
+## 8. Part 4b (D68 follow-up), 2026-11-07 — decision **D69**
+Script: `docs/review_scripts/stage4d_part4b_reference.py` (reads the accepted layout, checks with the runner's own `batch_state`, applies `task5_review.csv`, `task2_review.csv`, `task2_retrap.csv` fail-closed, prints the effect).
+
+**b055 rerun.** User run, first attempt, $0.077528; ledger **$35.50397575** (= sum of `content/cost_log.csv`), room $64.50. Inputs of all 104 batches equal a fresh build; 104/104 validate. `reason_warnings`: 18, all in b055 (the 103 earlier logs predate the field): 17 Vietnamese everyday alternatives in `vi_reason` (*cầu nguyện*, *mùi vị*, *hợp đồng*, *vũ khí*, *di chuyển*, *chì*, *cha mẹ ruột*, *cần cù*, *chăm chỉ*, *mát mẻ*, *tâm tình*) and 1 Korean (그간 for 其間). Review-note text only; no data effect.
+
+b055 = 100 card words (w08573-w08749, level 7): ko 25 `rare` / 62 `used`, ja 8 `rare` / 29 `used`, vi 16 `literary` / 33 `common`. All 33 flags and all `used` checks read:
+| word | lang | generated | review | why |
+|---|---|---|---|---|
+| 欠缺 | ja けんけつ | rare | **used** | standard legal term (意思の欠缺) |
+| 親生 | ko 친생 | rare | **used** | 친생자, 친생부모 (law, news) |
+| 輕型 | ko 경형 | rare | **used** | official vehicle class (경형 자동차) |
+| 青春期 | ko 청춘기 | rare | **used** | borderline: literary but current |
+| 氣味 | ko 기미 | used | **rare** | heard as 幾微 / freckles; the meaning mixes 幾微 in |
+
+The other 29 flags are right (欺詐 기사/ぎさ, 其後 기후, 棋子 기자, 前輩 전배, 前夕 전석, 情人 じょうじん, ...). 5 corrections / 100 items: not above 5% → **accepted**. No b055 false-friend entry has a Japanese reading judged `rare`; 氣味 and 強項 get a Korean fixed-note row, their Chinese traps stay.
+
+**User's answers** (recorded in `docs/TASK5_USER_SAMPLE.md`): A all agreed (0 of 40 "not used" flags wrong → class not re-opened, D68 item 2); C all 26 agreed; B: B1, B2, B6, B8-B13 `used` (9 overlay rows), B3, B4, B5, B7 `rare` (= generated). `config/task5_review.csv`: **40 rows** (24 `used`, 12 `rare`, 4 `wrong_meaning`).
+
+**§6a follow-up.** 應當: おうとう `rare` (B7), Korean 응당 "should, naturally" = Chinese → no trap left; 2 rows in `config/task2_retrap.csv` (10 rows; entries re-based: 放學, 藥方; leaving: 孫子, 內衣, 應當). Other B changes against task 2: 霍亂 (zh コレラ) and 會同 (vi 評議会) get their Japanese baseline back, traps valid; 第一聲 shows Korean 제일성 again, zh tone trap stays; 那邊 keeps なへん `rare`, so Korean 나변 ("where") is now its baseline and the Chinese trap (あちら) still holds. Note for loop 3: 那邊's task-2 Korean meaning 「あちら、どのあたり」 mixes in the Chinese sense (나변 = どこ). 開演 has no trap; the rest are not task-2 entries.
+
+**Final counts (104 batches, after both overlays).**
+| check | used / common | rare / literary | wrong_meaning | unsure |
+|---|---|---|---|---|
+| ko (9,090) | 7,337 | 1,734 (1,500 card words + 234 ff rows) | 19 | 0 |
+| ja (1,919) | 1,481 | 437 | 1 | 0 |
+| vi (5,126) | 3,848 | 1,277 (800 multi-character) | — | 1 |
+
+App effect: Korean （ ） on **1,500** cards, Japanese **437** (both 241, either 1,696); `wrong_meaning` (meaning dropped, reading plain) Korean 18, Japanese 1. 偽の友達: **275 of 1,245** entries change (227 Korean and 76 Japanese fixed-note rows, 8 Korean rows dropped), **3 leave** (孫子, 內衣, 應當), 1,242 remain.
+
+**Accepted layout.** Outputs, logs and inputs moved with `git mv` to `content/accepted/task5/` (+ `inputs/`); 87 non-rebuild tests pass. Launcher `-Status` after the move: tasks 1-4 86/86, 79/79, 14/14, 5/5; **task 5 `0/104 validated, 0 failed, 104 missing`**, because `run_status` still reads task 5 from `content/generated/task5/` (only tasks 1-4 were switched in 4c-prep4). The same check at the accepted paths gives 104/104. Codex 4e item 0 switches task 5; until then `-Tasks 5` must not be run (it would regenerate all 104 batches).
+
+**Result: task 5 accepted in full (104/104).**
