@@ -6,6 +6,7 @@ __pycache__/
 *.pyc
 .venv/
 .cache/
+.stage5-benchmark/
 *.tmp
 .DS_Store
 Thumbs.db

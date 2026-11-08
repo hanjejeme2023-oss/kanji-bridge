@@ -205,7 +205,9 @@ def write_csv(frame: pd.DataFrame, path: Path, bool_columns: Iterable[str] = ())
     for column in bool_columns:
         if column in export:
             export[column] = export[column].map({True: "true", False: "false"})
-    export.to_csv(path, index=False, encoding="utf-8", na_rep="", lineterminator="\n")
+    temporary = path.with_name(f".{path.name}.tmp")
+    export.to_csv(temporary, index=False, encoding="utf-8", na_rep="", lineterminator="\n")
+    temporary.replace(path)
 
 
 def _json_value(value: object) -> object:
@@ -222,11 +224,17 @@ def write_json(frame: pd.DataFrame, path: Path) -> None:
         {column: _json_value(value) for column, value in row.items()}
         for row in frame.to_dict(orient="records")
     ]
-    path.write_text(
+    # Later stages rewrite Stage 2/3 exports immediately. On Windows, a direct
+    # second open can fail while the first file is still being scanned. Write
+    # beside the target and atomically replace it; this also prevents a failed
+    # build from leaving a truncated file. CSV exports use the same pattern.
+    temporary = path.with_name(f".{path.name}.tmp")
+    temporary.write_text(
         json.dumps(records, ensure_ascii=False, indent=2, sort_keys=False) + "\n",
         encoding="utf-8",
         newline="\n",
     )
+    temporary.replace(path)
 
 
 def load_id_map() -> pd.DataFrame:

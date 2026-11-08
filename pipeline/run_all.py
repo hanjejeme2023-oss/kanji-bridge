@@ -73,7 +73,8 @@ def main() -> None:
         print("Stage 3 rebuild complete")
     else:
         run("merge_stage4.py")
-        print("Stage 4e rebuild complete")
+        run("export_app_data.py")
+        print("Stage 5 data rebuild complete")
 
 
 if __name__ == "__main__":

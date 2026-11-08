@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 2026-11-08 — Stage 5: full-data offline app integration [Codex]
+- Added deterministic `data/final/data.js` export to `run_all.py` and reproducible `app/index.html` generation from the untouched frozen prototype. Full payload: 3,766,776 bytes; 12,508 words, 9,171 aligned word-character rows, 4,044 false-friend rows, 80 passages, six sound rules and 1,246 glyph rows.
+- Replaced the five prototype arrays with SCHEMA adapters: 8,554-card ordered/target-filtered deck; ID-keyed SRS/custom/false-friend state; aligned rule tags and primary-pair examples; stored false-friend reading-display precedence; resolved passages; glyph `ko_base_all`; missing values blank; Vietnamese alternate judging; `note_ja` only in 読解 detail.
+- Implemented D20's 20-new-card local-day limit (`kb_newtoday`) with unlimited reviews and persistent introduced-but-unrated cards. The only layout rule added is `#psel{flex-wrap:wrap}` so 80 passage pills do not overflow; all other prototype UI remains frozen.
+- Performance gate: 3.59 MiB; Node full-adapter cold 148.82 ms, warm median 56.47 ms; deck sort median 23.71 ms; false-friend/glyph HTML median 5.36/1.44 ms. Browser `file://` was blocked by the automation policy, so no browser number was estimated; `tests/stage5_benchmark.py` generates an exact offline browser benchmark for the user.
+- Added 10 Stage 5 tests and a browser benchmark. 113 non-rebuild tests pass. Full three-build determinism test passes in 755.136 s with byte-identical final outputs including `data.js` and stable VI-only membership without overrides.
+- Fixed reproducible Windows `OSError 22` failures when one pipeline stage immediately rewrote another stage's CSV/JSON: shared writers now write sibling temp files and atomically replace targets, preventing partial exports without changing bytes. No API request; `prototype/index.html` unchanged. Next: Claude Stage 5 gate.
+
 ## 2026-11-07 — Stage 4 final gate re-check (D70): PASS; Stage 4 complete [Claude]
 - Independent check of `b1c511f` against `7362ecf`: all `word_id`/`passage_id` match `^w\d{5}$`/`^p\d{4}$` and come from `pipeline/id_map.csv` (+359 rows; old rows unchanged); a fresh `run_all.py` leaves the tree clean, so IDs are stable.
 - 年下 / 裁縫 single pinyin and their zh `ff_meanings` readings; 279 `ff_only` `source_pinyin=cc-cedict`; an unknown `task3_review.csv` batch stops the merge (unit test + end-to-end injection).
