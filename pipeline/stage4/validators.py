@@ -226,8 +226,9 @@ def validate_task4(output: Any, inputs: list[dict[str, Any]]) -> None:
             _fail(f"{word_id}: output is not NFC")
 
 
-def validate_task5(output: Any, inputs: list[dict[str, Any]]) -> None:
+def validate_task5(output: Any, inputs: list[dict[str, Any]]) -> list[dict[str, str]]:
     values, input_map = _check_output_collection(output, inputs, "key")
+    reason_warnings: list[dict[str, str]] = []
     field_specs = {
         "ja": ("ja_check", "ja_reason", {"used", "rare", "wrong_meaning", "unsure"}, "used"),
         "ko": ("ko_check", "ko_reason", {"used", "rare", "wrong_meaning", "unsure"}, "used"),
@@ -257,23 +258,30 @@ def validate_task5(output: Any, inputs: list[dict[str, Any]]) -> None:
                 _fail(f"{key}.{reason_field} must be empty iff {check_field}={no_reason_value}")
             if reason and (len(reason) > 80 or "\n" in reason or "\r" in reason):
                 _fail(f"{key}.{reason_field} must be one line of at most 80 characters")
-        reasons = " ".join(value[field] for field in ("ja_reason", "ko_reason", "vi_reason"))
         ko = str(source.get("ko", ""))
         vi = str(source.get("vi", ""))
-        for part in HANGUL_RE.findall(reasons):
-            if part not in ko:
-                _fail(f"{key}: reason contains Hangul outside input ko: {part!r}")
         vi_folded = vi.casefold()
-        for part in LATIN_RE.findall(reasons):
-            if part.casefold() not in vi_folded:
-                _fail(f"{key}: reason contains Latin text outside input vi: {part!r}")
+        for reason_field in ("ja_reason", "ko_reason", "vi_reason"):
+            reason = value[reason_field]
+            for part in HANGUL_RE.findall(reason):
+                if part not in ko:
+                    reason_warnings.append({
+                        "key": key, "field": reason_field, "text": part,
+                    })
+            for part in LATIN_RE.findall(reason):
+                if part.casefold() not in vi_folded:
+                    reason_warnings.append({
+                        "key": key, "field": reason_field, "text": part,
+                    })
         if not _is_nfc(value):
             _fail(f"{key}: output is not NFC")
+    return reason_warnings
 
 
-def validate(task: int, output: Any, inputs: list[dict[str, Any]]) -> None:
-    {1: validate_task1, 2: validate_task2, 3: validate_task3, 4: validate_task4,
-     5: validate_task5}[task](output, inputs)
+def validate(task: int, output: Any, inputs: list[dict[str, Any]]) -> list[dict[str, str]]:
+    warnings = {1: validate_task1, 2: validate_task2, 3: validate_task3, 4: validate_task4,
+                5: validate_task5}[task](output, inputs)
+    return warnings or []
 
 
 STRING = {"type": "string"}

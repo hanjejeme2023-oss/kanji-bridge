@@ -186,7 +186,17 @@ class Stage4ValidatorTests(unittest.TestCase):
 
     def test_task5_accepts_valid_item(self) -> None:
         output, inputs = self.valid_task5()
-        validate_task5(output, inputs)
+        self.assertEqual(validate_task5(output, inputs), [])
+
+    def test_task5_reason_script_mismatches_are_warnings(self) -> None:
+        output, inputs = self.valid_task5()
+        inputs[0]["ko"] = "기사"
+        output[0]["ko_reason"] = "기사는通常使わない"
+        output[0]["ja_reason"] = "caféという別語"
+        self.assertEqual(validate_task5(output, inputs), [
+            {"key": "w1", "field": "ja_reason", "text": "café"},
+            {"key": "w1", "field": "ko_reason", "text": "기사는"},
+        ])
 
     def test_task5_rejects_key_or_field_mismatch(self) -> None:
         output, inputs = self.valid_task5()
@@ -226,17 +236,12 @@ class Stage4ValidatorTests(unittest.TestCase):
         with self.assertRaises(ValidationError):
             validate_task5(output, inputs)
 
-    def test_task5_rejects_unknown_hangul_latin_and_non_nfc(self) -> None:
+    def test_task5_rejects_non_nfc(self) -> None:
         output, inputs = self.valid_task5()
-        for field, reason in (
-            ("ko_reason", "공부を使う"),
-            ("ja_reason", "modern word"),
-            ("ja_reason", "カフェ\u0301のみ"),
-        ):
-            bad = copy.deepcopy(output)
-            bad[0][field] = reason
-            with self.subTest(reason=reason), self.assertRaises(ValidationError):
-                validate_task5(bad, inputs)
+        bad = copy.deepcopy(output)
+        bad[0]["ja_reason"] = "cafe\u0301のみ"
+        with self.assertRaises(ValidationError):
+            validate_task5(bad, inputs)
 
 
 if __name__ == "__main__":

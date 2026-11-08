@@ -166,7 +166,7 @@ class Stage4SafetyTests(unittest.TestCase):
                 patch("pipeline.stage4.runner.require_accepted_layout"),
                 patch("pipeline.stage4.runner.builders.task_batches", return_value=[zh_items, vi_items]),
                 patch("pipeline.stage4.runner.read_generated_output", return_value={"passages": []}),
-                patch("pipeline.stage4.runner.validate"),
+                patch("pipeline.stage4.runner.validate", return_value=[]),
                 patch("pipeline.stage4.runner.generate_batch", generate),
             ):
                 with self.assertRaisesRegex(Stage4Error, "D65 refusal"):
@@ -259,6 +259,48 @@ class Stage4SafetyTests(unittest.TestCase):
         self.assertIsNone(result)
         self.assertEqual([call.args[0] for call in sleep.call_args_list], [30, 60])
 
+    def test_task5_success_log_includes_reason_warnings(self) -> None:
+        item = {
+            "key": "w1", "checks": ["ko"], "trad": "記事", "ja": "きじ",
+            "ko": "기사", "pinyin": "jìshì", "vi": "kí sự",
+        }
+        output = [{
+            "key": "w1", "ja_check": "", "ja_reason": "",
+            "ko_check": "rare", "ko_reason": "기사는通常使わない",
+            "vi_use": "", "vi_reason": "",
+        }]
+        response = SimpleNamespace(
+            text=json.dumps(output, ensure_ascii=False),
+            usage_metadata=SimpleNamespace(
+                prompt_token_count=10,
+                candidates_token_count=20,
+                thoughts_token_count=0,
+                total_token_count=30,
+            ),
+        )
+        client = SimpleNamespace(models=SimpleNamespace(
+            generate_content=Mock(return_value=response)
+        ))
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            log_path = root / "out.log.json"
+            with (
+                patch("pipeline.stage4.runner.vertex_settings", return_value=("project", "global")),
+                patch("pipeline.stage4.runner.count_tokens", return_value=10),
+                patch("pipeline.stage4.runner.enforce_ceiling"),
+                patch("pipeline.stage4.runner.generation_config", return_value=object()),
+                patch("pipeline.stage4.runner.append_cost"),
+            ):
+                result = generate_batch(
+                    client, 5, "b055", [item], root / "out.jsonl", log_path
+                )
+            log = json.loads(log_path.read_text(encoding="utf-8"))
+        self.assertEqual(result, output)
+        self.assertEqual(log["reason_warnings"], [
+            {"key": "w1", "field": "ko_reason", "text": "기사는"},
+        ])
+        self.assertTrue(log["validation"]["ok"])
+
     def test_count_tokens_remote_protocol_error_is_retried_inside_batch(self) -> None:
         response = SimpleNamespace(
             text="[]",
@@ -293,7 +335,7 @@ class Stage4SafetyTests(unittest.TestCase):
                 patch("pipeline.stage4.runner.require_accepted_layout"),
                 patch("pipeline.stage4.runner.enforce_ceiling"),
                 patch("pipeline.stage4.runner.generation_config", return_value=object()),
-                patch("pipeline.stage4.runner.validate"),
+                patch("pipeline.stage4.runner.validate", return_value=[]),
                 patch("pipeline.stage4.runner.write_output"),
                 patch("pipeline.stage4.runner.append_cost"),
                 patch("pipeline.stage4.runner.time.sleep") as sleep,
@@ -321,6 +363,7 @@ class Stage4SafetyTests(unittest.TestCase):
         ))
         self.assertFalse(failed_log["validation"]["ok"])
         self.assertTrue(next_log["validation"]["ok"])
+        self.assertEqual(next_log["reason_warnings"], [])
 
     def test_launcher_uses_unbuffered_python(self) -> None:
         source = (ROOT / "pipeline" / "stage4" / "run_stage4.ps1").read_text(encoding="utf-8")

@@ -486,7 +486,7 @@ def generate_batch(
             })
             try:
                 output = json.loads(response_text_or_error(response, usage))
-                validate(task, output, items)
+                reason_warnings = validate(task, output, items)
             except (json.JSONDecodeError, ValidationError, Stage4Error, TypeError, ValueError) as validation_exc:
                 attempts.append({
                     "attempt": attempt_number, "timestamp": timestamp, "usage": usage,
@@ -517,6 +517,7 @@ def generate_batch(
                 "item_count": len(items), "counted_input_tokens": counted_input,
                 "usage": usage, "usd": usd, "attempts": attempts,
                 "wall_clock_seconds": time.perf_counter() - batch_started,
+                "reason_warnings": reason_warnings,
                 "validation": {"ok": True, "error": ""},
             }
             write_log(log_path, log)

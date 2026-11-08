@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 2026-11-07 — Stage 4c-prep5: D68 task-5 reason warnings [Codex]
+- Changed only task 5's reason-script checks: a Hangul run outside the item's `ko` or a Latin-letter run outside its `vi` now returns a structured `{key, field, text}` warning instead of rejecting the response. All other task-5 validation remains fail-closed, and task 1-4 validators are unchanged.
+- Successful generation logs now include `reason_warnings`, including an empty list when there are none. Offline regressions cover `기사는` (input `기사`), foreign Latin text, warning log persistence, an empty warning list and the existing strict rules.
+- All 87 non-rebuild tests pass. Offline launcher status remains task 5 = 103/104 validated, 1 failed, 0 missing. A fresh offline resume classification names only `b055`; the task-5 input aggregate remains `dcc14617dd28328d60593053c7f9db23bc1ce33ba607742e79bcdd04b374f0ab`, and b055's fresh input/prompt SHAs match its failed log. No request was sent and no task was started.
+
 ## 2026-11-07 — Stage 4 gate part 4: task 5 accepted except b055; D68 [Claude]
 - Task-5 run checked: inputs equal a fresh build, 103 outputs re-validated; b055 failed 3/3 on one review note (「기사는」); ledger $35.43 (task 5 $13.18).
 - Review: all 335 HSK level 1-3 `rare`/`wrong_meaning` flags and the D66 samples (487 flags, 2.3% clear false positives); held-out cases, the user's five, real false friends and task-2 Korean traps checked. New overlays `config/task5_review.csv` (26 rows) and `config/task2_retrap.csv` (8 trap flags re-based on Korean where the Japanese reading is rare; 4e only).
