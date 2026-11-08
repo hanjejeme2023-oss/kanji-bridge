@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 2026-11-07 — Stage 4 final gate (4e) attempt 1: FAIL on IDs; D70 [Claude]
+- Independent check of `data/final/` after `3bf6c74`: schema columns/types, NFC, Stage 3 columns unchanged, usage counts (= D69 reference), `ff_meanings` (readings, traps, fixed notes, 12 static entries), `ff_only` rows, 80 passages (0 unresolved tokens), no review-only text, fresh rebuild byte-identical, 100 non-rebuild tests: all OK.
+- FAIL: 279 `ff_only` words use the id_map key `x|trad` as `word_id` and 80 passages use `lang|level|n` as `passage_id`; none are in `id_map.csv` (PROMPT data rules, SCHEMA §0). Also fixed in the same pass: two `ff_only` pinyin values with `;` (年下, 裁縫), `source_pinyin` tag `cedict` → `cc-cedict`, `task3_review.csv` rows with an unknown batch must fail.
+- SCHEMA §0 (passage key `n` = position before drops; IDs always from id_map), §1.2 (`ff_only` pinyin), §1.4/§3.3 (static rows store their reading cell in `reading_display`) amended. D70; GATES entry.
+
 ## 2026-11-07 — Stage 4e: accepted content merged into final tables [Codex]
 - Added the offline `pipeline/merge_stage4.py` build step and wired it into `run_all.py`. All D63-D69 review overlays are fail-closed against accepted output; task-5 reasons and all other review-only fields stay out of `data/final/`.
 - Added `words` usage/content fields, 279 dictionary-backed `ff_only` rows, `ff_meanings` (4,044 rows), and reviewed `passages` (80 rows). Final words = 12,508; false-friend entries = 1,242. D64 drops one empty-reading Vietnamese trap without removing its entry.

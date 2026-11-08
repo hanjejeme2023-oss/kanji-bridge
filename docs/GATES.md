@@ -399,3 +399,24 @@ Evidence: `docs/STAGE4D_PART4_REVIEW.md` §8; script `docs/review_scripts/stage4
 | Accepted layout | 104 outputs, logs and inputs moved to `content/accepted/task5/` (+ `inputs/`); 87 non-rebuild tests pass | OK; launcher `-Status` still reads task 5 from `content/generated/` (prints 0/104 missing) → Codex 4e item 0 |
 
 Next: Codex 4e (merge, with D68/D69 additions), then Codex Stage 5.
+
+## Stage 4 final gate (Codex 4e merge, `3bf6c74`), attempt 1, 2026-11-07: **FAIL** (IDs only; everything else passes)
+
+Decision: **D70**. Scripts run by Claude (scratchpad, not committed): independent checks of `data/final/` against SCHEMA §0/§1.2/§1.4/§1.5 and samples. No API request was sent (gcloud login revoked, Vertex API disabled).
+
+| Item | Evidence | Result |
+|---|---|---|
+| IDs (SCHEMA §0, PROMPT data rules) | 279 `ff_only` `word_id` = `x\|trad` (`x\|手紙`, `x\|一刻`), 80 `passage_id` = `lang\|level\|n` (`zh\|1\|1`); none in `id_map.csv` (12,995 word keys, 0 passage rows) | **FAIL** → D70 item 1 |
+| Columns, order, types | `words` 38 columns = SCHEMA §1.2; `ff_meanings`, `passages` = §1.4/§1.5; booleans `true`/`false`; no duplicate keys | OK |
+| NFC, missing values | 0 non-NFC cells; 0 `NaN`/`None`/`undefined`/`null` | OK |
+| Stage 3 data untouched | 12,229 core words; every Stage 3 column equal to `4280a7c` (0 differences) | OK |
+| Usage (task 5) vs D69 reference | card `ko_use=rare` 1,500, `ja_use=rare` 437, both 241; `wrong_meaning` ko 18 / ja 1; `vi_use` literary 1,277 + 1 unsure; `ja_use` empty for every `ja_common`/`ff_only` word; no meaning left on a `rare`/`wrong_meaning` language; 0 meanings without a reading; every card word with a reading has that language's meaning unless `rare` | OK, = Codex |
+| `ff_meanings` | 4,044 rows / 1,242 entries; every `reading` = the `words` column of that language; trap languages = `words.false_friend` for all entries; ja never a trap; fixed-note rows ko 227 / ja 76, all `rare`, empty meaning, `is_trap=false`, right text; 34 static rows on 12 entries, verbatim; 孫子, 內衣, 應當 gone; 放學, 那邊 re-based (zh trap kept), 霍亂/會同 baseline back | OK (static `reading_display` wording → SCHEMA amended, D70 item 5) |
+| `ff_only` | 279 rows: readings = `ff_candidates.csv` (0 differences; 3 `clear_vi`), level empty, not card-eligible, none duplicates a core word; 2 have `;` in `pinyin` (年下, 裁縫); `source_pinyin` `cedict` vs core `cc-cedict` | fix with D70 items 2-3 |
+| Passages | 80 (zh 42, vi 38 = 42 − 4 drops); every cell ≥ 5; 2,196 tokens (889 linked, 1,023 gloss, 284 punct), 0 unresolved, exactly one annotation each | OK |
+| Review-only text | 4,341 reason strings (task-5 `*_reason`, all overlay `reason` columns, tasks 1/2/4 reason fields) searched in all final CSV/JSON: 0 leaks (3 hits are legitimate meanings: 「文語的」, 「歴史用語」, 「仏教用語」); no `*_check`/`*_reason`/`confidence` keys | OK |
+| Overlays fail-closed | `task1/2/4/5_review`, `task2_retrap`, `task3_review`, `ff_static`, `word_notes`, `ff_fixed_notes` each checked against the generated value or the prototype extraction; one gap: an unknown `task3_review` batch is ignored | fix D70 item 4 (no data effect) |
+| Samples | fixed items 自己 (vi trap 自閉症の), 手紙, 大丈夫 (ko;zh;vi), 勉強 (static ja/ko/zh + generated vi trap), 越南 note; 12 random entries, 6 fixed-note entries, 12 random card words, 3 random passages read: no error | OK |
+| Reproducibility | fresh `run_all.py --skip-download` (4 min 25 s) → `git status` clean (byte-identical to the commit); 100 non-rebuild tests pass | OK |
+
+Next: Codex Stage 4e-fix (D70 items 1-4), then Claude re-check (short), then Codex Stage 5.

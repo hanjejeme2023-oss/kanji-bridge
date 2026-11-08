@@ -8,7 +8,7 @@ If this file and the spec disagree, the spec wins, except where DECISIONS.md D12
 - UTF-8, NFC. CSV: `to_csv(index=False, encoding="utf-8")`, header row, `;` separates multi-values inside a cell.
 - **Missing = empty cell in CSV, `null` in JSON, key omitted in `data.js`.** Never `"NaN"`, `"None"`, `"undefined"`, `"-"`.
 - Booleans: CSV `true`/`false` (lowercase); JSON `true`/`false`.
-- IDs: `c00001` (chars), `w00001` (words), `p0001` (passages). Assigned once in `pipeline/id_map.csv` (columns `kind,key,id`); keys: chars = `key_char` (D37); words = `trad|pinyin` for HSK words, `x|trad` for every other word (`vi_freq`, `ff_only`; D46, because their readings can change when sources are added); passages = `lang|level|n` as defined by Codex. Rebuild reuses IDs; new rows get the next free number; IDs are never reused or renumbered.
+- IDs: `c00001` (chars), `w00001` (words), `p0001` (passages). Assigned once in `pipeline/id_map.csv` (columns `kind,key,id`); keys: chars = `key_char` (D37); words = `trad|pinyin` for HSK words, `x|trad` for every other word (`vi_freq`, `ff_only`; D46, because their readings can change when sources are added); passages = `lang|level|n`, where `n` is the passage's 1-based position in the accepted task-3 output **before** `config/task3_review.csv` drops, so a drop never renumbers another passage (D70). Every final ID, including `ff_only` words and passages, comes from `id_map.csv`; a key is never used as an ID (D70). Rebuild reuses IDs; new rows get the next free number; IDs are never reused or renumbered.
 - Pinyin: tone marks, lowercase, syllables joined without spaces in `words.pinyin` (`xuéshēng`), apostrophes kept (`píng'ān`; D41). `chars.pinyin` is one syllable.
 - Vietnamese: NFC, lowercase, modern tone placement (D25: `thủy`, `hòa`, not `thuỷ`, `hoà`), syllables separated by one space (`học sinh`). Korean: Hangul, no spaces inside a word.
 - Japanese kana: `chars.ja_on*` hiragana (KANJIDIC2 katakana converted). `words.ja` keeps JMdict's script, so loanwords are katakana; the single-character fallback is hiragana (D42).
@@ -43,7 +43,7 @@ If this file and the spec disagree, the spec wins, except where DECISIONS.md D12
 | ja | str | Japanese reading as JMdict gives it (hiragana, or katakana for loanwords); for a single-character word with no on'yomi in JMdict, `chars.ja_on` (D42); empty if the form has no JMdict entry |
 | ja_common | bool | the top-ranked JMdict pair for the form has a priority tag (D42); false if the form has no entry |
 | ko | str | Hangul |
-| pinyin | str | |
+| pinyin | str | one value; for an `ff_only` word the first CC-CEDICT value of `ff_candidates.pinyin` (D70) |
 | vi | str | |
 | ja_alt / ko_alt / vi_alt | str | `;`-separated other readings; empty if none (D14) |
 | pos / hsk_ids | str | HSK part of speech (union) and source IDs, `;`-separated (D41); empty for non-HSK words |
@@ -67,7 +67,7 @@ If this file and the spec disagree, the spec wins, except where DECISIONS.md D12
 Unique on `(word_id, position)`. A word with a syllable-count mismatch gets rows with empty syllables for that language and `syl_aligned=false`, and is listed in `data/final/alignment_mismatches.csv` with a reason (D45; no guessing).
 
 ### 1.4 `ff_meanings`
-`word_id, lang, reading, reading_display, meaning_ja, is_trap`. Unique on `(word_id, lang)`. `reading` is copied from the dictionary column of the same language (`words.ja` / `ko` / `pinyin` / `vi`), never generated. At most one row per language per word. `reading_display` is '' except (D68): (a) a `ja`/`ko` row whose `ja_use`/`ko_use` is `rare` → the fixed text of `config/ff_fixed_notes.csv` for that language (ja 「（日本語ではほぼ使わない）」, ko 「（韓国語ではほぼ使わない）」), with `meaning_ja` = '' and `is_trap=false`; (b) a `config/ff_static.csv` row whose reading cell is a prototype note in （…） (勉強 韓 「（普通は 공부 と言う）」) → that cell. Static rows win over (a).
+`word_id, lang, reading, reading_display, meaning_ja, is_trap`. Unique on `(word_id, lang)`. `reading` is copied from the dictionary column of the same language (`words.ja` / `ko` / `pinyin` / `vi`), never generated. At most one row per language per word. `reading_display` is '' except (D68): (a) a `ja`/`ko` row whose `ja_use`/`ko_use` is `rare` → the fixed text of `config/ff_fixed_notes.csv` for that language (ja 「（日本語ではほぼ使わない）」, ko 「（韓国語ではほぼ使わない）」), with `meaning_ja` = '' and `is_trap=false`; (b) every `config/ff_static.csv` row → its reading cell verbatim (D70: the prototype text, e.g. 勉強 韓 「（普通は 공부 と言う）」, 手紙 中 `手纸 shǒuzhǐ`, 娘 日 `むすめ`, which is `ja_alt`; validated against the dictionary readings, D67 item 5). Static rows win over (a).
 
 ### 1.5 `passages`
 `passage_id, lang (zh|vi), level, translation_ja, tokens`.
@@ -154,7 +154,7 @@ Exactly the prototype shape: `{id, jong, kr, vi:[...], label, jp, zh, ex:[[char,
 | `t` | `zh` if `zh` in `false_friend`, else `vi` if in it, else the first listed language (filter button shows words with `t===lang`; the すべて tab shows all) |
 
 `label`: ja→`日`, ko→`韓`, zh→`中`, vi→`越`.
-`reading_display` for traps: zh → `"<simp> <pinyin>"` when `simp` differs from `jp`/`trad`, else `<pinyin>` (prototype: `勉强 miǎnqiǎng`, `gōngfu`); vi → `vi`; ja → `ja`; ko → `ko`.
+`reading_display` for traps (the stored `ff_meanings.reading_display` when non-empty, i.e. a static row; otherwise computed): zh → `"<simp> <pinyin>"` when `simp` differs from `jp`/`trad`, else `<pinyin>` (prototype: `勉强 miǎnqiǎng`, `gōngfu`); vi → `vi`; ja → `ja`; ko → `ko`.
 Tile line for a safe language = `meaning_ja` if non-empty, else the reading (prototype `s[2]||s[1]`).
 The speaker button on a trap uses the first Hanzi token of `reading_display` (zh) or the Vietnamese (vi) — as in the prototype.
 
