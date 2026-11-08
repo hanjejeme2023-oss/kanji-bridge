@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 2026-11-07 — Stage 4e-fix: D70 ID contract and focused corrections [Codex]
+- Wired the 279 `ff_only` words and 80 kept passages into the persistent ID allocator. New `id_map.csv` rows are `w12996`-`w13274` in `ff_candidates.csv` order and `p0001`-`p0080` in accepted task-3 batch order, with passage keys retaining their pre-review position; `ff_meanings` follows the word IDs.
+- Reduced 年下 / 裁縫 to the first CC-CEDICT pinyin value, changed all 279 `ff_only` pinyin provenance tags to `cc-cedict`, and made an unknown task-3 review batch fail closed.
+- Added regressions for ID formats, every final ID/key association, ID persistence, pinyin/provenance, and the unknown-batch guard. Expected-diff audit: only 279 word IDs, their 853 `ff_meanings` rows, 80 passage IDs, 2 pinyin values, 279 source tags, 2 Chinese FF readings, and 359 ID-map additions changed. Counts remain 12,508 / 4,044 / 1,242 / 80.
+- All 104 tests pass in 708.048 s, including the two-rebuild byte-identity check and override-independence rebuild. Offline only; no protected Stage 4 input or Stage 3 data changed. Stage 5 not started.
+
 ## 2026-11-07 — Stage 4 final gate (4e) attempt 1: FAIL on IDs; D70 [Claude]
 - Independent check of `data/final/` after `3bf6c74`: schema columns/types, NFC, Stage 3 columns unchanged, usage counts (= D69 reference), `ff_meanings` (readings, traps, fixed notes, 12 static entries), `ff_only` rows, 80 passages (0 unresolved tokens), no review-only text, fresh rebuild byte-identical, 100 non-rebuild tests: all OK.
 - FAIL: 279 `ff_only` words use the id_map key `x|trad` as `word_id` and 80 passages use `lang|level|n` as `passage_id`; none are in `id_map.csv` (PROMPT data rules, SCHEMA §0). Also fixed in the same pass: two `ff_only` pinyin values with `;` (年下, 裁縫), `source_pinyin` tag `cedict` → `cc-cedict`, `task3_review.csv` rows with an unknown batch must fail.

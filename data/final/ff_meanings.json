@@ -25528,7 +25528,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|一刻",
+    "word_id": "w13001",
     "lang": "ja",
     "reading": "いっこく",
     "reading_display": null,
@@ -25536,7 +25536,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|一刻",
+    "word_id": "w13001",
     "lang": "ko",
     "reading": "일각",
     "reading_display": null,
@@ -25544,7 +25544,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|一刻",
+    "word_id": "w13001",
     "lang": "zh",
     "reading": "yīkè",
     "reading_display": null,
@@ -25552,7 +25552,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|一周",
+    "word_id": "w13242",
     "lang": "ja",
     "reading": "いっしゅう",
     "reading_display": null,
@@ -25560,7 +25560,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|一周",
+    "word_id": "w13242",
     "lang": "ko",
     "reading": "일주",
     "reading_display": null,
@@ -25568,7 +25568,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|一周",
+    "word_id": "w13242",
     "lang": "zh",
     "reading": "yīzhōu",
     "reading_display": null,
@@ -25576,7 +25576,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|一層",
+    "word_id": "w13003",
     "lang": "ja",
     "reading": "いっそう",
     "reading_display": null,
@@ -25584,7 +25584,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|一層",
+    "word_id": "w13003",
     "lang": "ko",
     "reading": "일층",
     "reading_display": null,
@@ -25592,7 +25592,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|一層",
+    "word_id": "w13003",
     "lang": "zh",
     "reading": "yīcéng",
     "reading_display": null,
@@ -25600,7 +25600,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|一年生",
+    "word_id": "w13006",
     "lang": "ja",
     "reading": "いちねんせい",
     "reading_display": null,
@@ -25608,7 +25608,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|一年生",
+    "word_id": "w13006",
     "lang": "ko",
     "reading": "일년생",
     "reading_display": null,
@@ -25616,7 +25616,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|一年生",
+    "word_id": "w13006",
     "lang": "zh",
     "reading": "yīniánshēng",
     "reading_display": null,
@@ -25624,7 +25624,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|一應",
+    "word_id": "w13000",
     "lang": "ja",
     "reading": "いちおう",
     "reading_display": null,
@@ -25632,7 +25632,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|一應",
+    "word_id": "w13000",
     "lang": "zh",
     "reading": "yīyīng",
     "reading_display": null,
@@ -25640,7 +25640,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|一打",
+    "word_id": "w13004",
     "lang": "ja",
     "reading": "いちだ",
     "reading_display": null,
@@ -25648,7 +25648,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|一打",
+    "word_id": "w13004",
     "lang": "ko",
     "reading": "일타",
     "reading_display": null,
@@ -25656,7 +25656,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|一打",
+    "word_id": "w13004",
     "lang": "zh",
     "reading": "yīdá",
     "reading_display": null,
@@ -25664,7 +25664,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|一時間",
+    "word_id": "w13002",
     "lang": "ja",
     "reading": "いちじかん",
     "reading_display": null,
@@ -25672,7 +25672,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|一時間",
+    "word_id": "w13002",
     "lang": "zh",
     "reading": "yīshíjiān",
     "reading_display": null,
@@ -25680,7 +25680,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|一點",
+    "word_id": "w13005",
     "lang": "ja",
     "reading": "いってん",
     "reading_display": null,
@@ -25688,7 +25688,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|一點",
+    "word_id": "w13005",
     "lang": "ko",
     "reading": "일점",
     "reading_display": null,
@@ -25696,7 +25696,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|一點",
+    "word_id": "w13005",
     "lang": "zh",
     "reading": "yīdiǎn",
     "reading_display": null,
@@ -25704,7 +25704,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|上品",
+    "word_id": "w13106",
     "lang": "ja",
     "reading": "じょうひん",
     "reading_display": null,
@@ -25712,7 +25712,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|上品",
+    "word_id": "w13106",
     "lang": "ko",
     "reading": "상품",
     "reading_display": null,
@@ -25720,7 +25720,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|上品",
+    "word_id": "w13106",
     "lang": "zh",
     "reading": "shàngpǐn",
     "reading_display": null,
@@ -25728,7 +25728,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|上品",
+    "word_id": "w13106",
     "lang": "vi",
     "reading": "thượng phẩm",
     "reading_display": null,
@@ -25736,7 +25736,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|上手",
+    "word_id": "w13104",
     "lang": "ja",
     "reading": "じょうず",
     "reading_display": null,
@@ -25744,7 +25744,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|上手",
+    "word_id": "w13104",
     "lang": "ko",
     "reading": "상수",
     "reading_display": null,
@@ -25752,7 +25752,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|上手",
+    "word_id": "w13104",
     "lang": "zh",
     "reading": "shàngshǒu",
     "reading_display": null,
@@ -25760,7 +25760,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|上達",
+    "word_id": "w13105",
     "lang": "ja",
     "reading": "じょうたつ",
     "reading_display": null,
@@ -25768,7 +25768,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|上達",
+    "word_id": "w13105",
     "lang": "ko",
     "reading": "상달",
     "reading_display": "（韓国語ではほぼ使わない）",
@@ -25776,7 +25776,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|上達",
+    "word_id": "w13105",
     "lang": "zh",
     "reading": "shàngdá",
     "reading_display": null,
@@ -25784,7 +25784,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|下地",
+    "word_id": "w13012",
     "lang": "ja",
     "reading": "したじ",
     "reading_display": null,
@@ -25792,7 +25792,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|下地",
+    "word_id": "w13012",
     "lang": "ko",
     "reading": "하지",
     "reading_display": "（韓国語ではほぼ使わない）",
@@ -25800,7 +25800,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|下地",
+    "word_id": "w13012",
     "lang": "zh",
     "reading": "xiàdì",
     "reading_display": null,
@@ -25808,7 +25808,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|不備",
+    "word_id": "w13184",
     "lang": "ja",
     "reading": "ふび",
     "reading_display": null,
@@ -25816,7 +25816,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|不備",
+    "word_id": "w13184",
     "lang": "ko",
     "reading": "불비",
     "reading_display": null,
@@ -25824,7 +25824,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|不備",
+    "word_id": "w13184",
     "lang": "zh",
     "reading": "bùbèi",
     "reading_display": null,
@@ -25832,7 +25832,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|不能",
+    "word_id": "w13183",
     "lang": "ja",
     "reading": "ふのう",
     "reading_display": null,
@@ -25840,7 +25840,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|不能",
+    "word_id": "w13183",
     "lang": "ko",
     "reading": "불능",
     "reading_display": null,
@@ -25848,7 +25848,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|不能",
+    "word_id": "w13183",
     "lang": "zh",
     "reading": "bùnéng",
     "reading_display": null,
@@ -25856,7 +25856,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|中中",
+    "word_id": "w13239",
     "lang": "ja",
     "reading": "なかなか",
     "reading_display": null,
@@ -25864,7 +25864,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|中中",
+    "word_id": "w13239",
     "lang": "zh",
     "reading": "zhōngzhōng",
     "reading_display": null,
@@ -25872,7 +25872,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|主唱",
+    "word_id": "w13237",
     "lang": "ja",
     "reading": "しゅしょう",
     "reading_display": null,
@@ -25880,7 +25880,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|主唱",
+    "word_id": "w13237",
     "lang": "ko",
     "reading": "주창",
     "reading_display": null,
@@ -25888,7 +25888,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|主唱",
+    "word_id": "w13237",
     "lang": "zh",
     "reading": "zhǔchàng",
     "reading_display": null,
@@ -25896,7 +25896,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|主幹",
+    "word_id": "w13084",
     "lang": "ja",
     "reading": "しゅかん",
     "reading_display": null,
@@ -25904,7 +25904,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|主幹",
+    "word_id": "w13084",
     "lang": "ko",
     "reading": "주간",
     "reading_display": null,
@@ -25912,7 +25912,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|主幹",
+    "word_id": "w13084",
     "lang": "zh",
     "reading": "zhǔgàn",
     "reading_display": null,
@@ -25920,7 +25920,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|二號",
+    "word_id": "w13168",
     "lang": "ja",
     "reading": "にごう",
     "reading_display": null,
@@ -25928,7 +25928,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|二號",
+    "word_id": "w13168",
     "lang": "ko",
     "reading": "이호",
     "reading_display": null,
@@ -25936,7 +25936,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|二號",
+    "word_id": "w13168",
     "lang": "zh",
     "reading": "èrhào",
     "reading_display": null,
@@ -25944,7 +25944,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|二階",
+    "word_id": "w13167",
     "lang": "ja",
     "reading": "にかい",
     "reading_display": null,
@@ -25952,7 +25952,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|二階",
+    "word_id": "w13167",
     "lang": "zh",
     "reading": "èrjiē",
     "reading_display": null,
@@ -25960,7 +25960,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|亡命",
+    "word_id": "w13197",
     "lang": "ja",
     "reading": "ぼうめい",
     "reading_display": null,
@@ -25968,7 +25968,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|亡命",
+    "word_id": "w13197",
     "lang": "ko",
     "reading": "망명",
     "reading_display": null,
@@ -25976,7 +25976,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|亡命",
+    "word_id": "w13197",
     "lang": "zh",
     "reading": "wángmìng",
     "reading_display": null,
@@ -25984,7 +25984,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|亡命",
+    "word_id": "w13197",
     "lang": "vi",
     "reading": "vong mạng",
     "reading_display": null,
@@ -25992,7 +25992,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|交差",
+    "word_id": "w13056",
     "lang": "ja",
     "reading": "こうさ",
     "reading_display": null,
@@ -26000,7 +26000,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|交差",
+    "word_id": "w13056",
     "lang": "ko",
     "reading": "교차",
     "reading_display": null,
@@ -26008,7 +26008,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|交差",
+    "word_id": "w13056",
     "lang": "zh",
     "reading": "jiāochāi",
     "reading_display": null,
@@ -26016,7 +26016,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|人形",
+    "word_id": "w13112",
     "lang": "ja",
     "reading": "にんぎょう",
     "reading_display": null,
@@ -26024,7 +26024,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|人形",
+    "word_id": "w13112",
     "lang": "ko",
     "reading": "인형",
     "reading_display": null,
@@ -26032,7 +26032,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|人形",
+    "word_id": "w13112",
     "lang": "zh",
     "reading": "rénxíng",
     "reading_display": null,
@@ -26040,7 +26040,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|人形",
+    "word_id": "w13112",
     "lang": "vi",
     "reading": "nhân hình",
     "reading_display": null,
@@ -26048,7 +26048,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|今朝",
+    "word_id": "w13225",
     "lang": "ja",
     "reading": "けさ",
     "reading_display": null,
@@ -26056,7 +26056,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|今朝",
+    "word_id": "w13225",
     "lang": "ko",
     "reading": "금조",
     "reading_display": "（韓国語ではほぼ使わない）",
@@ -26064,7 +26064,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|今朝",
+    "word_id": "w13225",
     "lang": "zh",
     "reading": "jīnzhāo",
     "reading_display": null,
@@ -26072,7 +26072,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|佛語",
+    "word_id": "w13191",
     "lang": "ja",
     "reading": "ふつご",
     "reading_display": null,
@@ -26080,7 +26080,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|佛語",
+    "word_id": "w13191",
     "lang": "ko",
     "reading": "불어",
     "reading_display": null,
@@ -26088,7 +26088,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|佛語",
+    "word_id": "w13191",
     "lang": "zh",
     "reading": "fóyǔ",
     "reading_display": null,
@@ -26096,7 +26096,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|假稱",
+    "word_id": "w13013",
     "lang": "ja",
     "reading": "かしょう",
     "reading_display": null,
@@ -26104,7 +26104,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|假稱",
+    "word_id": "w13013",
     "lang": "ko",
     "reading": "가칭",
     "reading_display": null,
@@ -26112,7 +26112,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|假稱",
+    "word_id": "w13013",
     "lang": "zh",
     "reading": "jiǎchēng",
     "reading_display": null,
@@ -26120,7 +26120,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|傳票",
+    "word_id": "w13155",
     "lang": "ja",
     "reading": "でんぴょう",
     "reading_display": null,
@@ -26128,7 +26128,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|傳票",
+    "word_id": "w13155",
     "lang": "ko",
     "reading": "전표",
     "reading_display": null,
@@ -26136,7 +26136,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|傳票",
+    "word_id": "w13155",
     "lang": "zh",
     "reading": "chuánpiào",
     "reading_display": null,
@@ -26144,7 +26144,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|住所",
+    "word_id": "w13088",
     "lang": "ja",
     "reading": "じゅうしょ",
     "reading_display": null,
@@ -26152,7 +26152,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|住所",
+    "word_id": "w13088",
     "lang": "ko",
     "reading": "주소",
     "reading_display": null,
@@ -26160,7 +26160,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|住所",
+    "word_id": "w13088",
     "lang": "zh",
     "reading": "zhùsuǒ",
     "reading_display": null,
@@ -26168,7 +26168,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|住所",
+    "word_id": "w13088",
     "lang": "vi",
     "reading": "trú sở",
     "reading_display": null,
@@ -26176,7 +26176,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|體勢",
+    "word_id": "w13271",
     "lang": "ja",
     "reading": "たいせい",
     "reading_display": null,
@@ -26184,7 +26184,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|體勢",
+    "word_id": "w13271",
     "lang": "ko",
     "reading": "체세",
     "reading_display": "（韓国語ではほぼ使わない）",
@@ -26192,7 +26192,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|體勢",
+    "word_id": "w13271",
     "lang": "zh",
     "reading": "tǐshì",
     "reading_display": null,
@@ -26200,7 +26200,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|體裁",
+    "word_id": "w13132",
     "lang": "ja",
     "reading": "ていさい",
     "reading_display": null,
@@ -26208,7 +26208,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|體裁",
+    "word_id": "w13132",
     "lang": "ko",
     "reading": "체재",
     "reading_display": null,
@@ -26216,7 +26216,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|體裁",
+    "word_id": "w13132",
     "lang": "zh",
     "reading": "tǐcái",
     "reading_display": null,
@@ -26224,7 +26224,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|體裁",
+    "word_id": "w13132",
     "lang": "vi",
     "reading": "thể tài",
     "reading_display": null,
@@ -26232,7 +26232,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|何等",
+    "word_id": "w13014",
     "lang": "ja",
     "reading": "なんら",
     "reading_display": null,
@@ -26240,7 +26240,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|何等",
+    "word_id": "w13014",
     "lang": "ko",
     "reading": "하등",
     "reading_display": null,
@@ -26248,7 +26248,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|何等",
+    "word_id": "w13014",
     "lang": "zh",
     "reading": "héděng",
     "reading_display": null,
@@ -26256,7 +26256,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|作法",
+    "word_id": "w13074",
     "lang": "ja",
     "reading": "さほう",
     "reading_display": null,
@@ -26264,7 +26264,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|作法",
+    "word_id": "w13074",
     "lang": "ko",
     "reading": "작법",
     "reading_display": null,
@@ -26272,7 +26272,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|作法",
+    "word_id": "w13074",
     "lang": "zh",
     "reading": "zuòfǎ",
     "reading_display": null,
@@ -26280,7 +26280,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|俳優",
+    "word_id": "w13174",
     "lang": "ja",
     "reading": "はいゆう",
     "reading_display": null,
@@ -26288,7 +26288,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|俳優",
+    "word_id": "w13174",
     "lang": "ko",
     "reading": "배우",
     "reading_display": null,
@@ -26296,7 +26296,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|俳優",
+    "word_id": "w13174",
     "lang": "zh",
     "reading": "páiyōu",
     "reading_display": null,
@@ -26304,7 +26304,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|側近",
+    "word_id": "w13129",
     "lang": "ja",
     "reading": "そっきん",
     "reading_display": null,
@@ -26312,7 +26312,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|側近",
+    "word_id": "w13129",
     "lang": "ko",
     "reading": "측근",
     "reading_display": null,
@@ -26320,7 +26320,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|側近",
+    "word_id": "w13129",
     "lang": "zh",
     "reading": "cèjìn",
     "reading_display": null,
@@ -26328,7 +26328,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|備考",
+    "word_id": "w13179",
     "lang": "ja",
     "reading": "びこう",
     "reading_display": null,
@@ -26336,7 +26336,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|備考",
+    "word_id": "w13179",
     "lang": "ko",
     "reading": "비고",
     "reading_display": null,
@@ -26344,7 +26344,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|備考",
+    "word_id": "w13179",
     "lang": "zh",
     "reading": "bèikǎo",
     "reading_display": null,
@@ -26352,7 +26352,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|先輩",
+    "word_id": "w13123",
     "lang": "ja",
     "reading": "せんぱい",
     "reading_display": null,
@@ -26360,7 +26360,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|先輩",
+    "word_id": "w13123",
     "lang": "ko",
     "reading": "선배",
     "reading_display": null,
@@ -26368,7 +26368,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|先輩",
+    "word_id": "w13123",
     "lang": "zh",
     "reading": "xiānbèi",
     "reading_display": null,
@@ -26376,7 +26376,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|公館",
+    "word_id": "w13057",
     "lang": "ja",
     "reading": "こうかん",
     "reading_display": null,
@@ -26384,7 +26384,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|公館",
+    "word_id": "w13057",
     "lang": "ko",
     "reading": "공관",
     "reading_display": null,
@@ -26392,7 +26392,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|公館",
+    "word_id": "w13057",
     "lang": "zh",
     "reading": "gōngguǎn",
     "reading_display": null,
@@ -26400,7 +26400,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|公館",
+    "word_id": "w13057",
     "lang": "vi",
     "reading": "công quán",
     "reading_display": null,
@@ -26408,7 +26408,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|內內",
+    "word_id": "w13227",
     "lang": "ja",
     "reading": "うちうち",
     "reading_display": null,
@@ -26416,7 +26416,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|內內",
+    "word_id": "w13227",
     "lang": "zh",
     "reading": "nèinei",
     "reading_display": null,
@@ -26424,7 +26424,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|內線",
+    "word_id": "w13166",
     "lang": "ja",
     "reading": "ないせん",
     "reading_display": null,
@@ -26432,7 +26432,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|內線",
+    "word_id": "w13166",
     "lang": "ko",
     "reading": "내선",
     "reading_display": null,
@@ -26440,7 +26440,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|內線",
+    "word_id": "w13166",
     "lang": "zh",
     "reading": "nèixiàn",
     "reading_display": null,
@@ -26448,7 +26448,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|內線",
+    "word_id": "w13166",
     "lang": "vi",
     "reading": "nội tuyến",
     "reading_display": null,
@@ -26456,7 +26456,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|圓滑",
+    "word_id": "w13223",
     "lang": "ja",
     "reading": "えんかつ",
     "reading_display": null,
@@ -26464,7 +26464,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|圓滑",
+    "word_id": "w13223",
     "lang": "ko",
     "reading": "원활",
     "reading_display": null,
@@ -26472,7 +26472,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|圓滑",
+    "word_id": "w13223",
     "lang": "zh",
     "reading": "yuánhuá",
     "reading_display": null,
@@ -26480,7 +26480,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|冒頭",
+    "word_id": "w13198",
     "lang": "ja",
     "reading": "ぼうとう",
     "reading_display": null,
@@ -26488,7 +26488,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|冒頭",
+    "word_id": "w13198",
     "lang": "ko",
     "reading": "모두",
     "reading_display": null,
@@ -26496,7 +26496,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|冒頭",
+    "word_id": "w13198",
     "lang": "zh",
     "reading": "màotóu",
     "reading_display": null,
@@ -26504,7 +26504,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|處刑",
+    "word_id": "w13095",
     "lang": "ja",
     "reading": "しょけい",
     "reading_display": null,
@@ -26512,7 +26512,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|處刑",
+    "word_id": "w13095",
     "lang": "ko",
     "reading": "처형",
     "reading_display": null,
@@ -26520,7 +26520,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|處刑",
+    "word_id": "w13095",
     "lang": "zh",
     "reading": "chǔxíng",
     "reading_display": null,
@@ -26528,7 +26528,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|出世",
+    "word_id": "w13092",
     "lang": "ja",
     "reading": "しゅっせ",
     "reading_display": null,
@@ -26536,7 +26536,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|出世",
+    "word_id": "w13092",
     "lang": "ko",
     "reading": "출세",
     "reading_display": null,
@@ -26544,7 +26544,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|出世",
+    "word_id": "w13092",
     "lang": "zh",
     "reading": "chūshì",
     "reading_display": null,
@@ -26552,7 +26552,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|出世",
+    "word_id": "w13092",
     "lang": "vi",
     "reading": "xuất thế",
     "reading_display": null,
@@ -26560,7 +26560,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|出力",
+    "word_id": "w13094",
     "lang": "ja",
     "reading": "しゅつりょく",
     "reading_display": null,
@@ -26568,7 +26568,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|出力",
+    "word_id": "w13094",
     "lang": "ko",
     "reading": "출력",
     "reading_display": null,
@@ -26576,7 +26576,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|出力",
+    "word_id": "w13094",
     "lang": "zh",
     "reading": "chūlì",
     "reading_display": null,
@@ -26584,7 +26584,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|出品",
+    "word_id": "w13093",
     "lang": "ja",
     "reading": "しゅっぴん",
     "reading_display": null,
@@ -26592,7 +26592,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|出品",
+    "word_id": "w13093",
     "lang": "ko",
     "reading": "출품",
     "reading_display": null,
@@ -26600,7 +26600,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|出品",
+    "word_id": "w13093",
     "lang": "zh",
     "reading": "chūpǐn",
     "reading_display": null,
@@ -26608,7 +26608,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|出缺",
+    "word_id": "w13090",
     "lang": "ja",
     "reading": "しゅっけつ",
     "reading_display": null,
@@ -26616,7 +26616,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|出缺",
+    "word_id": "w13090",
     "lang": "ko",
     "reading": "출결",
     "reading_display": null,
@@ -26624,7 +26624,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|出缺",
+    "word_id": "w13090",
     "lang": "zh",
     "reading": "chūquē",
     "reading_display": null,
@@ -26632,7 +26632,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|出產",
+    "word_id": "w13091",
     "lang": "ja",
     "reading": "しゅっさん",
     "reading_display": null,
@@ -26640,7 +26640,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|出產",
+    "word_id": "w13091",
     "lang": "ko",
     "reading": "출산",
     "reading_display": null,
@@ -26648,7 +26648,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|出產",
+    "word_id": "w13091",
     "lang": "zh",
     "reading": "chūchǎn",
     "reading_display": null,
@@ -26656,7 +26656,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|前日",
+    "word_id": "w13124",
     "lang": "ja",
     "reading": "ぜんじつ",
     "reading_display": null,
@@ -26664,7 +26664,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|前日",
+    "word_id": "w13124",
     "lang": "ko",
     "reading": "전일",
     "reading_display": null,
@@ -26672,7 +26672,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|前日",
+    "word_id": "w13124",
     "lang": "zh",
     "reading": "qiánrì",
     "reading_display": null,
@@ -26680,7 +26680,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|前部",
+    "word_id": "w13125",
     "lang": "ja",
     "reading": "ぜんぶ",
     "reading_display": null,
@@ -26688,7 +26688,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|前部",
+    "word_id": "w13125",
     "lang": "ko",
     "reading": "전부",
     "reading_display": "（韓国語ではほぼ使わない）",
@@ -26696,7 +26696,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|前部",
+    "word_id": "w13125",
     "lang": "zh",
     "reading": "qiánbù",
     "reading_display": null,
@@ -26704,7 +26704,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|前部",
+    "word_id": "w13125",
     "lang": "vi",
     "reading": "tiền bộ",
     "reading_display": null,
@@ -26712,7 +26712,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|加點",
+    "word_id": "w13251",
     "lang": "ja",
     "reading": "かてん",
     "reading_display": null,
@@ -26720,7 +26720,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|加點",
+    "word_id": "w13251",
     "lang": "ko",
     "reading": "가점",
     "reading_display": null,
@@ -26728,7 +26728,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|加點",
+    "word_id": "w13251",
     "lang": "zh",
     "reading": "jiādiǎn",
     "reading_display": null,
@@ -26736,7 +26736,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|勞作",
+    "word_id": "w13219",
     "lang": "ja",
     "reading": "ろうさく",
     "reading_display": null,
@@ -26744,7 +26744,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|勞作",
+    "word_id": "w13219",
     "lang": "ko",
     "reading": "노작",
     "reading_display": null,
@@ -26752,7 +26752,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|勞作",
+    "word_id": "w13219",
     "lang": "zh",
     "reading": "láozuò",
     "reading_display": null,
@@ -26760,7 +26760,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|勞作",
+    "word_id": "w13219",
     "lang": "vi",
     "reading": "lao tác",
     "reading_display": null,
@@ -26768,7 +26768,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|勘定",
+    "word_id": "w13028",
     "lang": "ja",
     "reading": "かんじょう",
     "reading_display": null,
@@ -26776,7 +26776,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|勘定",
+    "word_id": "w13028",
     "lang": "ko",
     "reading": "감정",
     "reading_display": "（韓国語ではほぼ使わない）",
@@ -26784,7 +26784,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|勘定",
+    "word_id": "w13028",
     "lang": "zh",
     "reading": "kāndìng",
     "reading_display": null,
@@ -26792,7 +26792,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|勤務",
+    "word_id": "w13043",
     "lang": "ja",
     "reading": "きんむ",
     "reading_display": null,
@@ -26800,7 +26800,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|勤務",
+    "word_id": "w13043",
     "lang": "ko",
     "reading": "근무",
     "reading_display": null,
@@ -26808,7 +26808,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|勤務",
+    "word_id": "w13043",
     "lang": "zh",
     "reading": "qínwù",
     "reading_display": null,
@@ -26816,7 +26816,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|勤務",
+    "word_id": "w13043",
     "lang": "vi",
     "reading": "cần vụ",
     "reading_display": null,
@@ -26824,7 +26824,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|單產",
+    "word_id": "w13273",
     "lang": "ja",
     "reading": "たんさん",
     "reading_display": null,
@@ -26832,7 +26832,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|單產",
+    "word_id": "w13273",
     "lang": "ko",
     "reading": "단산",
     "reading_display": "（韓国語ではほぼ使わない）",
@@ -26840,7 +26840,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|單產",
+    "word_id": "w13273",
     "lang": "zh",
     "reading": "dānchǎn",
     "reading_display": null,
@@ -26848,7 +26848,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|單語",
+    "word_id": "w13139",
     "lang": "ja",
     "reading": "たんご",
     "reading_display": null,
@@ -26856,7 +26856,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|單語",
+    "word_id": "w13139",
     "lang": "ko",
     "reading": "단어",
     "reading_display": null,
@@ -26864,7 +26864,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|單語",
+    "word_id": "w13139",
     "lang": "zh",
     "reading": "dānyǔ",
     "reading_display": null,
@@ -26872,7 +26872,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|博物",
+    "word_id": "w13176",
     "lang": "ja",
     "reading": "はくぶつ",
     "reading_display": null,
@@ -26880,7 +26880,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|博物",
+    "word_id": "w13176",
     "lang": "ko",
     "reading": "박물",
     "reading_display": null,
@@ -26888,7 +26888,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|博物",
+    "word_id": "w13176",
     "lang": "zh",
     "reading": "bówù",
     "reading_display": null,
@@ -26896,7 +26896,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|博物",
+    "word_id": "w13176",
     "lang": "vi",
     "reading": "bác vật",
     "reading_display": null,
@@ -26904,7 +26904,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|原價",
+    "word_id": "w13236",
     "lang": "ja",
     "reading": "げんか",
     "reading_display": null,
@@ -26912,7 +26912,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|原價",
+    "word_id": "w13236",
     "lang": "ko",
     "reading": "원가",
     "reading_display": null,
@@ -26920,7 +26920,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|原價",
+    "word_id": "w13236",
     "lang": "zh",
     "reading": "yuánjià",
     "reading_display": null,
@@ -26928,7 +26928,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|受持",
+    "word_id": "w13232",
     "lang": "ja",
     "reading": "うけもち",
     "reading_display": null,
@@ -26936,7 +26936,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|受持",
+    "word_id": "w13232",
     "lang": "ko",
     "reading": "수지",
     "reading_display": null,
@@ -26944,7 +26944,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|受持",
+    "word_id": "w13232",
     "lang": "zh",
     "reading": "shòuchí",
     "reading_display": null,
@@ -26952,7 +26952,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|各別",
+    "word_id": "w13024",
     "lang": "ja",
     "reading": "かくべつ",
     "reading_display": null,
@@ -26960,7 +26960,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|各別",
+    "word_id": "w13024",
     "lang": "ko",
     "reading": "각별",
     "reading_display": null,
@@ -26968,7 +26968,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|各別",
+    "word_id": "w13024",
     "lang": "zh",
     "reading": "gèbié",
     "reading_display": null,
@@ -26976,7 +26976,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|合意",
+    "word_id": "w13065",
     "lang": "ja",
     "reading": "ごうい",
     "reading_display": null,
@@ -26984,7 +26984,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|合意",
+    "word_id": "w13065",
     "lang": "ko",
     "reading": "합의",
     "reading_display": null,
@@ -26992,7 +26992,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|合意",
+    "word_id": "w13065",
     "lang": "zh",
     "reading": "héyì",
     "reading_display": null,
@@ -27000,7 +27000,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|合意",
+    "word_id": "w13065",
     "lang": "vi",
     "reading": "hợp ý",
     "reading_display": null,
@@ -27008,7 +27008,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|同黨",
+    "word_id": "w13161",
     "lang": "ja",
     "reading": "どうとう",
     "reading_display": null,
@@ -27016,7 +27016,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|同黨",
+    "word_id": "w13161",
     "lang": "ko",
     "reading": "동당",
     "reading_display": "（韓国語ではほぼ使わない）",
@@ -27024,7 +27024,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|同黨",
+    "word_id": "w13161",
     "lang": "zh",
     "reading": "tóngdǎng",
     "reading_display": null,
@@ -27032,7 +27032,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|名優",
+    "word_id": "w13258",
     "lang": "ja",
     "reading": "めいゆう",
     "reading_display": null,
@@ -27040,7 +27040,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|名優",
+    "word_id": "w13258",
     "lang": "ko",
     "reading": "명우",
     "reading_display": null,
@@ -27048,7 +27048,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|名優",
+    "word_id": "w13258",
     "lang": "zh",
     "reading": "míngyōu",
     "reading_display": null,
@@ -27056,7 +27056,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|吐氣",
+    "word_id": "w13157",
     "lang": "ja",
     "reading": "はきけ",
     "reading_display": null,
@@ -27064,7 +27064,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|吐氣",
+    "word_id": "w13157",
     "lang": "ko",
     "reading": "토기",
     "reading_display": "（韓国語ではほぼ使わない）",
@@ -27072,7 +27072,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|吐氣",
+    "word_id": "w13157",
     "lang": "zh",
     "reading": "tǔqì",
     "reading_display": null,
@@ -27080,7 +27080,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|呼吸器",
+    "word_id": "w13053",
     "lang": "ja",
     "reading": "こきゅうき",
     "reading_display": null,
@@ -27088,7 +27088,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|呼吸器",
+    "word_id": "w13053",
     "lang": "ko",
     "reading": "호흡기",
     "reading_display": null,
@@ -27096,7 +27096,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|呼吸器",
+    "word_id": "w13053",
     "lang": "zh",
     "reading": "hūxīqì",
     "reading_display": null,
@@ -27104,7 +27104,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|和歌",
+    "word_id": "w13220",
     "lang": "ja",
     "reading": "わか",
     "reading_display": null,
@@ -27112,7 +27112,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|和歌",
+    "word_id": "w13220",
     "lang": "zh",
     "reading": "hégē",
     "reading_display": null,
@@ -27120,7 +27120,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|和歌",
+    "word_id": "w13220",
     "lang": "vi",
     "reading": "hòa ca",
     "reading_display": null,
@@ -27128,7 +27128,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|和風",
+    "word_id": "w13221",
     "lang": "ja",
     "reading": "わふう",
     "reading_display": null,
@@ -27136,7 +27136,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|和風",
+    "word_id": "w13221",
     "lang": "ko",
     "reading": "화풍",
     "reading_display": "（韓国語ではほぼ使わない）",
@@ -27144,7 +27144,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|和風",
+    "word_id": "w13221",
     "lang": "zh",
     "reading": "héfēng",
     "reading_display": null,
@@ -27152,7 +27152,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|商事",
+    "word_id": "w13100",
     "lang": "ja",
     "reading": "しょうじ",
     "reading_display": null,
@@ -27160,7 +27160,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|商事",
+    "word_id": "w13100",
     "lang": "ko",
     "reading": "상사",
     "reading_display": null,
@@ -27168,7 +27168,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|商事",
+    "word_id": "w13100",
     "lang": "zh",
     "reading": "shāngshì",
     "reading_display": null,
@@ -27176,7 +27176,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|商事",
+    "word_id": "w13100",
     "lang": "vi",
     "reading": "thương sự",
     "reading_display": null,
@@ -27184,7 +27184,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|商會",
+    "word_id": "w13099",
     "lang": "ja",
     "reading": "しょうかい",
     "reading_display": null,
@@ -27192,7 +27192,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|商會",
+    "word_id": "w13099",
     "lang": "ko",
     "reading": "상회",
     "reading_display": null,
@@ -27200,7 +27200,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|商會",
+    "word_id": "w13099",
     "lang": "zh",
     "reading": "shānghuì",
     "reading_display": null,
@@ -27208,7 +27208,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|商會",
+    "word_id": "w13099",
     "lang": "vi",
     "reading": "thương hội",
     "reading_display": null,
@@ -27216,7 +27216,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|回目",
+    "word_id": "w13018",
     "lang": "ja",
     "reading": "かいめ",
     "reading_display": null,
@@ -27224,7 +27224,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|回目",
+    "word_id": "w13018",
     "lang": "zh",
     "reading": "huímù",
     "reading_display": null,
@@ -27232,7 +27232,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|圖版",
+    "word_id": "w13114",
     "lang": "ja",
     "reading": "ずはん",
     "reading_display": null,
@@ -27240,7 +27240,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|圖版",
+    "word_id": "w13114",
     "lang": "ko",
     "reading": "도판",
     "reading_display": null,
@@ -27248,7 +27248,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|圖版",
+    "word_id": "w13114",
     "lang": "zh",
     "reading": "túbǎn",
     "reading_display": null,
@@ -27256,7 +27256,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|圖版",
+    "word_id": "w13114",
     "lang": "vi",
     "reading": "đồ bản",
     "reading_display": null,
@@ -27264,7 +27264,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|國柄",
+    "word_id": "w13262",
     "lang": "ja",
     "reading": "くにがら",
     "reading_display": null,
@@ -27272,7 +27272,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|國柄",
+    "word_id": "w13262",
     "lang": "ko",
     "reading": "국병",
     "reading_display": "（韓国語ではほぼ使わない）",
@@ -27280,7 +27280,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|國柄",
+    "word_id": "w13262",
     "lang": "zh",
     "reading": "guóbǐng",
     "reading_display": null,
@@ -27288,7 +27288,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|圈內",
+    "word_id": "w13051",
     "lang": "ja",
     "reading": "けんない",
     "reading_display": null,
@@ -27296,7 +27296,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|圈內",
+    "word_id": "w13051",
     "lang": "ko",
     "reading": "권내",
     "reading_display": null,
@@ -27304,7 +27304,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|圈內",
+    "word_id": "w13051",
     "lang": "zh",
     "reading": "quānnèi",
     "reading_display": null,
@@ -27312,7 +27312,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|地力",
+    "word_id": "w13257",
     "lang": "ja",
     "reading": "じりき",
     "reading_display": null,
@@ -27320,7 +27320,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|地力",
+    "word_id": "w13257",
     "lang": "ko",
     "reading": "지력",
     "reading_display": null,
@@ -27328,7 +27328,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|地力",
+    "word_id": "w13257",
     "lang": "zh",
     "reading": "dìlì",
     "reading_display": null,
@@ -27336,7 +27336,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|增益",
+    "word_id": "w13265",
     "lang": "ja",
     "reading": "ぞうえき",
     "reading_display": null,
@@ -27344,7 +27344,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|增益",
+    "word_id": "w13265",
     "lang": "ko",
     "reading": "증익",
     "reading_display": "（韓国語ではほぼ使わない）",
@@ -27352,7 +27352,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|增益",
+    "word_id": "w13265",
     "lang": "zh",
     "reading": "zēngyì",
     "reading_display": null,
@@ -27360,7 +27360,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|賣出",
+    "word_id": "w13233",
     "lang": "ja",
     "reading": "うりだし",
     "reading_display": null,
@@ -27368,7 +27368,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|賣出",
+    "word_id": "w13233",
     "lang": "ko",
     "reading": "매출",
     "reading_display": null,
@@ -27376,7 +27376,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|賣出",
+    "word_id": "w13233",
     "lang": "zh",
     "reading": "màichū",
     "reading_display": null,
@@ -27384,7 +27384,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|外人",
+    "word_id": "w13022",
     "lang": "ja",
     "reading": "がいじん",
     "reading_display": null,
@@ -27392,7 +27392,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|外人",
+    "word_id": "w13022",
     "lang": "ko",
     "reading": "외인",
     "reading_display": null,
@@ -27400,7 +27400,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|外人",
+    "word_id": "w13022",
     "lang": "zh",
     "reading": "wàirén",
     "reading_display": null,
@@ -27408,7 +27408,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|多大",
+    "word_id": "w13130",
     "lang": "ja",
     "reading": "ただい",
     "reading_display": null,
@@ -27416,7 +27416,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|多大",
+    "word_id": "w13130",
     "lang": "ko",
     "reading": "다대",
     "reading_display": null,
@@ -27424,7 +27424,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|多大",
+    "word_id": "w13130",
     "lang": "zh",
     "reading": "duōdà",
     "reading_display": null,
@@ -27432,7 +27432,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|多用",
+    "word_id": "w13131",
     "lang": "ja",
     "reading": "たよう",
     "reading_display": null,
@@ -27440,7 +27440,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|多用",
+    "word_id": "w13131",
     "lang": "ko",
     "reading": "다용",
     "reading_display": null,
@@ -27448,7 +27448,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|多用",
+    "word_id": "w13131",
     "lang": "zh",
     "reading": "duōyòng",
     "reading_display": null,
@@ -27456,7 +27456,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|夢中",
+    "word_id": "w13204",
     "lang": "ja",
     "reading": "むちゅう",
     "reading_display": null,
@@ -27464,7 +27464,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|夢中",
+    "word_id": "w13204",
     "lang": "ko",
     "reading": "몽중",
     "reading_display": null,
@@ -27472,7 +27472,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|夢中",
+    "word_id": "w13204",
     "lang": "zh",
     "reading": "mèngzhōng",
     "reading_display": null,
@@ -27480,7 +27480,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|大丈夫",
+    "word_id": "w13134",
     "lang": "ja",
     "reading": "だいじょうぶ",
     "reading_display": "だいじょうぶ",
@@ -27488,7 +27488,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|大丈夫",
+    "word_id": "w13134",
     "lang": "ko",
     "reading": "대장부",
     "reading_display": null,
@@ -27496,7 +27496,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|大丈夫",
+    "word_id": "w13134",
     "lang": "zh",
     "reading": "dàzhàngfu",
     "reading_display": "dàzhàngfu",
@@ -27504,7 +27504,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|大丈夫",
+    "word_id": "w13134",
     "lang": "vi",
     "reading": "đại trượng phu",
     "reading_display": null,
@@ -27512,7 +27512,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|大作",
+    "word_id": "w13133",
     "lang": "ja",
     "reading": "たいさく",
     "reading_display": null,
@@ -27520,7 +27520,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|大作",
+    "word_id": "w13133",
     "lang": "ko",
     "reading": "대작",
     "reading_display": null,
@@ -27528,7 +27528,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|大作",
+    "word_id": "w13133",
     "lang": "zh",
     "reading": "dàzuò",
     "reading_display": null,
@@ -27536,7 +27536,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|大勢",
+    "word_id": "w13135",
     "lang": "ja",
     "reading": "おおぜい",
     "reading_display": null,
@@ -27544,7 +27544,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|大勢",
+    "word_id": "w13135",
     "lang": "ko",
     "reading": "대세",
     "reading_display": null,
@@ -27552,7 +27552,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|大勢",
+    "word_id": "w13135",
     "lang": "zh",
     "reading": "dàshì",
     "reading_display": null,
@@ -27560,7 +27560,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|大口",
+    "word_id": "w13260",
     "lang": "ja",
     "reading": "おおぐち",
     "reading_display": null,
@@ -27568,7 +27568,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|大口",
+    "word_id": "w13260",
     "lang": "ko",
     "reading": "대구",
     "reading_display": null,
@@ -27576,7 +27576,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|大口",
+    "word_id": "w13260",
     "lang": "zh",
     "reading": "dàkǒu",
     "reading_display": null,
@@ -27584,7 +27584,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|大名",
+    "word_id": "w13137",
     "lang": "ja",
     "reading": "だいみょう",
     "reading_display": null,
@@ -27592,7 +27592,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|大名",
+    "word_id": "w13137",
     "lang": "ko",
     "reading": "대명",
     "reading_display": "（韓国語ではほぼ使わない）",
@@ -27600,7 +27600,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|大名",
+    "word_id": "w13137",
     "lang": "zh",
     "reading": "dàmíng",
     "reading_display": null,
@@ -27608,7 +27608,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|大名",
+    "word_id": "w13137",
     "lang": "vi",
     "reading": "đại danh",
     "reading_display": null,
@@ -27616,7 +27616,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|大變",
+    "word_id": "w13136",
     "lang": "ja",
     "reading": "たいへん",
     "reading_display": null,
@@ -27624,7 +27624,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|大變",
+    "word_id": "w13136",
     "lang": "ko",
     "reading": "대변",
     "reading_display": "（韓国語ではほぼ使わない）",
@@ -27632,7 +27632,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|大變",
+    "word_id": "w13136",
     "lang": "zh",
     "reading": "dàbiàn",
     "reading_display": null,
@@ -27640,7 +27640,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|大敗",
+    "word_id": "w13270",
     "lang": "ja",
     "reading": "たいはい",
     "reading_display": null,
@@ -27648,7 +27648,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|大敗",
+    "word_id": "w13270",
     "lang": "ko",
     "reading": "대패",
     "reading_display": null,
@@ -27656,7 +27656,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|大敗",
+    "word_id": "w13270",
     "lang": "zh",
     "reading": "dàbài",
     "reading_display": null,
@@ -27664,7 +27664,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|大敗",
+    "word_id": "w13270",
     "lang": "vi",
     "reading": "đại bại",
     "reading_display": null,
@@ -27672,7 +27672,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|大關",
+    "word_id": "w13261",
     "lang": "ja",
     "reading": "おおぜき",
     "reading_display": null,
@@ -27680,7 +27680,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|大關",
+    "word_id": "w13261",
     "lang": "zh",
     "reading": "dàguān",
     "reading_display": null,
@@ -27688,7 +27688,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|天井",
+    "word_id": "w13153",
     "lang": "ja",
     "reading": "てんじょう",
     "reading_display": null,
@@ -27696,7 +27696,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|天井",
+    "word_id": "w13153",
     "lang": "ko",
     "reading": "천정",
     "reading_display": null,
@@ -27704,7 +27704,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|天井",
+    "word_id": "w13153",
     "lang": "zh",
     "reading": "tiānjǐng",
     "reading_display": null,
@@ -27712,7 +27712,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|天邊",
+    "word_id": "w13154",
     "lang": "ja",
     "reading": "てっぺん",
     "reading_display": null,
@@ -27720,7 +27720,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|天邊",
+    "word_id": "w13154",
     "lang": "ko",
     "reading": "천변",
     "reading_display": "（韓国語ではほぼ使わない）",
@@ -27728,7 +27728,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|天邊",
+    "word_id": "w13154",
     "lang": "zh",
     "reading": "tiānbiān",
     "reading_display": null,
@@ -27736,7 +27736,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|奉公",
+    "word_id": "w13193",
     "lang": "ja",
     "reading": "ほうこう",
     "reading_display": null,
@@ -27744,7 +27744,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|奉公",
+    "word_id": "w13193",
     "lang": "ko",
     "reading": "봉공",
     "reading_display": null,
@@ -27752,7 +27752,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|奉公",
+    "word_id": "w13193",
     "lang": "zh",
     "reading": "fènggōng",
     "reading_display": null,
@@ -27760,7 +27760,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|奉行",
+    "word_id": "w13194",
     "lang": "ja",
     "reading": "ぶぎょう",
     "reading_display": null,
@@ -27768,7 +27768,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|奉行",
+    "word_id": "w13194",
     "lang": "ko",
     "reading": "봉행",
     "reading_display": null,
@@ -27776,7 +27776,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|奉行",
+    "word_id": "w13194",
     "lang": "zh",
     "reading": "fèngxíng",
     "reading_display": null,
@@ -27784,7 +27784,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|女優",
+    "word_id": "w13097",
     "lang": "ja",
     "reading": "じょゆう",
     "reading_display": null,
@@ -27792,7 +27792,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|女優",
+    "word_id": "w13097",
     "lang": "ko",
     "reading": "여우",
     "reading_display": "（韓国語ではほぼ使わない）",
@@ -27800,7 +27800,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|女優",
+    "word_id": "w13097",
     "lang": "zh",
     "reading": "nǚyōu",
     "reading_display": null,
@@ -27808,7 +27808,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|女方",
+    "word_id": "w13226",
     "lang": "ja",
     "reading": "おんながた",
     "reading_display": null,
@@ -27816,7 +27816,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|女方",
+    "word_id": "w13226",
     "lang": "zh",
     "reading": "nǚfāng",
     "reading_display": null,
@@ -27824,7 +27824,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|女流",
+    "word_id": "w13098",
     "lang": "ja",
     "reading": "じょりゅう",
     "reading_display": null,
@@ -27832,7 +27832,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|女流",
+    "word_id": "w13098",
     "lang": "ko",
     "reading": "여류",
     "reading_display": null,
@@ -27840,7 +27840,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|女流",
+    "word_id": "w13098",
     "lang": "zh",
     "reading": "nǚliú",
     "reading_display": null,
@@ -27848,7 +27848,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|女流",
+    "word_id": "w13098",
     "lang": "vi",
     "reading": "nữ lưu",
     "reading_display": null,
@@ -27856,7 +27856,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|好物",
+    "word_id": "w13058",
     "lang": "ja",
     "reading": "こうぶつ",
     "reading_display": null,
@@ -27864,7 +27864,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|好物",
+    "word_id": "w13058",
     "lang": "ko",
     "reading": "호물",
     "reading_display": "（韓国語ではほぼ使わない）",
@@ -27872,7 +27872,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|好物",
+    "word_id": "w13058",
     "lang": "zh",
     "reading": "hǎowù",
     "reading_display": null,
@@ -27880,7 +27880,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|始末",
+    "word_id": "w13076",
     "lang": "ja",
     "reading": "しまつ",
     "reading_display": null,
@@ -27888,7 +27888,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|始末",
+    "word_id": "w13076",
     "lang": "ko",
     "reading": "시말",
     "reading_display": null,
@@ -27896,7 +27896,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|始末",
+    "word_id": "w13076",
     "lang": "zh",
     "reading": "shǐmò",
     "reading_display": null,
@@ -27904,7 +27904,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|學園",
+    "word_id": "w13025",
     "lang": "ja",
     "reading": "がくえん",
     "reading_display": null,
@@ -27912,7 +27912,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|學園",
+    "word_id": "w13025",
     "lang": "ko",
     "reading": "학원",
     "reading_display": null,
@@ -27920,7 +27920,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|學園",
+    "word_id": "w13025",
     "lang": "zh",
     "reading": "xuéyuán",
     "reading_display": null,
@@ -27928,7 +27928,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|學徒",
+    "word_id": "w13027",
     "lang": "ja",
     "reading": "がくと",
     "reading_display": null,
@@ -27936,7 +27936,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|學徒",
+    "word_id": "w13027",
     "lang": "ko",
     "reading": "학도",
     "reading_display": null,
@@ -27944,7 +27944,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|學徒",
+    "word_id": "w13027",
     "lang": "zh",
     "reading": "xuétú",
     "reading_display": null,
@@ -27952,7 +27952,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|學長",
+    "word_id": "w13026",
     "lang": "ja",
     "reading": "がくちょう",
     "reading_display": null,
@@ -27960,7 +27960,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|學長",
+    "word_id": "w13026",
     "lang": "ko",
     "reading": "학장",
     "reading_display": null,
@@ -27968,7 +27968,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|學長",
+    "word_id": "w13026",
     "lang": "zh",
     "reading": "xuézhǎng",
     "reading_display": null,
@@ -27976,7 +27976,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|定數",
+    "word_id": "w13151",
     "lang": "ja",
     "reading": "ていすう",
     "reading_display": null,
@@ -27984,7 +27984,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|定數",
+    "word_id": "w13151",
     "lang": "ko",
     "reading": "정수",
     "reading_display": null,
@@ -27992,7 +27992,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|定數",
+    "word_id": "w13151",
     "lang": "zh",
     "reading": "dìngshù",
     "reading_display": null,
@@ -28000,7 +28000,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|定數",
+    "word_id": "w13151",
     "lang": "vi",
     "reading": "định số",
     "reading_display": null,
@@ -28008,7 +28008,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|定規",
+    "word_id": "w13150",
     "lang": "ja",
     "reading": "じょうぎ",
     "reading_display": null,
@@ -28016,7 +28016,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|定規",
+    "word_id": "w13150",
     "lang": "ko",
     "reading": "정규",
     "reading_display": "（韓国語ではほぼ使わない）",
@@ -28024,7 +28024,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|定規",
+    "word_id": "w13150",
     "lang": "zh",
     "reading": "dìngguī",
     "reading_display": null,
@@ -28032,7 +28032,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|家業",
+    "word_id": "w13015",
     "lang": "ja",
     "reading": "かぎょう",
     "reading_display": null,
@@ -28040,7 +28040,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|家業",
+    "word_id": "w13015",
     "lang": "ko",
     "reading": "가업",
     "reading_display": null,
@@ -28048,7 +28048,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|家業",
+    "word_id": "w13015",
     "lang": "zh",
     "reading": "jiāyè",
     "reading_display": null,
@@ -28056,7 +28056,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|家業",
+    "word_id": "w13015",
     "lang": "vi",
     "reading": "gia nghiệp",
     "reading_display": null,
@@ -28064,7 +28064,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|尋問",
+    "word_id": "w13113",
     "lang": "ja",
     "reading": "じんもん",
     "reading_display": null,
@@ -28072,7 +28072,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|尋問",
+    "word_id": "w13113",
     "lang": "ko",
     "reading": "심문",
     "reading_display": null,
@@ -28080,7 +28080,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|尋問",
+    "word_id": "w13113",
     "lang": "zh",
     "reading": "xúnwèn",
     "reading_display": null,
@@ -28088,7 +28088,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|小結",
+    "word_id": "w13101",
     "lang": "ja",
     "reading": "こむすび",
     "reading_display": null,
@@ -28096,7 +28096,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|小結",
+    "word_id": "w13101",
     "lang": "zh",
     "reading": "xiǎojié",
     "reading_display": null,
@@ -28104,7 +28104,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|居間",
+    "word_id": "w13037",
     "lang": "ja",
     "reading": "いま",
     "reading_display": null,
@@ -28112,7 +28112,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|居間",
+    "word_id": "w13037",
     "lang": "ko",
     "reading": "거간",
     "reading_display": null,
@@ -28120,7 +28120,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|居間",
+    "word_id": "w13037",
     "lang": "zh",
     "reading": "jūjiān",
     "reading_display": null,
@@ -28128,7 +28128,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|年下",
+    "word_id": "w13169",
     "lang": "ja",
     "reading": "としした",
     "reading_display": null,
@@ -28136,7 +28136,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|年下",
+    "word_id": "w13169",
     "lang": "ko",
     "reading": "연하",
     "reading_display": null,
@@ -28144,15 +28144,15 @@
     "is_trap": false
   },
   {
-    "word_id": "x|年下",
+    "word_id": "w13169",
     "lang": "zh",
-    "reading": "niánxià;niánxia",
+    "reading": "niánxià",
     "reading_display": null,
     "meaning_ja": "年末年始（春節の時期）；（俗語）年下の恋人",
     "is_trap": true
   },
   {
-    "word_id": "x|年中",
+    "word_id": "w13171",
     "lang": "ja",
     "reading": "ねんじゅう",
     "reading_display": null,
@@ -28160,7 +28160,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|年中",
+    "word_id": "w13171",
     "lang": "ko",
     "reading": "연중",
     "reading_display": null,
@@ -28168,7 +28168,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|年中",
+    "word_id": "w13171",
     "lang": "zh",
     "reading": "niánzhōng",
     "reading_display": null,
@@ -28176,7 +28176,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|年間",
+    "word_id": "w13170",
     "lang": "ja",
     "reading": "ねんかん",
     "reading_display": null,
@@ -28184,7 +28184,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|年間",
+    "word_id": "w13170",
     "lang": "ko",
     "reading": "연간",
     "reading_display": null,
@@ -28192,7 +28192,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|年間",
+    "word_id": "w13170",
     "lang": "zh",
     "reading": "niánjiān",
     "reading_display": null,
@@ -28200,7 +28200,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|廢材",
+    "word_id": "w13175",
     "lang": "ja",
     "reading": "はいざい",
     "reading_display": null,
@@ -28208,7 +28208,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|廢材",
+    "word_id": "w13175",
     "lang": "zh",
     "reading": "fèicái",
     "reading_display": null,
@@ -28216,7 +28216,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|強打",
+    "word_id": "w13040",
     "lang": "ja",
     "reading": "きょうだ",
     "reading_display": null,
@@ -28224,7 +28224,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|強打",
+    "word_id": "w13040",
     "lang": "ko",
     "reading": "강타",
     "reading_display": null,
@@ -28232,7 +28232,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|強打",
+    "word_id": "w13040",
     "lang": "zh",
     "reading": "qiángdǎ",
     "reading_display": null,
@@ -28240,7 +28240,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|後日",
+    "word_id": "w13055",
     "lang": "ja",
     "reading": "ごじつ",
     "reading_display": null,
@@ -28248,7 +28248,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|後日",
+    "word_id": "w13055",
     "lang": "ko",
     "reading": "후일",
     "reading_display": null,
@@ -28256,7 +28256,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|後日",
+    "word_id": "w13055",
     "lang": "zh",
     "reading": "hòurì",
     "reading_display": null,
@@ -28264,7 +28264,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|復舊",
+    "word_id": "w13187",
     "lang": "ja",
     "reading": "ふっきゅう",
     "reading_display": null,
@@ -28272,7 +28272,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|復舊",
+    "word_id": "w13187",
     "lang": "ko",
     "reading": "복구",
     "reading_display": null,
@@ -28280,7 +28280,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|復舊",
+    "word_id": "w13187",
     "lang": "zh",
     "reading": "fùjiù",
     "reading_display": null,
@@ -28288,7 +28288,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|復權",
+    "word_id": "w13188",
     "lang": "ja",
     "reading": "ふっけん",
     "reading_display": null,
@@ -28296,7 +28296,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|復權",
+    "word_id": "w13188",
     "lang": "ko",
     "reading": "복권",
     "reading_display": null,
@@ -28304,7 +28304,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|復權",
+    "word_id": "w13188",
     "lang": "zh",
     "reading": "fùquán",
     "reading_display": null,
@@ -28312,7 +28312,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|急用",
+    "word_id": "w13035",
     "lang": "ja",
     "reading": "きゅうよう",
     "reading_display": null,
@@ -28320,7 +28320,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|急用",
+    "word_id": "w13035",
     "lang": "ko",
     "reading": "급용",
     "reading_display": null,
@@ -28328,7 +28328,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|急用",
+    "word_id": "w13035",
     "lang": "zh",
     "reading": "jíyòng",
     "reading_display": null,
@@ -28336,7 +28336,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|性向",
+    "word_id": "w13116",
     "lang": "ja",
     "reading": "せいこう",
     "reading_display": null,
@@ -28344,7 +28344,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|性向",
+    "word_id": "w13116",
     "lang": "ko",
     "reading": "성향",
     "reading_display": null,
@@ -28352,7 +28352,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|性向",
+    "word_id": "w13116",
     "lang": "zh",
     "reading": "xìngxiàng",
     "reading_display": null,
@@ -28360,7 +28360,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|性向",
+    "word_id": "w13116",
     "lang": "vi",
     "reading": "tính hướng",
     "reading_display": null,
@@ -28368,7 +28368,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|性行",
+    "word_id": "w13117",
     "lang": "ja",
     "reading": "せいこう",
     "reading_display": null,
@@ -28376,7 +28376,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|性行",
+    "word_id": "w13117",
     "lang": "ko",
     "reading": "성행",
     "reading_display": "（韓国語ではほぼ使わない）",
@@ -28384,7 +28384,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|性行",
+    "word_id": "w13117",
     "lang": "zh",
     "reading": "xìngxíng",
     "reading_display": null,
@@ -28392,7 +28392,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|性行",
+    "word_id": "w13117",
     "lang": "vi",
     "reading": "tính hạnh",
     "reading_display": null,
@@ -28400,7 +28400,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|惡氣",
+    "word_id": "w12997",
     "lang": "ja",
     "reading": "わるぎ",
     "reading_display": null,
@@ -28408,7 +28408,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|惡氣",
+    "word_id": "w12997",
     "lang": "zh",
     "reading": "èqì",
     "reading_display": null,
@@ -28416,7 +28416,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|成行",
+    "word_id": "w13240",
     "lang": "ja",
     "reading": "なりゆき",
     "reading_display": null,
@@ -28424,7 +28424,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|成行",
+    "word_id": "w13240",
     "lang": "zh",
     "reading": "chéngxíng",
     "reading_display": null,
@@ -28432,7 +28432,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|所得",
+    "word_id": "w13096",
     "lang": "ja",
     "reading": "しょとく",
     "reading_display": null,
@@ -28440,7 +28440,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|所得",
+    "word_id": "w13096",
     "lang": "ko",
     "reading": "소득",
     "reading_display": null,
@@ -28448,7 +28448,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|所得",
+    "word_id": "w13096",
     "lang": "zh",
     "reading": "suǒdé",
     "reading_display": null,
@@ -28456,7 +28456,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|所得",
+    "word_id": "w13096",
     "lang": "vi",
     "reading": "sở đắc",
     "reading_display": null,
@@ -28464,7 +28464,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|手柄",
+    "word_id": "w13087",
     "lang": "ja",
     "reading": "てがら",
     "reading_display": null,
@@ -28472,7 +28472,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|手柄",
+    "word_id": "w13087",
     "lang": "zh",
     "reading": "shǒubǐng",
     "reading_display": null,
@@ -28480,7 +28480,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|手洗",
+    "word_id": "w13086",
     "lang": "ja",
     "reading": "てあらい",
     "reading_display": null,
@@ -28488,7 +28488,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|手洗",
+    "word_id": "w13086",
     "lang": "zh",
     "reading": "shǒuxǐ",
     "reading_display": null,
@@ -28496,7 +28496,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|手紙",
+    "word_id": "w13085",
     "lang": "ja",
     "reading": "てがみ",
     "reading_display": "てがみ",
@@ -28504,7 +28504,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|手紙",
+    "word_id": "w13085",
     "lang": "zh",
     "reading": "shǒuzhǐ",
     "reading_display": "手纸 shǒuzhǐ",
@@ -28512,7 +28512,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|打點",
+    "word_id": "w13269",
     "lang": "ja",
     "reading": "だてん",
     "reading_display": null,
@@ -28520,7 +28520,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|打點",
+    "word_id": "w13269",
     "lang": "ko",
     "reading": "타점",
     "reading_display": null,
@@ -28528,7 +28528,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|打點",
+    "word_id": "w13269",
     "lang": "zh",
     "reading": "dǎdian",
     "reading_display": null,
@@ -28536,7 +28536,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|折角",
+    "word_id": "w13238",
     "lang": "ja",
     "reading": "せっかく",
     "reading_display": null,
@@ -28544,7 +28544,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|折角",
+    "word_id": "w13238",
     "lang": "ko",
     "reading": "절각",
     "reading_display": "（韓国語ではほぼ使わない）",
@@ -28552,7 +28552,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|折角",
+    "word_id": "w13238",
     "lang": "zh",
     "reading": "zhéjiǎo",
     "reading_display": null,
@@ -28560,7 +28560,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|拍子",
+    "word_id": "w13228",
     "lang": "ja",
     "reading": "ひょうし",
     "reading_display": null,
@@ -28568,7 +28568,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|拍子",
+    "word_id": "w13228",
     "lang": "ko",
     "reading": "박자",
     "reading_display": null,
@@ -28576,7 +28576,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|拍子",
+    "word_id": "w13228",
     "lang": "zh",
     "reading": "pāizi",
     "reading_display": null,
@@ -28584,7 +28584,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|持家",
+    "word_id": "w13264",
     "lang": "ja",
     "reading": "もちいえ",
     "reading_display": null,
@@ -28592,7 +28592,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|持家",
+    "word_id": "w13264",
     "lang": "zh",
     "reading": "chíjiā",
     "reading_display": null,
@@ -28600,7 +28600,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|接戰",
+    "word_id": "w13122",
     "lang": "ja",
     "reading": "せっせん",
     "reading_display": null,
@@ -28608,7 +28608,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|接戰",
+    "word_id": "w13122",
     "lang": "ko",
     "reading": "접전",
     "reading_display": null,
@@ -28616,7 +28616,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|接戰",
+    "word_id": "w13122",
     "lang": "zh",
     "reading": "jiēzhàn",
     "reading_display": null,
@@ -28624,7 +28624,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|接戰",
+    "word_id": "w13122",
     "lang": "vi",
     "reading": "tiếp chiến",
     "reading_display": null,
@@ -28632,7 +28632,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|控訴",
+    "word_id": "w13059",
     "lang": "ja",
     "reading": "こうそ",
     "reading_display": null,
@@ -28640,7 +28640,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|控訴",
+    "word_id": "w13059",
     "lang": "ko",
     "reading": "공소",
     "reading_display": "（韓国語ではほぼ使わない）",
@@ -28648,7 +28648,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|控訴",
+    "word_id": "w13059",
     "lang": "zh",
     "reading": "kòngsù",
     "reading_display": null,
@@ -28656,7 +28656,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|改選",
+    "word_id": "w13019",
     "lang": "ja",
     "reading": "かいせん",
     "reading_display": null,
@@ -28664,7 +28664,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|改選",
+    "word_id": "w13019",
     "lang": "ko",
     "reading": "개선",
     "reading_display": null,
@@ -28672,7 +28672,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|改選",
+    "word_id": "w13019",
     "lang": "zh",
     "reading": "gǎixuǎn",
     "reading_display": null,
@@ -28680,7 +28680,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|改選",
+    "word_id": "w13019",
     "lang": "vi",
     "reading": "cải tuyển",
     "reading_display": null,
@@ -28688,7 +28688,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|放浪",
+    "word_id": "w13195",
     "lang": "ja",
     "reading": "ほうろう",
     "reading_display": null,
@@ -28696,7 +28696,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|放浪",
+    "word_id": "w13195",
     "lang": "ko",
     "reading": "방랑",
     "reading_display": null,
@@ -28704,7 +28704,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|放浪",
+    "word_id": "w13195",
     "lang": "zh",
     "reading": "fànglàng",
     "reading_display": null,
@@ -28712,7 +28712,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|放浪",
+    "word_id": "w13195",
     "lang": "vi",
     "reading": "phóng lãng",
     "reading_display": null,
@@ -28720,7 +28720,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|教書",
+    "word_id": "w13041",
     "lang": "ja",
     "reading": "きょうしょ",
     "reading_display": null,
@@ -28728,7 +28728,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|教書",
+    "word_id": "w13041",
     "lang": "ko",
     "reading": "교서",
     "reading_display": null,
@@ -28736,7 +28736,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|教書",
+    "word_id": "w13041",
     "lang": "zh",
     "reading": "jiāoshū",
     "reading_display": null,
@@ -28744,7 +28744,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|教頭",
+    "word_id": "w13255",
     "lang": "ja",
     "reading": "きょうとう",
     "reading_display": null,
@@ -28752,7 +28752,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|教頭",
+    "word_id": "w13255",
     "lang": "ko",
     "reading": "교두",
     "reading_display": "（韓国語ではほぼ使わない）",
@@ -28760,7 +28760,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|教頭",
+    "word_id": "w13255",
     "lang": "zh",
     "reading": "jiàotóu",
     "reading_display": null,
@@ -28768,7 +28768,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|教頭",
+    "word_id": "w13255",
     "lang": "vi",
     "reading": "giáo đầu",
     "reading_display": null,
@@ -28776,7 +28776,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|數數",
+    "word_id": "w12996",
     "lang": "ja",
     "reading": "かずかず",
     "reading_display": null,
@@ -28784,7 +28784,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|數數",
+    "word_id": "w12996",
     "lang": "zh",
     "reading": "shǔshù",
     "reading_display": null,
@@ -28792,7 +28792,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|整形外科",
+    "word_id": "w13118",
     "lang": "ja",
     "reading": "せいけいげか",
     "reading_display": null,
@@ -28800,7 +28800,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|整形外科",
+    "word_id": "w13118",
     "lang": "ko",
     "reading": "정형외과",
     "reading_display": null,
@@ -28808,7 +28808,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|整形外科",
+    "word_id": "w13118",
     "lang": "zh",
     "reading": "zhěngxíngwàikē",
     "reading_display": null,
@@ -28816,7 +28816,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|文面",
+    "word_id": "w13192",
     "lang": "ja",
     "reading": "ぶんめん",
     "reading_display": null,
@@ -28824,7 +28824,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|文面",
+    "word_id": "w13192",
     "lang": "ko",
     "reading": "문면",
     "reading_display": null,
@@ -28832,7 +28832,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|文面",
+    "word_id": "w13192",
     "lang": "zh",
     "reading": "wénmiàn",
     "reading_display": null,
@@ -28840,7 +28840,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|新規",
+    "word_id": "w13108",
     "lang": "ja",
     "reading": "しんき",
     "reading_display": null,
@@ -28848,7 +28848,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|新規",
+    "word_id": "w13108",
     "lang": "ko",
     "reading": "신규",
     "reading_display": null,
@@ -28856,7 +28856,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|新規",
+    "word_id": "w13108",
     "lang": "zh",
     "reading": "xīnguī",
     "reading_display": null,
@@ -28864,7 +28864,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|春宮",
+    "word_id": "w13159",
     "lang": "ja",
     "reading": "とうぐう",
     "reading_display": null,
@@ -28872,7 +28872,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|春宮",
+    "word_id": "w13159",
     "lang": "ko",
     "reading": "춘궁",
     "reading_display": null,
@@ -28880,7 +28880,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|春宮",
+    "word_id": "w13159",
     "lang": "zh",
     "reading": "chūngōng",
     "reading_display": null,
@@ -28888,7 +28888,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|暖房",
+    "word_id": "w13142",
     "lang": "ja",
     "reading": "だんぼう",
     "reading_display": null,
@@ -28896,7 +28896,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|暖房",
+    "word_id": "w13142",
     "lang": "ko",
     "reading": "난방",
     "reading_display": null,
@@ -28904,7 +28904,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|暖房",
+    "word_id": "w13142",
     "lang": "zh",
     "reading": "nuǎnfáng",
     "reading_display": null,
@@ -28912,7 +28912,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|有志",
+    "word_id": "w13209",
     "lang": "ja",
     "reading": "ゆうし",
     "reading_display": null,
@@ -28920,7 +28920,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|有志",
+    "word_id": "w13209",
     "lang": "ko",
     "reading": "유지",
     "reading_display": null,
@@ -28928,7 +28928,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|有志",
+    "word_id": "w13209",
     "lang": "zh",
     "reading": "yǒuzhì",
     "reading_display": null,
@@ -28936,7 +28936,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|有數",
+    "word_id": "w13210",
     "lang": "ja",
     "reading": "ゆうすう",
     "reading_display": null,
@@ -28944,7 +28944,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|有數",
+    "word_id": "w13210",
     "lang": "ko",
     "reading": "유수",
     "reading_display": null,
@@ -28952,7 +28952,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|有數",
+    "word_id": "w13210",
     "lang": "zh",
     "reading": "yǒushù",
     "reading_display": null,
@@ -28960,7 +28960,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|有料",
+    "word_id": "w13211",
     "lang": "ja",
     "reading": "ゆうりょう",
     "reading_display": null,
@@ -28968,7 +28968,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|有料",
+    "word_id": "w13211",
     "lang": "ko",
     "reading": "유료",
     "reading_display": null,
@@ -28976,7 +28976,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|有料",
+    "word_id": "w13211",
     "lang": "zh",
     "reading": "yǒuliào",
     "reading_display": null,
@@ -28984,7 +28984,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|服役",
+    "word_id": "w13189",
     "lang": "ja",
     "reading": "ふくえき",
     "reading_display": null,
@@ -28992,7 +28992,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|服役",
+    "word_id": "w13189",
     "lang": "ko",
     "reading": "복역",
     "reading_display": null,
@@ -29000,7 +29000,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|服役",
+    "word_id": "w13189",
     "lang": "zh",
     "reading": "fúyì",
     "reading_display": null,
@@ -29008,7 +29008,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|服役",
+    "word_id": "w13189",
     "lang": "vi",
     "reading": "phục dịch",
     "reading_display": null,
@@ -29016,7 +29016,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|本家",
+    "word_id": "w13199",
     "lang": "ja",
     "reading": "ほんけ",
     "reading_display": null,
@@ -29024,7 +29024,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|本家",
+    "word_id": "w13199",
     "lang": "ko",
     "reading": "본가",
     "reading_display": null,
@@ -29032,7 +29032,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|本家",
+    "word_id": "w13199",
     "lang": "zh",
     "reading": "běnjiā",
     "reading_display": null,
@@ -29040,7 +29040,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|本職",
+    "word_id": "w13200",
     "lang": "ja",
     "reading": "ほんしょく",
     "reading_display": null,
@@ -29048,7 +29048,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|本職",
+    "word_id": "w13200",
     "lang": "ko",
     "reading": "본직",
     "reading_display": null,
@@ -29056,7 +29056,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|本職",
+    "word_id": "w13200",
     "lang": "zh",
     "reading": "běnzhí",
     "reading_display": null,
@@ -29064,7 +29064,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|本職",
+    "word_id": "w13200",
     "lang": "vi",
     "reading": "bản chức",
     "reading_display": null,
@@ -29072,7 +29072,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|杜撰",
+    "word_id": "w13158",
     "lang": "ja",
     "reading": "ずさん",
     "reading_display": null,
@@ -29080,7 +29080,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|杜撰",
+    "word_id": "w13158",
     "lang": "ko",
     "reading": "두찬",
     "reading_display": "（韓国語ではほぼ使わない）",
@@ -29088,7 +29088,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|杜撰",
+    "word_id": "w13158",
     "lang": "zh",
     "reading": "dùzhuàn",
     "reading_display": null,
@@ -29096,7 +29096,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|來日",
+    "word_id": "w13213",
     "lang": "ja",
     "reading": "らいにち",
     "reading_display": null,
@@ -29104,7 +29104,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|來日",
+    "word_id": "w13213",
     "lang": "ko",
     "reading": "내일",
     "reading_display": null,
@@ -29112,7 +29112,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|來日",
+    "word_id": "w13213",
     "lang": "zh",
     "reading": "láirì",
     "reading_display": null,
@@ -29120,7 +29120,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|林檎",
+    "word_id": "w13218",
     "lang": "ja",
     "reading": "りんご",
     "reading_display": null,
@@ -29128,7 +29128,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|林檎",
+    "word_id": "w13218",
     "lang": "ko",
     "reading": "임금",
     "reading_display": "（韓国語ではほぼ使わない）",
@@ -29136,7 +29136,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|林檎",
+    "word_id": "w13218",
     "lang": "zh",
     "reading": "línqín",
     "reading_display": null,
@@ -29144,7 +29144,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|枯木",
+    "word_id": "w13234",
     "lang": "ja",
     "reading": "かれき",
     "reading_display": null,
@@ -29152,7 +29152,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|枯木",
+    "word_id": "w13234",
     "lang": "ko",
     "reading": "고목",
     "reading_display": null,
@@ -29160,7 +29160,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|枯木",
+    "word_id": "w13234",
     "lang": "zh",
     "reading": "kūmù",
     "reading_display": null,
@@ -29168,7 +29168,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|枯木",
+    "word_id": "w13234",
     "lang": "vi",
     "reading": "khô mộc",
     "reading_display": null,
@@ -29176,7 +29176,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|架空",
+    "word_id": "w13016",
     "lang": "ja",
     "reading": "かくう",
     "reading_display": null,
@@ -29184,7 +29184,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|架空",
+    "word_id": "w13016",
     "lang": "ko",
     "reading": "가공",
     "reading_display": null,
@@ -29192,7 +29192,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|架空",
+    "word_id": "w13016",
     "lang": "zh",
     "reading": "jiàkōng",
     "reading_display": null,
@@ -29200,7 +29200,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|柚子",
+    "word_id": "w13246",
     "lang": "ja",
     "reading": "ゆず",
     "reading_display": null,
@@ -29208,7 +29208,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|柚子",
+    "word_id": "w13246",
     "lang": "ko",
     "reading": "유자",
     "reading_display": null,
@@ -29216,7 +29216,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|柚子",
+    "word_id": "w13246",
     "lang": "zh",
     "reading": "yòuzi",
     "reading_display": null,
@@ -29224,7 +29224,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|查證",
+    "word_id": "w13069",
     "lang": "ja",
     "reading": "さしょう",
     "reading_display": null,
@@ -29232,7 +29232,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|查證",
+    "word_id": "w13069",
     "lang": "ko",
     "reading": "사증",
     "reading_display": null,
@@ -29240,7 +29240,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|查證",
+    "word_id": "w13069",
     "lang": "zh",
     "reading": "cházhèng",
     "reading_display": null,
@@ -29248,7 +29248,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|檢視",
+    "word_id": "w13274",
     "lang": "ja",
     "reading": "けんし",
     "reading_display": null,
@@ -29256,7 +29256,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|檢視",
+    "word_id": "w13274",
     "lang": "ko",
     "reading": "검시",
     "reading_display": null,
@@ -29264,7 +29264,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|檢視",
+    "word_id": "w13274",
     "lang": "zh",
     "reading": "jiǎnshì",
     "reading_display": null,
@@ -29272,7 +29272,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|楊柳",
+    "word_id": "w13208",
     "lang": "ja",
     "reading": "やなぎ",
     "reading_display": null,
@@ -29280,7 +29280,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|楊柳",
+    "word_id": "w13208",
     "lang": "ko",
     "reading": "양류",
     "reading_display": "（韓国語ではほぼ使わない）",
@@ -29288,7 +29288,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|楊柳",
+    "word_id": "w13208",
     "lang": "zh",
     "reading": "yángliǔ",
     "reading_display": null,
@@ -29296,7 +29296,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|楊柳",
+    "word_id": "w13208",
     "lang": "vi",
     "reading": "dương liễu",
     "reading_display": null,
@@ -29304,7 +29304,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|機體",
+    "word_id": "w13031",
     "lang": "ja",
     "reading": "きたい",
     "reading_display": null,
@@ -29312,7 +29312,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|機體",
+    "word_id": "w13031",
     "lang": "ko",
     "reading": "기체",
     "reading_display": null,
@@ -29320,7 +29320,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|機體",
+    "word_id": "w13031",
     "lang": "zh",
     "reading": "jītǐ",
     "reading_display": null,
@@ -29328,7 +29328,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|次第",
+    "word_id": "w13078",
     "lang": "ja",
     "reading": "しだい",
     "reading_display": null,
@@ -29336,7 +29336,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|次第",
+    "word_id": "w13078",
     "lang": "ko",
     "reading": "차제",
     "reading_display": "（韓国語ではほぼ使わない）",
@@ -29344,7 +29344,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|次第",
+    "word_id": "w13078",
     "lang": "zh",
     "reading": "cìdì",
     "reading_display": null,
@@ -29352,7 +29352,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|正體",
+    "word_id": "w13119",
     "lang": "ja",
     "reading": "しょうたい",
     "reading_display": null,
@@ -29360,7 +29360,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|正體",
+    "word_id": "w13119",
     "lang": "ko",
     "reading": "정체",
     "reading_display": null,
@@ -29368,7 +29368,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|正體",
+    "word_id": "w13119",
     "lang": "zh",
     "reading": "zhèngtǐ",
     "reading_display": null,
@@ -29376,7 +29376,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|歲暮",
+    "word_id": "w13070",
     "lang": "ja",
     "reading": "せいぼ",
     "reading_display": null,
@@ -29384,7 +29384,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|歲暮",
+    "word_id": "w13070",
     "lang": "ko",
     "reading": "세모",
     "reading_display": null,
@@ -29392,7 +29392,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|歲暮",
+    "word_id": "w13070",
     "lang": "zh",
     "reading": "suìmù",
     "reading_display": null,
@@ -29400,7 +29400,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|死球",
+    "word_id": "w13077",
     "lang": "ja",
     "reading": "しきゅう",
     "reading_display": null,
@@ -29408,7 +29408,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|死球",
+    "word_id": "w13077",
     "lang": "ko",
     "reading": "사구",
     "reading_display": null,
@@ -29416,7 +29416,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|死球",
+    "word_id": "w13077",
     "lang": "zh",
     "reading": "sǐqiú",
     "reading_display": null,
@@ -29424,7 +29424,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|氣筒",
+    "word_id": "w13033",
     "lang": "ja",
     "reading": "きとう",
     "reading_display": null,
@@ -29432,7 +29432,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|氣筒",
+    "word_id": "w13033",
     "lang": "zh",
     "reading": "qìtǒng",
     "reading_display": null,
@@ -29440,7 +29440,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|氣絕",
+    "word_id": "w13032",
     "lang": "ja",
     "reading": "きぜつ",
     "reading_display": null,
@@ -29448,7 +29448,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|氣絕",
+    "word_id": "w13032",
     "lang": "ko",
     "reading": "기절",
     "reading_display": null,
@@ -29456,7 +29456,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|氣絕",
+    "word_id": "w13032",
     "lang": "zh",
     "reading": "qìjué",
     "reading_display": null,
@@ -29464,7 +29464,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|水道",
+    "word_id": "w13115",
     "lang": "ja",
     "reading": "すいどう",
     "reading_display": null,
@@ -29472,7 +29472,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|水道",
+    "word_id": "w13115",
     "lang": "ko",
     "reading": "수도",
     "reading_display": null,
@@ -29480,7 +29480,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|水道",
+    "word_id": "w13115",
     "lang": "zh",
     "reading": "shuǐdào",
     "reading_display": null,
@@ -29488,7 +29488,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|水道",
+    "word_id": "w13115",
     "lang": "vi",
     "reading": "thủy đạo",
     "reading_display": null,
@@ -29496,7 +29496,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|求人",
+    "word_id": "w13036",
     "lang": "ja",
     "reading": "きゅうじん",
     "reading_display": null,
@@ -29504,7 +29504,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|求人",
+    "word_id": "w13036",
     "lang": "ko",
     "reading": "구인",
     "reading_display": null,
@@ -29512,7 +29512,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|求人",
+    "word_id": "w13036",
     "lang": "zh",
     "reading": "qiúrén",
     "reading_display": null,
@@ -29520,7 +29520,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|法外",
+    "word_id": "w13196",
     "lang": "ja",
     "reading": "ほうがい",
     "reading_display": null,
@@ -29528,7 +29528,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|法外",
+    "word_id": "w13196",
     "lang": "ko",
     "reading": "법외",
     "reading_display": null,
@@ -29536,7 +29536,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|法外",
+    "word_id": "w13196",
     "lang": "zh",
     "reading": "fǎwài",
     "reading_display": null,
@@ -29544,7 +29544,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|洒落",
+    "word_id": "w13222",
     "lang": "ja",
     "reading": "しゃれ",
     "reading_display": null,
@@ -29552,7 +29552,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|洒落",
+    "word_id": "w13222",
     "lang": "ko",
     "reading": "쇄락",
     "reading_display": "（韓国語ではほぼ使わない）",
@@ -29560,7 +29560,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|洒落",
+    "word_id": "w13222",
     "lang": "zh",
     "reading": "sǎluò",
     "reading_display": null,
@@ -29568,7 +29568,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|浪花",
+    "word_id": "w13249",
     "lang": "ja",
     "reading": "なにわ",
     "reading_display": null,
@@ -29576,7 +29576,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|浪花",
+    "word_id": "w13249",
     "lang": "ko",
     "reading": "낭화",
     "reading_display": "（韓国語ではほぼ使わない）",
@@ -29584,7 +29584,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|浪花",
+    "word_id": "w13249",
     "lang": "zh",
     "reading": "lànghuā",
     "reading_display": null,
@@ -29592,7 +29592,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|浮氣",
+    "word_id": "w13186",
     "lang": "ja",
     "reading": "うわき",
     "reading_display": null,
@@ -29600,7 +29600,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|浮氣",
+    "word_id": "w13186",
     "lang": "ko",
     "reading": "부기",
     "reading_display": null,
@@ -29608,7 +29608,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|浮氣",
+    "word_id": "w13186",
     "lang": "zh",
     "reading": "fúqì",
     "reading_display": null,
@@ -29616,7 +29616,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|浴衣",
+    "word_id": "w13231",
     "lang": "ja",
     "reading": "ゆかた",
     "reading_display": null,
@@ -29624,7 +29624,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|浴衣",
+    "word_id": "w13231",
     "lang": "ko",
     "reading": "욕의",
     "reading_display": "（韓国語ではほぼ使わない）",
@@ -29632,7 +29632,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|浴衣",
+    "word_id": "w13231",
     "lang": "zh",
     "reading": "yùyī",
     "reading_display": null,
@@ -29640,7 +29640,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|混雜",
+    "word_id": "w13068",
     "lang": "ja",
     "reading": "こんざつ",
     "reading_display": null,
@@ -29648,7 +29648,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|混雜",
+    "word_id": "w13068",
     "lang": "ko",
     "reading": "혼잡",
     "reading_display": null,
@@ -29656,7 +29656,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|混雜",
+    "word_id": "w13068",
     "lang": "zh",
     "reading": "hùnzá",
     "reading_display": null,
@@ -29664,7 +29664,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|混雜",
+    "word_id": "w13068",
     "lang": "vi",
     "reading": "hỗn tạp",
     "reading_display": null,
@@ -29672,7 +29672,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|涉外",
+    "word_id": "w13102",
     "lang": "ja",
     "reading": "しょうがい",
     "reading_display": null,
@@ -29680,7 +29680,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|涉外",
+    "word_id": "w13102",
     "lang": "ko",
     "reading": "섭외",
     "reading_display": null,
@@ -29688,7 +29688,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|涉外",
+    "word_id": "w13102",
     "lang": "zh",
     "reading": "shèwài",
     "reading_display": null,
@@ -29696,7 +29696,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|減益",
+    "word_id": "w13256",
     "lang": "ja",
     "reading": "げんえき",
     "reading_display": null,
@@ -29704,7 +29704,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|減益",
+    "word_id": "w13256",
     "lang": "ko",
     "reading": "감익",
     "reading_display": "（韓国語ではほぼ使わない）",
@@ -29712,7 +29712,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|減益",
+    "word_id": "w13256",
     "lang": "zh",
     "reading": "jiǎnyì",
     "reading_display": null,
@@ -29720,7 +29720,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|滿腹",
+    "word_id": "w13203",
     "lang": "ja",
     "reading": "まんぷく",
     "reading_display": null,
@@ -29728,7 +29728,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|滿腹",
+    "word_id": "w13203",
     "lang": "ko",
     "reading": "만복",
     "reading_display": null,
@@ -29736,7 +29736,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|滿腹",
+    "word_id": "w13203",
     "lang": "zh",
     "reading": "mǎnfù",
     "reading_display": null,
@@ -29744,7 +29744,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|燈臺",
+    "word_id": "w13160",
     "lang": "ja",
     "reading": "とうだい",
     "reading_display": null,
@@ -29752,7 +29752,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|燈臺",
+    "word_id": "w13160",
     "lang": "ko",
     "reading": "등대",
     "reading_display": null,
@@ -29760,7 +29760,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|燈臺",
+    "word_id": "w13160",
     "lang": "zh",
     "reading": "dēngtái",
     "reading_display": null,
@@ -29768,7 +29768,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|無人",
+    "word_id": "w13205",
     "lang": "ja",
     "reading": "むじん",
     "reading_display": null,
@@ -29776,7 +29776,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|無人",
+    "word_id": "w13205",
     "lang": "ko",
     "reading": "무인",
     "reading_display": null,
@@ -29784,7 +29784,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|無人",
+    "word_id": "w13205",
     "lang": "zh",
     "reading": "wúrén",
     "reading_display": null,
@@ -29792,7 +29792,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|無人",
+    "word_id": "w13205",
     "lang": "vi",
     "reading": "vô nhân",
     "reading_display": null,
@@ -29800,7 +29800,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|照會",
+    "word_id": "w13103",
     "lang": "ja",
     "reading": "しょうかい",
     "reading_display": null,
@@ -29808,7 +29808,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|照會",
+    "word_id": "w13103",
     "lang": "ko",
     "reading": "조회",
     "reading_display": null,
@@ -29816,7 +29816,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|照會",
+    "word_id": "w13103",
     "lang": "zh",
     "reading": "zhàohuì",
     "reading_display": null,
@@ -29824,7 +29824,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|熟語",
+    "word_id": "w13089",
     "lang": "ja",
     "reading": "じゅくご",
     "reading_display": null,
@@ -29832,7 +29832,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|熟語",
+    "word_id": "w13089",
     "lang": "ko",
     "reading": "숙어",
     "reading_display": null,
@@ -29840,7 +29840,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|熟語",
+    "word_id": "w13089",
     "lang": "zh",
     "reading": "shúyǔ",
     "reading_display": null,
@@ -29848,7 +29848,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|熱戰",
+    "word_id": "w13259",
     "lang": "ja",
     "reading": "ねっせん",
     "reading_display": null,
@@ -29856,7 +29856,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|熱戰",
+    "word_id": "w13259",
     "lang": "ko",
     "reading": "열전",
     "reading_display": null,
@@ -29864,7 +29864,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|熱戰",
+    "word_id": "w13259",
     "lang": "zh",
     "reading": "rèzhàn",
     "reading_display": null,
@@ -29872,7 +29872,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|牛角",
+    "word_id": "w13054",
     "lang": "ja",
     "reading": "ごかく",
     "reading_display": null,
@@ -29880,7 +29880,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|牛角",
+    "word_id": "w13054",
     "lang": "ko",
     "reading": "우각",
     "reading_display": "（韓国語ではほぼ使わない）",
@@ -29888,7 +29888,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|牛角",
+    "word_id": "w13054",
     "lang": "zh",
     "reading": "niújiǎo",
     "reading_display": null,
@@ -29896,7 +29896,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|特急",
+    "word_id": "w13164",
     "lang": "ja",
     "reading": "とっきゅう",
     "reading_display": null,
@@ -29904,7 +29904,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|特急",
+    "word_id": "w13164",
     "lang": "ko",
     "reading": "특급",
     "reading_display": null,
@@ -29912,7 +29912,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|特急",
+    "word_id": "w13164",
     "lang": "zh",
     "reading": "tèjí",
     "reading_display": null,
@@ -29920,7 +29920,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|特技",
+    "word_id": "w13163",
     "lang": "ja",
     "reading": "とくぎ",
     "reading_display": null,
@@ -29928,7 +29928,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|特技",
+    "word_id": "w13163",
     "lang": "ko",
     "reading": "특기",
     "reading_display": null,
@@ -29936,7 +29936,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|特技",
+    "word_id": "w13163",
     "lang": "zh",
     "reading": "tèjì",
     "reading_display": null,
@@ -29944,7 +29944,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|特許",
+    "word_id": "w13165",
     "lang": "ja",
     "reading": "とっきょ",
     "reading_display": null,
@@ -29952,7 +29952,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|特許",
+    "word_id": "w13165",
     "lang": "ko",
     "reading": "특허",
     "reading_display": null,
@@ -29960,7 +29960,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|特許",
+    "word_id": "w13165",
     "lang": "zh",
     "reading": "tèxǔ",
     "reading_display": null,
@@ -29968,7 +29968,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|狂言",
+    "word_id": "w13042",
     "lang": "ja",
     "reading": "きょうげん",
     "reading_display": null,
@@ -29976,7 +29976,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|狂言",
+    "word_id": "w13042",
     "lang": "ko",
     "reading": "광언",
     "reading_display": null,
@@ -29984,7 +29984,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|狂言",
+    "word_id": "w13042",
     "lang": "zh",
     "reading": "kuángyán",
     "reading_display": null,
@@ -29992,7 +29992,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|生鮮",
+    "word_id": "w13253",
     "lang": "ja",
     "reading": "せいせん",
     "reading_display": null,
@@ -30000,7 +30000,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|生鮮",
+    "word_id": "w13253",
     "lang": "ko",
     "reading": "생선",
     "reading_display": null,
@@ -30008,7 +30008,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|生鮮",
+    "word_id": "w13253",
     "lang": "zh",
     "reading": "shēngxiān",
     "reading_display": null,
@@ -30016,7 +30016,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|田舍",
+    "word_id": "w13156",
     "lang": "ja",
     "reading": "いなか",
     "reading_display": null,
@@ -30024,7 +30024,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|田舍",
+    "word_id": "w13156",
     "lang": "ko",
     "reading": "전사",
     "reading_display": "（韓国語ではほぼ使わない）",
@@ -30032,7 +30032,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|田舍",
+    "word_id": "w13156",
     "lang": "zh",
     "reading": "tiánshè",
     "reading_display": null,
@@ -30040,7 +30040,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|男優",
+    "word_id": "w13143",
     "lang": "ja",
     "reading": "だんゆう",
     "reading_display": null,
@@ -30048,7 +30048,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|男優",
+    "word_id": "w13143",
     "lang": "ko",
     "reading": "남우",
     "reading_display": null,
@@ -30056,7 +30056,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|男優",
+    "word_id": "w13143",
     "lang": "zh",
     "reading": "nányōu",
     "reading_display": null,
@@ -30064,7 +30064,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|畫像",
+    "word_id": "w13017",
     "lang": "ja",
     "reading": "がぞう",
     "reading_display": null,
@@ -30072,7 +30072,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|畫像",
+    "word_id": "w13017",
     "lang": "ko",
     "reading": "화상",
     "reading_display": null,
@@ -30080,7 +30080,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|畫像",
+    "word_id": "w13017",
     "lang": "zh",
     "reading": "huàxiàng",
     "reading_display": null,
@@ -30088,7 +30088,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|留守",
+    "word_id": "w13217",
     "lang": "ja",
     "reading": "るす",
     "reading_display": null,
@@ -30096,7 +30096,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|留守",
+    "word_id": "w13217",
     "lang": "ko",
     "reading": "유수",
     "reading_display": "（韓国語ではほぼ使わない）",
@@ -30104,7 +30104,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|留守",
+    "word_id": "w13217",
     "lang": "zh",
     "reading": "liúshǒu",
     "reading_display": null,
@@ -30112,7 +30112,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|番號",
+    "word_id": "w13177",
     "lang": "ja",
     "reading": "ばんごう",
     "reading_display": null,
@@ -30120,7 +30120,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|番號",
+    "word_id": "w13177",
     "lang": "ko",
     "reading": "번호",
     "reading_display": null,
@@ -30128,7 +30128,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|番號",
+    "word_id": "w13177",
     "lang": "zh",
     "reading": "fānhào",
     "reading_display": null,
@@ -30136,7 +30136,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|番號",
+    "word_id": "w13177",
     "lang": "vi",
     "reading": "phiên hiệu",
     "reading_display": null,
@@ -30144,7 +30144,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|異動",
+    "word_id": "w12998",
     "lang": "ja",
     "reading": "いどう",
     "reading_display": null,
@@ -30152,7 +30152,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|異動",
+    "word_id": "w12998",
     "lang": "ko",
     "reading": "이동",
     "reading_display": null,
@@ -30160,7 +30160,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|異動",
+    "word_id": "w12998",
     "lang": "zh",
     "reading": "yìdòng",
     "reading_display": null,
@@ -30168,7 +30168,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|疑似",
+    "word_id": "w13235",
     "lang": "ja",
     "reading": "ぎじ",
     "reading_display": null,
@@ -30176,7 +30176,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|疑似",
+    "word_id": "w13235",
     "lang": "zh",
     "reading": "yísì",
     "reading_display": null,
@@ -30184,7 +30184,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|疑獄",
+    "word_id": "w13034",
     "lang": "ja",
     "reading": "ぎごく",
     "reading_display": null,
@@ -30192,7 +30192,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|疑獄",
+    "word_id": "w13034",
     "lang": "ko",
     "reading": "의옥",
     "reading_display": "（韓国語ではほぼ使わない）",
@@ -30200,7 +30200,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|疑獄",
+    "word_id": "w13034",
     "lang": "zh",
     "reading": "yíyù",
     "reading_display": null,
@@ -30208,7 +30208,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|痛恨",
+    "word_id": "w13147",
     "lang": "ja",
     "reading": "つうこん",
     "reading_display": null,
@@ -30216,7 +30216,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|痛恨",
+    "word_id": "w13147",
     "lang": "ko",
     "reading": "통한",
     "reading_display": null,
@@ -30224,7 +30224,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|痛恨",
+    "word_id": "w13147",
     "lang": "zh",
     "reading": "tònghèn",
     "reading_display": null,
@@ -30232,7 +30232,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|發案",
+    "word_id": "w13266",
     "lang": "ja",
     "reading": "はつあん",
     "reading_display": null,
@@ -30240,7 +30240,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|發案",
+    "word_id": "w13266",
     "lang": "ko",
     "reading": "발안",
     "reading_display": null,
@@ -30248,7 +30248,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|發案",
+    "word_id": "w13266",
     "lang": "zh",
     "reading": "fāàn",
     "reading_display": null,
@@ -30256,7 +30256,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|發足",
+    "word_id": "w13229",
     "lang": "ja",
     "reading": "ほっそく",
     "reading_display": null,
@@ -30264,7 +30264,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|發足",
+    "word_id": "w13229",
     "lang": "ko",
     "reading": "발족",
     "reading_display": null,
@@ -30272,7 +30272,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|發足",
+    "word_id": "w13229",
     "lang": "zh",
     "reading": "fāzú",
     "reading_display": null,
@@ -30280,7 +30280,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|白粉",
+    "word_id": "w13250",
     "lang": "ja",
     "reading": "おしろい",
     "reading_display": null,
@@ -30288,7 +30288,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|白粉",
+    "word_id": "w13250",
     "lang": "ko",
     "reading": "백분",
     "reading_display": null,
@@ -30296,7 +30296,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|白粉",
+    "word_id": "w13250",
     "lang": "zh",
     "reading": "báifěn",
     "reading_display": null,
@@ -30304,7 +30304,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|皮肉",
+    "word_id": "w13178",
     "lang": "ja",
     "reading": "ひにく",
     "reading_display": null,
@@ -30312,7 +30312,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|皮肉",
+    "word_id": "w13178",
     "lang": "ko",
     "reading": "피육",
     "reading_display": "（韓国語ではほぼ使わない）",
@@ -30320,7 +30320,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|皮肉",
+    "word_id": "w13178",
     "lang": "zh",
     "reading": "píròu",
     "reading_display": null,
@@ -30328,7 +30328,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|相違",
+    "word_id": "w13126",
     "lang": "ja",
     "reading": "そうい",
     "reading_display": null,
@@ -30336,7 +30336,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|相違",
+    "word_id": "w13126",
     "lang": "ko",
     "reading": "상위",
     "reading_display": null,
@@ -30344,7 +30344,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|相違",
+    "word_id": "w13126",
     "lang": "zh",
     "reading": "xiāngwéi",
     "reading_display": null,
@@ -30352,7 +30352,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|眞面目",
+    "word_id": "w13109",
     "lang": "ja",
     "reading": "まじめ",
     "reading_display": null,
@@ -30360,7 +30360,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|眞面目",
+    "word_id": "w13109",
     "lang": "ko",
     "reading": "진면목",
     "reading_display": null,
@@ -30368,7 +30368,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|眞面目",
+    "word_id": "w13109",
     "lang": "zh",
     "reading": "zhēnmiànmù",
     "reading_display": null,
@@ -30376,7 +30376,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|眼白",
+    "word_id": "w13206",
     "lang": "ja",
     "reading": "めじろ",
     "reading_display": null,
@@ -30384,7 +30384,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|眼白",
+    "word_id": "w13206",
     "lang": "zh",
     "reading": "yǎnbái",
     "reading_display": null,
@@ -30392,7 +30392,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|破局",
+    "word_id": "w13172",
     "lang": "ja",
     "reading": "はきょく",
     "reading_display": null,
@@ -30400,7 +30400,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|破局",
+    "word_id": "w13172",
     "lang": "ko",
     "reading": "파국",
     "reading_display": null,
@@ -30408,7 +30408,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|破局",
+    "word_id": "w13172",
     "lang": "zh",
     "reading": "pòjú",
     "reading_display": null,
@@ -30416,7 +30416,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|破綻",
+    "word_id": "w13173",
     "lang": "ja",
     "reading": "はたん",
     "reading_display": null,
@@ -30424,7 +30424,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|破綻",
+    "word_id": "w13173",
     "lang": "ko",
     "reading": "파탄",
     "reading_display": null,
@@ -30432,7 +30432,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|破綻",
+    "word_id": "w13173",
     "lang": "zh",
     "reading": "pòzhàn",
     "reading_display": null,
@@ -30440,7 +30440,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|社員",
+    "word_id": "w13082",
     "lang": "ja",
     "reading": "しゃいん",
     "reading_display": null,
@@ -30448,7 +30448,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|社員",
+    "word_id": "w13082",
     "lang": "ko",
     "reading": "사원",
     "reading_display": null,
@@ -30456,7 +30456,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|社員",
+    "word_id": "w13082",
     "lang": "zh",
     "reading": "shèyuán",
     "reading_display": null,
@@ -30464,7 +30464,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|社員",
+    "word_id": "w13082",
     "lang": "vi",
     "reading": "xã viên",
     "reading_display": null,
@@ -30472,7 +30472,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|社長",
+    "word_id": "w13083",
     "lang": "ja",
     "reading": "しゃちょう",
     "reading_display": null,
@@ -30480,7 +30480,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|社長",
+    "word_id": "w13083",
     "lang": "ko",
     "reading": "사장",
     "reading_display": null,
@@ -30488,7 +30488,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|社長",
+    "word_id": "w13083",
     "lang": "zh",
     "reading": "shèzhǎng",
     "reading_display": null,
@@ -30496,7 +30496,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|神妙",
+    "word_id": "w13110",
     "lang": "ja",
     "reading": "しんみょう",
     "reading_display": null,
@@ -30504,7 +30504,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|神妙",
+    "word_id": "w13110",
     "lang": "ko",
     "reading": "신묘",
     "reading_display": null,
@@ -30512,7 +30512,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|神妙",
+    "word_id": "w13110",
     "lang": "zh",
     "reading": "shénmiào",
     "reading_display": null,
@@ -30520,7 +30520,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|私服",
+    "word_id": "w13263",
     "lang": "ja",
     "reading": "しふく",
     "reading_display": null,
@@ -30528,7 +30528,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|私服",
+    "word_id": "w13263",
     "lang": "ko",
     "reading": "사복",
     "reading_display": null,
@@ -30536,7 +30536,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|私服",
+    "word_id": "w13263",
     "lang": "zh",
     "reading": "sīfú",
     "reading_display": null,
@@ -30544,7 +30544,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|稽古",
+    "word_id": "w13049",
     "lang": "ja",
     "reading": "けいこ",
     "reading_display": null,
@@ -30552,7 +30552,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|稽古",
+    "word_id": "w13049",
     "lang": "ko",
     "reading": "계고",
     "reading_display": "（韓国語ではほぼ使わない）",
@@ -30560,7 +30560,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|稽古",
+    "word_id": "w13049",
     "lang": "zh",
     "reading": "jīgǔ",
     "reading_display": null,
@@ -30568,7 +30568,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|立案",
+    "word_id": "w13216",
     "lang": "ja",
     "reading": "りつあん",
     "reading_display": null,
@@ -30576,7 +30576,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|立案",
+    "word_id": "w13216",
     "lang": "ko",
     "reading": "입안",
     "reading_display": null,
@@ -30584,7 +30584,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|立案",
+    "word_id": "w13216",
     "lang": "zh",
     "reading": "lìàn",
     "reading_display": null,
@@ -30592,7 +30592,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|端的",
+    "word_id": "w13140",
     "lang": "ja",
     "reading": "たんてき",
     "reading_display": null,
@@ -30600,7 +30600,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|端的",
+    "word_id": "w13140",
     "lang": "ko",
     "reading": "단적",
     "reading_display": null,
@@ -30608,7 +30608,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|端的",
+    "word_id": "w13140",
     "lang": "zh",
     "reading": "duāndì",
     "reading_display": null,
@@ -30616,7 +30616,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|競走",
+    "word_id": "w13039",
     "lang": "ja",
     "reading": "きょうそう",
     "reading_display": null,
@@ -30624,7 +30624,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|競走",
+    "word_id": "w13039",
     "lang": "ko",
     "reading": "경주",
     "reading_display": null,
@@ -30632,7 +30632,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|競走",
+    "word_id": "w13039",
     "lang": "zh",
     "reading": "jìngzǒu",
     "reading_display": null,
@@ -30640,7 +30640,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|第一聲",
+    "word_id": "w13254",
     "lang": "ja",
     "reading": "だいいっせい",
     "reading_display": null,
@@ -30648,7 +30648,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|第一聲",
+    "word_id": "w13254",
     "lang": "ko",
     "reading": "제일성",
     "reading_display": null,
@@ -30656,7 +30656,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|第一聲",
+    "word_id": "w13254",
     "lang": "zh",
     "reading": "dìyīshēng",
     "reading_display": null,
@@ -30664,7 +30664,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|筆頭",
+    "word_id": "w13180",
     "lang": "ja",
     "reading": "ひっとう",
     "reading_display": null,
@@ -30672,7 +30672,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|筆頭",
+    "word_id": "w13180",
     "lang": "ko",
     "reading": "필두",
     "reading_display": null,
@@ -30680,7 +30680,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|筆頭",
+    "word_id": "w13180",
     "lang": "zh",
     "reading": "bǐtóu",
     "reading_display": null,
@@ -30688,7 +30688,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|筋道",
+    "word_id": "w13044",
     "lang": "ja",
     "reading": "すじみち",
     "reading_display": null,
@@ -30696,7 +30696,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|筋道",
+    "word_id": "w13044",
     "lang": "zh",
     "reading": "jīndao",
     "reading_display": null,
@@ -30704,7 +30704,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|算數",
+    "word_id": "w13075",
     "lang": "ja",
     "reading": "さんすう",
     "reading_display": null,
@@ -30712,7 +30712,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|算數",
+    "word_id": "w13075",
     "lang": "ko",
     "reading": "산수",
     "reading_display": null,
@@ -30720,7 +30720,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|算數",
+    "word_id": "w13075",
     "lang": "zh",
     "reading": "suànshù",
     "reading_display": null,
@@ -30728,7 +30728,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|算數",
+    "word_id": "w13075",
     "lang": "vi",
     "reading": "toán số",
     "reading_display": null,
@@ -30736,7 +30736,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|管制",
+    "word_id": "w13029",
     "lang": "ja",
     "reading": "かんせい",
     "reading_display": null,
@@ -30744,7 +30744,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|管制",
+    "word_id": "w13029",
     "lang": "ko",
     "reading": "관제",
     "reading_display": null,
@@ -30752,7 +30752,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|管制",
+    "word_id": "w13029",
     "lang": "zh",
     "reading": "guǎnzhì",
     "reading_display": null,
@@ -30760,7 +30760,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|管制",
+    "word_id": "w13029",
     "lang": "vi",
     "reading": "quản chế",
     "reading_display": null,
@@ -30768,7 +30768,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|箪笥",
+    "word_id": "w13141",
     "lang": "ja",
     "reading": "たんす",
     "reading_display": null,
@@ -30776,7 +30776,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|箪笥",
+    "word_id": "w13141",
     "lang": "zh",
     "reading": "dānsì",
     "reading_display": null,
@@ -30784,7 +30784,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|精算",
+    "word_id": "w13120",
     "lang": "ja",
     "reading": "せいさん",
     "reading_display": null,
@@ -30792,7 +30792,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|精算",
+    "word_id": "w13120",
     "lang": "ko",
     "reading": "정산",
     "reading_display": null,
@@ -30800,7 +30800,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|精算",
+    "word_id": "w13120",
     "lang": "zh",
     "reading": "jīngsuàn",
     "reading_display": null,
@@ -30808,7 +30808,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|細細",
+    "word_id": "w13071",
     "lang": "ja",
     "reading": "ほそぼそ",
     "reading_display": null,
@@ -30816,7 +30816,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|細細",
+    "word_id": "w13071",
     "lang": "ko",
     "reading": "세세",
     "reading_display": null,
@@ -30824,7 +30824,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|細細",
+    "word_id": "w13071",
     "lang": "zh",
     "reading": "xìxì",
     "reading_display": null,
@@ -30832,7 +30832,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|結黨",
+    "word_id": "w13050",
     "lang": "ja",
     "reading": "けっとう",
     "reading_display": null,
@@ -30840,7 +30840,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|結黨",
+    "word_id": "w13050",
     "lang": "ko",
     "reading": "결당",
     "reading_display": "（韓国語ではほぼ使わない）",
@@ -30848,7 +30848,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|結黨",
+    "word_id": "w13050",
     "lang": "zh",
     "reading": "jiédǎng",
     "reading_display": null,
@@ -30856,7 +30856,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|緣起",
+    "word_id": "w13009",
     "lang": "ja",
     "reading": "えんぎ",
     "reading_display": null,
@@ -30864,7 +30864,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|緣起",
+    "word_id": "w13009",
     "lang": "ko",
     "reading": "연기",
     "reading_display": null,
@@ -30872,7 +30872,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|緣起",
+    "word_id": "w13009",
     "lang": "zh",
     "reading": "yuánqǐ",
     "reading_display": null,
@@ -30880,7 +30880,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|胴體",
+    "word_id": "w13162",
     "lang": "ja",
     "reading": "どうたい",
     "reading_display": null,
@@ -30888,7 +30888,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|胴體",
+    "word_id": "w13162",
     "lang": "ko",
     "reading": "동체",
     "reading_display": null,
@@ -30896,7 +30896,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|胴體",
+    "word_id": "w13162",
     "lang": "zh",
     "reading": "dòngtǐ",
     "reading_display": null,
@@ -30904,7 +30904,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|膨大",
+    "word_id": "w13243",
     "lang": "ja",
     "reading": "ぼうだい",
     "reading_display": null,
@@ -30912,7 +30912,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|膨大",
+    "word_id": "w13243",
     "lang": "ko",
     "reading": "팽대",
     "reading_display": null,
@@ -30920,7 +30920,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|膨大",
+    "word_id": "w13243",
     "lang": "zh",
     "reading": "péngdà",
     "reading_display": null,
@@ -30928,7 +30928,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|自修",
+    "word_id": "w13079",
     "lang": "ja",
     "reading": "じしゅう",
     "reading_display": null,
@@ -30936,7 +30936,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|自修",
+    "word_id": "w13079",
     "lang": "ko",
     "reading": "자수",
     "reading_display": "（韓国語ではほぼ使わない）",
@@ -30944,7 +30944,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|自修",
+    "word_id": "w13079",
     "lang": "zh",
     "reading": "zìxiū",
     "reading_display": null,
@@ -30952,7 +30952,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|自修",
+    "word_id": "w13079",
     "lang": "vi",
     "reading": "tự tu",
     "reading_display": null,
@@ -30960,7 +30960,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|良人",
+    "word_id": "w13185",
     "lang": "ja",
     "reading": "おっと",
     "reading_display": null,
@@ -30968,7 +30968,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|良人",
+    "word_id": "w13185",
     "lang": "ko",
     "reading": "양인",
     "reading_display": "（韓国語ではほぼ使わない）",
@@ -30976,7 +30976,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|良人",
+    "word_id": "w13185",
     "lang": "zh",
     "reading": "liángrén",
     "reading_display": null,
@@ -30984,7 +30984,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|良人",
+    "word_id": "w13185",
     "lang": "vi",
     "reading": "lương nhân",
     "reading_display": null,
@@ -30992,7 +30992,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|苦情",
+    "word_id": "w13046",
     "lang": "ja",
     "reading": "くじょう",
     "reading_display": null,
@@ -31000,7 +31000,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|苦情",
+    "word_id": "w13046",
     "lang": "ko",
     "reading": "고정",
     "reading_display": "（韓国語ではほぼ使わない）",
@@ -31008,7 +31008,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|苦情",
+    "word_id": "w13046",
     "lang": "zh",
     "reading": "kǔqíng",
     "reading_display": null,
@@ -31016,7 +31016,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|葬送",
+    "word_id": "w13127",
     "lang": "ja",
     "reading": "そうそう",
     "reading_display": null,
@@ -31024,7 +31024,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|葬送",
+    "word_id": "w13127",
     "lang": "ko",
     "reading": "장송",
     "reading_display": null,
@@ -31032,7 +31032,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|葬送",
+    "word_id": "w13127",
     "lang": "zh",
     "reading": "zàngsòng",
     "reading_display": null,
@@ -31040,7 +31040,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|藥罐",
+    "word_id": "w13245",
     "lang": "ja",
     "reading": "やかん",
     "reading_display": null,
@@ -31048,7 +31048,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|藥罐",
+    "word_id": "w13245",
     "lang": "zh",
     "reading": "yàoguàn",
     "reading_display": null,
@@ -31056,7 +31056,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|行事",
+    "word_id": "w13060",
     "lang": "ja",
     "reading": "ぎょうじ",
     "reading_display": null,
@@ -31064,7 +31064,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|行事",
+    "word_id": "w13060",
     "lang": "ko",
     "reading": "행사",
     "reading_display": null,
@@ -31072,7 +31072,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|行事",
+    "word_id": "w13060",
     "lang": "zh",
     "reading": "xíngshì",
     "reading_display": null,
@@ -31080,7 +31080,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|行事",
+    "word_id": "w13060",
     "lang": "vi",
     "reading": "hành sự",
     "reading_display": null,
@@ -31088,7 +31088,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|衣料",
+    "word_id": "w12999",
     "lang": "ja",
     "reading": "いりょう",
     "reading_display": null,
@@ -31096,7 +31096,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|衣料",
+    "word_id": "w12999",
     "lang": "ko",
     "reading": "의료",
     "reading_display": "（韓国語ではほぼ使わない）",
@@ -31104,7 +31104,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|衣料",
+    "word_id": "w12999",
     "lang": "zh",
     "reading": "yīliào",
     "reading_display": null,
@@ -31112,7 +31112,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|表記",
+    "word_id": "w13181",
     "lang": "ja",
     "reading": "ひょうき",
     "reading_display": null,
@@ -31120,7 +31120,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|表記",
+    "word_id": "w13181",
     "lang": "ko",
     "reading": "표기",
     "reading_display": null,
@@ -31128,7 +31128,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|表記",
+    "word_id": "w13181",
     "lang": "zh",
     "reading": "biǎojì",
     "reading_display": null,
@@ -31136,7 +31136,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|裁縫",
+    "word_id": "w13072",
     "lang": "ja",
     "reading": "さいほう",
     "reading_display": null,
@@ -31144,7 +31144,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|裁縫",
+    "word_id": "w13072",
     "lang": "ko",
     "reading": "재봉",
     "reading_display": null,
@@ -31152,15 +31152,15 @@
     "is_trap": false
   },
   {
-    "word_id": "x|裁縫",
+    "word_id": "w13072",
     "lang": "zh",
-    "reading": "cáiféng;cáifeng",
+    "reading": "cáiféng",
     "reading_display": null,
     "meaning_ja": "服を仕立てる（cáiféng）、仕立て屋・洋裁師（cáifeng）",
     "is_trap": true
   },
   {
-    "word_id": "x|複數",
+    "word_id": "w13190",
     "lang": "ja",
     "reading": "ふくすう",
     "reading_display": null,
@@ -31168,7 +31168,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|複數",
+    "word_id": "w13190",
     "lang": "ko",
     "reading": "복수",
     "reading_display": null,
@@ -31176,7 +31176,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|複數",
+    "word_id": "w13190",
     "lang": "zh",
     "reading": "fùshù",
     "reading_display": null,
@@ -31184,7 +31184,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|複數",
+    "word_id": "w13190",
     "lang": "vi",
     "reading": "phức số",
     "reading_display": null,
@@ -31192,7 +31192,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|要員",
+    "word_id": "w13212",
     "lang": "ja",
     "reading": "よういん",
     "reading_display": null,
@@ -31200,7 +31200,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|要員",
+    "word_id": "w13212",
     "lang": "ko",
     "reading": "요원",
     "reading_display": null,
@@ -31208,7 +31208,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|要員",
+    "word_id": "w13212",
     "lang": "zh",
     "reading": "yàoyuán",
     "reading_display": null,
@@ -31216,7 +31216,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|要約",
+    "word_id": "w13248",
     "lang": "ja",
     "reading": "ようやく",
     "reading_display": null,
@@ -31224,7 +31224,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|要約",
+    "word_id": "w13248",
     "lang": "ko",
     "reading": "요약",
     "reading_display": null,
@@ -31232,7 +31232,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|要約",
+    "word_id": "w13248",
     "lang": "zh",
     "reading": "yāoyuē",
     "reading_display": null,
@@ -31240,7 +31240,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|見得",
+    "word_id": "w13224",
     "lang": "ja",
     "reading": "みえ",
     "reading_display": null,
@@ -31248,7 +31248,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|見得",
+    "word_id": "w13224",
     "lang": "zh",
     "reading": "jiàndé",
     "reading_display": null,
@@ -31256,7 +31256,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|見方",
+    "word_id": "w13052",
     "lang": "ja",
     "reading": "みかた",
     "reading_display": null,
@@ -31264,7 +31264,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|見方",
+    "word_id": "w13052",
     "lang": "zh",
     "reading": "jiànfāng",
     "reading_display": null,
@@ -31272,7 +31272,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|訪問者",
+    "word_id": "w13268",
     "lang": "ja",
     "reading": "ほうもんしゃ",
     "reading_display": null,
@@ -31280,7 +31280,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|訪問者",
+    "word_id": "w13268",
     "lang": "ko",
     "reading": "방문자",
     "reading_display": null,
@@ -31288,7 +31288,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|訪問者",
+    "word_id": "w13268",
     "lang": "zh",
     "reading": "fǎngwènzhě",
     "reading_display": null,
@@ -31296,7 +31296,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|許諾",
+    "word_id": "w13038",
     "lang": "ja",
     "reading": "きょだく",
     "reading_display": null,
@@ -31304,7 +31304,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|許諾",
+    "word_id": "w13038",
     "lang": "ko",
     "reading": "허락",
     "reading_display": null,
@@ -31312,7 +31312,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|許諾",
+    "word_id": "w13038",
     "lang": "zh",
     "reading": "xǔnuò",
     "reading_display": null,
@@ -31320,7 +31320,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|該當",
+    "word_id": "w13023",
     "lang": "ja",
     "reading": "がいとう",
     "reading_display": null,
@@ -31328,7 +31328,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|該當",
+    "word_id": "w13023",
     "lang": "ko",
     "reading": "해당",
     "reading_display": null,
@@ -31336,7 +31336,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|該當",
+    "word_id": "w13023",
     "lang": "zh",
     "reading": "gāidāng",
     "reading_display": null,
@@ -31344,7 +31344,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|調理",
+    "word_id": "w13145",
     "lang": "ja",
     "reading": "ちょうり",
     "reading_display": null,
@@ -31352,7 +31352,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|調理",
+    "word_id": "w13145",
     "lang": "ko",
     "reading": "조리",
     "reading_display": null,
@@ -31360,7 +31360,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|調理",
+    "word_id": "w13145",
     "lang": "zh",
     "reading": "tiáolǐ",
     "reading_display": null,
@@ -31368,7 +31368,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|講義",
+    "word_id": "w13061",
     "lang": "ja",
     "reading": "こうぎ",
     "reading_display": null,
@@ -31376,7 +31376,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|講義",
+    "word_id": "w13061",
     "lang": "ko",
     "reading": "강의",
     "reading_display": null,
@@ -31384,7 +31384,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|講義",
+    "word_id": "w13061",
     "lang": "zh",
     "reading": "jiǎngyì",
     "reading_display": null,
@@ -31392,7 +31392,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|講義",
+    "word_id": "w13061",
     "lang": "vi",
     "reading": "giảng nghĩa",
     "reading_display": null,
@@ -31400,7 +31400,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|財團",
+    "word_id": "w13073",
     "lang": "ja",
     "reading": "ざいだん",
     "reading_display": null,
@@ -31408,7 +31408,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|財團",
+    "word_id": "w13073",
     "lang": "ko",
     "reading": "재단",
     "reading_display": null,
@@ -31416,7 +31416,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|財團",
+    "word_id": "w13073",
     "lang": "zh",
     "reading": "cáituán",
     "reading_display": null,
@@ -31424,7 +31424,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|貧乏",
+    "word_id": "w13182",
     "lang": "ja",
     "reading": "びんぼう",
     "reading_display": null,
@@ -31432,7 +31432,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|貧乏",
+    "word_id": "w13182",
     "lang": "ko",
     "reading": "빈핍",
     "reading_display": null,
@@ -31440,7 +31440,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|貧乏",
+    "word_id": "w13182",
     "lang": "zh",
     "reading": "pínfá",
     "reading_display": null,
@@ -31448,7 +31448,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|貼紙",
+    "word_id": "w13144",
     "lang": "ja",
     "reading": "はりがみ",
     "reading_display": null,
@@ -31456,7 +31456,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|貼紙",
+    "word_id": "w13144",
     "lang": "zh",
     "reading": "tiēzhǐ",
     "reading_display": null,
@@ -31464,7 +31464,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|質素",
+    "word_id": "w13081",
     "lang": "ja",
     "reading": "しっそ",
     "reading_display": null,
@@ -31472,7 +31472,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|質素",
+    "word_id": "w13081",
     "lang": "ko",
     "reading": "질소",
     "reading_display": "（韓国語ではほぼ使わない）",
@@ -31480,7 +31480,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|質素",
+    "word_id": "w13081",
     "lang": "zh",
     "reading": "zhìsù",
     "reading_display": null,
@@ -31488,7 +31488,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|軍屬",
+    "word_id": "w13048",
     "lang": "ja",
     "reading": "ぐんぞく",
     "reading_display": null,
@@ -31496,7 +31496,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|軍屬",
+    "word_id": "w13048",
     "lang": "ko",
     "reading": "군속",
     "reading_display": null,
@@ -31504,7 +31504,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|軍屬",
+    "word_id": "w13048",
     "lang": "zh",
     "reading": "jūnshǔ",
     "reading_display": null,
@@ -31512,7 +31512,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|轉轉",
+    "word_id": "w13267",
     "lang": "ja",
     "reading": "てんてん",
     "reading_display": null,
@@ -31520,7 +31520,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|轉轉",
+    "word_id": "w13267",
     "lang": "ko",
     "reading": "전전",
     "reading_display": null,
@@ -31528,7 +31528,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|轉轉",
+    "word_id": "w13267",
     "lang": "zh",
     "reading": "zhuànzhuan",
     "reading_display": null,
@@ -31536,7 +31536,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|辭令",
+    "word_id": "w13080",
     "lang": "ja",
     "reading": "じれい",
     "reading_display": null,
@@ -31544,7 +31544,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|辭令",
+    "word_id": "w13080",
     "lang": "ko",
     "reading": "사령",
     "reading_display": "（韓国語ではほぼ使わない）",
@@ -31552,7 +31552,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|辭令",
+    "word_id": "w13080",
     "lang": "zh",
     "reading": "cílìng",
     "reading_display": null,
@@ -31560,7 +31560,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|送信",
+    "word_id": "w13128",
     "lang": "ja",
     "reading": "そうしん",
     "reading_display": null,
@@ -31568,7 +31568,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|送信",
+    "word_id": "w13128",
     "lang": "ko",
     "reading": "송신",
     "reading_display": null,
@@ -31576,7 +31576,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|送信",
+    "word_id": "w13128",
     "lang": "zh",
     "reading": "sòngxìn",
     "reading_display": null,
@@ -31584,7 +31584,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|通夜",
+    "word_id": "w13149",
     "lang": "ja",
     "reading": "つや",
     "reading_display": null,
@@ -31592,7 +31592,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|通夜",
+    "word_id": "w13149",
     "lang": "ko",
     "reading": "통야",
     "reading_display": "（韓国語ではほぼ使わない）",
@@ -31600,7 +31600,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|通夜",
+    "word_id": "w13149",
     "lang": "zh",
     "reading": "tōngyè",
     "reading_display": null,
@@ -31608,7 +31608,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|通達",
+    "word_id": "w13148",
     "lang": "ja",
     "reading": "つうたつ",
     "reading_display": null,
@@ -31616,7 +31616,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|通達",
+    "word_id": "w13148",
     "lang": "ko",
     "reading": "통달",
     "reading_display": null,
@@ -31624,7 +31624,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|通達",
+    "word_id": "w13148",
     "lang": "zh",
     "reading": "tōngdá",
     "reading_display": null,
@@ -31632,7 +31632,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|通達",
+    "word_id": "w13148",
     "lang": "vi",
     "reading": "thông đạt",
     "reading_display": null,
@@ -31640,7 +31640,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|進學",
+    "word_id": "w13111",
     "lang": "ja",
     "reading": "しんがく",
     "reading_display": null,
@@ -31648,7 +31648,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|進學",
+    "word_id": "w13111",
     "lang": "ko",
     "reading": "진학",
     "reading_display": null,
@@ -31656,7 +31656,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|進學",
+    "word_id": "w13111",
     "lang": "zh",
     "reading": "jìnxué",
     "reading_display": null,
@@ -31664,7 +31664,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|遠慮",
+    "word_id": "w13010",
     "lang": "ja",
     "reading": "えんりょ",
     "reading_display": null,
@@ -31672,7 +31672,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|遠慮",
+    "word_id": "w13010",
     "lang": "ko",
     "reading": "원려",
     "reading_display": "（韓国語ではほぼ使わない）",
@@ -31680,7 +31680,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|遠慮",
+    "word_id": "w13010",
     "lang": "zh",
     "reading": "yuǎnlǜ",
     "reading_display": null,
@@ -31688,7 +31688,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|適中",
+    "word_id": "w13152",
     "lang": "ja",
     "reading": "てきちゅう",
     "reading_display": null,
@@ -31696,7 +31696,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|適中",
+    "word_id": "w13152",
     "lang": "ko",
     "reading": "적중",
     "reading_display": null,
@@ -31704,7 +31704,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|適中",
+    "word_id": "w13152",
     "lang": "zh",
     "reading": "shìzhōng",
     "reading_display": null,
@@ -31712,7 +31712,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|里子",
+    "word_id": "w13214",
     "lang": "ja",
     "reading": "さとご",
     "reading_display": null,
@@ -31720,7 +31720,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|里子",
+    "word_id": "w13214",
     "lang": "zh",
     "reading": "lǐzi",
     "reading_display": null,
@@ -31728,7 +31728,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|野菜",
+    "word_id": "w13207",
     "lang": "ja",
     "reading": "やさい",
     "reading_display": null,
@@ -31736,7 +31736,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|野菜",
+    "word_id": "w13207",
     "lang": "ko",
     "reading": "야채",
     "reading_display": null,
@@ -31744,7 +31744,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|野菜",
+    "word_id": "w13207",
     "lang": "zh",
     "reading": "yěcài",
     "reading_display": null,
@@ -31752,7 +31752,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|金庫",
+    "word_id": "w13045",
     "lang": "ja",
     "reading": "きんこ",
     "reading_display": null,
@@ -31760,7 +31760,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|金庫",
+    "word_id": "w13045",
     "lang": "ko",
     "reading": "금고",
     "reading_display": null,
@@ -31768,7 +31768,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|金庫",
+    "word_id": "w13045",
     "lang": "zh",
     "reading": "jīnkù",
     "reading_display": null,
@@ -31776,7 +31776,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|開示",
+    "word_id": "w13020",
     "lang": "ja",
     "reading": "かいじ",
     "reading_display": null,
@@ -31784,7 +31784,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|開示",
+    "word_id": "w13020",
     "lang": "zh",
     "reading": "kāishì",
     "reading_display": null,
@@ -31792,7 +31792,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|開票",
+    "word_id": "w13021",
     "lang": "ja",
     "reading": "かいひょう",
     "reading_display": null,
@@ -31800,7 +31800,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|開票",
+    "word_id": "w13021",
     "lang": "ko",
     "reading": "개표",
     "reading_display": null,
@@ -31808,7 +31808,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|開票",
+    "word_id": "w13021",
     "lang": "zh",
     "reading": "kāipiào",
     "reading_display": null,
@@ -31816,7 +31816,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|關門",
+    "word_id": "w13030",
     "lang": "ja",
     "reading": "かんもん",
     "reading_display": null,
@@ -31824,7 +31824,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|關門",
+    "word_id": "w13030",
     "lang": "ko",
     "reading": "관문",
     "reading_display": null,
@@ -31832,7 +31832,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|關門",
+    "word_id": "w13030",
     "lang": "zh",
     "reading": "guānmén",
     "reading_display": null,
@@ -31840,7 +31840,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|降伏",
+    "word_id": "w13062",
     "lang": "ja",
     "reading": "こうふく",
     "reading_display": null,
@@ -31848,7 +31848,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|降伏",
+    "word_id": "w13062",
     "lang": "ko",
     "reading": "항복",
     "reading_display": null,
@@ -31856,7 +31856,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|降伏",
+    "word_id": "w13062",
     "lang": "zh",
     "reading": "xiángfú",
     "reading_display": null,
@@ -31864,7 +31864,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|陸路",
+    "word_id": "w13215",
     "lang": "ja",
     "reading": "りくろ",
     "reading_display": null,
@@ -31872,7 +31872,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|陸路",
+    "word_id": "w13215",
     "lang": "ko",
     "reading": "육로",
     "reading_display": null,
@@ -31880,7 +31880,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|陸路",
+    "word_id": "w13215",
     "lang": "zh",
     "reading": "lùlù",
     "reading_display": null,
@@ -31888,7 +31888,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|陸路",
+    "word_id": "w13215",
     "lang": "vi",
     "reading": "lục lộ",
     "reading_display": null,
@@ -31896,7 +31896,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|隱滅",
+    "word_id": "w13007",
     "lang": "ja",
     "reading": "いんめつ",
     "reading_display": null,
@@ -31904,7 +31904,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|隱滅",
+    "word_id": "w13007",
     "lang": "ko",
     "reading": "은멸",
     "reading_display": "（韓国語ではほぼ使わない）",
@@ -31912,7 +31912,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|隱滅",
+    "word_id": "w13007",
     "lang": "zh",
     "reading": "yǐnmiè",
     "reading_display": null,
@@ -31920,7 +31920,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|青果",
+    "word_id": "w13121",
     "lang": "ja",
     "reading": "せいか",
     "reading_display": null,
@@ -31928,7 +31928,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|青果",
+    "word_id": "w13121",
     "lang": "ko",
     "reading": "청과",
     "reading_display": null,
@@ -31936,7 +31936,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|青果",
+    "word_id": "w13121",
     "lang": "zh",
     "reading": "qīngguǒ",
     "reading_display": null,
@@ -31944,7 +31944,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|面面",
+    "word_id": "w13244",
     "lang": "ja",
     "reading": "めんめん",
     "reading_display": null,
@@ -31952,7 +31952,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|面面",
+    "word_id": "w13244",
     "lang": "ko",
     "reading": "면면",
     "reading_display": null,
@@ -31960,7 +31960,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|面面",
+    "word_id": "w13244",
     "lang": "zh",
     "reading": "miànmiàn",
     "reading_display": null,
@@ -31968,7 +31968,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|音讀",
+    "word_id": "w13011",
     "lang": "ja",
     "reading": "おんどく",
     "reading_display": null,
@@ -31976,7 +31976,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|音讀",
+    "word_id": "w13011",
     "lang": "zh",
     "reading": "yīndú",
     "reading_display": null,
@@ -31984,7 +31984,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|頂戴",
+    "word_id": "w13146",
     "lang": "ja",
     "reading": "ちょうだい",
     "reading_display": null,
@@ -31992,7 +31992,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|頂戴",
+    "word_id": "w13146",
     "lang": "ko",
     "reading": "정대",
     "reading_display": "（韓国語ではほぼ使わない）",
@@ -32000,7 +32000,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|頂戴",
+    "word_id": "w13146",
     "lang": "zh",
     "reading": "dǐngdài",
     "reading_display": null,
@@ -32008,7 +32008,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|順當",
+    "word_id": "w13252",
     "lang": "ja",
     "reading": "じゅんとう",
     "reading_display": null,
@@ -32016,7 +32016,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|順當",
+    "word_id": "w13252",
     "lang": "ko",
     "reading": "순당",
     "reading_display": "（韓国語ではほぼ使わない）",
@@ -32024,7 +32024,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|順當",
+    "word_id": "w13252",
     "lang": "zh",
     "reading": "shùndang",
     "reading_display": null,
@@ -32032,7 +32032,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|題名",
+    "word_id": "w13138",
     "lang": "ja",
     "reading": "だいめい",
     "reading_display": null,
@@ -32040,7 +32040,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|題名",
+    "word_id": "w13138",
     "lang": "ko",
     "reading": "제명",
     "reading_display": "（韓国語ではほぼ使わない）",
@@ -32048,7 +32048,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|題名",
+    "word_id": "w13138",
     "lang": "zh",
     "reading": "tímíng",
     "reading_display": null,
@@ -32056,7 +32056,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|風邪",
+    "word_id": "w13230",
     "lang": "ja",
     "reading": "かぜ",
     "reading_display": null,
@@ -32064,7 +32064,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|風邪",
+    "word_id": "w13230",
     "lang": "zh",
     "reading": "fēngxié",
     "reading_display": null,
@@ -32072,7 +32072,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|飛車",
+    "word_id": "w13272",
     "lang": "ja",
     "reading": "ひしゃ",
     "reading_display": null,
@@ -32080,7 +32080,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|飛車",
+    "word_id": "w13272",
     "lang": "zh",
     "reading": "fēichē",
     "reading_display": null,
@@ -32088,7 +32088,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|食肉",
+    "word_id": "w13107",
     "lang": "ja",
     "reading": "しょくにく",
     "reading_display": null,
@@ -32096,7 +32096,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|食肉",
+    "word_id": "w13107",
     "lang": "ko",
     "reading": "식육",
     "reading_display": null,
@@ -32104,7 +32104,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|食肉",
+    "word_id": "w13107",
     "lang": "zh",
     "reading": "shíròu",
     "reading_display": null,
@@ -32112,7 +32112,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|養護",
+    "word_id": "w13247",
     "lang": "ja",
     "reading": "ようご",
     "reading_display": null,
@@ -32120,7 +32120,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|養護",
+    "word_id": "w13247",
     "lang": "ko",
     "reading": "양호",
     "reading_display": null,
@@ -32128,7 +32128,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|養護",
+    "word_id": "w13247",
     "lang": "zh",
     "reading": "yǎnghù",
     "reading_display": null,
@@ -32136,7 +32136,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|馬鹿",
+    "word_id": "w13241",
     "lang": "ja",
     "reading": "ばか",
     "reading_display": null,
@@ -32144,7 +32144,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|馬鹿",
+    "word_id": "w13241",
     "lang": "ko",
     "reading": "마록",
     "reading_display": "（韓国語ではほぼ使わない）",
@@ -32152,7 +32152,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|馬鹿",
+    "word_id": "w13241",
     "lang": "zh",
     "reading": "mǎlù",
     "reading_display": null,
@@ -32160,7 +32160,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|驛傳",
+    "word_id": "w13008",
     "lang": "ja",
     "reading": "えきでん",
     "reading_display": null,
@@ -32168,7 +32168,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|驛傳",
+    "word_id": "w13008",
     "lang": "ko",
     "reading": "역전",
     "reading_display": null,
@@ -32176,7 +32176,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|驛傳",
+    "word_id": "w13008",
     "lang": "zh",
     "reading": "yìchuán",
     "reading_display": null,
@@ -32184,7 +32184,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|驅使",
+    "word_id": "w13047",
     "lang": "ja",
     "reading": "くし",
     "reading_display": null,
@@ -32192,7 +32192,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|驅使",
+    "word_id": "w13047",
     "lang": "ko",
     "reading": "구사",
     "reading_display": null,
@@ -32200,7 +32200,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|驅使",
+    "word_id": "w13047",
     "lang": "zh",
     "reading": "qūshǐ",
     "reading_display": null,
@@ -32208,7 +32208,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|骨子",
+    "word_id": "w13067",
     "lang": "ja",
     "reading": "こっし",
     "reading_display": null,
@@ -32216,7 +32216,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|骨子",
+    "word_id": "w13067",
     "lang": "ko",
     "reading": "골자",
     "reading_display": null,
@@ -32224,7 +32224,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|骨子",
+    "word_id": "w13067",
     "lang": "zh",
     "reading": "gǔzi",
     "reading_display": null,
@@ -32232,7 +32232,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|骨子",
+    "word_id": "w13067",
     "lang": "vi",
     "reading": "cốt tử",
     "reading_display": null,
@@ -32240,7 +32240,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|高校",
+    "word_id": "w13063",
     "lang": "ja",
     "reading": "こうこう",
     "reading_display": null,
@@ -32248,7 +32248,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|高校",
+    "word_id": "w13063",
     "lang": "ko",
     "reading": "고교",
     "reading_display": null,
@@ -32256,7 +32256,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|高校",
+    "word_id": "w13063",
     "lang": "zh",
     "reading": "gāoxiào",
     "reading_display": null,
@@ -32264,7 +32264,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|高等學校",
+    "word_id": "w13064",
     "lang": "ja",
     "reading": "こうとうがっこう",
     "reading_display": null,
@@ -32272,7 +32272,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|高等學校",
+    "word_id": "w13064",
     "lang": "ko",
     "reading": "고등학교",
     "reading_display": null,
@@ -32280,7 +32280,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|高等學校",
+    "word_id": "w13064",
     "lang": "zh",
     "reading": "gāoděngxuéxiào",
     "reading_display": null,
@@ -32288,7 +32288,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|麻藥",
+    "word_id": "w13202",
     "lang": "ja",
     "reading": "まやく",
     "reading_display": null,
@@ -32296,7 +32296,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|麻藥",
+    "word_id": "w13202",
     "lang": "zh",
     "reading": "máyào",
     "reading_display": null,
@@ -32304,7 +32304,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|麻雀",
+    "word_id": "w13201",
     "lang": "ja",
     "reading": "マージャン",
     "reading_display": null,
@@ -32312,7 +32312,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|麻雀",
+    "word_id": "w13201",
     "lang": "ko",
     "reading": "마작",
     "reading_display": null,
@@ -32320,7 +32320,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|麻雀",
+    "word_id": "w13201",
     "lang": "zh",
     "reading": "máquè",
     "reading_display": null,
@@ -32328,7 +32328,7 @@
     "is_trap": true
   },
   {
-    "word_id": "x|黑幕",
+    "word_id": "w13066",
     "lang": "ja",
     "reading": "くろまく",
     "reading_display": null,
@@ -32336,7 +32336,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|黑幕",
+    "word_id": "w13066",
     "lang": "ko",
     "reading": "흑막",
     "reading_display": null,
@@ -32344,7 +32344,7 @@
     "is_trap": false
   },
   {
-    "word_id": "x|黑幕",
+    "word_id": "w13066",
     "lang": "zh",
     "reading": "hēimù",
     "reading_display": null,

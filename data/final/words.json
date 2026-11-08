@@ -489160,7 +489160,7 @@
     "source_level": "vi_band"
   },
   {
-    "word_id": "x|一刻",
+    "word_id": "w13001",
     "trad": "一刻",
     "simp": "一刻",
     "jp": "一刻",
@@ -489195,12 +489195,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|一周",
+    "word_id": "w13242",
     "trad": "一周",
     "simp": "一周",
     "jp": "一周",
@@ -489235,12 +489235,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|一層",
+    "word_id": "w13003",
     "trad": "一層",
     "simp": "一层",
     "jp": "一層",
@@ -489275,12 +489275,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|一年生",
+    "word_id": "w13006",
     "trad": "一年生",
     "simp": "一年生",
     "jp": "一年生",
@@ -489315,12 +489315,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|一應",
+    "word_id": "w13000",
     "trad": "一應",
     "simp": "一应",
     "jp": "一応",
@@ -489355,12 +489355,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": null,
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|一打",
+    "word_id": "w13004",
     "trad": "一打",
     "simp": "一打",
     "jp": "一打",
@@ -489395,12 +489395,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|一時間",
+    "word_id": "w13002",
     "trad": "一時間",
     "simp": "一时间",
     "jp": "一時間",
@@ -489435,12 +489435,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": null,
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|一點",
+    "word_id": "w13005",
     "trad": "一點",
     "simp": "一点",
     "jp": "一点",
@@ -489475,12 +489475,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|上品",
+    "word_id": "w13106",
     "trad": "上品",
     "simp": "上品",
     "jp": "上品",
@@ -489515,12 +489515,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": "composed_attested",
     "source_level": null
   },
   {
-    "word_id": "x|上手",
+    "word_id": "w13104",
     "trad": "上手",
     "simp": "上手",
     "jp": "上手",
@@ -489555,12 +489555,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|上達",
+    "word_id": "w13105",
     "trad": "上達",
     "simp": "上达",
     "jp": "上達",
@@ -489595,12 +489595,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|下地",
+    "word_id": "w13012",
     "trad": "下地",
     "simp": "下地",
     "jp": "下地",
@@ -489635,12 +489635,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|不備",
+    "word_id": "w13184",
     "trad": "不備",
     "simp": "不备",
     "jp": "不備",
@@ -489675,12 +489675,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|不能",
+    "word_id": "w13183",
     "trad": "不能",
     "simp": "不能",
     "jp": "不能",
@@ -489715,12 +489715,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|中中",
+    "word_id": "w13239",
     "trad": "中中",
     "simp": "中中",
     "jp": "中中",
@@ -489755,12 +489755,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": null,
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|主唱",
+    "word_id": "w13237",
     "trad": "主唱",
     "simp": "主唱",
     "jp": "主唱",
@@ -489795,12 +489795,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|主幹",
+    "word_id": "w13084",
     "trad": "主幹",
     "simp": "主干",
     "jp": "主幹",
@@ -489835,12 +489835,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|二號",
+    "word_id": "w13168",
     "trad": "二號",
     "simp": "二号",
     "jp": "二号",
@@ -489875,12 +489875,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|二階",
+    "word_id": "w13167",
     "trad": "二階",
     "simp": "二阶",
     "jp": "二階",
@@ -489915,12 +489915,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": null,
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|亡命",
+    "word_id": "w13197",
     "trad": "亡命",
     "simp": "亡命",
     "jp": "亡命",
@@ -489955,12 +489955,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": "composed_attested",
     "source_level": null
   },
   {
-    "word_id": "x|交差",
+    "word_id": "w13056",
     "trad": "交差",
     "simp": "交差",
     "jp": "交差",
@@ -489995,12 +489995,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|人形",
+    "word_id": "w13112",
     "trad": "人形",
     "simp": "人形",
     "jp": "人形",
@@ -490035,12 +490035,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": "composed_attested",
     "source_level": null
   },
   {
-    "word_id": "x|今朝",
+    "word_id": "w13225",
     "trad": "今朝",
     "simp": "今朝",
     "jp": "今朝",
@@ -490075,12 +490075,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|佛語",
+    "word_id": "w13191",
     "trad": "佛語",
     "simp": "佛语",
     "jp": "仏語",
@@ -490115,12 +490115,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|假稱",
+    "word_id": "w13013",
     "trad": "假稱",
     "simp": "假称",
     "jp": "仮称",
@@ -490155,12 +490155,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|傳票",
+    "word_id": "w13155",
     "trad": "傳票",
     "simp": "传票",
     "jp": "伝票",
@@ -490195,12 +490195,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|住所",
+    "word_id": "w13088",
     "trad": "住所",
     "simp": "住所",
     "jp": "住所",
@@ -490235,12 +490235,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": "composed_attested",
     "source_level": null
   },
   {
-    "word_id": "x|體勢",
+    "word_id": "w13271",
     "trad": "體勢",
     "simp": "体势",
     "jp": "体勢",
@@ -490275,12 +490275,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|體裁",
+    "word_id": "w13132",
     "trad": "體裁",
     "simp": "体裁",
     "jp": "体裁",
@@ -490315,12 +490315,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": "composed_attested",
     "source_level": null
   },
   {
-    "word_id": "x|何等",
+    "word_id": "w13014",
     "trad": "何等",
     "simp": "何等",
     "jp": "何等",
@@ -490355,12 +490355,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|作法",
+    "word_id": "w13074",
     "trad": "作法",
     "simp": "作法",
     "jp": "作法",
@@ -490395,12 +490395,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|俳優",
+    "word_id": "w13174",
     "trad": "俳優",
     "simp": "俳优",
     "jp": "俳優",
@@ -490435,12 +490435,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|側近",
+    "word_id": "w13129",
     "trad": "側近",
     "simp": "侧近",
     "jp": "側近",
@@ -490475,12 +490475,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|備考",
+    "word_id": "w13179",
     "trad": "備考",
     "simp": "备考",
     "jp": "備考",
@@ -490515,12 +490515,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|先輩",
+    "word_id": "w13123",
     "trad": "先輩",
     "simp": "先辈",
     "jp": "先輩",
@@ -490555,12 +490555,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|公館",
+    "word_id": "w13057",
     "trad": "公館",
     "simp": "公馆",
     "jp": "公館",
@@ -490595,12 +490595,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": "composed_attested",
     "source_level": null
   },
   {
-    "word_id": "x|內內",
+    "word_id": "w13227",
     "trad": "內內",
     "simp": "内内",
     "jp": "内内",
@@ -490635,12 +490635,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": null,
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|內線",
+    "word_id": "w13166",
     "trad": "內線",
     "simp": "内线",
     "jp": "内線",
@@ -490675,12 +490675,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": "composed_attested",
     "source_level": null
   },
   {
-    "word_id": "x|圓滑",
+    "word_id": "w13223",
     "trad": "圓滑",
     "simp": "圆滑",
     "jp": "円滑",
@@ -490715,12 +490715,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|冒頭",
+    "word_id": "w13198",
     "trad": "冒頭",
     "simp": "冒头",
     "jp": "冒頭",
@@ -490755,12 +490755,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|處刑",
+    "word_id": "w13095",
     "trad": "處刑",
     "simp": "处刑",
     "jp": "処刑",
@@ -490795,12 +490795,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|出世",
+    "word_id": "w13092",
     "trad": "出世",
     "simp": "出世",
     "jp": "出世",
@@ -490835,12 +490835,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": "composed_attested",
     "source_level": null
   },
   {
-    "word_id": "x|出力",
+    "word_id": "w13094",
     "trad": "出力",
     "simp": "出力",
     "jp": "出力",
@@ -490875,12 +490875,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|出品",
+    "word_id": "w13093",
     "trad": "出品",
     "simp": "出品",
     "jp": "出品",
@@ -490915,12 +490915,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|出缺",
+    "word_id": "w13090",
     "trad": "出缺",
     "simp": "出缺",
     "jp": "出欠",
@@ -490955,12 +490955,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|出產",
+    "word_id": "w13091",
     "trad": "出產",
     "simp": "出产",
     "jp": "出産",
@@ -490995,12 +490995,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|前日",
+    "word_id": "w13124",
     "trad": "前日",
     "simp": "前日",
     "jp": "前日",
@@ -491035,12 +491035,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|前部",
+    "word_id": "w13125",
     "trad": "前部",
     "simp": "前部",
     "jp": "前部",
@@ -491075,12 +491075,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": "composed_attested",
     "source_level": null
   },
   {
-    "word_id": "x|加點",
+    "word_id": "w13251",
     "trad": "加點",
     "simp": "加点",
     "jp": "加点",
@@ -491115,12 +491115,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|勞作",
+    "word_id": "w13219",
     "trad": "勞作",
     "simp": "劳作",
     "jp": "労作",
@@ -491155,12 +491155,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": "composed_attested",
     "source_level": null
   },
   {
-    "word_id": "x|勘定",
+    "word_id": "w13028",
     "trad": "勘定",
     "simp": "勘定",
     "jp": "勘定",
@@ -491195,12 +491195,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|勤務",
+    "word_id": "w13043",
     "trad": "勤務",
     "simp": "勤务",
     "jp": "勤務",
@@ -491235,12 +491235,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": "composed_attested",
     "source_level": null
   },
   {
-    "word_id": "x|單產",
+    "word_id": "w13273",
     "trad": "單產",
     "simp": "单产",
     "jp": "単産",
@@ -491275,12 +491275,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul_variant",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|單語",
+    "word_id": "w13139",
     "trad": "單語",
     "simp": "单语",
     "jp": "単語",
@@ -491315,12 +491315,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|博物",
+    "word_id": "w13176",
     "trad": "博物",
     "simp": "博物",
     "jp": "博物",
@@ -491355,12 +491355,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": "composed_attested",
     "source_level": null
   },
   {
-    "word_id": "x|原價",
+    "word_id": "w13236",
     "trad": "原價",
     "simp": "原价",
     "jp": "原価",
@@ -491395,12 +491395,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|受持",
+    "word_id": "w13232",
     "trad": "受持",
     "simp": "受持",
     "jp": "受持",
@@ -491435,12 +491435,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|各別",
+    "word_id": "w13024",
     "trad": "各別",
     "simp": "各别",
     "jp": "各別",
@@ -491475,12 +491475,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|合意",
+    "word_id": "w13065",
     "trad": "合意",
     "simp": "合意",
     "jp": "合意",
@@ -491515,12 +491515,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": "composed_attested",
     "source_level": null
   },
   {
-    "word_id": "x|同黨",
+    "word_id": "w13161",
     "trad": "同黨",
     "simp": "同党",
     "jp": "同党",
@@ -491555,12 +491555,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|名優",
+    "word_id": "w13258",
     "trad": "名優",
     "simp": "名优",
     "jp": "名優",
@@ -491595,12 +491595,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|吐氣",
+    "word_id": "w13157",
     "trad": "吐氣",
     "simp": "吐气",
     "jp": "吐気",
@@ -491635,12 +491635,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|呼吸器",
+    "word_id": "w13053",
     "trad": "呼吸器",
     "simp": "呼吸器",
     "jp": "呼吸器",
@@ -491675,12 +491675,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|和歌",
+    "word_id": "w13220",
     "trad": "和歌",
     "simp": "和歌",
     "jp": "和歌",
@@ -491715,12 +491715,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": null,
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": "composed_attested",
     "source_level": null
   },
   {
-    "word_id": "x|和風",
+    "word_id": "w13221",
     "trad": "和風",
     "simp": "和风",
     "jp": "和風",
@@ -491755,12 +491755,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|商事",
+    "word_id": "w13100",
     "trad": "商事",
     "simp": "商事",
     "jp": "商事",
@@ -491795,12 +491795,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": "composed_attested",
     "source_level": null
   },
   {
-    "word_id": "x|商會",
+    "word_id": "w13099",
     "trad": "商會",
     "simp": "商会",
     "jp": "商会",
@@ -491835,12 +491835,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": "composed_attested",
     "source_level": null
   },
   {
-    "word_id": "x|回目",
+    "word_id": "w13018",
     "trad": "回目",
     "simp": "回目",
     "jp": "回目",
@@ -491875,12 +491875,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": null,
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|圖版",
+    "word_id": "w13114",
     "trad": "圖版",
     "simp": "图版",
     "jp": "図版",
@@ -491915,12 +491915,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": "composed_attested",
     "source_level": null
   },
   {
-    "word_id": "x|國柄",
+    "word_id": "w13262",
     "trad": "國柄",
     "simp": "国柄",
     "jp": "国柄",
@@ -491955,12 +491955,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|圈內",
+    "word_id": "w13051",
     "trad": "圈內",
     "simp": "圈内",
     "jp": "圏内",
@@ -491995,12 +491995,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|地力",
+    "word_id": "w13257",
     "trad": "地力",
     "simp": "地力",
     "jp": "地力",
@@ -492035,12 +492035,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|增益",
+    "word_id": "w13265",
     "trad": "增益",
     "simp": "增益",
     "jp": "増益",
@@ -492075,12 +492075,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|賣出",
+    "word_id": "w13233",
     "trad": "賣出",
     "simp": "卖出",
     "jp": "売出",
@@ -492115,12 +492115,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|外人",
+    "word_id": "w13022",
     "trad": "外人",
     "simp": "外人",
     "jp": "外人",
@@ -492155,12 +492155,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|多大",
+    "word_id": "w13130",
     "trad": "多大",
     "simp": "多大",
     "jp": "多大",
@@ -492195,12 +492195,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|多用",
+    "word_id": "w13131",
     "trad": "多用",
     "simp": "多用",
     "jp": "多用",
@@ -492235,12 +492235,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|夢中",
+    "word_id": "w13204",
     "trad": "夢中",
     "simp": "梦中",
     "jp": "夢中",
@@ -492275,12 +492275,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|大丈夫",
+    "word_id": "w13134",
     "trad": "大丈夫",
     "simp": "大丈夫",
     "jp": "大丈夫",
@@ -492315,12 +492315,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": "composed_attested",
     "source_level": null
   },
   {
-    "word_id": "x|大作",
+    "word_id": "w13133",
     "trad": "大作",
     "simp": "大作",
     "jp": "大作",
@@ -492355,12 +492355,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|大勢",
+    "word_id": "w13135",
     "trad": "大勢",
     "simp": "大势",
     "jp": "大勢",
@@ -492395,12 +492395,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|大口",
+    "word_id": "w13260",
     "trad": "大口",
     "simp": "大口",
     "jp": "大口",
@@ -492435,12 +492435,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|大名",
+    "word_id": "w13137",
     "trad": "大名",
     "simp": "大名",
     "jp": "大名",
@@ -492475,12 +492475,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": "composed_attested",
     "source_level": null
   },
   {
-    "word_id": "x|大變",
+    "word_id": "w13136",
     "trad": "大變",
     "simp": "大变",
     "jp": "大変",
@@ -492515,12 +492515,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|大敗",
+    "word_id": "w13270",
     "trad": "大敗",
     "simp": "大败",
     "jp": "大敗",
@@ -492555,12 +492555,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": "composed_attested",
     "source_level": null
   },
   {
-    "word_id": "x|大關",
+    "word_id": "w13261",
     "trad": "大關",
     "simp": "大关",
     "jp": "大関",
@@ -492595,12 +492595,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": null,
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|天井",
+    "word_id": "w13153",
     "trad": "天井",
     "simp": "天井",
     "jp": "天井",
@@ -492635,12 +492635,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|天邊",
+    "word_id": "w13154",
     "trad": "天邊",
     "simp": "天边",
     "jp": "天辺",
@@ -492675,12 +492675,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|奉公",
+    "word_id": "w13193",
     "trad": "奉公",
     "simp": "奉公",
     "jp": "奉公",
@@ -492715,12 +492715,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|奉行",
+    "word_id": "w13194",
     "trad": "奉行",
     "simp": "奉行",
     "jp": "奉行",
@@ -492755,12 +492755,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|女優",
+    "word_id": "w13097",
     "trad": "女優",
     "simp": "女优",
     "jp": "女優",
@@ -492795,12 +492795,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|女方",
+    "word_id": "w13226",
     "trad": "女方",
     "simp": "女方",
     "jp": "女方",
@@ -492835,12 +492835,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": null,
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|女流",
+    "word_id": "w13098",
     "trad": "女流",
     "simp": "女流",
     "jp": "女流",
@@ -492875,12 +492875,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": "composed_attested",
     "source_level": null
   },
   {
-    "word_id": "x|好物",
+    "word_id": "w13058",
     "trad": "好物",
     "simp": "好物",
     "jp": "好物",
@@ -492915,12 +492915,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|始末",
+    "word_id": "w13076",
     "trad": "始末",
     "simp": "始末",
     "jp": "始末",
@@ -492955,12 +492955,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|學園",
+    "word_id": "w13025",
     "trad": "學園",
     "simp": "学园",
     "jp": "学園",
@@ -492995,12 +492995,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|學徒",
+    "word_id": "w13027",
     "trad": "學徒",
     "simp": "学徒",
     "jp": "学徒",
@@ -493035,12 +493035,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|學長",
+    "word_id": "w13026",
     "trad": "學長",
     "simp": "学长",
     "jp": "学長",
@@ -493075,12 +493075,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|定數",
+    "word_id": "w13151",
     "trad": "定數",
     "simp": "定数",
     "jp": "定数",
@@ -493115,12 +493115,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": "composed_attested",
     "source_level": null
   },
   {
-    "word_id": "x|定規",
+    "word_id": "w13150",
     "trad": "定規",
     "simp": "定规",
     "jp": "定規",
@@ -493155,12 +493155,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|家業",
+    "word_id": "w13015",
     "trad": "家業",
     "simp": "家业",
     "jp": "家業",
@@ -493195,12 +493195,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": "composed_attested",
     "source_level": null
   },
   {
-    "word_id": "x|尋問",
+    "word_id": "w13113",
     "trad": "尋問",
     "simp": "寻问",
     "jp": "尋問",
@@ -493235,12 +493235,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|小結",
+    "word_id": "w13101",
     "trad": "小結",
     "simp": "小结",
     "jp": "小結",
@@ -493275,12 +493275,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": null,
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|居間",
+    "word_id": "w13037",
     "trad": "居間",
     "simp": "居间",
     "jp": "居間",
@@ -493315,19 +493315,19 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|年下",
+    "word_id": "w13169",
     "trad": "年下",
     "simp": "年下",
     "jp": "年下",
     "ja": "としした",
     "ja_common": true,
     "ko": "연하",
-    "pinyin": "niánxià;niánxia",
+    "pinyin": "niánxià",
     "vi": null,
     "ja_alt": null,
     "ko_alt": null,
@@ -493355,12 +493355,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|年中",
+    "word_id": "w13171",
     "trad": "年中",
     "simp": "年中",
     "jp": "年中",
@@ -493395,12 +493395,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|年間",
+    "word_id": "w13170",
     "trad": "年間",
     "simp": "年间",
     "jp": "年間",
@@ -493435,12 +493435,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|廢材",
+    "word_id": "w13175",
     "trad": "廢材",
     "simp": "废材",
     "jp": "廃材",
@@ -493475,12 +493475,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": null,
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|強打",
+    "word_id": "w13040",
     "trad": "強打",
     "simp": "强打",
     "jp": "強打",
@@ -493515,12 +493515,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|後日",
+    "word_id": "w13055",
     "trad": "後日",
     "simp": "后日",
     "jp": "後日",
@@ -493555,12 +493555,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|復舊",
+    "word_id": "w13187",
     "trad": "復舊",
     "simp": "复旧",
     "jp": "復旧",
@@ -493595,12 +493595,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|復權",
+    "word_id": "w13188",
     "trad": "復權",
     "simp": "复权",
     "jp": "復権",
@@ -493635,12 +493635,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|急用",
+    "word_id": "w13035",
     "trad": "急用",
     "simp": "急用",
     "jp": "急用",
@@ -493675,12 +493675,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|性向",
+    "word_id": "w13116",
     "trad": "性向",
     "simp": "性向",
     "jp": "性向",
@@ -493715,12 +493715,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": "composed_attested",
     "source_level": null
   },
   {
-    "word_id": "x|性行",
+    "word_id": "w13117",
     "trad": "性行",
     "simp": "性行",
     "jp": "性行",
@@ -493755,12 +493755,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": "composed_attested",
     "source_level": null
   },
   {
-    "word_id": "x|惡氣",
+    "word_id": "w12997",
     "trad": "惡氣",
     "simp": "恶气",
     "jp": "悪気",
@@ -493795,12 +493795,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": null,
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|成行",
+    "word_id": "w13240",
     "trad": "成行",
     "simp": "成行",
     "jp": "成行",
@@ -493835,12 +493835,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": null,
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|所得",
+    "word_id": "w13096",
     "trad": "所得",
     "simp": "所得",
     "jp": "所得",
@@ -493875,12 +493875,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": "composed_attested",
     "source_level": null
   },
   {
-    "word_id": "x|手柄",
+    "word_id": "w13087",
     "trad": "手柄",
     "simp": "手柄",
     "jp": "手柄",
@@ -493915,12 +493915,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": null,
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|手洗",
+    "word_id": "w13086",
     "trad": "手洗",
     "simp": "手洗",
     "jp": "手洗",
@@ -493955,12 +493955,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": null,
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|手紙",
+    "word_id": "w13085",
     "trad": "手紙",
     "simp": "手纸",
     "jp": "手紙",
@@ -493995,12 +493995,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": null,
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|打點",
+    "word_id": "w13269",
     "trad": "打點",
     "simp": "打点",
     "jp": "打点",
@@ -494035,12 +494035,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|折角",
+    "word_id": "w13238",
     "trad": "折角",
     "simp": "折角",
     "jp": "折角",
@@ -494075,12 +494075,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|拍子",
+    "word_id": "w13228",
     "trad": "拍子",
     "simp": "拍子",
     "jp": "拍子",
@@ -494115,12 +494115,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|持家",
+    "word_id": "w13264",
     "trad": "持家",
     "simp": "持家",
     "jp": "持家",
@@ -494155,12 +494155,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": null,
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|接戰",
+    "word_id": "w13122",
     "trad": "接戰",
     "simp": "接战",
     "jp": "接戦",
@@ -494195,12 +494195,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": "composed_attested",
     "source_level": null
   },
   {
-    "word_id": "x|控訴",
+    "word_id": "w13059",
     "trad": "控訴",
     "simp": "控诉",
     "jp": "控訴",
@@ -494235,12 +494235,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|改選",
+    "word_id": "w13019",
     "trad": "改選",
     "simp": "改选",
     "jp": "改選",
@@ -494275,12 +494275,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": "composed_attested",
     "source_level": null
   },
   {
-    "word_id": "x|放浪",
+    "word_id": "w13195",
     "trad": "放浪",
     "simp": "放浪",
     "jp": "放浪",
@@ -494315,12 +494315,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": "composed_attested",
     "source_level": null
   },
   {
-    "word_id": "x|教書",
+    "word_id": "w13041",
     "trad": "教書",
     "simp": "教书",
     "jp": "教書",
@@ -494355,12 +494355,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul_variant",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|教頭",
+    "word_id": "w13255",
     "trad": "教頭",
     "simp": "教头",
     "jp": "教頭",
@@ -494395,12 +494395,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul_variant",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": "composed_attested",
     "source_level": null
   },
   {
-    "word_id": "x|數數",
+    "word_id": "w12996",
     "trad": "數數",
     "simp": "数数",
     "jp": "数数",
@@ -494435,12 +494435,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": null,
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|整形外科",
+    "word_id": "w13118",
     "trad": "整形外科",
     "simp": "整形外科",
     "jp": "整形外科",
@@ -494475,12 +494475,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|文面",
+    "word_id": "w13192",
     "trad": "文面",
     "simp": "文面",
     "jp": "文面",
@@ -494515,12 +494515,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|新規",
+    "word_id": "w13108",
     "trad": "新規",
     "simp": "新规",
     "jp": "新規",
@@ -494555,12 +494555,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|春宮",
+    "word_id": "w13159",
     "trad": "春宮",
     "simp": "春宫",
     "jp": "春宮",
@@ -494595,12 +494595,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|暖房",
+    "word_id": "w13142",
     "trad": "暖房",
     "simp": "暖房",
     "jp": "暖房",
@@ -494635,12 +494635,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|有志",
+    "word_id": "w13209",
     "trad": "有志",
     "simp": "有志",
     "jp": "有志",
@@ -494675,12 +494675,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|有數",
+    "word_id": "w13210",
     "trad": "有數",
     "simp": "有数",
     "jp": "有数",
@@ -494715,12 +494715,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|有料",
+    "word_id": "w13211",
     "trad": "有料",
     "simp": "有料",
     "jp": "有料",
@@ -494755,12 +494755,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|服役",
+    "word_id": "w13189",
     "trad": "服役",
     "simp": "服役",
     "jp": "服役",
@@ -494795,12 +494795,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": "composed_attested",
     "source_level": null
   },
   {
-    "word_id": "x|本家",
+    "word_id": "w13199",
     "trad": "本家",
     "simp": "本家",
     "jp": "本家",
@@ -494835,12 +494835,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|本職",
+    "word_id": "w13200",
     "trad": "本職",
     "simp": "本职",
     "jp": "本職",
@@ -494875,12 +494875,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": "composed_attested",
     "source_level": null
   },
   {
-    "word_id": "x|杜撰",
+    "word_id": "w13158",
     "trad": "杜撰",
     "simp": "杜撰",
     "jp": "杜撰",
@@ -494915,12 +494915,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|來日",
+    "word_id": "w13213",
     "trad": "來日",
     "simp": "来日",
     "jp": "来日",
@@ -494955,12 +494955,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|林檎",
+    "word_id": "w13218",
     "trad": "林檎",
     "simp": "林檎",
     "jp": "林檎",
@@ -494995,12 +494995,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|枯木",
+    "word_id": "w13234",
     "trad": "枯木",
     "simp": "枯木",
     "jp": "枯木",
@@ -495035,12 +495035,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": "composed_attested",
     "source_level": null
   },
   {
-    "word_id": "x|架空",
+    "word_id": "w13016",
     "trad": "架空",
     "simp": "架空",
     "jp": "架空",
@@ -495075,12 +495075,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|柚子",
+    "word_id": "w13246",
     "trad": "柚子",
     "simp": "柚子",
     "jp": "柚子",
@@ -495115,12 +495115,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|查證",
+    "word_id": "w13069",
     "trad": "查證",
     "simp": "查证",
     "jp": "査証",
@@ -495155,12 +495155,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul_variant",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|檢視",
+    "word_id": "w13274",
     "trad": "檢視",
     "simp": "检视",
     "jp": "検視",
@@ -495195,12 +495195,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|楊柳",
+    "word_id": "w13208",
     "trad": "楊柳",
     "simp": "杨柳",
     "jp": "楊柳",
@@ -495235,12 +495235,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": "composed_attested",
     "source_level": null
   },
   {
-    "word_id": "x|機體",
+    "word_id": "w13031",
     "trad": "機體",
     "simp": "机体",
     "jp": "機体",
@@ -495275,12 +495275,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|次第",
+    "word_id": "w13078",
     "trad": "次第",
     "simp": "次第",
     "jp": "次第",
@@ -495315,12 +495315,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|正體",
+    "word_id": "w13119",
     "trad": "正體",
     "simp": "正体",
     "jp": "正体",
@@ -495355,12 +495355,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|歲暮",
+    "word_id": "w13070",
     "trad": "歲暮",
     "simp": "岁暮",
     "jp": "歳暮",
@@ -495395,12 +495395,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|死球",
+    "word_id": "w13077",
     "trad": "死球",
     "simp": "死球",
     "jp": "死球",
@@ -495435,12 +495435,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|氣筒",
+    "word_id": "w13033",
     "trad": "氣筒",
     "simp": "气筒",
     "jp": "気筒",
@@ -495475,12 +495475,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": null,
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|氣絕",
+    "word_id": "w13032",
     "trad": "氣絕",
     "simp": "气绝",
     "jp": "気絶",
@@ -495515,12 +495515,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul_variant",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|水道",
+    "word_id": "w13115",
     "trad": "水道",
     "simp": "水道",
     "jp": "水道",
@@ -495555,12 +495555,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": "composed_attested",
     "source_level": null
   },
   {
-    "word_id": "x|求人",
+    "word_id": "w13036",
     "trad": "求人",
     "simp": "求人",
     "jp": "求人",
@@ -495595,12 +495595,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|法外",
+    "word_id": "w13196",
     "trad": "法外",
     "simp": "法外",
     "jp": "法外",
@@ -495635,12 +495635,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|洒落",
+    "word_id": "w13222",
     "trad": "洒落",
     "simp": "洒落",
     "jp": "洒落",
@@ -495675,12 +495675,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul_variant",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|浪花",
+    "word_id": "w13249",
     "trad": "浪花",
     "simp": "浪花",
     "jp": "浪花",
@@ -495715,12 +495715,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|浮氣",
+    "word_id": "w13186",
     "trad": "浮氣",
     "simp": "浮气",
     "jp": "浮気",
@@ -495755,12 +495755,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|浴衣",
+    "word_id": "w13231",
     "trad": "浴衣",
     "simp": "浴衣",
     "jp": "浴衣",
@@ -495795,12 +495795,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|混雜",
+    "word_id": "w13068",
     "trad": "混雜",
     "simp": "混杂",
     "jp": "混雑",
@@ -495835,12 +495835,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": "composed_attested",
     "source_level": null
   },
   {
-    "word_id": "x|涉外",
+    "word_id": "w13102",
     "trad": "涉外",
     "simp": "涉外",
     "jp": "渉外",
@@ -495875,12 +495875,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|減益",
+    "word_id": "w13256",
     "trad": "減益",
     "simp": "减益",
     "jp": "減益",
@@ -495915,12 +495915,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|滿腹",
+    "word_id": "w13203",
     "trad": "滿腹",
     "simp": "满腹",
     "jp": "満腹",
@@ -495955,12 +495955,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|燈臺",
+    "word_id": "w13160",
     "trad": "燈臺",
     "simp": "灯台",
     "jp": "灯台",
@@ -495995,12 +495995,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|無人",
+    "word_id": "w13205",
     "trad": "無人",
     "simp": "无人",
     "jp": "無人",
@@ -496035,12 +496035,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": "composed_attested",
     "source_level": null
   },
   {
-    "word_id": "x|照會",
+    "word_id": "w13103",
     "trad": "照會",
     "simp": "照会",
     "jp": "照会",
@@ -496075,12 +496075,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|熟語",
+    "word_id": "w13089",
     "trad": "熟語",
     "simp": "熟语",
     "jp": "熟語",
@@ -496115,12 +496115,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|熱戰",
+    "word_id": "w13259",
     "trad": "熱戰",
     "simp": "热战",
     "jp": "熱戦",
@@ -496155,12 +496155,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|牛角",
+    "word_id": "w13054",
     "trad": "牛角",
     "simp": "牛角",
     "jp": "牛角",
@@ -496195,12 +496195,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|特急",
+    "word_id": "w13164",
     "trad": "特急",
     "simp": "特急",
     "jp": "特急",
@@ -496235,12 +496235,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|特技",
+    "word_id": "w13163",
     "trad": "特技",
     "simp": "特技",
     "jp": "特技",
@@ -496275,12 +496275,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|特許",
+    "word_id": "w13165",
     "trad": "特許",
     "simp": "特许",
     "jp": "特許",
@@ -496315,12 +496315,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|狂言",
+    "word_id": "w13042",
     "trad": "狂言",
     "simp": "狂言",
     "jp": "狂言",
@@ -496355,12 +496355,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|生鮮",
+    "word_id": "w13253",
     "trad": "生鮮",
     "simp": "生鲜",
     "jp": "生鮮",
@@ -496395,12 +496395,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|田舍",
+    "word_id": "w13156",
     "trad": "田舍",
     "simp": "田舍",
     "jp": "田舎",
@@ -496435,12 +496435,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|男優",
+    "word_id": "w13143",
     "trad": "男優",
     "simp": "男优",
     "jp": "男優",
@@ -496475,12 +496475,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|畫像",
+    "word_id": "w13017",
     "trad": "畫像",
     "simp": "画像",
     "jp": "画像",
@@ -496515,12 +496515,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul_variant",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|留守",
+    "word_id": "w13217",
     "trad": "留守",
     "simp": "留守",
     "jp": "留守",
@@ -496555,12 +496555,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|番號",
+    "word_id": "w13177",
     "trad": "番號",
     "simp": "番号",
     "jp": "番号",
@@ -496595,12 +496595,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": "composed_attested",
     "source_level": null
   },
   {
-    "word_id": "x|異動",
+    "word_id": "w12998",
     "trad": "異動",
     "simp": "异动",
     "jp": "異動",
@@ -496635,12 +496635,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|疑似",
+    "word_id": "w13235",
     "trad": "疑似",
     "simp": "疑似",
     "jp": "疑似",
@@ -496675,12 +496675,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": null,
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|疑獄",
+    "word_id": "w13034",
     "trad": "疑獄",
     "simp": "疑狱",
     "jp": "疑獄",
@@ -496715,12 +496715,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|痛恨",
+    "word_id": "w13147",
     "trad": "痛恨",
     "simp": "痛恨",
     "jp": "痛恨",
@@ -496755,12 +496755,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|發案",
+    "word_id": "w13266",
     "trad": "發案",
     "simp": "发案",
     "jp": "発案",
@@ -496795,12 +496795,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|發足",
+    "word_id": "w13229",
     "trad": "發足",
     "simp": "发足",
     "jp": "発足",
@@ -496835,12 +496835,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|白粉",
+    "word_id": "w13250",
     "trad": "白粉",
     "simp": "白粉",
     "jp": "白粉",
@@ -496875,12 +496875,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|皮肉",
+    "word_id": "w13178",
     "trad": "皮肉",
     "simp": "皮肉",
     "jp": "皮肉",
@@ -496915,12 +496915,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|相違",
+    "word_id": "w13126",
     "trad": "相違",
     "simp": "相违",
     "jp": "相違",
@@ -496955,12 +496955,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|眞面目",
+    "word_id": "w13109",
     "trad": "眞面目",
     "simp": "真面目",
     "jp": "真面目",
@@ -496995,12 +496995,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|眼白",
+    "word_id": "w13206",
     "trad": "眼白",
     "simp": "眼白",
     "jp": "眼白",
@@ -497035,12 +497035,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": null,
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|破局",
+    "word_id": "w13172",
     "trad": "破局",
     "simp": "破局",
     "jp": "破局",
@@ -497075,12 +497075,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|破綻",
+    "word_id": "w13173",
     "trad": "破綻",
     "simp": "破绽",
     "jp": "破綻",
@@ -497115,12 +497115,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|社員",
+    "word_id": "w13082",
     "trad": "社員",
     "simp": "社员",
     "jp": "社員",
@@ -497155,12 +497155,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": "composed_attested",
     "source_level": null
   },
   {
-    "word_id": "x|社長",
+    "word_id": "w13083",
     "trad": "社長",
     "simp": "社长",
     "jp": "社長",
@@ -497195,12 +497195,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|神妙",
+    "word_id": "w13110",
     "trad": "神妙",
     "simp": "神妙",
     "jp": "神妙",
@@ -497235,12 +497235,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|私服",
+    "word_id": "w13263",
     "trad": "私服",
     "simp": "私服",
     "jp": "私服",
@@ -497275,12 +497275,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|稽古",
+    "word_id": "w13049",
     "trad": "稽古",
     "simp": "稽古",
     "jp": "稽古",
@@ -497315,12 +497315,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|立案",
+    "word_id": "w13216",
     "trad": "立案",
     "simp": "立案",
     "jp": "立案",
@@ -497355,12 +497355,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|端的",
+    "word_id": "w13140",
     "trad": "端的",
     "simp": "端的",
     "jp": "端的",
@@ -497395,12 +497395,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|競走",
+    "word_id": "w13039",
     "trad": "競走",
     "simp": "竞走",
     "jp": "競走",
@@ -497435,12 +497435,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|第一聲",
+    "word_id": "w13254",
     "trad": "第一聲",
     "simp": "第一声",
     "jp": "第一声",
@@ -497475,12 +497475,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|筆頭",
+    "word_id": "w13180",
     "trad": "筆頭",
     "simp": "笔头",
     "jp": "筆頭",
@@ -497515,12 +497515,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|筋道",
+    "word_id": "w13044",
     "trad": "筋道",
     "simp": "筋道",
     "jp": "筋道",
@@ -497555,12 +497555,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": null,
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|算數",
+    "word_id": "w13075",
     "trad": "算數",
     "simp": "算数",
     "jp": "算数",
@@ -497595,12 +497595,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": "composed_attested",
     "source_level": null
   },
   {
-    "word_id": "x|管制",
+    "word_id": "w13029",
     "trad": "管制",
     "simp": "管制",
     "jp": "管制",
@@ -497635,12 +497635,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": "composed_attested",
     "source_level": null
   },
   {
-    "word_id": "x|箪笥",
+    "word_id": "w13141",
     "trad": "箪笥",
     "simp": "箪笥",
     "jp": "箪笥",
@@ -497675,12 +497675,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": null,
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|精算",
+    "word_id": "w13120",
     "trad": "精算",
     "simp": "精算",
     "jp": "精算",
@@ -497715,12 +497715,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|細細",
+    "word_id": "w13071",
     "trad": "細細",
     "simp": "细细",
     "jp": "細細",
@@ -497755,12 +497755,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|結黨",
+    "word_id": "w13050",
     "trad": "結黨",
     "simp": "结党",
     "jp": "結党",
@@ -497795,12 +497795,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|緣起",
+    "word_id": "w13009",
     "trad": "緣起",
     "simp": "缘起",
     "jp": "縁起",
@@ -497835,12 +497835,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|胴體",
+    "word_id": "w13162",
     "trad": "胴體",
     "simp": "胴体",
     "jp": "胴体",
@@ -497875,12 +497875,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|膨大",
+    "word_id": "w13243",
     "trad": "膨大",
     "simp": "膨大",
     "jp": "膨大",
@@ -497915,12 +497915,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|自修",
+    "word_id": "w13079",
     "trad": "自修",
     "simp": "自修",
     "jp": "自修",
@@ -497955,12 +497955,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": "composed_attested",
     "source_level": null
   },
   {
-    "word_id": "x|良人",
+    "word_id": "w13185",
     "trad": "良人",
     "simp": "良人",
     "jp": "良人",
@@ -497995,12 +497995,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": "composed_attested",
     "source_level": null
   },
   {
-    "word_id": "x|苦情",
+    "word_id": "w13046",
     "trad": "苦情",
     "simp": "苦情",
     "jp": "苦情",
@@ -498035,12 +498035,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|葬送",
+    "word_id": "w13127",
     "trad": "葬送",
     "simp": "葬送",
     "jp": "葬送",
@@ -498075,12 +498075,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|藥罐",
+    "word_id": "w13245",
     "trad": "藥罐",
     "simp": "药罐",
     "jp": "薬缶",
@@ -498115,12 +498115,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": null,
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|行事",
+    "word_id": "w13060",
     "trad": "行事",
     "simp": "行事",
     "jp": "行事",
@@ -498155,12 +498155,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": "composed_attested",
     "source_level": null
   },
   {
-    "word_id": "x|衣料",
+    "word_id": "w12999",
     "trad": "衣料",
     "simp": "衣料",
     "jp": "衣料",
@@ -498195,12 +498195,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|表記",
+    "word_id": "w13181",
     "trad": "表記",
     "simp": "表记",
     "jp": "表記",
@@ -498235,19 +498235,19 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|裁縫",
+    "word_id": "w13072",
     "trad": "裁縫",
     "simp": "裁缝",
     "jp": "裁縫",
     "ja": "さいほう",
     "ja_common": true,
     "ko": "재봉",
-    "pinyin": "cáiféng;cáifeng",
+    "pinyin": "cáiféng",
     "vi": null,
     "ja_alt": null,
     "ko_alt": null,
@@ -498275,12 +498275,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|複數",
+    "word_id": "w13190",
     "trad": "複數",
     "simp": "复数",
     "jp": "複数",
@@ -498315,12 +498315,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": "composed_attested",
     "source_level": null
   },
   {
-    "word_id": "x|要員",
+    "word_id": "w13212",
     "trad": "要員",
     "simp": "要员",
     "jp": "要員",
@@ -498355,12 +498355,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|要約",
+    "word_id": "w13248",
     "trad": "要約",
     "simp": "要约",
     "jp": "要約",
@@ -498395,12 +498395,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|見得",
+    "word_id": "w13224",
     "trad": "見得",
     "simp": "见得",
     "jp": "見得",
@@ -498435,12 +498435,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": null,
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|見方",
+    "word_id": "w13052",
     "trad": "見方",
     "simp": "见方",
     "jp": "見方",
@@ -498475,12 +498475,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": null,
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|訪問者",
+    "word_id": "w13268",
     "trad": "訪問者",
     "simp": "访问者",
     "jp": "訪問者",
@@ -498515,12 +498515,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|許諾",
+    "word_id": "w13038",
     "trad": "許諾",
     "simp": "许诺",
     "jp": "許諾",
@@ -498555,12 +498555,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|該當",
+    "word_id": "w13023",
     "trad": "該當",
     "simp": "该当",
     "jp": "該当",
@@ -498595,12 +498595,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|調理",
+    "word_id": "w13145",
     "trad": "調理",
     "simp": "调理",
     "jp": "調理",
@@ -498635,12 +498635,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|講義",
+    "word_id": "w13061",
     "trad": "講義",
     "simp": "讲义",
     "jp": "講義",
@@ -498675,12 +498675,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": "composed_attested",
     "source_level": null
   },
   {
-    "word_id": "x|財團",
+    "word_id": "w13073",
     "trad": "財團",
     "simp": "财团",
     "jp": "財団",
@@ -498715,12 +498715,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|貧乏",
+    "word_id": "w13182",
     "trad": "貧乏",
     "simp": "贫乏",
     "jp": "貧乏",
@@ -498755,12 +498755,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|貼紙",
+    "word_id": "w13144",
     "trad": "貼紙",
     "simp": "贴纸",
     "jp": "貼紙",
@@ -498795,12 +498795,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": null,
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|質素",
+    "word_id": "w13081",
     "trad": "質素",
     "simp": "质素",
     "jp": "質素",
@@ -498835,12 +498835,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|軍屬",
+    "word_id": "w13048",
     "trad": "軍屬",
     "simp": "军属",
     "jp": "軍属",
@@ -498875,12 +498875,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|轉轉",
+    "word_id": "w13267",
     "trad": "轉轉",
     "simp": "转转",
     "jp": "転転",
@@ -498915,12 +498915,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|辭令",
+    "word_id": "w13080",
     "trad": "辭令",
     "simp": "辞令",
     "jp": "辞令",
@@ -498955,12 +498955,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|送信",
+    "word_id": "w13128",
     "trad": "送信",
     "simp": "送信",
     "jp": "送信",
@@ -498995,12 +498995,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|通夜",
+    "word_id": "w13149",
     "trad": "通夜",
     "simp": "通夜",
     "jp": "通夜",
@@ -499035,12 +499035,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|通達",
+    "word_id": "w13148",
     "trad": "通達",
     "simp": "通达",
     "jp": "通達",
@@ -499075,12 +499075,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": "composed_attested",
     "source_level": null
   },
   {
-    "word_id": "x|進學",
+    "word_id": "w13111",
     "trad": "進學",
     "simp": "进学",
     "jp": "進学",
@@ -499115,12 +499115,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|遠慮",
+    "word_id": "w13010",
     "trad": "遠慮",
     "simp": "远虑",
     "jp": "遠慮",
@@ -499155,12 +499155,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|適中",
+    "word_id": "w13152",
     "trad": "適中",
     "simp": "适中",
     "jp": "適中",
@@ -499195,12 +499195,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|里子",
+    "word_id": "w13214",
     "trad": "里子",
     "simp": "里子",
     "jp": "里子",
@@ -499235,12 +499235,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": null,
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|野菜",
+    "word_id": "w13207",
     "trad": "野菜",
     "simp": "野菜",
     "jp": "野菜",
@@ -499275,12 +499275,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|金庫",
+    "word_id": "w13045",
     "trad": "金庫",
     "simp": "金库",
     "jp": "金庫",
@@ -499315,12 +499315,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|開示",
+    "word_id": "w13020",
     "trad": "開示",
     "simp": "开示",
     "jp": "開示",
@@ -499355,12 +499355,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": null,
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|開票",
+    "word_id": "w13021",
     "trad": "開票",
     "simp": "开票",
     "jp": "開票",
@@ -499395,12 +499395,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|關門",
+    "word_id": "w13030",
     "trad": "關門",
     "simp": "关门",
     "jp": "関門",
@@ -499435,12 +499435,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|降伏",
+    "word_id": "w13062",
     "trad": "降伏",
     "simp": "降伏",
     "jp": "降伏",
@@ -499475,12 +499475,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|陸路",
+    "word_id": "w13215",
     "trad": "陸路",
     "simp": "陆路",
     "jp": "陸路",
@@ -499515,12 +499515,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": "composed_attested",
     "source_level": null
   },
   {
-    "word_id": "x|隱滅",
+    "word_id": "w13007",
     "trad": "隱滅",
     "simp": "隐灭",
     "jp": "隠滅",
@@ -499555,12 +499555,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|青果",
+    "word_id": "w13121",
     "trad": "青果",
     "simp": "青果",
     "jp": "青果",
@@ -499595,12 +499595,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul_variant",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|面面",
+    "word_id": "w13244",
     "trad": "面面",
     "simp": "面面",
     "jp": "面面",
@@ -499635,12 +499635,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|音讀",
+    "word_id": "w13011",
     "trad": "音讀",
     "simp": "音读",
     "jp": "音読",
@@ -499675,12 +499675,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": null,
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|頂戴",
+    "word_id": "w13146",
     "trad": "頂戴",
     "simp": "顶戴",
     "jp": "頂戴",
@@ -499715,12 +499715,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|順當",
+    "word_id": "w13252",
     "trad": "順當",
     "simp": "顺当",
     "jp": "順当",
@@ -499755,12 +499755,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|題名",
+    "word_id": "w13138",
     "trad": "題名",
     "simp": "题名",
     "jp": "題名",
@@ -499795,12 +499795,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|風邪",
+    "word_id": "w13230",
     "trad": "風邪",
     "simp": "风邪",
     "jp": "風邪",
@@ -499835,12 +499835,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": null,
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|飛車",
+    "word_id": "w13272",
     "trad": "飛車",
     "simp": "飞车",
     "jp": "飛車",
@@ -499875,12 +499875,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": null,
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|食肉",
+    "word_id": "w13107",
     "trad": "食肉",
     "simp": "食肉",
     "jp": "食肉",
@@ -499915,12 +499915,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|養護",
+    "word_id": "w13247",
     "trad": "養護",
     "simp": "养护",
     "jp": "養護",
@@ -499955,12 +499955,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|馬鹿",
+    "word_id": "w13241",
     "trad": "馬鹿",
     "simp": "马鹿",
     "jp": "馬鹿",
@@ -499995,12 +499995,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|驛傳",
+    "word_id": "w13008",
     "trad": "驛傳",
     "simp": "驿传",
     "jp": "駅伝",
@@ -500035,12 +500035,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|驅使",
+    "word_id": "w13047",
     "trad": "驅使",
     "simp": "驱使",
     "jp": "駆使",
@@ -500075,12 +500075,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|骨子",
+    "word_id": "w13067",
     "trad": "骨子",
     "simp": "骨子",
     "jp": "骨子",
@@ -500115,12 +500115,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": "composed_attested",
     "source_level": null
   },
   {
-    "word_id": "x|高校",
+    "word_id": "w13063",
     "trad": "高校",
     "simp": "高校",
     "jp": "高校",
@@ -500155,12 +500155,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|高等學校",
+    "word_id": "w13064",
     "trad": "高等學校",
     "simp": "高等学校",
     "jp": "高等学校",
@@ -500195,12 +500195,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|麻藥",
+    "word_id": "w13202",
     "trad": "麻藥",
     "simp": "麻药",
     "jp": "麻薬",
@@ -500235,12 +500235,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": null,
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|麻雀",
+    "word_id": "w13201",
     "trad": "麻雀",
     "simp": "麻雀",
     "jp": "麻雀",
@@ -500275,12 +500275,12 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   },
   {
-    "word_id": "x|黑幕",
+    "word_id": "w13066",
     "trad": "黑幕",
     "simp": "黑幕",
     "jp": "黒幕",
@@ -500315,7 +500315,7 @@
     "vi_use": null,
     "source_ja": "jmdict",
     "source_ko": "libhangul",
-    "source_pinyin": "cedict",
+    "source_pinyin": "cc-cedict",
     "source_vi": null,
     "source_level": null
   }

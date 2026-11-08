@@ -13,10 +13,10 @@ from typing import Any, Iterable
 import pandas as pd
 
 try:
-    from pipeline.common import require_nfc, split_multi, write_csv, write_json
+    from pipeline.common import assign_ids, require_nfc, split_multi, write_csv, write_json
     from pipeline.extract_prototype_config import extract_ff, extract_word_notes
 except ModuleNotFoundError:  # direct execution as pipeline/merge_stage4.py
-    from common import require_nfc, split_multi, write_csv, write_json
+    from common import assign_ids, require_nfc, split_multi, write_csv, write_json
     from extract_prototype_config import extract_ff, extract_word_notes
 
 
@@ -270,8 +270,8 @@ def usage_for(item: dict[str, Any] | None) -> dict[str, str]:
 
 
 def apply_task3_review(
-    batch: str, output: dict[str, Any], review: pd.DataFrame,
-) -> list[dict[str, Any]]:
+    batch: str, output: dict[str, Any], review: pd.DataFrame, *, include_positions: bool = False,
+) -> list[Any]:
     passages = copy.deepcopy(output.get("passages"))
     if not isinstance(passages, list):
         raise ValueError(f"task-3 {batch} has no passages list")
@@ -304,7 +304,15 @@ def apply_task3_review(
     for passage_number, indices in deletes.items():
         for index in sorted(indices, reverse=True):
             del passages[passage_number - 1]["tokens"][index]
-    return [passage for number, passage in enumerate(passages, 1) if number not in drops]
+    kept = [(number, passage) for number, passage in enumerate(passages, 1) if number not in drops]
+    return kept if include_positions else [passage for _, passage in kept]
+
+
+def validate_task3_review_batches(review: pd.DataFrame, batches: Iterable[str]) -> None:
+    accepted = set(batches)
+    unknown = sorted(set(review["batch"]) - accepted)
+    if unknown:
+        raise ValueError(f"task-3 review refers to unknown accepted batches: {unknown}")
 
 
 def validate_passage(passage: dict[str, Any], lang: str, words: pd.DataFrame) -> None:
@@ -389,7 +397,7 @@ def make_ff_only_word(
         "verified": False, "ja_use": usage["ja"], "ko_use": usage["ko"],
         "vi_use": usage["vi"], "source_ja": "jmdict" if source["ja"] else "",
         "source_ko": source.get("source_ko", "") if source["ko"] else "",
-        "source_pinyin": "cedict" if source["pinyin"] else "",
+        "source_pinyin": "cc-cedict" if source["pinyin"] else "",
         "source_vi": source.get("source_vi", "") if source["vi"] else "",
         "source_level": "",
     }
@@ -490,6 +498,8 @@ def main() -> None:
     for form, row in ff_candidates_by_form.iterrows():
         source = row.copy()
         source["ja_alt"] = source["ko_alt"] = source["vi_alt"] = ""
+        pinyin_values = split_multi(source["pinyin"])
+        source["pinyin"] = pinyin_values[0] if pinyin_values else ""
         if form in cleared_vi:
             source["vi"] = source["gloss_vi"] = source["source_vi"] = ""
         ff_sources[form] = source
@@ -575,20 +585,26 @@ def main() -> None:
 
     words["false_friend"] = ""
     added_words: list[dict[str, Any]] = []
+    ff_only_keys = set(active) - set(word_map.index)
+    ff_only_forms = [form for form in ff_candidates["form"] if form in ff_only_keys]
+    if len(ff_only_forms) != len(ff_only_keys):
+        raise ValueError("active ff_only entries do not resolve once in ff_candidates row order")
+    ff_only_id_keys = [f"x|{ff_sources[form]['trad']}" for form in ff_only_forms]
+    ff_only_ids = assign_ids("word", ff_only_id_keys, "w", 5)
     for key, (false_friend, rows, usage) in active.items():
         if key in word_map.index:
             word_id = key
             words.loc[words["word_id"] == word_id, "false_friend"] = false_friend
         else:
             source = ff_sources[key]
-            word_id = f"x|{source['trad']}"
+            word_id = ff_only_ids[f"x|{source['trad']}"]
             meanings = {row["lang"]: row["meaning_ja"] for row in rows}
             added_words.append(make_ff_only_word(source, word_id, false_friend, meanings, usage))
         for row in rows:
             ff_rows.append({"word_id": word_id, **row})
 
     if len({row["word_id"] for row in added_words}) != len(added_words):
-        raise ValueError("ff_only x|trad identifiers are not unique")
+        raise ValueError("ff_only word identifiers are not unique")
     if added_words:
         words = pd.concat([words, pd.DataFrame(added_words)], ignore_index=True)
     words = words[WORD_COLUMNS]
@@ -610,6 +626,7 @@ def main() -> None:
             )
 
     passage_review = load_csv(CONFIG / "task3_review.csv")
+    validate_task3_review_batches(passage_review, output_batches[3])
     passage_rows: list[dict[str, Any]] = []
     cell_counts = Counter()
     for batch in sorted(output_batches[3]):
@@ -617,11 +634,13 @@ def main() -> None:
             raise ValueError(f"task-3 {batch} must contain one cell object")
         source = input_batches[3][batch][0]
         lang, level = source["language"], int(source["level"])
-        kept = apply_task3_review(batch, output_batches[3][batch][0], passage_review)
-        for number, passage in enumerate(kept, 1):
+        kept = apply_task3_review(
+            batch, output_batches[3][batch][0], passage_review, include_positions=True
+        )
+        for source_number, passage in kept:
             validate_passage(passage, lang, words)
             passage_rows.append({
-                "passage_id": f"{lang}|{level}|{number}", "lang": lang, "level": level,
+                "id_key": f"{lang}|{level}|{source_number}", "lang": lang, "level": level,
                 "translation_ja": passage["translation_ja"], "tokens": passage["tokens"],
             })
             cell_counts[(lang, level)] += 1
@@ -629,7 +648,10 @@ def main() -> None:
         raise ValueError("passage language/level cells are incomplete")
     if any(count < 5 for count in cell_counts.values()):
         raise ValueError("a passage language/level cell has fewer than five passages")
-    passages = pd.DataFrame(passage_rows, columns=PASSAGE_COLUMNS)
+    passage_ids = assign_ids("passage", (row["id_key"] for row in passage_rows), "p", 4)
+    passages = pd.DataFrame([
+        {"passage_id": passage_ids[row.pop("id_key")], **row} for row in passage_rows
+    ], columns=PASSAGE_COLUMNS)
     if passages["passage_id"].duplicated().any():
         raise ValueError("passages has duplicate passage_id values")
 

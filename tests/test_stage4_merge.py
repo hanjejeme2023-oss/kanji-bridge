@@ -15,7 +15,9 @@ from pipeline.merge_stage4 import (
     apply_task3_review,
     apply_task4_review,
     apply_task5_review,
+    accepted_batches,
     config_from_prototype,
+    validate_task3_review_batches,
 )
 
 
@@ -76,6 +78,11 @@ class Stage4OverlayFailClosedTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "drop mismatch"):
             apply_task3_review("b001", output, review)
 
+    def test_task3_overlay_rejects_unknown_batch(self) -> None:
+        review = pd.DataFrame([{"batch": "b999"}])
+        with self.assertRaisesRegex(ValueError, "unknown accepted batches"):
+            validate_task3_review_batches(review, {"b001", "b002"})
+
     def test_task4_overlay_rejects_generated_mismatch(self) -> None:
         outputs = {"w00001": {"word_id": "w00001", "note_ja": "generated"}}
         words = pd.DataFrame([{"word_id": "w00001", "trad": "愛"}])
@@ -131,6 +138,51 @@ class Stage4FinalTableTests(unittest.TestCase):
         self.assertFalse(self.words["word_id"].duplicated().any())
         self.assertFalse(self.ff.duplicated(["word_id", "lang"]).any())
         self.assertFalse(self.passages["passage_id"].duplicated().any())
+
+    def test_final_ids_match_formats_and_id_map_keys(self) -> None:
+        self.assertTrue(self.words["word_id"].str.fullmatch(r"w\d{5}").all())
+        self.assertTrue(self.passages["passage_id"].str.fullmatch(r"p\d{4}").all())
+
+        id_map = pd.read_csv(
+            ROOT / "pipeline/id_map.csv", encoding="utf-8", keep_default_na=False, dtype=str
+        )
+        mapped_words = {
+            (row.key, row.id)
+            for row in id_map.loc[id_map["kind"] == "word"].itertuples(index=False)
+        }
+        for row in self.words.itertuples(index=False):
+            key = f"{row.trad}|{row.pinyin}" if row.source_level == "hsk30" else f"x|{row.trad}"
+            self.assertIn((key, row.word_id), mapped_words)
+
+        outputs = accepted_batches(3)
+        inputs = accepted_batches(3, inputs=True)
+        review = pd.read_csv(
+            ROOT / "config/task3_review.csv", encoding="utf-8", keep_default_na=False, dtype=str
+        )
+        mapped_passages = dict(
+            id_map.loc[id_map["kind"] == "passage", ["key", "id"]].itertuples(
+                index=False, name=None
+            )
+        )
+        expected = []
+        for batch in sorted(outputs):
+            source = inputs[batch][0]
+            kept = apply_task3_review(
+                batch, outputs[batch][0], review, include_positions=True
+            )
+            expected.extend(
+                mapped_passages[f"{source['language']}|{source['level']}|{number}"]
+                for number, _ in kept
+            )
+        self.assertEqual(self.passages["passage_id"].tolist(), expected)
+
+    def test_ff_only_pinyin_is_single_sourced_value(self) -> None:
+        ff_only = self.words.loc[self.words["origin"] == "ff_only"].set_index("trad")
+        self.assertEqual(ff_only.at["年下", "pinyin"], "niánxià")
+        self.assertEqual(ff_only.at["裁縫", "pinyin"], "cáiféng")
+        with_pinyin = ff_only.loc[ff_only["pinyin"] != ""]
+        self.assertTrue((with_pinyin["source_pinyin"] == "cc-cedict").all())
+        self.assertFalse(with_pinyin["pinyin"].str.contains(";", regex=False).any())
 
     def test_json_types_match_schema(self) -> None:
         words = json.loads((ROOT / "data/final/words.json").read_text(encoding="utf-8"))
