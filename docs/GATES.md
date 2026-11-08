@@ -420,3 +420,22 @@ Decision: **D70**. Scripts run by Claude (scratchpad, not committed): independen
 | Reproducibility | fresh `run_all.py --skip-download` (4 min 25 s) → `git status` clean (byte-identical to the commit); 100 non-rebuild tests pass | OK |
 
 Next: Codex Stage 4e-fix (D70 items 1-4), then Claude re-check (short), then Codex Stage 5.
+
+## Stage 4 final gate (Codex 4e-fix, `b1c511f`), re-check of D70, 2026-11-07: **PASS** — Stage 4 complete
+
+Decision checked: **D70** items 1-4. Scripts run by Claude (scratchpad, not committed): cell-by-cell comparison of `data/final/` and `pipeline/id_map.csv` at `b1c511f` against `7362ecf`, a fresh full rebuild, an end-to-end unknown-batch injection, and the tests. No API request was sent.
+
+| Item | Evidence | Result |
+|---|---|---|
+| D70 item 1: word IDs | all 12,508 `word_id` match `^w\d{5}$`; every one is a `word` row of `id_map.csv`; the 279 `ff_only` rows map to key `x\|trad`, `w12996`-`w13274`, contiguous, in `ff_candidates.csv` row order (old maximum `w12995`); the 12,229 core IDs unchanged; `ff_meanings.word_id` all resolve | OK |
+| D70 item 1: passage IDs | all 80 `passage_id` match `^p\d{4}$`, `p0001`-`p0080` in row (batch b001-b014) order; keys `lang\|level\|n` agree with each row's `lang`/`level`; `n` is the pre-drop position (gaps exactly at the dropped passages: vi\|1 n1, vi\|3 n4, vi\|4 n5; b014's n6 is the last in its cell); 0 unresolved tokens | OK |
+| `id_map.csv` | the 16,202 old rows are an identical prefix; 359 rows appended (279 `word`, 80 `passage`); 0 duplicate keys or IDs | OK |
+| ID stability | fresh `run_all.py` (4 min 33 s) → `git status` clean: `data/final/` and `id_map.csv` byte-identical, every ID reused | OK |
+| D70 item 2: pinyin | 年下 `niánxià`, 裁縫 `cáiféng` (were `…;…`); their `ff_meanings` zh `reading` follows (w13169, w13072); both meanings unchanged; 0 `ff_only` pinyin with `;` | OK |
+| D70 item 3: provenance | all 279 `ff_only` rows (all have pinyin) `source_pinyin=cc-cedict` (were `cedict`); core values unchanged | OK |
+| D70 item 4: unknown batch | `validate_task3_review_batches` runs before any row is applied and before anything is written; unit test `test_task3_overlay_rejects_unknown_batch`; end-to-end: a `b099` row added to `config/task3_review.csv` → `merge_stage4.py` stops with `unknown accepted batches: ['b099']` (file restored, tree clean) | OK |
+| Diff = HANDOFF's expectation | after mapping old `x\|trad` IDs to the new ones, CSV and JSON differ only in: `words` `word_id` 279, `pinyin` 2, `source_pinyin` 279; `ff_meanings` `word_id` 853 (= all rows of the 279 `ff_only` entries), `reading` 2; `passages` `passage_id` 80; plus `id_map` +359, `merge_stage4.py`, tests, CHANGELOG, HANDOFF | OK, exact |
+| Counts | 12,508 words / 4,044 `ff_meanings` / 1,242 false-friend entries / 80 passages (= 4e) | OK |
+| Tests | 103 non-rebuild tests pass (16 in `test_stage4_merge`, incl. the new ID-format/`id_map` association and pinyin tests); the 104th (two-rebuild identity) is covered by the fresh rebuild above | OK |
+
+**Stage 4 is complete.** Next: Codex Stage 5 (app integration).

@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 2026-11-07 — Stage 4 final gate re-check (D70): PASS; Stage 4 complete [Claude]
+- Independent check of `b1c511f` against `7362ecf`: all `word_id`/`passage_id` match `^w\d{5}$`/`^p\d{4}$` and come from `pipeline/id_map.csv` (+359 rows; old rows unchanged); a fresh `run_all.py` leaves the tree clean, so IDs are stable.
+- 年下 / 裁縫 single pinyin and their zh `ff_meanings` readings; 279 `ff_only` `source_pinyin=cc-cedict`; an unknown `task3_review.csv` batch stops the merge (unit test + end-to-end injection).
+- Diff is exactly the expected one; counts 12,508 / 4,044 / 1,242 / 80; 103 non-rebuild tests pass. No API request. Next: Codex Stage 5.
+
 ## 2026-11-07 — Stage 4e-fix: D70 ID contract and focused corrections [Codex]
 - Wired the 279 `ff_only` words and 80 kept passages into the persistent ID allocator. New `id_map.csv` rows are `w12996`-`w13274` in `ff_candidates.csv` order and `p0001`-`p0080` in accepted task-3 batch order, with passage keys retaining their pre-review position; `ff_meanings` follows the word IDs.
 - Reduced 年下 / 裁縫 to the first CC-CEDICT pinyin value, changed all 279 `ff_only` pinyin provenance tags to `cc-cedict`, and made an unknown task-3 review batch fail closed.
