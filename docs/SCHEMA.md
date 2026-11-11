@@ -95,6 +95,12 @@ Not a pandas table to maintain: `config/rules.json` text + examples computed fro
 | characters of words | `chars` | D37/D38 linking, not a plain merge | row count = sum of word lengths | 0 unlinked; about 190 new rows |
 Each `*_match` table holds one row per word key, so a form with several dictionary entries can never multiply rows.
 
+### 1.9 `examples` (Stage 4 task 6, D72; written by the app-phase merge after task 6 is accepted)
+`word_id, lang (zh|vi), use (card|ff), sentence, pinyin, translation_ja, target, target_start (int, 0-based character index), target_len (int)`. Unique on `(word_id, lang, use)`. `pinyin` is the whole-sentence pinyin for zh and '' for vi. `target` = `words.simp` (zh) or `words.vi` (vi); `target_start` is the first occurrence found by code (vi case-insensitive). One row per accepted task-6 sentence item after `config/task6_review.csv` and rerun rounds; no row for `no_sentence`, dropped or never-validated items. 偽の友達 uses the `ff` row of the word and language, else its `card` row (`docs/TASK6_DESIGN.md` §1, §7).
+
+### 1.10 `char_notes` (Stage 4 task 6, D72)
+`char_id, note_ja`. Unique on `char_id`; only non-empty accepted notes (one line, ≤ 60 characters, Japanese; may name an everyday Chinese or Vietnamese word). Shown in the 字体 使われ方 panel (D71 item 6).
+
 ## 2. `data.js` shape
 
 ```js
@@ -113,6 +119,7 @@ window.KB_DATA = {
 - Size control: `chars` in data.js only holds characters needed by the glyph view (forms not all identical) and `words` only the columns in §3.1. Full tables stay in CSV/JSON.
 - `tokens`' `word_id` must exist in `words` (build fails otherwise).
 - File is a single statement `window.KB_DATA = {...};` in UTF-8, loadable by `<script src="../data/final/data.js">` from `file://`.
+- **D71 item 9 (app phase):** the build also copies `data.js` to `app/data.js` and `app/index.html` loads `<script src="data.js">`, so the `app/` folder runs alone. **D72 (app phase):** `examples` and `char_notes` are added (compact arrays); the D71 views may need more `chars` rows (single-character card words in 字体) and more `word_chars` columns/rows (使われ方 examples). Claude writes the exact §2/§3 changes when assigning the app phase; re-measure size and load time then (D71 item 12).
 
 ## 3. Mapping to prototype views (adapters live in `app/index.html`)
 
@@ -205,6 +212,7 @@ Written only by the Stage 4 script (Codex's code, Gemini's content); read by the
 - Task 2: `key` (`word_id`, or `form` for an `ff_candidates.csv` row), `false_friend` (list of lang codes), `meanings` (`[{lang, meaning_ja, is_trap}]`, one per language present), `confidence`, `low_reason`. → `words.false_friend` (`;`-joined), `ff_meanings` (§1.4; `reading` copied from the table), `ff_only` words (IDs `x|trad`). For the 12 prototype false friends, `config/ff_static.csv` (D67 item 5) replaces the generated rows of the languages it has.
 - Task 3: `passages` = `[{translation_ja, tokens}]`, tokens as §1.5. → `passages` (IDs `lang|level|n`).
 - Task 5 (D66, D67): `key, ja_check, ja_reason, ko_check, ko_reason, vi_use, vi_reason`; a check is non-empty exactly for the languages in the item's `checks`; `ja_check`/`ko_check` ∈ `used | rare | wrong_meaning | unsure`, `vi_use` ∈ `common | literary | unsure`; a reason is empty iff its check is `used`/`common`. → `words.ja_use`, `ko_use`, `vi_use` after `config/task5_review.csv` (an `unsure` left by the review counts as `rare` / `literary`); reasons are review-only and never copied into `data/final/`. **D68:** for task 5 the Hangul/Latin-letter rule on reasons is a warning (`reason_warnings` in the batch log), not a failure; every other task-5 rule stays fail-closed.
+- **Task 6 (D72, `docs/TASK6_DESIGN.md`):** one object per item, three schemas by batch kind: zh `key, status, sentence, pinyin, translation_ja, confidence, review_note`; vi `key, status, sentence, translation_ja, confidence, review_note`; note `key, note_ja, confidence, review_note`. Keys `{word_id}:{zh|vi}:{card|ff}` and `{char_id}:note`. `status` ∈ `ok | no_sentence`. Item-level repair requests and rerun rounds (`content/generated/task6/rerun<N>/`, `config/task6_rerun.csv`) are logged per request. → `examples`, `char_notes` (§1.9, §1.10) after `config/task6_review.csv`; `review_note` and `confidence` are review-only.
 - Task 4: `word_id, note_ja` (one line, ≤ 80 characters). → `words.note_ja`; `config/word_notes.csv` (`word_id, note_ja`, static text, e.g. 越南 from the prototype, D14) comes first when a word has both.
 
 Review-only fields (`meanings_differ`, `vi_check`, `vi_check_reason`, `confidence`, `low_reason`) stay in `content/` and are not added to `words`; `verified` = true for words whose task-1 batch was accepted at the Stage 4 gate.

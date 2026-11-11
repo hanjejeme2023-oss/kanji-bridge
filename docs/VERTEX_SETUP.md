@@ -8,6 +8,8 @@ Why: Stage 4 uses Gemini through **Vertex AI**, because your Free Trial credit (
 
 Time: about 20 minutes, done once.
 
+**Task 6 (2026-11-12 to 11-15): go straight to part G.** Parts A-F were done for tasks 1-5; part F switched everything off afterwards.
+
 ---
 
 ## Do you have to upgrade the Free Trial to a paid account?
@@ -97,7 +99,7 @@ Start Codex for Stage 4a as usual. When its script is ready, it runs `--check`: 
 
 ## E2. Running the full generation yourself (Stage 4c, D62/D67)
 
-You start the long runs, not an agent. Tasks 1-4 are accepted and the launcher now refuses to regenerate them (D65). The remaining sitting is **task 5** (about 1.5-2 hours, about $7-16). Only start it when `docs/HANDOFF.md` says **"Next: User — run `-Tasks 5`"**. It must finish before the **evening of 2026-11-30** (the script refuses Argon requests from 2026-12-01 00:00 UTC, which is 7 pm on 30 November in US Eastern time).
+*(Tasks 1-5 are done; for task 6 use part G, which reuses steps 1-3 below.)* You start the long runs, not an agent. Tasks 1-4 are accepted and the launcher now refuses to regenerate them (D65). The remaining sitting is **task 5** (about 1.5-2 hours, about $7-16). Only start it when `docs/HANDOFF.md` says **"Next: User — run `-Tasks 5`"**. It must finish before the **evening of 2026-11-30** (the script refuses Argon requests from 2026-12-01 00:00 UTC, which is 7 pm on 30 November in US Eastern time).
 
 **Before each sitting (2 minutes)**
 1. Plug in the charger. Keep the laptop lid **open** (closing it can put the PC to sleep).
@@ -128,6 +130,70 @@ gcloud auth application-default revoke
 gcloud services disable aiplatform.googleapis.com
 ```
 If you upgraded to a paid account, also check Billing → **Reports** after 2026-12-28. You can close the billing account if you no longer need Google Cloud.
+
+## G. Task 6: switch Vertex AI back on (from 2026-11-12, D72)
+
+Why: task 6 (example sentences and character notes, `docs/TASK6_DESIGN.md`) needs Gemini again. After Stage 4 you revoked the sign-in and switched the API off (part F), so they must be switched back on first.
+
+**Deadline.** Google wrote that from **2026-11-16** the Free Trial credit no longer pays for Gemini/Vertex unless the account is upgraded. Every request must therefore be sent before **2026-11-15 23:59 US Pacific time = 2026-11-16 08:00 UTC = 2026-11-16 17:00 Japan/Korea time**. From that moment the script refuses to send anything, unless it is started with `-AllowAfterCreditDeadline`. Use that switch **only** if you have upgraded to a paid account and HANDOFF says so.
+
+**G1. Credit and budget (3 minutes).** In https://console.cloud.google.com: Billing → **Credits**: the Free Trial credit is still active and has money left. Billing → **Budgets & alerts** → `kanji-bridge Stage 4` → change the amount from $100 to **$200** (the script's own stop is now $200, D71).
+
+**G2. Sign in and switch the API on (5 minutes).** Open a **new** PowerShell window from the Start menu and run these lines one at a time (replace `YOUR_PROJECT_ID` with your project ID from part A):
+```powershell
+gcloud auth login
+gcloud config set project YOUR_PROJECT_ID
+gcloud services enable aiplatform.googleapis.com
+gcloud auth application-default login
+gcloud auth application-default set-quota-project YOUR_PROJECT_ID
+```
+`gcloud auth login` and `gcloud auth application-default login` each open your browser: choose the same Google account and click **Allow**.
+
+**G3. Check the settings (1 minute).** In the same window:
+```powershell
+echo $env:GOOGLE_CLOUD_PROJECT
+echo $env:GOOGLE_CLOUD_LOCATION
+echo $env:GOOGLE_GENAI_USE_VERTEXAI
+echo $env:GEMINI_API_KEY
+echo $env:GOOGLE_API_KEY
+```
+The first three lines should print your project ID, `global` and `True`; the last two should print **nothing**. If the first three are empty, repeat part C4 (`setx …`) and open a new window. If one of the last two prints something, remove it as in part C5 and do not copy it anywhere.
+
+**G4. Test request (1 minute; only after HANDOFF says Codex's task-6 support is done):**
+```powershell
+cd "<project folder>"
+powershell -ExecutionPolicy Bypass -File pipeline\stage4\run_stage4.ps1 -Check
+```
+Success shows the model name and a token count. For errors, see part E.
+
+**G5. Pilot (11-12, about 5 minutes, about $0.40):**
+```powershell
+powershell -ExecutionPolicy Bypass -File pipeline\stage4\run_stage4.ps1 -Pilot6
+```
+Three requests (Chinese, Vietnamese, notes). Then start Claude for the pilot review.
+
+**G6. Full run (11-13 morning, only when HANDOFF says "Next: User — run `-Tasks 6`").** Do steps 1-3 of part E2 (charger, sleep "Never", pause updates), then in a new window:
+```powershell
+cd "<project folder>"
+powershell -ExecutionPolicy Bypass -File pipeline\stage4\run_stage4.ps1 -Tasks 6
+```
+About **6.5-7 hours**, 224 requests: Chinese batches b001-b127 first (about 4 hours), then Vietnamese b128-b211, then notes b212-b224. Lines like `task=6 batch=b007 ok …` appear every 1-2 minutes; a batch may also show `repair` (only the few failing sentences are sent again). If anything interrupts it, run the same two lines again: finished batches are skipped and not paid again. Progress and time left before the deadline, without sending anything: `… run_stage4.ps1 -Status`. When the Chinese batches are done you may start Claude for gate part A while the run continues in its own window.
+
+**G7. Reruns (11-14 / 11-15, only when HANDOFF says so):**
+```powershell
+powershell -ExecutionPolicy Bypass -File pipeline\stage4\run_stage4.ps1 -Tasks 6 -RerunRound 1
+```
+
+**G8. If the script refuses with "credit deadline":** stop and start Claude. Do not use `-AllowAfterCreditDeadline` unless you have upgraded.
+
+## H. After task 6 is accepted (Claude will say so)
+
+```powershell
+gcloud auth application-default revoke
+gcloud auth revoke --all
+gcloud services disable aiplatform.googleapis.com
+```
+The first line removes the script's sign-in, the second the `gcloud` sign-in from G2, the third switches the API off. A few days after 2026-11-16, check Billing → **Reports** that no Gemini cost appears after that date.
 
 ---
 Sources (read 2026-11-06): Google Cloud Free Trial page https://docs.cloud.google.com/free/docs/free-cloud-features ("The $300 credit can't pay for Gemini API in AI Studio costs"; remaining credit stays after an upgrade until 90 days from sign-up); Google's Vertex AI model list https://docs.cloud.google.com/vertex-ai/generative-ai/docs/models (Gemini 3.8 Flash generally available); Gemini price table https://aistudio.google.com/docs/pricing (Developer API rates, used for the estimate because the Vertex price page could not be read).
