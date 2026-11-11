@@ -10,5 +10,5 @@
       {"through": "2027-12-31", "input_per_million": 4.0, "output_per_million": 20.0, "thinking_per_million": 20.0}
     ]
   },
-  "hard_ceiling": 100.0
+  "hard_ceiling": 200.0
 }

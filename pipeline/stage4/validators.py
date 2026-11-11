@@ -5,7 +5,11 @@ from __future__ import annotations
 import re
 import unicodedata
 from collections import Counter
+from functools import lru_cache
+from pathlib import Path
 from typing import Any
+
+import pandas as pd
 
 
 LANGS = ("ja", "ko", "zh", "vi")
@@ -18,10 +22,57 @@ TASK4_KEYS = {"word_id", "note_ja"}
 TASK5_KEYS = {
     "key", "ja_check", "ja_reason", "ko_check", "ko_reason", "vi_use", "vi_reason",
 }
+TASK6_KEYS = {
+    "zh": ["key", "status", "sentence", "pinyin", "translation_ja", "confidence", "review_note"],
+    "vi": ["key", "status", "sentence", "translation_ja", "confidence", "review_note"],
+    "note": ["key", "note_ja", "confidence", "review_note"],
+}
 PUNCT_RE = re.compile(r"^[\s\u3000-\u303f\uff01-\uff65.,!?;:…—–―・]+$")
 HANGUL_RE = re.compile(r"[가-힣]+")
 LATIN_RE = re.compile(r"[A-Za-zÀ-ÖØ-öø-ỹĐđ]+")
 QUOTED_RE = re.compile(r"「([^」]+)」")
+HANGUL_ANY_RE = re.compile(r"[\u1100-\u11ff\u3130-\u318f\ua960-\ua97f\uac00-\ud7af\ud7b0-\ud7ff]")
+HAN_RE = re.compile(r"[\u3400-\u4dbf\u4e00-\u9fff\U00020000-\U0002ffff\u3007]")
+KANA_OR_HAN_RE = re.compile(r"[\u3040-\u30ff\u3400-\u4dbf\u4e00-\u9fff\U00020000-\U0002ffff]")
+KANA_RE = re.compile(r"[\u3040-\u30ff]")
+ZH_SENTENCE_RE = re.compile(r"^[\u3400-\u4dbf\u4e00-\u9fff\U00020000-\U0002ffff\u3007，。！？、：；“”‘’《》（）—…]+$")
+ZH_PINYIN_RE = re.compile(r'^[A-Za-zāáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜüÜ\'’ ,.!?:;"“”()—…]+$')
+VI_SENTENCE_RE = re.compile(r'^[A-Za-zÀ-ỹĐđ\u0102\u0103\u0110\u0111\u0128-\u01b0\u1ea0-\u1ef9 0-9.,!?;:"\'“”‘’()\-–…]+$')
+LATIN_DIACRITIC_RE = re.compile(r"[\u00c0-\u024f\u1e00-\u1eff]")
+TONE_COMBINERS = {"\u0300", "\u0301", "\u0304", "\u030c"}
+VI_TONE_COMBINERS = {"\u0300", "\u0301", "\u0303", "\u0309", "\u0323"}
+VI_VOWEL_COMBINERS = VI_TONE_COMBINERS | {"\u0302", "\u0306", "\u031b"}
+VI_PUNCTUATION = set(" .,! ?;:\"'“”‘’()-–…".replace(" ", ""))
+
+# Standard orthographic Hanyu Pinyin syllables. Tone marks are removed before lookup;
+# ü remains distinct from u.
+PINYIN_SYLLABLES = set("""
+a ai an ang ao e ei en eng er o ou
+ba bai ban bang bao bei ben beng bi bian biao bie bin bing bo bu
+pa pai pan pang pao pei pen peng pi pian piao pie pin ping po pou pu
+ma mai man mang mao me mei men meng mi mian miao mie min ming miu mo mou mu
+fa fan fang fei fen feng fo fou fu
+da dai dan dang dao de dei den deng di dia dian diao die ding diu dong dou du duan dui dun duo
+ta tai tan tang tao te teng ti tian tiao tie ting tong tou tu tuan tui tun tuo
+na nai nan nang nao ne nei nen neng ni nian niang niao nie nin ning niu nong nou nu nuan nun nuo nü nüe
+la lai lan lang lao le lei leng li lia lian liang liao lie lin ling liu long lou lu luan lun luo lü lüe
+ga gai gan gang gao ge gei gen geng gong gou gu gua guai guan guang gui gun guo
+ka kai kan kang kao ke ken keng kong kou ku kua kuai kuan kuang kui kun kuo
+ha hai han hang hao he hei hen heng hong hou hu hua huai huan huang hui hun huo
+ji jia jian jiang jiao jie jin jing jiong jiu ju juan jue jun
+qi qia qian qiang qiao qie qin qing qiong qiu qu quan que qun
+xi xia xian xiang xiao xie xin xing xiong xiu xu xuan xue xun
+zha zhai zhan zhang zhao zhe zhei zhen zheng zhi zhong zhou zhu zhua zhuai zhuan zhuang zhui zhun zhuo
+cha chai chan chang chao che chen cheng chi chong chou chu chua chuai chuan chuang chui chun chuo
+sha shai shan shang shao she shei shen sheng shi shou shu shua shuai shuan shuang shui shun shuo
+re ren reng ri rong rou ru rua ruan rui run ruo
+za zai zan zang zao ze zei zen zeng zi zong zou zu zuan zui zun zuo
+ca cai can cang cao ce cen ceng ci cong cou cu cuan cui cun cuo
+sa sai san sang sao se sen seng si song sou su suan sui sun suo
+ya yan yang yao ye yi yin ying yo yong you yu yuan yue yun
+wa wai wan wang wei wen weng wo wu
+m n ng hm hng
+""".split())
 
 
 class ValidationError(ValueError):
@@ -278,7 +329,320 @@ def validate_task5(output: Any, inputs: list[dict[str, Any]]) -> list[dict[str, 
     return reason_warnings
 
 
-def validate(task: int, output: Any, inputs: list[dict[str, Any]]) -> list[dict[str, str]]:
+def _toneless(value: str) -> str:
+    decomposed = unicodedata.normalize("NFD", value.casefold())
+    kept = "".join(char for char in decomposed if char not in TONE_COMBINERS)
+    return unicodedata.normalize("NFC", kept)
+
+
+def _tone_count(value: str) -> int:
+    return sum(char in TONE_COMBINERS for char in unicodedata.normalize("NFD", value))
+
+
+def _piece_segmentations(piece: str) -> list[list[tuple[str, str, bool]]]:
+    """Return (marked, toneless-base, erhua) segmentations for one pinyin word."""
+    folded = piece.casefold()
+    plain = _toneless(folded)
+    results: list[list[tuple[str, str, bool]]] = []
+
+    def visit(position: int, current: list[tuple[str, str, bool]]) -> None:
+        if position == len(plain):
+            results.append(list(current))
+            return
+        for end in range(position + 1, min(len(plain), position + 7) + 1):
+            raw_plain = plain[position:end]
+            erhua = raw_plain.endswith("r") and raw_plain != "er" and raw_plain[:-1] in PINYIN_SYLLABLES
+            base = raw_plain[:-1] if erhua else raw_plain
+            if base not in PINYIN_SYLLABLES:
+                continue
+            marked = folded[position:end]
+            if _tone_count(marked) > 1:
+                continue
+            current.append((marked, base, erhua))
+            visit(end, current)
+            current.pop()
+
+    # NFC pinyin letters are one code point each, so indexes match the toneless form.
+    if len(folded) == len(plain):
+        visit(0, [])
+    return results
+
+
+def _pinyin_alignments(sentence: str, pinyin: str) -> list[list[tuple[int, int, str, str]]]:
+    han = HAN_RE.findall(sentence)
+    normalized = pinyin.replace("’", "'")
+    pieces = [
+        piece for piece in re.split(r"[\s',.!?:;\"“”()—…]+", normalized)
+        if piece
+    ]
+    choices = [_piece_segmentations(piece) for piece in pieces]
+    if any(not options for options in choices):
+        return []
+    alignments: list[list[tuple[int, int, str, str]]] = []
+
+    def visit_piece(index: int, char_index: int, current: list[tuple[int, int, str, str]]) -> None:
+        if index == len(choices):
+            if char_index == len(han):
+                alignments.append(list(current))
+            return
+        for segmentation in choices[index]:
+            next_char = char_index
+            added: list[tuple[int, int, str, str]] = []
+            valid = True
+            for marked, base, erhua in segmentation:
+                consumed = 2 if erhua else 1
+                if next_char + consumed > len(han) or (erhua and han[next_char + 1] != "儿"):
+                    valid = False
+                    break
+                added.append((next_char, next_char + consumed, marked, base))
+                next_char += consumed
+            if valid:
+                current.extend(added)
+                visit_piece(index + 1, next_char, current)
+                del current[-len(added):]
+
+    visit_piece(0, 0, [])
+    return alignments
+
+
+@lru_cache(maxsize=1)
+def _task6_reference() -> tuple[set[str], dict[str, set[str]], set[str]]:
+    root = Path(__file__).resolve().parents[2]
+    chars = pd.read_csv(
+        root / "data" / "final" / "chars.csv", encoding="utf-8",
+        keep_default_na=False, dtype=str,
+    )
+    words = pd.read_csv(
+        root / "data" / "final" / "words.csv", encoding="utf-8",
+        keep_default_na=False, dtype=str,
+    )
+    simplified_chars = set("".join(chars["simp"])) | set("".join(words["simp"]))
+    traditional_only = {
+        row["key_char"] for row in chars.to_dict(orient="records")
+        if row["key_char"] != row["simp"] and row["key_char"] not in simplified_chars
+    }
+    pinyin_by_simp: dict[str, set[str]] = {}
+    for row in chars.to_dict(orient="records"):
+        readings = {
+            _toneless(value) for value in row["pinyin_all"].split(";") if value
+        }
+        if readings:
+            pinyin_by_simp.setdefault(row["simp"], set()).update(readings)
+    word_forms = {value for value in words["simp"] if value}
+    return traditional_only, pinyin_by_simp, word_forms
+
+
+def _task6_batch(output: Any, inputs: list[dict[str, Any]], kind: str) -> list[dict[str, Any]]:
+    if kind not in TASK6_KEYS:
+        _fail(f"Task 6 kind is invalid: {kind!r}")
+    if not isinstance(output, list) or not all(isinstance(item, dict) for item in output):
+        _fail("Response must be an array of objects")
+    input_keys = [str(item.get("key", "")) for item in inputs]
+    output_keys = [str(item.get("key", "")) for item in output]
+    if output_keys != input_keys:
+        _fail(f"Output keys do not exactly match input keys in order: input={input_keys}, output={output_keys}")
+    if len(output_keys) != len(set(output_keys)):
+        _fail("Duplicate output key")
+    expected = TASK6_KEYS[kind]
+    for item in output:
+        key = str(item.get("key", ""))
+        if list(item) != expected:
+            _fail(f"{key}: keys/order differ; expected {expected}, got {list(item)}")
+        for field in expected:
+            _expect_string(item[field], f"{key}.{field}")
+        if item["confidence"] not in {"high", "low"}:
+            _fail(f"{key}.confidence invalid")
+        if kind != "note" and item["status"] not in {"ok", "no_sentence"}:
+            _fail(f"{key}.status invalid")
+    return output
+
+
+def _task6_common_item(value: dict[str, Any]) -> None:
+    key = value["key"]
+    for field, text in value.items():
+        if not isinstance(text, str):
+            continue
+        if not unicodedata.is_normalized("NFC", text):
+            _fail(f"{key}.{field} is not NFC")
+        if text != text.strip():
+            _fail(f"{key}.{field} has leading or trailing space")
+        if "\n" in text or "\r" in text or "\t" in text:
+            _fail(f"{key}.{field} contains a line break or tab")
+        if HANGUL_ANY_RE.search(text):
+            _fail(f"{key}.{field} contains Hangul")
+    if len(value["review_note"]) > 80:
+        _fail(f"{key}.review_note exceeds 80 characters")
+    if value["confidence"] == "low" and not value["review_note"]:
+        _fail(f"{key}.review_note is required when confidence=low")
+
+
+def _validate_translation(key: str, value: str) -> None:
+    if len(value) > 60:
+        _fail(f"{key}.translation_ja exceeds 60 characters")
+    if not KANA_OR_HAN_RE.search(value):
+        _fail(f"{key}.translation_ja needs Japanese kana or Han")
+    if LATIN_DIACRITIC_RE.search(value):
+        _fail(f"{key}.translation_ja contains a non-ASCII Latin letter")
+
+
+def _target_readings(
+    sentence: str, target: str, alignment: list[tuple[int, int, str, str]],
+) -> list[str]:
+    han = "".join(HAN_RE.findall(sentence))
+    result: list[str] = []
+    start = 0
+    while True:
+        start = han.find(target, start)
+        if start < 0:
+            break
+        end = start + len(target)
+        parts = [marked for left, right, marked, _ in alignment if left >= start and right <= end]
+        if parts and min(left for left, right, _, _ in alignment if left >= start and right <= end) == start:
+            covered = sum(right - left for left, right, _, _ in alignment if left >= start and right <= end)
+            if covered == len(target):
+                result.append("".join(parts))
+        start += 1
+    return result
+
+
+def _validate_task6_zh(
+    value: dict[str, Any], source: dict[str, Any], warnings: list[dict[str, str]],
+) -> None:
+    key, sentence, pinyin = value["key"], value["sentence"], value["pinyin"]
+    if not ZH_SENTENCE_RE.fullmatch(sentence):
+        _fail(f"{key}.sentence contains a non-Chinese character or unsupported punctuation")
+    han = HAN_RE.findall(sentence)
+    if not (1 <= len(han) <= 30):
+        _fail(f"{key}.sentence must contain 1-30 Han characters")
+    if not re.search(r"[。！？][”’]?$", sentence):
+        _fail(f"{key}.sentence must end in Chinese sentence punctuation")
+    target = str(source["target"])
+    if target not in sentence:
+        _fail(f"{key}.sentence does not contain target")
+    traditional_only, pinyin_by_simp, word_forms = _task6_reference()
+    bad_trad = sorted(set(han) & traditional_only)
+    if bad_trad:
+        _fail(f"{key}.sentence contains traditional-only character: {''.join(bad_trad)}")
+    normalized_pinyin = pinyin.replace("’", "'")
+    if not ZH_PINYIN_RE.fullmatch(normalized_pinyin) or re.search(r"\d|v|u:", normalized_pinyin, re.I):
+        _fail(f"{key}.pinyin contains an invalid character or notation")
+    alignments = _pinyin_alignments(sentence, normalized_pinyin)
+    if not alignments:
+        _fail(f"{key}: pinyin does not align with the characters")
+    readings = {
+        reading.casefold().replace("'", "").replace(" ", "")
+        for alignment in alignments for reading in _target_readings(sentence, target, alignment)
+    }
+    expected = str(source["target_pinyin"]).casefold().replace("'", "").replace(" ", "")
+    if readings != {expected}:
+        _fail(f"{key}: target pinyin differs or is ambiguous; expected {expected!r}, got {sorted(readings)!r}")
+    for alignment in alignments:
+        for left, right, marked, base in alignment:
+            char = han[left]
+            if char == "一" and marked.casefold() not in {"yī", "yi"}:
+                _fail(f"{key}: 一 must use dictionary tone yī/yi")
+            if char == "不" and marked.casefold() not in {"bù", "bu"}:
+                _fail(f"{key}: 不 must use dictionary tone bù/bu")
+    alignment = alignments[0]
+    for left, right, marked, base in alignment:
+        char = han[left]
+        known = pinyin_by_simp.get(char, set())
+        if known and base not in known:
+            warnings.append({"key": key, "warning": "pinyin_reading", "character": char, "syllable": marked})
+    occurrences = sentence.count(target)
+    if occurrences > 1:
+        warnings.append({"key": key, "warning": "target_multiple", "count": str(occurrences)})
+    for position in [match.start() for match in re.finditer(re.escape(target), sentence)]:
+        before = sentence[position - 1:position] if position else ""
+        after = sentence[position + len(target):position + len(target) + 1]
+        if (before and before + target in word_forms) or (after and target + after in word_forms):
+            warnings.append({"key": key, "warning": "target_inside_longer_word"})
+            break
+
+
+def _validate_task6_vi(value: dict[str, Any], source: dict[str, Any], warnings: list[dict[str, str]]) -> None:
+    key, sentence, target = value["key"], value["sentence"], str(source["target"])
+    def allowed_char(char: str) -> bool:
+        if char.isascii():
+            return char.isalpha() or char.isdigit() or char.isspace() or char in VI_PUNCTUATION
+        if char in "Đđ":
+            return True
+        decomposed = unicodedata.normalize("NFD", char)
+        return (bool(decomposed) and decomposed[0] in "AEIOUYaeiouy"
+                and bool(decomposed[1:]) and set(decomposed[1:]).issubset(VI_VOWEL_COMBINERS))
+    if not all(allowed_char(char) for char in sentence):
+        _fail(f"{key}.sentence contains a non-Vietnamese character or unsupported punctuation")
+    if not re.match(r'^["“‘]?\s*[A-ZÀ-ỸĐ]', sentence):
+        _fail(f"{key}.sentence must start with an upper-case letter")
+    if not re.search(r"[.!?][”’\"]?$", sentence):
+        _fail(f"{key}.sentence must end with sentence punctuation")
+    tokens = [token for token in re.split(r"[\s\-–]+", re.sub(r'[,!.?;:"\'“”‘’()…]', "", sentence)) if token]
+    if not (3 <= len(tokens) <= 25):
+        _fail(f"{key}.sentence must contain 3-25 syllables")
+    for token in tokens:
+        if sum(char in VI_TONE_COMBINERS for char in unicodedata.normalize("NFD", token)) > 1:
+            _fail(f"{key}.sentence syllable has more than one tone mark: {token!r}")
+    pattern = re.compile(rf"(?<![A-Za-zÀ-ỹĐđ]){re.escape(target)}(?![A-Za-zÀ-ỹĐđ])", re.I)
+    matches = list(pattern.finditer(sentence.casefold()))
+    if not matches:
+        _fail(f"{key}.sentence does not contain target as a whole word")
+    if len(matches) > 1:
+        warnings.append({"key": key, "warning": "target_multiple", "count": str(len(matches))})
+
+
+def validate_task6_items(
+    output: Any, inputs: list[dict[str, Any]], kind: str,
+) -> tuple[list[dict[str, Any]], dict[str, str], list[dict[str, str]]]:
+    """Validate item rules while preserving valid task-6 items for repair."""
+    values = _task6_batch(output, inputs, kind)
+    input_map = {str(item["key"]): item for item in inputs}
+    valid: list[dict[str, Any]] = []
+    errors: dict[str, str] = {}
+    warnings: list[dict[str, str]] = []
+    for value in values:
+        key = value["key"]
+        try:
+            _task6_common_item(value)
+            if kind == "note":
+                note = value["note_ja"]
+                if len(note) > 60 or (note and not KANA_RE.search(note)):
+                    _fail(f"{key}.note_ja must be empty or at most 60 characters with kana")
+                if not note:
+                    warnings.append({"key": key, "warning": "empty_note_ja"})
+            else:
+                empty_fields = ["sentence", "translation_ja"] + (["pinyin"] if kind == "zh" else [])
+                if value["status"] == "no_sentence":
+                    if any(value[field] for field in empty_fields) or not value["review_note"]:
+                        _fail(f"{key}: no_sentence requires empty content and a review_note")
+                else:
+                    if any(not value[field] for field in empty_fields):
+                        _fail(f"{key}: ok requires sentence, translation and zh pinyin")
+                    _validate_translation(key, value["translation_ja"])
+                    if kind == "zh":
+                        _validate_task6_zh(value, input_map[key], warnings)
+                    else:
+                        _validate_task6_vi(value, input_map[key], warnings)
+            valid.append(value)
+        except ValidationError as exc:
+            errors[key] = str(exc).replace("\n", " ").replace("\r", " ")
+    return valid, errors, warnings
+
+
+def validate_task6(output: Any, inputs: list[dict[str, Any]], kind: str) -> list[dict[str, str]]:
+    _, errors, warnings = validate_task6_items(output, inputs, kind)
+    if errors:
+        key = next(iter(errors))
+        _fail(errors[key])
+    return warnings
+
+
+def validate(
+    task: int, output: Any, inputs: list[dict[str, Any]], kind: str | None = None,
+) -> list[dict[str, str]]:
+    if task == 6:
+        if kind is None:
+            _fail("Task 6 validation requires a kind")
+        return validate_task6(output, inputs, kind)
     warnings = {1: validate_task1, 2: validate_task2, 3: validate_task3, 4: validate_task4,
                 5: validate_task5}[task](output, inputs)
     return warnings or []
@@ -348,10 +712,38 @@ TASK5_ITEM_SCHEMA = _object({
     "vi_use": STRING,
     "vi_reason": STRING,
 }, ["key", "ja_check", "ja_reason", "ko_check", "ko_reason", "vi_use", "vi_reason"])
+TASK6_ZH_ITEM_SCHEMA = _object({
+    "key": STRING,
+    "status": {"type": "string", "enum": ["ok", "no_sentence"]},
+    "sentence": STRING,
+    "pinyin": STRING,
+    "translation_ja": STRING,
+    "confidence": {"type": "string", "enum": ["high", "low"]},
+    "review_note": STRING,
+}, TASK6_KEYS["zh"])
+TASK6_VI_ITEM_SCHEMA = _object({
+    "key": STRING,
+    "status": {"type": "string", "enum": ["ok", "no_sentence"]},
+    "sentence": STRING,
+    "translation_ja": STRING,
+    "confidence": {"type": "string", "enum": ["high", "low"]},
+    "review_note": STRING,
+}, TASK6_KEYS["vi"])
+TASK6_NOTE_ITEM_SCHEMA = _object({
+    "key": STRING,
+    "note_ja": STRING,
+    "confidence": {"type": "string", "enum": ["high", "low"]},
+    "review_note": STRING,
+}, TASK6_KEYS["note"])
 RESPONSE_SCHEMAS = {
     1: {"type": "array", "items": TASK1_ITEM_SCHEMA},
     2: {"type": "array", "items": TASK2_ITEM_SCHEMA},
     3: TASK3_SCHEMA,
     4: {"type": "array", "items": TASK4_ITEM_SCHEMA},
     5: {"type": "array", "items": TASK5_ITEM_SCHEMA},
+    6: {
+        "zh": {"type": "array", "items": TASK6_ZH_ITEM_SCHEMA},
+        "vi": {"type": "array", "items": TASK6_VI_ITEM_SCHEMA},
+        "note": {"type": "array", "items": TASK6_NOTE_ITEM_SCHEMA},
+    },
 }

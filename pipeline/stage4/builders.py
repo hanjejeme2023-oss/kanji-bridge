@@ -20,6 +20,7 @@ WORDS_PATH = ROOT / "data" / "final" / "words.csv"
 CHARS_PATH = ROOT / "data" / "final" / "chars.csv"
 WORD_CHARS_PATH = ROOT / "data" / "final" / "word_chars.csv"
 FF_PATH = ROOT / "data" / "staging" / "ff_candidates.csv"
+FF_MEANINGS_PATH = ROOT / "data" / "final" / "ff_meanings.csv"
 TASK1_REVIEW_PATH = ROOT / "config" / "task1_review.csv"
 TASK2_REVIEW_PATH = ROOT / "config" / "task2_review.csv"
 ACCEPTED = ROOT / "content" / "accepted"
@@ -46,6 +47,22 @@ TASK5_FIELDS = [
     "gloss_ja_en", "gloss_ko", "gloss_vi", "meaning_ja__ja",
     "meaning_ja__ko", "meaning_ja__zh", "meaning_ja__vi",
 ]
+TASK6_ZH_FIELDS = [
+    "key", "target", "target_pinyin", "trad", "meaning_ja", "is_trap",
+    "contrast_meaning_ja", "level", "pos",
+]
+TASK6_VI_FIELDS = [
+    "key", "target", "trad", "meaning_ja", "is_trap",
+    "contrast_meaning_ja", "vi_use", "level",
+]
+TASK6_NOTE_FIELDS = [
+    "key", "char", "simp", "jp", "pinyin", "vi", "meaning_en",
+    "zh_examples", "vi_examples", "vi_single_use", "reason",
+]
+TASK6_EXPECTED_COUNTS = {
+    "zh_card": 5783, "zh_ff": 565, "vi_card": 4051, "vi_ff": 142,
+    "note": 623,
+}
 
 
 def load_csv(path: Path) -> pd.DataFrame:
@@ -344,6 +361,330 @@ def build_task5_batches() -> list[list[dict[str, Any]]]:
     return chunked(build_task5_items(), 100)
 
 
+def _level_sort(frame: pd.DataFrame) -> pd.DataFrame:
+    result = frame.copy()
+    result["_level_sort"] = pd.to_numeric(result["level"], errors="coerce").fillna(99)
+    return result.sort_values(["_level_sort", "word_id"], kind="stable").drop(columns="_level_sort")
+
+
+def _task6_contrast(ff_by_word: dict[str, list[dict[str, Any]]], word_id: str, lang: str) -> str:
+    rows = ff_by_word.get(word_id, [])
+    for contrast_lang in ("ja", "ko", "zh", "vi"):
+        if contrast_lang == lang:
+            continue
+        for row in rows:
+            if (row["lang"] == contrast_lang and not row["is_trap"]
+                    and row["meaning_ja"]):
+                return row["meaning_ja"]
+    return ""
+
+
+def _task6_sentence_items(
+    words: pd.DataFrame, ff_meanings: pd.DataFrame, lang: str,
+) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
+    if lang not in {"zh", "vi"}:
+        raise ValueError(f"Unknown task-6 sentence language: {lang}")
+    ff_lang = ff_meanings.loc[ff_meanings["lang"] == lang].copy()
+    if ff_lang["word_id"].eq("").any() or ff_lang["word_id"].duplicated().any():
+        raise ValueError(f"Task 6 {lang} ff_meanings has an empty or duplicate word_id")
+    ff_rows: dict[str, dict[str, Any]] = {}
+    all_ff_by_word: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    for row in ff_meanings.to_dict(orient="records"):
+        cleaned = _clean(row)
+        cleaned["is_trap"] = str(cleaned["is_trap"]).lower() == "true"
+        all_ff_by_word[cleaned["word_id"]].append(cleaned)
+        if cleaned["lang"] == lang:
+            ff_rows[cleaned["word_id"]] = cleaned
+
+    multi = words["trad"].str.len() > 1
+    eligible = words["card_eligible"].str.lower() == "true"
+    if lang == "zh":
+        card_mask = multi & eligible & words["origin"].isin(["hsk", "both"]) & words["pinyin"].ne("")
+        meaning_field = "meaning_ja__zh"
+    else:
+        card_mask = multi & eligible & words["vi"].ne("")
+        meaning_field = "meaning_ja__vi"
+    cards = _level_sort(words.loc[card_mask])
+    items: list[dict[str, Any]] = []
+    covered: set[str] = set()
+    for row in cards.to_dict(orient="records"):
+        word_id = row["word_id"]
+        ff = ff_rows.get(word_id)
+        is_covered = ff is not None and row[meaning_field] == ff["meaning_ja"]
+        if is_covered:
+            covered.add(word_id)
+        is_trap = bool(ff["is_trap"]) if is_covered else False
+        common = {
+            "key": f"{word_id}:{lang}:card",
+            "target": row["simp"] if lang == "zh" else row["vi"],
+            "trad": row["trad"],
+            "meaning_ja": row[meaning_field],
+            "is_trap": is_trap,
+            "contrast_meaning_ja": (
+                _task6_contrast(all_ff_by_word, word_id, lang) if is_trap else ""
+            ),
+        }
+        if lang == "zh":
+            item = {
+                "key": common["key"], "target": common["target"],
+                "target_pinyin": row["pinyin"], "trad": common["trad"],
+                "meaning_ja": common["meaning_ja"], "is_trap": common["is_trap"],
+                "contrast_meaning_ja": common["contrast_meaning_ja"],
+                "level": row["level"], "pos": row["pos"],
+            }
+        else:
+            item = {
+                **common, "vi_use": row["vi_use"], "level": row["level"],
+            }
+        items.append(_clean(item))
+
+    word_map = words.set_index("word_id", drop=False)
+    ff_items: list[dict[str, Any]] = []
+    for word_id in sorted(set(ff_rows) - covered):
+        if word_id not in word_map.index:
+            raise ValueError(f"Task 6 {lang} false-friend word is missing: {word_id}")
+        row = word_map.loc[word_id]
+        ff = ff_rows[word_id]
+        reading_field = "pinyin" if lang == "zh" else "vi"
+        if row[reading_field] != ff["reading"]:
+            raise ValueError(
+                f"Task 6 {lang} reading mismatch for {word_id}: "
+                f"{row[reading_field]!r} != {ff['reading']!r}"
+            )
+        common = {
+            "key": f"{word_id}:{lang}:ff",
+            "target": row["simp"] if lang == "zh" else row["vi"],
+            "trad": row["trad"], "meaning_ja": ff["meaning_ja"],
+            "is_trap": bool(ff["is_trap"]),
+            "contrast_meaning_ja": (
+                _task6_contrast(all_ff_by_word, word_id, lang) if ff["is_trap"] else ""
+            ),
+        }
+        if lang == "zh":
+            item = {
+                "key": common["key"], "target": common["target"],
+                "target_pinyin": row["pinyin"], "trad": common["trad"],
+                "meaning_ja": common["meaning_ja"], "is_trap": common["is_trap"],
+                "contrast_meaning_ja": common["contrast_meaning_ja"],
+                "level": row["level"], "pos": row["pos"],
+            }
+        else:
+            item = {**common, "vi_use": row["vi_use"], "level": row["level"]}
+        ff_items.append(_clean(item))
+    return items, ff_items
+
+
+def _task6_note_items(
+    words: pd.DataFrame, chars: pd.DataFrame, word_chars: pd.DataFrame,
+) -> list[dict[str, Any]]:
+    char_words = word_chars.merge(
+        words, on="word_id", how="left", validate="many_to_one", suffixes=("", "_word")
+    )
+    if char_words["trad"].eq("").any():
+        raise ValueError("Task 6 note examples contain an unknown word_id")
+    matches_by_char = {
+        char_id: group.copy() for char_id, group in char_words.groupby("char_id", sort=False)
+    }
+
+    single_cards = words.loc[
+        (words["card_eligible"].str.lower() == "true") & (words["trad"].str.len() == 1)
+    ].sort_values(["level", "word_id"], kind="stable")
+    single_by_char: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    for row in single_cards.to_dict(orient="records"):
+        single_by_char[row["trad"]].append(row)
+
+    glyph_chars = set(chars.loc[
+        ~((chars["jp"] == chars["key_char"]) & (chars["key_char"] == chars["simp"])),
+        "key_char",
+    ])
+    glyph_chars.update(single_by_char)
+
+    items: list[dict[str, Any]] = []
+    ordered_chars = chars.copy()
+    ordered_chars["_level_sort"] = pd.to_numeric(ordered_chars["level"], errors="coerce").fillna(99)
+    ordered_chars = ordered_chars.sort_values(["_level_sort", "char_id"], kind="stable")
+    for char in ordered_chars.to_dict(orient="records"):
+        if char["key_char"] not in glyph_chars:
+            continue
+        matches = matches_by_char.get(char["char_id"], char_words.iloc[:0]).copy()
+        matches = matches.loc[matches["trad"].str.len() > 1]
+        zh = matches.loc[
+            matches["origin"].isin(["hsk", "both"])
+            & matches["pinyin"].ne("") & matches["pinyin_syllable"].ne("")
+        ].copy()
+        zh["_level_sort"] = pd.to_numeric(zh["level"], errors="coerce").fillna(99)
+        zh = zh.sort_values(["_level_sort", "word_id"], kind="stable")
+        zh_examples = [
+            {"simp": row["simp"], "pinyin": row["pinyin"]}
+            for row in zh.head(3).to_dict(orient="records")
+        ]
+
+        vi = matches.loc[
+            (matches["card_eligible"].str.lower() == "true")
+            & matches["vi"].ne("") & matches["vi_syllable"].ne("")
+        ].copy()
+        vi["_literary_sort"] = (vi["vi_use"] == "literary").astype(int)
+        vi["_level_sort"] = pd.to_numeric(vi["level"], errors="coerce").fillna(99)
+        vi["_freq_sort"] = pd.to_numeric(vi["freq_vi"], errors="coerce").fillna(float("inf"))
+        vi = vi.sort_values(
+            ["_literary_sort", "_level_sort", "_freq_sort", "word_id"], kind="stable"
+        )
+        vi_examples = [
+            {"trad": row["trad"], "vi": row["vi"], "literary": row["vi_use"] == "literary"}
+            for row in vi.head(3).to_dict(orient="records")
+        ]
+        singles = single_by_char.get(char["key_char"], [])
+        vi_single_use = next((row["vi_use"] for row in singles if row["vi_use"]), "")
+        own_literary = any(row["vi_use"] == "literary" for row in singles)
+        reason = ""
+        if char["vi"] and vi_examples and all(row["literary"] for row in vi_examples):
+            reason = "vi_examples_literary"
+        elif char["vi"] and own_literary:
+            reason = "vi_single_literary"
+        elif (char["vi"] and not vi_examples and char["level"]
+              and int(char["level"]) <= 4):
+            reason = "vi_no_examples"
+        elif (char["pinyin"] and not zh_examples and char["level"]
+              and int(char["level"]) <= 4):
+            reason = "zh_no_examples"
+        if not reason:
+            continue
+        item = {
+            "key": f"{char['char_id']}:note", "char": char["key_char"],
+            "simp": char["simp"], "jp": char["jp"], "pinyin": char["pinyin"],
+            "vi": char["vi"], "meaning_en": char["gloss_en"][:80],
+            "zh_examples": zh_examples, "vi_examples": vi_examples,
+            "vi_single_use": vi_single_use, "reason": reason,
+        }
+        items.append(_clean(item))
+    return items
+
+
+def build_task6_items(
+    words: pd.DataFrame | None = None,
+    ff_meanings: pd.DataFrame | None = None,
+    chars: pd.DataFrame | None = None,
+    word_chars: pd.DataFrame | None = None,
+) -> dict[str, list[dict[str, Any]]]:
+    """Build D72 sentence and character-note items without any network access."""
+    words = load_csv(WORDS_PATH) if words is None else words.copy()
+    ff_meanings = load_csv(FF_MEANINGS_PATH) if ff_meanings is None else ff_meanings.copy()
+    chars = load_csv(CHARS_PATH) if chars is None else chars.copy()
+    word_chars = load_csv(WORD_CHARS_PATH) if word_chars is None else word_chars.copy()
+    zh_card, zh_ff = _task6_sentence_items(words, ff_meanings, "zh")
+    vi_card, vi_ff = _task6_sentence_items(words, ff_meanings, "vi")
+    notes = _task6_note_items(words, chars, word_chars)
+    result = {
+        "zh_card": zh_card, "zh_ff": zh_ff,
+        "vi_card": vi_card, "vi_ff": vi_ff, "note": notes,
+    }
+    counts = {kind: len(items) for kind, items in result.items()}
+    if counts != TASK6_EXPECTED_COUNTS:
+        raise ValueError(
+            f"Task 6 item counts differ from D72: expected {TASK6_EXPECTED_COUNTS}, got {counts}"
+        )
+    expected_fields = {
+        "zh_card": TASK6_ZH_FIELDS, "zh_ff": TASK6_ZH_FIELDS,
+        "vi_card": TASK6_VI_FIELDS, "vi_ff": TASK6_VI_FIELDS,
+        "note": TASK6_NOTE_FIELDS,
+    }
+    all_keys: list[str] = []
+    for kind, items in result.items():
+        if any(list(item) != expected_fields[kind] for item in items):
+            raise ValueError(f"Task 6 {kind} input field order differs from D72")
+        all_keys.extend(item["key"] for item in items)
+    if len(all_keys) != len(set(all_keys)):
+        raise ValueError("Task 6 input keys are not unique")
+    if any(not item["target"] or not item["meaning_ja"] for item in zh_card):
+        raise ValueError("Task 6 zh card item has an empty target or meaning")
+    if any(not item["meaning_ja"] for item in vi_card):
+        raise ValueError("Task 6 vi card item has an empty meaning")
+    return result
+
+
+def build_task6_batches() -> list[tuple[str, str, list[dict[str, Any]]]]:
+    items = build_task6_items()
+    result: list[tuple[str, str, list[dict[str, Any]]]] = []
+    number = 1
+    for kind, values in (("zh", items["zh_card"] + items["zh_ff"]),
+                         ("vi", items["vi_card"] + items["vi_ff"]),
+                         ("note", items["note"])):
+        for batch in chunked(values, 50):
+            result.append((f"b{number:03d}", kind, batch))
+            number += 1
+    return result
+
+
+def _pilot_add_by_forms(
+    destination: list[dict[str, Any]], pool: list[dict[str, Any]], forms: list[str],
+) -> None:
+    keys = {item["key"] for item in destination}
+    for form in forms:
+        match = next((item for item in pool if item["trad"] == form and item["key"] not in keys), None)
+        if match is None:
+            raise ValueError(f"Task 6 pilot item is missing for {form}")
+        destination.append(match)
+        keys.add(match["key"])
+
+
+def build_pilot_task6() -> dict[str, list[dict[str, Any]]]:
+    items = build_task6_items()
+    zh_cards, zh_ffs = items["zh_card"], items["zh_ff"]
+    zh: list[dict[str, Any]] = []
+    _pilot_add_by_forms(zh, zh_cards, [
+        "大學", "學習", "銀行", "新聞", "經濟", "發展", "注意", "歷史", "心理",
+        "博士", "勉強", "主義", "東西", "老師", "愛人", "工夫", "自己",
+    ])
+    _pilot_add_by_forms(zh, zh_ffs, ["手紙", "大丈夫"])
+    for item in zh_cards:
+        if len(zh) >= 40:
+            break
+        if item["level"] == "1" and item["key"] not in {value["key"] for value in zh}:
+            zh.append(item)
+    for item in zh_cards:
+        if len(zh) >= 50:
+            break
+        if item["level"] == "7" and item["key"] not in {value["key"] for value in zh}:
+            zh.append(item)
+
+    vi_cards, vi_ffs = items["vi_card"], items["vi_ff"]
+    vi: list[dict[str, Any]] = []
+    _pilot_add_by_forms(vi, vi_cards, [
+        "大學", "學習", "銀行", "經濟", "發展", "注意", "歷史", "心理", "博士",
+        "勉強", "主義", "越南", "自己", "工夫", "飛機", "老師",
+    ])
+    _pilot_add_by_forms(vi, vi_ffs, ["大丈夫"])
+    single_ff = [item for item in vi_ffs if len(item["trad"]) == 1]
+    vi.extend(single_ff[:6])
+    vi_keys = {item["key"] for item in vi}
+    for item in vi_cards:
+        if len(vi) >= 40:
+            break
+        if item["vi_use"] == "literary" and item["key"] not in vi_keys:
+            vi.append(item)
+            vi_keys.add(item["key"])
+    pilot_word_map = load_csv(WORDS_PATH).set_index("word_id")
+    for item in vi_cards:
+        if len(vi) >= 50:
+            break
+        word_id = item["key"].split(":", 1)[0]
+        row = pilot_word_map.loc[word_id]
+        if row["origin"] == "vi_freq" and item["key"] not in vi_keys:
+            vi.append(item)
+            vi_keys.add(item["key"])
+
+    notes = items["note"]
+    note: list[dict[str, Any]] = []
+    bang = next((item for item in notes if item["char"] == "幫"), None)
+    if bang is not None:
+        note.append(bang)
+    note.extend(item for item in notes if item not in note and len(note) < 50)
+    result = {"zh": zh, "vi": vi, "note": note}
+    if {kind: len(values) for kind, values in result.items()} != {"zh": 50, "vi": 50, "note": 50}:
+        raise ValueError(f"Task 6 pilot needs 50 items per kind: { {k: len(v) for k, v in result.items()} }")
+    return result
+
+
 def _word_task2_item(row: pd.Series, result: dict[str, Any]) -> dict[str, Any]:
     item = {field: row[field] for field in WORD_CONTEXT_FIELDS}
     item["key"] = row["word_id"]
@@ -606,12 +947,23 @@ def jsonl_text(items: Iterable[dict[str, Any]]) -> str:
     return "".join(json.dumps(_clean(item), ensure_ascii=False, sort_keys=True, separators=(",", ":")) + "\n" for item in items)
 
 
+def ordered_jsonl_text(items: Iterable[dict[str, Any]]) -> str:
+    return "".join(json.dumps(_clean(item), ensure_ascii=False, separators=(",", ":")) + "\n" for item in items)
+
+
 def sha256_text(value: str) -> str:
     return hashlib.sha256(value.encode("utf-8")).hexdigest()
 
 
 def write_jsonl(path: Path, items: Iterable[dict[str, Any]]) -> str:
     text = jsonl_text(items)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(text, encoding="utf-8", newline="\n")
+    return sha256_text(text)
+
+
+def write_ordered_jsonl(path: Path, items: Iterable[dict[str, Any]]) -> str:
+    text = ordered_jsonl_text(items)
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(text, encoding="utf-8", newline="\n")
     return sha256_text(text)

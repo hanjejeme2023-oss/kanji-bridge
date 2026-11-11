@@ -1,0 +1,50 @@
+{"key":"w12318:vi:card","target":"tất thắng","trad":"必勝","meaning_ja":"必ず勝つ、必勝である","is_trap":false,"contrast_meaning_ja":"","vi_use":"common","level":"4"}
+{"key":"w12319:vi:card","target":"quyết thắng","trad":"決勝","meaning_ja":"勝利を決意する、断固として勝つ","is_trap":true,"contrast_meaning_ja":"勝負を決めること、決勝戦","vi_use":"common","level":"4"}
+{"key":"w12320:vi:card","target":"học khu","trad":"學區","meaning_ja":"（北米などの）学区","is_trap":false,"contrast_meaning_ja":"","vi_use":"literary","level":"4"}
+{"key":"w12321:vi:card","target":"nhân danh","trad":"人名","meaning_ja":"人の名前（また「〜の名において」）","is_trap":false,"contrast_meaning_ja":"","vi_use":"literary","level":"4"}
+{"key":"w12322:vi:card","target":"đại danh từ","trad":"代名詞","meaning_ja":"代名詞","is_trap":false,"contrast_meaning_ja":"","vi_use":"common","level":"4"}
+{"key":"w12323:vi:card","target":"danh thủ","trad":"名手","meaning_ja":"名手、達人、有名な選手・芸術家","is_trap":false,"contrast_meaning_ja":"","vi_use":"common","level":"4"}
+{"key":"w12324:vi:card","target":"liên danh","trad":"聯名","meaning_ja":"（選挙の）候補者名簿、連名リスト","is_trap":false,"contrast_meaning_ja":"","vi_use":"literary","level":"4"}
+{"key":"w12325:vi:card","target":"hạ chí","trad":"夏至","meaning_ja":"夏至","is_trap":false,"contrast_meaning_ja":"","vi_use":"common","level":"4"}
+{"key":"w12326:vi:card","target":"giả tưởng","trad":"假想","meaning_ja":"架空の、フィクションの","is_trap":false,"contrast_meaning_ja":"","vi_use":"common","level":"4"}
+{"key":"w12327:vi:card","target":"thức giả","trad":"識者","meaning_ja":"学者、知識人","is_trap":false,"contrast_meaning_ja":"","vi_use":"literary","level":"4"}
+{"key":"w12328:vi:card","target":"trưởng giả","trad":"長者","meaning_ja":"ブルジョワ、裕福な市民階級（また成金気取り）","is_trap":true,"contrast_meaning_ja":"大金持ち、富豪（また年長者・徳の高い人）","vi_use":"common","level":"4"}
+{"key":"w12329:vi:card","target":"địa chủ","trad":"地主","meaning_ja":"（農地や農園の）地主","is_trap":false,"contrast_meaning_ja":"","vi_use":"common","level":"4"}
+{"key":"w12330:vi:card","target":"địa bàn","trad":"地盤","meaning_ja":"羅針盤（また活動地域・エリア）","is_trap":false,"contrast_meaning_ja":"","vi_use":"common","level":"4"}
+{"key":"w12331:vi:card","target":"bình địa","trad":"平地","meaning_ja":"荒れ地、更地（また平地）","is_trap":false,"contrast_meaning_ja":"","vi_use":"literary","level":"4"}
+{"key":"w12332:vi:card","target":"tâm địa","trad":"心地","meaning_ja":"気立て、心根、性根","is_trap":true,"contrast_meaning_ja":"気分、気持ち（しんじ：心、気立て）","vi_use":"common","level":"4"}
+{"key":"w12333:vi:card","target":"chiến địa","trad":"戰地","meaning_ja":"戦場、戦地","is_trap":false,"contrast_meaning_ja":"","vi_use":"common","level":"4"}
+{"key":"w12334:vi:card","target":"cao địa","trad":"高地","meaning_ja":"高地","is_trap":false,"contrast_meaning_ja":"","vi_use":"literary","level":"4"}
+{"key":"w12335:vi:card","target":"bán phần","trad":"半分","meaning_ja":"部分的な、いくらかの","is_trap":true,"contrast_meaning_ja":"二つに分けた一つ、二分の一","vi_use":"literary","level":"4"}
+{"key":"w12336:vi:card","target":"bán thân","trad":"半身","meaning_ja":"半身、胸像、半身像","is_trap":false,"contrast_meaning_ja":"","vi_use":"common","level":"4"}
+{"key":"w12337:vi:card","target":"pháp lệnh","trad":"法令","meaning_ja":"法令、成文法","is_trap":false,"contrast_meaning_ja":"","vi_use":"common","level":"4"}
+{"key":"w12338:vi:card","target":"giáo hội","trad":"教會","meaning_ja":"教団、教会（仏教のサンガやキリスト教の組織）","is_trap":false,"contrast_meaning_ja":"","vi_use":"common","level":"4"}
+{"key":"w12339:vi:card","target":"chính giáo","trad":"正教","meaning_ja":"正統な宗教、正教","is_trap":false,"contrast_meaning_ja":"","vi_use":"common","level":"4"}
+{"key":"w12340:vi:card","target":"thiên quốc","trad":"天國","meaning_ja":"天国、楽園","is_trap":false,"contrast_meaning_ja":"","vi_use":"common","level":"4"}
+{"key":"w12341:vi:card","target":"thiên hoàng","trad":"天皇","meaning_ja":"日本の天皇","is_trap":false,"contrast_meaning_ja":"","vi_use":"common","level":"4"}
+{"key":"w12342:vi:card","target":"kiểm dịch","trad":"檢疫","meaning_ja":"検疫する","is_trap":false,"contrast_meaning_ja":"","vi_use":"common","level":"4"}
+{"key":"w12343:vi:card","target":"dịch giả","trad":"譯者","meaning_ja":"翻訳者、訳者","is_trap":false,"contrast_meaning_ja":"","vi_use":"common","level":"4"}
+{"key":"w12344:vi:card","target":"sử gia","trad":"史家","meaning_ja":"歴史家、史家","is_trap":false,"contrast_meaning_ja":"","vi_use":"common","level":"4"}
+{"key":"w12345:vi:card","target":"sử liệu","trad":"史料","meaning_ja":"史料、歴史の記録・資料","is_trap":false,"contrast_meaning_ja":"","vi_use":"common","level":"4"}
+{"key":"w12346:vi:card","target":"hộ vệ","trad":"護衛","meaning_ja":"護衛する、警護する","is_trap":false,"contrast_meaning_ja":"","vi_use":"common","level":"4"}
+{"key":"w12347:vi:card","target":"ma nữ","trad":"魔女","meaning_ja":"女性の幽霊・亡霊","is_trap":true,"contrast_meaning_ja":"魔女","vi_use":"common","level":"4"}
+{"key":"w12348:vi:card","target":"tệ hại","trad":"弊害","meaning_ja":"ひどい、劣悪な","is_trap":true,"contrast_meaning_ja":"弊害、悪影響","vi_use":"common","level":"4"}
+{"key":"w12349:vi:card","target":"bị hại","trad":"被害","meaning_ja":"害を受けること、被害","is_trap":false,"contrast_meaning_ja":"","vi_use":"common","level":"4"}
+{"key":"w12350:vi:card","target":"hồ tiêu","trad":"胡椒","meaning_ja":"コショウ（胡椒）","is_trap":false,"contrast_meaning_ja":"","vi_use":"common","level":"4"}
+{"key":"w12351:vi:card","target":"chú mục","trad":"注目","meaning_ja":"注視する、集中する","is_trap":false,"contrast_meaning_ja":"","vi_use":"literary","level":"4"}
+{"key":"w12352:vi:card","target":"chí hướng","trad":"志向","meaning_ja":"志、抱負、大志","is_trap":false,"contrast_meaning_ja":"","vi_use":"common","level":"4"}
+{"key":"w12353:vi:card","target":"căn tính","trad":"根性","meaning_ja":"本性、生まれつきの性格","is_trap":true,"contrast_meaning_ja":"根性、気力、生まれつきの性質","vi_use":"literary","level":"4"}
+{"key":"w12354:vi:card","target":"tự viện","trad":"寺院","meaning_ja":"仏教寺院","is_trap":false,"contrast_meaning_ja":"","vi_use":"literary","level":"4"}
+{"key":"w12355:vi:card","target":"bệnh viện","trad":"病院","meaning_ja":"病院","is_trap":false,"contrast_meaning_ja":"","vi_use":"common","level":"4"}
+{"key":"w12356:vi:card","target":"phản chiến","trad":"反戰","meaning_ja":"反戦","is_trap":false,"contrast_meaning_ja":"","vi_use":"common","level":"4"}
+{"key":"w12357:vi:card","target":"tổng động viên","trad":"總動員","meaning_ja":"総動員する","is_trap":false,"contrast_meaning_ja":"","vi_use":"common","level":"4"}
+{"key":"w12358:vi:card","target":"tổng trưởng","trad":"總長","meaning_ja":"大臣、閣僚","is_trap":true,"contrast_meaning_ja":"総長（大学や組織の長）","vi_use":"literary","level":"4"}
+{"key":"w12359:vi:card","target":"tuyệt giao","trad":"絶交","meaning_ja":"絶交する、関係を断つ","is_trap":false,"contrast_meaning_ja":"","vi_use":"common","level":"4"}
+{"key":"w12360:vi:card","target":"lập quốc","trad":"立國","meaning_ja":"建国する、国を樹立する","is_trap":false,"contrast_meaning_ja":"","vi_use":"literary","level":"4"}
+{"key":"w12361:vi:card","target":"hóa hợp","trad":"化合","meaning_ja":"化合する、結合する","is_trap":false,"contrast_meaning_ja":"","vi_use":"common","level":"4"}
+{"key":"w12362:vi:card","target":"hóa học","trad":"化學","meaning_ja":"化学","is_trap":false,"contrast_meaning_ja":"","vi_use":"common","level":"4"}
+{"key":"w12363:vi:card","target":"đồng hóa","trad":"同化","meaning_ja":"同化する","is_trap":false,"contrast_meaning_ja":"","vi_use":"common","level":"4"}
+{"key":"w12364:vi:card","target":"quốc tế hóa","trad":"國際化","meaning_ja":"国際化する","is_trap":false,"contrast_meaning_ja":"","vi_use":"common","level":"4"}
+{"key":"w12365:vi:card","target":"cảm hóa","trad":"感化","meaning_ja":"感化する、改心させる","is_trap":false,"contrast_meaning_ja":"","vi_use":"common","level":"4"}
+{"key":"w12366:vi:card","target":"sinh hóa học","trad":"生化學","meaning_ja":"生化学","is_trap":false,"contrast_meaning_ja":"","vi_use":"common","level":"4"}
+{"key":"w12367:vi:card","target":"tự động hóa","trad":"自動化","meaning_ja":"自動化する","is_trap":false,"contrast_meaning_ja":"","vi_use":"common","level":"4"}

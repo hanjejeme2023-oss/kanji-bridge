@@ -1,0 +1,50 @@
+{"key":"w12889:vi:card","target":"đối đầu","trad":"對頭","meaning_ja":"対立する、直面する、対決する","is_trap":false,"contrast_meaning_ja":"","vi_use":"common","level":"7"}
+{"key":"w12890:vi:card","target":"trọng bệnh","trad":"重病","meaning_ja":"重病、重い病気","is_trap":false,"contrast_meaning_ja":"","vi_use":"common","level":"7"}
+{"key":"w12891:vi:card","target":"liên hoàn","trad":"連環","meaning_ja":"連続した、相次ぐ","is_trap":false,"contrast_meaning_ja":"","vi_use":"common","level":"7"}
+{"key":"w12892:vi:card","target":"điện trường","trad":"電場","meaning_ja":"電場、電界","is_trap":false,"contrast_meaning_ja":"","vi_use":"common","level":"7"}
+{"key":"w12893:vi:card","target":"tâm tính","trad":"心性","meaning_ja":"気質、性格、気立て","is_trap":false,"contrast_meaning_ja":"","vi_use":"common","level":"7"}
+{"key":"w12894:vi:card","target":"vô tính","trad":"無性","meaning_ja":"無性の","is_trap":false,"contrast_meaning_ja":"","vi_use":"common","level":"7"}
+{"key":"w12895:vi:card","target":"đối chứng","trad":"對症","meaning_ja":"（病気の原因などを）照合して確かめる","is_trap":false,"contrast_meaning_ja":"","vi_use":"literary","level":"7"}
+{"key":"w12896:vi:card","target":"đối chứng","trad":"對證","meaning_ja":"（法廷などで）証拠を照合する、事実を突き合わせる","is_trap":false,"contrast_meaning_ja":"","vi_use":"common","level":"7"}
+{"key":"w12897:vi:card","target":"nhất quyết","trad":"一決","meaning_ja":"断固として決意する、決して～する","is_trap":true,"contrast_meaning_ja":"一決、一つに決まること、合意","vi_use":"common","level":"7"}
+{"key":"w12898:vi:card","target":"vô vọng","trad":"無望","meaning_ja":"絶望的な、望みのない","is_trap":false,"contrast_meaning_ja":"","vi_use":"common","level":"7"}
+{"key":"w12899:vi:card","target":"trọng vọng","trad":"重望","meaning_ja":"敬う、重んじる、尊ぶ","is_trap":true,"contrast_meaning_ja":"高い名望、大きな期待","vi_use":"common","level":"7"}
+{"key":"w12900:vi:card","target":"bất tử","trad":"不死","meaning_ja":"不死の、不滅の","is_trap":false,"contrast_meaning_ja":"","vi_use":"common","level":"7"}
+{"key":"w12901:vi:card","target":"sĩ tử","trad":"士子","meaning_ja":"受験生（科挙や大学入試などの重要な試験を受ける学生）","is_trap":false,"contrast_meaning_ja":"","vi_use":"common","level":"7"}
+{"key":"w12902:vi:card","target":"an tử","trad":"安死","meaning_ja":"安楽死","is_trap":false,"contrast_meaning_ja":"","vi_use":"common","level":"7"}
+{"key":"w12903:vi:card","target":"tử sĩ","trad":"死士","meaning_ja":"殉職者、戦死者、決死の士","is_trap":false,"contrast_meaning_ja":"","vi_use":"common","level":"7"}
+{"key":"w12904:vi:card","target":"tử chiến","trad":"死戰","meaning_ja":"死闘を繰り広げる、命がけで戦う","is_trap":false,"contrast_meaning_ja":"","vi_use":"common","level":"7"}
+{"key":"w12905:vi:card","target":"đồng tử","trad":"瞳子","meaning_ja":"ひとみ、瞳孔","is_trap":false,"contrast_meaning_ja":"","vi_use":"common","level":"7"}
+{"key":"w12906:vi:card","target":"điện tử học","trad":"電子學","meaning_ja":"電子工学、エレクトロニクス","is_trap":false,"contrast_meaning_ja":"","vi_use":"common","level":"7"}
+{"key":"w12907:vi:card","target":"chuyển tự","trad":"轉字","meaning_ja":"翻字する、別の文字体系で書き表す","is_trap":false,"contrast_meaning_ja":"","vi_use":"common","level":"7"}
+{"key":"w12908:vi:card","target":"chuyển chú","trad":"轉注","meaning_ja":"転注、比喩的な意味の拡張","is_trap":false,"contrast_meaning_ja":"","vi_use":"literary","level":"7"}
+{"key":"w12909:vi:card","target":"tiền đình","trad":"前庭","meaning_ja":"（特に内耳などの）前庭","is_trap":false,"contrast_meaning_ja":"","vi_use":"common","level":"7"}
+{"key":"w12910:vi:card","target":"chủ sự","trad":"主事","meaning_ja":"管理する、監督する、主宰する","is_trap":false,"contrast_meaning_ja":"","vi_use":"common","level":"7"}
+{"key":"w12911:vi:card","target":"chủ công","trad":"主公","meaning_ja":"主君、閣下","is_trap":false,"contrast_meaning_ja":"","vi_use":"literary","level":"7"}
+{"key":"w12912:vi:card","target":"chủ tâm","trad":"主心","meaning_ja":"意図、故意、はっきりした目的","is_trap":false,"contrast_meaning_ja":"","vi_use":"common","level":"7"}
+{"key":"w12913:vi:card","target":"chủ công","trad":"主攻","meaning_ja":"（バレーボールなどの）メインアタッカー、またはサーバー","is_trap":false,"contrast_meaning_ja":"","vi_use":"common","level":"7"}
+{"key":"w12914:vi:card","target":"cao học","trad":"高學","meaning_ja":"大学院の修士課程教育","is_trap":true,"contrast_meaning_ja":"","vi_use":"common","level":"7"}
+{"key":"w12915:vi:card","target":"động vật học","trad":"動物學","meaning_ja":"動物学","is_trap":false,"contrast_meaning_ja":"","vi_use":"common","level":"7"}
+{"key":"w12916:vi:card","target":"cổ động vật học","trad":"古動物學","meaning_ja":"古動物学","is_trap":false,"contrast_meaning_ja":"","vi_use":"literary","level":"7"}
+{"key":"w12917:vi:card","target":"cổ thực vật học","trad":"古植物學","meaning_ja":"古植物学","is_trap":false,"contrast_meaning_ja":"","vi_use":"literary","level":"7"}
+{"key":"w12918:vi:card","target":"cổ vật","trad":"古物","meaning_ja":"古物、古代の遺物、骨董品","is_trap":false,"contrast_meaning_ja":"","vi_use":"common","level":"7"}
+{"key":"w12919:vi:card","target":"cảnh vật","trad":"景物","meaning_ja":"景色、風景","is_trap":false,"contrast_meaning_ja":"","vi_use":"common","level":"7"}
+{"key":"w12920:vi:card","target":"vật tự thể","trad":"物自體","meaning_ja":"物自体（哲学の概念）","is_trap":false,"contrast_meaning_ja":"","vi_use":"literary","level":"7"}
+{"key":"w12921:vi:card","target":"bảo kiếm","trad":"寶劍","meaning_ja":"宝剣、貴重な剣","is_trap":false,"contrast_meaning_ja":"","vi_use":"literary","level":"7"}
+{"key":"w12922:vi:card","target":"trường kiếm","trad":"長劍","meaning_ja":"長剣、ロングソード","is_trap":false,"contrast_meaning_ja":"","vi_use":"literary","level":"7"}
+{"key":"w12923:vi:card","target":"kế tự","trad":"繼嗣","meaning_ja":"家系を継ぐ、継承する","is_trap":false,"contrast_meaning_ja":"","vi_use":"literary","level":"7"}
+{"key":"w12924:vi:card","target":"liên đội trưởng","trad":"聯隊長","meaning_ja":"連隊長（少年団や軍の部隊のリーダー）","is_trap":false,"contrast_meaning_ja":"","vi_use":"common","level":"7"}
+{"key":"w12925:vi:card","target":"biến tính","trad":"變性","meaning_ja":"（化学的・生物学的な）変性","is_trap":false,"contrast_meaning_ja":"","vi_use":"common","level":"7"}
+{"key":"w12926:vi:card","target":"biến số","trad":"變數","meaning_ja":"（数学などの）変数","is_trap":false,"contrast_meaning_ja":"","vi_use":"common","level":"7"}
+{"key":"w12927:vi:card","target":"biến cách","trad":"變格","meaning_ja":"（文法の）格変化、曲用","is_trap":true,"contrast_meaning_ja":"変格、普通の格式・規則から外れていること（変格活用など）","vi_use":"literary","level":"7"}
+{"key":"w12928:vi:card","target":"biến chứng","trad":"變症","meaning_ja":"合併症","is_trap":false,"contrast_meaning_ja":"","vi_use":"common","level":"7"}
+{"key":"w12929:vi:card","target":"cổ nhân loại học","trad":"古人類學","meaning_ja":"古人類学","is_trap":false,"contrast_meaning_ja":"","vi_use":"literary","level":"7"}
+{"key":"w12930:vi:card","target":"vô loại","trad":"無類","meaning_ja":"ろくでなしの、無価値な、邪悪な","is_trap":true,"contrast_meaning_ja":"無類、類がないこと、飛び抜けていること","vi_use":"common","level":"7"}
+{"key":"w12931:vi:card","target":"mạnh thường quân","trad":"孟嘗君","meaning_ja":"気前のよい支援者、パトロン、篤志家","is_trap":true,"contrast_meaning_ja":"孟嘗君（中国戦国時代の斉の政治家）","vi_use":"common","level":"7"}
+{"key":"w12932:vi:card","target":"đấu trường","trad":"鬥場","meaning_ja":"競技場、アリーナ、スタジアム","is_trap":false,"contrast_meaning_ja":"","vi_use":"common","level":"7"}
+{"key":"w12933:vi:card","target":"tiên sư","trad":"先師","meaning_ja":"昔の賢人・師匠（また俗に罵倒語としても用いられる）","is_trap":false,"contrast_meaning_ja":"","vi_use":"common","level":"7"}
+{"key":"w12934:vi:card","target":"sư cô","trad":"師姑","meaning_ja":"尼僧（また尼僧への敬称）","is_trap":false,"contrast_meaning_ja":"","vi_use":"common","level":"7"}
+{"key":"w12935:vi:card","target":"quân sư","trad":"軍師","meaning_ja":"軍師、軍事顧問、アドバイザー","is_trap":false,"contrast_meaning_ja":"","vi_use":"common","level":"7"}
+{"key":"w12936:vi:card","target":"hợp thức","trad":"合式","meaning_ja":"規則にかなっている、合法的な、正当な","is_trap":false,"contrast_meaning_ja":"","vi_use":"common","level":"7"}
+{"key":"w12937:vi:card","target":"thể thức","trad":"體式","meaning_ja":"様式、手続きの方法","is_trap":false,"contrast_meaning_ja":"","vi_use":"common","level":"7"}
+{"key":"w12938:vi:card","target":"tiến bộ chủ nghĩa","trad":"進步主義","meaning_ja":"進歩主義の、進歩的な","is_trap":false,"contrast_meaning_ja":"","vi_use":"literary","level":"7"}

@@ -7,7 +7,15 @@ param(
     [switch]$Status,
 
     [Parameter(Mandatory = $true, ParameterSetName = 'Check')]
-    [switch]$Check
+    [switch]$Check,
+
+    [Parameter(Mandatory = $true, ParameterSetName = 'Pilot6')]
+    [switch]$Pilot6,
+
+    [Parameter(ParameterSetName = 'Tasks')]
+    [int]$RerunRound,
+
+    [switch]$AllowAfterCreditDeadline
 )
 
 $ErrorActionPreference = 'Stop'
@@ -55,6 +63,9 @@ public static class Stage4ExecutionState {
 
 function Invoke-Stage4Python {
     param([string[]]$Arguments)
+    if ($AllowAfterCreditDeadline) {
+        $Arguments += '--allow-after-credit-deadline'
+    }
     & $PythonPath -u $Generator @Arguments | Out-Host
     return $LASTEXITCODE
 }
@@ -80,6 +91,12 @@ try {
             $ExitCode = Invoke-Stage4Python @('--status')
         }
     }
+    elseif ($Pilot6) {
+        $ExitCode = Invoke-Stage4Python @('--pilot6')
+        if ($ExitCode -eq 0) {
+            $ExitCode = Invoke-Stage4Python @('--status')
+        }
+    }
     else {
         $TaskNumbers = @(
             $Tasks.Split(',') |
@@ -93,13 +110,25 @@ try {
             if ($TaskNumber -match '^[1-5]$') {
                 throw "D65 refusal: task $TaskNumber is accepted and its stale inputs must never be regenerated."
             }
-            throw "Invalid task '$TaskNumber'."
+            if ($TaskNumber -ne '6') {
+                throw "Invalid task '$TaskNumber'."
+            }
+        }
+        if ($RerunRound -lt 0) {
+            throw '-RerunRound must be positive.'
+        }
+        if ($RerunRound -gt 0 -and ($TaskNumbers.Count -ne 1 -or $TaskNumbers[0] -ne '6')) {
+            throw '-RerunRound requires -Tasks 6.'
         }
 
         :TaskLoop foreach ($TaskNumber in $TaskNumbers) {
             for ($Attempt = 1; $Attempt -le 3; $Attempt++) {
                 Write-Host "Starting task $TaskNumber (launcher attempt $Attempt of 3)"
-                $ExitCode = Invoke-Stage4Python @('--task', $TaskNumber)
+                $RunnerArguments = @('--task', $TaskNumber)
+                if ($RerunRound -gt 0) {
+                    $RunnerArguments += @('--rerun-round', [string]$RerunRound)
+                }
+                $ExitCode = Invoke-Stage4Python $RunnerArguments
                 if ($ExitCode -eq 0) {
                     continue TaskLoop
                 }
