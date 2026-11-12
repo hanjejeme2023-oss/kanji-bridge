@@ -1,0 +1,26 @@
+round,key,reason
+1,w00064:zh:card,"Pinyin error outside the target: 今年 is jīnnián, not jīnniān. Keep the sentence if it is natural; write the dictionary pinyin. Also prefer a more natural sentence (她今年上大学了 style)."
+1,w00099:zh:card,"Pinyin error outside the target: 今年 is jīnnián, not jīnniān. Keep the sentence if it is natural; write the dictionary pinyin."
+1,w00432:zh:card,"Pinyin error outside the target: 今年 is jīnnián, not jīnniān. Keep the sentence if it is natural; write the dictionary pinyin."
+1,w10550:zh:card,"Pinyin error outside the target: 今年 is jīnnián, not jīnniān. Keep the sentence if it is natural; write the dictionary pinyin."
+1,w07513:zh:card,"Pinyin error outside the target: 气温 is qìwēn, not qīwēn. Keep the sentence if it is natural; write the dictionary pinyin."
+1,w08563:zh:card,"Pinyin error outside the target: 气温 is qìwēn, not qīwēn. Keep the sentence if it is natural; write the dictionary pinyin."
+1,w09251:zh:card,"Pinyin error outside the target: 气温 is qìwēn, not qīwēn. Keep the sentence if it is natural; write the dictionary pinyin."
+1,w01990:zh:card,"Pinyin error outside the target: 发展 is fāzhǎn, not fǎzhǎn. Keep the sentence if it is natural; write the dictionary pinyin."
+1,w07028:zh:card,"Pinyin error outside the target: 穿过 is chuānguò, not chuāngguò. Keep the sentence if it is natural; write the dictionary pinyin."
+1,w09720:zh:card,"Pinyin error outside the target: 当天 'that same day' is dàngtiān, not dāngtiān. Keep the sentence if it is natural; write the dictionary pinyin."
+1,w13069:zh:ff,"Pinyin error outside the target: 当晚 'that same evening' is dàngwǎn, not dāngwǎn. Keep the sentence if it is natural; write the dictionary pinyin."
+1,w00418:zh:card,非常谢谢 is unnatural; write a natural sentence with 谢谢 (e.g. 谢谢你帮我…).
+1,w01521:zh:card,这件东西有很长的古代历史 is unnatural Chinese; write a natural sentence using 古代 as 'ancient times'.
+1,w01855:zh:card,"年头太多了，你认得他吗 is unnatural; write a natural sentence with 认得 'to recognize, know'."
+1,w01914:zh:card,这件事件 is redundant; use 这一事件/这个事件 or another natural sentence.
+1,w02521:zh:card,The sentence is redundant (太过了…太过于过分了); write one natural sentence with 过分.
+1,w04280:zh:ff,被老师挨了一顿批评 is ungrammatical; 挨 takes the hardship as object (他挨了老师一顿批评).
+1,w13035:zh:ff,"The sentence contains 应急 + 用, not the word 急用; write a sentence where 急用 itself is the word (留着急用)."
+1,w12480:zh:ff,The wife of a crown prince (王储) is not a 王妃; write a factually correct sentence about a king's consort.
+1,w00232:vi:card,"'trên mã thượng' is not Vietnamese. Use the current sense that matches 堂々とした: generous, chivalrous (tinh thần mã thượng, thái độ mã thượng), or return no_sentence."
+1,w00589:vi:card,'buổi xuân tiết' is not idiomatic. Write a sentence only if xuân tiết is really used today in the meaning given; otherwise return no_sentence.
+1,w01408:vi:card,"The sentence uses đáo để as 'sharp-tongued', but the meaning shown is 'extremely, thoroughly' (khó đáo để, ghét đáo để). Use that meaning."
+1,w12232:vi:card,"'phong thái rất đường đường' is unnatural. Use a real pattern (đường đường là…, đường đường chính chính) or return no_sentence."
+1,w02310:vi:card,"'nên người thành nhân' is redundant and forced. Write a natural formal sentence with thành nhân (an adult), or return no_sentence."
+1,w11344:vi:card,'trăm họ bách tính' repeats the same meaning. Write a sentence with bách tính alone.

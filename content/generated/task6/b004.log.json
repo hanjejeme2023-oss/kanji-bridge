@@ -1,0 +1,110 @@
+{
+  "batch": "b004",
+  "batch_attempt": 1,
+  "failed_errors": {},
+  "failed_keys": [],
+  "input_sha256": "ef7810033000168791dfa81ed8e1ca9dc34e6ff65e7c44adc9a28800a2966446",
+  "item_count": 50,
+  "kind": "zh",
+  "location": "global",
+  "model": "gemini-4-argon",
+  "prompt_sha256": "3e111cedef1434f5eaef98be67c18ad5f8391b063e89f8ca98a478ad61aee7ae",
+  "requests": [
+    {
+      "attempt": "1",
+      "counted_input_tokens": 4715,
+      "duration_seconds": 45.75512710001203,
+      "error": "",
+      "keys": [
+        "w00453:zh:card",
+        "w00456:zh:card",
+        "w00458:zh:card",
+        "w00464:zh:card",
+        "w00466:zh:card",
+        "w00468:zh:card",
+        "w00476:zh:card",
+        "w00481:zh:card",
+        "w00484:zh:card",
+        "w00485:zh:card",
+        "w00487:zh:card",
+        "w00488:zh:card",
+        "w00489:zh:card",
+        "w00491:zh:card",
+        "w00492:zh:card",
+        "w00494:zh:card",
+        "w00496:zh:card",
+        "w00501:zh:card",
+        "w00503:zh:card",
+        "w00504:zh:card",
+        "w00507:zh:card",
+        "w00509:zh:card",
+        "w00512:zh:card",
+        "w00513:zh:card",
+        "w00514:zh:card",
+        "w00515:zh:card",
+        "w00516:zh:card",
+        "w00517:zh:card",
+        "w00521:zh:card",
+        "w00522:zh:card",
+        "w00526:zh:card",
+        "w00531:zh:card",
+        "w00533:zh:card",
+        "w00536:zh:card",
+        "w00539:zh:card",
+        "w00543:zh:card",
+        "w00545:zh:card",
+        "w00547:zh:card",
+        "w00548:zh:card",
+        "w00549:zh:card",
+        "w00550:zh:card",
+        "w00551:zh:card",
+        "w00555:zh:card",
+        "w00557:zh:card",
+        "w00558:zh:card",
+        "w00559:zh:card",
+        "w00561:zh:card",
+        "w00566:zh:card",
+        "w00567:zh:card",
+        "w00569:zh:card"
+      ],
+      "type": "full",
+      "usage": {
+        "input_tokens": 4969,
+        "output_tokens": 3533,
+        "thinking_tokens": 0,
+        "total_token_count": 8502,
+        "unreported_tokens": 0
+      },
+      "usd": 0.045268,
+      "validation_ok": true
+    }
+  ],
+  "settings": {
+    "max_output_tokens": 65536,
+    "request_timeout_seconds": 600,
+    "temperature": 0.3,
+    "thinking": "model_default"
+  },
+  "task": 6,
+  "timestamp": "2026-11-12T01:24:42Z",
+  "usage": {
+    "input_tokens": 4969,
+    "output_tokens": 3533,
+    "thinking_tokens": 0,
+    "total_token_count": 8502,
+    "unreported_tokens": 0
+  },
+  "usd": 0.045268,
+  "validation": {
+    "error": "",
+    "ok": true,
+    "state": "validated"
+  },
+  "wall_clock_seconds": 45.80198960000416,
+  "warnings": [
+    {
+      "key": "w00555:zh:card",
+      "warning": "target_inside_longer_word"
+    }
+  ]
+}

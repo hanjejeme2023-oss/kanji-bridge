@@ -1,0 +1,140 @@
+{
+  "batch": "b126",
+  "batch_attempt": 1,
+  "failed_errors": {},
+  "failed_keys": [],
+  "input_sha256": "5c74bdcda57b75d85f0863659d78bac4c12c53075f96d6b968d8e0fef8adf90a",
+  "item_count": 50,
+  "kind": "zh",
+  "location": "global",
+  "model": "gemini-4-argon",
+  "prompt_sha256": "3e111cedef1434f5eaef98be67c18ad5f8391b063e89f8ca98a478ad61aee7ae",
+  "requests": [
+    {
+      "attempt": "1",
+      "counted_input_tokens": 5286,
+      "duration_seconds": 86.92414309998276,
+      "error": "",
+      "keys": [
+        "w13177:zh:ff",
+        "w13178:zh:ff",
+        "w13179:zh:ff",
+        "w13180:zh:ff",
+        "w13181:zh:ff",
+        "w13182:zh:ff",
+        "w13183:zh:ff",
+        "w13184:zh:ff",
+        "w13185:zh:ff",
+        "w13186:zh:ff",
+        "w13187:zh:ff",
+        "w13188:zh:ff",
+        "w13189:zh:ff",
+        "w13190:zh:ff",
+        "w13191:zh:ff",
+        "w13192:zh:ff",
+        "w13193:zh:ff",
+        "w13194:zh:ff",
+        "w13195:zh:ff",
+        "w13196:zh:ff",
+        "w13197:zh:ff",
+        "w13198:zh:ff",
+        "w13199:zh:ff",
+        "w13200:zh:ff",
+        "w13201:zh:ff",
+        "w13202:zh:ff",
+        "w13203:zh:ff",
+        "w13204:zh:ff",
+        "w13205:zh:ff",
+        "w13206:zh:ff",
+        "w13207:zh:ff",
+        "w13208:zh:ff",
+        "w13209:zh:ff",
+        "w13210:zh:ff",
+        "w13211:zh:ff",
+        "w13212:zh:ff",
+        "w13213:zh:ff",
+        "w13214:zh:ff",
+        "w13215:zh:ff",
+        "w13216:zh:ff",
+        "w13217:zh:ff",
+        "w13218:zh:ff",
+        "w13219:zh:ff",
+        "w13220:zh:ff",
+        "w13221:zh:ff",
+        "w13222:zh:ff",
+        "w13223:zh:ff",
+        "w13224:zh:ff",
+        "w13225:zh:ff",
+        "w13226:zh:ff"
+      ],
+      "type": "full",
+      "usage": {
+        "input_tokens": 5476,
+        "output_tokens": 6450,
+        "thinking_tokens": 0,
+        "total_token_count": 11926,
+        "unreported_tokens": 0
+      },
+      "usd": 0.075452,
+      "validation_ok": true
+    },
+    {
+      "attempt": "1r1",
+      "counted_input_tokens": 1546,
+      "duration_seconds": 6.543198700004723,
+      "error": "",
+      "keys": [
+        "w13195:zh:ff"
+      ],
+      "type": "repair",
+      "usage": {
+        "input_tokens": 1879,
+        "output_tokens": 161,
+        "thinking_tokens": 0,
+        "total_token_count": 2040,
+        "unreported_tokens": 0
+      },
+      "usd": 0.005368,
+      "validation_ok": true
+    }
+  ],
+  "settings": {
+    "max_output_tokens": 65536,
+    "request_timeout_seconds": 600,
+    "temperature": 0.3,
+    "thinking": "model_default"
+  },
+  "task": 6,
+  "timestamp": "2026-11-12T07:12:22Z",
+  "usage": {
+    "input_tokens": 7355,
+    "output_tokens": 6611,
+    "thinking_tokens": 0,
+    "total_token_count": 13966,
+    "unreported_tokens": 0
+  },
+  "usd": 0.08082,
+  "validation": {
+    "error": "",
+    "ok": true,
+    "state": "validated"
+  },
+  "wall_clock_seconds": 93.5929463999928,
+  "warnings": [
+    {
+      "character": "刹",
+      "key": "w13191:zh:ff",
+      "syllable": "chà",
+      "warning": "pinyin_reading"
+    },
+    {
+      "key": "w13224:zh:ff",
+      "warning": "target_inside_longer_word"
+    },
+    {
+      "count": "2",
+      "key": "w13225:zh:ff",
+      "warning": "target_multiple"
+    }
+  ]
+}

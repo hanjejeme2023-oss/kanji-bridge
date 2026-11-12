@@ -1,0 +1,90 @@
+{
+  "batch": "b086",
+  "batch_attempt": 3,
+  "failed_errors": {
+    "w08196:zh:card": "w08196:zh:card: pinyin does not align with the characters",
+    "w08242:zh:card": "w08242:zh:card: pinyin does not align with the characters"
+  },
+  "failed_keys": [
+    "w08196:zh:card",
+    "w08242:zh:card"
+  ],
+  "input_sha256": "84f9eaba3cfe138659364375991f4c862592948afa1443b5b62945fc473a8036",
+  "item_count": 50,
+  "kind": "zh",
+  "location": "global",
+  "model": "gemini-4-argon",
+  "prompt_sha256": "3e111cedef1434f5eaef98be67c18ad5f8391b063e89f8ca98a478ad61aee7ae",
+  "requests": [
+    {
+      "attempt": "3r1",
+      "counted_input_tokens": 1624,
+      "duration_seconds": 4.441529799980344,
+      "error": "",
+      "keys": [
+        "w08196:zh:card",
+        "w08242:zh:card"
+      ],
+      "type": "repair",
+      "usage": {
+        "input_tokens": 1955,
+        "output_tokens": 201,
+        "thinking_tokens": 0,
+        "total_token_count": 2156,
+        "unreported_tokens": 0
+      },
+      "usd": 0.00592,
+      "validation_ok": true
+    },
+    {
+      "attempt": "3r2",
+      "counted_input_tokens": 1624,
+      "duration_seconds": 10.58005140000023,
+      "error": "",
+      "keys": [
+        "w08196:zh:card",
+        "w08242:zh:card"
+      ],
+      "type": "repair",
+      "usage": {
+        "input_tokens": 1955,
+        "output_tokens": 290,
+        "thinking_tokens": 0,
+        "total_token_count": 2245,
+        "unreported_tokens": 0
+      },
+      "usd": 0.00681,
+      "validation_ok": true
+    }
+  ],
+  "settings": {
+    "max_output_tokens": 65536,
+    "request_timeout_seconds": 600,
+    "temperature": 0.3,
+    "thinking": "model_default"
+  },
+  "task": 6,
+  "timestamp": "2026-11-12T10:10:44Z",
+  "usage": {
+    "input_tokens": 3910,
+    "output_tokens": 491,
+    "thinking_tokens": 0,
+    "total_token_count": 4401,
+    "unreported_tokens": 0
+  },
+  "usd": 0.01273,
+  "validation": {
+    "error": "2 failed item(s)",
+    "ok": false,
+    "state": "partial"
+  },
+  "wall_clock_seconds": 15.121933200018248,
+  "warnings": [
+    {
+      "character": "没",
+      "key": "w08176:zh:card",
+      "syllable": "mò",
+      "warning": "pinyin_reading"
+    }
+  ]
+}

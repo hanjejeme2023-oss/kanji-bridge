@@ -1,0 +1,56 @@
+{
+  "batch": "b056",
+  "batch_attempt": 2,
+  "failed_errors": {},
+  "failed_keys": [],
+  "input_sha256": "9e5d5e4142fcb59be2bbc55c95e18ef62ed1b136cd9137750016bca06141f786",
+  "item_count": 50,
+  "kind": "zh",
+  "location": "global",
+  "model": "gemini-4-argon",
+  "prompt_sha256": "3e111cedef1434f5eaef98be67c18ad5f8391b063e89f8ca98a478ad61aee7ae",
+  "requests": [
+    {
+      "attempt": "2r1",
+      "counted_input_tokens": 1521,
+      "duration_seconds": 5.586352599988459,
+      "error": "",
+      "keys": [
+        "w05185:zh:card"
+      ],
+      "type": "repair",
+      "usage": {
+        "input_tokens": 1855,
+        "output_tokens": 127,
+        "thinking_tokens": 0,
+        "total_token_count": 1982,
+        "unreported_tokens": 0
+      },
+      "usd": 0.00498,
+      "validation_ok": true
+    }
+  ],
+  "settings": {
+    "max_output_tokens": 65536,
+    "request_timeout_seconds": 600,
+    "temperature": 0.3,
+    "thinking": "model_default"
+  },
+  "task": 6,
+  "timestamp": "2026-11-12T09:27:03Z",
+  "usage": {
+    "input_tokens": 1855,
+    "output_tokens": 127,
+    "thinking_tokens": 0,
+    "total_token_count": 1982,
+    "unreported_tokens": 0
+  },
+  "usd": 0.00498,
+  "validation": {
+    "error": "",
+    "ok": true,
+    "state": "validated"
+  },
+  "wall_clock_seconds": 5.6544728000008035,
+  "warnings": []
+}

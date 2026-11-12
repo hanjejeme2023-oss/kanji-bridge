@@ -1,0 +1,149 @@
+{
+  "batch": "b122",
+  "batch_attempt": 1,
+  "failed_errors": {},
+  "failed_keys": [],
+  "input_sha256": "04091dd61b911ba8d88a8a745995e1c7e668e293b115e6e9b8fa177fa1e2111e",
+  "item_count": 50,
+  "kind": "zh",
+  "location": "global",
+  "model": "gemini-4-argon",
+  "prompt_sha256": "3e111cedef1434f5eaef98be67c18ad5f8391b063e89f8ca98a478ad61aee7ae",
+  "requests": [
+    {
+      "attempt": "1",
+      "counted_input_tokens": 5187,
+      "duration_seconds": 96.69595229998231,
+      "error": "",
+      "keys": [
+        "w12714:zh:ff",
+        "w12732:zh:ff",
+        "w12744:zh:ff",
+        "w12767:zh:ff",
+        "w12786:zh:ff",
+        "w12807:zh:ff",
+        "w12839:zh:ff",
+        "w12843:zh:ff",
+        "w12856:zh:ff",
+        "w12879:zh:ff",
+        "w12885:zh:ff",
+        "w12888:zh:ff",
+        "w12889:zh:ff",
+        "w12899:zh:ff",
+        "w12925:zh:ff",
+        "w12927:zh:ff",
+        "w12931:zh:ff",
+        "w12945:zh:ff",
+        "w12961:zh:ff",
+        "w12996:zh:ff",
+        "w12997:zh:ff",
+        "w12998:zh:ff",
+        "w12999:zh:ff",
+        "w13000:zh:ff",
+        "w13001:zh:ff",
+        "w13002:zh:ff",
+        "w13003:zh:ff",
+        "w13004:zh:ff",
+        "w13005:zh:ff",
+        "w13006:zh:ff",
+        "w13007:zh:ff",
+        "w13008:zh:ff",
+        "w13009:zh:ff",
+        "w13010:zh:ff",
+        "w13011:zh:ff",
+        "w13012:zh:ff",
+        "w13013:zh:ff",
+        "w13014:zh:ff",
+        "w13015:zh:ff",
+        "w13016:zh:ff",
+        "w13017:zh:ff",
+        "w13018:zh:ff",
+        "w13019:zh:ff",
+        "w13020:zh:ff",
+        "w13021:zh:ff",
+        "w13022:zh:ff",
+        "w13023:zh:ff",
+        "w13024:zh:ff",
+        "w13025:zh:ff",
+        "w13026:zh:ff"
+      ],
+      "type": "full",
+      "usage": {
+        "input_tokens": 5379,
+        "output_tokens": 6668,
+        "thinking_tokens": 0,
+        "total_token_count": 12047,
+        "unreported_tokens": 0
+      },
+      "usd": 0.077438,
+      "validation_ok": true
+    },
+    {
+      "attempt": "1r1",
+      "counted_input_tokens": 2151,
+      "duration_seconds": 14.477178200002527,
+      "error": "",
+      "keys": [
+        "w12843:zh:ff",
+        "w12925:zh:ff",
+        "w12927:zh:ff",
+        "w13002:zh:ff",
+        "w13012:zh:ff",
+        "w13021:zh:ff",
+        "w13022:zh:ff"
+      ],
+      "type": "repair",
+      "usage": {
+        "input_tokens": 2470,
+        "output_tokens": 873,
+        "thinking_tokens": 0,
+        "total_token_count": 3343,
+        "unreported_tokens": 0
+      },
+      "usd": 0.01367,
+      "validation_ok": true
+    },
+    {
+      "attempt": "1r2",
+      "counted_input_tokens": 1534,
+      "duration_seconds": 117.17446539999219,
+      "error": "",
+      "keys": [
+        "w13021:zh:ff"
+      ],
+      "type": "repair",
+      "usage": {
+        "input_tokens": 1868,
+        "output_tokens": 114,
+        "thinking_tokens": 152,
+        "total_token_count": 2134,
+        "unreported_tokens": 0
+      },
+      "usd": 0.006396,
+      "validation_ok": true
+    }
+  ],
+  "settings": {
+    "max_output_tokens": 65536,
+    "request_timeout_seconds": 600,
+    "temperature": 0.3,
+    "thinking": "model_default"
+  },
+  "task": 6,
+  "timestamp": "2026-11-12T07:04:48Z",
+  "usage": {
+    "input_tokens": 9717,
+    "output_tokens": 7655,
+    "thinking_tokens": 152,
+    "total_token_count": 17524,
+    "unreported_tokens": 0
+  },
+  "usd": 0.09750400000000001,
+  "validation": {
+    "error": "",
+    "ok": true,
+    "state": "validated"
+  },
+  "wall_clock_seconds": 228.5214605999936,
+  "warnings": []
+}

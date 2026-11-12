@@ -1,0 +1,134 @@
+{
+  "batch": "b222",
+  "batch_attempt": 1,
+  "failed_errors": {},
+  "failed_keys": [],
+  "input_sha256": "99306311eccc5e076555698004ef3cbbb01d5f8660438e66c5a962cc86b66c82",
+  "item_count": 50,
+  "kind": "note",
+  "location": "global",
+  "model": "gemini-4-argon",
+  "prompt_sha256": "4ccdb3e8e03a840404ce88f24b8e36dba5e3655895bb22c0176be5ae7c9bce5c",
+  "requests": [
+    {
+      "attempt": "1",
+      "counted_input_tokens": 6888,
+      "duration_seconds": 44.215403199981665,
+      "error": "",
+      "keys": [
+        "c01529:note",
+        "c01539:note",
+        "c01548:note",
+        "c01554:note",
+        "c01567:note",
+        "c01570:note",
+        "c01578:note",
+        "c01579:note",
+        "c01580:note",
+        "c01591:note",
+        "c01593:note",
+        "c01599:note",
+        "c01600:note",
+        "c01612:note",
+        "c01616:note",
+        "c01620:note",
+        "c01623:note",
+        "c01633:note",
+        "c01635:note",
+        "c01638:note",
+        "c01642:note",
+        "c01644:note",
+        "c01649:note",
+        "c01651:note",
+        "c01653:note",
+        "c01655:note",
+        "c01672:note",
+        "c01678:note",
+        "c01680:note",
+        "c01691:note",
+        "c01694:note",
+        "c01697:note",
+        "c01700:note",
+        "c01702:note",
+        "c01710:note",
+        "c01715:note",
+        "c01718:note",
+        "c01719:note",
+        "c01726:note",
+        "c01737:note",
+        "c01748:note",
+        "c01750:note",
+        "c01751:note",
+        "c01754:note",
+        "c01773:note",
+        "c01775:note",
+        "c01779:note",
+        "c01781:note",
+        "c01784:note",
+        "c01786:note"
+      ],
+      "type": "full",
+      "usage": {
+        "input_tokens": 6891,
+        "output_tokens": 3252,
+        "thinking_tokens": 0,
+        "total_token_count": 10143,
+        "unreported_tokens": 0
+      },
+      "usd": 0.046302,
+      "validation_ok": true
+    }
+  ],
+  "settings": {
+    "max_output_tokens": 65536,
+    "request_timeout_seconds": 600,
+    "temperature": 0.3,
+    "thinking": "model_default"
+  },
+  "task": 6,
+  "timestamp": "2026-11-12T09:13:16Z",
+  "usage": {
+    "input_tokens": 6891,
+    "output_tokens": 3252,
+    "thinking_tokens": 0,
+    "total_token_count": 10143,
+    "unreported_tokens": 0
+  },
+  "usd": 0.046302,
+  "validation": {
+    "error": "",
+    "ok": true,
+    "state": "validated"
+  },
+  "wall_clock_seconds": 44.250065799977165,
+  "warnings": [
+    {
+      "key": "c01599:note",
+      "warning": "empty_note_ja"
+    },
+    {
+      "key": "c01642:note",
+      "warning": "empty_note_ja"
+    },
+    {
+      "key": "c01651:note",
+      "warning": "empty_note_ja"
+    },
+    {
+      "key": "c01653:note",
+      "warning": "empty_note_ja"
+    },
+    {
+      "key": "c01697:note",
+      "warning": "empty_note_ja"
+    },
+    {
+      "key": "c01750:note",
+      "warning": "empty_note_ja"
+    },
+    {
+      "key": "c01754:note",
+      "warning": "empty_note_ja"
+    }
+  ]
+}

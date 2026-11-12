@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 2026-11-12 — Stage 4 task-6 gate (D74) [Claude]
+- Integrity of the full run (user, overnight 11-12): inputs = fresh build, v2/v1 prompt SHAs, all 11,108 stored items re-validate; run $16.788226, ledger $52.46134575.
+- Diagnosed the 42 partial zh batches (56 keys): two validator bugs, not model errors: `PINYIN_SYLLABLES` lacks ran/rang/rao (然 让 染 绕 …) and `ZH_PINYIN_RE` lacks capital tone-marked vowels (sentences starting with 按/爱/二 …). Answers of failed items are not logged, so they must be resumed after Codex's fix (D74 item 1).
+- Content review: 3,934 items read + script pinyin check of all zh sentences; 48 errors (1.22%) + 5 pinyin; no systematic class, no prompt change. `config/task6_review.csv` (28 rows), `config/task6_rerun.csv` round 1 (25 keys), `docs/TASK6_USER_SAMPLE.md` (30 items, Japanese only). Evidence `docs/TASK6_GATE_REVIEW.md`; scripts `docs/review_scripts/task6_gate_reference.py`, `task6_gate_write.py`.
+- Committed the task-6 outputs, logs and cost-log rows (still in `content/generated/task6/` until acceptance). VERTEX_SETUP G7 updated. No request sent by Claude.
+
 ## 2026-11-11 — Task-6 pilot review (D73) [Claude]
 - Read all 150 pilot items (`docs/TASK6_PILOT_REVIEW.md`): zh 50/50 good (3 minor: 2 gloss-copy translations, 北京 pinyin lower case); vi 3 clear errors of 50 (sát nhân refused by the v1 violence rule, bán niên wrongly refused, cố nhân trap not evident); notes 50/50 correct (one extra reading). Pilot cost $0.169144 incl. check (two single-item repairs); ledger $35.67311975.
 - Prompts `task6_zh_v2.md`, `task6_vi_v2.md` (five added rules; schema/validator unchanged); notes stay v1. `pipeline/stage4/runner.py` `TASK6_PROMPT_FILES` zh/vi paths → v2 (two lines). Offline dry-run base $16.84; offline status OK; 54 Stage 4 tests (task6, safety, validators) pass.

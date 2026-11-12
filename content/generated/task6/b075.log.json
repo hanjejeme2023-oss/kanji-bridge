@@ -1,0 +1,83 @@
+{
+  "batch": "b075",
+  "batch_attempt": 3,
+  "failed_errors": {
+    "w07121:zh:card": "w07121:zh:card: pinyin does not align with the characters",
+    "w07154:zh:card": "w07154:zh:card: pinyin does not align with the characters"
+  },
+  "failed_keys": [
+    "w07121:zh:card",
+    "w07154:zh:card"
+  ],
+  "input_sha256": "afa1b5846138a9d5d094e6126fca800a17e3d4d20added0bcfc60a4273b008ae",
+  "item_count": 50,
+  "kind": "zh",
+  "location": "global",
+  "model": "gemini-4-argon",
+  "prompt_sha256": "3e111cedef1434f5eaef98be67c18ad5f8391b063e89f8ca98a478ad61aee7ae",
+  "requests": [
+    {
+      "attempt": "3r1",
+      "counted_input_tokens": 1622,
+      "duration_seconds": 52.11400249999133,
+      "error": "",
+      "keys": [
+        "w07121:zh:card",
+        "w07154:zh:card"
+      ],
+      "type": "repair",
+      "usage": {
+        "input_tokens": 1955,
+        "output_tokens": 260,
+        "thinking_tokens": 0,
+        "total_token_count": 2215,
+        "unreported_tokens": 0
+      },
+      "usd": 0.00651,
+      "validation_ok": true
+    },
+    {
+      "attempt": "3r2",
+      "counted_input_tokens": 1622,
+      "duration_seconds": 5.053821599984076,
+      "error": "",
+      "keys": [
+        "w07121:zh:card",
+        "w07154:zh:card"
+      ],
+      "type": "repair",
+      "usage": {
+        "input_tokens": 1955,
+        "output_tokens": 250,
+        "thinking_tokens": 0,
+        "total_token_count": 2205,
+        "unreported_tokens": 0
+      },
+      "usd": 0.00641,
+      "validation_ok": true
+    }
+  ],
+  "settings": {
+    "max_output_tokens": 65536,
+    "request_timeout_seconds": 600,
+    "temperature": 0.3,
+    "thinking": "model_default"
+  },
+  "task": 6,
+  "timestamp": "2026-11-12T10:09:39Z",
+  "usage": {
+    "input_tokens": 3910,
+    "output_tokens": 510,
+    "thinking_tokens": 0,
+    "total_token_count": 4420,
+    "unreported_tokens": 0
+  },
+  "usd": 0.012920000000000001,
+  "validation": {
+    "error": "2 failed item(s)",
+    "ok": false,
+    "state": "partial"
+  },
+  "wall_clock_seconds": 57.308126499992795,
+  "warnings": []
+}

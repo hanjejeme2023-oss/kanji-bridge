@@ -1,0 +1,29 @@
+key,action,generated,review,reason
+w00962:vi:card,drop,Công ty đang cắt giảm nhân số để tiết kiệm chi phí.,,"nhân số is not used for 人数 (low; Vietnamese: số người, nhân sự)"
+w03919:vi:card,drop,Thủ kho đang kiểm tra lại số mục hàng hóa trong danh sách nhập kho.,,số mục is archaic in this sense (low)
+w03941:vi:card,drop,"Trải qua bao năm tháng tuế nguyệt, ngôi đền cổ vẫn giữ được nét uy nghiêm.",,năm tháng tuế nguyệt is redundant and forced (low)
+w03963:vi:card,drop,Vấn đề cải cách giáo dục do ông đề khởi đã nhận được nhiều sự ủng hộ.,,đề khởi is archaic (low); today đề xuất / khởi xướng
+w04261:vi:card,drop,Pháp luật bảo hộ quyền thừa kế tư sản hợp pháp của mọi công dân.,,"tư sản means bourgeois today, not 私有財産 (low)"
+w04626:vi:card,drop,Trà xanh và cà phê là những quốc sản nổi tiếng của Việt Nam trên thị trường quốc tế.,,quốc sản is not current (low)
+w04649:vi:card,drop,Kiến trúc của ngôi đền thể hiện sự hòa hài giữa con người và thiên nhiên.,,hòa hài is a rare inversion of hài hòa (low)
+w00500:vi:ff,drop,Lương thực bị tẩu tán trong đêm.,,"tẩu tán is another word (hide assets), not 走る/逃げる (low)"
+w04713:vi:ff,drop,Con người tiếp nhận thông tin từ thế giới bên ngoài thông qua ngũ giác.,,ngũ giác means pentagon; five senses is ngũ quan / năm giác quan
+w07626:vi:ff,drop,"Sau nhiều tháng điều tra kiên trì, cảnh sát đã tìm ra chân tướng cứu cánh.",,chân tướng cứu cánh is not Vietnamese (low)
+w01358:zh:card,set_translation_ja,のりんごはもう熟している。,木になっているりんごはもう熟している。,「の」 lost the word 木
+w00980:zh:card,set_translation_ja,今日は天気がとても寒い。,今日はとても寒い。,「天気がとても寒い」 is not natural Japanese
+w01400:zh:card,set_translation_ja,私の家はこのマンションの三号棟に住んでいる。,うちはこの建物の三号ユニット（三番目の階段口）にあります。,"单元 is a stairwell section, not 棟; 「私の家は…に住んでいる」 is not Japanese"
+w01365:zh:card,set_translation_ja,彼女は未来に希望で満ちあふれている。,彼女は未来への希望に満ちあふれている。,「未来に希望で満ちあふれている」 is ungrammatical
+w02101:zh:card,set_translation_ja,私は空港へ友人を向かえに行く。,私は空港へ友人を迎えに行く。,typo 向かえ
+w02209:zh:card,set_translation_ja,私たちの会社は今、十分な資金が不足している。,私たちの会社は今、十分な資金がない。,「十分な資金が不足している」 is contradictory
+w12786:zh:ff,set_translation_ja,あの大先輩はずっと熱心に若手をرات引き立てている。,あの大先輩はずっと熱心に若手を引き立てている。,stray Arabic letters in the translation
+w13097:zh:ff,set_translation_ja,現代中国語では、一般的な女性俳優は普通「女優」とは呼ばれない。,現代中国語では、普通の女性俳優を「女优」とは呼ばない。,the old translation was confusing
+w01383:vi:card,set_translation_ja,前世紀の初め頃、その老人は地元の公使館に勤務していたことがある。,前世紀の初め頃、その老人は地元のフランス理事官府に勤めていたことがある。,"tòa sứ is the French Résident's office, not 公使館"
+w12241:vi:card,set_translation_ja,封建時代、郷試の第三場まで合格した者は生徒と呼ばれた。,封建時代、郷試の三場まで合格した者は「生徒」という称号で呼ばれた。,make clear 生徒 is a title
+w00200:vi:ff,set_translation_ja,先生がنا生徒に口頭試問をしている。,先生が生徒に口頭試問をしている。,stray Arabic letters in the translation
+w00768:vi:ff,set_translation_ja,先生がنا生徒に授業で説明している。,先生が生徒に授業で説明している。,stray Arabic letters in the translation
+w03385:vi:ff,set_translation_ja,今週末、私は友人を振る舞うために鍋料理を作るつもりだ。,今週末、友人にごちそうするために鍋料理を作るつもりだ。,「友人を振る舞う」 is not Japanese
+c00772:note,set_note_ja,中国語でもベトナム語でも「切る」の意味があり、ベトナム語では普通 cắt と言う,ベトナム語で「切る」は普通 cắt と言う,thiết does not mean 切る in Vietnamese
+c00558:note,set_note_ja,中国語では「1億」を 一亿 と日常的に言う。ベトナム語では trăm triệu（百百万）と表す,中国語では「1億」を一亿と日常的に言う。ベトナム語では một trăm triệu と言う,「（百百万）」 was confusing
+c00764:note,set_note_ja,ベトナム語で「りんご」は普通 táo（南部では bom）と言う,ベトナム語で「りんご」は普通 táo と言う,bom is dated
+c01370:note,set_note_ja,ベトナム語で「（水を）かける」は普通泼に相当する hắt、tạt と言う,ベトナム語で水を「かける・まく」は普通 hắt や tạt と言う,garbled Japanese (「普通泼に相当する」)
+c01700:note,set_note_ja,中国語では cheng と読んで「（ご飯などを）よそう・盛る」の意味でも日常的に使う,中国語ではご飯などを「よそう・盛る」意味でも日常的に使う（読みは別）,extra reading 'cheng' without tone (prompt rule)

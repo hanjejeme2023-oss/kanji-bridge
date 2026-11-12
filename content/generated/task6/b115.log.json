@@ -1,0 +1,84 @@
+{
+  "batch": "b115",
+  "batch_attempt": 3,
+  "failed_errors": {
+    "w10953:zh:card": "w10953:zh:card: pinyin does not align with the characters"
+  },
+  "failed_keys": [
+    "w10953:zh:card"
+  ],
+  "input_sha256": "e136d98af447dbab7c809d86cf9990f0bab0855425d7c17a833a3eb75b520a86",
+  "item_count": 50,
+  "kind": "zh",
+  "location": "global",
+  "model": "gemini-4-argon",
+  "prompt_sha256": "3e111cedef1434f5eaef98be67c18ad5f8391b063e89f8ca98a478ad61aee7ae",
+  "requests": [
+    {
+      "attempt": "3r1",
+      "counted_input_tokens": 1520,
+      "duration_seconds": 5.935183900000993,
+      "error": "",
+      "keys": [
+        "w10953:zh:card"
+      ],
+      "type": "repair",
+      "usage": {
+        "input_tokens": 1855,
+        "output_tokens": 134,
+        "thinking_tokens": 0,
+        "total_token_count": 1989,
+        "unreported_tokens": 0
+      },
+      "usd": 0.00505,
+      "validation_ok": true
+    },
+    {
+      "attempt": "3r2",
+      "counted_input_tokens": 1520,
+      "duration_seconds": 5.650045799993677,
+      "error": "",
+      "keys": [
+        "w10953:zh:card"
+      ],
+      "type": "repair",
+      "usage": {
+        "input_tokens": 1855,
+        "output_tokens": 126,
+        "thinking_tokens": 0,
+        "total_token_count": 1981,
+        "unreported_tokens": 0
+      },
+      "usd": 0.00497,
+      "validation_ok": true
+    }
+  ],
+  "settings": {
+    "max_output_tokens": 65536,
+    "request_timeout_seconds": 600,
+    "temperature": 0.3,
+    "thinking": "model_default"
+  },
+  "task": 6,
+  "timestamp": "2026-11-12T10:26:30Z",
+  "usage": {
+    "input_tokens": 3710,
+    "output_tokens": 260,
+    "thinking_tokens": 0,
+    "total_token_count": 3970,
+    "unreported_tokens": 0
+  },
+  "usd": 0.01002,
+  "validation": {
+    "error": "1 failed item(s)",
+    "ok": false,
+    "state": "partial"
+  },
+  "wall_clock_seconds": 11.702220400009537,
+  "warnings": [
+    {
+      "key": "w10929:zh:card",
+      "warning": "target_inside_longer_word"
+    }
+  ]
+}

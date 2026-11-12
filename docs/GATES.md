@@ -439,3 +439,18 @@ Decision checked: **D70** items 1-4. Scripts run by Claude (scratchpad, not comm
 | Tests | 103 non-rebuild tests pass (16 in `test_stage4_merge`, incl. the new ID-format/`id_map` association and pinyin tests); the 104th (two-rebuild identity) is covered by the fresh rebuild above | OK |
 
 **Stage 4 is complete.** Next: Codex Stage 5 (app integration).
+
+## Stage 4 task 6 gate (Claude, 2026-11-12): content PASS with overlay; 56 zh items pending a validator fix (D74)
+
+Full run by the user 2026-11-12 01:20-10:27 UTC: vi 84/84, notes 13/13, zh 85/127 validated + 42 partial (56 failed keys). Evidence `docs/TASK6_GATE_REVIEW.md`; scripts `docs/review_scripts/task6_gate_reference.py`, `task6_gate_write.py`. No request sent by Claude.
+
+| Item | Evidence | Result |
+|---|---|---|
+| Inputs, model, prompts | 224 input batches = a fresh build; logs carry `gemini-4-argon`, zh/vi v2 prompt SHA, notes v1 | OK |
+| Re-validation | all 11,108 stored items re-validate; partial batches' missing keys = `failed_keys` | OK |
+| Cost | run $16.788226; ledger $52.46134575 (ceiling $200) | OK |
+| 56 failed zh keys | two validator bugs: `PINYIN_SYLLABLES` lacks ran/rang/rao (0 of 6,287 passing sentences contain 然燃染让壤嚷攘扰绕饶); `ZH_PINYIN_RE` lacks capital tone-marked vowels (0 passing pinyin starts with a vowel). Answers of failed items were not logged → they need the resume after the fix | **FIX (Codex, D74 item 1), then user resume** |
+| Content | 3,934 items read (all level 1-3 cards, all ff, all notes, all no_sentence/low/warnings, seeded samples seed 20261112) + script pinyin check of all zh: 48 errors = 1.22% (per kind ≤ 4.2%) + 5 script-found pinyin errors; no systematic class | **PASS** with `config/task6_review.csv` (28 rows) and rerun round 1 (25 keys) |
+| Watch list D73 item 6 | forced archaic vi rare (literary no_sentence 17%, all justified; 19 forced items fixed); subject words factual; traps evident; no gloss-copy class; 2 extra readings in notes (1 fixed) | OK |
+
+**Not yet complete:** task 6 is accepted after Codex's D74 fix, the user's resume (`-Tasks 6`) and rerun round 1, the user's sample answers, and Claude's re-check of the 81 new answers.

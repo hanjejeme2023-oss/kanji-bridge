@@ -1,0 +1,50 @@
+{"key":"w12995:vi:card","status":"ok","sentence":"Cậu bé ấy được mệnh danh là một kỳ tài toán học.","translation_ja":"その少年は数学の奇才と称されている。","confidence":"high","review_note":""}
+{"key":"w00017:vi:ff","status":"ok","sentence":"Anh ấy bị đau bao tử vì ăn đồ chua.","translation_ja":"彼は酸っぱいものを食べて胃が痛くなった。","confidence":"high","review_note":""}
+{"key":"w00026:vi:ff","status":"ok","sentence":"Ông đi xa rồi biệt tăm suốt mấy năm.","translation_ja":"彼は遠くへ行ってから何年も消息を絶った。","confidence":"high","review_note":""}
+{"key":"w00038:vi:ff","status":"ok","sentence":"Câu trả lời này sai rồi.","translation_ja":"この答えは間違っている。","confidence":"high","review_note":""}
+{"key":"w00047:vi:ff","status":"no_sentence","sentence":"","translation_ja":"","confidence":"high","review_note":"漢字「吃」の漢越音で、単音節では現代ベトナム語で用いられないため。"}
+{"key":"w00052:vi:ff","status":"ok","sentence":"Con tàu đi xuyên qua núi.","translation_ja":"列車は山を突き抜けて走る。","confidence":"high","review_note":""}
+{"key":"w00055:vi:ff","status":"ok","sentence":"Thời xưa có câu xuất giá tòng phu.","translation_ja":"昔は「嫁いでは夫に従う」という言葉があった。","confidence":"high","review_note":""}
+{"key":"w00067:vi:ff","status":"no_sentence","sentence":"","translation_ja":"","confidence":"high","review_note":"「地」の漢越音形態素で、現代語では単独の名詞としては使わずđấtを用いるため。"}
+{"key":"w00068:vi:ff","status":"ok","sentence":"Mũi tên trúng hồng tâm của đích.","translation_ja":"矢が的の真ん中に当たった。","confidence":"high","review_note":""}
+{"key":"w00069:vi:ff","status":"no_sentence","sentence":"","translation_ja":"","confidence":"high","review_note":"「等」の漢越音形態素で、単独の語としては現代ベトナム語では用いられないため。"}
+{"key":"w00078:vi:ff","status":"ok","sentence":"Bài kiểm tra này được mười điểm.","translation_ja":"このテストは10点だった。","confidence":"high","review_note":""}
+{"key":"w00091:vi:ff","status":"ok","sentence":"Vua quyết định dời đô về vùng đất mới.","translation_ja":"王は新しい土地へ遷都することを決めた。","confidence":"high","review_note":""}
+{"key":"w00094:vi:ff","status":"ok","sentence":"Họ ngồi đối mặt nhau.","translation_ja":"彼らは向かい合って座った。","confidence":"high","review_note":""}
+{"key":"w00115:vi:ff","status":"ok","sentence":"Cán của con dao này làm bằng gỗ.","translation_ja":"この包丁の柄は木でできている。","confidence":"high","review_note":""}
+{"key":"w00124:vi:ff","status":"ok","sentence":"Trường cấp sách vở cho học sinh.","translation_ja":"学校が生徒に本やノートを支給する。","confidence":"high","review_note":""}
+{"key":"w00128:vi:ff","status":"no_sentence","sentence":"","translation_ja":"","confidence":"high","review_note":"単独の語としては「官」「棺」の意味で使われ、「関所・関わる」では単独使用しないため。"}
+{"key":"w00130:vi:ff","status":"ok","sentence":"Thời gian là thứ rất quý.","translation_ja":"時間はとても貴重なものだ。","confidence":"high","review_note":""}
+{"key":"w00135:vi:ff","status":"ok","sentence":"Shop sẽ hoàn tiền cho khách.","translation_ja":"店は客に返金する。","confidence":"high","review_note":""}
+{"key":"w00148:vi:ff","status":"ok","sentence":"Trận bóng hôm qua kết thúc hòa.","translation_ja":"昨日のサッカーの試合は引き分けに終わった。","confidence":"high","review_note":""}
+{"key":"w00153:vi:ff","status":"ok","sentence":"Bông hoa này rất đẹp.","translation_ja":"この花はとてもきれいだ。","confidence":"high","review_note":""}
+{"key":"w00163:vi:ff","status":"ok","sentence":"Làng tôi mở hội vào mùa xuân.","translation_ja":"私の村では春に祭りが開かれる。","confidence":"high","review_note":""}
+{"key":"w00200:vi:ff","status":"ok","sentence":"Thầy giáo đang khảo bài học sinh.","translation_ja":"先生がنا生徒に口頭試問をしている。","confidence":"high","review_note":""}
+{"key":"w00208:vi:ff","status":"ok","sentence":"Nó rất khoái ăn kem.","translation_ja":"あの子はアイスクリームを食べるのが大好きだ。","confidence":"high","review_note":""}
+{"key":"w00215:vi:ff","status":"ok","sentence":"Anh ấy không muốn lụy đến bạn bè.","translation_ja":"彼は友人に迷惑をかけたくないと思っている。","confidence":"high","review_note":""}
+{"key":"w00235:vi:ff","status":"no_sentence","sentence":"","translation_ja":"","confidence":"high","review_note":"「慢」の漢越音形態素で、単独ではこの意味で現代文に用いられないため。"}
+{"key":"w00357:vi:ff","status":"ok","sentence":"Đó là một thuyết khoa học mới.","translation_ja":"それは新しい科学の学説だ。","confidence":"high","review_note":""}
+{"key":"w00362:vi:ff","status":"no_sentence","sentence":"","translation_ja":"","confidence":"high","review_note":"「他」の漢越音形態素で、単独の語としては「許す」の意味になり「他」の意味では使わないため。"}
+{"key":"w00433:vi:ff","status":"no_sentence","sentence":"","translation_ja":"","confidence":"high","review_note":"漢文の助字「也」の漢越音であり、現代ベトナム語の文では使用されないため。"}
+{"key":"w00500:vi:ff","status":"ok","sentence":"Lương thực bị tẩu tán trong đêm.","translation_ja":"食糧は夜のうちに運び去られて隠された。","confidence":"low","review_note":"単音節ではほぼ成句・複合語（tẩu tán, đào tẩu等）に限定される。"}
+{"key":"w00568:vi:ff","status":"ok","sentence":"Con tôi đi bộ đến trường mỗi sáng.","translation_ja":"私の子供は毎朝歩いて学校へ行く。","confidence":"high","review_note":""}
+{"key":"w00637:vi:ff","status":"ok","sentence":"Họ dừng chân nghỉ đêm tại một quán điếm ven đường.","translation_ja":"彼らは道端の旅籠で足を止めて一夜を明かした。","confidence":"high","review_note":""}
+{"key":"w00687:vi:ff","status":"ok","sentence":"Ông ấy là người có tính cách cương trực.","translation_ja":"彼は剛直な性格の人だ。","confidence":"high","review_note":""}
+{"key":"w00768:vi:ff","status":"ok","sentence":"Cô giáo đang giảng bài cho học sinh.","translation_ja":"先生がنا生徒に授業で説明している。","confidence":"high","review_note":""}
+{"key":"w00770:vi:ff","status":"ok","sentence":"Bưu điện vừa giao hàng đến nhà tôi.","translation_ja":"郵便局がちょうど我が家に荷物を配達した。","confidence":"high","review_note":""}
+{"key":"w00824:vi:ff","status":"ok","sentence":"Nhu có thể thắng cương, yếu có thể khắc mạnh.","translation_ja":"柔は剛に勝ち、弱は強を制することができる。","confidence":"high","review_note":""}
+{"key":"w00937:vi:ff","status":"ok","sentence":"Đừng bao giờ khinh người nghèo khổ.","translation_ja":"貧しい人々を決して見下してはならない。","confidence":"high","review_note":""}
+{"key":"w00958:vi:ff","status":"ok","sentence":"Ông ấy nhượng lại mảnh đất cho em trai.","translation_ja":"彼は弟に土地を譲り渡した。","confidence":"high","review_note":""}
+{"key":"w01048:vi:ff","status":"ok","sentence":"Tôi bị đau đầu từ sáng nay.","translation_ja":"私は今朝から頭が痛い。","confidence":"high","review_note":""}
+{"key":"w01064:vi:ff","status":"ok","sentence":"Ông nằm trên võng đọc báo dưới bóng cây.","translation_ja":"彼は木陰でハンモックに寝転んで新聞を読んでいる。","confidence":"high","review_note":""}
+{"key":"w01113:vi:ff","status":"ok","sentence":"Làm ăn phải giữ chữ tín.","translation_ja":"商売をするには信義を守らなければならない。","confidence":"high","review_note":""}
+{"key":"w01317:vi:ff","status":"no_sentence","sentence":"","translation_ja":"","confidence":"high","review_note":"「並」の漢越音形態素で、単独ではこの意味で現代語では用いられないため。"}
+{"key":"w01361:vi:ff","status":"ok","sentence":"Bức tường thành cổ này được xây bằng đá.","translation_ja":"この古い城壁は石で造られている。","confidence":"high","review_note":""}
+{"key":"w01434:vi:ff","status":"ok","sentence":"Kỷ cương trong quân đội lúc bấy giờ vô cùng rệu rã và đốn mạt.","translation_ja":"当時の軍の規律は極めて緩み、堕落していた。","confidence":"low","review_note":"単音節では「伐採する」の意味が主で、「堕落した」は主にđốn mạtの形で用いられる。"}
+{"key":"w01471:vi:ff","status":"ok","sentence":"Ông giao phó toàn bộ công việc cho người trợ lý.","translation_ja":"彼は仕事のすべてを助手に託した。","confidence":"high","review_note":""}
+{"key":"w01530:vi:ff","status":"ok","sentence":"Không ai quản được đứa trẻ nghịch ngợm ấy.","translation_ja":"そのいたずらな子供を管理できる人は誰もいない。","confidence":"high","review_note":""}
+{"key":"w01775:vi:ff","status":"ok","sentence":"Bà cụ ngồi niệm Phật trong ngôi chùa yên tĩnh.","translation_ja":"老婦人は静かな寺で座って念仏を唱えている。","confidence":"high","review_note":""}
+{"key":"w01782:vi:ff","status":"ok","sentence":"Người ca nương vừa hát vừa gõ phách rất nhịp nhàng.","translation_ja":"歌い手は歌いながら調子よく拍子木を打ち鳴らした。","confidence":"high","review_note":""}
+{"key":"w01954:vi:ff","status":"ok","sentence":"Thầy thuốc kê cho ông ba thang thuốc Bắc để sắc uống.","translation_ja":"漢方医は彼に煎じて飲むための漢方薬を三服処方した。","confidence":"high","review_note":""}
+{"key":"w02138:vi:ff","status":"ok","sentence":"Ánh nắng buổi sáng chiếu qua cửa sổ phòng học.","translation_ja":"朝の陽射しが教室の窓から差し込んでいる。","confidence":"high","review_note":""}
+{"key":"w02302:vi:ff","status":"ok","sentence":"Nước sôi trào ra ngoài vì tôi quên tắt bếp.","translation_ja":"コンロの火を消し忘れたため、沸騰したお湯が外に吹きこぼれた。","confidence":"high","review_note":""}

@@ -200,10 +200,16 @@ Wait until the first line `task=6 batch=b001 ok …` appears (about 1-2 minutes)
 - Never run two windows at the same time (the script refuses). To see progress without sending anything: `powershell -ExecutionPolicy Bypass -File pipeline\stage4\run_stage4.ps1 -Status`.
 There is time to spare: even if the run has to be restarted tomorrow, it ends long before the deadline (2026-11-16 08:00 UTC).
 
-**G7. Reruns (11-14 / 11-15, only when HANDOFF says so):**
+**G7. Finish the 56 Chinese items and rerun round 1 (D74; only when HANDOFF says "Next: User — G7", i.e. after Codex's validator fix).** About 30 minutes, about $0.5. A new PowerShell window from the Start menu; the sign-in from G2 is still valid (if it says credentials/401: `gcloud auth application-default login`, then continue):
+```powershell
+cd "<project folder>"
+powershell -ExecutionPolicy Bypass -File pipeline\stage4\run_stage4.ps1 -Tasks 6
+```
+This sends only the 56 Chinese sentences that failed last night (42 small requests, each 10-30 seconds; all finished batches are skipped). The summary should then show **zh 127/127, vi 84/84, note 13/13 validated**. Then, in the same window:
 ```powershell
 powershell -ExecutionPolicy Bypass -File pipeline\stage4\run_stage4.ps1 -Tasks 6 -RerunRound 1
 ```
+This rewrites the 25 sentences Claude rejected (1-2 requests). If either command still reports `partial`/`failed` after its automatic retries, do not run it a third time: start Claude and paste the last 20 lines. Then start Claude for the re-check (you do not commit anything). The sleep settings of G6-night are not needed for this.
 
 **G8. If the script refuses with "credit deadline":** stop and start Claude. Do not use `-AllowAfterCreditDeadline` unless you have upgraded.
 
