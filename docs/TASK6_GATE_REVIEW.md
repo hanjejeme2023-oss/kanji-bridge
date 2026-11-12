@@ -76,3 +76,28 @@ Other observations: single-syllable vi false-friend targets are often met by a c
 | 11-13 evening | Claude | re-check: read all 81 new answers + user's sample answers; accept; move task 6 to `content/accepted/task6/` |
 | 11-14 | User, Claude | spare day: rerun round 2 only if the re-check finds errors; decision point (upgrade) no longer expected to be needed |
 | by 11-15 | User | revoke and disable (part H) once Claude has accepted task 6 |
+
+## 6. Re-check (Claude, 2026-11-12, D75): task 6 accepted
+
+The user ran VERTEX_SETUP G7 on 2026-11-12 after Codex's fix (`0ab24a6`): `-Tasks 6` resumed the 56 failed zh keys (all 42 partial batches now validated), then `-Tasks 6 -RerunRound 1` (rerun b001 zh 19/19, b002 vi 6/6, both first attempt). Script `docs/review_scripts/task6_recheck.py` (offline; base commit `0ab24a6`). No request was sent by Claude.
+
+| Check | Result |
+|---|---|
+| States | zh **127/127**, vi **84/84**, notes **13/13** validated; rerun1 b001/b002 validated |
+| Integrity | every log (main + rerun1): model, input SHA = committed input = fresh build, prompt SHA = zh/vi v2, notes v1; every stored output re-validates; rerun inputs = main item + `review_feedback` only; rerun keys = `task6_rerun.csv` round 1 exactly |
+| Resume added only the failed keys | for every batch the new keys = the `failed_keys` of the log at `0ab24a6` (56 in total); **no answer stored before changed** |
+| Cost | resume + rerun $0.301874 (rerun $0.039168); task 6 total **$17.25865**; ledger **$52.76321975** (ceiling $200) |
+| Tone-aware pinyin check (every syllable with its tone mark against `chars.pinyin_all` of the simplified character) | all **81 new answers: 0 toned mismatches** (only ordinary neutral tones: 们 men, 个 ge, 欢 huan …). Full zh set: the same 11 distinct flags as the gate (绩/迹 jì, 没 mò, 刹 chà, 横 hèng, 剥 bāo, 懒洋洋 yāng, 好好 hāo are correct; 年/气/穿 are the rerun items, now fixed) |
+
+**56 resumed answers (read in full): 0 errors.** 42 contain 然/燃/染/让/壤/扰/绕 (the validator gap), 惯例 starts `Ànzhào` (the capital-vowel gap), the 13 "context" items use 让/然后/虽然/自然 elsewhere, as diagnosed. All natural, in the shown meaning, pinyin correct; traps evident (奇妙, 居然, 霍乱 コレラ vs 日射病, 猛然, 漠然 冷淡 vs ぼんやり, 骚扰 迷惑電話, 让 ～させる); Japanese natural.
+
+**25 rerun answers: 24 fix their `review_feedback`, 1 dropped.**
+- zh pinyin (11): 今年 jīnnián ×4, 气温 qìwēn ×2 (水管 now avoids 气温), 发展 fāzhǎn, 穿过 chuānguò; 当天/当晚 avoided (温习, 查证 rewritten; 查证 trap vs ビザ evident).
+- zh sentences (8): 谢谢你今天来帮我; 我对中国古代的历史很感兴趣; 这么多年过去了，你还认得他吗; 这一事件; 太不讲理、太过分了; 他因为迟到挨了老师一顿批评; 这笔钱你先留着急用; 王妃: 「国王的正妻是王后，地位比王妃更高」. *Correction to the gate:* the gate's feedback "the wife of a crown prince is not a 王妃" was too strict: Chinese also calls a prince's / crown prince's wife 王妃 (戴安娜王妃), which the shown meaning 「皇太子妃」 includes. The new sentence is correct and shows the trap (Japanese 王妃 = the king's wife) better, so it is accepted.
+- vi (6): mã thượng → 「tinh thần mã thượng」 (current sense); xuân tiết → `no_sentence` (allowed by the feedback: not used today in that meaning); đáo để → 「khó đáo để」; đường đường → 「đường đường chính chính」; bách tính alone; **thành nhân → 「khán giả đã thành nhân」 is still forced** (today người trưởng thành / trên 18 tuổi; thành nhân lives in lễ thành nhân, học để thành nhân) → **`drop`** in `config/task6_review.csv` (row 29), no round 2: the card simply shows no Vietnamese example, as for `no_sentence`.
+
+**User sample** (`docs/TASK6_USER_SAMPLE.md`): **30/30 ○** (Japanese natural, no problem) → no further Japanese change.
+
+**Decision: task 6 accepted** (224/224 batches + rerun1). Moved with `git mv`/`mv` to `content/accepted/task6/` (`b001-b224.{jsonl,log.json}`, `inputs/b001-b224.jsonl`, `rerun1/`, `inputs/rerun1/`); SHA-256 of all 452 output/log files and 226 input files identical before/after. Overlay `config/task6_review.csv` **29 rows** (11 `drop`, 13 `set_translation_ja`, 5 `set_note_ja`), every `generated` equal to the effective answer (rerun answer where one exists). Merge expectation: **10,367 `examples`** (zh card 5,783, zh ff 560, vi card 3,909, vi ff 115) and **581 `char_notes`**. The 134 non-rebuild tests pass after the move. The pilot (`content/generated/pilot_task6/`) is never merged and stays.
+
+**No further request is needed:** the user revokes the login and disables the API now (VERTEX_SETUP part H). Next: the app phase (`docs/APP_PHASE.md`).

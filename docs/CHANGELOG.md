@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 2026-11-12 — Task-6 re-check: task 6 accepted (D75); app-phase contract [Claude]
+- Re-checked the user's G7 run (resume of the 56 zh keys + rerun round 1): zh 127/127, vi 84/84, notes 13/13 validated; integrity and cost verified ($0.301874; ledger $52.76321975). Read all 81 new answers and ran the tone-aware pinyin check over every new zh sentence (0 mismatches). 24 of 25 reruns fix their feedback; thành nhân dropped (overlay row 29). Recorded the gate's too-strict 王妃 feedback.
+- Recorded the user's sample answers (30/30 ○) in `docs/TASK6_USER_SAMPLE.md`.
+- Accepted task 6 and moved outputs, logs, inputs and `rerun1/` to `content/accepted/task6/` (checksums identical; 134 non-rebuild tests pass). Overlay `config/task6_review.csv` 29 rows. Added `docs/review_scripts/task6_recheck.py`.
+- Wrote the app-phase contract: `docs/APP_PHASE.md` (Codex Parts A/B/C, fixed wording) and SCHEMA §2.1 (`examples`, `char_notes`, `glyphs`, `usage`, words `pt`/`lit`, `app/data.js`); SCHEMA §1.9/§1.10 expected counts and the effective-answer rule. D75. No request sent.
+
 ## 2026-11-12 — Task-6 validator and runner fixes (D74 item 1) [Codex]
 - Completed the pinyin inventory, accepted uppercase tone-marked vowels and added log-only `translation_script` warnings. All 11,108 stored full-run items and 150 pilot items revalidate. Status stays zh 85 validated plus 42 partial with the same 56 failed keys, vi 84/84 and notes 13/13. Full-run logs match the D73 zh/vi v2 and notes v1 prompt hashes.
 - Task-6 logs keep the last answer object for each failed key and append request records across attempts. Validated rerun batches are skipped on retry. Offline tests exercise older logs and failed-key-only resume.

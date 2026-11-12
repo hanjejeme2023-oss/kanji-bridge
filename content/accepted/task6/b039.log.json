@@ -1,0 +1,102 @@
+{
+  "timestamp": "2026-11-12T17:17:53Z",
+  "task": 6,
+  "batch": "b039",
+  "kind": "zh",
+  "batch_attempt": 4,
+  "model": "gemini-4-argon",
+  "location": "global",
+  "settings": {
+    "temperature": 0.3,
+    "thinking": "model_default",
+    "max_output_tokens": 65536,
+    "request_timeout_seconds": 600
+  },
+  "prompt_sha256": "3e111cedef1434f5eaef98be67c18ad5f8391b063e89f8ca98a478ad61aee7ae",
+  "input_sha256": "4f9e20c93c8a260996c4060606f8260158c7fc09f92ddfe62209e8e8191bfe17",
+  "item_count": 50,
+  "usage": {
+    "input_tokens": 5663,
+    "output_tokens": 436,
+    "thinking_tokens": 0,
+    "total_token_count": 6099,
+    "unreported_tokens": 0
+  },
+  "usd": 0.015686,
+  "requests": [
+    {
+      "attempt": "3r1",
+      "counted_input_tokens": 1615,
+      "duration_seconds": 50.304948600009084,
+      "error": "",
+      "keys": [
+        "w03587:zh:card",
+        "w03627:zh:card"
+      ],
+      "type": "repair",
+      "usage": {
+        "input_tokens": 1947,
+        "output_tokens": 227,
+        "thinking_tokens": 0,
+        "total_token_count": 2174,
+        "unreported_tokens": 0
+      },
+      "usd": 0.006164,
+      "validation_ok": true
+    },
+    {
+      "attempt": "3r2",
+      "counted_input_tokens": 1523,
+      "duration_seconds": 5.539166000002297,
+      "error": "",
+      "keys": [
+        "w03627:zh:card"
+      ],
+      "type": "repair",
+      "usage": {
+        "input_tokens": 1858,
+        "output_tokens": 106,
+        "thinking_tokens": 0,
+        "total_token_count": 1964,
+        "unreported_tokens": 0
+      },
+      "usd": 0.004776,
+      "validation_ok": true
+    },
+    {
+      "type": "repair",
+      "attempt": "4r1",
+      "keys": [
+        "w03627:zh:card"
+      ],
+      "counted_input_tokens": 1523,
+      "usage": {
+        "input_tokens": 1858,
+        "output_tokens": 103,
+        "thinking_tokens": 0,
+        "total_token_count": 1961,
+        "unreported_tokens": 0
+      },
+      "usd": 0.004746,
+      "duration_seconds": 260.50130820000777,
+      "validation_ok": true,
+      "error": ""
+    }
+  ],
+  "warnings": [
+    {
+      "count": "2",
+      "key": "w03614:zh:card",
+      "warning": "target_multiple"
+    }
+  ],
+  "failed_keys": [],
+  "failed_errors": {},
+  "failed_outputs": {},
+  "wall_clock_seconds": 260.56728300001123,
+  "validation": {
+    "ok": true,
+    "state": "validated",
+    "error": ""
+  }
+}

@@ -96,10 +96,10 @@ Not a pandas table to maintain: `config/rules.json` text + examples computed fro
 Each `*_match` table holds one row per word key, so a form with several dictionary entries can never multiply rows.
 
 ### 1.9 `examples` (Stage 4 task 6, D72; written by the app-phase merge after task 6 is accepted)
-`word_id, lang (zh|vi), use (card|ff), sentence, pinyin, translation_ja, target, target_start (int, 0-based character index), target_len (int)`. Unique on `(word_id, lang, use)`. `pinyin` is the whole-sentence pinyin for zh and '' for vi. `target` = `words.simp` (zh) or `words.vi` (vi); `target_start` is the first occurrence found by code (vi case-insensitive). One row per accepted task-6 sentence item after `config/task6_review.csv` and rerun rounds; no row for `no_sentence`, dropped or never-validated items. 偽の友達 uses the `ff` row of the word and language, else its `card` row (`docs/TASK6_DESIGN.md` §1, §7).
+`word_id, lang (zh|vi), use (card|ff), sentence, pinyin, translation_ja, target, target_start (int, 0-based character index), target_len (int)`. Unique on `(word_id, lang, use)`. `pinyin` is the whole-sentence pinyin for zh and '' for vi. `target` = `words.simp` (zh) or `words.vi` (vi); `target_start` is the first occurrence found by code (vi case-insensitive). One row per accepted task-6 sentence item after `config/task6_review.csv` and rerun rounds; no row for `no_sentence`, dropped or never-validated items. **Effective answer (D75):** the answer of the highest rerun round containing the key (`content/accepted/task6/rerun<N>/`), else the main answer; the overlay's `generated` is matched against the effective answer. `pinyin` has whitespace before `, . ! ? ; :` removed (D74 item 5). Expected 10,367 rows (zh card 5,783, zh ff 560, vi card 3,909, vi ff 115). 偽の友達 uses the `ff` row of the word and language, else its `card` row (`docs/TASK6_DESIGN.md` §1, §7).
 
 ### 1.10 `char_notes` (Stage 4 task 6, D72)
-`char_id, note_ja`. Unique on `char_id`; only non-empty accepted notes (one line, ≤ 60 characters, Japanese; may name an everyday Chinese or Vietnamese word). Shown in the 字体 使われ方 panel (D71 item 6).
+`char_id, note_ja`. Unique on `char_id`; only non-empty accepted notes (one line, ≤ 60 characters, Japanese; may name an everyday Chinese or Vietnamese word). Shown in the 字体 使われ方 panel (D71 item 6). Expected 581 rows (D75).
 
 ## 2. `data.js` shape
 
@@ -119,7 +119,22 @@ window.KB_DATA = {
 - Size control: `chars` in data.js only holds characters needed by the glyph view (forms not all identical) and `words` only the columns in §3.1. Full tables stay in CSV/JSON.
 - `tokens`' `word_id` must exist in `words` (build fails otherwise).
 - File is a single statement `window.KB_DATA = {...};` in UTF-8, loadable by `<script src="../data/final/data.js">` from `file://`.
-- **D71 item 9 (app phase):** the build also copies `data.js` to `app/data.js` and `app/index.html` loads `<script src="data.js">`, so the `app/` folder runs alone. **D72 (app phase):** `examples` and `char_notes` are added (compact arrays); the D71 views may need more `chars` rows (single-character card words in 字体) and more `word_chars` columns/rows (使われ方 examples). Claude writes the exact §2/§3 changes when assigning the app phase; re-measure size and load time then (D71 item 12).
+- **D71 item 9 (app phase):** the build also copies `data.js` to `app/data.js` and `app/index.html` loads `<script src="data.js">`, so the `app/` folder runs alone. **D72 (app phase):** `examples` and `char_notes` are added (compact arrays); the D71 views may need more `chars` rows (single-character card words in 字体) and more `word_chars` columns/rows (使われ方 examples). Claude writes the exact §2/§3 changes when assigning the app phase; re-measure size and load time then (D71 item 12). **Written: §2.1 below (D75); view behaviour in `docs/APP_PHASE.md`.**
+
+### 2.1 App-phase additions to `data.js` (D75; Part A of `docs/APP_PHASE.md`)
+Compact arrays use `''` for a missing string and `''` for a missing integer (never `null`); object fields keep the "omit when missing" rule above. Orders are deterministic.
+```js
+  examples:   [ [word_id, lang, use, sentence, pinyin, translation_ja, target_start, target_len], ... ],  // = table examples (§1.9); pinyin '' for vi; order word_id, lang (zh, vi), use (card, ff)
+  char_notes: [ [char_id, note_ja], ... ],                     // = table char_notes (§1.10); order char_id
+  glyphs:     [ [char_id, word_id, level, py_target, vi_target], ... ],  // 字体 rows, see below
+  usage:      [ [char_id, [[word_id, position, pinyin_syllables], ...], [[word_id, position], ...]], ... ],  // 使われ方, see below
+```
+- **`glyphs`** (D71 item 1, D75 item 4): one row per single-character `card_eligible` word (`word_id` set; 1,571) and one row per character with not (`jp == key_char == simp`) that has no such word (`word_id` ''; 644) = **2,215 rows over 2,164 characters**; `char_id` from that word's `word_chars` row. `level` = `words.level` (word row) or `chars.level`. `py_target` = `words.pinyin` / `chars.pinyin`; `vi_target` = `words.vi` / `chars.vi`, but `''` when a character row's `chars.source_vi` = `unihan_unverified` (82 rows). Order `level` (empty last), `char_id`, `word_id`.
+- **`usage`**: one entry per `char_id` in `glyphs` (2,164), selection = `docs/TASK6_DESIGN.md` §2.3 (zh: multi-character words, `origin` hsk/both, `pinyin` ≠ '', a `pinyin_syllable` at that position, order `level`, `word_id`, first 3; vi: multi-character `card_eligible` words, `vi` ≠ '', a `vi_syllable` at that position, order literary last, `level`, `freq_vi` (empty last), `word_id`, first 3). `position` is 1-based. `pinyin_syllables` = the word's `word_chars.pinyin_syllable` values joined by one space; build fails unless they equal `words.pinyin` after removing spaces/apostrophes and casefolding. Vietnamese syllables are `words.vi` split on spaces. Empty lists → the app shows 「例なし」.
+- **`chars`** in `data.js`: every character referenced by `glyphs` (2,164 rows; was 1,246), same fields as before.
+- **`words`** in `data.js`, two new optional fields: `pt` = one digit per pinyin syllable (`1`-`4`, `5` = neutral; an erhua syllable counts once, with its base's tone), from `word_chars.pinyin_syllable` when every position has one and they join to `pinyin`, else from the unique segmentation of `pinyin` with the task-6 validator inventory, else omitted (count reported); `lit: true` when `vi_use = literary`.
+- Every `word_id` / `char_id` in these arrays must exist in `words` / `chars` of `data.js` (build fails otherwise).
+- The build copies `data/final/data.js` to `app/data.js` (identical bytes; D71 item 9).
 
 ## 3. Mapping to prototype views (adapters live in `app/index.html`)
 

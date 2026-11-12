@@ -1,0 +1,75 @@
+{
+  "timestamp": "2026-11-12T18:47:15Z",
+  "task": 6,
+  "batch": "b001",
+  "kind": "zh",
+  "batch_attempt": 1,
+  "model": "gemini-4-argon",
+  "location": "global",
+  "settings": {
+    "temperature": 0.3,
+    "thinking": "model_default",
+    "max_output_tokens": 65536,
+    "request_timeout_seconds": 600
+  },
+  "prompt_sha256": "3e111cedef1434f5eaef98be67c18ad5f8391b063e89f8ca98a478ad61aee7ae",
+  "input_sha256": "a33101d5ef9dc44503db374c922a3ab617356f51bb9ab57303eb3a6de02cdec3",
+  "item_count": 19,
+  "usage": {
+    "input_tokens": 3700,
+    "output_tokens": 2179,
+    "thinking_tokens": 0,
+    "total_token_count": 5879,
+    "unreported_tokens": 0
+  },
+  "usd": 0.02919,
+  "requests": [
+    {
+      "type": "full",
+      "attempt": "1",
+      "keys": [
+        "w00064:zh:card",
+        "w00099:zh:card",
+        "w00432:zh:card",
+        "w10550:zh:card",
+        "w07513:zh:card",
+        "w08563:zh:card",
+        "w09251:zh:card",
+        "w01990:zh:card",
+        "w07028:zh:card",
+        "w09720:zh:card",
+        "w13069:zh:ff",
+        "w00418:zh:card",
+        "w01521:zh:card",
+        "w01855:zh:card",
+        "w01914:zh:card",
+        "w02521:zh:card",
+        "w04280:zh:ff",
+        "w13035:zh:ff",
+        "w12480:zh:ff"
+      ],
+      "counted_input_tokens": 3397,
+      "usage": {
+        "input_tokens": 3700,
+        "output_tokens": 2179,
+        "thinking_tokens": 0,
+        "total_token_count": 5879,
+        "unreported_tokens": 0
+      },
+      "usd": 0.02919,
+      "duration_seconds": 92.99992170001497,
+      "validation_ok": true,
+      "error": ""
+    }
+  ],
+  "warnings": [],
+  "failed_keys": [],
+  "failed_errors": {},
+  "failed_outputs": {},
+  "wall_clock_seconds": 93.31330650000018,
+  "validation": {
+    "ok": true,
+    "state": "validated",
+    "error": ""
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "timestamp": "2026-11-12T18:27:06Z",
+  "task": 6,
+  "batch": "b101",
+  "kind": "zh",
+  "batch_attempt": 4,
+  "model": "gemini-4-argon",
+  "location": "global",
+  "settings": {
+    "temperature": 0.3,
+    "thinking": "model_default",
+    "max_output_tokens": 65536,
+    "request_timeout_seconds": 600
+  },
+  "prompt_sha256": "3e111cedef1434f5eaef98be67c18ad5f8391b063e89f8ca98a478ad61aee7ae",
+  "input_sha256": "f2e407bfc257ceb554823637234f49e7ab27a9b223bccfcde7ba998d2cf6d168",
+  "item_count": 50,
+  "usage": {
+    "input_tokens": 5823,
+    "output_tokens": 732,
+    "thinking_tokens": 0,
+    "total_token_count": 6555,
+    "unreported_tokens": 0
+  },
+  "usd": 0.018966,
+  "requests": [
+    {
+      "attempt": "3r1",
+      "counted_input_tokens": 1608,
+      "duration_seconds": 5.931460499996319,
+      "error": "",
+      "keys": [
+        "w09577:zh:card",
+        "w09597:zh:card"
+      ],
+      "type": "repair",
+      "usage": {
+        "input_tokens": 1941,
+        "output_tokens": 246,
+        "thinking_tokens": 0,
+        "total_token_count": 2187,
+        "unreported_tokens": 0
+      },
+      "usd": 0.006342,
+      "validation_ok": true
+    },
+    {
+      "attempt": "3r2",
+      "counted_input_tokens": 1608,
+      "duration_seconds": 28.56878199998755,
+      "error": "",
+      "keys": [
+        "w09577:zh:card",
+        "w09597:zh:card"
+      ],
+      "type": "repair",
+      "usage": {
+        "input_tokens": 1941,
+        "output_tokens": 246,
+        "thinking_tokens": 0,
+        "total_token_count": 2187,
+        "unreported_tokens": 0
+      },
+      "usd": 0.006342,
+      "validation_ok": true
+    },
+    {
+      "type": "repair",
+      "attempt": "4r1",
+      "keys": [
+        "w09577:zh:card",
+        "w09597:zh:card"
+      ],
+      "counted_input_tokens": 1608,
+      "usage": {
+        "input_tokens": 1941,
+        "output_tokens": 240,
+        "thinking_tokens": 0,
+        "total_token_count": 2181,
+        "unreported_tokens": 0
+      },
+      "usd": 0.006282,
+      "duration_seconds": 173.30812180001521,
+      "validation_ok": true,
+      "error": ""
+    }
+  ],
+  "warnings": [
+    {
+      "character": "没",
+      "key": "w09576:zh:card",
+      "syllable": "mò",
+      "warning": "pinyin_reading"
+    }
+  ],
+  "failed_keys": [],
+  "failed_errors": {},
+  "failed_outputs": {},
+  "wall_clock_seconds": 173.6036701000121,
+  "validation": {
+    "ok": true,
+    "state": "validated",
+    "error": ""
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "timestamp": "2026-11-12T18:09:59Z",
+  "task": 6,
+  "batch": "b092",
+  "kind": "zh",
+  "batch_attempt": 4,
+  "model": "gemini-4-argon",
+  "location": "global",
+  "settings": {
+    "temperature": 0.3,
+    "thinking": "model_default",
+    "max_output_tokens": 65536,
+    "request_timeout_seconds": 600
+  },
+  "prompt_sha256": "3e111cedef1434f5eaef98be67c18ad5f8391b063e89f8ca98a478ad61aee7ae",
+  "input_sha256": "f957944bc6e3fe41dc488cf1d6f0506d2a380ba3d2e128fc7b4e1260feca7d5d",
+  "item_count": 50,
+  "usage": {
+    "input_tokens": 6090,
+    "output_tokens": 968,
+    "thinking_tokens": 0,
+    "total_token_count": 7058,
+    "unreported_tokens": 0
+  },
+  "usd": 0.02186,
+  "requests": [
+    {
+      "attempt": "3r1",
+      "counted_input_tokens": 1702,
+      "duration_seconds": 7.0800341999856755,
+      "error": "",
+      "keys": [
+        "w08812:zh:card",
+        "w08814:zh:card",
+        "w08817:zh:card"
+      ],
+      "type": "repair",
+      "usage": {
+        "input_tokens": 2030,
+        "output_tokens": 264,
+        "thinking_tokens": 0,
+        "total_token_count": 2294,
+        "unreported_tokens": 0
+      },
+      "usd": 0.0067,
+      "validation_ok": true
+    },
+    {
+      "attempt": "3r2",
+      "counted_input_tokens": 1702,
+      "duration_seconds": 8.552473799994914,
+      "error": "",
+      "keys": [
+        "w08812:zh:card",
+        "w08814:zh:card",
+        "w08817:zh:card"
+      ],
+      "type": "repair",
+      "usage": {
+        "input_tokens": 2030,
+        "output_tokens": 351,
+        "thinking_tokens": 0,
+        "total_token_count": 2381,
+        "unreported_tokens": 0
+      },
+      "usd": 0.00757,
+      "validation_ok": true
+    },
+    {
+      "type": "repair",
+      "attempt": "4r1",
+      "keys": [
+        "w08812:zh:card",
+        "w08814:zh:card",
+        "w08817:zh:card"
+      ],
+      "counted_input_tokens": 1702,
+      "usage": {
+        "input_tokens": 2030,
+        "output_tokens": 353,
+        "thinking_tokens": 0,
+        "total_token_count": 2383,
+        "unreported_tokens": 0
+      },
+      "usd": 0.00759,
+      "duration_seconds": 36.74400730000343,
+      "validation_ok": true,
+      "error": ""
+    }
+  ],
+  "warnings": [],
+  "failed_keys": [],
+  "failed_errors": {},
+  "failed_outputs": {},
+  "wall_clock_seconds": 36.81974539998919,
+  "validation": {
+    "ok": true,
+    "state": "validated",
+    "error": ""
+  }
+}

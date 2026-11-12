@@ -289,3 +289,66 @@ The implementation details below are retained as the completed checklist for the
 **5. Pilot run** (needs the user's setup; if `--check` fails, stop and report the exact error here; do not work around it). `--check`, then one pilot request per task: task 1: 100 words = the eligible test words, 越南, 自己, 容易, 小姐, 老公, 40 seeded multi-character `composed_attested` words, the rest seeded across levels; task 2: 50 items = 自己, 手紙, 大丈夫, 勉強, 新聞 if eligible, the rest seeded `ff_candidates` rows; task 3: zh level 1 and vi level 3; task 4: 50 items incl. 牡丹, 貿易, 音樂. Pilot output goes to `content/generated/pilot/` and is not used later. From the pilot's measured tokens, extrapolate the full-run tokens and cost per task and write them in your note.
 
 **Hand-off note:** script layout, model ID and location, settings, validation results of the pilot, measured tokens (input, output, thinking) per pilot request, the extrapolated full cost, tests run. Do **not** start the full run. **Hand off to Claude: Stage 4b (pilot review).**
+
+## 3. Completed assignments moved on 2026-11-12 (Claude, task-6 re-check D75; verbatim from HANDOFF at `0ab24a6`)
+
+**User — VERTEX_SETUP G7.** Resume the 56 Chinese keys, run rerun round 1, then start Claude for the re-check. Answer `docs/TASK6_USER_SAMPLE.md` any time before that re-check.
+
+### D74 schedule (every request before 2026-11-16 08:00 UTC)
+1. **User (11-13):** `docs/VERTEX_SETUP.md` part **G7**: `-Tasks 6` (resumes the 56 zh keys, ≈ 20 min, ≈ $0.3), then `-Tasks 6 -RerunRound 1` (25 items, ≈ 5 min, ≈ $0.1). Answer `docs/TASK6_USER_SAMPLE.md` (Japanese only, ≈ 10 min) any time. Then start Claude.
+2. **Claude (11-13 evening):** re-check: read the 56 resumed and 25 rerun answers, apply the user's sample answers, extend the overlay if needed, accept, move task 6 (+ inputs, logs, `rerun1/`) to `content/accepted/task6/`; user revokes and disables (part H).
+3. **11-14:** spare day (round 2 only if the re-check finds errors). The upgrade decision point should not be needed.
+4. **Then:** Claude writes the app-phase assignment (D71 + task-6 merge incl. the overlay and D74 item 5) → Codex → Claude Stage 5 gate.
+
+### Completed assignment: User — full task-6 run (G6-night), 2026-11-12
+Followed G6-night: **User — run `-Tasks 6` (full task-6 run, overnight is fine).** Steps were, in short:
+1. Charger plugged in, lid open, laptop on a hard surface.
+2. Settings → System → Power & battery → Screen, sleep & hibernate timeouts → "When plugged in": screen **Never** and sleep **Never** (note the old values; lower the brightness instead).
+3. Settings → Windows Update → Pause updates (1 week). Do not shut down, sign out, close the lid or press the power button.
+4. New PowerShell window from the Start menu:
+   ```powershell
+   cd "<project folder>"
+   powershell -ExecutionPolicy Bypass -File pipeline\stage4\run_stage4.ps1 -Tasks 6
+   ```
+   Wait for the first `task=6 batch=b001 ok …` line, then leave it. Order: zh b001-b127, vi b128-b211, notes b212-b224. The script retries and restarts itself up to two more times.
+5. **Morning:** if the summary shows zh 127/127, vi 84/84, note 13/13 validated → restore the power settings, start **Claude for the task-6 gate** (parts A+B together). If anything is `failed`/`partial`/`missing`, or the window/PC stopped: run step 4 again once (finished batches are skipped, not paid again). Credentials/401 → `gcloud auth application-default login`, then step 4. Same batches fail twice, or a ceiling/credit-deadline message → stop, start Claude, paste the last 20 lines. Never two windows at once. Progress offline: `… run_stage4.ps1 -Status`.
+Deadline for every request: **2026-11-16 08:00 UTC** (4 days left at the review).
+
+### Completed assignment: Codex Stage 4 task-6 support (D72) (2026-11-11; offline)
+- Deterministic builder matches D72 exactly: zh card **5,783**, zh ff **565**, vi card **4,051**, vi ff **142**, notes **623** = **11,164 items**. Note reasons: `vi_examples_literary` 81 + `vi_single_literary` 425 = N1 506; N2 `vi_no_examples` 106; N3 `zh_no_examples` 11. Batches: zh **b001-b127**, vi **b128-b211**, notes **b212-b224** = **224**. The 20 zh and 8 vi card/false-friend meaning conflicts become separate `ff` items. Task-6 JSONL preserves the specified field order; two fresh builds are identical.
+- Wired the unchanged three v1 prompts and exact ordered response schemas. `validate_task6` implements batch validation and item isolation, Mandarin-inventory DP alignment (erhua, neutral tone and apostrophes), target tones, 一/不, traditional-only rejection, Vietnamese spelling/target rules, Japanese/note constraints and all log-only warnings.
+- Runner/launcher support: task 6, a global batch number, at most two item repairs, `partial` outputs with `failed_keys`, failed-key-only resume, pilot, review rerun rounds with unknown-key refusal, per-kind status, and the fixed credit guard `2026-11-16T08:00:00Z` before client creation and every request. Tasks 1-5 and their old pilot remain refused. Ceiling is **$200** and every task-6 request reserves **200 chargeable output tokens/item**.
+- Offline `--task 6 --dry-run` (no client and no `count_tokens`): zh **6,348 / 127 / b001-b127**, estimated input/output **478,985 / 952,200**, **$10.479970**; vi **4,193 / 84 / b128-b211**, **279,777 / 503,160**, **$5.591154**; note **623 / 13 / b212-b224**, **70,878 / 49,840**, **$0.640156**; base total **$16.711280**. D72 planning envelope remains about $23 expected / $27 conservative / $36 worst with pilot, repairs and reruns.
+- Pilot inputs are committed under `content/inputs/pilot_task6/` (50 per kind). zh = 17 named card words + 手紙/大丈夫 ff + level-1 fill to 40 + first 10 level-7; vi = 16 named cards + 大丈夫 ff + first six single-character ff + literary fill to 40 + first 10 `vi_freq`; notes = 幫 + the first 49 remaining note items. Full deterministic inputs are under `content/inputs/task6/`.
+- **129/129 non-rebuild tests pass**. Offline `-Status`: tasks 1-5 remain fully validated; task 6 zh **0/127**, vi **0/84**, note **0/13**, all missing (no failed/partial); spend **$35.50397575**, room under the $200 ceiling **$164.49602425**. No request of any kind was sent. `data/final/`, `content/accepted/`, prompts, overlays, prototype, app and `run_all.py` are unchanged.
+
+### After Codex (planned, D72 schedule; all requests by the user, before 2026-11-16 08:00 UTC) — *items 1-4 done; the rest superseded by the D74 schedule under NEXT ASSIGNMENT*
+1. ~~**User:** G1-G5 pilot~~ — done 2026-11-12 UTC ($0.169144).
+2. ~~**Claude:** pilot review~~ — done (D73, prompt v2 zh/vi).
+3. **User, night of 11-11 (a day ahead of plan):** part **G6-night** `-Tasks 6` (≈ 4.5 h; zh first, ≈ 3 h).
+4. **Claude, after the run:** gate part A (zh) and part B (vi, notes) — together if the run is complete; **watch list D73 item 6** (forced archaic vi after the v2 `no_sentence` rule, subject-word sentences, trap evidence, gloss-copy translations, extra readings in notes); `config/task6_review.csv`, `config/task6_rerun.csv`, `docs/TASK6_USER_SAMPLE.md` (30 items, Japanese only). Integrity: zh/vi output logs must carry the **v2** prompt SHA, notes v1.
+5. **User, 11-14:** sample answers; rerun round 1 (part G7). **Decision point 11-14 evening:** if the remaining reruns and re-check cannot end before 11-16 08:00 UTC, upgrade or accept without the open items (they show no example).
+6. **Claude, 11-15:** re-check; round 2 only if needed; last request before 11-15 23:59 PT; accepted task 6 → `content/accepted/task6/`; user revokes and disables (part **H**).
+7. **Then:** Claude writes the app-phase assignment (D71 + task-6 merge, SCHEMA §2/§3 changes) → Codex → **Claude Stage 5 gate** (with the items below).
+
+### Completed assignment: Codex Stage 4e-fix (D70) (2026-11-07)
+- ID allocation now uses `pipeline/id_map.csv`: 279 `word` rows keyed `x|trad`, assigned in `ff_candidates.csv` order as `w12996`-`w13274`; 80 `passage` rows keyed `lang|level|n` using the accepted-output position before review drops, assigned in b001-b014 order as `p0001`-`p0080`. `ff_meanings.word_id` follows the word IDs. The second rebuild reused every ID.
+- 年下 is `niánxià` and 裁縫 is `cáiféng`; the corresponding two Chinese `ff_meanings.reading` cells follow. Every pinyin-bearing `ff_only` row uses `source_pinyin=cc-cedict`.
+- `task3_review.csv` is validated against the 14 accepted batch names before any row is applied; an unknown batch fails. Regression coverage also requires `^w\d{5}$` / `^p\d{4}$` and reconstructs every final ID-to-key association from `id_map.csv`.
+- **Expected-diff comparison against `7362ecf`: exact.** `words`: `word_id` 279, `pinyin` 2, `source_pinyin` 279. `ff_meanings`: `word_id` 853 rows (all rows belonging to the 279 `ff_only` entries), `reading` 2. `passages`: `passage_id` 80. `id_map.csv`: 359 additions (279 word + 80 passage). No other final-table cells changed.
+- Counts unchanged: **12,508 words / 4,044 ff_meanings / 1,242 false-friend entries / 80 passages**.
+- Tests: **104/104 pass** in 708.048 s (103 non-rebuild + `test_two_rebuilds_are_identical`); its two full rebuilds are byte-identical, and the existing override-independence rebuild passes. No API request; no changes to `content/`, prompts, overlays, prototype, or Stage 3 data. Stage 5 not started.
+- **Claude re-check: PASS (2026-11-07), `docs/GATES.md`.**
+
+### Completed assignment: Codex Stage 4e (2026-11-07)
+- `pipeline/merge_stage4.py` is the offline, deterministic merge step called by `run_all.py`. It reads only accepted task batches, applies `task1_review`, `task2_review`, `task2_retrap`, `task3_review`, `task4_review`, and `task5_review` fail-closed, and writes `words`, `ff_meanings`, and `passages` CSV/JSON. No Stage 4 generation module is imported by `run_all.py`.
+- `pipeline/extract_prototype_config.py` reproducibly extracted and can verify the 34 static false-friend rows (12 entries) and the 越南 note. Static readings are validated against dictionary primary/alternate readings. One Vietnamese trap is removed by D64's empty-reading rule; its entry remains, so final false-friend entries are 1,242.
+- Final rows: chars 3,140; words 12,508 (279 `ff_only`); word_chars 24,497; ff_meanings 4,044; passages 80. Expected-number comparison is exact: ko/ja rare 1,500/437, both 241; wrong_meaning 18/1; vi literary 1,277 plus one unsure; fixed-note rows ko/ja 227/76; 275 entries change and 孫子, 內衣, 應當 leave.
+- Offline launcher `-Status`: tasks 1-5 = 86/86, 79/79, 14/14, 5/5, 104/104; spend $35.50397575; room $64.49602425. All task and dry-run attempts are refused before a client is created.
+- Tests: 100 non-rebuild tests pass; `test_two_rebuilds_are_identical` passes after two byte-identical full rebuilds and the existing override-independence pass (101 total).
+
+### Completed assignment: Codex Stage 4c-prep5 (2026-11-07)
+- `validate_task5` now returns `reason_warnings` entries `{key, field, text}` for Hangul/Latin reason runs outside the corresponding input instead of raising. Successful runner logs persist the list, empty when there are no warnings. Every other task-5 rule remains strict; task 1-4 validator code is unchanged.
+- Offline tests cover `기사는` with input `기사`, foreign Latin text, warning and empty-warning logs, the other strict task-5 rules, and the existing task-4 foreign-script rejection. All **87 non-rebuild tests pass**.
+- Offline launcher `-Status`: tasks 1-4 = 86/86, 79/79, 14/14, 5/5 validated; task 5 = **103/104 validated, 1 failed, 0 missing**; spend $35.42644775; room $64.57355225.
+- Fresh offline classification lists only `b055` as pending. The aggregate task-5 batch SHA remains `dcc14617dd28328d60593053c7f9db23bc1ce33ba607742e79bcdd04b374f0ab`; b055's fresh input and prompt SHAs match its failed log; prompt, schema, builder and inputs were not changed. No request was sent and no task was started.

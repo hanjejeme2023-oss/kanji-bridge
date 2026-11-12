@@ -1,0 +1,102 @@
+{
+  "timestamp": "2026-11-12T18:06:00Z",
+  "task": 6,
+  "batch": "b087",
+  "kind": "zh",
+  "batch_attempt": 4,
+  "model": "gemini-4-argon",
+  "location": "global",
+  "settings": {
+    "temperature": 0.3,
+    "thinking": "model_default",
+    "max_output_tokens": 65536,
+    "request_timeout_seconds": 600
+  },
+  "prompt_sha256": "3e111cedef1434f5eaef98be67c18ad5f8391b063e89f8ca98a478ad61aee7ae",
+  "input_sha256": "156ddcba1d9e666cbac102fc1cfbf603adf5e0883a018a1dccfe180e860001d3",
+  "item_count": 50,
+  "usage": {
+    "input_tokens": 5607,
+    "output_tokens": 436,
+    "thinking_tokens": 0,
+    "total_token_count": 6043,
+    "unreported_tokens": 0
+  },
+  "usd": 0.015574000000000001,
+  "requests": [
+    {
+      "attempt": "3r1",
+      "counted_input_tokens": 1535,
+      "duration_seconds": 7.302206899999874,
+      "error": "",
+      "keys": [
+        "w08321:zh:card"
+      ],
+      "type": "repair",
+      "usage": {
+        "input_tokens": 1869,
+        "output_tokens": 166,
+        "thinking_tokens": 0,
+        "total_token_count": 2035,
+        "unreported_tokens": 0
+      },
+      "usd": 0.005398,
+      "validation_ok": true
+    },
+    {
+      "attempt": "3r2",
+      "counted_input_tokens": 1535,
+      "duration_seconds": 141.94076239998685,
+      "error": "",
+      "keys": [
+        "w08321:zh:card"
+      ],
+      "type": "repair",
+      "usage": {
+        "input_tokens": 1869,
+        "output_tokens": 117,
+        "thinking_tokens": 0,
+        "total_token_count": 1986,
+        "unreported_tokens": 0
+      },
+      "usd": 0.004908,
+      "validation_ok": true
+    },
+    {
+      "type": "repair",
+      "attempt": "4r1",
+      "keys": [
+        "w08321:zh:card"
+      ],
+      "counted_input_tokens": 1535,
+      "usage": {
+        "input_tokens": 1869,
+        "output_tokens": 153,
+        "thinking_tokens": 0,
+        "total_token_count": 2022,
+        "unreported_tokens": 0
+      },
+      "usd": 0.005268,
+      "duration_seconds": 12.16859650000697,
+      "validation_ok": true,
+      "error": ""
+    }
+  ],
+  "warnings": [
+    {
+      "character": "没",
+      "key": "w08316:zh:card",
+      "syllable": "mò",
+      "warning": "pinyin_reading"
+    }
+  ],
+  "failed_keys": [],
+  "failed_errors": {},
+  "failed_outputs": {},
+  "wall_clock_seconds": 12.271136199997272,
+  "validation": {
+    "ok": true,
+    "state": "validated",
+    "error": ""
+  }
+}

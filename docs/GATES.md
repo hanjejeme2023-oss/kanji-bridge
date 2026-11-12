@@ -454,3 +454,19 @@ Full run by the user 2026-11-12 01:20-10:27 UTC: vi 84/84, notes 13/13, zh 85/12
 | Watch list D73 item 6 | forced archaic vi rare (literary no_sentence 17%, all justified; 19 forced items fixed); subject words factual; traps evident; no gloss-copy class; 2 extra readings in notes (1 fixed) | OK |
 
 **Not yet complete:** task 6 is accepted after Codex's D74 fix, the user's resume (`-Tasks 6`) and rerun round 1, the user's sample answers, and Claude's re-check of the 81 new answers.
+
+## Stage 4 task 6 re-check (Claude, 2026-11-12): PASS — task 6 accepted (D75)
+
+User's G7 run 2026-11-12 after Codex's D74 fix (`0ab24a6`): `-Tasks 6` resume, then `-Tasks 6 -RerunRound 1`. Evidence `docs/TASK6_GATE_REVIEW.md` §6; script `docs/review_scripts/task6_recheck.py`. No request sent by Claude.
+
+| Item | Evidence | Result |
+|---|---|---|
+| States | zh 127/127, vi 84/84, notes 13/13; rerun1 b001 (zh 19) and b002 (vi 6) validated, first attempt | OK |
+| Integrity | logs: model, input SHA = committed = fresh build, prompt SHA zh/vi v2, notes v1; all outputs re-validate; resume added exactly the 56 `failed_keys` of `0ab24a6`, no stored answer changed; rerun inputs = item + `review_feedback`, keys = rerun list | OK |
+| Cost | 45 requests $0.301874; task 6 $17.25865; ledger $52.76321975 (ceiling $200) | OK |
+| 56 resumed answers | read in full; tone-aware pinyin check 0 mismatches; 0 errors | OK |
+| 25 rerun answers | 24 fix their feedback (1 allowed `no_sentence`); thành nhân still forced → `drop` (overlay row 29) | OK with overlay |
+| User sample | 30/30 ○ (Japanese) | OK |
+| Move | `content/accepted/task6/` (+ `inputs/`, `rerun1/`, `inputs/rerun1/`); SHA-256 identical before/after; 134 non-rebuild tests pass | OK |
+
+**Task 6 accepted. All Stage 4 content (tasks 1-6) is accepted.** Merge expectation: 10,367 `examples`, 581 `char_notes`. User: VERTEX_SETUP part H (revoke, disable). Next: Codex app phase Part A (`docs/APP_PHASE.md`).

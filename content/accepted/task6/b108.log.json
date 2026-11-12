@@ -1,0 +1,108 @@
+{
+  "timestamp": "2026-11-12T18:27:15Z",
+  "task": 6,
+  "batch": "b108",
+  "kind": "zh",
+  "batch_attempt": 4,
+  "model": "gemini-4-argon",
+  "location": "global",
+  "settings": {
+    "temperature": 0.3,
+    "thinking": "model_default",
+    "max_output_tokens": 65536,
+    "request_timeout_seconds": 600
+  },
+  "prompt_sha256": "3e111cedef1434f5eaef98be67c18ad5f8391b063e89f8ca98a478ad61aee7ae",
+  "input_sha256": "539654d831f9155b10fb60698934b60d6999040c0ec12ee8e1f01b4851232931",
+  "item_count": 50,
+  "usage": {
+    "input_tokens": 5577,
+    "output_tokens": 362,
+    "thinking_tokens": 0,
+    "total_token_count": 5939,
+    "unreported_tokens": 0
+  },
+  "usd": 0.014774,
+  "requests": [
+    {
+      "attempt": "3r1",
+      "counted_input_tokens": 1527,
+      "duration_seconds": 5.92017460000352,
+      "error": "",
+      "keys": [
+        "w10282:zh:card"
+      ],
+      "type": "repair",
+      "usage": {
+        "input_tokens": 1859,
+        "output_tokens": 125,
+        "thinking_tokens": 0,
+        "total_token_count": 1984,
+        "unreported_tokens": 0
+      },
+      "usd": 0.004968,
+      "validation_ok": true
+    },
+    {
+      "attempt": "3r2",
+      "counted_input_tokens": 1527,
+      "duration_seconds": 4.41238340002019,
+      "error": "",
+      "keys": [
+        "w10282:zh:card"
+      ],
+      "type": "repair",
+      "usage": {
+        "input_tokens": 1859,
+        "output_tokens": 127,
+        "thinking_tokens": 0,
+        "total_token_count": 1986,
+        "unreported_tokens": 0
+      },
+      "usd": 0.004988,
+      "validation_ok": true
+    },
+    {
+      "type": "repair",
+      "attempt": "4r1",
+      "keys": [
+        "w10282:zh:card"
+      ],
+      "counted_input_tokens": 1527,
+      "usage": {
+        "input_tokens": 1859,
+        "output_tokens": 110,
+        "thinking_tokens": 0,
+        "total_token_count": 1969,
+        "unreported_tokens": 0
+      },
+      "usd": 0.004818,
+      "duration_seconds": 6.305703000020003,
+      "validation_ok": true,
+      "error": ""
+    }
+  ],
+  "warnings": [
+    {
+      "character": "没",
+      "key": "w10248:zh:card",
+      "syllable": "mò",
+      "warning": "pinyin_reading"
+    },
+    {
+      "character": "刹",
+      "key": "w10272:zh:card",
+      "syllable": "chà",
+      "warning": "pinyin_reading"
+    }
+  ],
+  "failed_keys": [],
+  "failed_errors": {},
+  "failed_outputs": {},
+  "wall_clock_seconds": 6.599210199987283,
+  "validation": {
+    "ok": true,
+    "state": "validated",
+    "error": ""
+  }
+}

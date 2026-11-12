@@ -27,3 +27,4 @@ c00558:note,set_note_ja,中国語では「1億」を 一亿 と日常的に言�
 c00764:note,set_note_ja,ベトナム語で「りんご」は普通 táo（南部では bom）と言う,ベトナム語で「りんご」は普通 táo と言う,bom is dated
 c01370:note,set_note_ja,ベトナム語で「（水を）かける」は普通泼に相当する hắt、tạt と言う,ベトナム語で水を「かける・まく」は普通 hắt や tạt と言う,garbled Japanese (「普通泼に相当する」)
 c01700:note,set_note_ja,中国語では cheng と読んで「（ご飯などを）よそう・盛る」の意味でも日常的に使う,中国語ではご飯などを「よそう・盛る」意味でも日常的に使う（読みは別）,extra reading 'cheng' without tone (prompt rule)
+w02310:vi:card,drop,Bộ phim này chỉ dành cho khán giả đã thành nhân.,,"rerun-1 answer: khán giả đã thành nhân is forced (today người trưởng thành / trên 18 tuổi; thành nhân lives in lễ thành nhân, học để thành nhân); drop, no round 2 (D75)"

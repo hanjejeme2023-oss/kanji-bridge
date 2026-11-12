@@ -1,0 +1,116 @@
+{
+  "timestamp": "2026-11-12T18:34:50Z",
+  "task": 6,
+  "batch": "b117",
+  "kind": "zh",
+  "batch_attempt": 4,
+  "model": "gemini-4-argon",
+  "location": "global",
+  "settings": {
+    "temperature": 0.3,
+    "thinking": "model_default",
+    "max_output_tokens": 65536,
+    "request_timeout_seconds": 600
+  },
+  "prompt_sha256": "3e111cedef1434f5eaef98be67c18ad5f8391b063e89f8ca98a478ad61aee7ae",
+  "input_sha256": "e0d135c3c4f2d17f03c96c274590e0e5946874011e0ca099cb939683082a5ada",
+  "item_count": 50,
+  "usage": {
+    "input_tokens": 5604,
+    "output_tokens": 320,
+    "thinking_tokens": 622,
+    "total_token_count": 6546,
+    "unreported_tokens": 0
+  },
+  "usd": 0.020628,
+  "requests": [
+    {
+      "attempt": "3r1",
+      "counted_input_tokens": 1534,
+      "duration_seconds": 5.301841599983163,
+      "error": "",
+      "keys": [
+        "w00958:zh:ff"
+      ],
+      "type": "repair",
+      "usage": {
+        "input_tokens": 1868,
+        "output_tokens": 120,
+        "thinking_tokens": 0,
+        "total_token_count": 1988,
+        "unreported_tokens": 0
+      },
+      "usd": 0.004936,
+      "validation_ok": true
+    },
+    {
+      "attempt": "3r2",
+      "counted_input_tokens": 1534,
+      "duration_seconds": 11.370608600002015,
+      "error": "",
+      "keys": [
+        "w00958:zh:ff"
+      ],
+      "type": "repair",
+      "usage": {
+        "input_tokens": 1868,
+        "output_tokens": 83,
+        "thinking_tokens": 335,
+        "total_token_count": 2286,
+        "unreported_tokens": 0
+      },
+      "usd": 0.007916,
+      "validation_ok": true
+    },
+    {
+      "type": "repair",
+      "attempt": "4r1",
+      "keys": [
+        "w00958:zh:ff"
+      ],
+      "counted_input_tokens": 1534,
+      "usage": {
+        "input_tokens": 1868,
+        "output_tokens": 117,
+        "thinking_tokens": 287,
+        "total_token_count": 2272,
+        "unreported_tokens": 0
+      },
+      "usd": 0.007776,
+      "duration_seconds": 12.699132599984296,
+      "validation_ok": true,
+      "error": ""
+    }
+  ],
+  "warnings": [
+    {
+      "key": "w00500:zh:ff",
+      "warning": "target_inside_longer_word"
+    },
+    {
+      "key": "w00908:zh:ff",
+      "warning": "target_inside_longer_word"
+    },
+    {
+      "key": "w01039:zh:ff",
+      "warning": "target_inside_longer_word"
+    },
+    {
+      "key": "w01048:zh:ff",
+      "warning": "target_inside_longer_word"
+    },
+    {
+      "key": "w01064:zh:ff",
+      "warning": "target_inside_longer_word"
+    }
+  ],
+  "failed_keys": [],
+  "failed_errors": {},
+  "failed_outputs": {},
+  "wall_clock_seconds": 12.861116499989294,
+  "validation": {
+    "ok": true,
+    "state": "validated",
+    "error": ""
+  }
+}

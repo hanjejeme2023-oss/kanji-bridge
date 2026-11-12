@@ -1,0 +1,102 @@
+{
+  "timestamp": "2026-11-12T17:44:13Z",
+  "task": 6,
+  "batch": "b074",
+  "kind": "zh",
+  "batch_attempt": 4,
+  "model": "gemini-4-argon",
+  "location": "global",
+  "settings": {
+    "temperature": 0.3,
+    "thinking": "model_default",
+    "max_output_tokens": 65536,
+    "request_timeout_seconds": 600
+  },
+  "prompt_sha256": "3e111cedef1434f5eaef98be67c18ad5f8391b063e89f8ca98a478ad61aee7ae",
+  "input_sha256": "b19f0af4a08ab5f01e662d9394a9095d08fb5eb049c5440eaf0e5a1afd6820f2",
+  "item_count": 50,
+  "usage": {
+    "input_tokens": 5607,
+    "output_tokens": 320,
+    "thinking_tokens": 1061,
+    "total_token_count": 6988,
+    "unreported_tokens": 0
+  },
+  "usd": 0.025024,
+  "requests": [
+    {
+      "attempt": "3r1",
+      "counted_input_tokens": 1535,
+      "duration_seconds": 4.74058640000294,
+      "error": "",
+      "keys": [
+        "w07041:zh:card"
+      ],
+      "type": "repair",
+      "usage": {
+        "input_tokens": 1869,
+        "output_tokens": 110,
+        "thinking_tokens": 0,
+        "total_token_count": 1979,
+        "unreported_tokens": 0
+      },
+      "usd": 0.004838,
+      "validation_ok": true
+    },
+    {
+      "attempt": "3r2",
+      "counted_input_tokens": 1535,
+      "duration_seconds": 9.483295599988196,
+      "error": "",
+      "keys": [
+        "w07041:zh:card"
+      ],
+      "type": "repair",
+      "usage": {
+        "input_tokens": 1869,
+        "output_tokens": 115,
+        "thinking_tokens": 245,
+        "total_token_count": 2229,
+        "unreported_tokens": 0
+      },
+      "usd": 0.007338,
+      "validation_ok": true
+    },
+    {
+      "type": "repair",
+      "attempt": "4r1",
+      "keys": [
+        "w07041:zh:card"
+      ],
+      "counted_input_tokens": 1535,
+      "usage": {
+        "input_tokens": 1869,
+        "output_tokens": 95,
+        "thinking_tokens": 816,
+        "total_token_count": 2780,
+        "unreported_tokens": 0
+      },
+      "usd": 0.012848,
+      "duration_seconds": 154.3063831999898,
+      "validation_ok": true,
+      "error": ""
+    }
+  ],
+  "warnings": [
+    {
+      "character": "穿",
+      "key": "w07028:zh:card",
+      "syllable": "chuāng",
+      "warning": "pinyin_reading"
+    }
+  ],
+  "failed_keys": [],
+  "failed_errors": {},
+  "failed_outputs": {},
+  "wall_clock_seconds": 154.37632189999567,
+  "validation": {
+    "ok": true,
+    "state": "validated",
+    "error": ""
+  }
+}

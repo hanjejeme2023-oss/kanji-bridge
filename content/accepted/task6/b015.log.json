@@ -1,0 +1,95 @@
+{
+  "timestamp": "2026-11-12T17:11:56Z",
+  "task": 6,
+  "batch": "b015",
+  "kind": "zh",
+  "batch_attempt": 4,
+  "model": "gemini-4-argon",
+  "location": "global",
+  "settings": {
+    "temperature": 0.3,
+    "thinking": "model_default",
+    "max_output_tokens": 65536,
+    "request_timeout_seconds": 600
+  },
+  "prompt_sha256": "3e111cedef1434f5eaef98be67c18ad5f8391b063e89f8ca98a478ad61aee7ae",
+  "input_sha256": "c52fdd736a2cf7e36879cbaf47dde94604a2251fdb76253c27677536b3dd351d",
+  "item_count": 50,
+  "usage": {
+    "input_tokens": 5574,
+    "output_tokens": 295,
+    "thinking_tokens": 539,
+    "total_token_count": 6408,
+    "unreported_tokens": 0
+  },
+  "usd": 0.019488,
+  "requests": [
+    {
+      "attempt": "3r1",
+      "counted_input_tokens": 1523,
+      "duration_seconds": 32.482166799978586,
+      "error": "",
+      "keys": [
+        "w01540:zh:card"
+      ],
+      "type": "repair",
+      "usage": {
+        "input_tokens": 1858,
+        "output_tokens": 117,
+        "thinking_tokens": 203,
+        "total_token_count": 2178,
+        "unreported_tokens": 0
+      },
+      "usd": 0.006916,
+      "validation_ok": true
+    },
+    {
+      "attempt": "3r2",
+      "counted_input_tokens": 1523,
+      "duration_seconds": 9.859826500003692,
+      "error": "",
+      "keys": [
+        "w01540:zh:card"
+      ],
+      "type": "repair",
+      "usage": {
+        "input_tokens": 1858,
+        "output_tokens": 98,
+        "thinking_tokens": 259,
+        "total_token_count": 2215,
+        "unreported_tokens": 0
+      },
+      "usd": 0.007286,
+      "validation_ok": true
+    },
+    {
+      "type": "repair",
+      "attempt": "4r1",
+      "keys": [
+        "w01540:zh:card"
+      ],
+      "counted_input_tokens": 1523,
+      "usage": {
+        "input_tokens": 1858,
+        "output_tokens": 80,
+        "thinking_tokens": 77,
+        "total_token_count": 2015,
+        "unreported_tokens": 0
+      },
+      "usd": 0.005286,
+      "duration_seconds": 134.75376490000053,
+      "validation_ok": true,
+      "error": ""
+    }
+  ],
+  "warnings": [],
+  "failed_keys": [],
+  "failed_errors": {},
+  "failed_outputs": {},
+  "wall_clock_seconds": 134.7915058999788,
+  "validation": {
+    "ok": true,
+    "state": "validated",
+    "error": ""
+  }
+}

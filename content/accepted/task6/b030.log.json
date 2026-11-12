@@ -1,0 +1,98 @@
+{
+  "timestamp": "2026-11-12T17:13:27Z",
+  "task": 6,
+  "batch": "b030",
+  "kind": "zh",
+  "batch_attempt": 4,
+  "model": "gemini-4-argon",
+  "location": "global",
+  "settings": {
+    "temperature": 0.3,
+    "thinking": "model_default",
+    "max_output_tokens": 65536,
+    "request_timeout_seconds": 600
+  },
+  "prompt_sha256": "3e111cedef1434f5eaef98be67c18ad5f8391b063e89f8ca98a478ad61aee7ae",
+  "input_sha256": "0c652c090be82184fb52dd9f1ad7f31303b62cb02758549d46923d3399734334",
+  "item_count": 50,
+  "usage": {
+    "input_tokens": 5808,
+    "output_tokens": 565,
+    "thinking_tokens": 0,
+    "total_token_count": 6373,
+    "unreported_tokens": 0
+  },
+  "usd": 0.017266,
+  "requests": [
+    {
+      "attempt": "3r1",
+      "counted_input_tokens": 1603,
+      "duration_seconds": 6.274396499997238,
+      "error": "",
+      "keys": [
+        "w02815:zh:card",
+        "w02816:zh:card"
+      ],
+      "type": "repair",
+      "usage": {
+        "input_tokens": 1936,
+        "output_tokens": 220,
+        "thinking_tokens": 0,
+        "total_token_count": 2156,
+        "unreported_tokens": 0
+      },
+      "usd": 0.006072,
+      "validation_ok": true
+    },
+    {
+      "attempt": "3r2",
+      "counted_input_tokens": 1603,
+      "duration_seconds": 4.686315700004343,
+      "error": "",
+      "keys": [
+        "w02815:zh:card",
+        "w02816:zh:card"
+      ],
+      "type": "repair",
+      "usage": {
+        "input_tokens": 1936,
+        "output_tokens": 183,
+        "thinking_tokens": 0,
+        "total_token_count": 2119,
+        "unreported_tokens": 0
+      },
+      "usd": 0.005702,
+      "validation_ok": true
+    },
+    {
+      "type": "repair",
+      "attempt": "4r1",
+      "keys": [
+        "w02815:zh:card",
+        "w02816:zh:card"
+      ],
+      "counted_input_tokens": 1603,
+      "usage": {
+        "input_tokens": 1936,
+        "output_tokens": 162,
+        "thinking_tokens": 0,
+        "total_token_count": 2098,
+        "unreported_tokens": 0
+      },
+      "usd": 0.005492,
+      "duration_seconds": 21.51434700001846,
+      "validation_ok": true,
+      "error": ""
+    }
+  ],
+  "warnings": [],
+  "failed_keys": [],
+  "failed_errors": {},
+  "failed_outputs": {},
+  "wall_clock_seconds": 21.556239400000777,
+  "validation": {
+    "ok": true,
+    "state": "validated",
+    "error": ""
+  }
+}
