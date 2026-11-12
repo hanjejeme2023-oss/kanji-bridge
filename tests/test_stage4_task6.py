@@ -1,22 +1,19 @@
 from __future__ import annotations
 
 import copy
-import io
+import csv
 import json
 import tempfile
 import unicodedata
 import unittest
-from contextlib import redirect_stdout
 from datetime import datetime, timezone
 from pathlib import Path
-from types import SimpleNamespace
 from unittest.mock import Mock, patch
 
 from pipeline.stage4 import builders
 from pipeline.stage4.runner import (
     CREDIT_DEADLINE_UTC,
     Stage4Error,
-    dry_run_task6,
     enforce_ceiling,
     enforce_credit_deadline,
     generate_task6_batch,
@@ -24,8 +21,10 @@ from pipeline.stage4.runner import (
     rerun_task6,
 )
 from pipeline.stage4.validators import (
+    PINYIN_SYLLABLES,
     RESPONSE_SCHEMAS,
     ValidationError,
+    _toneless,
     validate_task6,
     validate_task6_items,
 )
@@ -128,6 +127,35 @@ class Task6ValidatorTests(unittest.TestCase):
             with self.subTest(target=target):
                 validate_task6([zh_output(key, sentence, pinyin)], [zh_input(key, target, target_pinyin)], "zh")
 
+    def test_inventory_covers_all_dictionary_character_readings(self) -> None:
+        chars = builders.load_csv(builders.CHARS_PATH)
+        syllables = {
+            _toneless(reading)
+            for readings in chars["pinyin_all"]
+            for reading in readings.split(";")
+            if reading
+        }
+        self.assertFalse(syllables - PINYIN_SYLLABLES)
+
+    def test_r_syllables_and_initial_tone_marked_capitals(self) -> None:
+        cases = [
+            ("自然", "zìrán", "这是自然现象。", "Zhè shì zìrán xiànxiàng."),
+            ("然后", "ránhòu", "我先吃饭，然后出门。", "Wǒ xiān chīfàn, ránhòu chūmén."),
+            ("让", "ràng", "请让他进来。", "Qǐng ràng tā jìnlái."),
+            ("土壤", "tǔrǎng", "土壤很肥沃。", "Tǔrǎng hěn féiwò."),
+            ("围绕", "wéirào", "大家围绕这个问题讨论。", "Dàjiā wéirào zhège wèntí tǎolùn."),
+            ("扰乱", "rǎoluàn", "别扰乱课堂。", "Bié rǎoluàn kètáng."),
+            ("按照", "ànzhào", "按照惯例，我们先开会。", "Ànzhào guànlì, wǒmen xiān kāihuì."),
+            ("欧洲", "ōuzhōu", "欧洲的冬天很冷。", "Ōuzhōu de dōngtiān hěn lěng."),
+            ("二", "èr", "二楼有教室。", "Èr lóu yǒu jiàoshì."),
+        ]
+        for target, target_pinyin, sentence, pinyin in cases:
+            with self.subTest(target=target):
+                validate_task6(
+                    [zh_output(sentence=sentence, pinyin=pinyin)],
+                    [zh_input(target=target, pinyin=target_pinyin)], "zh",
+                )
+
     def test_batch_order_schema_and_common_string_rules(self) -> None:
         inputs = [zh_input("a:zh:card"), zh_input("b:zh:card")]
         outputs = [zh_output("a:zh:card"), zh_output("b:zh:card")]
@@ -203,6 +231,23 @@ class Task6ValidatorTests(unittest.TestCase):
         with self.assertRaises(ValidationError):
             validate_task6(bad_note, note_input, "note")
 
+    def test_foreign_letters_warn_without_failing(self) -> None:
+        note = {"key": "c00001:note", "note_ja": "「điện não」はベトナム語。", "confidence": "high", "review_note": ""}
+        self.assertEqual(validate_task6([note], [{"key": note["key"]}], "note"), [])
+        zh = zh_output(translation="人々はCDを使う。")
+        self.assertEqual(validate_task6([zh], [zh_input()], "zh"), [])
+        cases = [
+            ("zh", zh_input(), {**zh, "translation_ja": "人々はCDを使う。م"}, "translation_ja"),
+            ("vi", vi_input(), {**vi_output(), "translation_ja": "とてもきれいです。م"}, "translation_ja"),
+            ("note", {"key": note["key"]}, {**note, "note_ja": "日常語です。Жé"}, "note_ja"),
+        ]
+        for kind, item, output, field in cases:
+            with self.subTest(kind=kind):
+                self.assertIn(
+                    {"key": output["key"], "warning": "translation_script", "field": field},
+                    validate_task6([output], [item], kind),
+                )
+
 
 class Task6RunnerTests(unittest.TestCase):
     def test_credit_guard_boundary_and_override(self) -> None:
@@ -239,12 +284,16 @@ class Task6RunnerTests(unittest.TestCase):
         good_a = zh_output("a:zh:card")
         bad_b = zh_output("b:zh:card", "我去银行。", "bad")
         good_b = zh_output("b:zh:card", "我去银行。", "Wǒ qù yínháng.", "私は銀行へ行きます。")
+        last_bad_b = {"sentence": bad_b["sentence"], "key": bad_b["key"]}
         calls: list[list[str]] = []
 
         def partial_request(client, batch, label, items, kind, *flags):
             calls.append([item["key"] for item in items])
-            output = [good_a, bad_b] if len(calls) == 1 else [bad_b]
-            return output, {"attempt": label, "keys": calls[-1], "usage": {}, "usd": 0, "validation_ok": True, "error": ""}
+            output = {"1": [good_a, bad_b], "1r1": [last_bad_b]}.get(label)
+            return output, {
+                "attempt": label, "keys": calls[-1], "usage": {"input_tokens": 10}, "usd": 0.01,
+                "validation_ok": label == "1", "error": "invalid schema or no response",
+            }
 
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)
@@ -257,19 +306,94 @@ class Task6RunnerTests(unittest.TestCase):
             log = json.loads(log_path.read_text(encoding="utf-8"))
             self.assertEqual(log["validation"]["state"], "partial")
             self.assertEqual(log["failed_keys"], ["b:zh:card"])
+            self.assertEqual(log["failed_outputs"], {"b:zh:card": last_bad_b})
+            self.assertEqual(list(log["failed_outputs"]["b:zh:card"]), list(last_bad_b))
             self.assertEqual(calls, [["a:zh:card", "b:zh:card"], ["b:zh:card"], ["b:zh:card"]])
+            stored_partial = output_path.read_bytes()
 
-            calls.clear()
             def resume_request(client, batch, label, items, kind, *flags):
                 calls.append([item["key"] for item in items])
-                return [good_b], {"attempt": label, "keys": calls[-1], "usage": {}, "usd": 0, "validation_ok": True, "error": ""}
+                return [good_b], {
+                    "attempt": label, "keys": calls[-1], "usage": {"input_tokens": 10},
+                    "usd": 0.01, "validation_ok": True, "error": "",
+                }
+
+            for legacy in (False, True):
+                with self.subTest(legacy=legacy):
+                    prior_log = dict(log)
+                    if legacy:
+                        del prior_log["failed_outputs"]
+                        del prior_log["requests"]
+                    log_path.write_text(json.dumps(prior_log), encoding="utf-8")
+                    output_path.write_bytes(stored_partial)
+                    calls.clear()
+                    with (
+                        patch("pipeline.stage4.runner.vertex_settings", return_value=("p", "global")),
+                        patch("pipeline.stage4.runner._task6_api_request", side_effect=resume_request),
+                    ):
+                        result = generate_task6_batch(None, "b001", "zh", inputs, output_path, log_path)
+                    self.assertEqual(calls, [["b:zh:card"]])
+                    self.assertEqual(result, [good_a, good_b])
+                    resumed = json.loads(log_path.read_text(encoding="utf-8"))
+                    self.assertEqual(resumed["failed_outputs"], {})
+                    expected_attempts = ["2r1"] if legacy else ["1", "1r1", "1r2", "2r1"]
+                    self.assertEqual([request["attempt"] for request in resumed["requests"]], expected_attempts)
+                    self.assertEqual(resumed["usage"]["input_tokens"], 10 * len(expected_attempts))
+                    self.assertAlmostEqual(resumed["usd"], 0.01 * len(expected_attempts))
+
+    def test_round_one_builds_all_review_inputs_without_a_client(self) -> None:
+        with (builders.ROOT / "config" / "task6_rerun.csv").open(encoding="utf-8", newline="") as source:
+            expected = {row["key"]: row["reason"] for row in csv.DictReader(source) if row["round"] == "1"}
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
             with (
-                patch("pipeline.stage4.runner.vertex_settings", return_value=("p", "global")),
-                patch("pipeline.stage4.runner._task6_api_request", side_effect=resume_request),
+                patch("pipeline.stage4.runner.INPUTS", root / "inputs"),
+                patch("pipeline.stage4.runner.GENERATED", root / "generated"),
+                patch("pipeline.stage4.runner.generate_task6_batch", return_value=[]) as generate,
             ):
-                result = generate_task6_batch(Mock(), "b001", "zh", inputs, output_path, log_path)
-            self.assertEqual(calls, [["b:zh:card"]])
-            self.assertEqual([item["key"] for item in result], ["a:zh:card", "b:zh:card"])
+                self.assertEqual(rerun_task6(None, 1), 0)
+            built = [call.args[3] for call in generate.call_args_list]
+            self.assertEqual(
+                [(call.args[0], call.args[2]) for call in generate.call_args_list],
+                [(None, "zh"), (None, "vi")],
+            )
+            self.assertEqual([len(items) for items in built], [19, 6])
+            self.assertEqual({item["key"]: item["review_feedback"] for items in built for item in items}, expected)
+
+    def test_rerun_retry_skips_validated_batch_and_resumes_partial(self) -> None:
+        zh = zh_output()
+        vi_a = vi_output()
+        vi_b = vi_output("w00002:vi:card")
+        bad_b = {**vi_b, "sentence": "Việt Nam rất đẹp"}
+        results = iter([[zh], [vi_a, bad_b], [bad_b], [bad_b], [vi_b]])
+
+        def request(client, batch, label, items, kind, *flags):
+            return next(results), {"attempt": label, "validation_ok": True, "usage": {}, "usd": 0}
+
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            (root / "config").mkdir()
+            (root / "config" / "task6_rerun.csv").write_text(
+                "round,key,reason\n1,w00001:zh:card,review\n1,w00001:vi:card,review\n1,w00002:vi:card,review\n",
+                encoding="utf-8",
+            )
+            with (
+                patch("pipeline.stage4.runner.ROOT", root),
+                patch("pipeline.stage4.runner.INPUTS", root / "inputs"),
+                patch("pipeline.stage4.runner.GENERATED", root / "generated"),
+                patch("pipeline.stage4.runner.builders.build_task6_items", return_value={
+                    "zh_card": [zh_input()], "vi_card": [vi_input(), vi_input(vi_b["key"])],
+                }),
+                patch("pipeline.stage4.runner.vertex_settings", return_value=("p", "global")),
+                patch("pipeline.stage4.runner._task6_api_request", side_effect=request) as api,
+            ):
+                self.assertEqual(rerun_task6(None, 1), 1)
+                api.reset_mock()
+                self.assertEqual(rerun_task6(None, 1), 0)
+            api.assert_called_once()
+            _, batch, label, items, kind, *_ = api.call_args.args
+            self.assertEqual((batch, label, kind), ("b002", "2r1", "vi"))
+            self.assertEqual([item["key"] for item in items], [vi_b["key"]])
 
     def test_unknown_rerun_key_fails_closed(self) -> None:
         with tempfile.TemporaryDirectory() as temp:

@@ -476,10 +476,10 @@ def write_output(path: Path, task: int, output: Any) -> None:
         builders.write_jsonl(path, values)
 
 
-def write_log(path: Path, value: dict[str, Any]) -> None:
+def write_log(path: Path, value: dict[str, Any], *, sort_keys: bool = True) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(
-        json.dumps(value, ensure_ascii=False, sort_keys=True, indent=2) + "\n",
+        json.dumps(value, ensure_ascii=False, sort_keys=sort_keys, indent=2) + "\n",
         encoding="utf-8", newline="\n",
     )
 
@@ -679,12 +679,13 @@ def _task6_api_request(
                 "attempt": attempt_label, "model": MODEL_ID, **usage,
                 "duration_seconds": f"{duration:.3f}", "usd": f"{usd:.8f}",
             })
+            output = None
             try:
                 output = json.loads(response_text_or_error(response, usage))
                 # This call enforces the whole-batch contract. Item errors are returned.
                 validate_task6_items(output, items, kind)
             except (json.JSONDecodeError, ValidationError, Stage4Error, TypeError, ValueError) as exc:
-                return None, {
+                return output, {
                     "type": "repair" if "r" in attempt_label else "full",
                     "attempt": attempt_label, "keys": [item["key"] for item in items],
                     "counted_input_tokens": counted, "usage": usage, "usd": usd,
@@ -739,51 +740,62 @@ def generate_task6_batch(
     started = time.perf_counter()
     _, location = vertex_settings()
     prompt_sha = builders.sha256_text(prompt_text(6, items))
-    input_text = builders.ordered_jsonl_text(items)
+    input_sha = builders.sha256_text(builders.ordered_jsonl_text(items))
     valid_map: dict[str, dict[str, Any]] = {}
     failed_errors: dict[str, str] = {}
+    failed_outputs: dict[str, dict[str, Any]] = {}
     warnings: list[dict[str, str]] = []
     requests: list[dict[str, Any]] = []
     batch_attempt = 1
     pending = list(items)
     resumed = False
-    if output_path.is_file() and log_path.is_file():
+    if log_path.is_file():
         try:
             old_log = json.loads(log_path.read_text(encoding="utf-8"))
-            if (old_log.get("validation", {}).get("state") == "partial"
-                    and old_log.get("model") == MODEL_ID
+            if (old_log.get("model") == MODEL_ID
                     and old_log.get("prompt_sha256") == prompt_sha
-                    and old_log.get("input_sha256") == builders.sha256_text(input_text)
+                    and old_log.get("input_sha256") == input_sha
                     and old_log.get("item_count") == len(items)):
-                old_values = read_generated_output(output_path, 6)
-                old_keys = [value.get("key", "") for value in old_values]
-                old_inputs = [item for item in items if item["key"] in old_keys]
-                checked, old_errors, _ = validate_task6_items(old_values, old_inputs, kind)
-                if old_errors or len(checked) != len(old_values):
-                    raise ValueError("Stored partial task-6 output no longer validates")
-                for value in checked:
-                    valid_map[value["key"]] = value
-                failed_errors = {
-                    str(key): str(error) for key, error in old_log.get("failed_errors", {}).items()
-                }
-                failed_keys = old_log.get("failed_keys", [])
-                pending = [item for item in items if item["key"] in failed_keys]
                 batch_attempt = int(old_log.get("batch_attempt", 1)) + 1
-                resumed = bool(pending)
+                requests.extend(old_log.get("requests", []))
+                failed_outputs.update(old_log.get("failed_outputs", {}))
+                if old_log.get("validation", {}).get("state") == "partial" and output_path.is_file():
+                    old_values = read_generated_output(output_path, 6)
+                    old_keys = {value.get("key", "") for value in old_values}
+                    old_inputs = [item for item in items if item["key"] in old_keys]
+                    checked, old_errors, _ = validate_task6_items(old_values, old_inputs, kind)
+                    if old_errors or len(checked) != len(old_values):
+                        raise ValueError("Stored partial task-6 output no longer validates")
+                    valid_map.update({value["key"]: value for value in checked})
+                    failed_errors = {
+                        str(key): str(error) for key, error in old_log.get("failed_errors", {}).items()
+                    }
+                    warnings = list(old_log.get("warnings", []))
+                    pending = [item for item in items if item["key"] in old_log.get("failed_keys", [])]
+                    resumed = bool(pending)
         except (OSError, ValueError, TypeError, json.JSONDecodeError):
             valid_map = {}
             failed_errors = {}
             pending = list(items)
 
+    def request(request_items: list[dict[str, Any]], label: str) -> Any | None:
+        output, request_log = _task6_api_request(
+            client, batch_name, label, request_items, kind,
+            allow_after_deadline, allow_after_credit_deadline,
+        )
+        requests.append(request_log)
+        requested = {item["key"] for item in request_items}
+        for value in output if isinstance(output, list) else [output]:
+            if isinstance(value, dict):
+                key = value.get("key")
+                if isinstance(key, str) and key in requested:
+                    failed_outputs[key] = value
+        return output if request_log["validation_ok"] else None
+
     if not resumed:
-        output = None
-        for full_attempt in range(1, MAX_RETRIES + 2):
+        for full_attempt in range(batch_attempt, batch_attempt + MAX_RETRIES + 1):
             batch_attempt = full_attempt
-            output, request_log = _task6_api_request(
-                client, batch_name, str(full_attempt), items, kind,
-                allow_after_deadline, allow_after_credit_deadline,
-            )
-            requests.append(request_log)
+            output = request(items, str(full_attempt))
             if output is not None:
                 pending = list(items)
                 break
@@ -794,8 +806,6 @@ def generate_task6_batch(
             valid, failed_errors, warnings = validate_task6_items(output, items, kind)
             valid_map.update({value["key"]: value for value in valid})
             pending = [item for item in items if item["key"] in failed_errors]
-    else:
-        warnings = list(old_log.get("warnings", []))
 
     for repair_number in range(1, 3):
         if not pending:
@@ -804,13 +814,9 @@ def generate_task6_batch(
             {**item, "previous_error": failed_errors.get(item["key"], "previous item validation failed")}
             for item in pending
         ]
-        output, request_log = _task6_api_request(
-            client, batch_name, f"{batch_attempt}r{repair_number}", repair_items, kind,
-            allow_after_deadline, allow_after_credit_deadline,
-        )
-        requests.append(request_log)
+        output = request(repair_items, f"{batch_attempt}r{repair_number}")
         if output is None:
-            failed_errors = {item["key"]: request_log["error"] for item in pending}
+            failed_errors = {item["key"]: requests[-1]["error"] for item in pending}
             continue
         valid, failed_errors, repair_warnings = validate_task6_items(output, repair_items, kind)
         warnings.extend(repair_warnings)
@@ -834,16 +840,18 @@ def generate_task6_batch(
             "max_output_tokens": MAX_OUTPUT_TOKENS,
             "request_timeout_seconds": REQUEST_TIMEOUT_SECONDS,
         },
-        "prompt_sha256": prompt_sha, "input_sha256": builders.sha256_text(input_text),
+        "prompt_sha256": prompt_sha, "input_sha256": input_sha,
         "item_count": len(items), "usage": total_usage,
         "usd": sum(float(request.get("usd", 0) or 0) for request in requests),
         "requests": requests, "warnings": warnings, "failed_keys": failed_keys,
         "failed_errors": {key: failed_errors.get(key, "item failed") for key in failed_keys},
+        "failed_outputs": {key: failed_outputs[key] for key in failed_keys if key in failed_outputs},
         "wall_clock_seconds": time.perf_counter() - started,
         "validation": {"ok": state == "validated", "state": state,
                        "error": "" if state == "validated" else f"{len(failed_keys)} failed item(s)"},
     }
-    write_log(log_path, log)
+    # Answer field order is part of the task-6 contract and helps diagnose rejected objects.
+    write_log(log_path, log, sort_keys=False)
     print(
         f"task=6 batch={batch_name} kind={kind} state={state} "
         f"valid={len(ordered_valid)} failed={len(failed_keys)} usd=${log['usd']:.6f}"
@@ -1147,13 +1155,17 @@ def rerun_task6(
     for kind in ("zh", "vi", "note"):
         for items in builders.chunked(selected[kind], 50):
             name = f"b{number:03d}"
+            number += 1
+            output_path = directory / f"{name}.jsonl"
+            log_path = directory / f"{name}.log.json"
+            if validated_batch_exists(6, name, items, output_path, log_path, kind=kind):
+                print(f"task=6 rerun={round_number} batch={name} skipped=validated")
+                continue
             builders.write_ordered_jsonl(input_dir / f"{name}.jsonl", items)
             failures += generate_task6_batch(
-                client, name, kind, items,
-                directory / f"{name}.jsonl", directory / f"{name}.log.json",
+                client, name, kind, items, output_path, log_path,
                 allow_after_deadline, allow_after_credit_deadline,
             ) is None
-            number += 1
     return failures
 
 

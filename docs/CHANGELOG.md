@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 2026-11-12 — Task-6 validator and runner fixes (D74 item 1) [Codex]
+- Completed the pinyin inventory, accepted uppercase tone-marked vowels and added log-only `translation_script` warnings. All 11,108 stored full-run items and 150 pilot items revalidate. Status stays zh 85 validated plus 42 partial with the same 56 failed keys, vi 84/84 and notes 13/13. Full-run logs match the D73 zh/vi v2 and notes v1 prompt hashes.
+- Task-6 logs keep the last answer object for each failed key and append request records across attempts. Validated rerun batches are skipped on retry. Offline tests exercise older logs and failed-key-only resume.
+- Dry-run completed for 11,164 items in 224 batches. The round-1 input test built all 25 review keys (19 zh and 6 vi) with their feedback and without a client. All 135 tests pass, including rebuild determinism in an isolated copy. No request sent.
+
 ## 2026-11-12 — Stage 4 task-6 gate (D74) [Claude]
 - Integrity of the full run (user, overnight 11-12): inputs = fresh build, v2/v1 prompt SHAs, all 11,108 stored items re-validate; run $16.788226, ledger $52.46134575.
 - Diagnosed the 42 partial zh batches (56 keys): two validator bugs, not model errors: `PINYIN_SYLLABLES` lacks ran/rang/rao (然 让 染 绕 …) and `ZH_PINYIN_RE` lacks capital tone-marked vowels (sentences starting with 按/爱/二 …). Answers of failed items are not logged, so they must be resumed after Codex's fix (D74 item 1).

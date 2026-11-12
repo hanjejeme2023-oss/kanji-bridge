@@ -36,7 +36,9 @@ HAN_RE = re.compile(r"[\u3400-\u4dbf\u4e00-\u9fff\U00020000-\U0002ffff\u3007]")
 KANA_OR_HAN_RE = re.compile(r"[\u3040-\u30ff\u3400-\u4dbf\u4e00-\u9fff\U00020000-\U0002ffff]")
 KANA_RE = re.compile(r"[\u3040-\u30ff]")
 ZH_SENTENCE_RE = re.compile(r"^[\u3400-\u4dbf\u4e00-\u9fff\U00020000-\U0002ffff\u3007，。！？、：；“”‘’《》（）—…]+$")
-ZH_PINYIN_RE = re.compile(r'^[A-Za-zāáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜüÜ\'’ ,.!?:;"“”()—…]+$')
+ZH_PINYIN_RE = re.compile(
+    r'^[A-Za-zāáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜĀÁǍÀĒÉĚÈĪÍǏÌŌÓǑÒŪÚǓÙǕǗǙǛüÜ\'’ ,.!?:;"“”()—…]+$'
+)
 VI_SENTENCE_RE = re.compile(r'^[A-Za-zÀ-ỹĐđ\u0102\u0103\u0110\u0111\u0128-\u01b0\u1ea0-\u1ef9 0-9.,!?;:"\'“”‘’()\-–…]+$')
 LATIN_DIACRITIC_RE = re.compile(r"[\u00c0-\u024f\u1e00-\u1eff]")
 TONE_COMBINERS = {"\u0300", "\u0301", "\u0304", "\u030c"}
@@ -57,7 +59,7 @@ ta tai tan tang tao te teng ti tian tiao tie ting tong tou tu tuan tui tun tuo
 na nai nan nang nao ne nei nen neng ni nian niang niao nie nin ning niu nong nou nu nuan nun nuo nü nüe
 la lai lan lang lao le lei leng li lia lian liang liao lie lin ling liu long lou lu luan lun luo lü lüe
 ga gai gan gang gao ge gei gen geng gong gou gu gua guai guan guang gui gun guo
-ka kai kan kang kao ke ken keng kong kou ku kua kuai kuan kuang kui kun kuo
+ka kai kan kang kao ke kei ken keng kong kou ku kua kuai kuan kuang kui kun kuo
 ha hai han hang hao he hei hen heng hong hou hu hua huai huan huang hui hun huo
 ji jia jian jiang jiao jie jin jing jiong jiu ju juan jue jun
 qi qia qian qiang qiao qie qin qing qiong qiu qu quan que qun
@@ -65,7 +67,7 @@ xi xia xian xiang xiao xie xin xing xiong xiu xu xuan xue xun
 zha zhai zhan zhang zhao zhe zhei zhen zheng zhi zhong zhou zhu zhua zhuai zhuan zhuang zhui zhun zhuo
 cha chai chan chang chao che chen cheng chi chong chou chu chua chuai chuan chuang chui chun chuo
 sha shai shan shang shao she shei shen sheng shi shou shu shua shuai shuan shuang shui shun shuo
-re ren reng ri rong rou ru rua ruan rui run ruo
+ran rang rao re ren reng ri rong rou ru rua ruan rui run ruo
 za zai zan zang zao ze zei zen zeng zi zong zou zu zuan zui zun zuo
 ca cai can cang cao ce cen ceng ci cong cou cu cuan cui cun cuo
 sa sai san sang sao se sen seng si song sou su suan sui sun suo
@@ -560,16 +562,36 @@ def _validate_task6_zh(
             break
 
 
+def _is_vietnamese_diacritic_letter(char: str) -> bool:
+    if char in "Đđ":
+        return True
+    base, *marks = unicodedata.normalize("NFD", char)
+    return base in "AEIOUYaeiouy" and bool(marks) and set(marks) <= VI_VOWEL_COMBINERS
+
+
+def _has_foreign_letters(text: str, allow_vietnamese: bool) -> bool:
+    japanese_letters = (
+        "HIRAGANA", "KATAKANA", "HALFWIDTH KATAKANA", "VERTICAL KANA REPEAT MARK", "CJK UNIFIED IDEOGRAPH",
+        "CJK COMPATIBILITY IDEOGRAPH",
+    )
+    return any(
+        char.isalpha()
+        and not char.isascii()
+        and char not in "々〆〻"
+        and not unicodedata.name(char, "").startswith(japanese_letters)
+        and not (allow_vietnamese and _is_vietnamese_diacritic_letter(char))
+        for char in text
+    )
+
+
 def _validate_task6_vi(value: dict[str, Any], source: dict[str, Any], warnings: list[dict[str, str]]) -> None:
     key, sentence, target = value["key"], value["sentence"], str(source["target"])
+
     def allowed_char(char: str) -> bool:
         if char.isascii():
             return char.isalpha() or char.isdigit() or char.isspace() or char in VI_PUNCTUATION
-        if char in "Đđ":
-            return True
-        decomposed = unicodedata.normalize("NFD", char)
-        return (bool(decomposed) and decomposed[0] in "AEIOUYaeiouy"
-                and bool(decomposed[1:]) and set(decomposed[1:]).issubset(VI_VOWEL_COMBINERS))
+        return _is_vietnamese_diacritic_letter(char)
+
     if not all(allowed_char(char) for char in sentence):
         _fail(f"{key}.sentence contains a non-Vietnamese character or unsupported punctuation")
     if not re.match(r'^["“‘]?\s*[A-ZÀ-ỸĐ]', sentence):
@@ -622,6 +644,9 @@ def validate_task6_items(
                         _validate_task6_zh(value, input_map[key], warnings)
                     else:
                         _validate_task6_vi(value, input_map[key], warnings)
+            field = "note_ja" if kind == "note" else "translation_ja"
+            if _has_foreign_letters(value[field], allow_vietnamese=kind == "note"):
+                warnings.append({"key": key, "warning": "translation_script", "field": field})
             valid.append(value)
         except ValidationError as exc:
             errors[key] = str(exc).replace("\n", " ").replace("\r", " ")
