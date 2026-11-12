@@ -54,7 +54,7 @@ const PASSAGES=PASSAGE_ROWS.map(p=>({id:p.passage_id,lang:p.lang,
   toks:p.tokens.map(t=>t.word_id?{t:t.t,w:WORD_BY_ID.get(t.word_id)}:
     t.gloss_ja?{t:t.t,g:t.gloss_ja}:{t:t.t,x:1})}));
 
-const GLYPHS=KB.chars.slice().sort((a,b)=>(a.level??99)-(b.level??99)||a.char_id.localeCompare(b.char_id))
+const GLYPHS=KB.chars.filter(x=>!(x.jp===x.key_char&&x.key_char===x.simp)).sort((a,b)=>(a.level??99)-(b.level??99)||a.char_id.localeCompare(b.char_id))
   .map(x=>[x.jp,x.key_char,x.simp,splitVals(x.pinyin_all).join(' / '),splitVals(x.ja_on_all).join(' / '),
     splitVals(x.ko_base_all).join(' / '),splitVals(x.vi_all).join(' / ')]);
 '''
@@ -78,7 +78,7 @@ def build() -> str:
     text = replace_once(
         text,
         "<script>\nconst S=",
-        '<script src="../data/final/data.js"></script>\n<script>\nconst S=',
+        '<script src="data.js"></script>\n<script>\nconst S=',
         "data.js script tag",
     )
 

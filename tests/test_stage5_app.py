@@ -46,9 +46,13 @@ class Stage5DataTests(unittest.TestCase):
     def test_data_js_is_reduced_and_has_no_nulls(self):
         data = self.data
         self.assertEqual(data["meta"]["counts"]["words"], 12508)
-        self.assertEqual(data["meta"]["counts"]["glyphs"], 1246)
+        self.assertEqual(data["meta"]["counts"]["glyphs"], 2215)
         self.assertEqual(len(data["words"]), 12508)
-        self.assertEqual(len(data["chars"]), 1246)
+        self.assertEqual(len(data["chars"]), 2164)
+        self.assertEqual(len(data["examples"]), 10367)
+        self.assertEqual(len(data["char_notes"]), 581)
+        self.assertEqual(len(data["glyphs"]), 2215)
+        self.assertEqual(len(data["usage"]), 2164)
         self.assertEqual(len(data["passages"]), 80)
         self.assertEqual(len(data["ff_meanings"]), 4044)
 
@@ -105,7 +109,8 @@ class Stage5AppTests(unittest.TestCase):
         self.assertNotIn("../data/final/data.js", self.prototype)
 
     def test_app_uses_local_script_and_no_fetch(self):
-        self.assertIn('<script src="../data/final/data.js"></script>', self.app)
+        self.assertIn('<script src="data.js"></script>', self.app)
+        self.assertNotIn("../data/final", self.app)
         self.assertNotIn("fetch(", self.app)
         self.assertIn("const KB=window.KB_DATA", self.app)
 
@@ -146,6 +151,7 @@ class Stage5AppTests(unittest.TestCase):
         self.assertIn("replace(/[（）()]/g,'')", self.app)
         self.assertIn("#psel{flex-wrap:wrap}", self.app)
         self.assertEqual(self.app.count("w.note?"), 1)
+        self.assertIn("KB.chars.filter(x=>!(x.jp===x.key_char&&x.key_char===x.simp))", self.app)
 
     def test_hardcoded_prototype_arrays_are_gone(self):
         for marker in ("{h:'經濟'", "{w:'勉強'", "{id:'v1'", "['経','經','经'"):

@@ -1,8 +1,10 @@
 from __future__ import annotations
 
 import unittest
+from pathlib import Path
+from unittest.mock import patch
 
-from pipeline.common import hangul_final, normalize_vietnamese, pinyin_numbered_to_marked
+from pipeline.common import _replace_with_retry, hangul_final, normalize_vietnamese, pinyin_numbered_to_marked
 
 
 class CommonNormalizationTests(unittest.TestCase):
@@ -27,6 +29,12 @@ class CommonNormalizationTests(unittest.TestCase):
         self.assertEqual(pinyin_numbered_to_marked("xue2"), "xué")
         self.assertEqual(pinyin_numbered_to_marked("guo2"), "guó")
         self.assertEqual(pinyin_numbered_to_marked("lü4"), "lǜ")
+
+    def test_atomic_replace_retries_a_short_windows_lock(self) -> None:
+        with patch.object(Path, "replace", side_effect=[PermissionError(), Path("done")]) as replace, patch("pipeline.common.time.sleep") as sleep:
+            _replace_with_retry(Path("temporary"), Path("target"))
+        self.assertEqual(replace.call_count, 2)
+        sleep.assert_called_once_with(0.05)
 
 
 if __name__ == "__main__":

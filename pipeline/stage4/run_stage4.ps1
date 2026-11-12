@@ -92,10 +92,7 @@ try {
         }
     }
     elseif ($Pilot6) {
-        $ExitCode = Invoke-Stage4Python @('--pilot6')
-        if ($ExitCode -eq 0) {
-            $ExitCode = Invoke-Stage4Python @('--status')
-        }
+        throw 'D75 refusal: task 6 is accepted and must not be regenerated.'
     }
     else {
         $TaskNumbers = @(
@@ -110,7 +107,10 @@ try {
             if ($TaskNumber -match '^[1-5]$') {
                 throw "D65 refusal: task $TaskNumber is accepted and its stale inputs must never be regenerated."
             }
-            if ($TaskNumber -ne '6') {
+            if ($TaskNumber -eq '6') {
+                throw 'D75 refusal: task 6 is accepted and its stale inputs must never be regenerated.'
+            }
+            else {
                 throw "Invalid task '$TaskNumber'."
             }
         }

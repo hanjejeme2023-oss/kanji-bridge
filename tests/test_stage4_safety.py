@@ -252,6 +252,8 @@ class Stage4SafetyTests(unittest.TestCase):
         source = (ROOT / "pipeline" / "stage4" / "run_stage4.ps1").read_text(encoding="utf-8")
         self.assertIn("& $PythonPath -u $Generator @Arguments | Out-Host", source)
         self.assertIn("if ($TaskNumber -match '^[1-5]$')", source)
+        self.assertIn("if ($TaskNumber -eq '6')", source)
+        self.assertIn("D75 refusal: task 6 is accepted", source)
         self.assertNotIn("Use -Tasks 5", source)
 
     def test_lock_refuses_live_process_and_replaces_dead_process(self) -> None:

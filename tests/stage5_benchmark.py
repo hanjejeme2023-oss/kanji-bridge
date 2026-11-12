@@ -43,6 +43,9 @@ function buildAdapters(){
     if(w.syl)w.wc=wc.get(x.word_id)||[];
     allWords.set(x.word_id,w);
   }
+  const examples=new Map(D.examples.map(x=>[`${x[0]}:${x[1]}:${x[2]}`,x]));
+  const notes=new Map(D.char_notes);
+  const usage=new Map(D.usage.map(x=>[x[0],x.slice(1)]));
   const WORDS=D.words.filter(x=>x.card_eligible).sort((a,b)=>(a.level??99)-(b.level??99)||
     (a.freq_vi??Number.MAX_SAFE_INTEGER)-(b.freq_vi??Number.MAX_SAFE_INTEGER)||a.word_id.localeCompare(b.word_id))
     .map(x=>allWords.get(x.word_id));
@@ -53,8 +56,10 @@ function buildAdapters(){
     const rd=r=>r.reading_display||(r.lang==='zh'&&w.z!==w.j&&w.z!==w.h?`${w.z} ${w.p}`:r.reading||'');
     const line=r=>[langLabel[r.lang],rd(r),r.meaning_ja||''];
     const langs=x.false_friend.split(';');FF.push({id:x.word_id,w:x.jp||x.trad,safe:rows.filter(r=>!r.is_trap).sort((a,b)=>['ja','ko','zh','vi'].indexOf(a.lang)-['ja','ko','zh','vi'].indexOf(b.lang)).map(line),trap:rows.filter(r=>r.is_trap).map(line),t:langs.includes('zh')?'zh':langs.includes('vi')?'vi':langs[0]})}
-  const GLYPHS=D.chars.slice().sort((a,b)=>(a.level??99)-(b.level??99)||a.char_id.localeCompare(b.char_id)).map(x=>[x.jp,x.key_char,x.simp,split(x.pinyin_all).join(' / '),split(x.ja_on_all).join(' / '),split(x.ko_base_all).join(' / '),split(x.vi_all).join(' / ')]);
-  return {WORDS,FF,GLYPHS};
+  const GLYPHS=D.chars.filter(x=>!(x.jp===x.key_char&&x.key_char===x.simp))
+    .sort((a,b)=>(a.level??99)-(b.level??99)||a.char_id.localeCompare(b.char_id))
+    .map(x=>[x.jp,x.key_char,x.simp,split(x.pinyin_all).join(' / '),split(x.ja_on_all).join(' / '),split(x.ko_base_all).join(' / '),split(x.vi_all).join(' / '),notes.get(x.char_id)||'',usage.get(x.char_id)||[[],[]]]);
+  return {WORDS,FF,GLYPHS,examples};
 }
 
 function sample(fn,n){const values=[];for(let i=0;i<n;i++){const t=performance.now();fn();values.push(performance.now()-t)}values.sort((a,b)=>a-b);return {min:values[0],median:values[Math.floor(n/2)],p95:values[Math.floor(n*.95)],max:values[n-1]}}

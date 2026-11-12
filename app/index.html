@@ -239,7 +239,7 @@ footer button{border:none;background:none;color:var(--sub);text-decoration:under
   <button id="reset">記録をリセット</button>
 </footer>
 
-<script src="../data/final/data.js"></script>
+<script src="data.js"></script>
 <script>
 const S={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
 
@@ -287,7 +287,7 @@ const PASSAGES=PASSAGE_ROWS.map(p=>({id:p.passage_id,lang:p.lang,
   toks:p.tokens.map(t=>t.word_id?{t:t.t,w:WORD_BY_ID.get(t.word_id)}:
     t.gloss_ja?{t:t.t,g:t.gloss_ja}:{t:t.t,x:1})}));
 
-const GLYPHS=KB.chars.slice().sort((a,b)=>(a.level??99)-(b.level??99)||a.char_id.localeCompare(b.char_id))
+const GLYPHS=KB.chars.filter(x=>!(x.jp===x.key_char&&x.key_char===x.simp)).sort((a,b)=>(a.level??99)-(b.level??99)||a.char_id.localeCompare(b.char_id))
   .map(x=>[x.jp,x.key_char,x.simp,splitVals(x.pinyin_all).join(' / '),splitVals(x.ja_on_all).join(' / '),
     splitVals(x.ko_base_all).join(' / '),splitVals(x.vi_all).join(' / ')]);
 

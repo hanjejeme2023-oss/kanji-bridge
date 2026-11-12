@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import re
+import time
 import unicodedata
 from pathlib import Path
 from typing import Iterable
@@ -207,7 +208,20 @@ def write_csv(frame: pd.DataFrame, path: Path, bool_columns: Iterable[str] = ())
             export[column] = export[column].map({True: "true", False: "false"})
     temporary = path.with_name(f".{path.name}.tmp")
     export.to_csv(temporary, index=False, encoding="utf-8", na_rep="", lineterminator="\n")
-    temporary.replace(path)
+    _replace_with_retry(temporary, path)
+
+
+def _replace_with_retry(temporary: Path, path: Path) -> None:
+    """Tolerate short Windows scanner locks while keeping the write atomic."""
+    waits = (0.05, 0.1, 0.2, 0.4, 0.8)
+    for wait in (*waits, None):
+        try:
+            temporary.replace(path)
+            return
+        except PermissionError:
+            if wait is None:
+                raise
+            time.sleep(wait)
 
 
 def _json_value(value: object) -> object:
@@ -234,7 +248,7 @@ def write_json(frame: pd.DataFrame, path: Path) -> None:
         encoding="utf-8",
         newline="\n",
     )
-    temporary.replace(path)
+    _replace_with_retry(temporary, path)
 
 
 def load_id_map() -> pd.DataFrame:

@@ -1,0 +1,13 @@
+{
+  "char_notes": 581,
+  "examples": 10367,
+  "examples_by_kind": {
+    "vi_card": 3909,
+    "vi_ff": 115,
+    "zh_card": 5783,
+    "zh_ff": 560
+  },
+  "pinyin_spacing_normalized": 998,
+  "rerun_answers": 25,
+  "review_actions": 29
+}

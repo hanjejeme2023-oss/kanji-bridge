@@ -62,7 +62,7 @@ COST_FIELDS = [
 FALLBACK_CHARGEABLE_OUTPUT_PER_ITEM = {1: 140, 2: 120, 3: 1600, 4: 100, 5: 120, 6: 200}
 DRY_RUN_OUTPUT_PER_ITEM = {"zh": 150, "vi": 120, "note": 80}
 TASK5_ESTIMATED_INPUT_TOKENS = 1_650_000
-ACCEPTED_BATCH_COUNTS = {1: 86, 2: 79, 3: 14, 4: 5, 5: 104}
+ACCEPTED_BATCH_COUNTS = {1: 86, 2: 79, 3: 14, 4: 5, 5: 104, 6: 224}
 
 
 class Stage4Error(RuntimeError):
@@ -989,10 +989,12 @@ def accepted_task_states(task: int) -> dict[str, int]:
         if not items:
             counts["missing"] += 1
             continue
+        kind = task6_kind(items) if task == 6 else None
         state = batch_state(
             task, name, items,
             ACCEPTED / f"task{task}" / f"{name}.jsonl",
             ACCEPTED / f"task{task}" / f"{name}.log.json",
+            kind,
         )
         counts[state] += 1
     return counts
@@ -1280,17 +1282,17 @@ def print_task_status(task: int, counts: dict[str, int]) -> None:
 
 def run_status() -> None:
     """Print resume-aware status without constructing a Vertex client or making API calls."""
-    for task in ACCEPTED_BATCH_COUNTS:
+    for task in range(1, 6):
         print_task_status(task, accepted_task_states(task))
     task6_counts = {
-        kind: {"validated": 0, "partial": 0, "failed": 0, "missing": 0}
+        kind: {"validated": 0, "failed": 0, "missing": 0}
         for kind in ("zh", "vi", "note")
     }
     for name, kind, items in builders.build_task6_batches():
         state = batch_state(
             6, name, items,
-            GENERATED / "task6" / f"{name}.jsonl",
-            GENERATED / "task6" / f"{name}.log.json",
+            ACCEPTED / "task6" / f"{name}.jsonl",
+            ACCEPTED / "task6" / f"{name}.log.json",
             kind,
         )
         task6_counts[kind][state] += 1
@@ -1299,7 +1301,7 @@ def run_status() -> None:
         total = sum(counts.values())
         print(
             f"task 6 {kind}: {counts['validated']}/{total} validated, "
-            f"{counts['partial']} partial, {counts['failed']} failed, {counts['missing']} missing"
+            f"{counts['failed']} failed, {counts['missing']} missing"
         )
     spent = existing_cost()
     ceiling = float(load_prices()["hard_ceiling"])
@@ -1402,6 +1404,8 @@ def main(argv: list[str] | None = None) -> int:
             raise Stage4Error(
                 f"D65 refusal: task {args.task} is accepted and its stale inputs must never be regenerated"
             )
+        if args.pilot6 or args.rerun_round is not None:
+            raise Stage4Error("D75 refusal: task 6 is accepted and must not be regenerated")
         if args.pilot:
             raise Stage4Error("D65 refusal: the tasks 1-4 pilot is accepted and must not be regenerated")
         if args.task == 6 and args.dry_run:

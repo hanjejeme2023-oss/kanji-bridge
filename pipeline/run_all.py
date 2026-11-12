@@ -73,7 +73,9 @@ def main() -> None:
         print("Stage 3 rebuild complete")
     else:
         run("merge_stage4.py")
+        run("merge_task6.py")
         run("export_app_data.py")
+        run("build_app.py")
         print("Stage 5 data rebuild complete")
 
 

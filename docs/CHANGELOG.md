@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 2026-11-12 — App phase Part A: task-6 merge and standalone data [Codex]
+- Added an offline, fail-closed task-6 merge. It verifies all 224 accepted main logs/inputs against a fresh deterministic build, validates the two accepted rerun batches and 25-key round-1 set, selects the highest rerun answer, and applies the 29-row review overlay only when `generated` matches. Final additions: 10,367 `examples` (zh card 5,783 / zh ff 560 / vi card 3,909 / vi ff 115; 998 pinyin punctuation-space normalizations) and 581 `char_notes`.
+- Extended `data.js` with compact examples/notes, 2,215 glyph rows over 2,164 characters, 2,164 usage rows, pinyin tone digits on 12,097 words (411 omitted) and 1,277 literary flags. The payload is 6,622,497 bytes (6.32 MiB), +2,855,721 bytes (+2.72 MiB) from 3.59 MiB and below the 8 MiB stop limit.
+- The build copies identical bytes to `app/data.js`, builds `app/index.html` with `<script src="data.js">`, and keeps the pre-Part-C 字体 view limited to differing-form characters. The `app/` directory now runs alone; no Part B/C UI feature was added. Updated the offline browser benchmark for the new compact arrays; no browser automation was used.
+- Task-6 status now reads accepted content (zh 127/127, vi 84/84, notes 13/13). Python task/dry-run/pilot/rerun modes and PowerShell `-Tasks 6` refuse before client creation; the launcher no longer retries accepted task 6. No request was sent. The user keeps the gcloud login for now; VERTEX_SETUP part H is later.
+- Tests: 143 non-rebuild tests pass. Rebuild determinism was strengthened to hash `app/data.js` and `app/index.html` as well as all final data and IDs; PASS in 853.270 s. Added a short retry around Windows atomic replaces after a transient scanner lock caused one preliminary rebuild attempt to fail; the retry has a regression test.
+
 ## 2026-11-12 — Task-6 re-check: task 6 accepted (D75); app-phase contract [Claude]
 - Re-checked the user's G7 run (resume of the 56 zh keys + rerun round 1): zh 127/127, vi 84/84, notes 13/13 validated; integrity and cost verified ($0.301874; ledger $52.76321975). Read all 81 new answers and ran the tone-aware pinyin check over every new zh sentence (0 mismatches). 24 of 25 reruns fix their feedback; thành nhân dropped (overlay row 29). Recorded the gate's too-strict 王妃 feedback.
 - Recorded the user's sample answers (30/30 ○) in `docs/TASK6_USER_SAMPLE.md`.

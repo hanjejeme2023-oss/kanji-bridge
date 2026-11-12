@@ -256,15 +256,15 @@ class Task6RunnerTests(unittest.TestCase):
             enforce_credit_deadline(now=CREDIT_DEADLINE_UTC)
         enforce_credit_deadline(True, now=CREDIT_DEADLINE_UTC)
 
-    def test_dry_run_path_never_constructs_client_or_counts_tokens(self) -> None:
+    def test_accepted_task6_dry_run_is_refused_before_client_or_counting(self) -> None:
         with (
             patch("pipeline.stage4.runner.stage4_lock"),
             patch("pipeline.stage4.runner.run_task6", return_value=0) as run,
             patch("pipeline.stage4.runner.create_client") as client,
             patch("pipeline.stage4.runner.count_tokens") as count,
         ):
-            self.assertEqual(main(["--task", "6", "--dry-run"]), 0)
-        run.assert_called_once_with(None, None, True)
+            self.assertEqual(main(["--task", "6", "--dry-run"]), 1)
+        run.assert_not_called()
         client.assert_not_called()
         count.assert_not_called()
 

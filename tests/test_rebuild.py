@@ -12,7 +12,11 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def digest_outputs() -> dict[str, str]:
-    paths = sorted((ROOT / "data" / "final").glob("*")) + [ROOT / "pipeline" / "id_map.csv"]
+    paths = sorted((ROOT / "data" / "final").glob("*")) + [
+        ROOT / "app" / "data.js",
+        ROOT / "app" / "index.html",
+        ROOT / "pipeline" / "id_map.csv",
+    ]
     result = {}
     for path in paths:
         if path.is_file():
@@ -55,6 +59,8 @@ class RebuildDeterminismTests(unittest.TestCase):
         self.assertIn("data/final/chars.csv", second)
         self.assertIn("data/final/words.csv", second)
         self.assertIn("data/final/word_chars.csv", second)
+        self.assertIn("app/data.js", second)
+        self.assertIn("app/index.html", second)
         self.assertIn("pipeline/id_map.csv", second)
 
 
