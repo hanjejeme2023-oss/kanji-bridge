@@ -106,7 +106,7 @@ class AppDataPartATests(unittest.TestCase):
         )
         self.assertEqual(len(self.data["examples"]), 10367)
         self.assertEqual(len(self.data["char_notes"]), 581)
-        self.assertEqual(len(self.data["glyphs"]), 2215)
+        self.assertEqual(len(self.data["glyphs"]), 2164)
         self.assertEqual(len(self.data["usage"]), 2164)
 
     def test_compact_orders_and_references(self) -> None:
@@ -120,7 +120,9 @@ class AppDataPartATests(unittest.TestCase):
         self.assertTrue({row[0] for row in examples}.issubset(words))
         self.assertTrue({row[0] for row in self.data["char_notes"]}.issubset(chars))
         self.assertTrue({row[0] for row in self.data["glyphs"]}.issubset(chars))
-        self.assertTrue({row[1] for row in self.data["glyphs"] if row[1]}.issubset(words))
+        self.assertTrue(
+            {word_id for row in self.data["glyphs"] for word_id in row[1]}.issubset(words)
+        )
         self.assertEqual([row[0] for row in self.data["usage"]], sorted(chars))
         self.assertTrue(all(len(row[1]) <= 3 and len(row[2]) <= 3 for row in self.data["usage"]))
 

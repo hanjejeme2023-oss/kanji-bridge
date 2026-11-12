@@ -159,38 +159,74 @@ def build_glyphs(
     chars_for_word: dict[str, list[dict[str, str]]] = defaultdict(list)
     for row in word_chars_raw:
         chars_for_word[row["word_id"]].append(row)
-    single_rows: list[list[Any]] = []
-    represented: set[str] = set()
-    for word in words_raw:
+    single_words: dict[str, list[dict[str, str]]] = defaultdict(list)
+    seen_word_ids: set[str] = set()
+    for word in sorted(
+        words_raw,
+        key=lambda row: (
+            int(row["level"]) if row["level"] else 99,
+            row["word_id"],
+        ),
+    ):
         if word["card_eligible"] != "true" or len(word["trad"]) != 1:
             continue
         links = chars_for_word.get(word["word_id"], [])
         if len(links) != 1 or links[0]["position"] != "1" or links[0]["char_id"] not in chars:
             raise ValueError(f"single-character card word does not link once: {word['word_id']}")
         char_id = links[0]["char_id"]
-        represented.add(char_id)
-        single_rows.append([
-            char_id, word["word_id"], int(word["level"]) if word["level"] else "",
-            word["pinyin"], word["vi"],
+        if word["word_id"] in seen_word_ids:
+            raise ValueError(f"single-character card word appears twice: {word['word_id']}")
+        seen_word_ids.add(word["word_id"])
+        single_words[char_id].append(word)
+
+    def distinct_nonempty(rows: list[dict[str, str]], field: str) -> list[str]:
+        values: list[str] = []
+        for row in rows:
+            value = row[field]
+            if value and value not in values:
+                values.append(value)
+        return values
+
+    word_rows: list[list[Any]] = []
+    for char_id, rows in single_words.items():
+        readings_py = distinct_nonempty(rows, "pinyin")
+        readings_vi = distinct_nonempty(rows, "vi")
+        word_rows.append([
+            char_id,
+            [row["word_id"] for row in rows],
+            min(int(row["level"]) for row in rows if row["level"]),
+            readings_py,
+            readings_vi,
         ])
+
     other_rows: list[list[Any]] = []
     for char in chars_raw:
-        if char["jp"] == char["key_char"] == char["simp"] or char["char_id"] in represented:
+        if char["jp"] == char["key_char"] == char["simp"] or char["char_id"] in single_words:
             continue
         other_rows.append([
-            char["char_id"], "", int(char["level"]) if char["level"] else "",
-            char["pinyin"], "" if char["source_vi"] == "unihan_unverified" else char["vi"],
+            char["char_id"], [], int(char["level"]) if char["level"] else "",
+            [char["pinyin"]] if char["pinyin"] else [],
+            [] if char["source_vi"] == "unihan_unverified" or not char["vi"] else [char["vi"]],
         ])
-    output = single_rows + other_rows
+    output = word_rows + other_rows
     output.sort(key=lambda row: (
-        row[2] if row[2] != "" else 99, row[0], row[1],
+        row[2] if row[2] != "" else 99, row[0],
     ))
-    if len(single_rows) != 1571 or len(other_rows) != 644 or len(output) != 2215:
+    represented_words = [word_id for row in word_rows for word_id in row[1]]
+    if len(word_rows) != 1520 or len(represented_words) != 1571 or len(other_rows) != 644 or len(output) != 2164:
         raise ValueError(
-            f"glyph row counts differ: single={len(single_rows)}, other={len(other_rows)}, total={len(output)}"
+            "glyph row counts differ: "
+            f"word_chars={len(word_rows)}, words={len(represented_words)}, "
+            f"other={len(other_rows)}, total={len(output)}"
         )
-    if len({row[0] for row in output}) != 2164:
-        raise ValueError("glyph rows do not cover 2,164 unique characters")
+    if len({row[0] for row in output}) != len(output):
+        raise ValueError("glyph rows must have one unique row per character")
+    if len(set(represented_words)) != len(represented_words):
+        raise ValueError("a word_id appears in more than one glyph row")
+    for char_id, word_ids, _level, readings_py, readings_vi in output:
+        for language, readings in (("pinyin", readings_py), ("Vietnamese", readings_vi)):
+            if any(not reading or any(char.isspace() for char in reading) for reading in readings):
+                raise ValueError(f"glyph {char_id} has a non-syllable {language} reading: {readings!r}")
     return output
 
 
@@ -374,7 +410,9 @@ def build_payload() -> dict[str, Any]:
     payload_word_ids = {row["word_id"] for row in words}
     payload_char_ids = {row["char_id"] for row in chars}
     example_unknown = sorted({row[0] for row in examples} - payload_word_ids)
-    glyph_word_unknown = sorted({row[1] for row in glyphs if row[1]} - payload_word_ids)
+    glyph_word_unknown = sorted(
+        {word_id for row in glyphs for word_id in row[1]} - payload_word_ids
+    )
     glyph_char_unknown = sorted({row[0] for row in glyphs} - payload_char_ids)
     usage_char_unknown = sorted({row[0] for row in usage} - payload_char_ids)
     usage_word_unknown = sorted(
@@ -389,8 +427,8 @@ def build_payload() -> dict[str, Any]:
             f"glyph_chars={glyph_char_unknown[:3]}, usage_chars={usage_char_unknown[:3]}, "
             f"usage_words={usage_word_unknown[:3]}, notes={note_unknown[:3]}"
         )
-    if len(examples) != 10367 or len(char_notes) != 581 or len(glyphs) != 2215 or len(usage) != 2164:
-        raise ValueError("compact app-data counts differ from D75")
+    if len(examples) != 10367 or len(char_notes) != 581 or len(glyphs) != 2164 or len(usage) != 2164:
+        raise ValueError("compact app-data counts differ from D76")
     pt_count = sum("pt" in row for row in words)
     literary_count = sum(row.get("lit") is True for row in words)
     return {

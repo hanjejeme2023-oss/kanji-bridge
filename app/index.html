@@ -45,6 +45,13 @@ main{max-width:760px;margin:0 auto;padding:40px 24px 80px}
 .seg button{border:none;background:none;padding:6px 14px;border-radius:999px;font-size:13px;color:var(--sub);cursor:pointer}
 .seg button.on{background:var(--paper);color:var(--ink);box-shadow:0 1px 2px rgba(22,24,29,.12)}
 #psel{flex-wrap:wrap}
+.tabcount{font-size:11px;opacity:.75;margin-left:4px}
+.tab-explain{color:var(--sub);font-size:13px;margin:-20px 0 28px}
+.tone-hint{font-size:12px;color:var(--sub);text-align:center;margin-top:3px}
+.examples{max-width:620px;margin:30px auto 0;display:grid;gap:14px;text-align:left}
+.example{border-top:1px solid var(--line);padding-top:13px;font-size:14px}
+.example mark{background:var(--indigo-soft);color:var(--indigo);padding:1px 2px;border-radius:3px}
+.example .translation{color:var(--sub);font-size:13px}
 .toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:36px}
 .pill{border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:10px 20px;font-size:15px;cursor:pointer;transition:background .15s,border-color .15s}
 .pill:hover{border-color:#c9ccd2}
@@ -166,18 +173,20 @@ footer button{border:none;background:none;color:var(--sub);text-decoration:under
   <div class="bar">
     <div class="logo"><span class="han">漢</span> ブリッジ</div>
     <nav id="nav">
-      <button data-v="cards" class="on">カード</button>
-      <button data-v="rules">音のルール</button>
-      <button data-v="ff">偽の友達</button>
-      <button data-v="read">読解</button>
-      <button data-v="glyph">字体</button>
+      <button data-v="cards" class="on">カード <span class="tabcount" id="count-cards"></span></button>
+      <button data-v="rules">音のルール <span class="tabcount" id="count-rules"></span></button>
+      <button data-v="ff">偽の友達 <span class="tabcount" id="count-ff"></span></button>
+      <button data-v="read">読解 <span class="tabcount" id="count-read"></span></button>
+      <button data-v="glyph">字体 <span class="tabcount" id="count-glyph"></span></button>
     </nav>
+    <button class="toggle" id="mute" type="button"><i></i>ミュート</button>
     <div class="today" id="topstat"></div>
   </div>
 </header>
 
 <main>
 <section id="v-cards">
+  <p class="tab-explain">2字以上の単語を、日本語と韓国語を手がかりに中国語・ベトナム語で答える</p>
   <div class="toolbar">
     <div class="seg" id="target">
       <button data-t="vi" class="on">ベトナム語</button>
@@ -191,11 +200,13 @@ footer button{border:none;background:none;color:var(--sub);text-decoration:under
 </section>
 
 <section id="v-rules" class="hidden">
+  <p class="tab-explain">韓国語のパッチムからベトナム語の語末を推測するルール</p>
   <div class="rulebar" id="rulebar"></div>
   <div id="ruledetail"></div>
 </section>
 
 <section id="v-ff" class="hidden">
+  <p class="tab-explain">同じ漢字でも言語によって意味が違う、間違えやすい単語</p>
   <div class="toolbar">
     <div class="seg" id="fffilter">
       <button data-f="all" class="on">すべて</button>
@@ -208,6 +219,7 @@ footer button{border:none;background:none;color:var(--sub);text-decoration:under
 </section>
 
 <section id="v-read" class="hidden">
+  <p class="tab-explain">短い中国語・ベトナム語の文を読み、わからない語をタップして確認する</p>
   <div class="toolbar">
     <div class="seg" id="psel"></div>
     <label class="sub small"><input type="checkbox" id="showann" checked> 読みを表示</label>
@@ -218,6 +230,7 @@ footer button{border:none;background:none;color:var(--sub);text-decoration:under
 </section>
 
 <section id="v-glyph" class="hidden">
+  <p class="tab-explain">1字の漢字の形（日本・繁体・簡体）と読み、使われ方</p>
   <div class="toolbar">
     <div class="seg" id="gmode">
       <button data-g="list" class="on">一覧</button>
@@ -253,15 +266,18 @@ const adaptWord=x=>{
   const w={id:x.word_id,h:x.trad,j:x.jp||x.trad,z:x.simp||x.trad,p:x.pinyin||'',
     jr:x.ja?(x.ja_use==='rare'?`（${x.ja}）`:x.ja):'',
     k:x.ko?(x.ko_use==='rare'?`（${x.ko}）`:x.ko):'',v:x.vi||'',
-    syl:x.syl_aligned?(WC_BY_WORD.get(x.word_id)||[]):null};
+    pt:x.pt||'',syl:x.syl_aligned?(WC_BY_WORD.get(x.word_id)||[]):null};
   if(x.vi){const va=splitVals(x.vi_alt);if(va.length)w.va=va}
   if(x.note_ja)w.note=x.note_ja;
   return w;
 };
 const WORD_BY_ID=new Map(KB.words.map(x=>[x.word_id,adaptWord(x)]));
-const WORDS=KB.words.filter(x=>x.card_eligible).sort((a,b)=>(a.level??99)-(b.level??99)||
+const WORDS=KB.words.filter(x=>x.card_eligible&&[...x.trad].length>1).sort((a,b)=>(a.level??99)-(b.level??99)||
   (a.freq_vi??Number.MAX_SAFE_INTEGER)-(b.freq_vi??Number.MAX_SAFE_INTEGER)||a.word_id.localeCompare(b.word_id))
   .map(x=>WORD_BY_ID.get(x.word_id));
+
+const EXAMPLES=new Map(KB.examples.map(x=>[`${x[0]}:${x[1]}:${x[2]}`,
+  {wordId:x[0],lang:x[1],use:x[2],sentence:x[3],pinyin:x[4],translation:x[5],start:x[6],len:x[7]}]));
 
 const RULES=KB.rules;
 const NONE_RULE={jong:0,vi:[''],label:'パッチムなし → 子音で終わらない'};
@@ -287,9 +303,11 @@ const PASSAGES=PASSAGE_ROWS.map(p=>({id:p.passage_id,lang:p.lang,
   toks:p.tokens.map(t=>t.word_id?{t:t.t,w:WORD_BY_ID.get(t.word_id)}:
     t.gloss_ja?{t:t.t,g:t.gloss_ja}:{t:t.t,x:1})}));
 
-const GLYPHS=KB.chars.filter(x=>!(x.jp===x.key_char&&x.key_char===x.simp)).sort((a,b)=>(a.level??99)-(b.level??99)||a.char_id.localeCompare(b.char_id))
-  .map(x=>[x.jp,x.key_char,x.simp,splitVals(x.pinyin_all).join(' / '),splitVals(x.ja_on_all).join(' / '),
-    splitVals(x.ko_base_all).join(' / '),splitVals(x.vi_all).join(' / ')]);
+const CHAR_BY_ID=new Map(KB.chars.map(x=>[x.char_id,x]));
+const GLYPHS=KB.glyphs.map(row=>{const x=CHAR_BY_ID.get(row[0]);return [x.jp,x.key_char,x.simp,
+  splitVals(x.pinyin_all).join(' / '),splitVals(x.ja_on_all).join(' / '),
+  splitVals(x.ko_base_all).join(' / '),splitVals(x.vi_all).join(' / '),row[0],row[1],row[2],row[3],row[4]]})
+  .filter(x=>!(x[0]===x[1]&&x[1]===x[2]));
 
 
 const $=s=>document.querySelector(s);
@@ -298,13 +316,58 @@ const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',
 const strip=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/đ/g,'d').replace(/Đ/g,'D').toLowerCase().replace(/\s+/g,' ').trim();
 const norm=s=>s.normalize('NFC').toLowerCase().replace(/\s+/g,' ').trim();
 const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
-function judge(input,ans,py){
+const PY_TONE_MARKS=/[\u0304\u0301\u030c\u0300]/g;
+const VI_TONE_MARKS=/[\u0301\u0300\u0309\u0303\u0323]/g;
+const VI_SHAPED=/[ăâêôơưđáàảãạấầẩẫậắằẳẵặéèẻẽẹếềểễệíìỉĩịóòỏõọốồổỗộớờởỡợúùủũụứừửữựýỳỷỹỵ]/i;
+function telexSyllable(raw){
+  let s=raw.toLocaleLowerCase('vi');
+  if(VI_SHAPED.test(s))return s;
+  s=s.replace(/dd/g,'đ').replace(/uwow/g,'ươ').replace(/uow/g,'ươ')
+    .replace(/aa/g,'â').replace(/ee/g,'ê').replace(/oo/g,'ô')
+    .replace(/aw/g,'ă').replace(/ow/g,'ơ').replace(/uw/g,'ư');
+  while(s.includes('w')){const i=s.indexOf('w'),before=s.slice(0,i);let changed=before;
+    const uo=before.lastIndexOf('uo');
+    if(uo>=0)changed=before.slice(0,uo)+'ươ'+before.slice(uo+2);
+    else{let pos=-1;for(let j=0;j<before.length;j++)if(/[aou]/.test(before[j]))pos=j;
+      if(pos>=0){const map={a:'ă',o:'ơ',u:'ư'};changed=before.slice(0,pos)+map[before[pos]]+before.slice(pos+1)}
+      else changed=before+'ư'}
+    s=changed+s.slice(i+1);
+  }
+  const first=[...s].findIndex(ch=>/[aeiouyăâêôơư]/.test(ch));
+  if(first>=0)s=[...s].filter((ch,i)=>!(i>first&&/[sfrxjz]/.test(ch))).join('');
+  return s;
+}
+const pyKey=s=>String(s).toLocaleLowerCase().replace(/u:|v/g,'ü').normalize('NFD')
+  .replace(PY_TONE_MARKS,'').replace(/[ '’-]/g,'');
+const viKey=(s,typed=false)=>{
+  let value=String(s).toLocaleLowerCase('vi').normalize('NFC');
+  if(typed)value=value.replace(/\p{L}+/gu,telexSyllable);
+  return value.normalize('NFD').replace(VI_TONE_MARKS,'').normalize('NFC').replace(/\s+/g,'');
+};
+function judge(input,lang,accepted,viAlt=[],several=false){
   if(!input||!input.trim())return null;
-  const answers=Array.isArray(ans)?ans:[ans];let close=false;
-  for(const answer of answers){let a=norm(answer),b=norm(input),sa=strip(a),sb=strip(b);
-    if(py){a=a.replace(/ /g,'');b=b.replace(/ /g,'');sa=sa.replace(/ /g,'');sb=sb.replace(/ /g,'')}
-    if(a===b)return'ok';if(sa===sb)close=true}
-  return close?'close':'ng';
+  const answers=(Array.isArray(accepted)?accepted:[accepted]).filter(Boolean);
+  const alternates=lang==='vi'?(Array.isArray(viAlt)?viAlt:[viAlt]).filter(Boolean):[];
+  const parts=several?input.split(/[,/，／、]/).map(x=>x.trim()).filter(Boolean):[input];
+  if(!parts.length)return null;
+  const expected=lang==='zh'?answers.map(pyKey):answers.concat(alternates).map(x=>viKey(x,false));
+  return parts.every(part=>expected.includes(lang==='zh'?pyKey(part):viKey(part,true)))?'ok':'ng';
+}
+const PY_TONE_NAME={1:'1声',2:'2声',3:'3声',4:'4声',5:'軽声'};
+const VI_TONE_NAME={'\u0301':'sắc','\u0300':'huyền','\u0309':'hỏi','\u0303':'ngã','\u0323':'nặng'};
+function markedTone(syllable,lang){
+  const marks=[...String(syllable).normalize('NFD')];
+  if(lang==='zh'){const order='\u0304\u0301\u030c\u0300',mark=marks.find(ch=>order.includes(ch));
+    return mark?PY_TONE_NAME[order.indexOf(mark)+1]:'軽声'}
+  const mark=marks.find(ch=>VI_TONE_NAME[ch]);return mark?VI_TONE_NAME[mark]:'ngang';
+}
+function toneHint(lang,readings,tones=''){
+  const values=(Array.isArray(readings)?readings:[readings]).filter(Boolean);
+  return values.map(reading=>{
+    if(lang==='zh'&&tones&&values.length===1)return [...tones].map(x=>PY_TONE_NAME[x]).filter(Boolean).join('・');
+    const syllables=String(reading).split(/\s+|['’-]+/).filter(Boolean);
+    return syllables.map(x=>markedTone(x,lang)).join('・');
+  }).join(' / ');
 }
 const viFinal=s=>{const m=strip(s).match(/(ng|nh|ch|c|p|t|n|m)$/);return m?m[1]:''};
 function ruleTags(w){
@@ -322,6 +385,9 @@ function ruleTags(w){
 const SPK_SVG='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>';
 const TTS={ok:typeof window.speechSynthesis!=='undefined',voices:[],warned:new Set()};
 const LNAME={zh:'中国語',vi:'ベトナム語'};
+let mute=S.get('kb_mute',false);
+function syncMute(){$('#mute').classList.toggle('on',mute);$('#mute').setAttribute('aria-pressed',mute)}
+$('#mute').onclick=()=>{mute=!mute;S.set('kb_mute',mute);if(mute)stopSpeech();syncMute()};syncMute();
 function loadVoices(){if(!TTS.ok)return;try{TTS.voices=speechSynthesis.getVoices()||[]}catch(e){}}
 if(TTS.ok){loadVoices();try{speechSynthesis.addEventListener('voiceschanged',loadVoices)}catch(e){}}
 function pickVoice(lang){
@@ -334,6 +400,7 @@ let toastT;
 function toast(msg){let el=$('#toast');if(!el){el=document.createElement('div');el.id='toast';el.className='toast';el.setAttribute('role','status');document.body.appendChild(el)}
   el.textContent=msg;el.classList.remove('hidden');clearTimeout(toastT);toastT=setTimeout(()=>el.classList.add('hidden'),7000)}
 function speak(text,lang,btn,quiet){
+  if(mute)return;
   if(!TTS.ok){if(!quiet)toast('このブラウザは読み上げに対応していない。EdgeかChromeで開いてみて。');return}
   loadVoices();
   const v=pickVoice(lang);
@@ -360,7 +427,14 @@ $$('#nav button').forEach(b=>b.onclick=()=>{
   $$('main>section').forEach(s=>s.classList.toggle('hidden',s.id!=='v-'+view));
   render();
 });
-function render(){({cards:renderCards,rules:renderRules,ff:renderFF,read:renderRead,glyph:renderGlyph})[view]();topStat()}
+function filteredGlyphs(){return GLYPHS.filter(g=>gfil==='all'||pat(g)===gfil)}
+function updateCounts(){
+  const counts={cards:deck().filter(targetOk).length,
+    rules:(RULES.find(x=>x.id===ruleSel)||{ex:[]}).ex.length,
+    ff:FF.filter(f=>fff==='all'||f.t===fff).length,read:PASSAGES.length,glyph:filteredGlyphs().length};
+  Object.entries(counts).forEach(([key,value])=>{const el=$(`#count-${key}`);if(el)el.textContent=value.toLocaleString('ja-JP')});
+}
+function render(){({cards:renderCards,rules:renderRules,ff:renderFF,read:renderRead,glyph:renderGlyph})[view]();topStat();updateCounts()}
 
 /* 1. cards */
 const DAY=86400000, IV=[0,1,3,7,14,30];
@@ -377,14 +451,18 @@ let cur=null, flipped=false, guess={vi:'',zh:''}, doneToday=0;
 const customWords=()=>custom.map(id=>WORD_BY_ID.get(id)).filter(Boolean);
 const deck=()=>{const seen=new Set(WORDS.map(w=>w.id));return WORDS.concat(customWords().filter(w=>!seen.has(w.id)))};
 const targetOk=w=>target==='vi'?!!w.v:target==='zh'?!!w.p:!!w.v&&!!w.p;
-const due=()=>{const now=Date.now(),d=deck().filter(targetOk),introduced=new Set(newToday.ids);
+const due=()=>{const now=Date.now(),d=deck().filter(targetOk),available=new Set(d.map(w=>w.id)),introduced=new Set(newToday.ids.filter(id=>available.has(id)));
   const reviews=d.filter(w=>srs[w.id]&&srs[w.id].due<=now);
   const pending=d.filter(w=>!srs[w.id]&&introduced.has(w.id));
   const slots=Math.max(0,20-introduced.size),fresh=d.filter(w=>!srs[w.id]&&!introduced.has(w.id)).slice(0,slots);
   return reviews.concat(pending,fresh).sort((a,b)=>((srs[a.id]||{}).due||0)-((srs[b.id]||{}).due||0))};
 function introduce(w){if(srs[w.id]||newToday.ids.includes(w.id))return;newToday.ids.push(w.id);S.set('kb_newtoday',newToday)}
 function topStat(){const d=deck();const learned=d.filter(w=>srs[w.id]&&srs[w.id].box>=3).length;$('#topstat').textContent=`今日 ${due().length} 枚　習得 ${learned}/${d.length}`}
-$$('#target button').forEach(b=>{b.classList.toggle('on',b.dataset.t===target);b.onclick=()=>{target=b.dataset.t;S.set('kb_target',target);$$('#target button').forEach(x=>x.classList.toggle('on',x===b));flipped=false;renderCards()}});
+$$('#target button').forEach(b=>{b.classList.toggle('on',b.dataset.t===target);b.onclick=()=>{target=b.dataset.t;S.set('kb_target',target);$$('#target button').forEach(x=>x.classList.toggle('on',x===b));flipped=false;renderCards();topStat();updateCounts()}});
+const markedTarget=x=>`${esc(x.sentence.slice(0,x.start))}<mark>${esc(x.sentence.slice(x.start,x.start+x.len))}</mark>${esc(x.sentence.slice(x.start+x.len))}`;
+function cardExample(w,lang){const x=EXAMPLES.get(`${w.id}:${lang}:card`);if(!x)return'';
+  return `<div class="example"><div class="small sub">${lang==='zh'?'中国語':'ベトナム語'}</div><div class="${lang==='zh'?'zh':''}">${markedTarget(x)}</div>${lang==='zh'?`<div>${esc(x.pinyin)}</div>`:''}<div class="translation">${esc(x.translation)}</div></div>`}
+const cardExamples=(w,showVi,showZh)=>{const rows=[showZh?cardExample(w,'zh'):'',showVi?cardExample(w,'vi'):''].filter(Boolean);return rows.length?`<div class="examples">${rows.join('')}</div>`:''};
 function renderCards(){
   const q=due();
   $('#queueinfo').textContent=q.length?`残り ${q.length} 枚`:'';
@@ -398,8 +476,8 @@ function renderCards(){
   if(!flipped){
     $('#cardbox').innerHTML=`<div class="stage">${front}
       <div class="answer-in">
-        ${showVi?`<label class="field"><span>ベトナム語</span><input id="gvi" autocomplete="off" spellcheck="false" placeholder="読みを予想"></label>`:''}
-        ${showZh?`<label class="field"><span>中国語（ピンイン）</span><input id="gzh" autocomplete="off" spellcheck="false" placeholder="読みを予想"></label>`:''}
+        ${showVi?`<label class="field"><span>ベトナム語</span><div class="tone-hint">${toneHint('vi',[w.v])}</div><input id="gvi" autocomplete="off" spellcheck="false" placeholder="読みを予想"></label>`:''}
+        ${showZh?`<label class="field"><span>中国語（ピンイン）</span><div class="tone-hint">${toneHint('zh',[w.p],w.pt)}</div><input id="gzh" autocomplete="off" spellcheck="false" placeholder="読みを予想"></label>`:''}
         <div><button class="pill dark" id="flip">答えを見る<span class="key">Enter</span></button></div>
         <div class="sub small">声調記号なしで入力してもOK</div>
       </div></div>`;
@@ -407,17 +485,18 @@ function renderCards(){
     $$('#cardbox input').forEach(i=>i.onkeydown=e=>{if(e.key==='Enter'){e.preventDefault();doFlip()}});
     $('#flip').onclick=doFlip;return;
   }
-  const vt=r=>r===null?'<div class="you sub">入力なし</div>':r==='ok'?'<div class="you ok">正解</div>':r==='close'?'<div class="you close">声調・記号だけ違う</div>':'<div class="you ng">違う</div>';
+  const vt=(r,answer)=>r===null?'<div class="you sub">入力なし</div>':r==='ok'?'<div class="you ok">正解</div>':`<div class="you ng">${esc(answer)}</div>`;
   const yours=s=>s?`<div class="you sub">あなた：${esc(s)}</div>`:'';
   const metaRule=showVi?ruleTags(w):'';
   const metaGlyph=w.z!==w.j?`<span class="tag off">字体　${esc(w.j)}　<span class="ko">${esc(w.h)}</span>　<span class="zh">${esc(w.z)}</span></span>`:'';
   $('#cardbox').innerHTML=`<div class="stage">${front}
     <div class="reveal">
       <div class="ans">
-        ${showVi?`<div><div class="lang">ベトナム語</div><div class="val">${esc(w.v)}${spk(w.v,'vi')}</div>${yours(guess.vi)}${vt(judge(guess.vi,[w.v,...(w.va||[])],false))}</div>`:''}
-        ${showZh?`<div><div class="lang">中国語</div><div class="val"><span class="zh">${esc(w.z)}</span> ${esc(w.p)}${spk(w.z,'zh')}</div>${yours(guess.zh)}${vt(judge(guess.zh,w.p,true))}</div>`:''}
+        ${showVi?`<div><div class="lang">ベトナム語</div><div class="val">${esc(w.v)}${spk(w.v,'vi')}</div>${yours(guess.vi)}${vt(judge(guess.vi,'vi',[w.v],w.va||[]),w.v)}</div>`:''}
+        ${showZh?`<div><div class="lang">中国語</div><div class="val"><span class="zh">${esc(w.z)}</span> ${esc(w.p)}${spk(w.z,'zh')}</div>${yours(guess.zh)}${vt(judge(guess.zh,'zh',[w.p]),w.p)}</div>`:''}
       </div>
       <div class="meta">${metaRule}${metaGlyph}</div>
+      ${cardExamples(w,showVi,showZh)}
       <div class="rate">
         <button class="pill" data-r="0"><span class="key">1</span>もう一回<small>すぐ</small></button>
         <button class="pill" data-r="1"><span class="key">2</span>難しい<small>${ivLabel(1)}</small></button>
@@ -449,7 +528,7 @@ let ruleSel='k', rprog=S.get('kb_rules',{}), quiz=null;
 function renderRules(){
   $('#rulebar').innerHTML=RULES.map(r=>{const d=(rprog[r.id]||[]).length;
     return `<button class="${r.id===ruleSel?'on':''}" data-id="${r.id}"><div class="r"><span class="ko">${r.kr}</span> → ${r.vi.map(v=>'-'+v).join('/')}</div><div class="p">${d}/${r.ex.length}</div></button>`}).join('');
-  $$('#rulebar button').forEach(b=>b.onclick=()=>{ruleSel=b.dataset.id;quiz=null;renderRules()});
+  $$('#rulebar button').forEach(b=>b.onclick=()=>{ruleSel=b.dataset.id;quiz=null;renderRules();updateCounts()});
   const r=RULES.find(x=>x.id===ruleSel);
   if(!quiz)newQuiz(r);
   const e=quiz.e;
@@ -485,7 +564,7 @@ function newQuiz(r){
 
 /* 3. false friends */
 let fff='all', ffopen=new Set();
-$$('#fffilter button').forEach(b=>b.onclick=()=>{fff=b.dataset.f;$$('#fffilter button').forEach(x=>x.classList.toggle('on',x===b));renderFF()});
+$$('#fffilter button').forEach(b=>b.onclick=()=>{fff=b.dataset.f;$$('#fffilter button').forEach(x=>x.classList.toggle('on',x===b));renderFF();updateCounts()});
 function renderFF(){
   const list=FF.filter(f=>fff==='all'||f.t===fff);
   $('#fflist').innerHTML=list.map(f=>{const o=ffopen.has(f.id);return `<div class="tile ${o?'open':''}" data-w="${f.id}" role="button" tabindex="0" aria-expanded="${o}">
@@ -514,7 +593,7 @@ function renderRead(){
   }).join('');
   const sent=p.lang==='vi'?p.toks.map(t=>t.t).join(' ').replace(/ ([.,])/g,'$1'):p.toks.map(t=>t.t).join('');
   $('#ptrans').innerHTML=`${esc(p.tr)}${spk(sent,p.lang)}`;
-  $$('.tok.sino .s').forEach(el=>{const pick=()=>{selTok=+el.closest('.tok').dataset.i;renderRead()};el.onclick=pick;el.onkeydown=e=>{if(e.key==='Enter'){e.preventDefault();pick()}}});
+  $$('.tok.sino .s').forEach(el=>{const pick=()=>{selTok=+el.closest('.tok').dataset.i;renderRead()};el.onclick=pick;el.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();pick()}}});
   const d=$('#tokdetail');
   if(selTok===null){d.innerHTML='<div class="empty">下線の単語をタップすると、4つの言語の対応が出る</div>';return}
   const w=p.toks[selTok].w, inDeck=deck().some(x=>x.id===w.id);
@@ -529,17 +608,17 @@ function renderRead(){
     </div>
     ${w.note?`<p class="sub small" style="margin:16px 0 0">${esc(w.note)}</p>`:''}
     <div style="margin-top:14px">${ruleTags(w)}</div></div>`;
-  if(!inDeck)$('#addcard').onclick=()=>{custom.push(w.id);S.set('kb_custom',custom);renderRead();topStat()};
+  if(!inDeck)$('#addcard').onclick=()=>{custom.push(w.id);S.set('kb_custom',custom);updateCounts();renderRead();topStat()};
 }
 
 /* 5. glyph */
 let gmode='list', gfil='all', gq=null, gscore=S.get('kb_glyph',{ok:0,n:0});
 const pat=g=>g[0]===g[2]&&g[0]!==g[1]?'jz':g[0]===g[1]&&g[0]!==g[2]?'jk':g[0]!==g[1]&&g[1]!==g[2]&&g[0]!==g[2]?'diff':'same';
 $$('#gmode button').forEach(b=>b.onclick=()=>{gmode=b.dataset.g;$$('#gmode button').forEach(x=>x.classList.toggle('on',x===b));$('#gfilter').classList.toggle('hidden',gmode!=='list');renderGlyph()});
-$$('#gfilter button').forEach(b=>b.onclick=()=>{gfil=b.dataset.p;$$('#gfilter button').forEach(x=>x.classList.toggle('on',x===b));renderGlyph()});
+$$('#gfilter button').forEach(b=>b.onclick=()=>{gfil=b.dataset.p;$$('#gfilter button').forEach(x=>x.classList.toggle('on',x===b));renderGlyph();updateCounts()});
 function renderGlyph(){
   if(gmode==='list'){
-    const list=GLYPHS.filter(g=>gfil==='all'||pat(g)===gfil);
+    const list=filteredGlyphs();
     $('#glyphbox').innerHTML=list.length?`<div class="ghead"><span>日本</span><span>韓国・繁体</span><span>中国・簡体</span><span>読み</span></div>`+list.map(g=>`<div class="grow">
       <div><div class="g han">${g[0]}</div><div class="lbl">${g[4]}</div></div>
       <div><div class="g han ko">${g[1]}</div><div class="lbl ko">${g[5]}</div></div>
@@ -571,13 +650,14 @@ document.addEventListener('keydown',e=>{
   if(view==='cards'&&flipped&&cur){const k=e.key.toLowerCase();
     if(k==='v'&&target!=='zh'){e.preventDefault();stopSpeech();speak(cur.v,'vi');return}
     if(k==='c'&&target!=='vi'){e.preventDefault();stopSpeech();speak(cur.z,'zh');return}}
+  if(view==='cards'&&!flipped&&cur&&(e.key==='Enter'||e.key===' ')){e.preventDefault();doFlip();return}
   if(view==='rules'&&quiz){
     if(!quiz.ans&&n>=0&&n<quiz.opts.length){e.preventDefault();pickRule(quiz.opts[n]);return}
-    if(quiz.ans&&e.key==='Enter'){e.preventDefault();quiz=null;renderRules();return}
+    if(quiz.ans&&(e.key==='Enter'||e.key===' ')){e.preventDefault();quiz=null;renderRules();return}
   }
   if(view==='glyph'&&gmode==='quiz'&&gq){
     if(!gq.ans&&n>=0&&n<gq.opts.length){e.preventDefault();pickGlyph(gq.opts[n]);return}
-    if(gq.ans&&e.key==='Enter'){e.preventDefault();gq=null;renderGlyph();return}
+    if(gq.ans&&(e.key==='Enter'||e.key===' ')){e.preventDefault();gq=null;renderGlyph();return}
   }
 });
 

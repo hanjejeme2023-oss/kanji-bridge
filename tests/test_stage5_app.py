@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import re
+import subprocess
 import unittest
 from pathlib import Path
 
@@ -38,6 +39,19 @@ def reference_due(deck, srs, introduced, target, now):
     return reviews + pending + fresh
 
 
+def run_judging_js(expressions: dict[str, str]) -> dict:
+    app = APP.read_text(encoding="utf-8")
+    start = app.index("const PY_TONE_MARKS")
+    end = app.index("const viFinal", start)
+    pairs = ",".join(f"{json.dumps(key)}:({expression})" for key, expression in expressions.items())
+    script = app[start:end] + f"\nconsole.log(JSON.stringify({{{pairs}}}));\n"
+    completed = subprocess.run(
+        ["node", "-"], input=script, text=True, encoding="utf-8",
+        capture_output=True, check=True,
+    )
+    return json.loads(completed.stdout)
+
+
 class Stage5DataTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -46,12 +60,12 @@ class Stage5DataTests(unittest.TestCase):
     def test_data_js_is_reduced_and_has_no_nulls(self):
         data = self.data
         self.assertEqual(data["meta"]["counts"]["words"], 12508)
-        self.assertEqual(data["meta"]["counts"]["glyphs"], 2215)
+        self.assertEqual(data["meta"]["counts"]["glyphs"], 2164)
         self.assertEqual(len(data["words"]), 12508)
         self.assertEqual(len(data["chars"]), 2164)
         self.assertEqual(len(data["examples"]), 10367)
         self.assertEqual(len(data["char_notes"]), 581)
-        self.assertEqual(len(data["glyphs"]), 2215)
+        self.assertEqual(len(data["glyphs"]), 2164)
         self.assertEqual(len(data["usage"]), 2164)
         self.assertEqual(len(data["passages"]), 80)
         self.assertEqual(len(data["ff_meanings"]), 4044)
@@ -95,6 +109,53 @@ class Stage5DataTests(unittest.TestCase):
         chars = {row["key_char"]: row for row in self.data["chars"]}
         self.assertEqual(chars["歷"]["ko_base_all"], "력")
         self.assertTrue(chars["樂"]["ko_base_all"].startswith("락;악"))
+
+    def test_glyphs_are_one_row_per_character_with_ordered_word_readings(self):
+        glyphs = self.data["glyphs"]
+        self.assertEqual(len({row[0] for row in glyphs}), 2164)
+        represented = [word_id for row in glyphs for word_id in row[1]]
+        self.assertEqual(len(represented), 1571)
+        self.assertEqual(len(set(represented)), 1571)
+        self.assertEqual(sum(not row[1] for row in glyphs), 644)
+        self.assertEqual(
+            glyphs,
+            sorted(glyphs, key=lambda row: (row[2] if row[2] != "" else 99, row[0])),
+        )
+
+        char_ids = {row["key_char"]: row["char_id"] for row in self.data["chars"]}
+        by_char = {row[0]: row for row in glyphs}
+        self.assertEqual(
+            by_char[char_ids["還"]],
+            [char_ids["還"], ["w00135", "w00156"], 1, ["hái", "huán"], ["hoàn"]],
+        )
+        self.assertEqual(by_char[char_ids["行"]][3:], [["xíng", "háng"], ["hành", "hàng"]])
+        self.assertEqual(len(by_char[char_ids["得"]][1]), 3)
+
+        raw_chars = {
+            row["char_id"]: row
+            for row in export_app_data.read_csv(ROOT / "data" / "final" / "chars.csv")
+        }
+        unverified = next(
+            row for row in glyphs
+            if not row[1] and raw_chars[row[0]]["source_vi"] == "unihan_unverified"
+        )
+        self.assertEqual(unverified[4], [])
+
+    def test_card_deck_is_multi_character_and_typed_cards_have_pinyin_tones(self):
+        deck = [word for word in self.data["words"] if word["card_eligible"] and len(word["trad"]) > 1]
+        self.assertEqual(len(deck), 6983)
+        self.assertTrue(all(len(word["trad"]) > 1 for word in deck))
+        self.assertTrue(all("pt" in word for word in deck if word.get("pinyin")))
+
+    def test_examples_have_present_and_absent_card_rows(self):
+        keys = {(row[0], row[1], row[2]) for row in self.data["examples"]}
+        self.assertIn(("w00002", "zh", "card"), keys)
+        words = {row["word_id"]: row for row in self.data["words"]}
+        deck_ids = {
+            word_id for word_id, word in words.items()
+            if word["card_eligible"] and len(word["trad"]) > 1
+        }
+        self.assertTrue(any((word_id, "vi", "card") not in keys for word_id in deck_ids))
 
 
 class Stage5AppTests(unittest.TestCase):
@@ -151,7 +212,80 @@ class Stage5AppTests(unittest.TestCase):
         self.assertIn("replace(/[（）()]/g,'')", self.app)
         self.assertIn("#psel{flex-wrap:wrap}", self.app)
         self.assertEqual(self.app.count("w.note?"), 1)
-        self.assertIn("KB.chars.filter(x=>!(x.jp===x.key_char&&x.key_char===x.simp))", self.app)
+        self.assertIn("const GLYPHS=KB.glyphs.map", self.app)
+
+    def test_shared_judging_full_telex_polyphones_and_tone_hints(self):
+        values = run_judging_js({
+            "tone_only_zh": "judge('xue sheng','zh',['xuéshēng'])",
+            "umlaut_v": "judge('lve','zh',['lüè'])",
+            "umlaut_u_colon": "judge('lu:e','zh',['lüè'])",
+            "case_apostrophe": "judge(\"XI'AN\",'zh',['xī ān'])",
+            "vi_tone_only": "judge('ban','vi',['bán'])",
+            "vi_missing_breve": "judge('an','vi',['ăn'])",
+            "vi_missing_circumflex": "judge('an','vi',['ân'])",
+            "vi_missing_horn": "judge('tu','vi',['tư'])",
+            "vi_missing_d": "judge('da','vi',['đa'])",
+            "tien_tieenf": "judge('tieenf','vi',['tiền'])",
+            "tien_tieen": "judge('tieen','vi',['tiền'])",
+            "tien_marked": "judge('tiền','vi',['tiền'])",
+            "tien_other_tone": "judge('tiên','vi',['tiền'])",
+            "tien_wrong": "judge('tien','vi',['tiền'])",
+            "duong1": "judge('dduowngf','vi',['đường'])",
+            "duong2": "judge('dduongw','vi',['đường'])",
+            "duong3": "judge('đường','vi',['đường'])",
+            "nguoi1": "judge('nguowif','vi',['người'])",
+            "nguoi2": "judge('nguoiwf','vi',['người'])",
+            "nguoi_wrong": "judge('nguoif','vi',['người'])",
+            "mua": "judge('muwa','vi',['mưa'])",
+            "xin": "judge('xin','vi',['xin'])",
+            "roi": "judge('rooif','vi',['rồi'])",
+            "sang": "judge('sangs','vi',['sáng'])",
+            "vi_alt": "judge('muwa','vi',['mùa'],['mưa'])",
+            "poly_one_hai": "judge('hai','zh',['hái','huán'],[],true)",
+            "poly_one_huan": "judge('huan','zh',['hái','huán'],[],true)",
+            "poly_comma": "judge('hai, huan','zh',['hái','huán'],[],true)",
+            "poly_slash": "judge('hai/huan','zh',['hái','huán'],[],true)",
+            "poly_fullwidth": "judge('huán／hái','zh',['hái','huán'],[],true)",
+            "poly_wrong": "judge('hai, xuan','zh',['hái','huán'],[],true)",
+            "hint_neutral": "toneHint('zh',['de'])",
+            "hint_ngang": "toneHint('vi',['xin'])",
+            "hint_word": "toneHint('zh',['xuésheng'],'25')",
+            "hint_poly_zh": "toneHint('zh',['hái','huán'])",
+            "hint_poly_vi": "toneHint('vi',['hành','hàng'])",
+        })
+        right = {key for key, value in values.items() if value == "ok"}
+        expected_right = {
+            "tone_only_zh", "umlaut_v", "umlaut_u_colon", "case_apostrophe", "vi_tone_only",
+            "tien_tieenf", "tien_tieen", "tien_marked", "tien_other_tone", "duong1", "duong2",
+            "duong3", "nguoi1", "nguoi2", "mua", "xin", "roi", "sang", "vi_alt",
+            "poly_one_hai", "poly_one_huan", "poly_comma", "poly_slash", "poly_fullwidth",
+        }
+        self.assertEqual(right, expected_right)
+        self.assertEqual(values["hint_neutral"], "軽声")
+        self.assertEqual(values["hint_ngang"], "ngang")
+        self.assertEqual(values["hint_word"], "2声・軽声")
+        self.assertEqual(values["hint_poly_zh"], "2声 / 2声")
+        self.assertEqual(values["hint_poly_vi"], "huyền / huyền")
+
+    def test_global_controls_space_mute_counts_and_card_examples(self):
+        self.assertIn("let mute=S.get('kb_mute',false)", self.app)
+        self.assertIn("S.set('kb_mute',mute)", self.app)
+        self.assertIn("if(mute)return", self.app)
+        self.assertIn("e.target.tagName==='INPUT'", self.app)
+        self.assertIn("e.key==='Enter'||e.key===' '", self.app)
+        self.assertIn('id="count-cards"', self.app)
+        self.assertIn("cards:deck().filter(targetOk).length", self.app)
+        self.assertIn("const markedTarget=x=>", self.app)
+        self.assertIn("if(!x)return''", self.app)
+        self.assertIn("cardExamples(w,showVi,showZh)", self.app)
+        for wording in (
+            "2字以上の単語を、日本語と韓国語を手がかりに中国語・ベトナム語で答える",
+            "韓国語のパッチムからベトナム語の語末を推測するルール",
+            "同じ漢字でも言語によって意味が違う、間違えやすい単語",
+            "短い中国語・ベトナム語の文を読み、わからない語をタップして確認する",
+            "1字の漢字の形（日本・繁体・簡体）と読み、使われ方",
+        ):
+            self.assertIn(wording, self.app)
 
     def test_hardcoded_prototype_arrays_are_gone(self):
         for marker in ("{h:'經濟'", "{w:'勉強'", "{id:'v1'", "['経','經','经'"):
