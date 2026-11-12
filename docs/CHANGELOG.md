@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 2026-11-11 — Task-6 pilot review (D73) [Claude]
+- Read all 150 pilot items (`docs/TASK6_PILOT_REVIEW.md`): zh 50/50 good (3 minor: 2 gloss-copy translations, 北京 pinyin lower case); vi 3 clear errors of 50 (sát nhân refused by the v1 violence rule, bán niên wrongly refused, cố nhân trap not evident); notes 50/50 correct (one extra reading). Pilot cost $0.169144 incl. check (two single-item repairs); ledger $35.67311975.
+- Prompts `task6_zh_v2.md`, `task6_vi_v2.md` (five added rules; schema/validator unchanged); notes stay v1. `pipeline/stage4/runner.py` `TASK6_PROMPT_FILES` zh/vi paths → v2 (two lines). Offline dry-run base $16.84; offline status OK; 54 Stage 4 tests (task6, safety, validators) pass.
+- Committed the pilot outputs/logs and the cost-log rows. `VERTEX_SETUP.md` part G6-night (overnight steps). No request sent by Claude.
+
 ## 2026-11-11 — Stage 4 task-6 support (D72), offline [Codex]
 - Added deterministic task-6 builders for 5,783 zh card + 565 zh false-friend sentences, 4,051 vi card + 142 vi false-friend sentences, and 623 character notes. The contract counts, false-friend coverage conflicts (20 zh / 8 vi), N1-N3 selection and global batch ranges b001-b224 match exactly; task-6 inputs preserve the specified field order.
 - Added the three ordered response schemas and strict task-6 validation: whole-batch key/schema checks; item-isolated repair errors; Mandarin syllable inventory/alignment DP with erhua, neutral tones and apostrophes; exact target tones and 一/不; simplified-character enforcement; Vietnamese orthography, length and case-insensitive whole-word target; Japanese translations, notes and warnings.

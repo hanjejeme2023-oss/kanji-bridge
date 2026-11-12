@@ -46,8 +46,8 @@ PROMPT_FILES = {
     5: PROMPTS / "task5_v1.md",
 }
 TASK6_PROMPT_FILES = {
-    "zh": PROMPTS / "task6_zh_v1.md",
-    "vi": PROMPTS / "task6_vi_v1.md",
+    "zh": PROMPTS / "task6_zh_v2.md",
+    "vi": PROMPTS / "task6_vi_v2.md",
     "note": PROMPTS / "task6_note_v1.md",
 }
 TASK3_PROMPT_FILES = {

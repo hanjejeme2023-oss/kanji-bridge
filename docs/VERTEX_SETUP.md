@@ -179,6 +179,27 @@ powershell -ExecutionPolicy Bypass -File pipeline\stage4\run_stage4.ps1 -Tasks 6
 ```
 About **6.5-7 hours**, 224 requests: Chinese batches b001-b127 first (about 4 hours), then Vietnamese b128-b211, then notes b212-b224. Lines like `task=6 batch=b007 ok …` appear every 1-2 minutes; a batch may also show `repair` (only the few failing sentences are sent again). If anything interrupts it, run the same two lines again: finished batches are skipped and not paid again. Progress and time left before the deadline, without sending anything: `… run_stage4.ps1 -Status`. When the Chinese batches are done you may start Claude for gate part A while the run continues in its own window.
 
+**G6-night. Running it overnight (D73; the pilot measured about 4.5 hours, allow 6.5).**
+*Before you start (5 minutes):*
+1. **Charger** plugged in and the plug switched on. Laptop on a hard surface (not a bed), **lid open**.
+2. Settings → **System** → **Power & battery** → **Screen, sleep & hibernate timeouts**. For **"When plugged in"**, set **both** "Turn off my screen after" and "Put my device to sleep after" to **Never** (on many laptops a screen that turns off can let the PC drop into standby). Write down the old values. Turn the brightness down instead.
+3. Settings → **Windows Update** → **Pause updates** (1 week), so Windows does not restart at night.
+4. Close other heavy programs. Do not shut down, sign out, restart, close the lid or press the power button. Leave Wi-Fi on.
+*Start:* open a **new** PowerShell window from the Start menu and type:
+```powershell
+cd "<project folder>"
+powershell -ExecutionPolicy Bypass -File pipeline\stage4\run_stage4.ps1 -Tasks 6
+```
+Wait until the first line `task=6 batch=b001 ok …` appears (about 1-2 minutes). Then leave the window open and go to sleep. The script itself retries API errors and, if it stops, restarts itself up to two more times (2-minute wait).
+*In the morning:* look at the last lines of the window.
+- **`task 6 zh: 127/127 validated … vi: 84/84 … note: 13/13`** → done. Put the sleep and screen settings back, then start Claude (task-6 gate). You do not commit anything.
+- **The summary still shows `failed`, `partial` or `missing` batches**, or the window says `still failed after 3 launcher attempts` → run the same two lines once more (finished batches are skipped and not paid again). If the same batches fail again, stop and start Claude; copy the last 20 lines into the chat (they contain no secret).
+- **The window is gone, the PC restarted or was asleep** → open a new window and run the same two lines. Only the request that was running is lost.
+- **The error mentions credentials, 401, reauthentication or login** → `gcloud auth application-default login` (browser → same account → Allow), then the two lines again.
+- **The error mentions the $200 ceiling or the credit deadline** → stop and start Claude. Do not use `-AllowAfterCreditDeadline`.
+- Never run two windows at the same time (the script refuses). To see progress without sending anything: `powershell -ExecutionPolicy Bypass -File pipeline\stage4\run_stage4.ps1 -Status`.
+There is time to spare: even if the run has to be restarted tomorrow, it ends long before the deadline (2026-11-16 08:00 UTC).
+
 **G7. Reruns (11-14 / 11-15, only when HANDOFF says so):**
 ```powershell
 powershell -ExecutionPolicy Bypass -File pipeline\stage4\run_stage4.ps1 -Tasks 6 -RerunRound 1

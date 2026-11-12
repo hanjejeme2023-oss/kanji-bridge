@@ -69,7 +69,7 @@ A character is a note item when it is in the 字体 set and **any** of:
 - **zh:** `key, status, sentence, pinyin, translation_ja, confidence, review_note`
 - **vi:** `key, status, sentence, translation_ja, confidence, review_note`
 - **note:** `key, note_ja, confidence, review_note`
-- `status` ∈ `ok` / `no_sentence`; `confidence` ∈ `high` / `low`. The response is a JSON array with one object per input item, in input order. Prompts: `content/prompts/task6_zh_v1.md`, `task6_vi_v1.md`, `task6_note_v1.md`, selected per batch kind (as task 3 selects per language). `review_note` is review-only and never merged.
+- `status` ∈ `ok` / `no_sentence`; `confidence` ∈ `high` / `low`. The response is a JSON array with one object per input item, in input order. Prompts: `content/prompts/task6_zh_v1.md`, `task6_vi_v1.md`, `task6_note_v1.md` (**amended by D73 after the pilot: zh and vi use `task6_zh_v2.md`, `task6_vi_v2.md`; notes stay v1**), selected per batch kind (as task 3 selects per language). `review_note` is review-only and never merged.
 
 ## 4. Validator (`pipeline/stage4/validators.py`, `validate_task6`)
 

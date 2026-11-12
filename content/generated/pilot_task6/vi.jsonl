@@ -1,0 +1,50 @@
+{"key":"w00063:vi:card","status":"ok","sentence":"Em gái tôi đang học đại học.","translation_ja":"私の妹は大学に通っています。","confidence":"high","review_note":""}
+{"key":"w00428:vi:card","status":"ok","sentence":"Chúng tôi luôn chăm chỉ học tập.","translation_ja":"私たちはいつも一生懸命勉強しています。","confidence":"high","review_note":""}
+{"key":"w01168:vi:card","status":"ok","sentence":"Tôi đi rút tiền ở ngân hàng.","translation_ja":"私は銀行にお金を引き出しに行きます。","confidence":"high","review_note":""}
+{"key":"w01644:vi:card","status":"ok","sentence":"Kinh tế năm nay có nhiều thay đổi lớn.","translation_ja":"今年の経済には大きな変化が多くあります。","confidence":"high","review_note":""}
+{"key":"w01443:vi:card","status":"ok","sentence":"Thành phố này đang phát triển rất nhanh.","translation_ja":"この都市はとても速く発展しています。","confidence":"high","review_note":""}
+{"key":"w02194:vi:card","status":"ok","sentence":"Các em hãy chú ý nghe thầy giảng bài.","translation_ja":"皆さん、先生の授業を注意して聞いてください。","confidence":"high","review_note":""}
+{"key":"w02689:vi:card","status":"ok","sentence":"Tôi rất thích đọc sách về lịch sử cổ đại.","translation_ja":"私は古代の歴史に関する本を読むのが大好きです。","confidence":"high","review_note":""}
+{"key":"w03029:vi:card","status":"ok","sentence":"Cô ấy rất hiểu tâm lý của trẻ nhỏ.","translation_ja":"彼女は幼い子どもの心理をよく理解しています。","confidence":"high","review_note":""}
+{"key":"w03262:vi:card","status":"ok","sentence":"Bác sĩ khuyên tôi nên nghỉ ngơi nhiều hơn và uống đủ nước.","translation_ja":"医師は私に、もっと休んで十分に水を飲むよう勧めました。","confidence":"high","review_note":""}
+{"key":"w08270:vi:card","status":"ok","sentence":"Vì không muốn làm mẹ buồn, anh ấy chỉ miễn cưỡng nhận lời.","translation_ja":"母を悲しませたくなくて、彼はしぶしぶ承諾しただけだった。","confidence":"high","review_note":""}
+{"key":"w10852:vi:card","status":"ok","sentence":"Cuốn sách này phân tích các chủ nghĩa văn học của thế kỷ trước.","translation_ja":"この本は前世紀の文学上の主義を分析している。","confidence":"high","review_note":""}
+{"key":"w12229:vi:card","status":"ok","sentence":"Món phở của Việt Nam rất nổi tiếng.","translation_ja":"ベトナムのフォーはとても有名です。","confidence":"high","review_note":""}
+{"key":"w01247:vi:card","status":"ok","sentence":"Trẻ mắc chứng tự kỷ cần được quan tâm.","translation_ja":"自閉症の子どもには配慮が必要です。","confidence":"high","review_note":""}
+{"key":"w01505:vi:card","status":"ok","sentence":"Món ăn này được chuẩn bị rất công phu.","translation_ja":"この料理はとても手間をかけて準備されました。","confidence":"high","review_note":""}
+{"key":"w00109:vi:card","status":"ok","sentence":"Chiếc phi cơ đã hạ cánh an toàn.","translation_ja":"その飛行機は無事に着陸した。","confidence":"high","review_note":""}
+{"key":"w00213:vi:card","status":"ok","sentence":"Vị lão sư ấy rất được kính trọng.","translation_ja":"その老師匠はとても尊敬されている。","confidence":"high","review_note":""}
+{"key":"w13134:vi:ff","status":"ok","sentence":"Bậc đại trượng phu luôn giữ lời hứa của mình.","translation_ja":"立派な男子は常に自分の約束を守るものだ。","confidence":"high","review_note":""}
+{"key":"w00026:vi:ff","status":"no_sentence","sentence":"","translation_ja":"","confidence":"high","review_note":"単音節「biệt」は複合語要素または慣用句（biệt tăm等）として使われ、単独の語としては現代文で不自然。"}
+{"key":"w00038:vi:ff","status":"ok","sentence":"Câu trả lời này sai rồi.","translation_ja":"この答えは間違っています。","confidence":"high","review_note":""}
+{"key":"w00047:vi:ff","status":"no_sentence","sentence":"","translation_ja":"","confidence":"high","review_note":"漢字音「cật」は辞書上の字音で、ベトナム語では「食べる」はăn、「どもる」はnói lắpを使う。"}
+{"key":"w00052:vi:ff","status":"ok","sentence":"Ánh nắng xuyên qua tán lá cây.","translation_ja":"日差しが木の葉の間を突き抜ける。","confidence":"high","review_note":""}
+{"key":"w00055:vi:ff","status":"no_sentence","sentence":"","translation_ja":"","confidence":"high","review_note":"単音節「tòng」は歴史的成句（tòng phu等）や複合語要素に限られ、単独では現代文で使われない。"}
+{"key":"w00067:vi:ff","status":"no_sentence","sentence":"","translation_ja":"","confidence":"high","review_note":"単音節「địa」は造語成分であり、「土地」の意味で単独の語としては使われない（đấtを使う）。"}
+{"key":"w00012:vi:card","status":"no_sentence","sentence":"","translation_ja":"","confidence":"high","review_note":"「半年」の意味でbán niênは使われず、日常・文語ともにnửa nămと言う。"}
+{"key":"w00042:vi:card","status":"ok","sentence":"Nghệ thuật xướng ca truyền thống cần được gìn giữ.","translation_ja":"伝統的な歌唱芸術は保存される必要がある。","confidence":"high","review_note":""}
+{"key":"w00074:vi:card","status":"no_sentence","sentence":"","translation_ja":"","confidence":"high","review_note":"「地図」はベトナム語では文語でもbản đồと言い、địa đồは現代では使われない。"}
+{"key":"w00081:vi:card","status":"no_sentence","sentence":"","translation_ja":"","confidence":"high","review_note":"「コンピューター」はmáy tínhまたはmáy vi tínhと言い、điện nãoは中国語の直訳で使われない。"}
+{"key":"w00114:vi:card","status":"no_sentence","sentence":"","translation_ja":"","confidence":"high","review_note":"kiền tịnhは辞書上の漢越音で、実際のベトナム語ではsạch sẽやthanh tịnhを使う。"}
+{"key":"w00140:vi:card","status":"ok","sentence":"Nhiều văn bản cổ được viết bằng Hán tự.","translation_ja":"多くの古文書は漢字で書かれている。","confidence":"high","review_note":""}
+{"key":"w00158:vi:card","status":"ok","sentence":"Chúng tôi đang chờ thư hồi đáp từ phía đối tác.","translation_ja":"私たちは取引先からの返答の手紙を待っている。","confidence":"high","review_note":""}
+{"key":"w00164:vi:card","status":"ok","sentence":"Tuyến hỏa xa này được xây dựng từ thế kỷ trước.","translation_ja":"この鉄道は前世紀に建設された。","confidence":"high","review_note":""}
+{"key":"w00174:vi:card","status":"ok","sentence":"Người gia nhân trung thành đã mở cổng đón khách.","translation_ja":"忠実な使用人が門を開けて客を迎えた。","confidence":"high","review_note":""}
+{"key":"w00194:vi:card","status":"no_sentence","sentence":"","translation_ja":"","confidence":"high","review_note":"「開会する」はkhai mạc、「会議を開く」はhọpと言い、khai hộiは使われない。"}
+{"key":"w00201:vi:card","status":"ok","sentence":"Chế độ khảo thí thời phong kiến rất nghiêm ngặt.","translation_ja":"封建時代の試験制度は非常に厳格だった。","confidence":"high","review_note":""}
+{"key":"w00232:vi:card","status":"no_sentence","sentence":"","translation_ja":"","confidence":"high","review_note":"mã thượngは現代ベトナム語では単独で使われず（trên lưng ngựaと言う）、慣用句に限られる。"}
+{"key":"w00252:vi:card","status":"no_sentence","sentence":"","translation_ja":"","confidence":"high","review_note":"「名前」の意味でdanh tựは使われず（tênまたはhọ tên）、文法用語「名詞」（danh từ）と紛らわしい。"}
+{"key":"w00291:vi:card","status":"ok","sentence":"Họ đã kết tình bằng hữu từ thuở thiếu thời.","translation_ja":"彼らは少年時代から友情を結んでいた。","confidence":"high","review_note":""}
+{"key":"w00321:vi:card","status":"ok","sentence":"Khu phố cổ từng có nhiều thương điếm sầm uất.","translation_ja":"旧市街にはかつて多くの賑やかな商店があった。","confidence":"high","review_note":""}
+{"key":"w00351:vi:card","status":"ok","sentence":"Ông thường tìm sách cũ ở một thư điếm nhỏ.","translation_ja":"彼はよく小さな書店で古書を探していた。","confidence":"high","review_note":""}
+{"key":"w00373:vi:card","status":"ok","sentence":"Họ là bạn đồng học dưới một mái trường xưa.","translation_ja":"彼らは昔の同じ学び舎で学んだ同級生だ。","confidence":"high","review_note":""}
+{"key":"w11029:vi:card","status":"ok","sentence":"Từ này là một động từ chỉ hành động.","translation_ja":"この語は動作を表す動詞です。","confidence":"high","review_note":""}
+{"key":"w11030:vi:card","status":"ok","sentence":"Chúng ta cần bảo toàn nguồn vốn cho dự án.","translation_ja":"私たちはプロジェクトのために資金を保全する必要がある。","confidence":"high","review_note":""}
+{"key":"w11031:vi:card","status":"ok","sentence":"Anh ấy đứng bất động dưới trời mưa lớn.","translation_ja":"彼は大雨の中、身動きせずに立っていた。","confidence":"high","review_note":""}
+{"key":"w11032:vi:card","status":"ok","sentence":"Ông ta làm giàu bằng những việc bất chính.","translation_ja":"彼は不正な行いによって財産を築いた。","confidence":"high","review_note":""}
+{"key":"w11033:vi:card","status":"no_sentence","sentence":"","translation_ja":"","confidence":"high","review_note":"語義が「殺人」であり、タスク規定の「暴力（violence）を含まない」制約に抵触するため作成不可。"}
+{"key":"w11034:vi:card","status":"ok","sentence":"Số học là phần đầu tiên khi học môn toán.","translation_ja":"算術は数学を学ぶときの最初の分野です。","confidence":"high","review_note":""}
+{"key":"w11035:vi:card","status":"ok","sentence":"Chiều thu này, ông lại bồi hồi nhớ về cố nhân.","translation_ja":"この秋の夕暮れ、彼は再び胸を揺らして旧友を思い出した。","confidence":"high","review_note":""}
+{"key":"w11036:vi:card","status":"ok","sentence":"Bố của anh ấy là một sĩ quan đã nghỉ hưu.","translation_ja":"彼のお父さんは退役した将校です。","confidence":"high","review_note":""}
+{"key":"w11037:vi:card","status":"ok","sentence":"Tòa nhà cổ này được xây dựng trước thời kỳ đại chiến.","translation_ja":"この古い建物は大戦の時代より前に建てられた。","confidence":"high","review_note":""}
+{"key":"w11038:vi:card","status":"ok","sentence":"Tình thế hiện nay đòi hỏi chúng ta phải bình tĩnh.","translation_ja":"現在の情勢は私たちが冷静であることを求めている。","confidence":"high","review_note":""}
