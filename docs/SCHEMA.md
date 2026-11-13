@@ -203,7 +203,7 @@ Row = `[jp, key_char, simp, pinyin_display, ja_display, ko_display, vi_display]`
 - `pat()` and the quiz logic use indexes 0,1,2 exactly as the prototype. Quiz pool = rows with `jp != simp`; wrong options are `simp` of other rows.
 
 ### 3.6 Keys the app writes to localStorage (unchanged names)
-`kb_srs` (key = `word_id`), `kb_custom` (array of `word_id`; prototype stored whole word objects), `kb_target`, `kb_auto`, `kb_rules` (per rule: array of `ex[0]` chars), `kb_glyph`, `kb_ex_open`.
+`kb_srs` (key = `word_id`), `kb_custom` (array of `word_id`; prototype stored whole word objects), `kb_target`, `kb_auto`, `kb_rules` (per rule: array of `ex[0]` chars), `kb_glyph`, `kb_ex_open`. Stage 5 (D20): `kb_newtoday` (`{"date": "YYYY-MM-DD" local, "ids": [word_id, ...]}`; added to this list at the Stage 5 gate, D77).
 App-phase keys (D71, D76; `docs/APP_PHASE.md`): `kb_mute` (bool), `kb_ruletest` (`{"<rule id>:<ex[0]>": {"zh": 0|1, "vi": 0|1}}`), `kb_glyphquiz` (`{"<char_id>": {"zh": 0|1, "vi": 0|1}}`), `kb_ffcard` (`{"<word_id>:<lang>": {"miss": n, "ok": n}}`), `kb_unknown` (array of `word_id`), `kb_read` (array of `passage_id` left at least once). The prototype's `kb_glyph` may stay unused.
 Because the key type changes, the app reads old-format values defensively (ignore entries that are not known `word_id`s).
 
