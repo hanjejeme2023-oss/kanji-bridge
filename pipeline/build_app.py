@@ -44,10 +44,9 @@ const FF=KB.words.filter(x=>x.false_friend).map(x=>{
   const w=WORD_BY_ID.get(x.word_id), rows=(FF_ROWS.get(x.word_id)||[]).slice()
     .sort((a,b)=>LANG_ORDER.indexOf(a.lang)-LANG_ORDER.indexOf(b.lang));
   const display=r=>r.reading_display||(r.lang==='zh'&&w.z!==w.j&&w.z!==w.h?`${w.z} ${w.p}`:r.reading||'');
-  const line=r=>[LANG_LABEL[r.lang],display(r),r.meaning_ja||''];
+  const line=r=>({lang:r.lang,label:LANG_LABEL[r.lang],reading:display(r),meaning:r.meaning_ja||'',trap:!!r.is_trap});
   const traps=x.false_friend.split(';');
-  return {id:x.word_id,w:x.jp||x.trad,safe:rows.filter(r=>!r.is_trap).map(line),
-    trap:rows.filter(r=>r.is_trap).map(line),t:traps.includes('zh')?'zh':traps.includes('vi')?'vi':traps[0]};
+  return {id:x.word_id,w:x.jp||x.trad,word:w,rows:rows.map(line),traps};
 });
 
 const PASSAGE_ROWS=KB.passages.slice().sort((a,b)=>(a.lang==='vi'?0:1)-(b.lang==='vi'?0:1)||
@@ -110,6 +109,14 @@ def build() -> str:
         ".usage-item mark{background:var(--indigo-soft);color:var(--indigo);padding:1px 2px;border-radius:3px}\n"
         ".usage-note{grid-column:1/-1;border-top:1px solid var(--line);padding-top:10px;font-size:13px}\n"
         ".mini-mark{border:none;background:var(--wrong-soft);color:var(--wrong);border-radius:10px;padding:2px 7px;font-size:11px;cursor:pointer;margin-left:6px}\n"
+        ".ff-reading{color:var(--sub);font-size:12px;margin-left:4px}\n"
+        ".ff-card{max-width:620px;margin:24px auto 0;border:1px solid var(--line);border-radius:20px;padding:34px;text-align:center}\n"
+        ".ff-card .front-lines,.ff-card .back-line{margin:20px auto;text-align:left;max-width:440px;line-height:1.9}\n"
+        ".ff-card .back-line{color:var(--wrong)}\n"
+        ".ff-card .rate{margin-top:28px}\n"
+        ".tile .examples{margin-top:18px}.tile .example{font-size:12px}.tile .example .translation{font-size:12px}\n"
+        ".unknown-review{margin:22px auto 0;max-width:760px;text-align:center}\n"
+        ".unknown-review .review-list{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:8px}\n"
         "@media(max-width:700px){.usage-grid{grid-template-columns:1fr}.usage-note{grid-column:auto}}",
         "passage selector wrapping",
     )
@@ -148,6 +155,42 @@ def build() -> str:
             text, section, f'{section}\n  <p class="tab-explain">{explanation}</p>',
             f"{section} explanation",
         )
+    text = replace_once(
+        text,
+        """<div class="toolbar">
+    <div class="seg" id="fffilter">
+      <button data-f="all" class="on">すべて</button>
+      <button data-f="zh">中国語</button>
+      <button data-f="vi">ベトナム語</button>
+    </div>
+    <div class="sub small">タップすると本当の意味</div>
+  </div>
+  <div class="tiles" id="fflist"></div>""",
+        """<div class="toolbar">
+    <div class="seg" id="ffmode">
+      <button data-m="list" class="on">一覧</button>
+      <button data-m="cards">フラッシュカード</button>
+    </div>
+    <div class="seg" id="fffilter">
+      <button data-f="all" class="on">すべて</button>
+      <button data-f="zh">中国語</button>
+      <button data-f="vi">ベトナム語</button>
+    </div>
+    <div class="seg" id="fflang" style="display:none">
+      <button data-l="zh" class="on">中国語</button>
+      <button data-l="vi">ベトナム語</button>
+    </div>
+    <div class="sub small" id="ffhelp">タップすると本当の意味</div>
+  </div>
+  <div class="tiles" id="fflist"></div>""",
+        "false-friend list and flashcard controls",
+    )
+    text = replace_once(
+        text,
+        '<div class="trans" id="ptrans"></div>\n  <div id="tokdetail"></div>',
+        '<div class="trans" id="ptrans"></div>\n  <div class="unknown-review" id="unknownreview"></div>\n  <div id="tokdetail"></div>',
+        "reading unknown review list",
+    )
     text = replace_once(
         text,
         """<div class="seg" id="gfilter">
@@ -319,6 +362,23 @@ $('#mute').onclick=()=>{mute=!mute;S.set('kb_mute',mute);if(mute)stopSpeech();sy
     )
     text = replace_once(
         text,
+        """$$('#nav button').forEach(b=>b.onclick=()=>{
+  view=b.dataset.v;stopSpeech();
+  $$('#nav button').forEach(x=>x.classList.toggle('on',x===b));
+  $$('main>section').forEach(s=>s.classList.toggle('hidden',s.id!=='v-'+view));
+  render();
+});""",
+        """$$('#nav button').forEach(b=>b.onclick=()=>{
+  if(view==='read'&&b.dataset.v!=='read')markPassageRead(pid);
+  view=b.dataset.v;stopSpeech();
+  $$('#nav button').forEach(x=>x.classList.toggle('on',x===b));
+  $$('main>section').forEach(s=>s.classList.toggle('hidden',s.id!=='v-'+view));
+  render();
+});""",
+        "reading leave mark on tab switch",
+    )
+    text = replace_once(
+        text,
         """function render(){({cards:renderCards,rules:renderRules,ff:renderFF,read:renderRead,glyph:renderGlyph})[view]();topStat()}""",
         """function clearUnknown(wordId){const rows=S.get('kb_unknown',[]),next=Array.isArray(rows)?rows.filter(id=>id!==wordId):[];S.set('kb_unknown',next)}
 function filteredGlyphs(){return GLYPHS.filter(g=>{
@@ -330,7 +390,8 @@ function filteredGlyphs(){return GLYPHS.filter(g=>{
 function updateCounts(){
   const counts={cards:deck().filter(targetOk).length,
     rules:(RULES.find(x=>x.id===ruleSel)||{ex:[]}).ex.length,
-    ff:FF.filter(f=>fff==='all'||f.t===fff).length,read:PASSAGES.length,glyph:filteredGlyphs().length};
+    ff:ffmode==='cards'?ffPool(fflang).length:FF.filter(f=>fff==='all'||f.traps.includes(fff)).length,
+    read:PASSAGES.length,glyph:filteredGlyphs().length};
   Object.entries(counts).forEach(([key,value])=>{const el=$(`#count-${key}`);if(el)el.textContent=value.toLocaleString('ja-JP')});
 }
 function render(){({cards:renderCards,rules:renderRules,ff:renderFF,read:renderRead,glyph:renderGlyph})[view]();topStat();updateCounts()}""",
@@ -448,13 +509,6 @@ function renderCards(){""",
         "correct card clears unknown mark",
     )
 
-    text = replace_once(text, "const o=ffopen.has(f.w);return `<div class=\"tile ${o?'open':''}\" data-w=\"${esc(f.w)}\"", "const o=ffopen.has(f.id);return `<div class=\"tile ${o?'open':''}\" data-w=\"${f.id}\"", "false-friend ID key")
-    text = replace_once(
-        text,
-        """$$('#fffilter button').forEach(b=>b.onclick=()=>{fff=b.dataset.f;$$('#fffilter button').forEach(x=>x.classList.toggle('on',x===b));renderFF()});""",
-        """$$('#fffilter button').forEach(b=>b.onclick=()=>{fff=b.dataset.f;$$('#fffilter button').forEach(x=>x.classList.toggle('on',x===b));renderFF();updateCounts()});""",
-        "false-friend count update",
-    )
     text = replace_once(
         text,
         """$$('#rulebar button').forEach(b=>b.onclick=()=>{ruleSel=b.dataset.id;quiz=null;renderRules()});""",
@@ -513,21 +567,104 @@ function newQuiz(r){
         "sound-rule typing test",
     )
 
-    text = replace_once(text, "let pid='v1', selTok=null;", "let pid=(PASSAGES[0]||{}).id||'', selTok=null;", "default passage")
-    text = replace_once(text, "const w=p.toks[selTok].w, inDeck=deck().some(x=>x.h===w.h);", "const w=p.toks[selTok].w, inDeck=deck().some(x=>x.id===w.id);", "custom-card membership")
-    text = replace_once(text, "custom.push(w);S.set('kb_custom',custom)", "custom.push(w.id);S.set('kb_custom',custom);updateCounts()", "custom-card persistence")
-    text = replace_once(
+    text = replace_between_once(
         text,
-        "<div class=\"cell\"><span>中国語</span><div><span class=\"zh\">${esc(w.z)}</span> ${esc(w.p)}${spk(w.z,'zh')}</div></div>",
-        "<div class=\"cell\"><span>中国語</span><div><span class=\"zh\">${esc(w.z)}</span> ${esc(w.p)}${w.p?spk(w.z,'zh'):''}</div></div>",
-        "empty Chinese speech button",
+        "/* 3. false friends */",
+        "/* 5. glyph */",
+        r'''/* 3. false friends */
+function cleanFFStats(value){
+  if(!value||typeof value!=='object'||Array.isArray(value))return {};
+  return Object.fromEntries(Object.entries(value).filter(([,row])=>row&&typeof row==='object'&&!Array.isArray(row))
+    .map(([key,row])=>[key,{miss:Number.isInteger(row.miss)&&row.miss>=0?row.miss:0,ok:Number.isInteger(row.ok)&&row.ok>=0?row.ok:0}]));
+}
+function orderedFFPool(entries,lang,stats){return entries.filter(f=>f.traps.includes(lang)).slice().sort((a,b)=>{
+  const ar=stats[`${a.id}:${lang}`],br=stats[`${b.id}:${lang}`],am=(ar||{}).miss||0,bm=(br||{}).miss||0;
+  return bm-am||Number(!!ar)-Number(!!br)||a.id.localeCompare(b.id);
+})}
+const newFFRoundIds=(entries,lang,stats)=>orderedFFPool(entries,lang,stats).slice(0,20).map(f=>f.id);
+const appendFFMiss=(queue,id)=>queue.concat([id]);
+const ffExampleRow=(examples,wordId,lang)=>examples.get(`${wordId}:${lang}:ff`)||examples.get(`${wordId}:${lang}:card`)||null;
+function ffLine(row){const reading=row.reading?(row.meaning&&!/^（.*）$/.test(row.reading)?`（${row.reading}）`:row.reading):'';
+  return `<div><b>${row.label}</b>${esc(row.meaning)}${reading?`<span class="ff-reading">${esc(reading)}</span>`:''}</div>`}
+function ffExampleMarkup(f,lang){const x=ffExampleRow(EXAMPLES,f.id,lang);if(!x)return'';
+  return `<div class="example"><div class="small sub">${lang==='zh'?'中国語':'ベトナム語'}</div><div class="${lang==='zh'?'zh':''}">${markedTarget(x)}</div>${lang==='zh'?`<div>${esc(x.pinyin)}</div>`:''}<div class="translation">${esc(x.translation)}</div></div>`;
+}
+function ffExamples(f,onlyLang=null){const langs=onlyLang?[onlyLang]:['zh','vi'],rows=langs.map(lang=>ffExampleMarkup(f,lang)).filter(Boolean);return rows.length?`<div class="examples">${rows.join('')}</div>`:''}
+function passageChecked(p,reads,unknown){return reads.has(p.id)&&!p.toks.some(t=>t.w&&unknown.has(t.w.id))}
+
+let ffmode='list',fff='all',fflang='zh',ffopen=new Set(),ffstats=cleanFFStats(S.get('kb_ffcard',{})),ffround=null,ffflipped=false;
+const ffPool=lang=>orderedFFPool(FF,lang,ffstats);
+function startFFRound(){const ids=newFFRoundIds(FF,fflang,ffstats);ffround={ids,queue:ids.slice()};ffflipped=false}
+function syncFFControls(){
+  $$('#ffmode button').forEach(b=>b.classList.toggle('on',b.dataset.m===ffmode));
+  $('#fffilter').style.display=ffmode==='list'?'flex':'none';$('#fflang').style.display=ffmode==='cards'?'flex':'none';
+  $$('#fffilter button').forEach(b=>b.classList.toggle('on',b.dataset.f===fff));
+  $$('#fflang button').forEach(b=>b.classList.toggle('on',b.dataset.l===fflang));
+  $('#ffhelp').textContent=ffmode==='list'?'タップすると本当の意味':'';
+}
+$$('#ffmode button').forEach(b=>b.onclick=()=>{ffmode=b.dataset.m;if(ffmode==='cards'&&!ffround)startFFRound();renderFF();updateCounts()});
+$$('#fffilter button').forEach(b=>b.onclick=()=>{fff=b.dataset.f;renderFF();updateCounts()});
+$$('#fflang button').forEach(b=>b.onclick=()=>{fflang=b.dataset.l;startFFRound();renderFF();updateCounts()});
+function renderFFList(){
+  const list=FF.filter(f=>fff==='all'||f.traps.includes(fff));$('#fflist').className='tiles';
+  $('#fflist').innerHTML=list.map(f=>{const o=ffopen.has(f.id);return `<div class="tile ${o?'open':''}" data-w="${f.id}" role="button" tabindex="0" aria-expanded="${o}">
+    <div class="w han">${esc(f.w)}</div><div class="l">${f.rows.filter(row=>!row.trap).map(ffLine).join('')}</div>
+    ${o?`<div class="trap">${f.rows.filter(row=>row.trap).map(ffLine).join('')}</div>${ffExamples(f)}`:'<div class="hint">実は…</div>'}</div>`}).join('');
+  $$('#fflist .tile').forEach(b=>{const toggle=()=>{const id=b.dataset.w;ffopen.has(id)?ffopen.delete(id):ffopen.add(id);renderFF();const next=$(`#fflist .tile[data-w="${id}"]`);if(next)next.focus()};
+    b.onclick=toggle;b.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle()}}});
+}
+function renderFFCard(){
+  if(!ffround||!ffround.queue.length)startFFRound();const id=(ffround.queue||[])[0],f=FF.find(row=>row.id===id);$('#fflist').className='';
+  if(!f){$('#fflist').innerHTML='<div class="empty">該当する単語はない</div>';return}
+  const target=f.rows.find(row=>row.lang===fflang&&row.trap),others=f.rows.filter(row=>row.lang!==fflang);
+  $('#fflist').innerHTML=`<div class="ff-card" data-ff-card="${f.id}" role="button" tabindex="0"><div class="giant han">${esc(f.w)}</div>
+    ${ffflipped?`<div class="back-line">${target?ffLine(target):''}${target?spk(fflang==='zh'?f.word.z:target.reading,fflang):''}</div>${ffExamples(f,fflang)}
+      <div class="rate"><button class="pill" data-ff-rate="miss">まだ<span class="key">1</span></button><button class="pill dark" data-ff-rate="ok">わかった<span class="key">2</span></button></div>`:
+      `<div class="front-lines">${others.map(ffLine).join('')}</div><div class="hint">実は…</div>`}</div>`;
+  const card=$('[data-ff-card]');if(!ffflipped){const flip=()=>{ffflipped=true;renderFF()};card.onclick=flip;card.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();flip()}}}
+  $$('[data-ff-rate]').forEach(b=>b.onclick=e=>{e.stopPropagation();rateFFCard(b.dataset.ffRate==='ok')});
+}
+function rateFFCard(right){if(!ffround||!ffflipped||!ffround.queue.length)return;const id=ffround.queue[0],key=`${id}:${fflang}`,row=ffstats[key]||{miss:0,ok:0};right?row.ok++:row.miss++;ffstats[key]=row;S.set('kb_ffcard',ffstats);
+  const rest=ffround.queue.slice(1);ffround.queue=right?rest:appendFFMiss(rest,id);ffflipped=false;if(!ffround.queue.length)startFFRound();renderFF()}
+function renderFF(){syncFFControls();ffmode==='cards'?renderFFCard():renderFFList()}
+function showFFWord(wordId){ffmode='list';fff='all';ffopen=new Set([wordId]);view='ff';stopSpeech();$$('#nav button').forEach(x=>x.classList.toggle('on',x.dataset.v==='ff'));$$('main>section').forEach(s=>s.classList.toggle('hidden',s.id!=='v-ff'));render();const tile=$(`#fflist .tile[data-w="${wordId}"]`);if(tile)tile.focus()}
+
+/* 4. reading */
+const PASSAGE_IDS=new Set(PASSAGES.map(p=>p.id));
+let pid=(PASSAGES[0]||{}).id||'',selTok=null;
+let readIds=new Set((Array.isArray(S.get('kb_read',[]))?S.get('kb_read',[]):[]).filter(id=>PASSAGE_IDS.has(id)));
+const unknownIds=()=>new Set((Array.isArray(S.get('kb_unknown',[]))?S.get('kb_unknown',[]):[]).filter(id=>ALL_WORD_IDS.has(id)));
+function markUnknown(wordId){const ids=unknownIds();ids.add(wordId);S.set('kb_unknown',[...ids])}
+function markPassageRead(passageId){if(!PASSAGE_IDS.has(passageId))return;readIds.add(passageId);S.set('kb_read',[...readIds])}
+$('#showann').onchange=renderRead;
+function renderRead(){
+  const unknown=unknownIds();
+  $('#psel').innerHTML=PASSAGES.map(p=>`<button data-p="${p.id}" class="${p.id===pid?'on':''}">${p.name}${passageChecked(p,readIds,unknown)?' ✓':''}</button>`).join('');
+  $$('#psel button').forEach(b=>b.onclick=()=>{if(b.dataset.p!==pid){markPassageRead(pid);pid=b.dataset.p;selTok=null}renderRead()});
+  const p=PASSAGES.find(x=>x.id===pid),ann=$('#showann').checked;
+  $('#passage').className='passage '+(p.lang==='zh'?'zh':'');
+  $('#passage').innerHTML=p.toks.map((t,i)=>{
+    if(t.x)return'';const nx=p.toks[i+1],tail=nx&&nx.x?`<span class="pt">${esc(nx.t)}</span>`:'';
+    if(t.g)return `<span class="tok func"><span class="w"><span class="s">${esc(t.t)}</span>${tail}</span><span class="a">${ann?esc(t.g):''}</span></span>`;
+    const a=p.lang==='vi'?t.w.h:`${t.w.jr}　${t.w.k}`;
+    return `<span class="tok sino ${selTok===i?'sel':''}" data-i="${i}"><span class="w"><span class="s" tabindex="0" role="button">${esc(t.t)}</span>${tail}</span><span class="a ${p.lang==='vi'?'han zh':''}">${ann?esc(a):''}</span></span>`;
+  }).join('');
+  const sent=p.lang==='vi'?p.toks.map(t=>t.t).join(' ').replace(/ ([.,])/g,'$1'):p.toks.map(t=>t.t).join('');$('#ptrans').innerHTML=`${esc(p.tr)}${spk(sent,p.lang)}`;
+  $$('.tok.sino .s').forEach(el=>{const pick=()=>{selTok=+el.closest('.tok').dataset.i;markUnknown(p.toks[selTok].w.id);renderRead()};el.onclick=pick;el.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();pick()}}});
+  const marked=[],seen=new Set();p.toks.forEach((t,i)=>{if(t.w&&unknownIds().has(t.w.id)&&!seen.has(t.w.id)){seen.add(t.w.id);marked.push([i,t.w])}});
+  $('#unknownreview').innerHTML=marked.length?`<div class="sub small">わからない</div><div class="review-list">${marked.map(([i,w])=>`<button class="pill" data-review-i="${i}">${esc(w.j||w.h)}</button>`).join('')}</div>`:'';
+  $$('[data-review-i]').forEach(b=>b.onclick=()=>{selTok=+b.dataset.reviewI;renderRead()});
+  const d=$('#tokdetail');if(selTok===null){d.innerHTML='<div class="empty">下線の単語をタップすると、4つの言語の対応が出る</div>';return}
+  const w=p.toks[selTok].w,inDeck=deck().some(x=>x.id===w.id);d.innerHTML=`<div class="sheet">
+    <div class="top"><div class="han" style="font-size:44px;line-height:1.1">${esc(w.h)}</div><button class="pill ${inDeck?'':'dark'}" id="addcard" ${inDeck?'disabled':''}>${inDeck?'カードに追加済み':'カードに追加'}</button></div>
+    <div class="grid"><div class="cell"><span>日本語</span><div>${esc(w.jr)}</div></div><div class="cell"><span>韓国語</span><div class="ko">${esc(w.k)}</div></div>
+      <div class="cell"><span>中国語</span><div><span class="zh">${esc(w.z)}</span> ${esc(w.p)}${w.p?spk(w.z,'zh'):''}</div></div><div class="cell"><span>ベトナム語</span><div>${esc(w.v)}${w.v?spk(w.v,'vi'):''}</div></div></div>
+    ${w.note?`<p class="sub small" style="margin:16px 0 0">${esc(w.note)}</p>`:''}<div style="margin-top:14px">${ruleTags(w)}</div></div>`;
+  if(!inDeck)$('#addcard').onclick=()=>{custom.push(w.id);S.set('kb_custom',custom);updateCounts();renderRead();topStat()};
+}''',
+        "false-friend cards and reading unknown marks",
     )
-    text = replace_once(
-        text,
-        "<div class=\"cell\"><span>ベトナム語</span><div>${esc(w.v)}${spk(w.v,'vi')}</div></div>",
-        "<div class=\"cell\"><span>ベトナム語</span><div>${esc(w.v)}${w.v?spk(w.v,'vi'):''}</div></div>",
-        "empty Vietnamese speech button",
-    )
+
     text = replace_once(
         text,
         """$$('#gfilter button').forEach(b=>b.onclick=()=>{gfil=b.dataset.p;$$('#gfilter button').forEach(x=>x.classList.toggle('on',x===b));renderGlyph()});""",
@@ -565,7 +702,7 @@ function usageBody(g){const use=USAGE.get(g[7])||{zh:[],vi:[]},note=CHAR_NOTES.g
 function usagePanel(g){const open=gmode==='quiz'&&glyphOpened.has(g[7]);return `<details class="usage" data-usage="${g[7]}" ${open?'open':''}><summary>使われ方</summary><div class="usage-body">${open?usageBody(g):''}</div></details>`}
 function bindUsagePanels(){
   $$('#glyphbox details[data-usage]').forEach(d=>d.ontoggle=()=>{if(d.open&&!d.querySelector('.usage-body').innerHTML){const g=GLYPHS.find(row=>row[7]===d.dataset.usage);d.querySelector('.usage-body').innerHTML=usageBody(g)}});
-  $('#glyphbox').onclick=e=>{const b=e.target.closest&&e.target.closest('[data-ff-word]');if(!b)return;e.preventDefault();e.stopPropagation();view='ff';stopSpeech();$$('#nav button').forEach(x=>x.classList.toggle('on',x.dataset.v==='ff'));$$('main>section').forEach(s=>s.classList.toggle('hidden',s.id!=='v-ff'));render()};
+  $('#glyphbox').onclick=e=>{const b=e.target.closest&&e.target.closest('[data-ff-word]');if(!b)return;e.preventDefault();e.stopPropagation();showFFWord(b.dataset.ffWord)};
 }
 function clearGlyphWords(g,lang,input){const parts=input.split(/[,/，／、]/).map(x=>x.trim()).filter(Boolean);g[8].forEach(id=>{const w=WORD_BY_ID.get(id);if(!w)return;const accepted=lang==='zh'?[w.p]:[w.v],alts=lang==='vi'?(w.va||[]):[];if(parts.some(part=>judge(part,lang,accepted,alts)==='ok'))clearUnknown(id)})}
 function saveGlyphResult(g,lang,value,input){const row=gresults[g[7]]||{};row[lang]=value;gresults[g[7]]=row;S.set('kb_glyphquiz',gresults);if(value===1)clearGlyphWords(g,lang,input);glyphOpened.add(g[7]);
@@ -592,17 +729,15 @@ function renderGlyph(){
     )
     text = replace_once(
         text,
-        """el.onclick=pick;el.onkeydown=e=>{if(e.key==='Enter'){e.preventDefault();pick()}}""",
-        """el.onclick=pick;el.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();pick()}}""",
-        "reading Enter and Space",
-    )
-    text = replace_once(
-        text,
         """if(view==='rules'&&quiz){
     if(!quiz.ans&&n>=0&&n<quiz.opts.length){e.preventDefault();pickRule(quiz.opts[n]);return}
     if(quiz.ans&&e.key==='Enter'){e.preventDefault();quiz=null;renderRules();return}
   }""",
         """if(view==='cards'&&!flipped&&cur&&(e.key==='Enter'||e.key===' ')){e.preventDefault();doFlip();return}
+  if(view==='ff'&&ffmode==='cards'){
+    if(!ffflipped&&(e.key==='Enter'||e.key===' ')){e.preventDefault();ffflipped=true;renderFF();return}
+    if(ffflipped&&(e.key==='1'||e.key==='2')){e.preventDefault();rateFFCard(e.key==='2');return}
+  }
   if(view==='rules'&&quiz){
     if(!quiz.ans&&n>=0&&n<quiz.opts.length){e.preventDefault();pickRule(quiz.opts[n]);return}
     if(quiz.ans&&(e.key==='Enter'||e.key===' ')){e.preventDefault();quiz=null;renderRules();return}
@@ -629,8 +764,8 @@ function renderGlyph(){
     text = replace_once(
         text,
         "srs={};custom=[];rprog={};gscore={ok:0,n:0};doneToday=0;\n  S.set('kb_srs',{});S.set('kb_custom',[]);S.set('kb_rules',{});S.set('kb_glyph',gscore);",
-        "srs={};custom=[];rprog={};ruleResults={};gresults={};glyphOpened.clear();doneToday=0;newToday={date:localDay(),ids:[]};\n  S.set('kb_srs',{});S.set('kb_custom',[]);S.set('kb_newtoday',newToday);S.set('kb_rules',{});S.set('kb_glyph',{});S.set('kb_ruletest',{});S.set('kb_glyphquiz',{});S.set('kb_unknown',[]);",
-        "reset Part C state",
+        "srs={};custom=[];rprog={};ruleResults={};gresults={};glyphOpened.clear();ffstats={};ffround=null;ffflipped=false;readIds.clear();doneToday=0;newToday={date:localDay(),ids:[]};\n  S.set('kb_srs',{});S.set('kb_custom',[]);S.set('kb_newtoday',newToday);S.set('kb_rules',{});S.set('kb_glyph',{});S.set('kb_ruletest',{});S.set('kb_glyphquiz',{});S.set('kb_unknown',[]);S.set('kb_read',[]);S.set('kb_ffcard',{});",
+        "reset Part C and D state",
     )
     return text
 

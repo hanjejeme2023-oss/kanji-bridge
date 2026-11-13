@@ -52,6 +52,19 @@ def run_judging_js(expressions: dict[str, str]) -> dict:
     return json.loads(completed.stdout)
 
 
+def run_part_d_js(expressions: dict[str, str]) -> dict:
+    app = APP.read_text(encoding="utf-8")
+    start = app.index("function cleanFFStats")
+    end = app.index("let ffmode", start)
+    pairs = ",".join(f"{json.dumps(key)}:({expression})" for key, expression in expressions.items())
+    script = "const esc=s=>String(s);\n" + app[start:end] + f"\nconsole.log(JSON.stringify({{{pairs}}}));\n"
+    completed = subprocess.run(
+        ["node", "-"], input=script, text=True, encoding="utf-8",
+        capture_output=True, check=True,
+    )
+    return json.loads(completed.stdout)
+
+
 class Stage5DataTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -187,6 +200,25 @@ class Stage5DataTests(unittest.TestCase):
             if word["card_eligible"] and len(word["trad"]) > 1
         }
         self.assertTrue(any((word_id, "vi", "card") not in keys for word_id in deck_ids))
+
+    def test_false_friend_examples_cover_preference_fallback_and_none(self):
+        keys = {(row[0], row[1], row[2]) for row in self.data["examples"]}
+        false_friends = {
+            word["word_id"]: word.get("false_friend", "").split(";")
+            for word in self.data["words"] if word.get("false_friend")
+        }
+        self.assertTrue(any(
+            (word_id, lang, "ff") in keys
+            for word_id, langs in false_friends.items() for lang in langs
+        ))
+        self.assertTrue(any(
+            (word_id, lang, "ff") not in keys and (word_id, lang, "card") in keys
+            for word_id, langs in false_friends.items() for lang in langs
+        ))
+        self.assertTrue(any(
+            (word_id, lang, "ff") not in keys and (word_id, lang, "card") not in keys
+            for word_id, langs in false_friends.items() for lang in langs
+        ))
 
 
 class Stage5AppTests(unittest.TestCase):
@@ -336,6 +368,58 @@ class Stage5AppTests(unittest.TestCase):
         self.assertIn("if(viRight&&zhRight)clearUnknown(cur.id)", self.app)
         self.assertIn("if(value===1)clearGlyphWords(g,lang,input)", self.app)
         self.assertIn("parts.some(part=>judge(part,lang,accepted,alts)==='ok')", self.app)
+
+    def test_part_d_false_friend_format_rounds_storage_and_examples(self):
+        values = run_part_d_js({
+            "line": "ffLine({label:'韓',meaning:'列車',reading:'기차'})",
+            "fixed_note": "ffLine({label:'韓',meaning:'',reading:'（韓国語ではほぼ使わない）'})",
+            "prefer_ff": "ffExampleRow(new Map([['w1:zh:card',{use:'card'}],['w1:zh:ff',{use:'ff'}]]),'w1','zh').use",
+            "fallback_card": "ffExampleRow(new Map([['w1:vi:card',{use:'card'}]]),'w1','vi').use",
+            "no_example": "ffExampleRow(new Map(),'w1','vi')",
+            "round": "(()=>{const xs=Array.from({length:25},(_,i)=>({id:'w'+String(i+1).padStart(5,'0'),traps:['zh']})),stats={'w00025:zh':{miss:4,ok:0},'w00001:zh':{miss:0,ok:2}};return newFFRoundIds(xs,'zh',stats)})()",
+            "weak_order": "(()=>{const xs=[{id:'w00001',traps:['zh']},{id:'w00002',traps:['zh']},{id:'w00003',traps:['zh']}],stats={'w00001:zh':{miss:0,ok:2},'w00003:zh':{miss:2,ok:0}};return orderedFFPool(xs,'zh',stats).map(x=>x.id)})()",
+            "miss_returns": "appendFFMiss(['w00002','w00003'],'w00001')",
+            "clean_store": "cleanFFStats({'w1:zh':{miss:2,ok:3},bad:null,'w2:vi':{miss:-1,ok:'x'}})",
+            "first_display": "passageChecked({id:'p1',toks:[{w:{id:'w1'}}]},new Set(),new Set())",
+            "left_clear": "passageChecked({id:'p1',toks:[{w:{id:'w1'}}]},new Set(['p1']),new Set())",
+            "marked": "passageChecked({id:'p1',toks:[{w:{id:'w1'}}]},new Set(['p1']),new Set(['w1']))",
+            "cleared": "passageChecked({id:'p1',toks:[{w:{id:'w1'}}]},new Set(['p1']),new Set())",
+            "remarked_elsewhere": "passageChecked({id:'p1',toks:[{w:{id:'w1'}}]},new Set(['p1']),new Set(['w1']))",
+        })
+        self.assertEqual(values["line"], '<div><b>韓</b>列車<span class="ff-reading">（기차）</span></div>')
+        self.assertEqual(values["fixed_note"], '<div><b>韓</b><span class="ff-reading">（韓国語ではほぼ使わない）</span></div>')
+        self.assertEqual(values["prefer_ff"], "ff")
+        self.assertEqual(values["fallback_card"], "card")
+        self.assertIsNone(values["no_example"])
+        self.assertEqual(len(values["round"]), 20)
+        self.assertEqual(values["round"][0], "w00025")
+        self.assertEqual(values["weak_order"], ["w00003", "w00002", "w00001"])
+        self.assertEqual(values["miss_returns"], ["w00002", "w00003", "w00001"])
+        self.assertEqual(values["clean_store"], {"w1:zh": {"miss": 2, "ok": 3}, "w2:vi": {"miss": 0, "ok": 0}})
+        self.assertFalse(values["first_display"])
+        self.assertTrue(values["left_clear"])
+        self.assertFalse(values["marked"])
+        self.assertTrue(values["cleared"])
+        self.assertFalse(values["remarked_elsewhere"])
+
+        self.assertIn("ffstats=cleanFFStats(S.get('kb_ffcard',{}))", self.app)
+        self.assertIn("S.set('kb_ffcard',ffstats)", self.app)
+        self.assertIn("slice(0,20)", self.app)
+        self.assertIn("data-ff-rate=\"miss\">まだ", self.app)
+        self.assertIn("data-ff-rate=\"ok\">わかった", self.app)
+        self.assertIn("showFFWord(b.dataset.ffWord)", self.app)
+
+    def test_part_d_reading_marks_review_and_computed_checks(self):
+        self.assertIn("function markUnknown(wordId)", self.app)
+        self.assertIn("markUnknown(p.toks[selTok].w.id)", self.app)
+        self.assertIn('id="unknownreview"', self.app)
+        self.assertIn('<div class="sub small">わからない</div>', self.app)
+        self.assertIn("function markPassageRead(passageId)", self.app)
+        self.assertIn("if(view==='read'&&b.dataset.v!=='read')markPassageRead(pid)", self.app)
+        self.assertIn("if(b.dataset.p!==pid){markPassageRead(pid)", self.app)
+        self.assertIn("passageChecked(p,readIds,unknown)?' ✓':''", self.app)
+        self.assertIn("S.set('kb_read',[...readIds])", self.app)
+        self.assertNotIn("S.set('kb_readcheck'", self.app)
 
     def test_global_controls_space_mute_counts_and_card_examples(self):
         self.assertIn("let mute=S.get('kb_mute',false)", self.app)
