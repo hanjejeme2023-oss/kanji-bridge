@@ -44,7 +44,7 @@ def run_judging_js(expressions: dict[str, str]) -> dict:
     start = app.index("const PY_TONE_MARKS")
     end = app.index("const viFinal", start)
     pairs = ",".join(f"{json.dumps(key)}:({expression})" for key, expression in expressions.items())
-    script = app[start:end] + f"\nconsole.log(JSON.stringify({{{pairs}}}));\n"
+    script = "const esc=s=>String(s);\n" + app[start:end] + f"\nconsole.log(JSON.stringify({{{pairs}}}));\n"
     completed = subprocess.run(
         ["node", "-"], input=script, text=True, encoding="utf-8",
         capture_output=True, check=True,
@@ -140,6 +140,37 @@ class Stage5DataTests(unittest.TestCase):
             if not row[1] and raw_chars[row[0]]["source_vi"] == "unihan_unverified"
         )
         self.assertEqual(unverified[4], [])
+
+    def test_part_c_glyph_reading_display_and_usage_inputs(self):
+        chars = {row["key_char"]: row for row in self.data["chars"]}
+        glyphs = {row[0]: row for row in self.data["glyphs"]}
+
+        def display(key_char, lang):
+            char = chars[key_char]
+            row = glyphs[char["char_id"]]
+            targets = row[3 if lang == "zh" else 4]
+            all_readings = char["pinyin_all" if lang == "zh" else "vi_all"].split(";")
+            return targets + [reading for reading in all_readings if reading not in targets]
+
+        self.assertEqual(display("還", "zh"), ["hái", "huán", "xuán"])
+        self.assertEqual(display("行", "zh")[:2], ["xíng", "háng"])
+        self.assertEqual(display("行", "vi")[:2], ["hành", "hàng"])
+
+        words = {row["word_id"]: row for row in self.data["words"]}
+        notes = dict(self.data["char_notes"])
+        saw_empty = saw_literary = saw_false_friend = saw_note = False
+        for char_id, zh_rows, vi_rows in self.data["usage"]:
+            saw_empty |= not zh_rows or not vi_rows
+            saw_note |= char_id in notes
+            for word_id, position in vi_rows:
+                word = words[word_id]
+                self.assertLessEqual(position, len(word["vi"].split()))
+                saw_literary |= bool(word.get("lit"))
+                saw_false_friend |= bool(word.get("false_friend"))
+        self.assertTrue(saw_empty)
+        self.assertTrue(saw_literary)
+        self.assertTrue(saw_false_friend)
+        self.assertTrue(saw_note)
 
     def test_card_deck_is_multi_character_and_typed_cards_have_pinyin_tones(self):
         deck = [word for word in self.data["words"] if word["card_eligible"] and len(word["trad"]) > 1]
@@ -252,6 +283,9 @@ class Stage5AppTests(unittest.TestCase):
             "hint_word": "toneHint('zh',['xuésheng'],'25')",
             "hint_poly_zh": "toneHint('zh',['hái','huán'])",
             "hint_poly_vi": "toneHint('vi',['hành','hàng'])",
+            "stored_cell": "tableTestCell('c00001','zh',['hái'],[],1,true,()=>{})",
+            "clean_glyph_store": "cleanTestResults({'c00001':{zh:1,vi:0},'w00001':{zh:0}},new Set(['c00001']))",
+            "answered_cell": "(()=>{let saved=null;tableTestCell('c00002','zh',['hái','huán'],[],null,true,value=>saved=value);const out={},classes=[];const input={dataset:{testCell:'c00002:zh'},value:'hai',classList:{remove(){},add(x){classes.push(x)}},parentElement:{querySelector(){return out}}};const value=answerTableCell(input);return {value,saved,text:out.textContent,classes}})()",
         })
         right = {key for key, value in values.items() if value == "ok"}
         expected_right = {
@@ -266,6 +300,42 @@ class Stage5AppTests(unittest.TestCase):
         self.assertEqual(values["hint_word"], "2声・軽声")
         self.assertEqual(values["hint_poly_zh"], "2声 / 2声")
         self.assertEqual(values["hint_poly_vi"], "huyền / huyền")
+        self.assertIn('class="ok"', values["stored_cell"])
+        self.assertNotIn("value=", values["stored_cell"])
+        self.assertEqual(values["clean_glyph_store"], {"c00001": {"zh": 1, "vi": 0}})
+        self.assertEqual(values["answered_cell"], {"value": 1, "saved": 1, "text": "正解", "classes": ["ok"]})
+
+    def test_part_c_rule_test_storage_and_shared_empty_reopen_cells(self):
+        self.assertIn("let ruleResults=cleanTestResults(S.get('kb_ruletest',{}))", self.app)
+        self.assertIn("S.set('kb_ruletest',ruleResults)", self.app)
+        self.assertIn("ruleTest?'テストをやめる':'テストする'", self.app)
+        self.assertIn("if(ruleTest)bindTableTests($('#ruledetail'))", self.app)
+        self.assertIn("state=resultValue(saved)", self.app)
+        self.assertIn("<input data-test-cell=", self.app)
+        self.assertNotIn("S.set('kb_rules',ruleResults)", self.app)
+        self.assertGreaterEqual(self.app.count("tableTestCell("), 4)
+
+    def test_part_c_glyph_quiz_filters_score_usage_and_clear_unknown(self):
+        self.assertNotIn(".filter(x=>!(x[0]===x[1]&&x[1]===x[2]))", self.app)
+        for level in range(1, 8):
+            self.assertIn(f'data-p="level-{level}">レベル{level}', self.app)
+        self.assertIn('data-p="wrong">間違えた字だけ', self.app)
+        self.assertIn("let gresults=cleanTestResults(S.get('kb_glyphquiz',{}),GLYPH_IDS)", self.app)
+        self.assertIn("S.set('kb_glyphquiz',gresults)", self.app)
+        self.assertIn("const score=glyphScore()", self.app)
+        self.assertIn("glyphTargets(g,'zh').length?", self.app)
+        self.assertIn("glyphTargets(g,'vi').length?", self.app)
+        self.assertIn("function usageBody(g)", self.app)
+        self.assertIn("markPosition((raw.simp||raw.trad),pos)", self.app)
+        self.assertIn("markSyllable(pinyin,pos)", self.app)
+        self.assertIn("raw.lit?'<span class=\"tag off\">文語", self.app)
+        self.assertIn("例なし", self.app)
+        self.assertIn("CHAR_NOTES.get(g[7])", self.app)
+        self.assertIn('data-ff-word="${w.id}">偽の友達', self.app)
+        self.assertIn("function clearUnknown(wordId)", self.app)
+        self.assertIn("if(viRight&&zhRight)clearUnknown(cur.id)", self.app)
+        self.assertIn("if(value===1)clearGlyphWords(g,lang,input)", self.app)
+        self.assertIn("parts.some(part=>judge(part,lang,accepted,alts)==='ok')", self.app)
 
     def test_global_controls_space_mute_counts_and_card_examples(self):
         self.assertIn("let mute=S.get('kb_mute',false)", self.app)

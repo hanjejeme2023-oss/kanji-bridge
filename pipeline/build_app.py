@@ -16,10 +16,11 @@ if(!KB)throw new Error('KB_DATA failed to load');
 const splitVals=s=>s?s.split(';'):[];
 const WC_BY_WORD=new Map();
 KB.word_chars.forEach(x=>{if(!WC_BY_WORD.has(x.word_id))WC_BY_WORD.set(x.word_id,[]);WC_BY_WORD.get(x.word_id).push(x)});
+const RAW_WORD_BY_ID=new Map(KB.words.map(x=>[x.word_id,x]));
 const adaptWord=x=>{
   const w={id:x.word_id,h:x.trad,j:x.jp||x.trad,z:x.simp||x.trad,p:x.pinyin||'',
     jr:x.ja?(x.ja_use==='rare'?`（${x.ja}）`:x.ja):'',
-    k:x.ko?(x.ko_use==='rare'?`（${x.ko}）`:x.ko):'',v:x.vi||'',
+    k:x.ko?(x.ko_use==='rare'?`（${x.ko}）`:x.ko):'',v:x.vi||'',ff:x.false_friend||'',lit:!!x.lit,
     pt:x.pt||'',syl:x.syl_aligned?(WC_BY_WORD.get(x.word_id)||[]):null};
   if(x.vi){const va=splitVals(x.vi_alt);if(va.length)w.va=va}
   if(x.note_ja)w.note=x.note_ja;
@@ -58,10 +59,11 @@ const PASSAGES=PASSAGE_ROWS.map(p=>({id:p.passage_id,lang:p.lang,
     t.gloss_ja?{t:t.t,g:t.gloss_ja}:{t:t.t,x:1})}));
 
 const CHAR_BY_ID=new Map(KB.chars.map(x=>[x.char_id,x]));
+const CHAR_NOTES=new Map(KB.char_notes);
+const USAGE=new Map(KB.usage.map(x=>[x[0],{zh:x[1],vi:x[2]}]));
 const GLYPHS=KB.glyphs.map(row=>{const x=CHAR_BY_ID.get(row[0]);return [x.jp,x.key_char,x.simp,
   splitVals(x.pinyin_all).join(' / '),splitVals(x.ja_on_all).join(' / '),
-  splitVals(x.ko_base_all).join(' / '),splitVals(x.vi_all).join(' / '),row[0],row[1],row[2],row[3],row[4]]})
-  .filter(x=>!(x[0]===x[1]&&x[1]===x[2]));
+  splitVals(x.ko_base_all).join(' / '),splitVals(x.vi_all).join(' / '),row[0],row[1],row[2],row[3],row[4]]});
 '''
 
 
@@ -70,6 +72,14 @@ def replace_once(text: str, old: str, new: str, label: str) -> str:
     if count != 1:
         raise RuntimeError(f"{label}: expected one prototype match, found {count}")
     return text.replace(old, new, 1)
+
+
+def replace_between_once(text: str, start: str, end: str, new: str, label: str) -> str:
+    if text.count(start) != 1 or text.count(end) != 1:
+        raise RuntimeError(f"{label}: expected one start and end marker")
+    left = text.index(start)
+    right = text.index(end, left)
+    return text[:left] + new + "\n\n" + text[right:]
 
 
 def build() -> str:
@@ -84,7 +94,23 @@ def build() -> str:
         ".examples{max-width:620px;margin:30px auto 0;display:grid;gap:14px;text-align:left}\n"
         ".example{border-top:1px solid var(--line);padding-top:13px;font-size:14px}\n"
         ".example mark{background:var(--indigo-soft);color:var(--indigo);padding:1px 2px;border-radius:3px}\n"
-        ".example .translation{color:var(--sub);font-size:13px}",
+        ".example .translation{color:var(--sub);font-size:13px}\n"
+        ".table-test{display:grid;gap:3px;min-width:120px}\n"
+        ".table-test input{width:100%;box-sizing:border-box;border:1px solid var(--line);border-radius:8px;padding:8px;background:var(--paper);font:inherit;color:var(--ink)}\n"
+        ".table-test input.ok{border-color:var(--right);background:var(--right-soft)}\n"
+        ".table-test input.ng{border-color:var(--wrong);background:var(--wrong-soft)}\n"
+        ".test-result{font-size:12px;min-height:17px}.test-result.ok{color:var(--right)}.test-result.ng{color:var(--wrong)}\n"
+        ".glyph-filters{display:flex;flex-wrap:wrap;gap:6px}\n"
+        ".glyph-score{color:var(--sub);font-size:13px;margin:0 0 10px;text-align:right}\n"
+        ".grow.quiz{grid-template-columns:1fr 1fr 1.25fr 1.25fr}\n"
+        ".grow .usage{grid-column:1/-1;text-align:left;margin-top:12px}\n"
+        ".grow .usage summary{cursor:pointer;color:var(--indigo);font-size:13px}\n"
+        ".usage-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:12px;padding:16px;background:var(--mist);border-radius:12px}\n"
+        ".usage-lang{font-size:12px;color:var(--sub);margin-bottom:7px}.usage-item{font-size:14px;margin-top:8px}\n"
+        ".usage-item mark{background:var(--indigo-soft);color:var(--indigo);padding:1px 2px;border-radius:3px}\n"
+        ".usage-note{grid-column:1/-1;border-top:1px solid var(--line);padding-top:10px;font-size:13px}\n"
+        ".mini-mark{border:none;background:var(--wrong-soft);color:var(--wrong);border-radius:10px;padding:2px 7px;font-size:11px;cursor:pointer;margin-left:6px}\n"
+        "@media(max-width:700px){.usage-grid{grid-template-columns:1fr}.usage-note{grid-column:auto}}",
         "passage selector wrapping",
     )
     text = replace_once(
@@ -122,6 +148,30 @@ def build() -> str:
             text, section, f'{section}\n  <p class="tab-explain">{explanation}</p>',
             f"{section} explanation",
         )
+    text = replace_once(
+        text,
+        """<div class="seg" id="gfilter">
+      <button data-p="all" class="on">すべて</button>
+      <button data-p="diff">3つとも違う</button>
+      <button data-p="jz">日本＝中国</button>
+      <button data-p="jk">日本＝韓国</button>
+    </div>""",
+        """<div class="seg glyph-filters" id="gfilter">
+      <button data-p="all" class="on">すべて</button>
+      <button data-p="diff">3つとも違う</button>
+      <button data-p="jz">日本＝中国</button>
+      <button data-p="jk">日本＝韓国</button>
+      <button data-p="level-1">レベル1</button>
+      <button data-p="level-2">レベル2</button>
+      <button data-p="level-3">レベル3</button>
+      <button data-p="level-4">レベル4</button>
+      <button data-p="level-5">レベル5</button>
+      <button data-p="level-6">レベル6</button>
+      <button data-p="level-7">レベル7</button>
+      <button data-p="wrong">間違えた字だけ</button>
+    </div>""",
+        "glyph level and wrong filters",
+    )
     text = replace_once(
         text,
         "<script>\nconst S=",
@@ -193,6 +243,35 @@ function toneHint(lang,readings,tones=''){
     const syllables=String(reading).split(/\\s+|['\u2019-]+/).filter(Boolean);
     return syllables.map(x=>markedTone(x,lang)).join('・');
   }).join(' / ');
+}
+const resultValue=v=>v===1||v===0?v:null;
+function cleanTestResults(value,knownKeys=null){
+  if(!value||typeof value!=='object'||Array.isArray(value))return {};
+  return Object.fromEntries(Object.entries(value).filter(([key,row])=>(!knownKeys||knownKeys.has(key))&&row&&typeof row==='object'&&!Array.isArray(row))
+    .map(([key,row])=>[key,Object.fromEntries(['zh','vi'].filter(lang=>resultValue(row[lang])!==null).map(lang=>[lang,row[lang]]))])
+    .filter(([,row])=>Object.keys(row).length));
+}
+let TABLE_TEST_CELLS=new Map();
+function beginTableTest(){TABLE_TEST_CELLS=new Map()}
+function tableTestCell(key,lang,readings,viAlt,saved,several,onAnswer){
+  const id=`${key}:${lang}`,state=resultValue(saved),values=(readings||[]).filter(Boolean);
+  TABLE_TEST_CELLS.set(id,{lang,readings:values,viAlt:viAlt||[],several:!!several,onAnswer});
+  return `<div class="table-test"><div class="tone-hint">${esc(toneHint(lang,values))}</div><input data-test-cell="${esc(id)}" class="${state===1?'ok':state===0?'ng':''}" autocomplete="off" spellcheck="false"><div class="test-result"></div></div>`;
+}
+function focusNextTest(input){const all=[...document.querySelectorAll('input[data-test-cell]')],i=all.indexOf(input);if(i>=0&&all[i+1])all[i+1].focus()}
+function answerTableCell(input){
+  const cfg=TABLE_TEST_CELLS.get(input.dataset.testCell);if(!cfg||!input.value.trim())return null;
+  const right=judge(input.value,cfg.lang,cfg.readings,cfg.viAlt,cfg.several)==='ok',value=right?1:0;
+  input.classList.remove('ok','ng');input.classList.add(right?'ok':'ng');input.dataset.judged='1';
+  const out=input.parentElement.querySelector('.test-result');out.className=`test-result ${right?'ok':'ng'}`;out.textContent=right?'正解':cfg.readings.join(' / ');
+  cfg.onAnswer(value,input.value);return value;
+}
+function bindTableTests(root){
+  const inputs=[...root.querySelectorAll('input[data-test-cell]')];
+  inputs.forEach(input=>{input.oninput=()=>{delete input.dataset.judged;const out=input.parentElement.querySelector('.test-result');out.className='test-result';out.textContent=''};
+    input.onblur=()=>{if(!input.dataset.judged)answerTableCell(input)};
+    input.onkeydown=e=>{if(e.key==='Enter'||(e.key===' '&&input.dataset.judged)){e.preventDefault();if(input.dataset.judged)focusNextTest(input);else answerTableCell(input)}};
+  });
 }""",
         "shared reading judging and tone hints",
     )
@@ -241,7 +320,13 @@ $('#mute').onclick=()=>{mute=!mute;S.set('kb_mute',mute);if(mute)stopSpeech();sy
     text = replace_once(
         text,
         """function render(){({cards:renderCards,rules:renderRules,ff:renderFF,read:renderRead,glyph:renderGlyph})[view]();topStat()}""",
-        """function filteredGlyphs(){return GLYPHS.filter(g=>gfil==='all'||pat(g)===gfil)}
+        """function clearUnknown(wordId){const rows=S.get('kb_unknown',[]),next=Array.isArray(rows)?rows.filter(id=>id!==wordId):[];S.set('kb_unknown',next)}
+function filteredGlyphs(){return GLYPHS.filter(g=>{
+  if(gfil==='all')return true;
+  if(gfil==='wrong')return Object.values(gresults[g[7]]||{}).some(value=>value===0);
+  if(gfil.startsWith('level-'))return g[9]===+gfil.slice(6);
+  return pat(g)===gfil;
+})}
 function updateCounts(){
   const counts={cards:deck().filter(targetOk).length,
     rules:(RULES.find(x=>x.id===ruleSel)||{ex:[]}).ex.length,
@@ -354,6 +439,14 @@ function renderCards(){""",
         "const q=due().filter(w=>w.id!==cur.id);\n  if(r===0&&q.length===0)srs[cur.id].due=0;",
         "rated-card filtering",
     )
+    text = replace_once(
+        text,
+        "function doFlip(){guess.vi=($('#gvi')||{}).value||'';guess.zh=($('#gzh')||{}).value||'';flipped=true;renderCards();",
+        "function doFlip(){guess.vi=($('#gvi')||{}).value||'';guess.zh=($('#gzh')||{}).value||'';\n"
+        "  const viRight=target==='zh'||judge(guess.vi,'vi',[cur.v],cur.va||[])==='ok',zhRight=target==='vi'||judge(guess.zh,'zh',[cur.p])==='ok';\n"
+        "  if(viRight&&zhRight)clearUnknown(cur.id);flipped=true;renderCards();",
+        "correct card clears unknown mark",
+    )
 
     text = replace_once(text, "const o=ffopen.has(f.w);return `<div class=\"tile ${o?'open':''}\" data-w=\"${esc(f.w)}\"", "const o=ffopen.has(f.id);return `<div class=\"tile ${o?'open':''}\" data-w=\"${f.id}\"", "false-friend ID key")
     text = replace_once(
@@ -367,6 +460,57 @@ function renderCards(){""",
         """$$('#rulebar button').forEach(b=>b.onclick=()=>{ruleSel=b.dataset.id;quiz=null;renderRules()});""",
         """$$('#rulebar button').forEach(b=>b.onclick=()=>{ruleSel=b.dataset.id;quiz=null;renderRules();updateCounts()});""",
         "rule count update",
+    )
+    text = replace_between_once(
+        text,
+        "/* 2. rules */",
+        "/* 3. false friends */",
+        r'''/* 2. rules */
+let ruleSel='k', rprog=S.get('kb_rules',{}), quiz=null, ruleTest=false;
+let ruleResults=cleanTestResults(S.get('kb_ruletest',{}));
+function saveRuleResult(key,lang,value){const row=ruleResults[key]||{};row[lang]=value;ruleResults[key]=row;S.set('kb_ruletest',ruleResults)}
+function renderRules(){
+  beginTableTest();
+  $('#rulebar').innerHTML=RULES.map(r=>{const d=(rprog[r.id]||[]).length;
+    return `<button class="${r.id===ruleSel?'on':''}" data-id="${r.id}"><div class="r"><span class="ko">${r.kr}</span> → ${r.vi.map(v=>'-'+v).join('/')}</div><div class="p">${d}/${r.ex.length}</div></button>`}).join('');
+  $$('#rulebar button').forEach(b=>b.onclick=()=>{ruleSel=b.dataset.id;quiz=null;renderRules();updateCounts()});
+  const r=RULES.find(x=>x.id===ruleSel);
+  if(!quiz)newQuiz(r);
+  const e=quiz.e;
+  const rows=r.ex.map(x=>{const key=`${r.id}:${x[0]}`,stored=ruleResults[key]||{};
+    return `<tr><td class="han" style="font-size:22px">${x[0]}</td><td class="ko">${x[1]}</td><td>${x[2]}</td><td>${ruleTest?tableTestCell(key,'vi',[x[3]],[],stored.vi,false,(value)=>saveRuleResult(key,'vi',value)):`<b style="font-weight:600">${esc(x[3])}</b>${spk(x[3],'vi')}`}</td><td class="sub">${ruleTest?tableTestCell(key,'zh',[x[4]],[],stored.zh,false,(value)=>saveRuleResult(key,'zh',value)):`${esc(x[4])}${spk(x[0],'zh')}`}</td></tr>`}).join('');
+  $('#ruledetail').innerHTML=`
+    <div class="rulehead"><h2>パッチム <span class="ko">${r.kr}</span> は ${r.vi.map(v=>'-'+v).join(' / ')} になる</h2>
+      <p>日本語では${esc(r.jp)}。中国語では${esc(r.zh)}。</p></div>
+    <div class="qcard">
+      <div class="giant han">${e[0]}</div>
+      <div class="readings"><span class="ko">${e[1]}</span><span class="sub">${e[2]}</span></div>
+      <div class="opts">${quiz.opts.map((o,i)=>`<button class="pill ${quiz.ans?(o===e[3]?'right':(o===quiz.ans?'wrong':'')):''}" data-o="${esc(o)}"><span class="key">${i+1}</span>${esc(o)}</button>`).join('')}</div>
+      <div class="after">${quiz.ans?`<div style="margin-bottom:16px" class="small sub">ベトナム語 ${esc(e[3])}${spk(e[3],'vi')}　　中国語 ${esc(e[4])}${spk(e[0],'zh')}</div><button class="pill dark" id="qnext">次へ<span class="key">Enter</span></button>`:'<span class="sub small">ベトナム語の読みはどれ？</span>'}</div>
+    </div>
+    <div style="margin:24px 0 10px;text-align:right"><button class="pill" id="ruletest" type="button">${ruleTest?'テストをやめる':'テストする'}</button></div>
+    <details ${ruleTest||S.get('kb_ex_open',false)?'open':''}><summary>このルールの例をすべて見る</summary>
+      <table><tr><th>漢字</th><th>韓国語</th><th>日本語</th><th>ベトナム語</th><th>中国語</th></tr>${rows}</table></details>`;
+  $$('#ruledetail .opts button').forEach(b=>b.onclick=()=>pickRule(b.dataset.o));
+  $('#ruledetail details').ontoggle=ev=>{if(!ruleTest)S.set('kb_ex_open',ev.target.open)};
+  $('#ruletest').onclick=()=>{ruleTest=!ruleTest;renderRules()};
+  if(ruleTest)bindTableTests($('#ruledetail'));
+  const n=$('#qnext');if(n){n.onclick=()=>{quiz=null;renderRules()};n.focus({preventScroll:true})}
+}
+function pickRule(o){
+  if(quiz.ans)return;quiz.ans=o;
+  if(autoplay){stopSpeech();speak(quiz.e[3],'vi',null,true)}
+  if(o===quiz.e[3]){const a=rprog[ruleSel]||[];if(!a.includes(quiz.e[0]))a.push(quiz.e[0]);rprog[ruleSel]=a;S.set('kb_rules',rprog)}
+  renderRules();
+}
+function newQuiz(r){
+  const done=rprog[r.id]||[];const pool=r.ex.filter(e=>!done.includes(e[0]));const src=pool.length?pool:r.ex;
+  const e=src[Math.floor(Math.random()*src.length)];
+  const stem=e[3].replace(/(ng|nh|ch|c|p|t|n|m)$/,'');
+  const alts=shuffle(['c','p','t','n','m','ng'].filter(f=>!r.vi.includes(f))).slice(0,2).map(f=>stem+f);
+  quiz={e,opts:shuffle([e[3],...alts]),ans:null};
+}''',
+        "sound-rule typing test",
     )
 
     text = replace_once(text, "let pid='v1', selTok=null;", "let pid=(PASSAGES[0]||{}).id||'', selTok=null;", "default passage")
@@ -396,6 +540,56 @@ function renderCards(){""",
         """const list=filteredGlyphs();""",
         "shared glyph filter",
     )
+    text = replace_between_once(
+        text,
+        "/* 5. glyph */",
+        "/* keyboard */",
+        r'''/* 5. glyph */
+let gmode='list', gfil='all';
+const GLYPH_IDS=new Set(GLYPHS.map(g=>g[7]));
+let gresults=cleanTestResults(S.get('kb_glyphquiz',{}),GLYPH_IDS),glyphOpened=new Set();
+const pat=g=>g[0]===g[2]&&g[0]!==g[1]?'jz':g[0]===g[1]&&g[0]!==g[2]?'jk':g[0]!==g[1]&&g[1]!==g[2]&&g[0]!==g[2]?'diff':'same';
+const glyphTargets=(g,lang)=>g[lang==='zh'?10:11]||[];
+function glyphDisplay(g,lang){const targets=glyphTargets(g,lang),all=splitVals(g[lang==='zh'?3:6]);return [...targets,...all.filter(x=>!targets.includes(x))].join(' / ')}
+const glyphViAlt=g=>[...new Set(g[8].flatMap(id=>(WORD_BY_ID.get(id)||{}).va||[]))];
+function glyphScore(){let ok=0,answered=0;filteredGlyphs().forEach(g=>{const row=gresults[g[7]]||{};['zh','vi'].forEach(lang=>{if(glyphTargets(g,lang).length&&resultValue(row[lang])!==null){answered++;if(row[lang]===1)ok++}})});return {ok,answered}}
+function updateGlyphScore(){const el=$('#glyphscore');if(el){const score=glyphScore();el.textContent=`${score.ok} / ${score.answered} 正解`}}
+function markPosition(text,position){const chars=[...String(text)],i=position-1;if(i<0||i>=chars.length)return esc(text);return `${esc(chars.slice(0,i).join(''))}<mark>${esc(chars[i])}</mark>${esc(chars.slice(i+1).join(''))}`}
+function markSyllable(text,position){const parts=String(text).split(' '),i=position-1;if(i<0||i>=parts.length)return esc(text);return parts.map((part,n)=>n===i?`<mark>${esc(part)}</mark>`:esc(part)).join(' ')}
+const ffMark=w=>w.ff?`<button class="mini-mark" type="button" data-ff-word="${w.id}">偽の友達</button>`:'';
+function usageBody(g){const use=USAGE.get(g[7])||{zh:[],vi:[]},note=CHAR_NOTES.get(g[7])||'';
+  const zh=use.zh.length?use.zh.map(([id,pos,pinyin])=>{const w=WORD_BY_ID.get(id),raw=RAW_WORD_BY_ID.get(id);return `<div class="usage-item"><span class="zh">${markPosition((raw.simp||raw.trad),pos)}</span>${ffMark(w)}<br>${markSyllable(pinyin,pos)}</div>`}).join(''):'<div class="sub">例なし</div>';
+  const vi=use.vi.length?use.vi.map(([id,pos])=>{const w=WORD_BY_ID.get(id),raw=RAW_WORD_BY_ID.get(id);return `<div class="usage-item">${markPosition((raw.jp||raw.trad),pos)}${raw.lit?'<span class="tag off">文語</span>':''}${ffMark(w)}<br>${markSyllable(raw.vi||'',pos)}</div>`}).join(''):'<div class="sub">例なし</div>';
+  return `<div class="usage-grid"><div><div class="usage-lang">中国語</div>${zh}</div><div><div class="usage-lang">ベトナム語</div>${vi}</div>${note?`<div class="usage-note">${esc(note)}</div>`:''}</div>`;
+}
+function usagePanel(g){const open=gmode==='quiz'&&glyphOpened.has(g[7]);return `<details class="usage" data-usage="${g[7]}" ${open?'open':''}><summary>使われ方</summary><div class="usage-body">${open?usageBody(g):''}</div></details>`}
+function bindUsagePanels(){
+  $$('#glyphbox details[data-usage]').forEach(d=>d.ontoggle=()=>{if(d.open&&!d.querySelector('.usage-body').innerHTML){const g=GLYPHS.find(row=>row[7]===d.dataset.usage);d.querySelector('.usage-body').innerHTML=usageBody(g)}});
+  $('#glyphbox').onclick=e=>{const b=e.target.closest&&e.target.closest('[data-ff-word]');if(!b)return;e.preventDefault();e.stopPropagation();view='ff';stopSpeech();$$('#nav button').forEach(x=>x.classList.toggle('on',x.dataset.v==='ff'));$$('main>section').forEach(s=>s.classList.toggle('hidden',s.id!=='v-ff'));render()};
+}
+function clearGlyphWords(g,lang,input){const parts=input.split(/[,/，／、]/).map(x=>x.trim()).filter(Boolean);g[8].forEach(id=>{const w=WORD_BY_ID.get(id);if(!w)return;const accepted=lang==='zh'?[w.p]:[w.v],alts=lang==='vi'?(w.va||[]):[];if(parts.some(part=>judge(part,lang,accepted,alts)==='ok'))clearUnknown(id)})}
+function saveGlyphResult(g,lang,value,input){const row=gresults[g[7]]||{};row[lang]=value;gresults[g[7]]=row;S.set('kb_glyphquiz',gresults);if(value===1)clearGlyphWords(g,lang,input);glyphOpened.add(g[7]);
+  const d=$(`#glyphbox details[data-usage="${g[7]}"]`);if(d){d.open=true;const body=d.querySelector('.usage-body');if(!body.innerHTML)body.innerHTML=usageBody(g)}updateGlyphScore();if(gfil==='wrong'&&value===1){renderGlyph();updateCounts()}}
+function glyphListRow(g){return `<div class="grow">
+  <div><div class="g han">${g[0]}</div><div class="lbl">${g[4]}</div></div>
+  <div><div class="g han ko">${g[1]}</div><div class="lbl ko">${g[5]}</div></div>
+  <div class="zhcol"><div class="g han zh">${g[2]}</div><div class="lbl">${esc(glyphDisplay(g,'zh'))}${glyphTargets(g,'zh').length?spk(g[2],'zh'):''}</div></div>
+  <div class="rd">${esc(glyphDisplay(g,'vi'))}${glyphTargets(g,'vi').length?spk(glyphTargets(g,'vi').join(', '),'vi'):''}</div>${usagePanel(g)}</div>`}
+function glyphQuizRow(g){const stored=gresults[g[7]]||{},py=glyphTargets(g,'zh'),vi=glyphTargets(g,'vi');return `<div class="grow quiz">
+  <div><div class="g han">${g[0]}</div><div class="lbl">${g[4]}</div></div>
+  <div><div class="g han ko">${g[1]}</div><div class="lbl ko">${g[5]}</div></div>
+  <div class="zhcol"><div class="g han zh">${g[2]}</div>${py.length?tableTestCell(g[7],'zh',py,[],stored.zh,true,(value,input)=>saveGlyphResult(g,'zh',value,input)):`<div class="rd">${esc(glyphDisplay(g,'zh'))}</div>`}</div>
+  <div>${vi.length?tableTestCell(g[7],'vi',vi,glyphViAlt(g),stored.vi,true,(value,input)=>saveGlyphResult(g,'vi',value,input)):`<div class="rd">${esc(glyphDisplay(g,'vi'))}</div>`}</div>${usagePanel(g)}</div>`}
+$$('#gmode button').forEach(b=>b.onclick=()=>{gmode=b.dataset.g;$$('#gmode button').forEach(x=>x.classList.toggle('on',x===b));renderGlyph();updateCounts()});
+$$('#gfilter button').forEach(b=>b.onclick=()=>{gfil=b.dataset.p;$$('#gfilter button').forEach(x=>x.classList.toggle('on',x===b));renderGlyph();updateCounts()});
+function renderGlyph(){
+  beginTableTest();const list=filteredGlyphs();
+  const head='<div class="ghead"><span>日本</span><span>韓国・繁体</span><span>中国・簡体</span><span>読み</span></div>';
+  $('#glyphbox').innerHTML=(gmode==='quiz'?`<div class="glyph-score" id="glyphscore"></div>`:'')+(list.length?head+list.map(g=>gmode==='quiz'?glyphQuizRow(g):glyphListRow(g)).join(''):'<div class="empty">該当する字はない</div>');
+  if(gmode==='quiz'){bindTableTests($('#glyphbox'));updateGlyphScore()}bindUsagePanels();
+}''',
+        "glyph rows typing quiz and usage",
+    )
     text = replace_once(
         text,
         """el.onclick=pick;el.onkeydown=e=>{if(e.key==='Enter'){e.preventDefault();pick()}}""",
@@ -421,12 +615,22 @@ function renderCards(){""",
         """if(gq.ans&&(e.key==='Enter'||e.key===' ')){e.preventDefault();gq=null;renderGlyph();return}""",
         "glyph Enter and Space",
     )
+    text = replace_once(
+        text,
+        """  if(view==='glyph'&&gmode==='quiz'&&gq){
+    if(!gq.ans&&n>=0&&n<gq.opts.length){e.preventDefault();pickGlyph(gq.opts[n]);return}
+    if(gq.ans&&(e.key==='Enter'||e.key===' ')){e.preventDefault();gq=null;renderGlyph();return}
+  }
+""",
+        "",
+        "remove old glyph multiple-choice shortcuts",
+    )
 
     text = replace_once(
         text,
         "srs={};custom=[];rprog={};gscore={ok:0,n:0};doneToday=0;\n  S.set('kb_srs',{});S.set('kb_custom',[]);S.set('kb_rules',{});S.set('kb_glyph',gscore);",
-        "srs={};custom=[];rprog={};gscore={ok:0,n:0};doneToday=0;newToday={date:localDay(),ids:[]};\n  S.set('kb_srs',{});S.set('kb_custom',[]);S.set('kb_newtoday',newToday);S.set('kb_rules',{});S.set('kb_glyph',gscore);",
-        "reset new-card state",
+        "srs={};custom=[];rprog={};ruleResults={};gresults={};glyphOpened.clear();doneToday=0;newToday={date:localDay(),ids:[]};\n  S.set('kb_srs',{});S.set('kb_custom',[]);S.set('kb_newtoday',newToday);S.set('kb_rules',{});S.set('kb_glyph',{});S.set('kb_ruletest',{});S.set('kb_glyphquiz',{});S.set('kb_unknown',[]);",
+        "reset Part C state",
     )
     return text
 
