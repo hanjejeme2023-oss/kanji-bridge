@@ -666,3 +666,40 @@ Codex condensed `docs/HANDOFF.md` in Part C (`e5cc127`) and Part D (`acba6ca`) w
 - Verify 偽の友達 Option-A rows/fixed note, `ff`-before-`card` examples and none case, exact 字体 link, both trap-language card pools, Enter/Space and 1/2 keys, 20-card/まだ return/weak-first behavior and `kb_ffcard` storage.
 - Verify 読解 first display/no ✓, leave/✓, mark/review/no ✓, `clearUnknown`/✓ and shared-word re-mark/no ✓ behavior.
 - Re-run the offline browser benchmark. Accepted Part-A benchmark: page load 0.35 s, adapter cold 40 ms, 偽の友達 median/max 147/700 ms, 字体 69/561 ms.
+
+## 7. Removed from HANDOFF at D78 (2026-11-14; HANDOFF at `7351956`)
+
+### 7.1 Stage 6 loop-setup assignment (superseded by D78)
+
+#### NEXT ASSIGNMENT (as of the Stage 5 gate)
+
+**Codex — Stage 6 loop setup, then loop 1 Step 1 (Measure)** (`PROMPT.md` Stage 6; loop 1 theme **Accuracy**). Offline; no API request.
+
+1. **Loop setup:** write `tests/metrics.py`, which appends one row per loop to `docs/METRICS.md` with every metric in the PROMPT table (cross-source disagreement on a fresh random sample of 100 words; a placeholder column for the auditor's 30-word manual check and for "Gemini content accepted in review" (filled by the auditor); fixed test words 20/20; HSK words with all 4 languages and the source ceiling; unexplained `word_chars` syllable-count mismatches; duplicate keys / unexplained `_merge` drops; passage tokens that do not resolve; app views failing or showing console errors / "undefined" / "NaN"; rebuild twice → identical). Record the random seed in the row. Create `docs/LEARNER_FEEDBACK.md` with a loop-1 section using the five PROMPT Step 5 headings.
+2. **Loop 1 Step 1:** rebuild (`run_all.py`), run `tests/` and `tests/metrics.py` (new seed). For "open `app/index.html` from disk, exercise every view, record console errors": `docs/review_scripts/stage5_gate_run.py` does this offline in headless Chrome/Edge on a copy of `app/` (exit 0 = no error, no failed check, no bad text); Codex may call it from `metrics.py` or extend it in `tests/`. Do not change `app/` for this.
+3. Hand off to the **independent auditor** (fresh Claude session, Stage 6 Step 2, loop 1) with the PROMPT audit start message. The auditor reads "Open problems" below; the loop-4 items from D77 item 6 stay listed for loop 4 unless the auditor ranks them higher.
+
+
+### 7.2 User click-through and performance re-measure (Stage 5 gate)
+
+### For the user: browser click-through (about 10 minutes; optional before loop 1)
+
+Open `<project folder>\app\index.html` in Chrome or Edge (double-click). The gate checked all of this in a headless browser; what a script cannot judge is how it looks and feels:
+- [ ] カード: type a Vietnamese answer in Telex without tones (e.g. `tieenf` style); 正解 shows in green; a wrong answer shows the right reading in red; the example sentence appears with the word highlighted; switch to 中国語 and 両方 and look at the tone hints (「4声・2声」).
+- [ ] Press Space and Enter outside a box (flips the card) and inside a box (Space types a space until judged).
+- [ ] ミュート on → no sound anywhere; reload → still on.
+- [ ] 音のルール: 「テストする」, answer a few cells (Enter / click away), 「テストをやめる」, 「テストする」 again → boxes empty, colours kept.
+- [ ] 偽の友達: the list lines look right (「韓 列車（기차）」); open 包子 or 汽車 → examples; フラッシュカード: Enter flips, 1 / 2 work, ベトナム語 switch.
+- [ ] 読解: tap two words → 「わからない」 list; move to the next passage → the first has no ✓; a passage left without taps gets ✓.
+- [ ] 字体: scroll すべて; クイズ: type 還 `hai, huan`; the 使われ方 panel opens; レベル1 and 間違えた字だけ filters; a 「偽の友達」 mark opens that word's entry.
+- [ ] Anything that looks different from the prototype beyond the list above, or feels slow (especially opening 字体 and 偽の友達) → `docs/LEARNER_FEEDBACK.md` loop 1 (Codex creates it).
+
+### For the user: optional performance re-measure on the real app (2 minutes)
+
+Useful because headless Chrome showed ≈ 3 s for the first 字体 すべて render and ≈ 1 s for the 偽の友達 tab (D77 item 6c); `tests/stage5_benchmark.py` no longer measures the app (it builds Part A-era adapters), so do not use it. Steps: open `app\index.html` in Chrome or Edge; wait until the card shows; press F12 → Console; paste the line below and press Enter; copy the printed JSON into `docs/LEARNER_FEEDBACK.md` (loop 1) or give it to the next agent. Values are milliseconds, each including layout. It changes no saved progress (it only switches tabs and filters; it ends on カード).
+
+```js
+(()=>{const T=f=>{const t=performance.now();f();void document.body.offsetHeight;return Math.round(performance.now()-t)},q=s=>document.querySelector(s),nav=v=>q(`#nav button[data-v="${v}"]`).click(),r={load:Math.round(performance.getEntriesByType('navigation')[0].loadEventEnd)};r.ff=T(()=>nav('ff'));r.ffOpen=T(()=>q('#fflist .tile').click());r.ffClose=T(()=>q('#fflist .tile').click());nav('glyph');r.glyphList=T(()=>q('#gfilter button[data-p="diff"]').click());r.glyphAll=T(()=>q('#gfilter button[data-p="all"]').click());r.glyphQuiz=T(()=>q('#gmode button[data-g="quiz"]').click());r.glyphLevel1=T(()=>q('#gfilter button[data-p="level-1"]').click());q('#gfilter button[data-p="all"]').click();q('#gmode button[data-g="list"]').click();r.cards=T(()=>nav('cards'));console.log(JSON.stringify(r));return r})()
+```
+Headless reference (3 runs): load 540-690, ff 880-1,030, ffOpen 195-225, glyphAll 2,780-3,230, glyphQuiz 710-780, glyphLevel1 100-120, cards 20-26. If your `glyphAll` or `ff` is above about 1,000, loop 4 fixes the rendering (same layout).
+

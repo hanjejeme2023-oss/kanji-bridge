@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 2026-11-14 — D78: Stage 6 loops ended; release plan [Claude]
+- The user ends the five Stage 6 learner loops after app v2: one pre-release fix pass (Codex R1), then a public non-commercial release, then improvements from the user's own study. Recorded as **D78**; contract `docs/RELEASE_PLAN.md` (fix scope, licences, AI-content terms, repository, hosting, Final Delivery items, maintenance, user questions).
+- Licence check of every used source from `licenses/` and `SOURCES.md`: all allow public redistribution; dataset CC BY-SA 4.0, code MIT (suggested); EDRDG acknowledgement and update procedure; hsk30 provenance risk extended by the user to the public release; Google's terms for Gemini output read (no ownership claim, disclosure in app and README).
+- Full git-history scan (61 commits): no secrets or credentials; personal data listed (author e-mail, an earlier e-mail in D19 text, Windows profile path) with options for the user. App checked for https: no protocol-dependent code.
+- HANDOFF: NEXT ASSIGNMENT is now User (answer RELEASE_PLAN §8, speed check), then Codex R1. The old loop-setup assignment and the click-through/performance sections moved verbatim to `HANDOFF_ARCHIVE.md` §7. No request sent.
+
 ## 2026-11-12 — Stage 5 gate: PASS, Stage 5 complete (app v2) [Claude]
 - Gate of the app phase (Parts A-D) against Stage 5 Done-when, D71/D76, APP_PHASE §4 and Global Rule 10: **PASS** (`docs/GATES.md`, **D77**). New review scripts `docs/review_scripts/stage5_gate_run.py` + `stage5_gate_harness.js`: copy `app/` alone to a temp folder and run it from `file://` in headless Chrome/Edge with every host blocked, exercising all five views (0 console errors, 0 "undefined"/"NaN"/"null" in 17 view states, every feature check passes).
 - Independent re-derivation of `glyphs`, `examples` offsets and counts from the final tables; 154/154 non-rebuild tests; one fresh rebuild 273 s, byte-identical. Part D's long test times were machine load (Part D changed no code the slow tests or the build run).
