@@ -105,8 +105,39 @@ def _keyed(items: Iterable[dict[str, Any]], label: str) -> dict[str, dict[str, A
     return result
 
 
+def _restore_reviewed_inputs(fresh: list[tuple[str, str, list[dict[str, Any]]]]) -> None:
+    """Undo reviewed input changes made after generation (R1, D78 item 3); fail-closed.
+
+    A later review overlay can change a field that a task-6 input copies (e.g. the
+    contrast meaning). ``config/task6_input_review.csv`` lists each such field with
+    the value the accepted answer was generated from and the value a fresh build
+    gives now; the fresh item must hold exactly ``current_value``, is compared with
+    ``generated_value``, and every row must be used exactly once. Any other
+    difference still stops the build.
+    """
+    with (CONFIG / "task6_input_review.csv").open(encoding="utf-8", newline="") as handle:
+        reader = csv.DictReader(handle)
+        if reader.fieldnames != ["key", "field", "generated_value", "current_value", "reason"]:
+            raise ValueError("task6_input_review.csv has the wrong columns")
+        rows = list(reader)
+    by_key = {item["key"]: item for _name, _kind, items in fresh for item in items}
+    seen: set[tuple[str, str]] = set()
+    for row in rows:
+        marker = (row["key"], row["field"])
+        if marker in seen or not row["reason"].strip():
+            raise ValueError(f"task6_input_review.csv row is duplicated or has no reason: {marker}")
+        seen.add(marker)
+        item = by_key.get(row["key"])
+        if item is None or row["field"] not in item or row["field"] == "key":
+            raise ValueError(f"task6_input_review.csv target is missing: {marker}")
+        if item[row["field"]] != row["current_value"]:
+            raise ValueError(f"task6_input_review.csv current value differs from the fresh build: {marker}")
+        item[row["field"]] = row["generated_value"]
+
+
 def _load_main_answers() -> tuple[dict[str, dict[str, Any]], dict[str, dict[str, Any]]]:
     fresh = builders.build_task6_batches()
+    _restore_reviewed_inputs(fresh)
     if len(fresh) != EXPECTED_BATCHES:
         raise ValueError(f"fresh task-6 build has {len(fresh)} batches, expected {EXPECTED_BATCHES}")
     _expected_names(ACCEPTED, ".jsonl", EXPECTED_BATCHES)

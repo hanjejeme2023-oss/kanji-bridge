@@ -1,0 +1,3 @@
+word_id,trad,lang,meaning_ja_generated,meaning_ja_review,reason
+w00262,那邊,ko,あちら、どのあたり,どこ、どのあたり,"R1 review overlay (Claude, D78 item 3): Korean 나변 means どこ (Stage 4 part-4b review); the generated text mixes in the Chinese sense あちら. The Chinese trap stays."
+w08625,器械,ko,機械、器具,器具、器械,"R1 review overlay (Claude, D78 item 3): the generated text mixes in the homophone 機械 (기계); Korean 器械 means 器具、器械 (Stage 4 part-4b review)."

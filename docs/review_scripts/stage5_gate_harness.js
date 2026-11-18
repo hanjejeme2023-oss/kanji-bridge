@@ -1,7 +1,11 @@
 /* Stage 5 gate harness (Claude, 2026-11-12). Injected into a COPY of app/index.html by
    stage5_gate_run.py; exercises all five views and every D71/D76 feature, then writes JSON
-   into a pre element with id harness-out. It changes localStorage of the throwaway headless profile only. */
-window.addEventListener('load',()=>{
+   into a pre element with id harness-out. It changes localStorage of the throwaway headless profile only.
+   R1 (2026-11-14, D78): the long lists render in chunks (RELEASE_PLAN 1.2), so F() completes them
+   before the harness counts or queries rows; the end checks that pending chunks also finish on their own,
+   the window title and the about panel. Driven over file:// and http://127.0.0.1 by stage5_gate_run.py. */
+window.addEventListener('load',async()=>{
+const F=()=>{if(typeof flushChunks==='function')flushChunks()};
 const out={errors:window.__errs,checks:{},bad:[],fail:[]};
 const rec=(k,v)=>{out.checks[k]=v};
 const must=(label,cond)=>{if(!cond)out.fail.push(label)};
@@ -68,7 +72,7 @@ try{
   rec('rule_hint0',inputs[0].parentElement.querySelector('.tone-hint').textContent);
   document.querySelector('#ruletest').click();chk('rules-after');
   /* ---- 偽の友達 ---- */
-  rec('t_ff',timed(()=>nav('ff')));chk('ff');
+  rec('t_ff',timed(()=>nav('ff')));F();chk('ff');
   const tiles=document.querySelectorAll('#fflist .tile');rec('ff_tiles',tiles.length);
   const kisha=FF.find(f=>f.w==='汽車');rec('ff_kisha_lines',kisha&&document.querySelector(`#fflist .tile[data-w="${kisha.id}"] .l`).innerText);
   const pao=FF.find(f=>f.w==='包子');
@@ -76,8 +80,8 @@ try{
   const paoTile=document.querySelector(`#fflist .tile[data-w="${pao.id}"]`);
   rec('ff_paozi_open',paoTile.innerText);must('paozi examples 2',paoTile.querySelectorAll('.example').length===2);
   chk('ff-open');
-  document.querySelector('#fffilter button[data-f="vi"]').click();rec('ff_vi_tiles',document.querySelectorAll('#fflist .tile').length);rec('count_ff_vi',document.querySelector('#count-ff').textContent);
-  document.querySelector('#fffilter button[data-f="all"]').click();
+  document.querySelector('#fffilter button[data-f="vi"]').click();F();rec('ff_vi_tiles',document.querySelectorAll('#fflist .tile').length);rec('count_ff_vi',document.querySelector('#count-ff').textContent);
+  document.querySelector('#fffilter button[data-f="all"]').click();F();
   // open all tiles' examples check over data: none case
   let noneCase=FF.filter(f=>!ffExampleRow(EXAMPLES,f.id,'zh')&&!ffExampleRow(EXAMPLES,f.id,'vi')).length;rec('ff_without_examples',noneCase);
   let emptyHint=0;FF.forEach(f=>f.rows.forEach(r=>{if(!r.meaning&&!r.reading)emptyHint++}));rec('ff_rows_without_meaning_or_reading',emptyHint);
@@ -90,7 +94,7 @@ try{
   key(' ');key('2');rec('kb_ffcard2',ls('kb_ffcard'));must('queue shrinks on ok',ffround.queue.length===19);
   document.querySelector('#fflang button[data-l="vi"]').click();rec('ffround_vi_len',ffround.ids.length);rec('count_ff_cards_vi',document.querySelector('#count-ff').textContent);
   key('Enter');rec('ffcard_vi_back',document.querySelector('#fflist').innerText.slice(0,300));chk('ffcards-vi');
-  document.querySelector('#ffmode button[data-m="list"]').click();
+  document.querySelector('#ffmode button[data-m="list"]').click();F();
   /* ---- 読解 ---- */
   rec('t_read',timed(()=>nav('read')));chk('read');
   const pills=()=>[...document.querySelectorAll('#psel button')];
@@ -112,8 +116,8 @@ try{
   clearUnknown(markedId);
   nav('glyph');must('tab switch marks read',(ls('kb_read')||[]).includes(p2.id));
   /* ---- 字体 ---- */
-  chk('glyph');rec('glyph_rows',document.querySelectorAll('#glyphbox .grow').length);
-  const t0=performance.now();document.querySelector('#gmode button[data-g="quiz"]').click();rec('t_glyph_quiz',Math.round(performance.now()-t0));chk('glyph-quiz');
+  F();chk('glyph');rec('glyph_rows',document.querySelectorAll('#glyphbox .grow').length);
+  const t0=performance.now();document.querySelector('#gmode button[data-g="quiz"]').click();rec('t_glyph_quiz',Math.round(performance.now()-t0));F();chk('glyph-quiz');
   rec('glyph_quiz_inputs',document.querySelectorAll('#glyphbox input[data-test-cell]').length);
   const huan=GLYPHS.find(g=>g[1]==='還');const hz=document.querySelector(`#glyphbox input[data-test-cell="${huan[7]}:zh"]`);
   rec('huan_hint',hz.parentElement.querySelector('.tone-hint').textContent);
@@ -124,16 +128,16 @@ try{
   rec('xing_wrong',xz.parentElement.querySelector('.test-result').textContent);
   rec('kb_glyphquiz',ls('kb_glyphquiz'));rec('score',document.querySelector('#glyphscore').textContent);
   const usageOpen=document.querySelector(`#glyphbox details[data-usage="${huan[7]}"]`);rec('huan_usage',usageOpen.open?usageOpen.innerText:'closed');
-  document.querySelector('#gfilter button[data-p="wrong"]').click();rec('wrong_rows',document.querySelectorAll('#glyphbox .grow').length);rec('count_glyph_wrong',document.querySelector('#count-glyph').textContent);
-  for(let l=1;l<=7;l++){document.querySelector(`#gfilter button[data-p="level-${l}"]`).click();out.checks['level'+l]=document.querySelectorAll('#glyphbox .grow').length}
+  document.querySelector('#gfilter button[data-p="wrong"]').click();F();rec('wrong_rows',document.querySelectorAll('#glyphbox .grow').length);rec('count_glyph_wrong',document.querySelector('#count-glyph').textContent);
+  for(let l=1;l<=7;l++){document.querySelector(`#gfilter button[data-p="level-${l}"]`).click();F();out.checks['level'+l]=document.querySelectorAll('#glyphbox .grow').length}
   document.querySelector('#gfilter button[data-p="all"]').click();
   // reopen quiz: emptied with colour
-  document.querySelector('#gmode button[data-g="list"]').click();document.querySelector('#gmode button[data-g="quiz"]').click();
+  document.querySelector('#gmode button[data-g="list"]').click();document.querySelector('#gmode button[data-g="quiz"]').click();F();
   const hz2=document.querySelector(`#glyphbox input[data-test-cell="${huan[7]}:zh"]`);must('glyph reopen empty+ok',hz2.value===''&&hz2.classList.contains('ok'));
   // no-target rows have no input
   const noVi=GLYPHS.find(g=>!glyphTargets(g,'vi').length);must('no input for empty vi list',!document.querySelector(`#glyphbox input[data-test-cell="${noVi[7]}:vi"]`));
   // usage panel in list with ff mark
-  document.querySelector('#gmode button[data-g="list"]').click();
+  document.querySelector('#gmode button[data-g="list"]').click();F();
   const ffChar=GLYPHS.find(g=>{const u=USAGE.get(g[7]);return u&&[...u.zh,...u.vi].some(r=>(WORD_BY_ID.get(r[0])||{}).ff)});
   const det=document.querySelector(`#glyphbox details[data-usage="${ffChar[7]}"]`);det.open=true;det.dispatchEvent(new Event('toggle'));
   rec('usage_ff_char',det.innerText);chk('glyph-usage');
@@ -144,6 +148,33 @@ try{
   // mute
   document.querySelector('#mute').click();must('mute stored',ls('kb_mute')===true);document.querySelector('#mute').click();
   nav('glyph');rec('t_glyph_list',timed(()=>{document.querySelector('#gfilter button[data-p="diff"]').click();document.querySelector('#gfilter button[data-p="all"]').click()}));
+  /* ---- R1: idle-time chunks finish by themselves; same row counts as one full render ---- */
+  const settle=async()=>{for(let i=0;i<600&&CHUNKS.size;i++)await new Promise(r=>setTimeout(r,50))};
+  await settle();rec('glyph_rows_settled',document.querySelectorAll('#glyphbox .grow').length);
+  must('glyph chunks complete',CHUNKS.size===0&&document.querySelectorAll('#glyphbox .grow').length===GLYPHS.length);
+  document.querySelector('#gmode button[data-g="quiz"]').click();await settle();
+  must('glyph quiz chunks complete',document.querySelectorAll('#glyphbox .grow').length===GLYPHS.length&&document.querySelectorAll('#glyphbox input[data-test-cell]').length===out.checks.glyph_quiz_inputs);
+  document.querySelector('#gmode button[data-g="list"]').click();
+  nav('ff');await settle();rec('ff_tiles_settled',document.querySelectorAll('#fflist .tile').length);
+  must('ff chunks complete',document.querySelectorAll('#fflist .tile').length===FF.length);
+  chk('ff-settled');
+  // single-tile toggle keeps the other tiles (same nodes) and focuses the toggled tile
+  const firstTile=document.querySelector('#fflist .tile'),secondTile=document.querySelectorAll('#fflist .tile')[1];
+  rec('t_ff_toggle',timed(()=>firstTile.click()));const opened=document.querySelector('#fflist .tile');
+  must('tile toggle opens in place',opened.classList.contains('open')&&opened.getAttribute('aria-expanded')==='true'&&document.activeElement===opened&&document.querySelectorAll('#fflist .tile')[1]===secondTile);
+  key('Enter',opened);must('tile Enter closes',!document.querySelector('#fflist .tile').classList.contains('open'));
+  /* ---- R1: window title and about panel (RELEASE_PLAN 2.6) ---- */
+  rec('title',document.title);must('title without 試作版',document.title==='漢字ブリッジ');
+  const about=document.querySelector('#about'),panel=document.querySelector('#aboutpanel');
+  must('about closed at start',panel.classList.contains('hidden')&&about.getAttribute('aria-expanded')==='false');
+  about.click();must('about opens',!panel.classList.contains('hidden')&&about.getAttribute('aria-expanded')==='true');
+  rec('about_text',panel.innerText);
+  must('about EDRDG sentence',panel.innerText.includes('These files are the property of the Electronic Dictionary Research and Development Group'));
+  must('about repo link',!!panel.querySelector('a[href="https://github.com/hanjejeme2023-oss/kanji-bridge"]'));
+  must('about AI note',panel.innerText.includes('AI（Google Gemini）'));
+  about.click();must('about link closes',panel.classList.contains('hidden'));
+  about.click();key('Escape');must('Esc closes about',panel.classList.contains('hidden')&&about.getAttribute('aria-expanded')==='false');
+  chk('about');
 }catch(e){out.exception=String(e&&e.stack||e)}
 out.errors=window.__errs;
 const pre=document.createElement('pre');pre.id='harness-out';pre.textContent=JSON.stringify(out,null,1);document.body.appendChild(pre);document.title='HARNESS DONE';

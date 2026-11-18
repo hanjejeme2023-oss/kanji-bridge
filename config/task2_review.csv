@@ -33,3 +33,5 @@ w12608,ko,same_as_ja,授業、学業を修めること,true,修業、学問や�
 文教,vi,clear_vi,ベトナムのコミューン名（固有名詞）,false,,,D64/D65 VI_CLEAR_SHORTLIST B26: vi văn giáo is a different word or a place name (user-confirmed 2026-11-07)
 新作,vi,clear_vi,ベトナムのコミューン名（固有名詞）,false,,,D64/D65 VI_CLEAR_SHORTLIST B27: vi tân tác is a different word or a place name (user-confirmed 2026-11-07)
 新規,vi,clear_vi,ホーチミン市の街区名（固有名詞）,false,,zh,D64/D65 VI_CLEAR_SHORTLIST B28: vi tân quy is a different word or a place name (user-confirmed 2026-11-07)
+w00262,ko,set_meaning,あちら、どのあたり,false,どこ、どのあたり,zh,"R1 review overlay (Claude, D78 item 3): Korean 나변 means どこ; the generated text mixes in the Chinese sense あちら. The Chinese trap stays."
+w08625,ko,set_meaning,機械、器具,false,器具、器械,vi,"R1 review overlay (Claude, D78 item 3): the generated text mixes in the homophone 機械 (기계); Korean 器械 means 器具、器械. The Vietnamese trap stays."

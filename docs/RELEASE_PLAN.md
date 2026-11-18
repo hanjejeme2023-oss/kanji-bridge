@@ -116,7 +116,7 @@ The last line is accurate: the app sends nothing. The README adds that the host 
 - **Personal data found:**
   1. Commit author/committer of all 61 commits: `Hanje Unesaki <311183901+hanjejeme2023-oss@users.noreply.github.com>`; the same address in 32 lines of file text (D19, HANDOFF, docs).
   2. **An earlier personal e-mail address** in the text of D19 in `docs/DECISIONS.md` (present in the current files and in every commit since Stage 0; 4 history lines). Changing the author for future commits does **not** remove it. Only an edit (current files) plus a history rewrite or a fresh repository removes it from history (§3.2).
-  3. The Windows profile path `<user folder>\…` in 6 current files (`PROMPT.md`, `docs/BACKUP.md`, `docs/HANDOFF.md`, `docs/HANDOFF_ARCHIVE.md`, `docs/VERTEX_SETUP.md`, `pipeline/stage4/run_stage4.ps1`) and 57 history lines.
+  3. The Windows profile path `C:\Users\<user name>\…` (R1: replaced by `<project folder>` / `<user folder>` in the docs) in 6 current files (`PROMPT.md`, `docs/BACKUP.md`, `docs/HANDOFF.md`, `docs/HANDOFF_ARCHIVE.md`, `docs/VERTEX_SETUP.md`, `pipeline/stage4/run_stage4.ps1`) and 57 history lines.
   4. The GitHub account name `hanjejeme2023-oss` becomes part of the public URL (§4).
   5. Not personal, kept: Google Cloud cost figures and the Free Trial story (`VERTEX_SETUP.md`, `cost_log.csv`), the user's sample answers (`TASK5/6_USER_SAMPLE.md`), and `jimbreen@gmail.com` (inside the EDRDG licence page, public).
 

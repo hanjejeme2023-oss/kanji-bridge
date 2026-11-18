@@ -145,6 +145,11 @@ def export_chars(raw: list[dict[str, str]], include_ids: set[str]) -> list[dict[
             "jp": row["jp"],
         }
         for field in ("pinyin_all", "ja_on_all", "ko_base_all", "vi_all"):
+            # R1 (RELEASE_PLAN §1.3, 錯 thó): a Vietnamese reading whose only source is
+            # unverified Unihan is never shown in 字体 (neither as target nor as "other
+            # reading"); chars.csv keeps it with source_vi = unihan_unverified.
+            if field == "vi_all" and row["source_vi"] == "unihan_unverified":
+                continue
             add_value(item, row, field)
         add_value(item, row, "level", integer=True)
         output.append(item)
@@ -230,6 +235,25 @@ def build_glyphs(
     return output
 
 
+def _first_three_words(candidates: list[tuple[tuple[Any, ...], list[Any]]]) -> list[list[Any]]:
+    """Top three usage examples, one entry per ``word_id`` (R1, RELEASE_PLAN §1.1).
+
+    A reduplicated word (爸爸 under 爸) links the character at several
+    positions; only its first position is kept, and the freed slot goes to the
+    next candidate in the existing order.
+    """
+    chosen: list[list[Any]] = []
+    seen: set[str] = set()
+    for _rank, value in sorted(candidates, key=lambda item: (item[0], item[1][1])):
+        if value[0] in seen:
+            continue
+        seen.add(value[0])
+        chosen.append(value)
+        if len(chosen) == 3:
+            break
+    return chosen
+
+
 def build_usage(
     glyphs: list[list[Any]], words_raw: list[dict[str, str]],
     word_chars_raw: list[dict[str, str]],
@@ -275,8 +299,8 @@ def build_usage(
                     ),
                     [word["word_id"], position],
                 ))
-        zh = [value for _rank, value in sorted(zh_candidates, key=lambda item: item[0])[:3]]
-        vi = [value for _rank, value in sorted(vi_candidates, key=lambda item: item[0])[:3]]
+        zh = _first_three_words(zh_candidates)
+        vi = _first_three_words(vi_candidates)
         output.append([char_id, zh, vi])
     if len(output) != 2164:
         raise ValueError(f"usage has {len(output)} rows, expected 2,164")

@@ -10,6 +10,34 @@ PROTOTYPE = ROOT / "prototype" / "index.html"
 APP = ROOT / "app" / "index.html"
 
 
+# Credits panel (RELEASE_PLAN §2.6; text by Claude, approved by the user in R0 answer 4, 2026-11-14).
+# The only addition to the frozen UI besides the D71/D76 features (Global Rule 10 exception, D78 item 7).
+REPOSITORY_URL = "https://github.com/hanjejeme2023-oss/kanji-bridge"
+ABOUT_PANEL = (
+    '<div class="about hidden" id="aboutpanel" role="region" aria-label="このアプリについて">'
+    "<p><b>このアプリについて</b></p>"
+    "<p>漢字ブリッジは、日本語と韓国語を知っている人が中国語とベトナム語を学ぶための個人の非営利の学習ツール。</p>"
+    "<p><b>データ</b>：Unihan（Unicode, Inc.）、KANJIDIC2・JMdict（EDRDG、CC BY-SA 4.0）、"
+    "CC-CEDICT（MDBG、CC BY-SA 4.0）、Wiktionary（Kaikki/Wiktextract 経由、CC BY-SA 4.0）、"
+    "FrequencyWords（OpenSubtitles 2018、CC BY-SA 4.0）、libhangul hanja.txt（BSD-3-Clause）、"
+    "ivankra/hsk30（MIT）、OpenCC（Apache 2.0）。</p>"
+    "<p>This app uses the JMdict and KANJIDIC2 dictionary files. These files are the property of the "
+    "Electronic Dictionary Research and Development Group, and are used in conformance with the Group's licence.</p>"
+    "<p>データは CC BY-SA 4.0、プログラムは MIT ライセンスで公開している。詳しくは"
+    f'<a href="{REPOSITORY_URL}" target="_blank" rel="noopener">{REPOSITORY_URL.removeprefix("https://")}</a>。</p>'
+    "<p>例文と一部の意味は AI（Google Gemini）が作ったもので、誤りを含むことがある。</p>"
+    "<p>データは集めていない。学習の記録はこのブラウザの中だけに保存される。</p>"
+    "</div>"
+)
+ABOUT_SCRIPT = """/* about (RELEASE_PLAN 2.6): the footer link opens and closes the panel; Esc closes it */
+function setAbout(open){$('#aboutpanel').classList.toggle('hidden',!open);$('#about').setAttribute('aria-expanded',open);
+  if(open)$('#aboutpanel').scrollIntoView({block:'nearest'})}
+$('#about').onclick=()=>setAbout($('#aboutpanel').classList.contains('hidden'));
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('#aboutpanel').classList.contains('hidden')){setAbout(false);$('#about').focus()}});
+
+/* reset */"""
+
+
 ADAPTERS = r'''/* ---------- data adapters (Stage 5) ---------- */
 const KB=window.KB_DATA;
 if(!KB)throw new Error('KB_DATA failed to load');
@@ -117,8 +145,30 @@ def build() -> str:
         ".tile .examples{margin-top:18px}.tile .example{font-size:12px}.tile .example .translation{font-size:12px}\n"
         ".unknown-review{margin:22px auto 0;max-width:760px;text-align:center}\n"
         ".unknown-review .review-list{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:8px}\n"
+        ".foot-links{display:flex;gap:16px}\n"
+        ".about{flex-basis:100%;margin-top:4px;padding:20px 24px;background:var(--mist);border-radius:20px;color:var(--ink);font-size:13px;line-height:1.8}\n"
+        ".about p{margin:0 0 8px}.about p:last-child{margin:0}.about a{color:var(--indigo)}\n"
         "@media(max-width:700px){.usage-grid{grid-template-columns:1fr}.usage-note{grid-column:auto}}",
         "passage selector wrapping",
+    )
+    text = replace_once(
+        text,
+        "<title>漢字ブリッジ（試作版）</title>",
+        "<title>漢字ブリッジ</title>",
+        "release window title (R0 answer 4; recorded as a decision in R2)",
+    )
+    text = replace_once(
+        text,
+        """<footer>
+  <span>試作版。学習記録はこのブラウザにだけ保存されます。</span>
+  <button id="reset">記録をリセット</button>
+</footer>""",
+        f"""<footer>
+  <span>試作版。学習記録はこのブラウザにだけ保存されます。</span>
+  <span class="foot-links"><button id="about" type="button" aria-expanded="false" aria-controls="aboutpanel">このアプリについて</button><button id="reset">記録をリセット</button></span>
+  {ABOUT_PANEL}
+</footer>""",
+        "about link and panel (RELEASE_PLAN 2.6)",
     )
     text = replace_once(
         text,
@@ -301,7 +351,9 @@ function tableTestCell(key,lang,readings,viAlt,saved,several,onAnswer){
   TABLE_TEST_CELLS.set(id,{lang,readings:values,viAlt:viAlt||[],several:!!several,onAnswer});
   return `<div class="table-test"><div class="tone-hint">${esc(toneHint(lang,values))}</div><input data-test-cell="${esc(id)}" class="${state===1?'ok':state===0?'ng':''}" autocomplete="off" spellcheck="false"><div class="test-result"></div></div>`;
 }
-function focusNextTest(input){const all=[...document.querySelectorAll('input[data-test-cell]')],i=all.indexOf(input);if(i>=0&&all[i+1])all[i+1].focus()}
+function focusNextTest(input){let all=[...document.querySelectorAll('input[data-test-cell]')];const i=all.indexOf(input);
+  if(i>=0&&!all[i+1]){for(const job of CHUNKS.values())if(job.box.contains(input))appendChunk(job,job.size);all=[...document.querySelectorAll('input[data-test-cell]')]}
+  if(i>=0&&all[i+1])all[i+1].focus()}
 function answerTableCell(input){
   const cfg=TABLE_TEST_CELLS.get(input.dataset.testCell);if(!cfg||!input.value.trim())return null;
   const right=judge(input.value,cfg.lang,cfg.readings,cfg.viAlt,cfg.several)==='ok',value=right?1:0;
@@ -394,7 +446,25 @@ function updateCounts(){
     read:PASSAGES.length,glyph:filteredGlyphs().length};
   Object.entries(counts).forEach(([key,value])=>{const el=$(`#count-${key}`);if(el)el.textContent=value.toLocaleString('ja-JP')});
 }
-function render(){({cards:renderCards,rules:renderRules,ff:renderFF,read:renderRead,glyph:renderGlyph})[view]();topStat();updateCounts()}""",
+/* chunked list rendering (R1, RELEASE_PLAN 1.2): the first screen at once, the rest in short
+   idle-time steps; the final DOM equals one innerHTML of the whole list */
+const CHUNKS=new Map();
+function cancelChunks(name){(name?[name]:[...CHUNKS.keys()]).forEach(k=>{const job=CHUNKS.get(k);if(job){clearTimeout(job.timer);CHUNKS.delete(k)}})}
+function appendChunk(job,count){const end=Math.min(job.items.length,job.next+count);if(end<=job.next)return;
+  const t=document.createElement('template');t.innerHTML=job.items.slice(job.next,end).map(job.row).join('');
+  job.bind(t.content);job.box.appendChild(t.content);job.next=end}
+function chunkStep(name){const job=CHUNKS.get(name);if(!job)return;const now=performance.now();
+  /* the gap since the last step includes the browser's layout of that step: aim at about 50 ms per step */
+  if(job.last)job.size=Math.max(20,Math.min(500,Math.round(job.size*50/Math.max(now-job.last,1))));job.last=now;
+  appendChunk(job,job.size);
+  if(job.next<job.items.length)job.timer=setTimeout(()=>chunkStep(name),0);else CHUNKS.delete(name)}
+function renderChunked(name,box,lead,items,row,bind){
+  cancelChunks(name);const first=Math.min(items.length,30);
+  box.innerHTML=lead+items.slice(0,first).map(row).join('');bind(box);
+  if(first<items.length){const job={box,items,row,bind,next:first,size:100,last:0,timer:0};CHUNKS.set(name,job);job.timer=setTimeout(()=>chunkStep(name),0)}}
+function flushChunks(name){(name?[name]:[...CHUNKS.keys()]).forEach(k=>{const job=CHUNKS.get(k);if(!job)return;clearTimeout(job.timer);appendChunk(job,job.items.length);CHUNKS.delete(k)})}
+function ensureChunk(name,index){const job=CHUNKS.get(name);if(job&&index>=job.next)appendChunk(job,index+1-job.next)}
+function render(){cancelChunks();({cards:renderCards,rules:renderRules,ff:renderFF,read:renderRead,glyph:renderGlyph})[view]();topStat();updateCounts()}""",
         "per-tab item counts",
     )
 
@@ -605,13 +675,19 @@ function syncFFControls(){
 $$('#ffmode button').forEach(b=>b.onclick=()=>{ffmode=b.dataset.m;if(ffmode==='cards'&&!ffround)startFFRound();renderFF();updateCounts()});
 $$('#fffilter button').forEach(b=>b.onclick=()=>{fff=b.dataset.f;renderFF();updateCounts()});
 $$('#fflang button').forEach(b=>b.onclick=()=>{fflang=b.dataset.l;startFFRound();renderFF();updateCounts()});
+const FF_BY_ID=new Map(FF.map(f=>[f.id,f]));
+function ffTile(f){const o=ffopen.has(f.id);return `<div class="tile ${o?'open':''}" data-w="${f.id}" role="button" tabindex="0" aria-expanded="${o}">
+    <div class="w han">${esc(f.w)}</div><div class="l">${f.rows.filter(row=>!row.trap).map(ffLine).join('')}</div>
+    ${o?`<div class="trap">${f.rows.filter(row=>row.trap).map(ffLine).join('')}</div>${ffExamples(f)}`:'<div class="hint">実は…</div>'}</div>`}
+function bindFFTiles(root){root.querySelectorAll('.tile').forEach(b=>{const toggle=()=>toggleFFTile(b.dataset.w);
+    b.onclick=toggle;b.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle()}}})}
+function toggleFFTile(id){ffopen.has(id)?ffopen.delete(id):ffopen.add(id);
+  const old=$(`#fflist .tile[data-w="${id}"]`),f=FF_BY_ID.get(id);
+  if(old&&f){const t=document.createElement('template');t.innerHTML=ffTile(f);bindFFTiles(t.content);const tile=t.content.firstElementChild;old.replaceWith(tile);tile.focus();return}
+  renderFF();const next=$(`#fflist .tile[data-w="${id}"]`);if(next)next.focus()}
 function renderFFList(){
   const list=FF.filter(f=>fff==='all'||f.traps.includes(fff));$('#fflist').className='tiles';
-  $('#fflist').innerHTML=list.map(f=>{const o=ffopen.has(f.id);return `<div class="tile ${o?'open':''}" data-w="${f.id}" role="button" tabindex="0" aria-expanded="${o}">
-    <div class="w han">${esc(f.w)}</div><div class="l">${f.rows.filter(row=>!row.trap).map(ffLine).join('')}</div>
-    ${o?`<div class="trap">${f.rows.filter(row=>row.trap).map(ffLine).join('')}</div>${ffExamples(f)}`:'<div class="hint">実は…</div>'}</div>`}).join('');
-  $$('#fflist .tile').forEach(b=>{const toggle=()=>{const id=b.dataset.w;ffopen.has(id)?ffopen.delete(id):ffopen.add(id);renderFF();const next=$(`#fflist .tile[data-w="${id}"]`);if(next)next.focus()};
-    b.onclick=toggle;b.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle()}}});
+  renderChunked('ff',$('#fflist'),'',list,ffTile,bindFFTiles);
 }
 function renderFFCard(){
   if(!ffround||!ffround.queue.length)startFFRound();const id=(ffround.queue||[])[0],f=FF.find(row=>row.id===id);$('#fflist').className='';
@@ -626,8 +702,8 @@ function renderFFCard(){
 }
 function rateFFCard(right){if(!ffround||!ffflipped||!ffround.queue.length)return;const id=ffround.queue[0],key=`${id}:${fflang}`,row=ffstats[key]||{miss:0,ok:0};right?row.ok++:row.miss++;ffstats[key]=row;S.set('kb_ffcard',ffstats);
   const rest=ffround.queue.slice(1);ffround.queue=right?rest:appendFFMiss(rest,id);ffflipped=false;if(!ffround.queue.length)startFFRound();renderFF()}
-function renderFF(){syncFFControls();ffmode==='cards'?renderFFCard():renderFFList()}
-function showFFWord(wordId){ffmode='list';fff='all';ffopen=new Set([wordId]);view='ff';stopSpeech();$$('#nav button').forEach(x=>x.classList.toggle('on',x.dataset.v==='ff'));$$('main>section').forEach(s=>s.classList.toggle('hidden',s.id!=='v-ff'));render();const tile=$(`#fflist .tile[data-w="${wordId}"]`);if(tile)tile.focus()}
+function renderFF(){cancelChunks('ff');syncFFControls();ffmode==='cards'?renderFFCard():renderFFList()}
+function showFFWord(wordId){ffmode='list';fff='all';ffopen=new Set([wordId]);view='ff';stopSpeech();$$('#nav button').forEach(x=>x.classList.toggle('on',x.dataset.v==='ff'));$$('main>section').forEach(s=>s.classList.toggle('hidden',s.id!=='v-ff'));render();ensureChunk('ff',FF.findIndex(f=>f.id===wordId));const tile=$(`#fflist .tile[data-w="${wordId}"]`);if(tile)tile.focus()}
 
 /* 4. reading */
 const PASSAGE_IDS=new Set(PASSAGES.map(p=>p.id));
@@ -700,8 +776,8 @@ function usageBody(g){const use=USAGE.get(g[7])||{zh:[],vi:[]},note=CHAR_NOTES.g
   return `<div class="usage-grid"><div><div class="usage-lang">中国語</div>${zh}</div><div><div class="usage-lang">ベトナム語</div>${vi}</div>${note?`<div class="usage-note">${esc(note)}</div>`:''}</div>`;
 }
 function usagePanel(g){const open=gmode==='quiz'&&glyphOpened.has(g[7]);return `<details class="usage" data-usage="${g[7]}" ${open?'open':''}><summary>使われ方</summary><div class="usage-body">${open?usageBody(g):''}</div></details>`}
-function bindUsagePanels(){
-  $$('#glyphbox details[data-usage]').forEach(d=>d.ontoggle=()=>{if(d.open&&!d.querySelector('.usage-body').innerHTML){const g=GLYPHS.find(row=>row[7]===d.dataset.usage);d.querySelector('.usage-body').innerHTML=usageBody(g)}});
+function bindUsagePanels(root=$('#glyphbox')){
+  root.querySelectorAll('details[data-usage]').forEach(d=>d.ontoggle=()=>{if(d.open&&!d.querySelector('.usage-body').innerHTML){const g=GLYPHS.find(row=>row[7]===d.dataset.usage);d.querySelector('.usage-body').innerHTML=usageBody(g)}});
   $('#glyphbox').onclick=e=>{const b=e.target.closest&&e.target.closest('[data-ff-word]');if(!b)return;e.preventDefault();e.stopPropagation();showFFWord(b.dataset.ffWord)};
 }
 function clearGlyphWords(g,lang,input){const parts=input.split(/[,/，／、]/).map(x=>x.trim()).filter(Boolean);g[8].forEach(id=>{const w=WORD_BY_ID.get(id);if(!w)return;const accepted=lang==='zh'?[w.p]:[w.v],alts=lang==='vi'?(w.va||[]):[];if(parts.some(part=>judge(part,lang,accepted,alts)==='ok'))clearUnknown(id)})}
@@ -720,10 +796,11 @@ function glyphQuizRow(g){const stored=gresults[g[7]]||{},py=glyphTargets(g,'zh')
 $$('#gmode button').forEach(b=>b.onclick=()=>{gmode=b.dataset.g;$$('#gmode button').forEach(x=>x.classList.toggle('on',x===b));renderGlyph();updateCounts()});
 $$('#gfilter button').forEach(b=>b.onclick=()=>{gfil=b.dataset.p;$$('#gfilter button').forEach(x=>x.classList.toggle('on',x===b));renderGlyph();updateCounts()});
 function renderGlyph(){
-  beginTableTest();const list=filteredGlyphs();
+  beginTableTest();const list=filteredGlyphs(),quiz=gmode==='quiz';
   const head='<div class="ghead"><span>日本</span><span>韓国・繁体</span><span>中国・簡体</span><span>読み</span></div>';
-  $('#glyphbox').innerHTML=(gmode==='quiz'?`<div class="glyph-score" id="glyphscore"></div>`:'')+(list.length?head+list.map(g=>gmode==='quiz'?glyphQuizRow(g):glyphListRow(g)).join(''):'<div class="empty">該当する字はない</div>');
-  if(gmode==='quiz'){bindTableTests($('#glyphbox'));updateGlyphScore()}bindUsagePanels();
+  renderChunked('glyph',$('#glyphbox'),(quiz?`<div class="glyph-score" id="glyphscore"></div>`:'')+(list.length?head:'<div class="empty">該当する字はない</div>'),
+    list,quiz?glyphQuizRow:glyphListRow,root=>{if(quiz)bindTableTests(root);bindUsagePanels(root)});
+  if(quiz)updateGlyphScore();
 }''',
         "glyph rows typing quiz and usage",
     )
@@ -767,6 +844,7 @@ function renderGlyph(){
         "srs={};custom=[];rprog={};ruleResults={};gresults={};glyphOpened.clear();ffstats={};ffround=null;ffflipped=false;readIds.clear();doneToday=0;newToday={date:localDay(),ids:[]};\n  S.set('kb_srs',{});S.set('kb_custom',[]);S.set('kb_newtoday',newToday);S.set('kb_rules',{});S.set('kb_glyph',{});S.set('kb_ruletest',{});S.set('kb_glyphquiz',{});S.set('kb_unknown',[]);S.set('kb_read',[]);S.set('kb_ffcard',{});",
         "reset Part C and D state",
     )
+    text = replace_once(text, "/* reset */", ABOUT_SCRIPT, "about panel script")
     return text
 
 

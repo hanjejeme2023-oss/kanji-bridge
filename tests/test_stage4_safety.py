@@ -324,10 +324,11 @@ class Stage4SafetyTests(unittest.TestCase):
                 continue
             if api_key.search(text) or private_field in text:
                 offenders.append(path.relative_to(ROOT).as_posix())
-        # HANDOFF contains the literal safety requirement itself, not a credential field.
+        # HANDOFF contains the literal safety requirement itself, not a credential field;
+        # RELEASE_PLAN §3.1 quotes the pattern when it reports the history scan (D78).
         offenders = [
             path for path in offenders
-            if path not in {"docs/HANDOFF.md", "docs/HANDOFF_ARCHIVE.md"}
+            if path not in {"docs/HANDOFF.md", "docs/HANDOFF_ARCHIVE.md", "docs/RELEASE_PLAN.md"}
         ]
         self.assertEqual(offenders, [])
 

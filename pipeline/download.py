@@ -4,7 +4,9 @@ URL-level SHA-256 hashes are committed in pipeline/source_manifest.csv and
 mirrored to raw/MANIFEST.csv. Later runs use that manifest as a lock: matching
 files are not downloaded, and a missing file is accepted only when the newly
 downloaded bytes match the recorded hash. Use --refresh only for a deliberate
-source update.
+source update. ``--refresh --only kanjidic2,jmdict`` refreshes only the named
+sources (the EDRDG update, RELEASE_PLAN §2.5/§6.3); every other source is still
+verified against the lock and keeps its recorded date.
 """
 
 from __future__ import annotations
@@ -277,17 +279,21 @@ def sync_licenses() -> None:
     extract_libhangul_license()
 
 
-def write_manifest(items: list[Download], old: dict[str, dict[str, str]], refresh: bool) -> None:
+def write_manifest(
+    items: list[Download], old: dict[str, dict[str, str]], refresh: bool,
+    refreshed_sources: set[str] | None = None,
+) -> None:
     today = date.today().isoformat()
     rows: list[dict[str, str | int]] = []
     for item in items:
         rel = item.path.relative_to(ROOT).as_posix()
         prior = old.get(rel)
+        refreshed = refresh and (refreshed_sources is None or item.source in refreshed_sources)
         rows.append(
             {
                 "source": item.source,
                 "url": item.url,
-                "date": today if refresh or prior is None else prior["date"],
+                "date": today if refreshed or prior is None else prior["date"],
                 "sha256": sha256(item.path),
                 "bytes": item.path.stat().st_size,
                 "path": rel,
@@ -298,11 +304,12 @@ def write_manifest(items: list[Download], old: dict[str, dict[str, str]], refres
     derived = RAW / "libhangul" / "LICENSE-hanja.txt"
     derived_rel = derived.relative_to(ROOT).as_posix()
     derived_prior = old.get(derived_rel)
+    derived_refreshed = refresh and (refreshed_sources is None or "libhangul" in refreshed_sources)
     rows.append(
         {
             "source": "libhangul",
             "url": "derived-from:raw/libhangul/hanja.txt#comment-header",
-            "date": today if refresh or derived_prior is None else derived_prior["date"],
+            "date": today if derived_refreshed or derived_prior is None else derived_prior["date"],
             "sha256": sha256(derived),
             "bytes": derived.stat().st_size,
             "path": derived_rel,
@@ -317,6 +324,22 @@ def write_manifest(items: list[Download], old: dict[str, dict[str, str]], refres
             writer.writerows(rows)
 
 
+SOURCE_NAMES = sorted({item.source for item in DOWNLOADS})
+
+
+def parse_only(value: str | None, refresh: bool) -> set[str] | None:
+    """Validate ``--only``; ``None`` means every source."""
+    if value is None:
+        return None
+    if not refresh:
+        raise RuntimeError("--only is used with --refresh (a normal run already verifies every source)")
+    names = {part.strip() for part in value.split(",") if part.strip()}
+    unknown = sorted(names - set(SOURCE_NAMES))
+    if not names or unknown:
+        raise RuntimeError(f"--only needs known source names {SOURCE_NAMES}; unknown: {unknown or value!r}")
+    return names
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
@@ -324,14 +347,22 @@ def main() -> int:
         action="store_true",
         help="download every URL again and replace recorded checksums after review",
     )
+    parser.add_argument(
+        "--only",
+        metavar="SOURCES",
+        help="with --refresh: comma-separated source names to refresh (e.g. kanjidic2,jmdict); "
+        "all other sources are verified against the lock as usual",
+    )
     args = parser.parse_args()
+    only = parse_only(args.only, args.refresh)
     old = load_manifest()
 
     for item in DOWNLOADS:
         rel = item.path.relative_to(ROOT).as_posix()
         prior = old.get(rel)
-        expected = None if args.refresh or prior is None else prior["sha256"]
-        if item.path.exists() and not args.refresh:
+        refresh_item = args.refresh and (only is None or item.source in only)
+        expected = None if refresh_item or prior is None else prior["sha256"]
+        if item.path.exists() and not refresh_item:
             actual = sha256(item.path)
             if expected is None or actual == expected:
                 print(f"ok       {rel}")
@@ -343,7 +374,7 @@ def main() -> int:
         fetch(item, expected)
 
     sync_licenses()
-    write_manifest(DOWNLOADS, old, args.refresh)
+    write_manifest(DOWNLOADS, old, args.refresh, only)
     print(
         f"wrote    {MANIFEST.relative_to(ROOT).as_posix()} and "
         f"{LOCKFILE.relative_to(ROOT).as_posix()}"

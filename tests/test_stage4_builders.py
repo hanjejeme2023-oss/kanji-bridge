@@ -26,16 +26,17 @@ class Stage4BuilderTests(unittest.TestCase):
         self.assertEqual(len(builders.chunked(self.task1, 100)), 86)
         self.assertEqual(len(self.task4), 228)  # D65 step 6 cleared vi of 一行 中斷 更改 案件 液體 進出 (already outside the 212 accepted notes)
         self.assertEqual(len(builders.chunked(self.task4, 50)), 5)
-        self.assertEqual(len(self.task5), 10400)
+        # R1 (RELEASE_PLAN §1.3): 吧 w00006 lost its Nôm vi (one vi-only check item); accepted task-5 keeps 10,400
+        self.assertEqual(len(self.task5), 10399)
         self.assertEqual(len(builders.chunked(self.task5, 100)), 104)
         word_ids = set(builders.load_csv(builders.WORDS_PATH)["word_id"])
         word_items = [item for item in self.task5 if item["key"] in word_ids]
         ff_items = [item for item in self.task5 if item["key"] not in word_ids]
-        self.assertEqual((len(word_items), len(ff_items)), (8030, 2370))
+        self.assertEqual((len(word_items), len(ff_items)), (8029, 2370))
         self.assertEqual(sum("ko" in item["checks"] for item in word_items), 6720)
         self.assertEqual(
             Counter(check for item in self.task5 for check in item["checks"]),
-            Counter({"ko": 9090, "ja": 1919, "vi": 5126}),
+            Counter({"ko": 9090, "ja": 1919, "vi": 5125}),
         )
 
     def test_task4_korean_filter_uses_the_written_syllable(self) -> None:
@@ -83,9 +84,12 @@ class Stage4BuilderTests(unittest.TestCase):
             builders.sha256_text(builders.jsonl_text(batch))
             for batch in builders.build_task5_batches()
         )
+        # R1 changed the fresh build exactly as reviewed: 吧 w00006 removed (no vi), and the
+        # 那邊 w00262 / 器械 w08625 Korean meanings from the review overlays (D78 item 3).
+        # The accepted batches gave dcc14617dd28328d60593053c7f9db23bc1ce33ba607742e79bcdd04b374f0ab.
         self.assertEqual(
             builders.sha256_text(batch_hashes),
-            "dcc14617dd28328d60593053c7f9db23bc1ce33ba607742e79bcdd04b374f0ab",
+            "0c8a295a7ee0e2b5bac8c77a284f2452f30e90b90999fd835e39c56c94ba1d65",
         )
 
     def test_task5_uses_accepted_content_and_review_overlays(self) -> None:

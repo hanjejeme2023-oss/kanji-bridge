@@ -1422,6 +1422,9 @@ def primary_from_evidence(
     return new, counts.get(old, 0), counts.get(new, 0)
 
 
+CHAR_SOURCE_EVIDENCE = {"kaikki_aligned", "kaikki_en_char", "unihan_hvsyl"}
+
+
 def apply_d39(
     chars: pd.DataFrame,
     words: pd.DataFrame,
@@ -1476,6 +1479,12 @@ def apply_d39(
                 no_evidence.append({
                     "char_id": char_id, "trad": row["trad"], "key_char": row["key_char"],
                     "lang": lang, "ko_law_form_suspect": law_suspect,
+                    # R1 (RELEASE_PLAN §1.3): no word evidence, but the primary itself is
+                    # attested at character level (Kaikki aligned/English, or a Unihan
+                    # reading confirmed as a Hán-Việt syllable), e.g. 荷 痕 瀾 蓮.
+                    "char_source_evidence": bool(
+                        lang == "vi" and old and nfc(row["source_vi"]) in CHAR_SOURCE_EVIDENCE
+                    ),
                 })
             if new != old:
                 changes.append({
@@ -1535,7 +1544,9 @@ def apply_d39(
     return (
         result,
         pd.DataFrame(changes, columns=["char_id", "trad", "key_char", "lang", "old", "new", "old_count", "new_count"]),
-        pd.DataFrame(no_evidence, columns=["char_id", "trad", "key_char", "lang", "ko_law_form_suspect"]),
+        pd.DataFrame(no_evidence, columns=[
+            "char_id", "trad", "key_char", "lang", "ko_law_form_suspect", "char_source_evidence",
+        ]),
     )
 
 
@@ -1830,7 +1841,10 @@ def main() -> None:
     write_csv(char_simp_mismatch, FINAL / "char_simp_mismatch.csv")
     write_csv(alignment_mismatches, FINAL / "alignment_mismatches.csv")
     write_csv(primary_changes, FINAL / "char_primary_changes.csv")
-    write_csv(primary_no_evidence, FINAL / "char_primary_no_evidence.csv", bool_columns=["ko_law_form_suspect"])
+    write_csv(
+        primary_no_evidence, FINAL / "char_primary_no_evidence.csv",
+        bool_columns=["ko_law_form_suspect", "char_source_evidence"],
+    )
     write_csv(pd.DataFrame(merge_rows), FINAL / "merge_report.csv")
 
     write_character_reports(chars, word_chars, words)

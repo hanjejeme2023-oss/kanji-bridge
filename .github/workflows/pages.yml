@@ -1,0 +1,44 @@
+# Publish app/ (index.html + data.js) to GitHub Pages (RELEASE_PLAN §4.1-§4.3).
+# Only the app folder is uploaded; nothing is built on the server, so the site
+# is byte-identical to the committed app/ that the tests check.
+# Settings -> Pages -> Source must be "GitHub Actions" (RELEASE_PLAN §4.2).
+name: Deploy app to Pages
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Check out
+        uses: actions/checkout@v4.2.2
+      - name: Check the app folder
+        run: |
+          test -s app/index.html
+          test -s app/data.js
+          grep -q '<script src="data.js"></script>' app/index.html
+          cmp app/data.js data/final/data.js
+      - name: Configure Pages
+        uses: actions/configure-pages@v5.0.0
+      - name: Upload app/
+        uses: actions/upload-pages-artifact@v3.0.1
+        with:
+          path: app
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4.0.5

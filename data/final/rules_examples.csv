@@ -1,7 +1,6 @@
 char_id,trad,ko,vi,ko_final,vi_final,ja_on,pinyin,level,source_vi
 c00001,愛,애,ái,(open),(open),あい,ài,1,kaikki_han
 c00003,爸,파,ba,(open),(open),は,bà,1,kaikki_en_char
-c00004,吧,파,và,(open),(open),は,ba,1,kaikki_aligned
 c00010,包,포,bao,(open),(open),ほう,bāo,1,kaikki_han
 c00011,杯,배,bôi,(open),(open),はい,bēi,1,kaikki_en_char
 c00013,備,비,bị,(open),(open),び,bèi,1,kaikki_han

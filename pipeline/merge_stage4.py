@@ -130,6 +130,37 @@ def apply_task1_review(
     return result
 
 
+def apply_task1_meaning_review(
+    outputs: dict[str, dict[str, Any]], words: pd.DataFrame, review: pd.DataFrame,
+) -> dict[str, dict[str, Any]]:
+    """Review overlay for task-1 meanings (R1, D78 item 3); fail-closed like the other overlays.
+
+    Every row must name an accepted task-1 word with the frozen ``trad``, match the
+    generated text exactly and carry a reviewed text and a reason, so each row is
+    applied exactly once and a changed source stops the build.
+    """
+    result = copy.deepcopy(outputs)
+    expected = ["word_id", "trad", "lang", "meaning_ja_generated", "meaning_ja_review", "reason"]
+    if list(review.columns) != expected:
+        raise ValueError("task1_meaning_review.csv has the wrong columns")
+    if review[["word_id", "lang"]].duplicated().any() or review["word_id"].eq("").any():
+        raise ValueError("task1_meaning_review.csv has an empty or duplicate (word_id, lang)")
+    word_map = words.set_index("word_id", drop=False)
+    for row in review.to_dict(orient="records"):
+        word_id, lang = row["word_id"], row["lang"]
+        if lang not in LANGS or not row["meaning_ja_review"] or not row["reason"]:
+            raise ValueError(f"invalid task-1 meaning review row for {word_id}/{lang}")
+        if word_id not in word_map.index or word_id not in result:
+            raise ValueError(f"task-1 meaning review target is missing: {word_id}")
+        if word_map.loc[word_id, "trad"] != row["trad"]:
+            raise ValueError(f"task-1 meaning review frozen-word mismatch for {word_id}")
+        field = f"meaning_ja__{lang}"
+        if result[word_id].get(field) != row["meaning_ja_generated"]:
+            raise ValueError(f"task-1 meaning review generated-output mismatch for {word_id}/{lang}")
+        result[word_id][field] = row["meaning_ja_review"]
+    return result
+
+
 def task2_meaning(item: dict[str, Any], lang: str) -> dict[str, Any]:
     matches = [row for row in item.get("meanings", []) if row.get("lang") == lang]
     if len(matches) != 1:
@@ -169,6 +200,15 @@ def apply_task2_reviews(
             current = task2_meaning(result[key], lang)
             current["meaning_ja"] = row["meaning_ja_review"]
             current["is_trap"] = lang in reviewed_ff
+        elif action == "set_meaning":
+            # R1 (D78 item 3): a reviewed meaning text for any language; the trap
+            # flag follows false_friend_review and must not change.
+            if not row["meaning_ja_review"] or not row["reason"]:
+                raise ValueError(f"invalid task-2 set_meaning row for {key}/{lang}")
+            current = task2_meaning(result[key], lang)
+            if bool(current.get("is_trap")) != (lang in reviewed_ff):
+                raise ValueError(f"task-2 set_meaning would change the trap flag for {key}/{lang}")
+            current["meaning_ja"] = row["meaning_ja_review"]
         elif action == "clear_vi":
             if lang != "vi" or row["meaning_ja_review"]:
                 raise ValueError(f"invalid task-2 clear_vi row for {key}/{lang}")
@@ -442,6 +482,7 @@ def main() -> None:
 
     task1_review = load_csv(CONFIG / "task1_review.csv")
     task1 = apply_task1_review(task1_raw, words, task1_review)
+    task1 = apply_task1_meaning_review(task1, words, load_csv(CONFIG / "task1_meaning_review.csv"))
     task2, cleared_vi = apply_task2_reviews(
         task2_raw, load_csv(CONFIG / "task2_review.csv"), load_csv(CONFIG / "task2_retrap.csv")
     )
@@ -487,6 +528,10 @@ def main() -> None:
         for lang in LANGS:
             if not row[READING_COLUMN[lang]]:
                 words.at[index, f"meaning_ja__{lang}"] = ""
+        if not row["vi"]:
+            # R1: a usage judgment about a Vietnamese reading that no longer exists
+            # (吧 và, removed at the loader) is dropped with that reading.
+            words.at[index, "vi_use"] = ""
         for lang in ("ja", "ko"):
             if row[f"{lang}_use"] in {"rare", "wrong_meaning"}:
                 words.at[index, f"meaning_ja__{lang}"] = ""

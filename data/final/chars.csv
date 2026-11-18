@@ -2,7 +2,7 @@ char_id,trad,key_char,simp,jp,ja_on,ko,pinyin,vi,ja_on_all,ko_all,pinyin_all,vi_
 c00001,愛,愛,爱,愛,あい,애,ài,ái,あい,애,ài,ái,애,,,true,1,"love, be fond of, like",unihan,kaikki_aligned,kanjidic2,unihan
 c00002,八,八,八,八,はち,팔,bā,bát,はち;はつ,팔,bā;bá,bát,팔,ㄹ,t,true,1,"eight; all around, all sides",unihan,kaikki_aligned,kanjidic2,unihan
 c00003,爸,爸,爸,爸,は,파,bà,ba,は,파,bà,ba,파,,,true,1,"father, papa",unihan,kaikki_en_char,kanjidic2,unihan
-c00004,吧,吧,吧,吧,は,파,ba,và,は;へ,파,ba;bā;pā,và,파,,,true,1,emphatic final particle,unihan,kaikki_aligned,kanjidic2,unihan
+c00004,吧,吧,吧,吧,は,파,ba,và,は;へ,파,ba;bā;pā,và,파,,,true,1,emphatic final particle,unihan,unihan_unverified,kanjidic2,unihan
 c00005,白,白,白,白,はく,백,bái,bạch,はく;びゃく,백,bái;bó,bạch,백,ㄱ,ch,true,1,"white; pure, unblemished; bright",unihan,kaikki_aligned,kanjidic2,unihan
 c00006,百,百,百,百,ひゃく,백,bǎi,bách,ひゃく;びゃく,백,bǎi;bó;mò,bách;bá,백,ㄱ,ch,true,1,"one hundred; numerous, many",unihan,kaikki_aligned,kanjidic2,unihan
 c00007,班,班,班,班,はん,반,bān,ban,はん,반,bān,ban,반,ㄴ,n,true,1,"class, group, grade; squad; job",unihan,kaikki_aligned,kanjidic2,unihan

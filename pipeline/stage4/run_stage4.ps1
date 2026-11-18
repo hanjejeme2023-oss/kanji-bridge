@@ -20,7 +20,9 @@ param(
 
 $ErrorActionPreference = 'Stop'
 $RepoRoot = (Resolve-Path (Join-Path $PSScriptRoot '..\..')).Path
-$PythonPath = '<user folder>\AppData\Local\Programs\Python\Python312\python.exe'
+# The repository folder comes from $PSScriptRoot (above). Python 3.12 is the per-user default
+# install under %LOCALAPPDATA%, so no personal path is written here (R1, RELEASE_PLAN 3.2).
+$PythonPath = Join-Path $env:LOCALAPPDATA 'Programs\Python\Python312\python.exe'
 $Generator = Join-Path $RepoRoot 'pipeline\stage4_generate.py'
 
 Set-Location -LiteralPath $RepoRoot

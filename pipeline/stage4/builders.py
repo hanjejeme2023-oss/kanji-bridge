@@ -277,6 +277,11 @@ def _task2_meanings_after_review(
             if lang != "ko" or not row["meaning_ja_review"]:
                 raise ValueError(f"Invalid same_as_ja review row for {key}/{lang}")
             meaning_maps[key][lang] = row["meaning_ja_review"]
+        elif action == "set_meaning":
+            # R1 (D78 item 3): reviewed meaning text; the trap flag is unchanged.
+            if not row["meaning_ja_review"]:
+                raise ValueError(f"Invalid set_meaning review row for {key}/{lang}")
+            meaning_maps[key][lang] = row["meaning_ja_review"]
         elif action == "clear_vi":
             if lang != "vi" or row["meaning_ja_review"]:
                 raise ValueError(f"Invalid clear_vi review row for {key}/{lang}")

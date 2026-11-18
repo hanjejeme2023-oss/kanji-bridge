@@ -2,7 +2,7 @@ scope,level,field,count,total,percent,note
 hsk_words,1,ja,307,510,60.2,
 hsk_words,1,ko,374,510,73.33,
 hsk_words,1,pinyin,510,510,100.0,
-hsk_words,1,vi,261,510,51.18,
+hsk_words,1,vi,260,510,50.98,
 hsk_words,1,all_4,221,510,43.33,
 hsk_words,2,ja,470,758,62.01,
 hsk_words,2,ko,544,758,71.77,
@@ -39,4 +39,4 @@ chars,all,ja_on,3087,3140,98.31,
 chars,all,ko,3139,3140,99.97,
 chars,all,pinyin,3139,3140,99.97,
 chars,all,vi,2421,3140,77.1,
-words,all,freq_vi_basis,5405,12229,,syllable_min
+words,all,freq_vi_basis,5404,12229,,syllable_min

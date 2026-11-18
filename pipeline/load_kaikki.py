@@ -9,12 +9,32 @@ from collections import Counter, defaultdict
 
 import pandas as pd
 
-from common import CJK_RUN_RE, RAW, STAGING, nfc, normalize_vietnamese, write_csv
+from common import CJK_RUN_RE, RAW, ROOT, STAGING, nfc, normalize_vietnamese, write_csv
 
 
 ETYMOLOGY_RE = re.compile(r"^(?:Âm|Phiên âm) Hán-Việt của (?:chữ Hán )?(.+)$")
 COMPONENT_RE = re.compile(r"\bvà\b|hoặc")
 PAREN_RE = re.compile(r"\(.*?\)")
+EXCLUSIONS = ROOT / "config" / "kaikki_exclusions.csv"
+
+
+def load_exclusions() -> dict[tuple[str, str], str]:
+    """Etymology records judged wrong in review (R1, RELEASE_PLAN §1.3).
+
+    Keyed by (normalised headword, first etymology line). Fail-closed: every
+    row needs a reason and must match exactly one record of the source, so an
+    upstream fix (or a typo) stops the build instead of passing silently.
+    """
+    frame = pd.read_csv(EXCLUSIONS, encoding="utf-8", dtype=str, keep_default_na=False)
+    if list(frame.columns) != ["word", "etymology", "reason"]:
+        raise ValueError("config/kaikki_exclusions.csv has the wrong columns")
+    rows: dict[tuple[str, str], str] = {}
+    for row in frame.itertuples(index=False):
+        key = (normalize_vietnamese(row.word), nfc(row.etymology))
+        if not key[0] or not key[1] or not nfc(row.reason) or key in rows:
+            raise ValueError(f"kaikki exclusion row is empty, unreasoned or duplicated: {row}")
+        rows[key] = row.reason
+    return rows
 
 
 def main() -> None:
@@ -26,6 +46,8 @@ def main() -> None:
     headword_gloss: dict[str, str] = {}
     headword_han: dict[str, list[str]] = defaultdict(list)
     evidence_order = 0
+    exclusions = load_exclusions()
+    excluded_hits: Counter[tuple[str, str]] = Counter()
 
     with gzip.open(
         RAW / "kaikki-viwiktionary" / "vi-extract.jsonl.gz", "rt", encoding="utf-8"
@@ -51,6 +73,9 @@ def main() -> None:
                 match = ETYMOLOGY_RE.match(first_line)
                 if not match:
                     continue
+                if (word, first_line) in exclusions:
+                    excluded_hits[(word, first_line)] += 1
+                    continue
                 body = PAREN_RE.sub("", match.group(1))
                 runs = CJK_RUN_RE.findall(body)
                 syllables = word.split()
@@ -74,6 +99,10 @@ def main() -> None:
                     for char, syllable in zip(runs, syllables):
                         aligned[char][syllable] += 1
                         aligned_first_seen.setdefault((char, syllable), evidence_order)
+
+    unmatched = [key for key in exclusions if excluded_hits[key] != 1]
+    if unmatched:
+        raise ValueError(f"kaikki exclusions must match exactly one source record: {unmatched}")
 
     explicit_rows = [
         {
