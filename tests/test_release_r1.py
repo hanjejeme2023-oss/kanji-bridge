@@ -223,6 +223,10 @@ class R1AppTest(unittest.TestCase):
         prototype = (ROOT / "prototype" / "index.html").read_text(encoding="utf-8")
         self.assertIn("<title>漢字ブリッジ（試作版）</title>", prototype)  # frozen prototype unchanged
         self.assertIn("<title>漢字ブリッジ</title>", app)
+        # R2 (D79, user input B): the footer drops 「試作版。」 and keeps the rest of the sentence
+        self.assertIn("<span>試作版。学習記録はこのブラウザにだけ保存されます。</span>", prototype)
+        self.assertIn("<span>学習記録はこのブラウザにだけ保存されます。</span>", app)
+        self.assertNotIn("試作版", app)
         self.assertEqual(app.count('id="about"'), 1)
         self.assertEqual(app.count("このアプリについて"), 3)  # link, panel heading, aria-label
         for text in (

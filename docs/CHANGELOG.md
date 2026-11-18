@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## 2026-11-17 — R2: release check [Claude, fresh session]
+- **R1 reviewed with own evidence** (GATES "Release check R2"): full code diff `25e8231..HEAD` read; R1's data claims re-derived from `data/final` and `data.js`; non-rebuild suite, rebuild determinism, gate harness (file + http) and benchmark rerun one at a time. R1 accepted (D79 item 10).
+- **Date time bomb fixed:** two Stage 4 safety tests reached the Vertex credit-deadline guard through the real clock and failed after 2026-11-16 (171/173 on the R1 state); they now patch both date guards (the guards keep their fixed-clock tests); with the runner clock at 2027-01-01 the two Stage 4 test modules pass 40/40.
+- **Credential test narrowed (R1 note 5):** line-level exemption (`credential_lines`): only the backtick-quoted pattern in RELEASE_PLAN and HANDOFF_ARCHIVE is ignored; HANDOFF is no longer exempt; new unit test.
+- **Footer (user input B):** 「試作版。学習記録は…」 → 「学習記録はこのブラウザにだけ保存されます。」 via `build_app.py`; test in `test_release_r1`.
+- **Identity (user input A, D79 item 1):** public name Hanje Unesaki, noreply `311183901+hanjejeme2023-oss@users.noreply.github.com`; `LICENSE` copyright; D19 and the identity text in CHANGELOG, HANDOFF, HANDOFF_ARCHIVE, RELEASE_PLAN replaced (0 occurrences of the old name/address in current files). History re-scan: no secrets in 64 commits; the history rewrite commands are the R3 steps in HANDOFF (run by the user).
+- **Licences re-read:** Google Service Specific Terms §20 verbatim (RELEASE_PLAN §2.2 corrected: §20, not 17; §20(d) under-18 websites, reading for the user to confirm); EDRDG licence: 3-month updates suffice (D79 items 6, 7).
+- **Release files:** `README.md`, `README.ja.md` (portfolio README; "Who did what" DRAFT), `NOTICE.md`, `SOURCES.md` §4, SCHEMA §1.11 (R1 config/report additions), UX_BACKLOG #9 (non-blocking fonts, user decides), #10 (Ctrl+F after the fill), #11 (EDRDG source line in the footer).
+- **Browser scripts:** screenshots and `demo.gif` retaken with real Google Fonts (only the two font hosts allowed; GIF 960×600, 10 frames/s, 15.7 s, 165 KB); `app_browser.browser_page(allow_hosts=…)`; benchmark reports the longest blocking task/frame per step (`blocking`). Results: gate harness PASS (file + http); first screen before → after glyphAll 416 → 10 ms, glyphQuiz 600 → 45, ff 712 → 64, first 字体 open 2,899 → 114; no task > 50 ms while lists fill; first-open-only frames up to ≈ 0.4 s are a one-time non-script font cost → chunk size kept (item F).
+- **Tests (R2 state):** non-rebuild suite 174 tests, 173 OK + the narrowed credential test catching an interim HANDOFF note (reworded; rerun 21/21 OK incl. the new footer test); rebuild determinism OK on the R1 state (R2 changed only `build_app.py`'s footer string and docs/tests).
+- No Gemini/Vertex request; git config and history untouched; not pushed.
+
 ## 2026-11-14 — R1: pre-release fixes and release files [Claude, one-time exception: R1 is normally Codex's part]
 - **Why Claude:** the user decided on 2026-11-14 that Claude implements R1; R2 must run in a separate, fresh Claude session that reviews R1 as another author's work (HANDOFF). User answers to RELEASE_PLAN §8 copied verbatim into HANDOFF ("User answers R0"); they become a decision in R2. No Gemini/Vertex request; offline except installing Pillow.
 - **§1.1 使われ方:** `build_usage()` keeps one entry per `word_id` (first position), the freed slot goes to the next candidate; rows with a repeated word 29 zh + 2 vi → 0; zh entries 4,622 → 4,618 (vi 2,612 unchanged, freed slots refilled).
@@ -326,7 +338,7 @@
 
 ## 2026-11-04 — User decisions applied [Claude]
 - DECISIONS D20: daily new-card limit (20/day) approved for Stage 5; D18 superseded; UX_BACKLOG #1 marked approved.
-- D19: repo-local git email changed to 311183901+hanjejeme2023-oss@users.noreply.github.com; Stage 0 commit author rewritten (unpushed).
+- D19: repo-local git email changed to the user's previous Gmail address (removed for publication, D79); Stage 0 commit author rewritten (unpushed).
 
 ## 2026-11-04 — Stage 1: sources and licences [Codex]
 - Added `pipeline/download.py`: standard-library downloader with atomic writes, retries, committed `pipeline/source_manifest.csv` URL/date/SHA-256/byte locks (mirrored to `raw/MANIFEST.csv`), idempotent verification, explicit `--refresh`, and synchronization of source licence files into committed `licenses/`.

@@ -101,6 +101,16 @@ Each `*_match` table holds one row per word key, so a form with several dictiona
 ### 1.10 `char_notes` (Stage 4 task 6, D72)
 `char_id, note_ja`. Unique on `char_id`; only non-empty accepted notes (one line, ≤ 60 characters, Japanese; may name an everyday Chinese or Vietnamese word). Shown in the 字体 使われ方 panel (D71 item 6). Expected 581 rows (D75).
 
+### 1.11 Release R1 config overlays and reports (D78; documented in R2, D79)
+Every overlay is fail-closed: a row that matches nothing, matches twice, has no `reason`, or no longer equals the current source/generated value stops the build.
+- `config/kaikki_exclusions.csv` — `word, etymology, reason`. Vietnamese Wiktionary records (headword + first etymology line, both NFC; `word` normalised like the loader) that `load_kaikki.py` skips because review found them wrong. Each row must match exactly one source record. One row: 「cả và」 (it glossed 吧 as the native word và, RELEASE_PLAN §1.3).
+- `config/task1_meaning_review.csv` — `word_id, trad, lang, meaning_ja_generated, meaning_ja_review, reason`. Reviewed task-1 meaning text (`words.meaning_ja__<lang>`), applied after `task1_review.csv`; `trad` must equal the frozen word and `meaning_ja_generated` the accepted output; unique on (`word_id`, `lang`). Rows: 那邊 ko, 器械 ko (D78 item 3).
+- `config/task2_review.csv` action **`set_meaning`** (new): sets `meaning_ja_review` as the `ff_meanings.meaning_ja` of any language; `false_friend_review` must leave that language's trap flag unchanged (else the build stops). Also read by the task-6 input builder (`pipeline/stage4/builders.py`) so the contrast meaning follows the review.
+- `config/task6_input_review.csv` — `key, field, generated_value, current_value, reason`. A task-6 input field that a later review changed after generation: `merge_task6.py` requires the fresh build to hold exactly `current_value`, compares the accepted answer's input with `generated_value`, and uses every row exactly once; any other input difference still stops the build. Rows: `w00262:zh:card` `contrast_meaning_ja`; `c00004:note` `vi_single_use`, `reason`.
+- `data/final/char_primary_no_evidence.csv` new column **`char_source_evidence`** (bool): true for a Vietnamese row whose primary has no word evidence but is attested at character level (`chars.source_vi` ∈ `kaikki_aligned`, `kaikki_en_char`, `unihan_hvsyl`; e.g. 荷 痕 瀾 蓮). 259 rows true (R1).
+- `data/refresh_report.csv` — `table, id, trad, column, before, after`. Written by `pipeline/refresh_check.py` after an EDRDG refresh (RELEASE_PLAN §6.3): the words/characters whose Japanese form or reading changed against `git HEAD`, for Claude's check. Not part of `data/final/`; created only by a refresh.
+- `data.js` change (R1): `chars.vi_all` is not exported for a character whose `source_vi` is `unihan_unverified`, so no unverified Vietnamese reading reaches 字体 (D76 item 1, RELEASE_PLAN §1.3); `chars.csv` keeps it.
+
 ## 2. `data.js` shape
 
 ```js

@@ -37,6 +37,27 @@ from pipeline.stage4.runner import (
 
 
 ROOT = Path(__file__).resolve().parents[1]
+API_KEY_RE = re.compile(r"AIza[0-9A-Za-z_-]{35}")
+PRIVATE_FIELD = '"private' + '_key"'
+# Docs that report the credential scan quote the searched pattern in a code span
+# (RELEASE_PLAN §3.1, the HANDOFF archive). Only those quoted occurrences are exempt.
+QUOTED_PATTERN_FILES = {"docs/RELEASE_PLAN.md", "docs/HANDOFF_ARCHIVE.md"}
+
+
+def credential_lines(text: str, allow_quoted_pattern: bool = False) -> list[int]:
+    """1-based numbers of lines with an API key or a private-key field.
+
+    With ``allow_quoted_pattern`` the pattern written as inline code (backticks
+    around the quoted field name) is ignored; anything else on the line, or a
+    real field elsewhere in the file, still counts.
+    """
+    hits = []
+    for number, line in enumerate(text.splitlines(), 1):
+        if allow_quoted_pattern:
+            line = line.replace(f"`{PRIVATE_FIELD}`", "")
+        if API_KEY_RE.search(line) or PRIVATE_FIELD in line:
+            hits.append(number)
+    return hits
 
 
 class Stage4SafetyTests(unittest.TestCase):
@@ -192,6 +213,10 @@ class Stage4SafetyTests(unittest.TestCase):
                 patch("pipeline.stage4.runner.generation_config", return_value=object()),
                 patch("pipeline.stage4.runner.append_cost"),
                 patch("pipeline.stage4.runner.time.sleep") as sleep,
+                # R2: the date guards have their own fixed-clock tests; this test is
+                # about the retry waits and must not depend on today's date.
+                patch("pipeline.stage4.runner.enforce_argon_deadline"),
+                patch("pipeline.stage4.runner.enforce_credit_deadline"),
             ):
                 result = generate_batch(
                     client, 1, "b001", [item], root / "out.jsonl", root / "out.log.json"
@@ -230,6 +255,9 @@ class Stage4SafetyTests(unittest.TestCase):
                 patch("pipeline.stage4.runner.enforce_ceiling"),
                 patch("pipeline.stage4.runner.generation_config", return_value=object()),
                 patch("pipeline.stage4.runner.append_cost"),
+                # R2: independent of today's date (see the retry test above).
+                patch("pipeline.stage4.runner.enforce_argon_deadline"),
+                patch("pipeline.stage4.runner.enforce_credit_deadline"),
             ):
                 result = generate_batch(
                     client, 5, "b055", [item], root / "out.jsonl", log_path
@@ -311,8 +339,6 @@ class Stage4SafetyTests(unittest.TestCase):
         self.assertIn('run("merge_stage4.py")', source)
 
     def test_no_credentials_in_project_files(self) -> None:
-        api_key = re.compile(r"AIza[0-9A-Za-z_-]{35}")
-        private_field = '"private' + '_key"'
         offenders: list[str] = []
         excluded = {".git", "raw", ".venv", "__pycache__"}
         for path in ROOT.rglob("*"):
@@ -322,15 +348,23 @@ class Stage4SafetyTests(unittest.TestCase):
                 text = path.read_text(encoding="utf-8")
             except UnicodeDecodeError:
                 continue
-            if api_key.search(text) or private_field in text:
-                offenders.append(path.relative_to(ROOT).as_posix())
-        # HANDOFF contains the literal safety requirement itself, not a credential field;
-        # RELEASE_PLAN §3.1 quotes the pattern when it reports the history scan (D78).
-        offenders = [
-            path for path in offenders
-            if path not in {"docs/HANDOFF.md", "docs/HANDOFF_ARCHIVE.md", "docs/RELEASE_PLAN.md"}
-        ]
+            name = path.relative_to(ROOT).as_posix()
+            lines = credential_lines(text, allow_quoted_pattern=name in QUOTED_PATTERN_FILES)
+            offenders += [f"{name}:{number}" for number in lines]
         self.assertEqual(offenders, [])
+
+    def test_credential_scan_exempts_only_lines_quoting_the_pattern(self) -> None:
+        # R2 (R1 note 5): the docs that report the scan are exempt line by line, not as files.
+        field = '"private' + '_key"'
+        quoted = f"0 matches for `{field}` in the whole history."
+        real = f'{{"type": "service_account", {field}: "-----BEGIN"}}'
+        self.assertEqual(credential_lines(quoted, allow_quoted_pattern=True), [])
+        self.assertEqual(credential_lines(quoted, allow_quoted_pattern=False), [1])
+        self.assertEqual(credential_lines(f"{quoted}\n{real}", allow_quoted_pattern=True), [2])
+        self.assertEqual(credential_lines(f"{quoted} {real}", allow_quoted_pattern=True), [1])
+        key = "AIza" + "B" * 35
+        self.assertEqual(credential_lines(f"see `{key}`", allow_quoted_pattern=True), [1])
+        self.assertEqual(QUOTED_PATTERN_FILES, {"docs/RELEASE_PLAN.md", "docs/HANDOFF_ARCHIVE.md"})
 
 
 if __name__ == "__main__":

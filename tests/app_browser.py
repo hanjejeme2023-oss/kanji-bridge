@@ -42,6 +42,7 @@ BROWSERS = [
     Path(r"C:\Program Files\Microsoft\Edge\Application\msedge.exe"),
 ]
 MODES = ("file", "http")
+FONT_HOSTS = ("fonts.googleapis.com", "fonts.gstatic.com")
 
 
 def find_browser() -> Path | None:
@@ -175,8 +176,13 @@ def _free_port() -> int:
 
 
 @contextlib.contextmanager
-def browser_page(work: Path, width: int = 1280, height: int = 800) -> Iterator[Page]:
-    """Start a headless browser with a fresh profile under ``work``; yield a Page."""
+def browser_page(work: Path, width: int = 1280, height: int = 800,
+                 allow_hosts: tuple[str, ...] = ()) -> Iterator[Page]:
+    """Start a headless browser with a fresh profile under ``work``; yield a Page.
+
+    Every host name is blocked except 127.0.0.1 and ``allow_hosts`` (R2: the
+    screenshots allow only the two Google Fonts hosts, ``FONT_HOSTS``).
+    """
     browser = find_browser()
     if browser is None:
         raise FileNotFoundError("Chrome or Edge not found")
@@ -188,7 +194,8 @@ def browser_page(work: Path, width: int = 1280, height: int = 800) -> Iterator[P
         f"--user-data-dir={profile}", f"--remote-debugging-port={port}",
         # Offline: no host name resolves; only 127.0.0.1 (the local server of
         # the http mode) is excluded from the block.
-        "--host-resolver-rules=MAP * ~NOTFOUND, EXCLUDE 127.0.0.1",
+        "--host-resolver-rules=MAP * ~NOTFOUND, EXCLUDE 127.0.0.1"
+        + "".join(f", EXCLUDE {host}" for host in allow_hosts),
         f"--window-size={width},{height}", "about:blank",
     ]
     process = subprocess.Popen(command, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)

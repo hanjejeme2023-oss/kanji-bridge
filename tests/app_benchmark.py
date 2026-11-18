@@ -12,7 +12,10 @@ result (``document.body.offsetHeight``), exactly like the snippet. For views
 that finish rendering in idle time, ``<key>Settled`` is the time until the view
 stops changing (last DOM mutation), so deferred work is reported, not hidden.
 ``loadParts`` splits the page load (fetch of ``data.js``, its evaluation, the
-data adapters, the first render).
+data adapters, the first render). ``blocking`` (R2) gives per key the longest
+task (PerformanceObserver ``longtask``, > 50 ms) of the whole step and, for the
+idle-time fill after the click, the longest task and the longest animation
+frame (``long-animation-frame``, tasks + layout + paint); 0 = none above 50 ms.
 
 Prints the median of ``--runs`` runs (default 3; a fresh browser profile per
 run) as JSON. Does not fail on time (machine load varies) but exits 1 on a
@@ -61,6 +64,10 @@ const S=(f,root)=>new Promise(resolve=>{let last=null;const t=performance.now();
     if(quiet>=300){obs.disconnect();void document.body.offsetHeight;resolve({sync,settled:last===null?sync:Math.max(sync,last-t)})}
     else setTimeout(check,50)};setTimeout(check,50)});
 const r={},nv=performance.getEntriesByType('navigation')[0];
+// R2 (R1 note 6): every task / frame that blocks the page for more than 50 ms
+const LT=[],LF=[],W={};
+try{new PerformanceObserver(l=>l.getEntries().forEach(e=>LT.push([e.startTime,e.duration]))).observe({type:'longtask'})}catch(e){}
+try{new PerformanceObserver(l=>l.getEntries().forEach(e=>LF.push([e.startTime,e.duration]))).observe({type:'long-animation-frame'})}catch(e){}
 r.load=nv.loadEventEnd;
 const m=n=>{const e=performance.getEntriesByName(n);return e.length?e[0].startTime:null};
 const span=(a,b)=>m(a)!==null&&m(b)!==null?m(b)-m(a):null;
@@ -68,7 +75,7 @@ const res=performance.getEntriesByType('resource').find(e=>/data\.js$/.test(e.na
 r.loadParts={dataJsFetch:res?res.responseEnd-res.startTime:null,dataJsEval:span('kb-data-start','kb-data-end'),
   adapters:span('kb-adapters-start','kb-adapters-end'),firstRender:span('kb-render-start','kb-render-end'),
   domContentLoaded:nv.domContentLoadedEventEnd};
-const step=async(key,f,root)=>{const x=await S(f,root);r[key]=x.sync;r[key+'Settled']=x.settled};
+const step=async(key,f,root)=>{const t0=performance.now(),x=await S(f,root);r[key]=x.sync;r[key+'Settled']=x.settled;W[key]=[t0,x.sync,x.settled]};
 await step('ff',()=>nav('ff'),'#v-ff');
 await step('ffOpen',()=>q('#fflist .tile').click(),'#v-ff');
 await step('ffClose',()=>q('#fflist .tile').click(),'#v-ff');
@@ -79,6 +86,15 @@ await step('glyphQuiz',()=>q('#gmode button[data-g="quiz"]').click(),'#v-glyph')
 await step('glyphLevel1',()=>q('#gfilter button[data-p="level-1"]').click(),'#v-glyph');
 await S(()=>{q('#gfilter button[data-p="all"]').click();q('#gmode button[data-g="list"]').click()},'#v-glyph');
 await step('cards',()=>nav('cards'),'#v-cards');
+await new Promise(res=>setTimeout(res,300));
+// per key: longest task in the whole step (incl. the click), and the longest task / frame of the
+// idle-time fill after the click returned (0 = none above 50 ms)
+const mx=(list,a,b)=>Math.max(0,...list.filter(([s])=>s>=a&&s<=b).map(([,d])=>d));
+r.blocking={};for(const[key,[t0,sync,settled]]of Object.entries(W)){const fill=t0+sync,end=t0+settled+50;
+  r.blocking[key]={maxTask:mx(LT,t0-1,end),fillMaxTask:mx(LT,fill,end),fillMaxFrame:mx(LF,fill,end),
+    fillLongTasks:LT.filter(([s])=>s>=fill&&s<=end).length}}
+r.blockingSupported={longtask:PerformanceObserver.supportedEntryTypes.includes('longtask'),
+  loaf:PerformanceObserver.supportedEntryTypes.includes('long-animation-frame')};
 return r})()
 """
 
@@ -136,6 +152,7 @@ def main() -> int:
     print(json.dumps({"mode": args.mode, "runs": args.runs, "median": snippet_keys,
                       "settled": {k: median[k + "Settled"] for k in KEYS if k + "Settled" in median},
                       "glyphNav": median.get("glyphNav"), "loadParts": median["loadParts"],
+                      "blocking": median["blocking"], "blockingSupported": median["blockingSupported"],
                       "errors": errors}, ensure_ascii=False, indent=1))
     return 1 if errors else 0
 

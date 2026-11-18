@@ -1,14 +1,21 @@
 """Screenshots and a short demo GIF of the real app (R1, RELEASE_PLAN §3.3 / §5.1).
 
-Opens a copy of ``app/`` in headless Chrome/Edge (``tests/app_browser.py``),
-offline (every host blocked, so the Google Fonts fall back to system fonts as
-for an offline learner), with a fresh profile, at 1280×800, and writes:
+Opens a copy of ``app/`` in headless Chrome/Edge (``tests/app_browser.py``)
+with a fresh profile, at 1280×800. Every host is blocked except the two Google
+Fonts hosts (R2: the pictures show the real fonts, as on the website); the
+script waits for the fonts before each picture and fails if none loaded. Writes:
 
 * ``docs/screenshots/<n>-<view>.png``: one per view (カード answered,
   音のルール, 偽の友達 with one tile open, 読解 with a tapped word, 字体
   with a 使われ方 panel open), 1280×800 PNG;
-* ``docs/screenshots/demo.gif``: about 15 s, at most 3 MB: typing a reading in
-  カード and the result, a 字体 quiz answer, a 偽の友達 tile opening.
+* ``docs/screenshots/demo.gif`` (R2): 960 px wide, 10 frames per second (every
+  frame 100 ms; identical frames are merged by the GIF writer), 12–20 s, at
+  most 5 MB: typing a reading in カード letter by letter and the result, a 字体
+  quiz answer, a 偽の友達 tile opening. Frames are taken in real time, so the
+  app's own 0.28 s fade-in shows.
+
+Both browser runs end with the headless browser closed (``browser_page``); the
+file:// mode starts no http.server.
 
 Needs Pillow (``pip install -r tests/requirements-browser.txt``). The app is
 driven like a learner (clicks, typed text, Enter); nothing in ``app/`` changes.
@@ -21,6 +28,7 @@ from __future__ import annotations
 
 import io
 import sys
+import time
 import unicodedata
 from pathlib import Path
 
@@ -28,12 +36,14 @@ from PIL import Image
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from app_browser import ROOT, app_url, browser_page, wait_for  # noqa: E402
+from app_browser import FONT_HOSTS, ROOT, app_url, browser_page, wait_for  # noqa: E402
 
 OUT = ROOT / "docs" / "screenshots"
 WIDTH, HEIGHT = 1280, 800
-GIF_SCALE = 0.625  # 800×500 frames keep the GIF small
-GIF_LIMIT = 3 * 1024 * 1024
+GIF_SCALE = 0.75  # 960×600
+GIF_LIMIT = 5 * 1024 * 1024
+FRAME_MS = 100  # 10 frames per second
+GIF_SECONDS = (12, 20)
 TONE_MARKS = "̣́̀̉̃"
 
 
@@ -52,18 +62,18 @@ class Driver:
 
     def settle(self) -> None:
         self.js("new Promise(r=>{const w=()=>(typeof CHUNKS==='undefined'||!CHUNKS.size)?"
-                "requestAnimationFrame(()=>requestAnimationFrame(r)):setTimeout(w,30);w()})")
+                "requestAnimationFrame(()=>requestAnimationFrame(r)):setTimeout(w,30);w()})"
+                ".then(()=>document.fonts.ready)")
 
     def click(self, selector: str) -> None:
         self.js(f"document.querySelector({selector!r}).click()")
         self.settle()
 
-    def type(self, text: str, frames: list | None = None, hold: int = 110) -> None:
+    def type(self, text: str, film: "Film | None" = None, hold: int = 200) -> None:
         for char in text:
             self.page.send("Input.insertText", {"text": char})
-            if frames is not None:
-                self.settle()
-                frames.append((self.shot(), hold))
+            if film is not None:
+                film.hold(hold)
 
     def key(self, key: str) -> None:
         code = {"Enter": 13, "Escape": 27}[key]
@@ -84,6 +94,23 @@ class Driver:
 
     def shot(self) -> Image.Image:
         return Image.open(io.BytesIO(self.page.screenshot())).convert("RGB")
+
+    def fonts_loaded(self) -> list[str]:
+        return self.js("[...document.fonts].filter(f=>f.status==='loaded').map(f=>f.family)")
+
+
+class Film:
+    """Real-time frames at 10 per second (one picture every 100 ms of wall time)."""
+
+    def __init__(self, driver: Driver) -> None:
+        self.driver = driver
+        self.frames: list[Image.Image] = []
+
+    def hold(self, ms: int) -> None:
+        for _ in range(max(1, round(ms / FRAME_MS))):
+            started = time.monotonic()
+            self.frames.append(self.driver.shot())
+            time.sleep(max(0.0, FRAME_MS / 1000 - (time.monotonic() - started)))
 
 
 def screenshots(d: Driver) -> list[Path]:
@@ -128,73 +155,89 @@ def screenshots(d: Driver) -> list[Path]:
     return written
 
 
-def demo_frames(d: Driver) -> list[tuple[Image.Image, int]]:
-    frames: list[tuple[Image.Image, int]] = []
-    # カード: front, type, Enter, result
+def demo_frames(d: Driver) -> list[Image.Image]:
+    film = Film(d)
+    # カード: front, the reading typed letter by letter, Enter, result
     d.top()
-    frames.append((d.shot(), 1400))
+    film.hold(1500)
     card = d.js("({v:cur.v})")
     d.js("document.querySelector('#gvi').focus()")
-    d.type(strip_tones(card["v"]), frames)
+    film.hold(300)
+    d.type(strip_tones(card["v"]), film)
+    film.hold(300)
     d.key("Enter")
     d.top()
-    frames.append((d.shot(), 2600))
+    film.hold(2600)
     # 字体 quiz: answer the first Chinese reading
     d.click('#nav button[data-v="glyph"]')
     d.click('#gmode button[data-g="quiz"]')
-    frames.append((d.shot(), 1200))
+    film.hold(1300)
     target = d.js("glyphTargets(filteredGlyphs()[0],'zh')[0]")
     d.js("document.querySelector('#glyphbox input[data-test-cell]').focus()")
+    film.hold(300)
     letters = "".join(ch for ch in unicodedata.normalize("NFD", target) if unicodedata.category(ch) != "Mn")
-    d.type(letters, frames, hold=160)
+    d.type(letters, film, hold=300)
+    film.hold(300)
     d.key("Enter")
-    frames.append((d.shot(), 2400))
+    film.hold(2200)
     # 偽の友達: list, then a tile opens
     d.click('#nav button[data-v="ff"]')
     d.top()
-    frames.append((d.shot(), 1300))
+    film.hold(1500)
     d.click("#fflist .tile")
-    frames.append((d.shot(), 2800))
-    return frames
+    film.hold(3000)
+    return film.frames
 
 
-def write_gif(frames: list[tuple[Image.Image, int]]) -> Path:
+def write_gif(frames: list[Image.Image]) -> Path:
     size = (round(WIDTH * GIF_SCALE), round(HEIGHT * GIF_SCALE))
-    small = [image.resize(size, Image.LANCZOS) for image, _ in frames]
-    durations = [duration for _, duration in frames]
-    palette_source = Image.new("RGB", (size[0], size[1] * len(small)))
-    for index, image in enumerate(small):
+    small = [image.resize(size, Image.LANCZOS) for image in frames]
+    sample = small[:: max(1, len(small) // 24)]
+    palette_source = Image.new("RGB", (size[0], size[1] * len(sample)))
+    for index, image in enumerate(sample):
         palette_source.paste(image, (0, size[1] * index))
-    palette = palette_source.quantize(colors=128, method=Image.Quantize.MEDIANCUT)
+    palette = palette_source.quantize(colors=256, method=Image.Quantize.MEDIANCUT)
     quantized = [image.quantize(palette=palette, dither=Image.Dither.NONE) for image in small]
     path = OUT / "demo.gif"
-    quantized[0].save(path, save_all=True, append_images=quantized[1:], duration=durations,
+    quantized[0].save(path, save_all=True, append_images=quantized[1:], duration=FRAME_MS,
                       loop=0, optimize=True, disposal=1)
-    total = sum(durations) / 1000
-    if total > 15.5 or path.stat().st_size > GIF_LIMIT:
-        raise SystemExit(f"demo.gif too long or too large: {total:.1f} s, {path.stat().st_size:,} bytes")
-    print(f"demo.gif: {len(quantized)} frames, {total:.1f} s, {path.stat().st_size:,} bytes, {size[0]}x{size[1]}")
+    total = len(quantized) * FRAME_MS / 1000
+    with Image.open(path) as check:
+        stored = check.n_frames
+    size_bytes = path.stat().st_size
+    if not GIF_SECONDS[0] <= total <= GIF_SECONDS[1] or size_bytes > GIF_LIMIT or size[0] != 960:
+        raise SystemExit(f"demo.gif out of range: {total:.1f} s, {size_bytes:,} bytes, {size}")
+    print(f"demo.gif: {len(quantized)} frames of {FRAME_MS} ms ({1000 // FRAME_MS} per second; "
+          f"{stored} stored after merging identical frames), {total:.1f} s, {size_bytes:,} bytes, "
+          f"{size[0]}x{size[1]}")
     return path
+
+
+def open_app(page) -> Driver:
+    driver = Driver(page)
+    wait_for(page, "!!document.querySelector('#cardbox > *')", timeout=120)
+    driver.settle()
+    fonts = driver.fonts_loaded()
+    if not fonts:
+        raise SystemExit("no Google Font loaded (fonts.googleapis.com / fonts.gstatic.com unreachable?)")
+    print("fonts loaded:", ", ".join(sorted(set(fonts))))
+    return driver
 
 
 def main() -> int:
     OUT.mkdir(parents=True, exist_ok=True)
     errors: list[str] = []
     with app_url("file") as (url, work):
-        with browser_page(work, WIDTH, HEIGHT) as page:
+        with browser_page(work, WIDTH, HEIGHT, allow_hosts=FONT_HOSTS) as page:
             page.navigate(url)
-            wait_for(page, "!!document.querySelector('#cardbox > *')", timeout=120)
-            driver = Driver(page)
-            driver.settle()
+            driver = open_app(page)
             for path in screenshots(driver):
                 print(f"{path.relative_to(ROOT).as_posix()}: {Image.open(path).size}, {path.stat().st_size:,} bytes")
             errors += page.errors
     with app_url("file") as (url, work):  # a fresh profile: the GIF starts on a new card
-        with browser_page(work, WIDTH, HEIGHT) as page:
+        with browser_page(work, WIDTH, HEIGHT, allow_hosts=FONT_HOSTS) as page:
             page.navigate(url)
-            wait_for(page, "!!document.querySelector('#cardbox > *')", timeout=120)
-            driver = Driver(page)
-            driver.settle()
+            driver = open_app(page)
             write_gif(demo_frames(driver))
             errors += page.errors
     if errors:

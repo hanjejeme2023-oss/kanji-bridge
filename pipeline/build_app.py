@@ -164,11 +164,11 @@ def build() -> str:
   <button id="reset">記録をリセット</button>
 </footer>""",
         f"""<footer>
-  <span>試作版。学習記録はこのブラウザにだけ保存されます。</span>
+  <span>学習記録はこのブラウザにだけ保存されます。</span>
   <span class="foot-links"><button id="about" type="button" aria-expanded="false" aria-controls="aboutpanel">このアプリについて</button><button id="reset">記録をリセット</button></span>
   {ABOUT_PANEL}
 </footer>""",
-        "about link and panel (RELEASE_PLAN 2.6)",
+        "about link and panel (RELEASE_PLAN 2.6); footer without 「試作版。」 (R2, D79: user input B)",
     )
     text = replace_once(
         text,

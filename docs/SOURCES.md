@@ -56,3 +56,14 @@ Last updated: 2026-11-05 (D36 Vietnamese source search by Claude: rows 7C-7J, ev
 ## 4. Final attribution (written at the end)
 
 Generated from sections 1–2 into the repo's README "Data sources" section and LICENSE files.
+
+**Written in release check R2 (Claude, 2026-11-17; D79).** Where the attribution lives:
+- `NOTICE.md`: every used source (#1–6, 7A, 7B, 7C, 8) with its holder, URL, licence, licence file in `licenses/`, what is used, the statement that all were modified, the Unicode and libhangul notices, the EDRDG acknowledgement, the hsk30 provenance, the AI-content status and the fonts.
+- `README.md` / `README.ja.md` "Data sources and licences" / 「データの出典とライセンス」: short table + the EDRDG acknowledgement; `LICENSE-DATA`: CC BY-SA 4.0 scope and the attribution list; `LICENSE`: MIT for the code (Copyright (c) 2026 Hanje Unesaki).
+- In the app: 「このアプリについて」 (footer link, RELEASE_PLAN §2.6) names every source and licence and carries the EDRDG sentence.
+
+EDRDG acknowledgement (verbatim, used in all four places): *This app uses the JMdict and KANJIDIC2 dictionary files. These files are the property of the Electronic Dictionary Research and Development Group, and are used in conformance with the Group's licence.*
+
+EDRDG licence re-read on 2026-11-17 (https://www.edrdg.org/edrdg/licence.html, D79 item 5): software, WWW servers and apps that use the files need "a procedure for regular updating of the data from the most recent versions available"; the only fixed interval given is the example for WWW-based dictionary servers (at least once a month). Kanji Bridge is a study app, not a dictionary server: the documented 3-month procedure (`pipeline/README.md`, RELEASE_PLAN §6.3) meets the requirement. Websites acknowledge the source "on each screen display"; with mixed sources a general acknowledgement is sufficient (UX_BACKLOG #11 for the footer wording).
+
+AI-generated content (Google Gemini on Vertex AI): Google Cloud Service Specific Terms (last modified 2026-04-02), §20(a) re-read verbatim on 2026-11-17: "Generated Output is Customer Data. As between Customer and Google, Google does not assert any ownership rights in any new intellectual property created in the Generated Output." Published under CC BY-SA 4.0 with the dataset to the extent rights exist; disclosed as AI-generated in the app, `README.md`, `NOTICE.md` and `LICENSE-DATA`.
