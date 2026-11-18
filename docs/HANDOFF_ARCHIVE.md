@@ -776,3 +776,37 @@ User input for R2 (2026-11-17), as given: **A.** public name **Hanje Unesaki** (
 
 **Left to do (in order):** rerun `tests.test_rebuild` if its result is unknown; item B in `pipeline/build_app.py` (footer string) + a test + regenerate `app/index.html`; run one at a time: non-rebuild suite, `stage5_gate_run.py` (file + http), `tests/app_benchmark.py` (before = `25e8231` app via `--app-dir`, after; read `blocking` for item F, judge the chunk size), `tests/app_screenshots.py`; fill README numbers; `README.ja.md`; replace the identity text in D19, HANDOFF, HANDOFF_ARCHIVE, RELEASE_PLAN, CHANGELOG with Hanje Unesaki + noreply (grep `<old PC name>` and the gmail address: 0 in current files); D79 (R0 answers, user input A–C, Google §20 incl. (d), EDRDG, R1 notes accepted, test time bomb); RELEASE_PLAN §2.2 correction; GATES "Release check R2"; CHANGELOG; R3 steps in HANDOFF (backup mirror clone, filter-repo with `--force` in place, tree-hash check before/after, check scans, git config, re-add origin, force-push while private, commit map, GitHub e-mail settings order, visibility, Pages, first published check, Speed check); list the "Who did what" sentences for approval; commit "[Claude] R2: …"; `Next: User — R3`.
 
+## 10. Removed or replaced in HANDOFF at R3 prep (2026-11-17; Claude, verbatim)
+
+The R3 step 0 approvals (now done), the old step 3 and step 6 commands, and the status / next-assignment sentences they replaced.
+
+**R1 done (Claude, 2026-11-14; one-time exception, see below). R2 release check PASS (Claude, fresh session, 2026-11-17; D79). Next: User — R3 (steps below).**
+
+**User — R3** (RELEASE_PLAN §0, §3.2 option C, §4.2): approvals, history rewrite, push while private, GitHub settings, public, Pages, first published check. Exact steps in "R3 steps" below, in order.
+
+### R3 approvals (step 0)
+1. **README "Who did what" (DRAFT).** Approve or correct these four sentences (README.md; README.ja.md has the same content in Japanese). After approval, Claude or you remove the "DRAFT — user approval needed" lines in both READMEs.
+   - "**The project owner** wrote the brief (`PROMPT.md`) and supplied the data spec and the prototype UI that the run had to keep unchanged. They made the decisions recorded as theirs in `docs/DECISIONS.md`: which sources to exclude or accept with a known risk (D35), how character readings are chosen (D37, D39, D50), the Vietnamese source search and finalisation (D36, D55, D57), running the content generation on Vertex AI and its model and budget (D54, D58, D60), the features approved after trying the app (D20, D67, D71, D76), and the public release with its licences (D78, D79). They checked samples of the AI content themselves (`TASK5_USER_SAMPLE.md`, `TASK6_USER_SAMPLE.md`, 30/30 accepted), started every paid generation run, and tested the app as a learner."
+   - "**Claude** (Anthropic, in Claude Code) was the architect and reviewer: the schema and specs, most recorded decisions and their reasons, the static rule text, the content-generation design and the revised prompts after each pilot, review overlays for wrong AI output, and every stage gate (`docs/GATES.md`). As a one-time exception decided by the owner, Claude also implemented the pre-release fix pass R1; a separate Claude session reviewed it (R2)."
+   - "**Codex** (OpenAI) was the engineer: the download and loader scripts, the table builds, validators, the Stage 4 runner and its first prompts, the merges, the tests and the app integration (`[Codex]` commits)."
+   - "**Gemini** (Google, `gemini-4-argon` on Vertex AI) generated the content that no dictionary has: Japanese meanings per language, false-friend judgments, reading passages, usage checks, example sentences and character notes. Every batch was validated by script and reviewed before it was accepted."
+   Points to check in particular: whether you wrote the data spec and the prototype yourself (the README says only "supplied"), and whether "started every paid generation run" is right for all runs.
+2. **D79 item 6:** Google §20(d) (no Generative AI Service as part of a website likely to be used by under-18s). Claude's reading: it does not apply, because the site shows stored, reviewed text and calls no Google service. Confirm or decide otherwise.
+3. **Optional now or later:** UX_BACKLOG #9 (load Google Fonts without blocking the first render), #10 (Ctrl+F before the fill ends), #11 (EDRDG source line in the footer).
+
+**Step 0 — read and approve (no command).** (a) The README "Who did what" sentences listed under "R3 approvals" below. (b) D79 item 6: Claude reads Google's §20(d) (no Generative AI Service as part of a website likely to be used by under-18s) as not applying, because the site only shows stored, reviewed text and calls no Google service. Approve or tell Claude. (c) UX_BACKLOG #9 (non-blocking fonts) and #11 (EDRDG source line in the footer): decide now or after release.
+
+**Step 3 — git filter-repo (rewrites all commits in this folder; `--force` because this is not a fresh clone — the backup from step 1 is the safety net).**
+```powershell
+python -m pip install git-filter-repo
+git filter-repo --version
+git filter-repo --force --mailmap (Join-Path $work 'mailmap.txt') --replace-text (Join-Path $work 'replacements.txt')
+```
+
+**Step 6 — force-push while the repository is still PRIVATE.** On github.com → `hanjejeme2023-oss/kanji-bridge` → check the "Private" label first. filter-repo removed the `origin` remote, so add it again:
+```powershell
+git remote add origin https://github.com/hanjejeme2023-oss/kanji-bridge.git
+git push --force -u origin master
+git ls-remote origin master; git rev-parse HEAD   # expect the same hash
+```
+Note: GitHub can keep unreferenced old commits of a repository for a while (reachable only by their full hash). If you want none of the old objects on GitHub at all, instead of the force-push: Settings → Danger Zone → Delete this repository, create a new **private** empty repository with the same name (no README), then run the same two `git remote add` / `git push -u origin master` lines (without `--force`). Your choice; the repository has no issues, stars or forks to lose.

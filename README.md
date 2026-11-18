@@ -94,11 +94,9 @@ flowchart LR
 
 ## How it was built: three AI agents and a human
 
-> **DRAFT — user approval needed.** This section is drawn from `docs/DECISIONS.md` and awaits the project owner's approval.
-
 ```mermaid
 flowchart TB
-  User([Project owner<br/>brief, prototype UI, decisions,<br/>sample checks, runs, learner tests])
+  User([Hanje Unesaki · owner and director<br/>brief, prototype UI, decisions,<br/>sample checks, runs, learner tests])
   HO[[docs/HANDOFF.md<br/>one next assignment at a time]]
   Cl[Claude · architect and reviewer<br/>specs, schema, decisions,<br/>review overlays, stage gates]
   Cx[Codex · engineer<br/>pipeline, tests, app integration]
@@ -110,7 +108,7 @@ flowchart TB
   Cl -- assignment or FAIL list --> HO
   Cx -- done, hand to gate --> HO
   Cx -- runner script --> Ge
-  User -- starts each paid run --> Ge
+  User -- starts the full paid runs --> Ge
   Ge -- content/generated --> Cl
   Cl -- accepted batches --> Cx
   Cl --> Rec
@@ -120,8 +118,8 @@ flowchart TB
 The agents never talked to each other: each session read `PROMPT.md` and `docs/HANDOFF.md`, did one assignment, wrote the result and the next assignment back, committed (`[Claude] …` / `[Codex] …` in the history), and stopped. Every stage ended with a gate that checked evidence, not the author's report.
 
 **Who did what**
-- **The project owner** wrote the brief (`PROMPT.md`) and supplied the data spec and the prototype UI that the run had to keep unchanged. They made the decisions recorded as theirs in `docs/DECISIONS.md`: which sources to exclude or accept with a known risk (D35), how character readings are chosen (D37, D39, D50), the Vietnamese source search and finalisation (D36, D55, D57), running the content generation on Vertex AI and its model and budget (D54, D58, D60), the features approved after trying the app (D20, D67, D71, D76), and the public release with its licences (D78, D79). They checked samples of the AI content themselves (`TASK5_USER_SAMPLE.md`, `TASK6_USER_SAMPLE.md`, 30/30 accepted), started every paid generation run, and tested the app as a learner.
-- **Claude** (Anthropic, in Claude Code) was the architect and reviewer: the schema and specs, most recorded decisions and their reasons, the static rule text, the content-generation design and the revised prompts after each pilot, review overlays for wrong AI output, and every stage gate (`docs/GATES.md`). As a one-time exception decided by the owner, Claude also implemented the pre-release fix pass R1; a separate Claude session reviewed it (R2).
+- **Hanje Unesaki (project owner and director).** A native speaker of Japanese and Korean learning Chinese and Vietnamese, he conceived the app as the tool he needed and planned it with Claude in claude.ai: the brief (`PROMPT.md`), the data spec and the prototype UI were worked out in those conversations and decided by him. He directed the three-agent workflow: he relayed every assignment and prompt between the agents (the prompts drafted with Claude in claude.ai) and ran each step on his own PC. He made the decisions recorded as his in `docs/DECISIONS.md`: which sources to exclude or accept with a known risk (D21, D35), how character readings are chosen (D37, D39, D50), the Vietnamese source search and finalisation (D36, D55, D57), running the content generation on Vertex AI and its model and budget (D54, D58, D60), the app changes he approved beyond the frozen prototype UI (D20, D67, D71, D76), and the public release with its licences (D78, D79). He set up Google Cloud with a budget alert and ran the full paid generation runs himself, with their reruns and the task-6 pilot ($51.82 of the $52.76 total; the runner stops at $200; the first Vertex test, the task 1–4 pilots and their re-pilot were run by Codex, $0.94), checked samples of the AI content as a native speaker (`TASK5_USER_SAMPLE.md`: all 50 random items and Claude's 26 corrections agreed, 13 borderline cases decided; `TASK6_USER_SAMPLE.md`: 30/30 accepted), and tested the app as a learner; his feedback became the v2 features (D71, D76).
+- **Claude** (Anthropic, in Claude Code) was the architect and reviewer: the schema and specs, most recorded decisions and their reasons, the static rule text, the content-generation design and the revised prompts after each pilot, review overlays for wrong AI output, and every stage gate (`docs/GATES.md`). As a one-time exception decided by the owner, Claude also implemented the pre-release fix pass R1; a separate Claude session reviewed it (R2). A separate Claude conversation in claude.ai helped the owner plan the project, read each agent's report and write the next prompt.
 - **Codex** (OpenAI) was the engineer: the download and loader scripts, the table builds, validators, the Stage 4 runner and its first prompts, the merges, the tests and the app integration (`[Codex]` commits).
 - **Gemini** (Google, `gemini-4-argon` on Vertex AI) generated the content that no dictionary has: Japanese meanings per language, false-friend judgments, reading passages, usage checks, example sentences and character notes. Every batch was validated by script and reviewed before it was accepted.
 
